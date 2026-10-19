@@ -44,3 +44,35 @@ jobs:
             except Exception as e:
               print(f"ERROR url={url} type={type(e).__name__} detail={str(e)[:150]}")
           PY
+
+      - name: Check EDPS official alternative channels
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request
+          addresses = {
+            "official-mastodon-rss": "https://social.edps.europa.eu/@EDPS.rss",
+            "official-mastodon-profile": "https://social.edps.europa.eu/@EDPS",
+            "bluesky-public-authorfeed": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=edps.europa.eu&limit=30",
+            "bluesky-public-profile": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=edps.europa.eu",
+          }
+          for label, url in addresses.items():
+            try:
+              req = urllib.request.Request(url, headers={"User-Agent":"feeds-chatgpt/1.0 (public source compatibility test)"})
+              with urllib.request.urlopen(req, timeout=20) as response:
+                data=response.read(800001)
+                mime=response.headers.get("Content-Type","")
+                status=response.status
+              print(f"CHANNEL {label}: HTTP={status} MIME={mime} bytes={len(data)}")
+              if "bsky" in url and "json" in mime:
+                dataj=json.loads(data)
+                if label == "bluesky-public-authorfeed":
+                  posts=[p.get("post",{}).get("record",{}) for p in dataj.get("feed",[])]
+                  print(f"  posts={len(posts)} first_date={posts[0].get('createdAt') if posts else None} first_text={(posts[0].get('text','')[:170]) if posts else None}")
+                else:
+                  print("  handle=",dataj.get("handle"), "displayName=",dataj.get("displayName"),"verified=",dataj.get("verification",{}))
+              elif label=="official-mastodon-rss":
+                print("  xml_prefix=",data[:180].decode("utf-8","replace").replace("\n"," "))
+            except Exception as e:
+              print(f"CHANNEL ERROR {label}: {type(e).__name__}: {str(e)[:180]}")
+          PY
