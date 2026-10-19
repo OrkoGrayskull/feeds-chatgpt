@@ -67,7 +67,7 @@ def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
     if root.tag == "rss":
         for item in root.findall("./channel/item")[:max_items]:
             result.append({
-                "title": clean(item.findtext("title")) or clean(re.split(r"</p>|<br\\s*/?>", item.findtext("description") or "", maxsplit=1, flags=re.I)[0])[:180],
+                "title": clean(item.findtext("title")) or clean(re.split(r"</p>|<br\s*/?>", item.findtext("description") or "", maxsplit=1, flags=re.I)[0])[:180],
                 "link": (item.findtext("link") or "").strip(),
                 "published": iso_date(item.findtext("pubDate")),
                 "description": clean(item.findtext("description"))[:description_limit] if description_limit else clean(item.findtext("description")),
