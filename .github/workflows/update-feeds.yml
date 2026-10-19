@@ -2,6 +2,12 @@ name: Update feeds
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'feeds.json'
+      - 'scripts/update_feeds.py'
+      - '.github/workflows/update-feeds.yml'
   schedule:
     - cron: '23 4,7 * * *'
 
