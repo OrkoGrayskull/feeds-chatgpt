@@ -69,62 +69,66 @@ class JSONLD(HTMLParser):
             self.in_script = False
 
 
+class PressList(HTMLParser):
+    """Pair dated press-list items with their official article links."""
+    def __init__(self, base):
+        super().__init__(convert_charrefs=True)
+        self.base = base
+        self.position = 0
+        self.last_date = None
+        self.active = None
+        self.items = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != 'a' or self.active is not None:
+            return
+        href = dict(attrs).get('href', '')
+        link = urljoin(self.base, href)
+        host = urlparse(link).hostname
+        if host not in ('bfdi.bund.de', 'www.bfdi.bund.de'):
+            return
+        if '/SharedDocs/Pressemitteilungen/DE/' not in link or '.html' not in link:
+            return
+        if self.last_date is None or self.position - self.last_date[1] > 800:
+            return
+        self.active = {'published': self.last_date[0], 'link': link, 'parts': []}
+
+    def handle_data(self, data):
+        if self.active is not None:
+            self.active['parts'].append(data)
+        for match in re.finditer(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', data):
+            try:
+                published = datetime.strptime(match.group(), '%d.%m.%Y').date().isoformat()
+                self.last_date = (published, self.position + match.end())
+            except ValueError:
+                pass
+        self.position += len(data)
+
+    def handle_endtag(self, tag):
+        if tag != 'a' or self.active is None:
+            return
+        title = common.clean(''.join(self.active['parts']))
+        if title and len(title) >= 8:
+            self.items.append({
+                'title': title, 'link': self.active['link'],
+                'published': self.active['published'], 'description': ''
+            })
+        self.active = None
+
+
 def parse_bfdi_html(payload, source):
-    # Conservative fallback: never infer dates from unrelated navigation markup.
-    extractor = JSONLD()
-    extractor.feed(payload.decode('utf-8', errors='replace'))
-    result = []
-
-    def walk(value):
-        if isinstance(value, list):
-            for sub in value:
-                yield from walk(sub)
-        elif isinstance(value, dict):
-            yield value
-            if '@graph' in value:
-                yield from walk(value['@graph'])
-
-    for blob in extractor.blobs:
-        try:
-            obj = json.loads(blob)
-        except ValueError:
-            continue
-        for article in walk(obj):
-            kind = article.get('@type', [])
-            if isinstance(kind, str):
-                kind = [kind]
-            if not any(t in ('NewsArticle', 'Article', 'PressRelease') for t in kind):
-                continue
-            link = article.get('url') or article.get('mainEntityOfPage')
-            if isinstance(link, dict):
-                link = link.get('@id')
-            link = urljoin(source, link or '')
-            if urlparse(link).hostname not in ('bfdi.bund.de', 'www.bfdi.bund.de'):
-                continue
-            if '/Presse/' not in link:
-                continue
-            title = common.clean(article.get('headline', ''))
-            published = common.iso_date(article.get('datePublished'))
-            if title and published:
-                result.append({'title': title, 'link': link, 'published': published,
-                               'description': common.clean(article.get('description', ''))})
-    if not result:
-        sample = payload.decode('utf-8', errors='replace')[:8000]
-        page_title = re.search(r'<title[^>]*>(.*?)</title>', sample, flags=re.I | re.S)
-        print('Source diagnostic: HTML title =', common.clean(page_title.group(1))[:160] if page_title else '(none)', file=sys.stderr)
-        print('Source diagnostic: dated strings =', re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', sample)[:5], file=sys.stderr)
-        print('Source diagnostic: body text =', common.clean(sample)[:280], file=sys.stderr)
-        full_html = payload.decode('utf-8', errors='replace')
-        print('Source diagnostic: HTML bytes =', len(payload), file=sys.stderr)
-        print('Source diagnostic: date count =', len(re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', full_html)), file=sys.stderr)
-        print('Source diagnostic: first dates =', re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', full_html)[:10], file=sys.stderr)
-        matches = list(re.finditer(r'href=["\x27]([^"\x27]*SharedDocs/Pressemitteilungen[^"\x27]*)', full_html, re.I))
-        print('Source diagnostic: press links found =', len(matches), file=sys.stderr)
-        for match in matches[:3]:
-            print('Source diagnostic: excerpt =', common.clean(full_html[max(0,match.start()-350):match.end()+350])[:500], file=sys.stderr)
-        raise ValueError('No dated press releases in structured HTML')
-    return result[:100]
-
+    parser = PressList(source)
+    parser.feed(payload.decode('utf-8', errors='replace'))
+    seen = set()
+    items = []
+    for item in parser.items:
+        if item['link'] not in seen:
+            seen.add(item['link'])
+            items.append(item)
+    if len(items) < 5:
+        raise ValueError('Fewer than five reliably dated official press links in listing')
+    items.sort(key=lambda x: x['published'], reverse=True)
+    return items[:100]
 
 def update(feed):
     name, kind = feed['id'], feed['type']
