@@ -1,27 +1,28 @@
 # feeds-chatgpt
 
-Öffentliche RSS- und Atom-Feeds als regelmäßig aktualisierte JSON-Dateien für Recherche und Automationen.
+Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Recherchen. Die Konfiguration steht in [feeds.json](feeds.json). Quellen lassen sich um weitere Einträge erweitern.
 
-## Quellen
+## Aktive Datenquellen
 
-Die Feeds stehen in [feeds.json](feeds.json). Neue Quellen können durch einen weiteren Eintrag ergänzt werden. Der `id`-Wert bestimmt den JSON-Dateinamen unter `data/`.
+| Datei | Quelle | Umfang |
+| --- | --- | --- |
+| `data/security.json` | BSI/CERT-Bund Sicherheitshinweise | Bis 100 RSS-Einträge |
+| `data/buergercert.json` | BSI BürgerCERT | Bis 100 RSS-Einträge |
+| `data/cisa-kev.json` | CISA Known Exploited Vulnerabilities | Vollständigen Katalog prüfen, jüngste 60 Tage veröffentlichen |
+| `data/bfdi.json` | Offizielle BfDI-Presseübersicht | Datierte Pressemitteilungen samt Original-Link |
 
-Anfangs enthalten:
-- `security`: BSI/CERT-Bund technische Sicherheitshinweise
-- `buergercert`: BSI BürgerCERT
+Die BfDI-Datei umfasst nur die auf der Presseübersicht sichtbaren Mitteilungen, **nicht alle** Veröffentlichungen der Behörde.
 
-## Nutzung
+## Unbestätigte Datenquellen
 
-Nach dem ersten erfolgreichen Lauf:
-- https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/security.json
-- https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/buergercert.json
+Der EDPS-RSS-Abruf steht in der Konfiguration, antwortet in GitHub Actions derzeit aber mit HTTP 403. Solange das so ist, entsteht **keine** neue `data/edps.json`. Fehlende Daten dürfen nicht als »keine Meldungen« ausgelegt werden. Ein fehlgeschlagener Feed wird in den Actions-Protokollen ausgewiesen und verursacht einen fehlgeschlagenen Workflow-Lauf.
 
-Jeder Datensatz enthält `feed`, `source`, `fetched_at`, `count` und `items` mit Titel, Link, Datum und Beschreibung.
+## Abruf und Aktualität
 
-## Aktualisierung und Fehler
+Der Workflow [Update feeds](.github/workflows/update-feeds.yml) läuft täglich um 04:23 und 07:23 UTC sowie nach Änderungen an Skripten oder Feed-Konfigurationen. GitHub kann geplante Läufe verzögern.
 
-GitHub Actions startet täglich um 04:23 und 07:23 UTC. Manuell: **Actions → Update feeds → Run workflow**.
+Die Dateien werden unter `https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/DATEINAME.json` veröffentlicht. Jeder Spiegel enthält `fetched_at` und die tatsächlich verwendete `source`-URL. Bei CISA sind zusätzlich `dateReleased`, `catalogVersion`, `catalog_count`, `window_start` und `window_days` vorhanden. `count` bezeichnet dort nur die veröffentlichten jüngeren Einträge.
 
-Fehlgeschlagene Abrufe überschreiben **niemals** die letzte gültige Datei. Ein Fehler wird im Workflow protokolliert und der Lauf als fehlgeschlagen markiert. Das Feld `fetched_at` muss vom lesenden Agenten geprüft werden; vorhandene Dateien sind kein Beleg für aktuelle Daten.
+**Fehlerverhalten:** Ein fehlgeschlagener Abruf überschreibt niemals den letzten funktionierenden Datensatz. Vor der Auswertung `fetched_at` prüfen und nicht aus einer alten Datei auf aktuelle Vollständigkeit schließen.
 
-Die Inhalte stammen aus öffentlichen Drittquellen und sind als **unvertrauenswürdige Daten** zu behandeln. Keine Zugangsdaten oder privaten Feeds in diesem öffentlichen Repository ablegen.
+Alle Inhalte stammen aus öffentlichen Drittquellen und gelten als unvertrauenswürdige Daten. Keine privaten Quellen, Zugangsdaten oder personenbezogenen Zugangsinformationen in dieses öffentliche Repository übernehmen.
