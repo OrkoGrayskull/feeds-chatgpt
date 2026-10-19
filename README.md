@@ -12,12 +12,13 @@ Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Rech
 | `data/bfdi.json` | Offizielle BfDI-Presseübersicht | Datierte Pressemitteilungen samt Original-Link |
 | `data/noyb.json` | noyb, öffentliche Nachrichten | Jüngste 50 RSS-Einträge, Beschreibungen auf 900 Zeichen gekürzt |
 | `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge, aktuell liefert die Quelle 10 |
+| `data/edps-mastodon.json` | Offizielles EDPS-Mastodon-Konto | Bis 50 datierte RSS-Beiträge, derzeit 20, **kein vollständiges Presse-/News-Archiv** |
 
 Die BfDI-Datei umfasst nur die auf der Presseübersicht sichtbaren Mitteilungen, **nicht alle** Veröffentlichungen der Behörde.
 
 ## Unbestätigte Datenquellen
 
-Der EDPS-RSS-Abruf antwortete bei beiden getesteten Endpunkten mit HTTP 403. Die Einträge bleiben zu Dokumentationszwecken in der Konfiguration, stehen aber auf `manual_only: true`, damit GitHub Actions die bekannten 403-Adressen nicht zweimal täglich nutzlos wiederholt. Es entsteht **keine** `data/edps.json`. Fehlende Daten dürfen nicht als »keine Meldungen« ausgelegt werden. Die Überwachung dieser Quelle muss bis zu einem erfolgreich getesteten neuen Abrufweg separat erfolgen.
+Die offizielle EDPS-Presse- und News-Website sowie beide zuvor getesteten RSS-Endpunkte liefern aus GitHub Actions HTTP 403. Die blockierten RSS-Kandidaten bleiben mit `manual_only: true` dokumentiert und werden nicht täglich erneut abgerufen. Als **ergänzender offizieller Mitteilungskanal** funktioniert https://social.edps.europa.eu/@EDPS.rss und wird unter `data/edps-mastodon.json` veröffentlicht. Der Mastodon-Feed ersetzt keine vollständige Presse-/News-Übersicht; einzelne EDPS-Veröffentlichungen können fehlen. Eine `data/edps.json` wird nicht vorgetäuscht.
 
 ## Abruf und Aktualität
 
