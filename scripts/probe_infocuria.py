@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from urllib.request import Request, urlopen
 
-URL = "https://infocuria.curia.europa.eu/tabs/redirect/juris/documents.jsf?language=de"
+URL = "https://infocuria.curia.europa.eu/tabs/jurisprudence?doc-date-start=2026-10-12&lang=en&sort=doc_date-desc"
 OUTPUT = "data/infocuria-probe.json"
 
 class VisibleText(HTMLParser):
