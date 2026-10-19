@@ -76,3 +76,18 @@ jobs:
             except Exception as e:
               print(f"CHANNEL ERROR {label}: {type(e).__name__}: {str(e)[:180]}")
           PY
+
+      - name: Inspect official Mastodon RSS entry structure
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request, xml.etree.ElementTree as ET
+          url="https://social.edps.europa.eu/@EDPS.rss"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"feeds-chatgpt/1.0"}),timeout=20) as r:
+            root=ET.fromstring(r.read(200000))
+          print("RSSROOT",root.tag,"CHILDREN",[(x.tag,len(x)) for x in root][:8])
+          items=root.findall("./channel/item")
+          print("RSS ITEMS",len(items))
+          for item in items[:3]:
+            print("ENTRY FIELDS",[(x.tag,(x.text or "")[:200],x.attrib) for x in list(item)[:12]])
+          PY
