@@ -109,6 +109,8 @@ def main():
     failures = []
     seen = set()
     for feed in feeds:
+        if feed.get("type", "rss") != "rss":
+            continue  # handled by the supplemental updater
         name, url = feed["id"], feed["url"]
         if not re.fullmatch(r"[a-z][a-z0-9_-]{0,49}", name) or name in seen:
             raise ValueError("Invalid or duplicate feed id: " + name)
