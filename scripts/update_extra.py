@@ -109,6 +109,11 @@ def parse_bfdi_html(payload, source):
                 result.append({'title': title, 'link': link, 'published': published,
                                'description': common.clean(article.get('description', ''))})
     if not result:
+        sample = payload.decode('utf-8', errors='replace')[:8000]
+        page_title = re.search(r'<title[^>]*>(.*?)</title>', sample, flags=re.I | re.S)
+        print('Source diagnostic: HTML title =', common.clean(page_title.group(1))[:160] if page_title else '(none)', file=sys.stderr)
+        print('Source diagnostic: dated strings =', re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', sample)[:5], file=sys.stderr)
+        print('Source diagnostic: body text =', common.clean(sample)[:280], file=sys.stderr)
         raise ValueError('No dated press releases in structured HTML')
     return result[:100]
 
