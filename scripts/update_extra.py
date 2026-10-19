@@ -167,6 +167,9 @@ def main():
     for feed in config['feeds']:
         if feed.get('type', 'rss') == 'rss':
             continue
+        if feed.get('manual_only', False):
+            print('SKIP:', feed['id'], 'known inaccessible source, awaiting a new verified endpoint')
+            continue
         try:
             update(feed)
         except Exception as exc:
