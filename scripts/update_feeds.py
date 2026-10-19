@@ -61,19 +61,19 @@ def download(url):
         raise ValueError("Empty or oversized feed")
     return result
 
-def parse_feed(content):
+def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
     root = ET.fromstring(content)
     result = []
     if root.tag == "rss":
-        for item in root.findall("./channel/item")[:MAX_ITEMS]:
+        for item in root.findall("./channel/item")[:max_items]:
             result.append({
                 "title": clean(item.findtext("title")),
                 "link": (item.findtext("link") or "").strip(),
                 "published": iso_date(item.findtext("pubDate")),
-                "description": clean(item.findtext("description")),
+                "description": clean(item.findtext("description"))[:description_limit] if description_limit else clean(item.findtext("description")),
             })
     elif root.tag == ATOM + "feed":
-        for entry in root.findall(ATOM + "entry")[:MAX_ITEMS]:
+        for entry in root.findall(ATOM + "entry")[:max_items]:
             links = entry.findall(ATOM + "link")
             selected = next((x for x in links if x.get("rel", "alternate") == "alternate" and x.get("href")), None)
             if selected is None:
@@ -82,7 +82,7 @@ def parse_feed(content):
                 "title": clean(entry.findtext(ATOM + "title")),
                 "link": selected.get("href", "") if selected is not None else "",
                 "published": iso_date(entry.findtext(ATOM + "updated") or entry.findtext(ATOM + "published")),
-                "description": clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content")),
+                "description": clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content"))[:description_limit] if description_limit else clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content")),
             })
     else:
         raise ValueError("Unsupported feed format (expected RSS 2.0 or Atom)")
@@ -118,7 +118,7 @@ def main():
         if urlparse(url).scheme != "https":
             raise ValueError("Only HTTPS URLs are supported")
         try:
-            items = parse_feed(download(url))
+            items = parse_feed(download(url), max_items=feed.get("max_items", MAX_ITEMS), description_limit=feed.get("description_limit"))
             write_json(OUT / (name + ".json"), {
                 "feed": name, "source": url,
                 "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
