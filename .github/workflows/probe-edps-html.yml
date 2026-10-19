@@ -1,0 +1,46 @@
+name: Probe EDPS public web pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/probe-edps-html.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check EDPS official HTML pages
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request, urllib.error, re, html, sys
+          from html.parser import HTMLParser
+          urls = [
+            "https://www.edps.europa.eu/press-publications/press-news/news_en",
+            "https://www.edps.europa.eu/press-publications/press-news/press-releases_en",
+            "https://www.edps.europa.eu/edps-homepage_en",
+            "https://edps.europa.eu/press-publications/press-news/news_en",
+            "https://edps.europa.eu/press-publications/press-news/press-releases_en",
+          ]
+          for url in urls:
+            try:
+              req = urllib.request.Request(url, headers={"Accept": "text/html,application/xhtml+xml", "User-Agent": "feeds-chatgpt/1.0 (public web source probe)"})
+              with urllib.request.urlopen(req, timeout=18) as resp:
+                raw = resp.read(2000001)
+                status = resp.status
+                target = resp.geturl()
+                mime = resp.headers.get("Content-Type")
+              page = raw.decode("utf-8", "replace")
+              title = re.search(r"<title[^>]*>(.*?)</title>", page, re.I|re.S)
+              title = re.sub(r"<[^>]+>", " ", html.unescape(title.group(1)))[:140] if title else "(none)"
+              dates = re.findall(r"\b(?:[0-3]?\d\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+20\d{2}|20\d{2}[-/][01]\d[-/][0-3]\d)\b", page, re.I)
+              links = re.findall(r'href=["\x27]([^"\x27]*(?:/press-releases/|/news/)[^"\x27]*)["\x27]', page, re.I)
+              print(f"RESULT url={url} status={status} bytes={len(raw)} mime={mime} target={target} title={title!r} dates={dates[:4]} candidate_links={len(links)} first_links={links[:3]}")
+            except Exception as e:
+              print(f"ERROR url={url} type={type(e).__name__} detail={str(e)[:150]}")
+          PY
