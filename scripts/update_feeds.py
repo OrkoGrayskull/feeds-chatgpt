@@ -119,6 +119,20 @@ def main():
             raise ValueError("Only HTTPS URLs are supported")
         try:
             items = parse_feed(download(url), max_items=feed.get("max_items", MAX_ITEMS), description_limit=feed.get("description_limit"))
+            if name == "curia":
+                archive_path = OUT / "curia.json"
+                if archive_path.exists():
+                    try:
+                        previous = json.loads(archive_path.read_text(encoding="utf-8"))
+                        if previous.get("feed") == "curia":
+                            items += [x for x in previous.get("items", [])
+                                      if isinstance(x, dict) and x.get("link") and x.get("title") and x.get("published")]
+                    except (ValueError, OSError):
+                        pass
+                unique = {}
+                for item in items:
+                    unique.setdefault(item["link"], item)
+                items = sorted(unique.values(), key=lambda x: x.get("published") or "", reverse=True)
             write_json(OUT / (name + ".json"), {
                 "feed": name, "source": url,
                 "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
