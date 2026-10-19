@@ -114,6 +114,14 @@ def parse_bfdi_html(payload, source):
         print('Source diagnostic: HTML title =', common.clean(page_title.group(1))[:160] if page_title else '(none)', file=sys.stderr)
         print('Source diagnostic: dated strings =', re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', sample)[:5], file=sys.stderr)
         print('Source diagnostic: body text =', common.clean(sample)[:280], file=sys.stderr)
+        full_html = payload.decode('utf-8', errors='replace')
+        print('Source diagnostic: HTML bytes =', len(payload), file=sys.stderr)
+        print('Source diagnostic: date count =', len(re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', full_html)), file=sys.stderr)
+        print('Source diagnostic: first dates =', re.findall(r'\b\d{1,2}\.\d{1,2}\.\d{4}\b', full_html)[:10], file=sys.stderr)
+        matches = list(re.finditer(r'href=["\x27]([^"\x27]*SharedDocs/Pressemitteilungen[^"\x27]*)', full_html, re.I))
+        print('Source diagnostic: press links found =', len(matches), file=sys.stderr)
+        for match in matches[:3]:
+            print('Source diagnostic: excerpt =', common.clean(full_html[max(0,match.start()-350):match.end()+350])[:500], file=sys.stderr)
         raise ValueError('No dated press releases in structured HTML')
     return result[:100]
 
