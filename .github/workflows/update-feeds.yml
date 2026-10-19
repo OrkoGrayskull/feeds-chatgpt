@@ -8,6 +8,7 @@ on:
       - 'feeds.json'
       - 'scripts/update_feeds.py'
       - 'scripts/update_extra.py'
+      - 'scripts/update_cellar.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
     - cron: '23 4,7 * * *'
@@ -36,6 +37,10 @@ jobs:
         id: extras
         continue-on-error: true
         run: python scripts/update_extra.py
+      - name: Fetch EU case law from CELLAR
+        id: cellar
+        continue-on-error: true
+        run: python scripts/update_cellar.py
       - name: Commit refreshed JSON snapshots
         run: |
           git config user.name "github-actions[bot]"
@@ -46,5 +51,5 @@ jobs:
             git push
           fi
       - name: Mark feed errors as failed
-        if: steps.fetch.outcome != 'success' || steps.extras.outcome != 'success'
+        if: steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success'
         run: exit 1
