@@ -15,7 +15,7 @@ Die BfDI-Datei umfasst nur die auf der Presseübersicht sichtbaren Mitteilungen,
 
 ## Unbestätigte Datenquellen
 
-Der EDPS-RSS-Abruf steht in der Konfiguration, antwortet in GitHub Actions derzeit aber mit HTTP 403. Solange das so ist, entsteht **keine** neue `data/edps.json`. Fehlende Daten dürfen nicht als »keine Meldungen« ausgelegt werden. Ein fehlgeschlagener Feed wird in den Actions-Protokollen ausgewiesen und verursacht einen fehlgeschlagenen Workflow-Lauf.
+Der EDPS-RSS-Abruf antwortete bei beiden getesteten Endpunkten mit HTTP 403. Die Einträge bleiben zu Dokumentationszwecken in der Konfiguration, stehen aber auf `manual_only: true`, damit GitHub Actions die bekannten 403-Adressen nicht zweimal täglich nutzlos wiederholt. Es entsteht **keine** `data/edps.json`. Fehlende Daten dürfen nicht als »keine Meldungen« ausgelegt werden. Die Überwachung dieser Quelle muss bis zu einem erfolgreich getesteten neuen Abrufweg separat erfolgen.
 
 ## Abruf und Aktualität
 
