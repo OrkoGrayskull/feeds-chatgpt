@@ -10,6 +10,8 @@ Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Rech
 | `data/buergercert.json` | BSI BürgerCERT | Bis 100 RSS-Einträge |
 | `data/cisa-kev.json` | CISA Known Exploited Vulnerabilities | Vollständigen Katalog prüfen, jüngste 60 Tage veröffentlichen |
 | `data/bfdi.json` | Offizielle BfDI-Presseübersicht | Datierte Pressemitteilungen samt Original-Link |
+| `data/noyb.json` | noyb, öffentliche Nachrichten | Jüngste 50 RSS-Einträge, Beschreibungen auf 900 Zeichen gekürzt |
+| `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge, aktuell liefert die Quelle 10 |
 
 Die BfDI-Datei umfasst nur die auf der Presseübersicht sichtbaren Mitteilungen, **nicht alle** Veröffentlichungen der Behörde.
 
