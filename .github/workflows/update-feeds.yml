@@ -73,19 +73,7 @@ jobs:
           git add data/
           if ! git diff --cached --quiet; then
             git commit -m "Refresh public feed snapshots"
-            # Another commit may have reached main after checkout.
-            # Rebase on the latest main and retry a bounded number of times.
-            for attempt in 1 2 3; do
-              git fetch origin main
-              git rebase origin/main
-              if git push origin HEAD:main; then
-                exit 0
-              fi
-              echo "Push raced with another update (attempt $attempt/3)"
-              sleep 2
-            done
-            echo "Failed to push after three attempts" >&2
-            exit 1
+            git push
           fi
       - name: Mark feed errors as failed
         if: steps.local_time.outputs.run == 'true' && (steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success')
