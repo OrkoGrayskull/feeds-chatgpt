@@ -1,10 +1,118 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-10-20T19:35:21+00:00",
+  "fetched_at": "2026-10-20T20:21:46+00:00",
   "window_hours": 72,
-  "count": 45,
+  "count": 57,
   "items": [
+    {
+      "cve": "CVE-2026-111766",
+      "ghsa": "GHSA-vfgh-jcmw-g37q",
+      "title": "markdown-it: Quadratic-time denial of service in inline HTML parsing with html enabled",
+      "description": "### Summary\n\nWith `html: true`, markdown-it takes quadratic time to parse repeated unterminated HTML constructs inside a paragraph. This affects HTML comments (`<!--`), processing instructions (`<?`), declarations (`<!A`), and CDATA sections (`<![CDATA[`).\n\nAn attacker-controlled input of a few hundred kilobytes can block the Node.js event loop for seconds or tens of seconds. The default configuration has HTML disabled, but the `commonmark` preset enables it.\n\nThe issue was reported against the published `markdown-it@15.0.2` package on Node.js 20 and reproduced on the current source with Node.js 24.16.0.\n\n### Details\n\n`src/rules_inline/text.ts` treats `<` as a terminator, causing the inline parser to attempt the HTML rule at successive HTML construct openers.\n\nWith HTML enabled, `src/rules_inline/html_inline.ts` applies an anchored regular expression to the remaining input:\n\n```js\nconst ",
+      "severity": "low",
+      "published": "2026-10-20T20:08:19+00:00",
+      "link": "https://github.com/advisories/GHSA-vfgh-jcmw-g37q"
+    },
+    {
+      "cve": "CVE-2026-111770",
+      "ghsa": "GHSA-jm63-cq47-j5jp",
+      "title": "MCP  TypeScript server SDK: Shared transport or server instances delivered one HTTP client's messages to another",
+      "description": "### Summary\nIn affected versions, an MCP server reached over HTTP could deliver one client's responses and notifications to another client. This happened when clients shared one stateless transport, or one `McpServer` or `Server` instance.\n\nMessages were matched to a connection by JSON-RPC `id` alone. SDK clients number requests from 0, so ids collide in normal use.\n\n### Am I affected?\nYes, if more than one client can reach your HTTP endpoint and your code creates the transport or the server once at startup, instead of once per request or per session. Until this release, the README examples of `@modelcontextprotocol/hono`, `express`, `fastify` and `node` showed that pattern.\n\nAffected versions: `@modelcontextprotocol/server` 2.0.0 through 2.2.0.\n\nNot affected:\n\n- `createMcpHandler()` with a factory that builds a new server on every call\n- stdio servers\n- `@modelcontextprotocol/sdk` 1.26.",
+      "severity": "high",
+      "published": "2026-10-20T20:07:29+00:00",
+      "link": "https://github.com/advisories/GHSA-jm63-cq47-j5jp"
+    },
+    {
+      "cve": "CVE-2026-111768",
+      "ghsa": "GHSA-46jr-4wx8-v453",
+      "title": "MCP TypeScript SDK: One HTTP request within the default size limit could exhaust server memory during validation",
+      "description": "### Summary\nIn affected versions, servers put no limit on how many array elements and object keys they validated in one request. One HTTP request within the default 4 MiB size limit could exhaust the server's memory, and the process aborted with `JavaScript heap out of memory`.\n\nNo credentials are needed, unless you authenticate requests before they reach the SDK.\n\n### Am I affected?\nYes, if clients you do not fully trust can reach your server over HTTP. The risk is highest for `McpServer` tools whose input contains an array or a record. stdio-only servers are not affected.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` 1.3.0 through 1.31.0\n- `@modelcontextprotocol/server` 2.0.0 through 2.2.0\n\n### Fix\nUpgrade to:\n\n- 1.x: `@modelcontextprotocol/sdk` 1.32.0 or later\n- 2.x: `@modelcontextprotocol/server` 2.3.0 or later\n\n**Upgrading alone changes nothing.** The patched versions add an `M",
+      "severity": "high",
+      "published": "2026-10-20T20:06:35+00:00",
+      "link": "https://github.com/advisories/GHSA-46jr-4wx8-v453"
+    },
+    {
+      "cve": "CVE-2026-111748",
+      "ghsa": "GHSA-f9xw-jh8m-3mwq",
+      "title": "AIOHTTP: Absolute-form request targets can spoof Request.scheme",
+      "description": "### Summary\n\nAn attacker sending an absolute-form request can spoof the scheme used.\n\n### Impact\n\nIf user code depends on the `Request.scheme` attribute for anything security related, an attacker may be able to circumvent this logic, tricking the application into thinking a connection is encrypted when it is not, or vice versa.\n\n### Workaround\n\nA WAF rule to reject absolute-form requests (legitimate requests should only use this form for proxies).",
+      "severity": "medium",
+      "published": "2026-10-20T20:01:40+00:00",
+      "link": "https://github.com/advisories/GHSA-f9xw-jh8m-3mwq"
+    },
+    {
+      "cve": "CVE-2026-111749",
+      "ghsa": "GHSA-gx76-c99x-2c96",
+      "title": "AIOHTTP: Cookie from subdomain can remove Host-Only Scope from existing cookies",
+      "description": "### Summary\n\nA subdomain can remove the Host-Only flag from an existing cookie to a parent domain.\n\n### Impact\n\nA user accessing untrusted subdomains could see their Host-Only protections stripped from cookies. Given most usecases won't reflect these cookies to a browser, the impact is limited.",
+      "severity": "low",
+      "published": "2026-10-20T19:58:14+00:00",
+      "link": "https://github.com/advisories/GHSA-gx76-c99x-2c96"
+    },
+    {
+      "cve": "CVE-2026-111065",
+      "ghsa": "GHSA-6cjc-53gc-5rqm",
+      "title": "AIOHTTP: Connector pool exhaustion via Max-Age overflow",
+      "description": "### Summary\n\nAn overflow in Max-Age processing can skip closing a connection.\n\n### Impact\n\nAn attacker may be able to exhaust the connection pool temporarily, until garbage collection resolves the connections.",
+      "severity": "medium",
+      "published": "2026-10-20T19:57:24+00:00",
+      "link": "https://github.com/advisories/GHSA-6cjc-53gc-5rqm"
+    },
+    {
+      "cve": "CVE-2026-111750",
+      "ghsa": "GHSA-pqxq-w44r-73xw",
+      "title": "AIOHTTP: Pure-Python parser request smuggling",
+      "description": "### Summary\n\nThe pure Python parser is vulnerable to an HTTP request smuggling attack.\n\n### Impact\n\nIf users are using the Python parser (`AIOHTTP_NO_EXTENSIONS`, or not a standard wheel installed), then an application may be vulnerable to a request smuggling attack.\n\n### Workaround\n\nSwitch to the default C parser.",
+      "severity": "medium",
+      "published": "2026-10-20T19:52:21+00:00",
+      "link": "https://github.com/advisories/GHSA-pqxq-w44r-73xw"
+    },
+    {
+      "cve": "CVE-2026-111066",
+      "ghsa": "GHSA-9xw5-w5jj-pvcg",
+      "title": "AIOHTTP: File descriptor exhaustion in multipart requests",
+      "description": "### Summary\n\nAn attacker can exhaust file descriptors with specially crafted multipart requests.\n\n### Impact\n\nIf a handler uses `Request.post()`, it may be possible for an attacker to use an unlimited number of file descriptors, potentially resulting in resource exhaustion.",
+      "severity": "high",
+      "published": "2026-10-20T19:52:09+00:00",
+      "link": "https://github.com/advisories/GHSA-9xw5-w5jj-pvcg"
+    },
+    {
+      "cve": "CVE-2026-112944",
+      "ghsa": "GHSA-r825-w8mm-5pxw",
+      "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+      "description": "### Summary\n\n`launch-editor` forwarded file paths directly to editors without sanitization. If a path resembles a CLI flag, editors like Vim may interpret it as a command, potentially causing unintended file overwrites or command execution.\n\n### Impact\n\n#### Direct `launch-editor` users\n\nOnly apps that match all of the following conditions are affected:\n\n- The attacker is able to create a file system entry (e.g. a file or directory) starting with `+` or `-` in the working directory\n- The user uses or the app specifies any of the following editors:\n  - Vim (including gVim)\n  - MacVim\n  - Emacs (including Emacsclient)\n  - Notepad++ (only if using a plugin exposing dangerous operations via plugin messages)\n- The first argument of `launchEditor` can start with `+` or `-` or the user is using WSL\n\n#### `launch-editor-middleware` users\n\nOnly apps that match the following conditions are affecte",
+      "severity": "medium",
+      "published": "2026-10-20T19:51:52+00:00",
+      "link": "https://github.com/advisories/GHSA-r825-w8mm-5pxw"
+    },
+    {
+      "cve": "CVE-2026-112942",
+      "ghsa": "GHSA-587h-7wmj-h5pm",
+      "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+      "description": "### Summary\n\n`launch-editor` checked `fs.existsSync(fileName)` before passing a supplied path to an editor command. On Windows, an attacker can bypass this check with a crafted path ending in `\\\\..:line:column`. This removes the requirement that the attacker be able to place a file with a malicious filename.\n\nCombined with the `%` escaping issue described in [GHSA-698v-4r3x-3vcv](https://github.com/vitejs/launch-editor/security/advisories/GHSA-698v-4r3x-3vcv), this bypass can lead to OS command injection when an attacker controls the file argument.\n\n### Impact\n\nOnly apps that runs on Windows is affected.\n\n### Details\n\nThe earlier advisory assumed that `fs.existsSync()` required an attacker-controlled filename to exist. This advisory covers a bypass of that requirement.\n\nA crafted value ending in `\\\\..:1:1` is interpreted differently by `launch-editor-middleware`, `launch-editor`, and Win",
+      "severity": "high",
+      "published": "2026-10-20T19:48:25+00:00",
+      "link": "https://github.com/advisories/GHSA-587h-7wmj-h5pm"
+    },
+    {
+      "cve": "CVE-2026-111771",
+      "ghsa": "GHSA-rvq5-wwqv-78pq",
+      "title": "MCP TypeScript SDK: Server bearer authentication accepted tokens issued for another service",
+      "description": "### Summary\nIn affected versions, the SDK's server-side bearer authentication had no way to check that a token was issued for your server (its audience). Where one authorization server issues tokens for several services, a valid token for another service was also accepted by your MCP server.\n\n### Am I affected?\nYes, if your HTTP server uses `requireBearerAuth()` or `verifyBearerToken()`, its authorization server also issues tokens for other services, and your `verifyAccessToken()` does not check the token's audience (`aud`) itself.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` 1.6.0 through 1.31.0\n- `@modelcontextprotocol/server` 2.0.0 through 2.2.0\n- `@modelcontextprotocol/express` 2.0.0 through 2.0.1\n- `@modelcontextprotocol/server-legacy` 2.0.0 through 2.3.0\n\n### Fix\nUpgrade to:\n\n- 1.x: `@modelcontextprotocol/sdk` 1.32.0 or later\n- 2.x: `@modelcontextprotocol/server` 2.3.0 or lat",
+      "severity": "medium",
+      "published": "2026-10-20T19:43:36+00:00",
+      "link": "https://github.com/advisories/GHSA-rvq5-wwqv-78pq"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-hq85-5cpj-mr62",
+      "title": "uv's bundled CA store trusts an emSign root whose intermediate CA keys are compromised",
+      "description": "By default, uv verifies TLS connections against a vendored copy of the `webpki-root-certs` bundle. Versions before 0.13.4 include the `emSign ECC Root CA - G3` root. Eight eMudhra intermediate CA certificates that chain to that root have compromised private keys, and the CA has revoked them.\n\nAn attacker with one of the compromised keys can issue certificates that uv accepts for any hostname, and can be used to issue certificates to enable MITM attacks.\n\nuv 0.13.4 removes the root from its vendored bundle, following `webpki-root-certs` 1.0.10. Upgrade to 0.13.4 or later.",
+      "severity": "critical",
+      "published": "2026-10-20T19:37:52+00:00",
+      "link": "https://github.com/advisories/GHSA-hq85-5cpj-mr62"
+    },
     {
       "cve": null,
       "ghsa": "GHSA-6q48-6c7w-9gw2",
