@@ -83,18 +83,7 @@ jobs:
           git add data/
           if ! git diff --cached --quiet; then
             git commit -m "Refresh public feed snapshots"
-            # Preserve newer remote commits if the branch advanced during fetching.
-            for attempt in 1 2 3; do
-              if git push origin HEAD:main; then
-                break
-              fi
-              if [[ "$attempt" == 3 ]]; then
-                echo "Could not push refreshed snapshots after three attempts" >&2
-                exit 1
-              fi
-              git fetch origin main
-              git rebase -X theirs origin/main
-            done
+            git push
           fi
       - name: Mark feed errors as failed
         if: steps.local_time.outputs.run == 'true' && (steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success')
