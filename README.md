@@ -13,11 +13,11 @@ Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Rech
 | `data/curia.json` | Offizielle CURIA-Pressemitteilungen (RSS) | Datierte Meldungen, **kein vollständiges Register aller Entscheidungen** |
 | `data/eu-rechtsprechung.json` | EU-Rechtsprechungsmetadaten aus dem amtlichen CELLAR-SPARQL-Endpunkt | Urteile und Beschlüsse (`JUDG`/`ORDER`) aus dem 14-Tage-Zeitraum, maximal 1.000 abgerufene Datensätze; keine thematische Filterung |
 | `data/noyb.json` | noyb, öffentliche Nachrichten | Jüngste 50 RSS-Einträge, Beschreibungen auf 900 Zeichen gekürzt |
-| `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge, aktuell liefert die Quelle 10 |
+| `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge |
 | `data/edps-mastodon.json` | Offizielles EDPS-Mastodon-Konto | Bis 50 RSS-Beiträge, keine vollständige Presseübersicht |
-| `data/edpb.json` | Offizielle EDPB-Nachrichten (RSS), einschließlich gemeinsamer EDPB-/EDPS-Meldungen | Bis 50 RSS-Einträge; Abruf über GitHub Actions erfolgreich getestet |
-| `data/heise.json` | heise online, allgemeiner Nachrichtenfeed (RSS 1.0/RDF) | Alle vom Feed gelieferten Einträge, ohne Themenfilter; Test am 20.10.2026: 156 Einträge |
-| `data/golem.json` | Golem.de, allgemeiner Nachrichtenfeed (RSS 2.0) | Alle vom Feed gelieferten Einträge, ohne Themenfilter; Test am 20.10.2026: 40 Einträge |
+| `data/edpb.json` | Offizielle EDPB-Nachrichten (RSS), einschließlich gemeinsamer EDPB-/EDPS-Meldungen | Bis 50 RSS-Einträge |
+| `data/heise.json` | heise online, allgemeiner Nachrichtenfeed (RSS 1.0/RDF) | Alle vom Feed gelieferten Einträge, ohne Themenfilter |
+| `data/golem.json` | Golem.de, allgemeiner Nachrichtenfeed (RSS 2.0) | Alle vom Feed gelieferten Einträge, ohne Themenfilter |
 
 Die beiden redaktionellen Nachrichtenfeeds dienen als ergänzende Signale für IT-Sicherheit und Datenschutz im Tagesbrief (Teil A) sowie gesellschaftliche Aufreger im Themenradar (Teil B). Beide Dateien werden pro Agentenlauf nur einmal eingelesen und für beide Teile verwendet. Sie ersetzen keine amtlichen Primärquellen. Der Umfang ist durch die vom Herausgeber gelieferten Feed-Einträge begrenzt und garantiert keine vollständige Sieben-Tage-Abdeckung. Originalartikel und praktische Handlungsmöglichkeiten sind bei relevanten Treffern zu verifizieren.
 
