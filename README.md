@@ -14,13 +14,14 @@ Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Rech
 | `data/eu-rechtsprechung.json` | EU-Rechtsprechungsmetadaten aus dem amtlichen CELLAR-SPARQL-Endpunkt | Urteile und Beschlüsse (`JUDG`/`ORDER`) aus dem 14-Tage-Zeitraum, maximal 1.000 abgerufene Datensätze; keine thematische Filterung |
 | `data/noyb.json` | noyb, öffentliche Nachrichten | Jüngste 50 RSS-Einträge, Beschreibungen auf 900 Zeichen gekürzt |
 | `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge, aktuell liefert die Quelle 10 |
-| `data/edps-mastodon.json` | Offizielles EDPS-Mastodon-Konto | Bis 50 datierte RSS-Beiträge, derzeit 20, **kein vollständiges Presse-/News-Archiv** |
+| `data/edps-mastodon.json` | Offizielles EDPS-Mastodon-Konto | Bis 50 RSS-Beiträge, keine vollständige Presseübersicht |
+| `data/edpb.json` | Offizielle EDPB-Nachrichten (RSS), einschließlich gemeinsamer EDPB-/EDPS-Meldungen | Bis 50 RSS-Einträge; Abruf über GitHub Actions erfolgreich getestet |
 
 Die BfDI-Datei umfasst ausschließlich die Presseübersicht, nicht sämtliche Veröffentlichungen der Behörde. Für Rechtsprechung wird `data/eu-rechtsprechung.json` genutzt.
 
 ## Unbestätigte Datenquellen
 
-Die EDPS-Presse- und News-Seiten waren für den automatisierten Abruf nicht erreichbar (HTTP 403). Der produktive Spiegel `data/edps-mastodon.json` basiert auf dem offiziellen EDPS-Mastodon-RSS. Er ersetzt keine vollständige Presse- oder News-Übersicht.
+Die EDPS-Presse- und News-Seiten waren für den automatisierten Abruf nicht erreichbar (HTTP 403). Die aktiven Quellen `data/edps-mastodon.json` und `data/edpb.json` ergänzen sich, bilden aber kein vollständiges EDPS-Presse- oder News-Archiv.
 
 ## Abruf und Aktualität
 
