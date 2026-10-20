@@ -11,7 +11,9 @@ on:
       - 'scripts/update_cellar.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    - cron: '15 4,7 * * *'
+    # UTC candidates for 06:15 and 09:15 Europe/Berlin, both CET and CEST.
+    # The timezone gate below skips the two hours that do not match local time.
+    - cron: '15 4-8 * * *'
 
 permissions:
   contents: write
@@ -23,25 +25,48 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Berlin
     timeout-minutes: 10
     steps:
+      - name: Check Berlin local scheduled time
+        id: local_time
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" != "schedule" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            local_time=$(TZ=Europe/Berlin date +%H:%M)
+            if [[ "$local_time" == "06:15" || "$local_time" == "09:15" ]]; then
+              echo "run=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping UTC candidate: Berlin local time is $local_time"
+            fi
+          fi
       - uses: actions/checkout@v4
+        if: steps.local_time.outputs.run == 'true'
       - uses: actions/setup-python@v5
+        if: steps.local_time.outputs.run == 'true'
         with:
           python-version: '3.12'
       - name: Fetch and convert feeds
+        if: steps.local_time.outputs.run == 'true'
         id: fetch
         continue-on-error: true
         run: python scripts/update_feeds.py
       - name: Fetch supplemental public sources
+        if: steps.local_time.outputs.run == 'true'
         id: extras
         continue-on-error: true
         run: python scripts/update_extra.py
       - name: Fetch EU case law from CELLAR
+        if: steps.local_time.outputs.run == 'true'
         id: cellar
         continue-on-error: true
         run: python scripts/update_cellar.py
       - name: Commit refreshed JSON snapshots
+        if: steps.local_time.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -51,5 +76,5 @@ jobs:
             git push
           fi
       - name: Mark feed errors as failed
-        if: steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success'
+        if: steps.local_time.outputs.run == 'true' && (steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success')
         run: exit 1
