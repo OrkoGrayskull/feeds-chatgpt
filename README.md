@@ -40,8 +40,7 @@
 - **Bluesky:** Öffentliche Beiträge der letzten 24 Stunden. Suchbegriffe: `CVE`, `actively exploited`, `security advisory`, `Datenschutz`, `DSGVO`, `GDPR`, `data breach`, `Überwachung`, `surveillance`. Beobachtete Accounts: `noyb.eu`, `datenschutz.bsky.social`, `bleepingcomputer.com`, `ammir.bsky.social`, `responsible.fyi`, `eff.org`, `netzpolitik.org`, `ccc.de`, `infosec.skyfleet.blue`, `insecurestack.bsky.social`. Antworten und Reposts aus dem Account-Monitoring werden ausgeschlossen, doppelte Treffer zusammengeführt. Die Beiträge dienen als ergänzende Recherchehinweise, nicht als Primärbelege.
 - **GitHub Advisory Database und NVD:** Begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen.
 - **EPSS:** Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**.
-
-- **Landesdatenschutzbehörden/DSK:** Sechs neue optionale Signalfeeds für Baden-Württemberg, Bayern, Berlin, Hamburg, Niedersachsen und DSK sind konfiguriert. Berlin und Niedersachsen werden vorerst über offizielle Mastodon-Posts erfasst, nicht über vollständige Pressearchive. Ein erfolgreicher produktiver Abruf aller sechs Quellen ist noch nicht bestätigt. Fehler dürfen die bisherigen Feeds nicht blockieren.
+- **Landesdatenschutzbehörden/DSK:** Sechs tägliche Quellen für Baden-Württemberg, Bayern, Berlin, Hamburg, Niedersachsen und DSK sind konfiguriert. Berlin und Niedersachsen werden vorerst über offizielle Mastodon-Posts erfasst, nicht über vollständige Pressearchive. Abrufe und Aktualität werden wie bei allen anderen Quellen geprüft. Ausfälle werden gemeldet, ohne die übrigen Abrufe zu blockieren.
 
 ## Aktualisierung und Nutzung
 
@@ -51,6 +50,6 @@ Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens e
 
 `https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/DATEINAME.json`
 
-Der lesende Agent prüft für **jede** Datei die tatsächliche Existenz, JSON-Struktur, plausible Metadaten und `fetched_at` (**höchstens acht Stunden alt**). Für die Nachrichtenauswahl zählt das Veröffentlichungsdatum des Eintrags, nicht der technische Abrufzeitpunkt. Bei Fehlern bleibt gegebenenfalls ein älterer Snapshot bestehen, der nicht als aktuell ausgegeben werden darf. Optionale Quellen dürfen Pflichtquellen, andere Berichtsteile oder den E-Mail-Versand nicht blockieren.
+Der lesende Agent prüft für **jede** Datei die tatsächliche Existenz, JSON-Struktur, plausible Metadaten und `fetched_at` (**höchstens acht Stunden alt**). Für die Nachrichtenauswahl zählt das Veröffentlichungsdatum des Eintrags, nicht der technische Abrufzeitpunkt. Bei Fehlern bleibt gegebenenfalls ein älterer Snapshot bestehen, der nicht als aktuell ausgegeben werden darf. Ausfälle einzelner Quellen dürfen andere Berichtsteile oder den E-Mail-Versand nicht blockieren.
 
 Alle Snapshots sind Spiegel oder ergänzende Signale, keine unabhängigen Primärbelege. Relevante Aussagen vor Veröffentlichung anhand der Originalquellen prüfen. Keine Vollständigkeitsbehauptung allein aufgrund eines erfolgreichen Dateiabrufs.
