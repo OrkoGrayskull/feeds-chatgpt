@@ -18,6 +18,7 @@
 | `data/edpb.json` | EDPB – Nachrichten |
 | `data/heise.json` | heise online – allgemeiner RSS |
 | `data/golem.json` | Golem.de – allgemeiner RSS |
+| `data/bluesky.json` | Bluesky – öffentliche Suche nach Sicherheits- und Datenschutzthemen (ergänzend) |
 
 **Abdeckung:** Die Spiegel enthalten nur die jeweils verfügbaren oder konfigurierten Einträge. CURIA-Pressemitteilungen sind kein vollständiges Entscheidungsregister; EDPS-Mastodon und EDPB ersetzen kein vollständiges EDPS-Pressearchiv. Die allgemeinen heise- und Golem-Feeds werden ohne Themenfilter übernommen.
 
