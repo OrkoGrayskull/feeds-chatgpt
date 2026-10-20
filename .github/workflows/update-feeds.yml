@@ -9,6 +9,7 @@ on:
       - 'scripts/update_feeds.py'
       - 'scripts/update_extra.py'
       - 'scripts/update_cellar.py'
+      - 'scripts/update_bluesky.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
     # UTC candidates for 06:15 Europe/Berlin, both CET and CEST.
@@ -65,6 +66,10 @@ jobs:
         id: cellar
         continue-on-error: true
         run: python scripts/update_cellar.py
+      - name: Fetch optional Bluesky signals
+        if: steps.local_time.outputs.run == 'true'
+        continue-on-error: true
+        run: python scripts/update_bluesky.py
       - name: Commit refreshed JSON snapshots
         if: steps.local_time.outputs.run == 'true'
         run: |
