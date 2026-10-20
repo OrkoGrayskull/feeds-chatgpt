@@ -13,9 +13,9 @@ on:
       - 'scripts/update_vulnerabilities.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # UTC candidates for 06:15 Europe/Berlin, both CET and CEST.
+    # UTC candidates for 07:00 Europe/Berlin, both CET and CEST.
     # The timezone gate below skips the two hours that do not match local time.
-    - cron: '15 4,5 * * *'
+    - cron: '0 5,6 * * *'
 
 permissions:
   contents: write
@@ -39,7 +39,7 @@ jobs:
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             local_time=$(TZ=Europe/Berlin date +%H:%M)
-            if [[ "$local_time" == "06:15" ]]; then
+            if [[ "$local_time" == "07:00" ]]; then
               echo "run=true" >> "$GITHUB_OUTPUT"
             else
               echo "run=false" >> "$GITHUB_OUTPUT"
