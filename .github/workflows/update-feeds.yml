@@ -11,7 +11,7 @@ on:
       - 'scripts/update_cellar.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    - cron: '23 4,7 * * *'
+    - cron: '23 0,4,8,12,16,20 * * *'
 
 permissions:
   contents: write
