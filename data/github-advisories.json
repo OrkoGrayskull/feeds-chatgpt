@@ -1,10 +1,316 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-10-20T10:55:24+00:00",
+  "fetched_at": "2026-10-20T19:35:21+00:00",
   "window_hours": 72,
-  "count": 11,
+  "count": 45,
   "items": [
+    {
+      "cve": null,
+      "ghsa": "GHSA-6q48-6c7w-9gw2",
+      "title": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+      "description": "Certifi versions before 2026.10.18 include the `emSign ECC Root CA - G3` root certificate in their bundled CA store. Eight eMudhra intermediate CA certificates that chain to this root have compromised private keys and the CA has revoked them. \n\nAn attacker with one of the compromised keys can issue valid-looking certificates for any hostname. If the attacker is also on-path, they can intercept or modify TLS traffic from clients that trust the certifi bundle. Examples include `requests`, `urllib3` and `pip`, and the Python.org macOS installer.\n\nCertifi 2026.10.18 removed all emSign roots from the bundle. Certifi 2026.10.19 restored the emSign roots that are not affected. Upgrade to 2026.10.19 or later, and rebuild container images that vendor certifi.",
+      "severity": "critical",
+      "published": "2026-10-20T19:35:05+00:00",
+      "link": "https://github.com/advisories/GHSA-6q48-6c7w-9gw2"
+    },
+    {
+      "cve": "CVE-2026-112943",
+      "ghsa": "GHSA-698v-4r3x-3vcv",
+      "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+      "description": "### Summary\n\n`launch-editor` did not escape `%` on Windows when passing an argument to `cmd`. When an environment variable contained a malicious value, it was possible that that content to be executed.\n\n### Impact\n\nOnly apps that match all of the following conditions are affected:\n\n- The user uses Windows\n- An attacker can place a file with the malicious filename containing `&` or `%`\n- Either of\n  - An attacker can inject an environment variable with a malicious value\n  - An attacker can add a NTFS alternate data stream to the file placed\n\n### Details\n\nUnlike `.sh` files, `.bat` / `.cmd` files on Windows cannot be called directly using [`child_process.spawn`](https://nodejs.org/docs/latest-v24.x/api/child_process.html#child_processspawncommand-args-options) and requires passing them as an argument of `cmd.exe`. To do so, launch-editor escapes the arguments passed to `cmd.exe`. But `laun",
+      "severity": "medium",
+      "published": "2026-10-20T18:30:24+00:00",
+      "link": "https://github.com/advisories/GHSA-698v-4r3x-3vcv"
+    },
+    {
+      "cve": "CVE-2026-111767",
+      "ghsa": "GHSA-22jm-h49p-29qw",
+      "title": "MCP TypeScript SDK: Experimental tasks were not tied to the session that created them",
+      "description": "### Summary\nIn affected versions, the experimental tasks feature (`taskStore`) did not check which session created a task. Clients sharing one `InMemoryTaskStore` could list, read and cancel each other's tasks.\n\nExperimental tasks are deprecated. The 2026-07-28 specification replaced them with a redesigned extension. The best course of action is to stop using them.\n\n### Am I affected?\nOnly if your HTTP server passes `taskStore` to `McpServer` or `Server`. If `grep -ri taskstore --exclude-dir=node_modules .` finds nothing, you are not affected.\n\nAffected versions: `@modelcontextprotocol/sdk` 1.24.0 through 1.31.0. The 2.x packages are not affected.\n\n### Fix\nUpgrade to `@modelcontextprotocol/sdk` 1.32.0 or later. Each task is now tied to the session that created it, so a client that starts a new session can no longer reach its earlier tasks.\n\nIf you cannot upgrade yet, remove `taskStore`, ",
+      "severity": "high",
+      "published": "2026-10-20T18:26:54+00:00",
+      "link": "https://github.com/advisories/GHSA-22jm-h49p-29qw"
+    },
+    {
+      "cve": "CVE-2026-111769",
+      "ghsa": "GHSA-6prh-2h8m-c8cw",
+      "title": "MCP TypeScript client SDK: HTTP client transports and OAuth requests followed cross-origin redirects and re-sent custom headers and request bodies",
+      "description": "### Summary\nIn affected versions, the SDK's HTTP client transports and OAuth requests followed redirects to any origin.\n\nIf an MCP server or authorization server redirected a request to another origin, that origin received custom request headers (such as an `X-API-Key` set in `requestInit.headers`) and the `mcp-session-id` header. On a `307` or `308` it also received the request body, including OAuth token requests with their `refresh_token` and `client_secret`.\n\nOn current runtimes `fetch` already drops the `Authorization` header across origins.\n\n### Am I affected?\nYes, if your application uses `StreamableHTTPClientTransport`, `SSEClientTransport`, or the SDK's OAuth client functions such as `auth()`. stdio clients are not affected.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` all versions through 1.31.0\n- `@modelcontextprotocol/client` 2.0.0 through 2.2.0\n\n### Fix\nUpgrade to:\n\n- ",
+      "severity": "medium",
+      "published": "2026-10-20T18:26:30+00:00",
+      "link": "https://github.com/advisories/GHSA-6prh-2h8m-c8cw"
+    },
+    {
+      "cve": "CVE-2026-113653",
+      "ghsa": "GHSA-xf6w-q65w-4f2w",
+      "title": "ApostropheCMS: The general public can access @apostrophecms/user objects via a relationship (viewRole is not applied to the general public)",
+      "description": "### Impact\nEven though it is correctly applied to guests, contributors, etc., `viewRole` is not applied to the general public. This means that a secured content type like `@apostrophecms/user` can in theory be accessed.\n\nThis is greatly mitigated by the fact that there is no automatic public REST API for any content type. One has to expressly allow it. However, it does mean that developers can make the mistake of setting up a relationship between a content type like a blog post, and `@apostrophecms/user`. This could potentially expose some sensitive information if templates were written poorly, e.g. if they JSON-serialized the entire object. Note that password hashes are NOT affected because they reside in a separate collection.\n\nThe public demo project and its various flavors must be updated first because it inadvertently relies on the bug.\n\n### Patches\n4.33.0\n\n### Workarounds\nNever cre",
+      "severity": "medium",
+      "published": "2026-10-20T18:26:02+00:00",
+      "link": "https://github.com/advisories/GHSA-xf6w-q65w-4f2w"
+    },
+    {
+      "cve": "CVE-2026-113665",
+      "ghsa": "GHSA-vwwx-px9w-crrc",
+      "title": "ApostropheCMS: Missing Authorization on Notification PATCH/DELETE Endpoints",
+      "description": "## Summary\n\nThe notification module exposes `PATCH` and `DELETE` REST endpoints that perform operations directly on the underlying MongoDB collection without verifying that the requester is authenticated or owns the target notification.\n\nAs a result, an unauthenticated attacker who obtains a valid notification ID can modify or permanently delete another user's notification.\n\n---\n\n## Affected Code\n\n**File**\n\n```text\npackages/apostrophe/modules/@apostrophecms/notification/index.js\n```\n\n```javascript\n// restApiRoutes\nasync patch(req, _id) {\n  const dismissed = self.apos.launder.boolean(req.body.dismissed);\n\n  if (dismissed) {\n    await self.emit('beforeSave', req, { _id, dismissed });\n\n    await self.db.updateOne(\n      { _id },\n      {\n        $set: { dismissed },\n        $currentDate: { updatedAt: true }\n      }\n    );\n  }\n},\n\nasync delete(req, _id) {\n  await self.db.deleteMany({ _id });\n",
+      "severity": "low",
+      "published": "2026-10-20T18:25:38+00:00",
+      "link": "https://github.com/advisories/GHSA-vwwx-px9w-crrc"
+    },
+    {
+      "cve": "CVE-2026-113664",
+      "ghsa": "GHSA-97wv-p4xx-c7mg",
+      "title": "ApostropheCMS import-export tar guard misses './..' because it is a literal '../' substring test",
+      "description": "### Summary\n\nThe tar-extraction guard added to `@apostrophecms/import-export` for GHSA-mwxc-m426-3f78 is a literal substring test for `../`, and `./..` does not contain that substring. An entry named `./..` therefore passes the guard, `path.join` normalizes it to the parent of the export directory, and the resulting `fs.WriteStream` opens a directory and emits `EISDIR` with no `error` listener attached, which terminates the Node process.\n\nConfirmed on default-branch HEAD `1bd5d0a7a6fe880836fa75adad6964f1c577d640`, package version `3.6.2`.\n\n### Details\n\n`packages/import-export/lib/formats/gzip.js`, in the tar-stream `entry` handler inside `extract(filepath, exportPath)`:\n\n```js\nconst name = header.name.replace(/\\\\/g, '/');\nif (name.includes('../')) {\n  // skipped\n}\n...\nstream.pipe(fs.WriteStream(path.join(exportPath, name)));\n```\n\nTwo separate problems sit in those four lines. The guard t",
+      "severity": "medium",
+      "published": "2026-10-20T18:23:42+00:00",
+      "link": "https://github.com/advisories/GHSA-97wv-p4xx-c7mg"
+    },
+    {
+      "cve": "CVE-2026-113651",
+      "ghsa": "GHSA-gmfx-5g6x-rr72",
+      "title": "ApostropheCMS: Path traversal in uploadfs",
+      "description": "## Summary\nThe `uploadfs` library's local storage backend does not validate or sanitize user-supplied paths. The `prefixPath()` helper only strips double slashes (`//`) and the backend performs direct string concatenation (`uploadsPath + path`). An attacker can inject `../` sequences to escape the intended uploads directory, resulting in arbitrary file read, write, and delete on the host filesystem.\n\n---\n\n## Details\n\n### Root Cause\n`packages/uploadfs/uploadfs.js:652-655`\n\nhttps://github.com/apostrophecms/apostrophe/blob/main/packages/uploadfs/uploadfs.js#L652-L655\n\n```javascript\nfunction prefixPath(path) {\n    // Resolve any double // that results from the prefix\n    return (self.prefix + path).replace(/\\/\\//g, '/');\n}\n```\n\n`packages/uploadfs/lib/storage/local.js`\n\nhttps://github.com/apostrophecms/apostrophe/blob/main/packages/uploadfs/lib/storage/local.js#L92-L95\nhttps://github.com/apos",
+      "severity": "low",
+      "published": "2026-10-20T18:21:59+00:00",
+      "link": "https://github.com/advisories/GHSA-gmfx-5g6x-rr72"
+    },
+    {
+      "cve": "CVE-2026-113657",
+      "ghsa": "GHSA-374f-7chj-9948",
+      "title": "ApostropheCMS sanitize-html: SMIL animation namespace-prefix bypass allows javascript: URI injection (XSS)",
+      "description": "## Summary\n\nsanitize-html 2.17.7 introduced `animatesUrlAttribute()` to block SVG animation elements (`animate`, `animateColor`, `animateMotion`, `animateTransform`, `set`) when their `attributeName` targets a URL sink like `href`. However, this check is bypassed when the animation element uses a namespace prefix (e.g., `svg:animate` instead of `animate`).\n\n## Root Cause\n\nThe `animatesUrlAttribute` function (index.js, line ~832) checks `svgAnimationTags.indexOf(name.toLowerCase())`, where `svgAnimationTags` contains bare local names: `[\"animate\", \"animatecolor\", \"animatemotion\", \"animatetransform\", \"set\"]`. htmlparser2 passes namespace-prefixed tag names verbatim, so `svg:animate` does not match `animate` in the array, causing the function to return `false` and skip the SMIL XSS protection.\n\nIronically, the function already handles namespace prefixes correctly for the `attributeName` tar",
+      "severity": "low",
+      "published": "2026-10-20T18:21:19+00:00",
+      "link": "https://github.com/advisories/GHSA-374f-7chj-9948"
+    },
+    {
+      "cve": "CVE-2026-113652",
+      "ghsa": "GHSA-hhph-8536-gfq5",
+      "title": "ApostropheCMS uploadfs Azure backend leaks account-level SAS token into every public attachment URL (sas: true)",
+      "description": "## Summary\n\nWhen uploadfs is configured with the Azure backend and `sas: true` (a supported configuration introduced in uploadfs 1.25.0), `createContainer()` builds the `BlobServiceClient` from a URL that embeds the full SAS query string, and Azure SDK v12 derived clients inherit that query string. As a result, `getUrl()` returns a base URL carrying the complete account/container SAS signature (`?sv=...&sig=...`), and Apostrophe's `attachment.url()` prepends it to every public attachment link — broadcasting a container-level SAS credential (commonly `sp=rwdlac`, full read/write/delete/list) to every site visitor, including anonymous ones. Anyone who can see an attachment URL can read, overwrite, delete, and list every blob in the container for the SAS lifetime. A companion functional bug (blob path appended after the query string, producing broken URLs) shows this code path was never exe",
+      "severity": "medium",
+      "published": "2026-10-20T18:20:35+00:00",
+      "link": "https://github.com/advisories/GHSA-hhph-8536-gfq5"
+    },
+    {
+      "cve": "CVE-2026-113660",
+      "ghsa": "GHSA-vmxh-77cw-65j7",
+      "title": "ApostropheCMS: Authenticated Object-Level Authorization Bypass in exist-in-locale Reveals Restricted Localized Draft Identifiers",
+      "description": "**Summary**\nApostropheCMS’s exist-in-locale API allows an authenticated low-privilege user to determine whether restricted documents exist in a specified locale and mode, including draft mode. The endpoint returns localized document identifiers without applying document-level view or edit authorization criteria.\n\nThe issue was reproduced against a real local ApostropheCMS application running the reviewed source code. The test used a synthetic guest account and synthetic restricted draft records.\n\n**Details**\nExact vulnerable source path: ` packages/apostrophe/modules/@apostrophecms/i18n/index.js:503-529`\nExact API route:` POST /api/v1/@apostrophecms/i18n/exist-in-locale`\nThe handler verifies only that the requester is authenticated:\n\n```\nif (!req.user) {\n  throw self.apos.error('notfound');\n}\n```\nIt then performs a direct database lookup using attacker-controlled document IDs, locale, an",
+      "severity": "medium",
+      "published": "2026-10-20T18:19:34+00:00",
+      "link": "https://github.com/advisories/GHSA-vmxh-77cw-65j7"
+    },
+    {
+      "cve": "CVE-2026-113662",
+      "ghsa": "GHSA-jqw5-w6h3-44g6",
+      "title": "ApostropheCMS import-export: NoSQL injection via update-key value lets a crafted import match and overwrite an unidentified document",
+      "description": "## Summary\n\n`@apostrophecms/import-export`'s update-by-key feature lets an imported\ndocument carry a `<field>:key` property (for example `slug:key`) whose\nvalue is used to find an existing document to update instead of inserting\na new one. `getUpdateKey()`/`insertOrUpdateDocWithKey()`\n(`lib/methods/import.js`) use that value directly as a MongoDB query value\nwith no laundering:\n\n```js\nconst matchingDraftPromise = manager.findForEditing(\n  req.clone({ mode: 'draft' }),\n  {\n    aposMode: 'draft',\n    [updateField]: doc[updateKey]\n  }).toObject();\n```\n\nArchive documents are parsed with EJSON (see `lib/formats/gzip.js`), which\nrevives objects such as `{ $ne: null }` as live values, the same untrusted\ndata source and revival mechanism already fixed once in this module for\n`findSingletonAposDocId`/`findParkedAposDocId` in GHSA-79qf-vqgc-7xx3. That\nfix did not touch `insertOrUpdateDocWithKey`, ",
+      "severity": "medium",
+      "published": "2026-10-20T18:19:19+00:00",
+      "link": "https://github.com/advisories/GHSA-jqw5-w6h3-44g6"
+    },
+    {
+      "cve": "CVE-2026-113659",
+      "ghsa": "GHSA-m2m5-rw3w-cwmj",
+      "title": "ApostropheCMS: Client-side Prototype Pollution in apos.http.parseQuery leading to DOM-based XSS against authenticated users",
+      "description": "## Summary\n\nThe client-side helper `apos.http.parseQuery()` in ApostropheCMS builds a nested object\nfrom a URL query string without sanitizing the keys `__proto__`, `constructor`, or\n`prototype`. Parsing an attacker-controlled query string therefore writes arbitrary\nproperties onto `Object.prototype` (client-side prototype pollution).\n\nApostropheCMS's admin UI calls this parser with `window.location.search` on **every\nauthenticated page load** (the admin context bar's `data()` initializer). Because the admin\nUI is built on Vue, a polluted, enumerable property on `Object.prototype` is then picked up\nby Vue's standard element-mount routine and written to the DOM as an element property,\nturning the prototype pollution into DOM-based XSS in the victim's authenticated session.\nThe escalation gadget is a well-known, general Vue behavior; the novel,\nreportable defect is the unsanitized `parseQu",
+      "severity": "medium",
+      "published": "2026-10-20T18:18:49+00:00",
+      "link": "https://github.com/advisories/GHSA-m2m5-rw3w-cwmj"
+    },
+    {
+      "cve": "CVE-2026-113710",
+      "ghsa": "GHSA-653j-g8j7-gh54",
+      "title": "ApostropheCMS: No Attempt Throttling on Authenticated Password-Change Endpoint Enables Unlimited Current-Password Guessing",
+      "description": "**Summary**\nThe self-service password-change endpoint verifies the current password but does not use the login module’s failed-attempt counter, throttle, delay, or lockout mechanism. An attacker with a valid authenticated session can submit repeated guesses for the current password without receiving a lockout or throttle response.\n\n**Exact source path**\npackages/apostrophe/modules/@apostrophecms/settings/index.js:621-664\n\n**The password-change route is:**\nPATCH /api/v1/@apostrophecms/settings/password\n\n**The route calls the password verifier directly through:**\nawait self.handleProtectedSubform(req, subform, req.body );\n\n**The password verification path is:**\npackages/apostrophe/modules/@apostrophecms/settings/index.js:514-542\n\n**async handlePasswordProtectedSubform(req, subform, payload) {\n  try {\n    await self.apos.user.verifyPassword(req.user, payload.passwordCurrent);\n  } catch (e) ",
+      "severity": "medium",
+      "published": "2026-10-20T18:17:50+00:00",
+      "link": "https://github.com/advisories/GHSA-653j-g8j7-gh54"
+    },
+    {
+      "cve": "CVE-2026-113661",
+      "ghsa": "GHSA-cv27-6wvh-8x7j",
+      "title": "ApostropheCMS: Incomplete CVE-2026-53606: `meta http-equiv=refresh` `content` still ships `javascript:` / `data:` URLs",
+      "description": "### Summary\n\nCVE-2026-53606 expanded `allowedSchemesAppliedToAttributes` so named URL attributes (`action`, `formaction`, `data`, `poster`, `background`, later `ping`, `xlink:href`, …) go through `naughtyHref()`. A **URL nested inside `meta` `content`** (`http-equiv=refresh`) is not an attribute name on that list, so the embedded destination is never scheme-checked.\n\nDefault `allowedTags` still omit `meta`. Same non-default integrator config as 53606: allow `meta` plus `http-equiv` / `content`.\n\nOn **2.17.7**:\n\n```text\nsanitizeHtml(\n  '<meta http-equiv=\"refresh\" content=\"0;url=javascript:alert(1)\">',\n  { allowedTags: ['meta'], allowedAttributes: { meta: ['http-equiv', 'content'] } }\n)\n// => <meta http-equiv=\"refresh\" content=\"0;url=javascript:alert(1)\" />\n```\n\n`data:text/html,…` and arbitrary `https:` destinations also survive. `formaction=\"javascript:…\"` (53606) is stripped.\n\nPlease **R",
+      "severity": "medium",
+      "published": "2026-10-20T18:15:33+00:00",
+      "link": "https://github.com/advisories/GHSA-cv27-6wvh-8x7j"
+    },
+    {
+      "cve": "CVE-2026-113668",
+      "ghsa": "GHSA-gqh3-7856-rjjg",
+      "title": "ApostropheCMS: :_id/locales REST route omits the public-API authorization gate its sibling read routes enforce (unauthenticated doc-existence + locale metadata disclosure)",
+      "description": "## Summary\nThe REST route `GET /api/v1/<piece-type>/:_id/locales` (and the equivalent page route) does not apply the `publicApiCheckAsync` gate that ApostropheCMS's other read routes enforce. An unauthenticated caller can therefore query this route for any document `_id` and learn whether the document exists and which locales it is published in — a document-existence and locale-metadata disclosure that the read-API is otherwise supposed to gate.\n \n## Affected\n- Repository: `apostrophecms/apostrophe` (monorepo package `apostrophe`).\n- Confirmed at **4.32.2** (commit `d3ff8c9` == the shipped 4.32.2; unchanged at current HEAD). No fix at time of report.\n- Stack: Node.js / Express + MongoDB.\n- Endpoints: `GET /api/v1/<piece-type>/:_id/locales` and `GET /api/v1/@apostrophecms/page/:_id/locales`.\n\n## Technical detail\n- Unsafe: `modules/@apostrophecms/piece-type/index.js:397` registers the `:_i",
+      "severity": "medium",
+      "published": "2026-10-20T18:14:32+00:00",
+      "link": "https://github.com/advisories/GHSA-gqh3-7856-rjjg"
+    },
+    {
+      "cve": "CVE-2026-113670",
+      "ghsa": "GHSA-2j32-q6rx-h844",
+      "title": "ApostropheCMS: Page REST API authorization bypass",
+      "description": "**Summary**\nThe core page REST API reads full page documents with `.permission(false)` in `getOne` and in the `all=1` tree dump, bypassing page-type `viewRole`, `visibility: private`, and `visibility: loginRequired` checks. Unauthenticated visitors and low-privilege contributors can read admin-only and non-public page content by `_id`/slug.\n\n**Details**\n`packages/apostrophe/modules/@apostrophecms/page/index.js`:\n- `getOne` (L456–465): `await self.publicApiCheckAsync(req); ... self.getRestQuery(req).permission(false).and(criteria)` — no `viewRole` threshold, no `visibility` filtering.\n- `all` handler (L318–395): `getRestQuery(req).permission(false)` (L384–385) walks every page type and returns the projection including `visibility`.\n- `publicApiCheckAsync` (L3044) only checks that `publicApiProjection` exists — it performs no authorization.\n- Correct control behaves differently: `piece-typ",
+      "severity": "medium",
+      "published": "2026-10-20T18:13:08+00:00",
+      "link": "https://github.com/advisories/GHSA-2j32-q6rx-h844"
+    },
+    {
+      "cve": "CVE-2026-113671",
+      "ghsa": "GHSA-527g-ff96-x6wj",
+      "title": "ApostropheCMS: Host header controls server-side image fetch origin in @apostrophecms/ai-helper, enabling authenticated SSRF",
+      "description": "## Summary\n\nThe `@apostrophecms/ai-helper` package builds the URL for a server-side image fetch by resolving a storage-relative path against `req.baseUrl`. When the site does not set a global base URL (the default), `req.baseUrl` is derived from the incoming HTTP `Host` header. An authenticated editor can generate a base64 AI image (which is persisted without a stored `url`) and then send an unauthorized `PATCH` accept request with an attacker-chosen `Host` header. The server then issues an outbound `GET` to the attacker-selected origin, producing a Server-Side Request Forgery primitive that reaches hosts and ports the client cannot otherwise contact. The affected code lives in `packages/ai-helper/modules/@apostrophecms/ai-helper-image/index.js`.\n\n## Root Cause\n\nThe image accept route trusts `req.baseUrl` as a safe origin for constructing an internal fetch target, but `req.baseUrl` is at",
+      "severity": "medium",
+      "published": "2026-10-20T18:11:01+00:00",
+      "link": "https://github.com/advisories/GHSA-527g-ff96-x6wj"
+    },
+    {
+      "cve": "CVE-2026-113658",
+      "ghsa": "GHSA-qhcq-9pm2-c9w9",
+      "title": "ApostropheCMS: Unauthenticated CSV import requests leave rejected uploads in the system temporary directory",
+      "description": "### Summary\n\nA rejected upload can remain in the operating system temporary directory.\n\nMulter writes the file before its extension is checked, and the rejection path does not remove that temporary file. An unauthenticated requester can repeat this with large files and steadily consume temporary disk space.\n\n### Details\n\nThe endpoint is:\n\n```text\nPOST /api/v1/@apostrophecms/rich-text-widget/generate-csv-table\n```\n\nIn `packages/apostrophe/modules/@apostrophecms/rich-text-widget/lib/apiRoutes.js`, Multer first writes the upload to `os.tmpdir()`. The handler then rejects filenames whose extension is not `csv`, but there is no cleanup of the Multer file on this error path.\n\nThe route does not require an authenticated user. A normal CSRF cookie is sufficient.\n\nDuring testing, the request returned HTTP 400 with `Only csv files are supported`, while the complete uploaded content remained in a r",
+      "severity": "high",
+      "published": "2026-10-20T18:10:32+00:00",
+      "link": "https://github.com/advisories/GHSA-qhcq-9pm2-c9w9"
+    },
+    {
+      "cve": "CVE-2026-113669",
+      "ghsa": "GHSA-hhvr-8m24-qqr3",
+      "title": "ApostropheCMS: Cross-domain session token in URL confers session takeover",
+      "description": "**Summary**\nApostrophe's cross-domain session migration emits a single-use session token as a URL query parameter and stores it in the Mongo cache. Any client that presents the token silently adopts the target user's full session (including `passport.user`) with no credentials.\n\n**Details**\n`packages/apostrophe/modules/@apostrophecms/i18n/index.js`:\n- Token generation on cross-host/locale flows (L479–487) and passport-bridge cross-locale redirect (`passport-bridge/index.js` L557–593) places the token in the URL.\n- `acceptCrossDomainSessionToken` (L258–298) reads `?aposCrossDomainSessionToken`, `Object.assign`s the stored session (cookie + `passport.user`) onto `req.session`, then nulls the cache entry under namespace `@apostrophecms/i18n:cross-domain-sessions`.\n- Middleware without `before:` is registered for every URL (express `findModuleMiddlewareAndRoutes` L820–879); verified with `AP",
+      "severity": "medium",
+      "published": "2026-10-20T18:09:01+00:00",
+      "link": "https://github.com/advisories/GHSA-hhvr-8m24-qqr3"
+    },
+    {
+      "cve": "CVE-2026-113656",
+      "ghsa": "GHSA-89mh-mm8c-mv7f",
+      "title": "ApostropheCMS: Unauthenticated unbounded multipart upload → disk-exhaustion DoS",
+      "description": "**Summary**\nThe form submission endpoint runs `multer({ dest: os.tmpdir() }).any()` before authentication, API-key, CSRF-equivalent, or form-existence logic, with no size/count/rate limits. Unauthenticated users can stream unbounded bodies to disk per request; cleanup occurs only after the full body is received.\n\n**Details**\n`packages/form/index.js` `apiRoutes.post.submit` (L274–296): `[ multer({ dest: os.tmpdir() }).any(), self.normalizeFiles, async function (req) { try { submitForm } finally { unlink files } } ]`. No `limits`, no rate limiting, no pre-validation. \"CSRF\" is a fixed-value double-submit cookie (`vulnlab.csrf=csrf`, set on any GET, express/index.js L694–703) — trivially obtainable anonymously.\n\n**PoC**\n```\n$ curl -s -c csrfjar.cookies http://localhost:3100/        # get vulnlab.csrf=csrf (any GET)\n$ df -P /tmp                                                # before: used=1",
+      "severity": "medium",
+      "published": "2026-10-20T18:08:31+00:00",
+      "link": "https://github.com/advisories/GHSA-89mh-mm8c-mv7f"
+    },
+    {
+      "cve": "CVE-2026-113667",
+      "ghsa": "GHSA-44qr-rrjg-2cqq",
+      "title": "ApostropheCMS: CAPTCHA response token not URL-encoded",
+      "description": "**Summary**\nForm and login CAPTCHA verification interpolate the user-supplied widget token unencoded into the server-side verification URL/body, allowing a crafted token to inject query parameters into the reCAPTCHA/hCaptcha verify request.\n\n**Details**\n- `packages/form/lib/recaptcha.js:39` — `recaptchaUri = 'https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${input.recaptcha}'`\n- `packages/login-recaptcha/index.js:44` — same pattern for login\n- `packages/login-hcaptcha/index.js:47` — `body: 'response=${token}&secret=${secret}'`\n\n**PoC**\n```\ninput.recaptcha = 'attacker_token&secret=INJECTED_SECRET&something=1'\n→ resulting verify URL:\n   https://www.google.com/recaptcha/api/siteverify?secret=<real>&response=attacker_token&secret=INJECTED_SECRET&something=1\n# (replicated exactly from recaptcha.js:39)\n```\n\n**Impact**\nLow: a crafted token smuggles extra `key=",
+      "severity": "medium",
+      "published": "2026-10-20T18:05:35+00:00",
+      "link": "https://github.com/advisories/GHSA-44qr-rrjg-2cqq"
+    },
+    {
+      "cve": "CVE-2026-113655",
+      "ghsa": "GHSA-2jrp-qc93-h2j8",
+      "title": "ApostropheCMS: Same-parent page reorder in @apostrophecms/page move() re-ranks a restricted parent's children without create authorization",
+      "description": "## Summary\n\nApostropheCMS enforces per-type authorization on pages: a page type may declare `editRole` / `publishRole` (the core `@apostrophecms/archive-page` does), so a project can define restricted subtrees that only higher-privileged roles may create or edit within. The `move()` operation in the `@apostrophecms/page` module is supposed to enforce that a page may only be moved into a parent the actor has `create` rights over, the same boundary the page-insert route enforces. The destination-parent authorization check in `move()` is gated on the move being a cross-parent move (`oldParent._id !== parent._id`). A same-parent reorder (repositioning a page among its existing siblings under the same parent) short-circuits that check entirely, so an authenticated low-privileged editor who holds edit rights on one ordinary page nested under a restricted parent can reposition it and, in doing ",
+      "severity": "medium",
+      "published": "2026-10-20T18:04:11+00:00",
+      "link": "https://github.com/advisories/GHSA-2jrp-qc93-h2j8"
+    },
+    {
+      "cve": "CVE-2026-113666",
+      "ghsa": "GHSA-j5rq-xfvr-p969",
+      "title": "ApostropheCMS: Authenticated projection-exclusion prototype-member deletion in @apostrophecms/db-connect causes process-wide denial of service",
+      "description": "## Summary\n\n`@apostrophecms/db-connect` ships an in-memory MongoDB emulation used by its SQLite, PostgreSQL, and multipostgres adapters. Its `unsetNestedField` helper walks an attacker-controlled dotted field path with no segment validation and calls `delete` on the resolved property. A low-privileged authenticated user (any role holding `view-draft`, which every editor and contributor has; reduced to any logged-in user when `guestApiAccess` is enabled) can send a piece-type REST GET request whose `project` query builder contains an exclusion key such as `constructor.prototype.hasOwnProperty`. On a SQLite or PostgreSQL adapter this key reaches `unsetNestedField`, which resolves `Object.prototype` and deletes a shared runtime method. Because that method is shared across the whole Node process, the deletion breaks request handling for every tenant and user until the process is restarted, g",
+      "severity": "high",
+      "published": "2026-10-20T18:03:50+00:00",
+      "link": "https://github.com/advisories/GHSA-j5rq-xfvr-p969"
+    },
+    {
+      "cve": "CVE-2026-113654",
+      "ghsa": "GHSA-x3q4-9hxx-gx8m",
+      "title": "ApostropheCMS sanitize-html: nonTextTags discard region ends early on an implied close, letting <noscript> content render",
+      "description": "## Summary\n\n`sanitize-html` discards the *content* of every element in `nonTextTags`. It delimits that region\nusing htmlparser2's close events, and ignores the `isImplied` flag htmlparser2 passes it. Closing a\nstill-open **ancestor** from inside a `<noscript>` makes htmlparser2 unwind its stack past the\n`noscript`; the synthetic implied close it emits on the way ends the discard region early, and\neverything after it is treated as ordinary body content.\n\nA browser with scripting enabled parses `<noscript>` content as **raw text**, so the same markup\nrenders as inert text there. The sanitizer therefore emits elements the page itself would not have.\n\n## Reproduction\n\n```js\nconst sanitizeHtml = require(\"sanitize-html\");\n\nsanitizeHtml('<div><noscript></div><img src=\"http://evil.test/t.gif\"></noscript>', {\n  allowedTags: [\"div\", \"img\"],\n  allowedAttributes: { img: [\"src\"] },\n  nonTextTags: [\"s",
+      "severity": "medium",
+      "published": "2026-10-20T18:03:22+00:00",
+      "link": "https://github.com/advisories/GHSA-x3q4-9hxx-gx8m"
+    },
+    {
+      "cve": "CVE-2026-111756",
+      "ghsa": "GHSA-q3jh-wrc6-jgq8",
+      "title": "follow-redirects array-form headers bypass cross-origin credential stripping",
+      "description": "### Summary\nfollow-redirects removes sensitive credential headers (Authorization, Proxy-Authorization, Cookie, and any caller-declared `sensitiveHeaders`) before following a redirect that crosses to a different host or downgrades to a less secure protocol. The removal routine iterates the caller's headers container with `for...in` and matches header names against a filter. This assumes the headers container is a plain object keyed by header names. Node's underlying `http.request`, which follow-redirects is a drop-in replacement for, also accepts headers as an alternating array of names and values. For an array, `for...in` yields the numeric indices `\"0\"`, `\"1\"`, `\"2\"` and so on, which never match a header-name filter, so nothing is removed. An application that sends array-form headers and follows an attacker-controlled cross-origin redirect therefore forwards its Authorization, Cookie, a",
+      "severity": "high",
+      "published": "2026-10-20T17:58:04+00:00",
+      "link": "https://github.com/advisories/GHSA-q3jh-wrc6-jgq8"
+    },
+    {
+      "cve": "CVE-2026-111755",
+      "ghsa": "GHSA-8r9p-f939-6h3c",
+      "title": "follow-redirects sensitiveHeaders regex escaping can expose credential headers",
+      "description": "### Summary\nfollow-redirects 1.16.0 introduced the `sensitiveHeaders` option (the fix for CVE-2026-40895 / GHSA-r4q5-vmmm-2653), which lets an application declare extra header names that must be removed when a redirect crosses to a different host or downgrades protocol. The filter is a single case-insensitive regular expression built by concatenating the declared header names into an alternation after passing each through `escapeRegex`. `escapeRegex` escapes only a partial set of metacharacters and leaves `^`, `|`, `[`, `{`, and `}` unescaped. Header names may legitimately contain `^` and `|` (both are valid RFC 9110 token characters that Node accepts and sends), and for a declared name containing either, the generated pattern can never match the intended header. As a result, an application that adopts this option to protect a custom credential header, then follows an attacker-controlled",
+      "severity": "high",
+      "published": "2026-10-20T17:53:05+00:00",
+      "link": "https://github.com/advisories/GHSA-8r9p-f939-6h3c"
+    },
+    {
+      "cve": "CVE-2026-111751",
+      "ghsa": "GHSA-57xq-rjx2-v5xh",
+      "title": "@angular/router: Denial of Service via RouterLink Query Parameter Retention in Server-Side Rendering (SSR)",
+      "description": "A denial of service (DoS) vulnerability was identified in `@angular/router` when Server-Side Rendering (SSR) is enabled on Node.js (V8) and `RouterLink` directives are rendered with `queryParamsHandling: 'merge'` or `'preserve'`, configured either per link or globally via `defaultQueryParamsHandling`.\n\nStarting in v21.2.0 ([angular/angular#66181](https://github.com/angular/angular/pull/66181)), `RouterLink` internals were refactored to use signals, introducing a computed signal (`_urlTree`) that cached the returned `UrlTree` instance on the directive. Because each rendered link maintains an active `RouterLink` instance for the entire duration of the request lifecycle, the computed signal permanently pinned the `UrlTree` and its associated query parameter dictionary in the heap until the SSR response completed.\n\nWhen query parameter handling is set to `'merge'` or `'preserve'`, each link ",
+      "severity": "high",
+      "published": "2026-10-20T17:52:32+00:00",
+      "link": "https://github.com/advisories/GHSA-57xq-rjx2-v5xh"
+    },
+    {
+      "cve": "CVE-2026-111752",
+      "ghsa": "GHSA-62vg-58rm-qff7",
+      "title": "@angular/router: Denial of Service via Unmatched Empty-Path Outlet Route Matching in Server-Side Rendering (SSR)",
+      "description": "A denial of service (DoS) vulnerability was identified in `@angular/router` when Server-Side Rendering (SSR) is enabled on Node.js (V8).\n\nDuring route recognition, `@angular/router` fails to validate whether an auxiliary outlet segment in the URL matches a route configured for that specific outlet name. Because unconfigured empty-path outlet groups (such as `a:/()`, `x:/(...)`, or `///(...)`) are not rejected during matching, the router repeatedly re-evaluates the route configuration against each arbitrary outlet segment provided in the URL.\n\nWhen a request URL contains multiple arbitrary empty-path outlet segments, this improper matching forces the router to instantiate duplicate `ActivatedRouteSnapshot` trees, repeatedly execute `canMatch` guards and route resolvers, and allocate separate copies of route parameters and `queryParams` for each unconfigured outlet.\n\nAn unauthenticated rem",
+      "severity": "high",
+      "published": "2026-10-20T14:36:39+00:00",
+      "link": "https://github.com/advisories/GHSA-62vg-58rm-qff7"
+    },
+    {
+      "cve": "CVE-2026-111757",
+      "ghsa": "GHSA-5r4p-p66f-jhc7",
+      "title": "Hono: `serveStatic` decodes the request path a second time, leading to bypass of middleware on static paths",
+      "description": "### Summary\n\n`serveStatic` decodes the request path a second time after Hono has already decoded it for routing. A crafted request can be routed as one path and served as another, so middleware mounted on a static prefix does not run for a file under that prefix.\n\n### Details\n\nHono decodes the request path once before routing. `serveStatic` decoded it again before resolving the file. With a malformed percent-encoded sequence, the first decode leaves part of the path encoded, the router matches the encoded form, and the second decode resolves the real directory. The file is still resolved inside the configured root; this is not a traversal outside it.\n\n### Impact\n\nAn unauthenticated attacker may reach static files without the middleware on their prefix running, for example an authentication check. This affects applications that mount middleware on part of the directory served by `serveSta",
+      "severity": "medium",
+      "published": "2026-10-20T14:36:11+00:00",
+      "link": "https://github.com/advisories/GHSA-5r4p-p66f-jhc7"
+    },
+    {
+      "cve": "CVE-2026-111754",
+      "ghsa": "GHSA-w739-gvwx-grc3",
+      "title": "@angular/platform-server: Open Redirect via Protocol-Relative URLs in Server-Side Rendering (SSR)",
+      "description": "An open redirect vulnerability was identified in `@angular/platform-server` when Server-Side Rendering (SSR) is enabled.\n\nWhen Angular SSR renders an incoming request, URL resolution and platform navigation are managed by `ServerPlatformLocation` using `resolveUrl` (or `parseUrl` in v20). While `resolveUrl` rejected protocol-relative URLs whose raw string directly started with `//`, this check ran *prior* to WHATWG URL normalization.\n\nWhen a request URL includes a popping dot-segment followed by multiple slashes (such as `/.//evil.test` or serialized from router route shapes like `/.;/(//evil.test)`), the input bypassed the initial `urlStr.startsWith('//')` check. Subsequent WHATWG URL parsing resolved the dot-segments and resulted in a `pathname` starting with `//` (`//evil.test`).\n\nConsequently, `ServerPlatformLocation` stored `pathname = '//evil.test'`. When `@angular/ssr` detected a ",
+      "severity": "medium",
+      "published": "2026-10-20T14:35:49+00:00",
+      "link": "https://github.com/advisories/GHSA-w739-gvwx-grc3"
+    },
+    {
+      "cve": "CVE-2026-111759",
+      "ghsa": "GHSA-r7fv-28h4-cvq7",
+      "title": "markdown-it: Quadratic complexity in smartquotes with unmatched closing quotes",
+      "description": "### Impact\n\nWhen `typographer: true` is enabled, specially crafted Markdown can cause quadratic processing time in the smartquotes rule, potentially leading to denial of service in applications processing untrusted input.\n\nMany opening double quotes followed by unmatched closing single quotes cause repeated scans of the entire opener stack. The same issue occurs with the quote types reversed.\n\nThe default configuration (`typographer: false`) is not affected, but this option is enabled with high probability.\n\n### Reproduction\n\n```js\nimport MarkdownIt from 'markdown-it'\nimport { performance } from 'node:perf_hooks'\n\nconst md = new MarkdownIt({ typographer: true })\n\nfor (const k of [2000, 4000, 8000, 16000, 32000]) {\n  const input = '\"a '.repeat(k) + \"b' \".repeat(k)\n  const start = performance.now()\n  md.render(input)\n  console.log(input.length, (performance.now() - start).toFixed(1), 'ms')",
+      "severity": "high",
+      "published": "2026-10-20T14:34:50+00:00",
+      "link": "https://github.com/advisories/GHSA-r7fv-28h4-cvq7"
+    },
+    {
+      "cve": "CVE-2026-63209",
+      "ghsa": "GHSA-259r-337f-4rfw",
+      "title": "Compress/s2: Integer Overflow or Wraparound and Out-of-bounds Write in compress",
+      "description": "# Signed Integer Overflow in s2.NewDict\n\n## Summary\n\nA signed integer overflow vulnerability in `s2.NewDict()` allows an attacker to bypass repeat index validation by supplying a dictionary with a uvarint-encoded repeat value exceeding `MaxInt64`. When `Dict.Encode()` is subsequently called, the overflowed negative repeat value causes an out-of-bounds memory access via `unsafe.Pointer` arithmetic, crashing the process with SIGSEGV.\n\n## Package\n\n- **Name:** `github.com/klauspost/compress/s2`\n- **Ecosystem:** Go\n- **Affected versions:** <= v1.18.6 (all versions with `NewDict` function)\n\n## Severity\n\n**High (7.5)** — CVSS v3.1: `AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H`\n\n## Vulnerability\n\n### Type\n- CWE-190: Integer Overflow or Wraparound\n- CWE-787: Out-of-bounds Write (via unsafe.Pointer)\n\n### Description\n\nThe `NewDict()` function reads a uvarint from dictionary data and converts it to `int`:\n\n",
+      "severity": "high",
+      "published": "2026-10-20T14:33:33+00:00",
+      "link": "https://github.com/advisories/GHSA-259r-337f-4rfw"
+    },
+    {
+      "cve": "CVE-2026-61845",
+      "ghsa": "GHSA-6wmf-3r64-vcwv",
+      "title": "Crass : Large numeric exponents cause CPU and memory denial of service",
+      "description": "### Impact\n\nCrass converts CSS scientific notation number values with unbounded exponentiation before it clamps the result to `Float::MAX`. Applications that use Crass to parse attacker-controlled CSS strings can be forced to spend disproportionate CPU and memory parsing a tiny input, possibly resulting in a crash.\n\n### Patches\n\nThis is fixed in Crass 1.0.7.\n\n### Related\n\n- https://github.com/rubysec/ruby-advisory-db/blob/master/gems/crass/GHSA-6wmf-3r64-vcwv.yml",
+      "severity": "high",
+      "published": "2026-10-20T14:32:39+00:00",
+      "link": "https://github.com/advisories/GHSA-6wmf-3r64-vcwv"
+    },
     {
       "cve": "CVE-2026-111064",
       "ghsa": "GHSA-5wr8-gcqf-gqf3",
