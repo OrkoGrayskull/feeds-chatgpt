@@ -18,6 +18,12 @@
 | `data/edpb.json` | EDPB - Nachrichten |
 | `data/heise.json` | heise online - allgemeiner Nachrichtenfeed |
 | `data/golem.json` | Golem.de - allgemeiner Nachrichtenfeed |
+| `data/lfdi-bw.json` | Baden-Württemberg - Datenschutzmeldungen (RSS) | 
+| `data/baylfd.json` | Bayern - amtliche Neuigkeiten (RSS) |
+| `data/hmbbfdi.json` | Hamburg - amtliche Meldungen (RSS) |
+| `data/dsk.json` | Datenschutzkonferenz - Veröffentlichungen (RSS) |
+| `data/blnbdi-mastodon.json` | Berlin - offizielles Mastodon-Konto, nur ergänzende Hinweise |
+| `data/lfd-nds-mastodon.json` | Niedersachsen - offizielles Mastodon-Konto, nur ergänzende Hinweise |
 | `data/bluesky.json` | Bluesky - neun Suchbegriffe und zehn ausgewählte Accounts |
 | `data/github-advisories.json` | GitHub Advisory Database - aktuelle geprüfte Advisories |
 | `data/nvd.json` | NVD - neu veröffentlichte CVEs |
@@ -34,6 +40,8 @@
 - **Bluesky:** Öffentliche Beiträge der letzten 24 Stunden. Suchbegriffe: `CVE`, `actively exploited`, `security advisory`, `Datenschutz`, `DSGVO`, `GDPR`, `data breach`, `Überwachung`, `surveillance`. Beobachtete Accounts: `noyb.eu`, `datenschutz.bsky.social`, `bleepingcomputer.com`, `ammir.bsky.social`, `responsible.fyi`, `eff.org`, `netzpolitik.org`, `ccc.de`, `infosec.skyfleet.blue`, `insecurestack.bsky.social`. Antworten und Reposts aus dem Account-Monitoring werden ausgeschlossen, doppelte Treffer zusammengeführt. Die Beiträge dienen als ergänzende Recherchehinweise, nicht als Primärbelege.
 - **GitHub Advisory Database und NVD:** Begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen.
 - **EPSS:** Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**.
+
+- **Landesdatenschutzbehörden/DSK:** Sechs neue optionale Signalfeeds für Baden-Württemberg, Bayern, Berlin, Hamburg, Niedersachsen und DSK sind konfiguriert. Berlin und Niedersachsen werden vorerst über offizielle Mastodon-Posts erfasst, nicht über vollständige Pressearchive. Ein erfolgreicher produktiver Abruf aller sechs Quellen ist noch nicht bestätigt. Fehler dürfen die bisherigen Feeds nicht blockieren.
 
 ## Aktualisierung und Nutzung
 
