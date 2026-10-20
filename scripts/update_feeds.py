@@ -151,7 +151,11 @@ def merge_security_history(items, now):
         if key not in unique or published > unique[key]["published"]:
             unique[key] = {**item, "published": published}
     retained = sorted(unique.values(), key=lambda x: (x["published"], x["link"]), reverse=True)
+    archive_truncated = len(retained) > 1800
+    retained = retained[:1800]  # Keep the GitHub-file API readable.
     return retained, {
+        "archive_truncated": archive_truncated,
+        "history_item_limit": 1800,
         "source_count": fresh_count,
         "source_oldest_published": oldest_fresh,
         "history_cutoff": cutoff.isoformat(timespec="seconds"),
