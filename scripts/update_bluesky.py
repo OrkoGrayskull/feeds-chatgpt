@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 BASE = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
-QUERIES = ["CVE", "actively exploited", "security advisory", "Datenschutz", "DSGVO", "GDPR", "data breach", "privacy", "Überwachung"]
+QUERIES = ["CVE", "actively exploited", "security advisory", "Datenschutz", "DSGVO", "GDPR", "data breach", "privacy", "Überwachung", "surveillance"]
 OUT = Path(__file__).resolve().parent.parent / "data" / "bluesky.json"
 
 def main():
