@@ -1,38 +1,52 @@
 # feeds-chatgpt
 
-Öffentliche Nachrichten- und Behördenquellen als JSON für automatisierte Recherchen. Quellenkonfiguration: [feeds.json](feeds.json).
+Öffentliche Nachrichten-, Behörden- und ergänzende Recherchequellen als JSON-Snapshots für den Kuketz-Tagesbrief und das Themenradar.
 
-## Quellen
+## Quellen und Status
 
-| JSON-Datei | Quelle |
-| --- | --- |
-| `data/security.json` | BSI/CERT-Bund – Sicherheitshinweise |
-| `data/buergercert.json` | BSI – BürgerCERT |
-| `data/cisa-kev.json` | CISA – Known Exploited Vulnerabilities |
-| `data/bfdi.json` | BfDI – Pressemitteilungen |
-| `data/curia.json` | CURIA – Pressemitteilungen |
-| `data/eu-rechtsprechung.json` | EU-Rechtsprechung – CELLAR-Metadaten |
-| `data/noyb.json` | noyb – Nachrichten |
-| `data/eu-digital-strategy.json` | EU-Kommission – Digital Strategy |
-| `data/edps-mastodon.json` | EDPS – Mastodon |
-| `data/edpb.json` | EDPB – Nachrichten |
-| `data/heise.json` | heise online – allgemeiner RSS |
-| `data/golem.json` | Golem.de – allgemeiner RSS |
-| `data/github-advisories.json` | GitHub Advisory Database – geprüfte aktuelle Sicherheitswarnungen (ergänzend) |
-| `data/nvd.json` | NVD – neu veröffentlichte CVEs, maximal 200 pro Lauf (ergänzend) |
-| `data/epss.json` | FIRST EPSS – Ausnutzungswahrscheinlichkeit für bis zu 50 ausgewählte CVEs (Anreicherung) |
-| `data/bluesky.json` | Bluesky – optionale Stichwortsuche und kuratiertes Account-Monitoring (IT-Sicherheit/Datenschutz) |
+**Statusdefinitionen:** »Snapshot vorhanden« bedeutet, dass eine JSON-Datei im Repository tatsächlich nachgewiesen wurde, **nicht**, dass der aktuelle Lauf erfolgreich oder der Inhalt vollständig ist. »Integration offen« bedeutet, dass Skript und Workflow konfiguriert sind, aber noch kein erfolgreicher API-Abruf mit erzeugtem Snapshot bestätigt wurde.
 
-**Abdeckung:** Die Spiegel enthalten nur die jeweils verfügbaren oder konfigurierten Einträge. CURIA-Pressemitteilungen sind kein vollständiges Entscheidungsregister; EDPS-Mastodon und EDPB ersetzen kein vollständiges EDPS-Pressearchiv. Die allgemeinen heise- und Golem-Feeds werden ohne Themenfilter übernommen. Bluesky erfasst öffentliche Originalbeiträge der letzten 24 Stunden über neun Suchbegriffe (darunter `Überwachung` und `surveillance`) und zehn ausgewählte Accounts; Antworten und Reposts werden beim Account-Monitoring ausgeschlossen. Treffer werden dedupliziert und dienen nur als Recherchehinweise, nicht als Primärbelege. Bluesky-Ausfälle beeinträchtigen die übrigen Feeds nicht.
+| JSON-Datei | Ursprungsquelle / Inhalt | Status |
+| --- | --- | --- |
+| `data/security.json` | BSI/CERT-Bund - technische Sicherheitshinweise | Snapshot vorhanden |
+| `data/buergercert.json` | BSI - BürgerCERT-Warnungen | Snapshot vorhanden |
+| `data/cisa-kev.json` | CISA - Known Exploited Vulnerabilities, Ausschnitt des validierten Gesamtkatalogs | Snapshot vorhanden |
+| `data/bfdi.json` | BfDI - amtliche Presseübersicht | Snapshot vorhanden |
+| `data/curia.json` | CURIA - Pressemitteilungen | Snapshot vorhanden |
+| `data/eu-rechtsprechung.json` | EU CELLAR - Rechtsprechungsmetadaten | Snapshot vorhanden |
+| `data/noyb.json` | noyb - Nachrichten | Snapshot vorhanden |
+| `data/eu-digital-strategy.json` | EU-Kommission - Digital Strategy | Snapshot vorhanden |
+| `data/edps-mastodon.json` | EDPS - offizielles Mastodon-Konto | Snapshot vorhanden |
+| `data/edpb.json` | EDPB - Nachrichten | Snapshot vorhanden |
+| `data/heise.json` | heise online - allgemeiner Nachrichtenfeed | Snapshot vorhanden |
+| `data/golem.json` | Golem.de - allgemeiner Nachrichtenfeed | Snapshot vorhanden |
+| `data/bluesky.json` | Bluesky - neun Suchbegriffe und zehn ausgewählte Accounts | Snapshot vorhanden |
+| `data/github-advisories.json` | GitHub Advisory Database - aktuelle geprüfte Advisories | **Integration offen** |
+| `data/nvd.json` | NVD - neu veröffentlichte CVEs | **Integration offen** |
+| `data/epss.json` | FIRST EPSS - ergänzende Ausnutzungswahrscheinlichkeit | **Integration offen** |
 
-Die drei zusätzlichen Schwachstellenquellen werden in einem begrenzten API-Durchlauf abgefragt (NVD und GitHub: letzte 72 Stunden; EPSS: nur CVE-Kandidaten). NVD kann bei mehr als 200 neuen CVEs unvollständig sein; das wird im JSON gekennzeichnet. EPSS ist eine Prognose, kein Nachweis aktiver Ausnutzung. Fehler dieser optionalen Quellen blockieren den übrigen Feed-Lauf nicht.
+Die Statusangaben beruhen auf einer Prüfung der Repository-Dateien am **20.10.2026**. Sie sind keine automatisch aktualisierte Laufzeitüberwachung. Bei den drei neuen Schwachstellenquellen ist bislang **kein produktiver JSON-Snapshot nachgewiesen**. Erst nach API-Prüfung, erfolgreicher Aktualisierung und Integrationstest darf ihre erweiterte Abdeckung als bestätigt gelten.
+
+## Umfang und Grenzen
+
+- **BSI:** Zwei amtliche RSS-Feeds als JSON gespiegelt. Die Auswahl kann auf die letzten 100 Einträge je Feed begrenzt sein.
+- **CISA KEV:** Amtlicher Gesamtkatalog wird bei der Verarbeitung validiert, im JSON stehen die Einträge der letzten 60 Tage. `catalog_count` bezeichnet die Größe des vollständigen Katalogs, `count` die Zahl im Ausschnitt.
+- **CURIA und CELLAR:** Pressemitteilungen und Metadaten ergänzen sich, sind aber kein vollständiges Verzeichnis aller datenschutzrelevanten Entscheidungen. Originalentscheidungen sind gesondert zu prüfen.
+- **BfDI, EDPB, EDPS:** BfDI-Presseübersicht, EDPB-Nachrichten und EDPS-Mastodon sind jeweils Teilmengen amtlicher Veröffentlichungen. Insbesondere EDPS-Mastodon ersetzt keine vollständige EDPS-Presseübersicht.
+- **noyb und EU-Kommission:** Ergänzende Nachrichten- und Policy-Signale. Stellungnahmen, Beschwerden und Vorhaben nicht mit rechtskräftigen Feststellungen oder geltendem Recht verwechseln.
+- **heise und Golem:** Allgemeine redaktionelle Feeds ohne Themenfilter, nicht notwendigerweise vollständige Sieben-Tage-Archive.
+- **Bluesky:** Öffentliche Posts aus einem 24-Stunden-Fenster, neun Suchbegriffe (einschließlich `Überwachung` und `surveillance`) sowie zehn Accounts. Account-Antworten und Reposts werden ausgeschlossen, Treffer dedupliziert. Nur ergänzende Hinweise für **A und B**, keine Primärbelege.
+- **GitHub Advisory Database und NVD:** Vorgesehene begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen. **Noch nicht erfolgreich end-to-end verifiziert.**
+- **EPSS:** Vorgesehene Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**. **Noch nicht erfolgreich end-to-end verifiziert.**
 
 ## Aktualisierung und Nutzung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) aktualisiert die JSON-Dateien täglich um **06:15 Uhr (Europe/Berlin)** und kann manuell gestartet werden. Geplante Läufe können sich verzögern oder ausfallen.
+[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **06:15 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert.
 
-Abruf: `https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/DATEINAME.json`
+Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens einmal über die öffentliche URL:
 
-Die Daten enthalten Abrufzeitpunkt (`fetched_at`), Quelle und quellenspezifische Einträge. Der lesende Agent verwirft Spiegel, die **älter als acht Stunden** sind. Bei Abruffehlern bleibt der letzte funktionierende Datensatz erhalten; er darf nicht als aktuell behandelt werden.
+`https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/DATEINAME.json`
 
-Alle Inhalte stammen aus öffentlichen Drittquellen und müssen vor einer Veröffentlichung bei Bedarf anhand der Originalquellen geprüft werden.
+Der lesende Agent prüft für **jede** Datei die tatsächliche Existenz, JSON-Struktur, plausible Metadaten und `fetched_at` (**höchstens acht Stunden alt**). Für die Nachrichtenauswahl zählt das Veröffentlichungsdatum des Eintrags, nicht der technische Abrufzeitpunkt. Bei Fehlern bleibt gegebenenfalls ein älterer Snapshot bestehen, der nicht als aktuell ausgegeben werden darf. Optionale Quellen dürfen Pflichtquellen, andere Berichtsteile oder den E-Mail-Versand nicht blockieren.
+
+Alle Snapshots sind Spiegel oder ergänzende Signale, keine unabhängigen Primärbelege. Relevante Aussagen vor Veröffentlichung anhand der Originalquellen prüfen. Keine Vollständigkeitsbehauptung allein aufgrund eines erfolgreichen Dateiabrufs.
