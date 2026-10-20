@@ -8,7 +8,7 @@ import tempfile
 import os
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
@@ -123,9 +123,51 @@ def write_json(path, obj):
         if os.path.exists(tmp):
             os.unlink(tmp)
 
+
+def merge_security_history(items, now):
+    """Retain a rolling 96-hour history instead of replacing the BSI snapshot."""
+    cutoff = now - timedelta(hours=96)
+    path = OUT / "security.json"
+    fresh_count = len(items)
+    oldest_fresh = min((x["published"] for x in items if x.get("published")), default=None)
+    if path.exists():
+        try:
+            previous = json.loads(path.read_text(encoding="utf-8"))
+            if previous.get("feed") == "security":
+                items = items + [x for x in previous.get("items", [])
+                                 if isinstance(x, dict) and x.get("title")
+                                 and x.get("link") and x.get("published")]
+        except (OSError, ValueError, TypeError):
+            pass
+    unique = {}
+    for item in items:
+        published = iso_date(item.get("published"))
+        if not published:
+            continue
+        when = datetime.fromisoformat(published)
+        if when < cutoff or when > now + timedelta(minutes=10):
+            continue
+        key = item["link"].split("#", 1)[0]
+        if key not in unique or published > unique[key]["published"]:
+            unique[key] = {**item, "published": published}
+    retained = sorted(unique.values(), key=lambda x: (x["published"], x["link"]), reverse=True)
+    return retained, {
+        "source_count": fresh_count,
+        "source_oldest_published": oldest_fresh,
+        "history_cutoff": cutoff.isoformat(timespec="seconds"),
+        "history_hours": 96,
+        "source_may_be_truncated": bool(
+            fresh_count >= 100 and oldest_fresh
+            and datetime.fromisoformat(iso_date(oldest_fresh)) >= now - timedelta(hours=72)
+        ),
+        "note": "Rolling observed BSI items; gaps in the upstream feed cannot be ruled out.",
+    }
+
 def main():
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     feeds = config["feeds"]
+    if "--security-only" in sys.argv[1:]:
+        feeds = [f for f in feeds if f["id"] in ("security", "buergercert")]
     failures = []
     seen = set()
     for feed in feeds:
@@ -153,10 +195,14 @@ def main():
                 for item in items:
                     unique.setdefault(item["link"], item)
                 items = sorted(unique.values(), key=lambda x: x.get("published") or "", reverse=True)
+            fetched = datetime.now(timezone.utc)
+            extra = {}
+            if name == "security":
+                items, extra = merge_security_history(items, fetched)
             write_json(OUT / (name + ".json"), {
                 "feed": name, "source": url,
-                "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                "count": len(items), "items": items,
+                "fetched_at": fetched.isoformat(timespec="seconds"),
+                "count": len(items), "items": items, **extra,
             })
             print("OK:", name, len(items), "items")
         except Exception as exc:
