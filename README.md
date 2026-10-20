@@ -18,9 +18,9 @@
 | `data/edpb.json` | EDPB - Nachrichten |
 | `data/heise.json` | heise online - allgemeiner Nachrichtenfeed |
 | `data/golem.json` | Golem.de - allgemeiner Nachrichtenfeed |
-| `data/vzbv-presse.json` | Verbraucherzentrale Bundesverband (vzbv) - Pressemitteilungen |
-| `data/vzbv-urteile.json` | Verbraucherzentrale Bundesverband (vzbv) - Urteile und Gerichtsverfahren |
-| `data/vzbv-digitale-welt.json` | Verbraucherzentrale Bundesverband (vzbv) - Meldungen zur digitalen Welt |
+| `data/vzbv-presse.json` | vzbv - Pressemitteilungen |
+| `data/vzbv-urteile.json` | vzbv - Urteile |
+| `data/vzbv-digitale-welt.json` | vzbv - Digitale Welt |
 | `data/lfdi-bw.json` | Baden-Württemberg - Datenschutzmeldungen (RSS) | 
 | `data/baylfd.json` | Bayern - amtliche Neuigkeiten (RSS) |
 | `data/hmbbfdi.json` | Hamburg - amtliche Meldungen (RSS) |
@@ -39,7 +39,7 @@
 - **CURIA und CELLAR:** Pressemitteilungen und Metadaten ergänzen sich, sind aber kein vollständiges Verzeichnis aller datenschutzrelevanten Entscheidungen. Originalentscheidungen sind gesondert zu prüfen.
 - **BfDI, EDPB, EDPS:** BfDI-Presseübersicht, EDPB-Nachrichten und EDPS-Mastodon sind jeweils Teilmengen amtlicher Veröffentlichungen. Insbesondere EDPS-Mastodon ersetzt keine vollständige EDPS-Presseübersicht.
 - **noyb und EU-Kommission:** Ergänzende Nachrichten- und Policy-Signale. Stellungnahmen, Beschwerden und Vorhaben nicht mit rechtskräftigen Feststellungen oder geltendem Recht verwechseln.
-- **vzbv:** Drei offizielle RSS-Feeds für Pressemitteilungen, Urteile und digitale Themen. Bis zu 100 Einträge pro Feed, soweit vom jeweiligen RSS geliefert. Die Feeds können sich überschneiden und bilden weder sämtliche Verbraucherrechte noch die vollständige Rechtsprechung ab. Urteile, Rechtskraft und konkrete Handlungsmöglichkeiten sind anhand der Originalquellen zu prüfen.
+- **vzbv:** Drei RSS-Feeds für Pressemitteilungen, Urteile und digitale Themen, jeweils bis zu 100 Einträge. Überschneidungen möglich, Urteile im Original prüfen.
 - **heise und Golem:** Allgemeine redaktionelle Feeds ohne Themenfilter, nicht notwendigerweise vollständige Sieben-Tage-Archive.
 - **Bluesky:** Öffentliche Beiträge der letzten 24 Stunden. Suchbegriffe: `CVE`, `actively exploited`, `security advisory`, `Datenschutz`, `DSGVO`, `GDPR`, `data breach`, `Überwachung`, `surveillance`. Beobachtete Accounts: `noyb.eu`, `datenschutz.bsky.social`, `bleepingcomputer.com`, `ammir.bsky.social`, `responsible.fyi`, `eff.org`, `netzpolitik.org`, `ccc.de`, `infosec.skyfleet.blue`, `insecurestack.bsky.social`. Antworten und Reposts aus dem Account-Monitoring werden ausgeschlossen, doppelte Treffer zusammengeführt. Die Beiträge dienen als ergänzende Recherchehinweise, nicht als Primärbelege.
 - **GitHub Advisory Database und NVD:** Begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen.
