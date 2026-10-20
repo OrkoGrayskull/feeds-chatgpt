@@ -1,6 +1,6 @@
 # feeds-chatgpt
 
-Öffentliche Nachrichten-, Behörden- und ergänzende Recherchequellen als JSON-Snapshots für den Kuketz-Tagesbrief und das Themenradar.
+Öffentliche Nachrichten-, Behörden- und ergänzende Recherchequellen als JSON-Snapshots für automatisierte Recherchen.
 
 ## Quellen
 
