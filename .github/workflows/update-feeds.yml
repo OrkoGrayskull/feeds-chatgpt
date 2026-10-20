@@ -13,9 +13,12 @@ on:
       - 'scripts/update_vulnerabilities.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # UTC candidates for 07:00 Europe/Berlin, both CET and CEST.
-    # The timezone gate below skips the two hours that do not match local time.
-    - cron: '0 5,6 * * *'
+    # Distinct UTC triggers for 07:00 Europe/Berlin, depending on DST.
+    # The offset gate tests the intended trigger rather than exact start minute.
+    - cron: '0 5 * * *'
+    - cron: '0 6 * * *'
+    # BSI-only updates preserve fast-moving notices without re-fetching all sources.
+    - cron: '10 0,3,9,12,15,18,21 * * *'
 
 permissions:
   contents: write
@@ -27,56 +30,62 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    env:
-      TZ: Europe/Berlin
     timeout-minutes: 10
     steps:
-      - name: Check Berlin local scheduled time
-        id: local_time
+      - name: Choose full, BSI-only or skipped run
+        id: mode
         shell: bash
         run: |
+          mode=skip
           if [[ "${{ github.event_name }}" != "schedule" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
+            mode=daily
+          elif [[ "${{ github.event.schedule }}" == "10 0,3,9,12,15,18,21 * * *" ]]; then
+            mode=security
           else
-            local_time=$(TZ=Europe/Berlin date +%H:%M)
-            if [[ "$local_time" == "07:00" ]]; then
-              echo "run=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping UTC candidate: Berlin local time is $local_time"
+            offset=$(TZ=Europe/Berlin date +%z)
+            if [[ "${{ github.event.schedule }}" == "0 5 * * *" && "$offset" == "+0200" ]] ||
+               [[ "${{ github.event.schedule }}" == "0 6 * * *" && "$offset" == "+0100" ]]; then
+              mode=daily
             fi
           fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Selected refresh mode: $mode"
       - uses: actions/checkout@v5
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode != 'skip'
       - uses: actions/setup-python@v6
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode != 'skip'
         with:
           python-version: '3.12'
       - name: Fetch and convert feeds
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode == 'daily'
         id: fetch
         continue-on-error: true
         run: python scripts/update_feeds.py
+      - name: Refresh rolling BSI history only
+        if: steps.mode.outputs.mode == 'security'
+        id: bsi
+        continue-on-error: true
+        run: python scripts/update_feeds.py --security-only
       - name: Fetch supplemental public sources
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode == 'daily'
         id: extras
         continue-on-error: true
         run: python scripts/update_extra.py
       - name: Fetch EU case law from CELLAR
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode == 'daily'
         id: cellar
         continue-on-error: true
         run: python scripts/update_cellar.py
       - name: Fetch optional Bluesky signals
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode == 'daily'
         continue-on-error: true
         run: python scripts/update_bluesky.py
       - name: Fetch optional vulnerability signals
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode == 'daily'
         continue-on-error: true
         run: python scripts/update_vulnerabilities.py
       - name: Commit refreshed JSON snapshots
-        if: steps.local_time.outputs.run == 'true'
+        if: steps.mode.outputs.mode != 'skip'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -85,6 +94,6 @@ jobs:
             git commit -m "Refresh public feed snapshots"
             git push
           fi
-      - name: Mark feed errors as failed
-        if: steps.local_time.outputs.run == 'true' && (steps.fetch.outcome != 'success' || steps.extras.outcome != 'success' || steps.cellar.outcome != 'success')
+      - name: Mark required-source errors as failed
+        if: steps.mode.outputs.mode != 'skip' && (steps.fetch.outcome == 'failure' || steps.bsi.outcome == 'failure' || steps.extras.outcome == 'failure' || steps.cellar.outcome == 'failure')
         run: exit 1
