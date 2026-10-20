@@ -20,8 +20,8 @@ def fetch(url):
     with urlopen(Request(url, headers=HEADERS), timeout=25) as response:
         if not response.geturl().startswith("https://"):
             raise ValueError("Insecure redirect")
-        raw = response.read(2_500_001)
-    if not raw or len(raw) > 2_500_000:
+        raw = response.read(6_000_001)
+    if not raw or len(raw) > 6_000_000:
         raise ValueError("Empty or oversized API response")
     return json.loads(raw)
 
@@ -112,7 +112,14 @@ def main():
         candidates += [x["cve"] for x in items if x.get("cvss") is not None and x["cvss"] >= 8.0]
     except Exception as exc:
         errors.append("nvd: " + str(exc))
-    # EPSS is an enrichment, not a discovery feed. Unique bounded CVEs, one call.
+    # EPSS is an enrichment, not a discovery feed. Include fresh KEV entries if available.
+    try:
+        kev = json.loads((OUT / "cisa-kev.json").read_text(encoding="utf-8"))
+        if kev.get("feed") == "cisa-kev":
+            candidates = [x.get("cveID") for x in kev.get("items", [])[:30] if CVE.fullmatch(x.get("cveID", ""))] + candidates
+    except (OSError, ValueError, TypeError):
+        pass
+    # Unique bounded CVEs, one call.
     try:
         cves = list(dict.fromkeys(candidates))[:50]
         if cves:
@@ -127,8 +134,9 @@ def main():
         errors.append("epss: " + str(exc))
     for error in errors:
         print("WARN", error, file=sys.stderr)
-    # These sources are optional: never block established feeds or mail.
-    return 0
+    # The workflow step is continue-on-error: signal failed API calls in logs
+    # without stopping established feeds or their snapshots.
+    return 1 if errors else 0
 
 if __name__ == "__main__":
     sys.exit(main())
