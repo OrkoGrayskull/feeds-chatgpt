@@ -11,9 +11,9 @@ on:
       - 'scripts/update_cellar.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # UTC candidates for 06:15 and 09:15 Europe/Berlin, both CET and CEST.
+    # UTC candidates for 06:15 Europe/Berlin, both CET and CEST.
     # The timezone gate below skips the two hours that do not match local time.
-    - cron: '15 4-8 * * *'
+    - cron: '15 4,5 * * *'
 
 permissions:
   contents: write
@@ -37,7 +37,7 @@ jobs:
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             local_time=$(TZ=Europe/Berlin date +%H:%M)
-            if [[ "$local_time" == "06:15" || "$local_time" == "09:15" ]]; then
+            if [[ "$local_time" == "06:15" ]]; then
               echo "run=true" >> "$GITHUB_OUTPUT"
             else
               echo "run=false" >> "$GITHUB_OUTPUT"
