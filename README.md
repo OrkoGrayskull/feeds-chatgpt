@@ -18,9 +18,9 @@
 | `data/edpb.json` | EDPB – Nachrichten |
 | `data/heise.json` | heise online – allgemeiner RSS |
 | `data/golem.json` | Golem.de – allgemeiner RSS |
-| `data/bluesky.json` | Bluesky – öffentliche Suche nach Sicherheits- und Datenschutzthemen (ergänzend) |
+| `data/bluesky.json` | Bluesky – optionale Stichwortsuche und kuratiertes Account-Monitoring (IT-Sicherheit/Datenschutz) |
 
-**Abdeckung:** Die Spiegel enthalten nur die jeweils verfügbaren oder konfigurierten Einträge. CURIA-Pressemitteilungen sind kein vollständiges Entscheidungsregister; EDPS-Mastodon und EDPB ersetzen kein vollständiges EDPS-Pressearchiv. Die allgemeinen heise- und Golem-Feeds werden ohne Themenfilter übernommen.
+**Abdeckung:** Die Spiegel enthalten nur die jeweils verfügbaren oder konfigurierten Einträge. CURIA-Pressemitteilungen sind kein vollständiges Entscheidungsregister; EDPS-Mastodon und EDPB ersetzen kein vollständiges EDPS-Pressearchiv. Die allgemeinen heise- und Golem-Feeds werden ohne Themenfilter übernommen. Bluesky erfasst öffentliche Originalbeiträge der letzten 24 Stunden über neun Suchbegriffe (darunter `Überwachung` und `surveillance`) und zehn ausgewählte Accounts; Antworten und Reposts werden beim Account-Monitoring ausgeschlossen. Treffer werden dedupliziert und dienen nur als Recherchehinweise, nicht als Primärbelege. Bluesky-Ausfälle beeinträchtigen die übrigen Feeds nicht.
 
 ## Aktualisierung und Nutzung
 
