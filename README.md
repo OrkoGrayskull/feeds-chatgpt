@@ -24,7 +24,7 @@ Die EDPS-Presse- und News-Seiten waren für den automatisierten Abruf nicht erre
 
 ## Abruf und Aktualität
 
-Der Workflow [Update feeds](.github/workflows/update-feeds.yml) aktualisiert die Quellen **einmal täglich um 06:15 Uhr deutscher Ortszeit (Europe/Berlin)** vor dem Kuketz-Tagesbrief. Dazu sind als UTC-Kandidaten `04:15` (MESZ) und `05:15` (MEZ) hinterlegt; eine Zeitprüfung im Job lässt nur den zur jeweiligen Sommer- bzw. Winterzeit passenden Lauf zu. Es gibt **keinen zweiten Aktualisierungslauf um 09:15 Uhr**, da kein Recovery-Lauf mehr vorgesehen ist.
+Der Workflow [Update feeds](.github/workflows/update-feeds.yml) aktualisiert die Quellen **einmal täglich um 06:15 Uhr deutscher Ortszeit (Europe/Berlin)**. Dazu sind als UTC-Kandidaten `04:15` (MESZ) und `05:15` (MEZ) hinterlegt; eine Zeitprüfung im Job lässt nur den zur jeweiligen Sommer- bzw. Winterzeit passenden Lauf zu. Es gibt **keinen zweiten Aktualisierungslauf um 09:15 Uhr**, da kein Recovery-Lauf mehr vorgesehen ist.
 
 Zusätzlich kann der Workflow über **Actions → Update feeds → Run workflow** jederzeit manuell gestartet werden. Änderungen an `feeds.json`, den drei Abrufskripten oder der Workflow-Datei lösen ebenfalls einen Lauf aus. GitHub kann geplante Läufe verzögern; durch die minutengenaue Ortszeitprüfung können solche Läufe derzeit vollständig übersprungen werden, falls der Job erst nach 06:15 Uhr Ortszeit startet. Der automatische tägliche Erfolg ist deshalb **nicht garantiert**.
 
