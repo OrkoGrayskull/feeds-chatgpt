@@ -34,7 +34,7 @@
 
 ## Umfang und Grenzen
 
-- **BSI:** Zwei amtliche RSS-Feeds als JSON gespiegelt. Die Auswahl kann auf die letzten 100 Einträge je Feed begrenzt sein.
+- **BSI:** Zwei amtliche Feeds. Technische Warnungen werden über 96 Stunden gesammelt, BürgerCERT bleibt auf Quelleneinträge begrenzt. Feed-Lücken sind weiterhin möglich.
 - **CISA KEV:** Amtlicher Gesamtkatalog wird bei der Verarbeitung validiert, im JSON stehen die Einträge der letzten 60 Tage. `catalog_count` bezeichnet die Größe des vollständigen Katalogs, `count` die Zahl im Ausschnitt.
 - **CURIA und CELLAR:** Pressemitteilungen und Metadaten ergänzen sich, sind aber kein vollständiges Verzeichnis aller datenschutzrelevanten Entscheidungen. Originalentscheidungen sind gesondert zu prüfen.
 - **BfDI, EDPB, EDPS:** BfDI-Presseübersicht, EDPB-Nachrichten und EDPS-Mastodon sind jeweils Teilmengen amtlicher Veröffentlichungen. Insbesondere EDPS-Mastodon ersetzt keine vollständige EDPS-Presseübersicht.
@@ -48,7 +48,7 @@
 
 ## Aktualisierung und Nutzung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **07:00 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert. Ob eine Datei erfolgreich aktualisiert wurde, ist anhand des jeweiligen Workflow-Laufs und ihres Zeitstempels zu prüfen.
+[GitHub Actions](.github/workflows/update-feeds.yml) aktualisiert alle Quellen täglich um **07:00 Uhr (Europe/Berlin)** und die BSI-Feeds zusätzlich mehrfach über den Tag. Manuelle Läufe sind möglich. GitHub kann Startzeiten verzögern. Konfiguration: [feeds.json](feeds.json). Aktualität anhand der Workflow-Ergebnisse und JSON-Zeitstempel prüfen.
 
 Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens einmal über die öffentliche URL:
 
