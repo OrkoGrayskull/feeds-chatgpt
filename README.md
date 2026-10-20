@@ -31,7 +31,7 @@
 - **BfDI, EDPB, EDPS:** BfDI-Presseübersicht, EDPB-Nachrichten und EDPS-Mastodon sind jeweils Teilmengen amtlicher Veröffentlichungen. Insbesondere EDPS-Mastodon ersetzt keine vollständige EDPS-Presseübersicht.
 - **noyb und EU-Kommission:** Ergänzende Nachrichten- und Policy-Signale. Stellungnahmen, Beschwerden und Vorhaben nicht mit rechtskräftigen Feststellungen oder geltendem Recht verwechseln.
 - **heise und Golem:** Allgemeine redaktionelle Feeds ohne Themenfilter, nicht notwendigerweise vollständige Sieben-Tage-Archive.
-- **Bluesky:** Öffentliche Posts aus einem 24-Stunden-Fenster, neun Suchbegriffe (einschließlich `Überwachung` und `surveillance`) sowie zehn Accounts. Account-Antworten und Reposts werden ausgeschlossen, Treffer dedupliziert. Nur ergänzende Hinweise für **A und B**, keine Primärbelege.
+- **Bluesky:** Öffentliche Beiträge der letzten 24 Stunden aus neun Suchabfragen und zehn ausgewählten Accounts. Antworten und Reposts aus dem Account-Monitoring werden ausgeschlossen, doppelte Treffer zusammengeführt. Die Beiträge dienen als ergänzende Recherchehinweise und müssen anhand verlässlicher Originalquellen geprüft werden.
 - **GitHub Advisory Database und NVD:** Begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen.
 - **EPSS:** Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**.
 
