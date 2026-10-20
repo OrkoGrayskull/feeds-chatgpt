@@ -2,30 +2,26 @@
 
 Öffentliche Nachrichten-, Behörden- und ergänzende Recherchequellen als JSON-Snapshots für den Kuketz-Tagesbrief und das Themenradar.
 
-## Quellen und Status
+## Quellen
 
-**Statusdefinitionen:** »Snapshot vorhanden« bedeutet, dass eine JSON-Datei im Repository tatsächlich nachgewiesen wurde, **nicht**, dass der aktuelle Lauf erfolgreich oder der Inhalt vollständig ist. »Integration offen« bedeutet, dass Skript und Workflow konfiguriert sind, aber noch kein erfolgreicher API-Abruf mit erzeugtem Snapshot bestätigt wurde.
-
-| JSON-Datei | Ursprungsquelle / Inhalt | Status |
-| --- | --- | --- |
-| `data/security.json` | BSI/CERT-Bund - technische Sicherheitshinweise | Snapshot vorhanden |
-| `data/buergercert.json` | BSI - BürgerCERT-Warnungen | Snapshot vorhanden |
-| `data/cisa-kev.json` | CISA - Known Exploited Vulnerabilities, Ausschnitt des validierten Gesamtkatalogs | Snapshot vorhanden |
-| `data/bfdi.json` | BfDI - amtliche Presseübersicht | Snapshot vorhanden |
-| `data/curia.json` | CURIA - Pressemitteilungen | Snapshot vorhanden |
-| `data/eu-rechtsprechung.json` | EU CELLAR - Rechtsprechungsmetadaten | Snapshot vorhanden |
-| `data/noyb.json` | noyb - Nachrichten | Snapshot vorhanden |
-| `data/eu-digital-strategy.json` | EU-Kommission - Digital Strategy | Snapshot vorhanden |
-| `data/edps-mastodon.json` | EDPS - offizielles Mastodon-Konto | Snapshot vorhanden |
-| `data/edpb.json` | EDPB - Nachrichten | Snapshot vorhanden |
-| `data/heise.json` | heise online - allgemeiner Nachrichtenfeed | Snapshot vorhanden |
-| `data/golem.json` | Golem.de - allgemeiner Nachrichtenfeed | Snapshot vorhanden |
-| `data/bluesky.json` | Bluesky - neun Suchbegriffe und zehn ausgewählte Accounts | Snapshot vorhanden |
-| `data/github-advisories.json` | GitHub Advisory Database - aktuelle geprüfte Advisories | **Integration offen** |
-| `data/nvd.json` | NVD - neu veröffentlichte CVEs | **Integration offen** |
-| `data/epss.json` | FIRST EPSS - ergänzende Ausnutzungswahrscheinlichkeit | **Integration offen** |
-
-Die Statusangaben beruhen auf einer Prüfung der Repository-Dateien am **20.10.2026**. Sie sind keine automatisch aktualisierte Laufzeitüberwachung. Bei den drei neuen Schwachstellenquellen ist bislang **kein produktiver JSON-Snapshot nachgewiesen**. Erst nach API-Prüfung, erfolgreicher Aktualisierung und Integrationstest darf ihre erweiterte Abdeckung als bestätigt gelten.
+| JSON-Datei | Ursprungsquelle / Inhalt |
+| --- | --- |
+| `data/security.json` | BSI/CERT-Bund - technische Sicherheitshinweise |
+| `data/buergercert.json` | BSI - BürgerCERT-Warnungen |
+| `data/cisa-kev.json` | CISA - Known Exploited Vulnerabilities, Ausschnitt des validierten Gesamtkatalogs |
+| `data/bfdi.json` | BfDI - amtliche Presseübersicht |
+| `data/curia.json` | CURIA - Pressemitteilungen |
+| `data/eu-rechtsprechung.json` | EU CELLAR - Rechtsprechungsmetadaten |
+| `data/noyb.json` | noyb - Nachrichten |
+| `data/eu-digital-strategy.json` | EU-Kommission - Digital Strategy |
+| `data/edps-mastodon.json` | EDPS - offizielles Mastodon-Konto |
+| `data/edpb.json` | EDPB - Nachrichten |
+| `data/heise.json` | heise online - allgemeiner Nachrichtenfeed |
+| `data/golem.json` | Golem.de - allgemeiner Nachrichtenfeed |
+| `data/bluesky.json` | Bluesky - neun Suchbegriffe und zehn ausgewählte Accounts |
+| `data/github-advisories.json` | GitHub Advisory Database - aktuelle geprüfte Advisories |
+| `data/nvd.json` | NVD - neu veröffentlichte CVEs |
+| `data/epss.json` | FIRST EPSS - ergänzende Ausnutzungswahrscheinlichkeit |
 
 ## Umfang und Grenzen
 
@@ -36,12 +32,12 @@ Die Statusangaben beruhen auf einer Prüfung der Repository-Dateien am **20.10.2
 - **noyb und EU-Kommission:** Ergänzende Nachrichten- und Policy-Signale. Stellungnahmen, Beschwerden und Vorhaben nicht mit rechtskräftigen Feststellungen oder geltendem Recht verwechseln.
 - **heise und Golem:** Allgemeine redaktionelle Feeds ohne Themenfilter, nicht notwendigerweise vollständige Sieben-Tage-Archive.
 - **Bluesky:** Öffentliche Posts aus einem 24-Stunden-Fenster, neun Suchbegriffe (einschließlich `Überwachung` und `surveillance`) sowie zehn Accounts. Account-Antworten und Reposts werden ausgeschlossen, Treffer dedupliziert. Nur ergänzende Hinweise für **A und B**, keine Primärbelege.
-- **GitHub Advisory Database und NVD:** Vorgesehene begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen. **Noch nicht erfolgreich end-to-end verifiziert.**
-- **EPSS:** Vorgesehene Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**. **Noch nicht erfolgreich end-to-end verifiziert.**
+- **GitHub Advisory Database und NVD:** Begrenzte Abfrage der letzten 72 Stunden. GitHub maximal 100 Ergebnisse, NVD maximal 200 Ergebnisse je Lauf, keine Vollständigkeitsgarantie bei größeren Ergebnismengen.
+- **EPSS:** Anreicherung für höchstens 50 ausgewählte CVEs. EPSS schätzt die Ausnutzungswahrscheinlichkeit und ist **kein Beleg für aktive Ausnutzung**.
 
 ## Aktualisierung und Nutzung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **06:15 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert.
+[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **06:15 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert. Ob eine Datei erfolgreich aktualisiert wurde, ist anhand des jeweiligen Workflow-Laufs und ihres Zeitstempels zu prüfen.
 
 Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens einmal über die öffentliche URL:
 
