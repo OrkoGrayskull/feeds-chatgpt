@@ -152,7 +152,8 @@ def main():
             })
             print("OK:", name, len(items), "items")
         except Exception as exc:
-            failures.append(name)
+            if not feed.get("optional", False):
+                failures.append(name)
             print("ERROR:", name, str(exc), file=sys.stderr)
     if failures:
         print("Failed feeds:", ", ".join(failures), file=sys.stderr)
