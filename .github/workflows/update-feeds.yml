@@ -10,6 +10,7 @@ on:
       - 'scripts/update_extra.py'
       - 'scripts/update_cellar.py'
       - 'scripts/update_bluesky.py'
+      - 'scripts/update_vulnerabilities.py'
       - '.github/workflows/update-feeds.yml'
   schedule:
     # UTC candidates for 06:15 Europe/Berlin, both CET and CEST.
@@ -70,6 +71,10 @@ jobs:
         if: steps.local_time.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/update_bluesky.py
+      - name: Fetch optional vulnerability signals
+        if: steps.local_time.outputs.run == 'true'
+        continue-on-error: true
+        run: python scripts/update_vulnerabilities.py
       - name: Commit refreshed JSON snapshots
         if: steps.local_time.outputs.run == 'true'
         run: |
