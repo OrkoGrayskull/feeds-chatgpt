@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "feeds.json"
@@ -64,7 +64,7 @@ def download(url):
         raise ValueError("Empty or oversized feed")
     return result
 
-def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
+def parse_feed(content, max_items=MAX_ITEMS, description_limit=None, legacy_link_base=None):
     root = ET.fromstring(content)
     result = []
     if root.tag == "rss":
@@ -98,6 +98,14 @@ def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
             })
     else:
         raise ValueError("Unsupported feed format (expected RSS 1.0/RDF, RSS 2.0 or Atom)")
+    if legacy_link_base:
+        # BayLfD may publish HTTP or relative item links.
+        # Normalize only links pointing to the official authority domain.
+        for item in result:
+            link = urljoin(legacy_link_base, item["link"])
+            parsed = urlparse(link)
+            if parsed.scheme in ("http", "https") and parsed.hostname in ("datenschutz-bayern.de", "www.datenschutz-bayern.de"):
+                item["link"] = parsed._replace(scheme="https").geturl()
     result = [item for item in result if item["title"] and urlparse(item["link"]).scheme == "https"]
     if not result:
         raise ValueError("No valid feed entries")
@@ -130,7 +138,7 @@ def main():
         if urlparse(url).scheme != "https":
             raise ValueError("Only HTTPS URLs are supported")
         try:
-            items = parse_feed(download(url), max_items=feed.get("max_items", MAX_ITEMS), description_limit=feed.get("description_limit"))
+            items = parse_feed(download(url), max_items=feed.get("max_items", MAX_ITEMS), description_limit=feed.get("description_limit"), legacy_link_base=url if name == "baylfd" else None)
             if name == "curia":
                 archive_path = OUT / "curia.json"
                 if archive_path.exists():
