@@ -45,7 +45,7 @@
 
 ## Aktualisierung und Nutzung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **06:15 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert. Ob eine Datei erfolgreich aktualisiert wurde, ist anhand des jeweiligen Workflow-Laufs und ihres Zeitstempels zu prüfen.
+[GitHub Actions](.github/workflows/update-feeds.yml) ist für eine tägliche Aktualisierung um **07:00 Uhr (Europe/Berlin)** konfiguriert und kann manuell ausgelöst werden. Geplante Läufe können sich verzögern oder ausfallen. Die Quellenkonfiguration steht in [feeds.json](feeds.json), zusätzliche Quellen werden über eigene Skripte aktualisiert. Ob eine Datei erfolgreich aktualisiert wurde, ist anhand des jeweiligen Workflow-Laufs und ihres Zeitstempels zu prüfen.
 
 Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens einmal über die öffentliche URL:
 
