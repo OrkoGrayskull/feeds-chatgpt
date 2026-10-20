@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 BASE = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
-QUERIES = ["CVE", "actively exploited", "security advisory", "Datenschutz", "DSGVO", "GDPR", "data breach", "privacy", "Überwachung", "surveillance"]
+QUERIES = ["CVE", "actively exploited", "security advisory", "Datenschutz", "DSGVO", "GDPR", "data breach", "Überwachung", "surveillance"]
 ACCOUNTS = [
     "noyb.eu", "datenschutz.bsky.social", "bleepingcomputer.com",
     "ammir.bsky.social", "responsible.fyi", "eff.org",
