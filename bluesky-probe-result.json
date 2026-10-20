@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-10-20T09:37:55.992496+00:00",
+  "checks": [
+    {
+      "host": "https://public.api.bsky.app",
+      "query": "CVE",
+      "http_status": 403,
+      "error": "HTTP error"
+    },
+    {
+      "host": "https://public.api.bsky.app",
+      "query": "Datenschutz",
+      "http_status": 403,
+      "error": "HTTP error"
+    },
+    {
+      "host": "https://api.bsky.app",
+      "query": "CVE",
+      "http_status": 200,
+      "post_count": 5,
+      "has_timestamps": true,
+      "has_uris": true
+    },
+    {
+      "host": "https://api.bsky.app",
+      "query": "Datenschutz",
+      "http_status": 200,
+      "post_count": 5,
+      "has_timestamps": true,
+      "has_uris": true
+    }
+  ]
+}
