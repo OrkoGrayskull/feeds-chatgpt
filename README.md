@@ -16,11 +16,11 @@ Neutrale Sammlung öffentlich verfügbarer Datenquellen für automatisierte Rech
 | `data/eu-digital-strategy.json` | EU-Kommission, Digital Strategy | Bis 20 RSS-Einträge, aktuell liefert die Quelle 10 |
 | `data/edps-mastodon.json` | Offizielles EDPS-Mastodon-Konto | Bis 50 datierte RSS-Beiträge, derzeit 20, **kein vollständiges Presse-/News-Archiv** |
 
-Die BfDI-Datei umfasst nur die auf der Presseübersicht sichtbaren Mitteilungen, **nicht alle** Veröffentlichungen der Behörde. `data/infocuria-probe.json` und `data/cellar-probe.json` sind historische Testdateien und **keine** produktiven Feeds; für Rechtsprechung wird `data/eu-rechtsprechung.json` genutzt.
+Die BfDI-Datei umfasst ausschließlich die Presseübersicht, nicht sämtliche Veröffentlichungen der Behörde. Für Rechtsprechung wird `data/eu-rechtsprechung.json` genutzt.
 
 ## Unbestätigte Datenquellen
 
-Die offizielle EDPS-Presse- und News-Website sowie beide zuvor getesteten RSS-Endpunkte liefern aus GitHub Actions HTTP 403. Die blockierten RSS-Kandidaten bleiben mit `manual_only: true` dokumentiert und werden nicht täglich erneut abgerufen. Als **ergänzender offizieller Mitteilungskanal** funktioniert https://social.edps.europa.eu/@EDPS.rss und wird unter `data/edps-mastodon.json` veröffentlicht. Der Mastodon-Feed ersetzt keine vollständige Presse-/News-Übersicht; einzelne EDPS-Veröffentlichungen können fehlen. Eine `data/edps.json` wird nicht vorgetäuscht.
+Die EDPS-Presse- und News-Seiten waren für den automatisierten Abruf nicht erreichbar (HTTP 403). Der produktive Spiegel `data/edps-mastodon.json` basiert auf dem offiziellen EDPS-Mastodon-RSS. Er ersetzt keine vollständige Presse- oder News-Übersicht.
 
 ## Abruf und Aktualität
 
