@@ -20,6 +20,9 @@ OUT = ROOT / "data"
 MAX_BYTES = 3_000_000
 MAX_ITEMS = 100
 ATOM = "{http://www.w3.org/2005/Atom}"
+RDF = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
+RSS1 = "{http://purl.org/rss/1.0/}"
+DC = "{http://purl.org/dc/elements/1.1/}"
 
 class StripHTML(HTMLParser):
     def __init__(self):
@@ -72,6 +75,15 @@ def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
                 "published": iso_date(item.findtext("pubDate")),
                 "description": clean(item.findtext("description"))[:description_limit] if description_limit else clean(item.findtext("description")),
             })
+    elif root.tag == RDF + "RDF":
+        for item in root.findall(RSS1 + "item")[:max_items]:
+            desc = clean(item.findtext(RSS1 + "description"))
+            result.append({
+                "title": clean(item.findtext(RSS1 + "title")),
+                "link": (item.findtext(RSS1 + "link") or "").strip(),
+                "published": iso_date(item.findtext(DC + "date")),
+                "description": desc[:description_limit] if description_limit else desc,
+            })
     elif root.tag == ATOM + "feed":
         for entry in root.findall(ATOM + "entry")[:max_items]:
             links = entry.findall(ATOM + "link")
@@ -85,7 +97,7 @@ def parse_feed(content, max_items=MAX_ITEMS, description_limit=None):
                 "description": clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content"))[:description_limit] if description_limit else clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content")),
             })
     else:
-        raise ValueError("Unsupported feed format (expected RSS 2.0 or Atom)")
+        raise ValueError("Unsupported feed format (expected RSS 1.0/RDF, RSS 2.0 or Atom)")
     result = [item for item in result if item["title"] and urlparse(item["link"]).scheme == "https"]
     if not result:
         raise ValueError("No valid feed entries")
