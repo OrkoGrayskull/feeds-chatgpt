@@ -127,10 +127,14 @@ def parse_feed(content, max_items=MAX_ITEMS, description_limit=None, legacy_link
             selected = next((x for x in links if x.get("rel", "alternate") == "alternate" and x.get("href")), None)
             if selected is None:
                 selected = next((x for x in links if x.get("href")), None)
+            publication_date = iso_date(entry.findtext(ATOM + "published"))
+            update_date = iso_date(entry.findtext(ATOM + "updated"))
             result.append({
                 "title": clean(entry.findtext(ATOM + "title")),
                 "link": selected.get("href", "") if selected is not None else "",
-                "published": iso_date(entry.findtext(ATOM + "updated") or entry.findtext(ATOM + "published")),
+                "published": publication_date or update_date,
+                "updated": update_date,
+                "publication_date_source": "published" if publication_date else "updated_fallback",
                 "description": clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content"))[:description_limit] if description_limit else clean(entry.findtext(ATOM + "summary") or entry.findtext(ATOM + "content")),
             })
     else:
