@@ -17,6 +17,7 @@ START = datetime.combine(START_DAY, datetime.min.time(), tzinfo=common.BERLIN).a
 CVE = re.compile(r"^CVE-\d{4}-\d{4,}$")
 HEADERS = {"User-Agent": "feeds-chatgpt/1.0", "Accept": "application/json"}
 OUT = Path(__file__).resolve().parents[1] / "data"
+EPSS_LIMIT = 50
 
 def fetch(url, timeout=25):
     with urlopen(Request(url, headers=HEADERS), timeout=timeout) as response:
@@ -93,10 +94,42 @@ def nvd():
     items.sort(key=lambda x: (x["published"] or "", x["cve"]), reverse=True)
     return url, items, total
 
+def select_epss_cves(kev_cves, github_cves, nvd_cves):
+    """Prioritize exploited CVEs while reserving EPSS coverage for each source.
+
+    Each source receives a guaranteed allocation when it has enough distinct
+    candidates. Unused places are reassigned, without duplicate CVEs or calls.
+    """
+    groups = ((kev_cves, 20), (github_cves, 15), (nvd_cves, 15))
+    result, seen = [], set()
+
+    def append(values, cap):
+        added = 0
+        for cve in values:
+            if not isinstance(cve, str) or not CVE.fullmatch(cve) or cve in seen:
+                continue
+            result.append(cve)
+            seen.add(cve)
+            added += 1
+            if len(result) == EPSS_LIMIT or added >= cap:
+                break
+
+    for values, reserved in groups:
+        if len(result) == EPSS_LIMIT:
+            break
+        append(values, reserved)
+    # Backfill without overriding the other sources' reserved slots.
+    for values in (kev_cves, nvd_cves, github_cves):
+        if len(result) == EPSS_LIMIT:
+            break
+        append(values, EPSS_LIMIT - len(result))
+    return result
+
+
 def epss(cves):
     if not cves:
         return None, []
-    url = "https://api.first.org/data/v1/epss?" + urlencode({"cve": ",".join(cves[:50])})
+    url = "https://api.first.org/data/v1/epss?" + urlencode({"cve": ",".join(cves[:EPSS_LIMIT])})
     data = fetch(url)
     rows = data.get("data")
     if not isinstance(rows, list):
@@ -114,30 +147,35 @@ def save(name, source, items, **extra):
 
 def main():
     errors = []
-    candidates = []
+    github_cves, nvd_cves, kev_cves = [], [], []
     try:
         url, items = github()
         save("github-advisories", url, items)
-        candidates += [x["cve"] for x in items if x.get("cve") and CVE.fullmatch(x["cve"])]
+        github_cves = [x["cve"] for x in items if x.get("cve") and CVE.fullmatch(x["cve"])]
     except Exception as exc:
         errors.append("github-advisories: " + str(exc))
     try:
         url, items, total = nvd()
         save("nvd", url, items, total_results=total, truncated=total > len(items),
              selection="latest_published", start_index=max(0, total - 200))
-        candidates += [x["cve"] for x in items if x.get("cvss") is not None and x["cvss"] >= 8.0]
+        # High severity first, then publication recency. NVD must not be
+        # crowded out just because GitHub returned many reviewed advisories.
+        nvd_cves = [x["cve"] for x in sorted(
+            items, key=lambda x: (x.get("cvss") or 0, x.get("published") or ""), reverse=True
+        ) if x.get("cvss") is not None and x["cvss"] >= 8.0]
     except Exception as exc:
         errors.append("nvd: " + str(exc))
     # EPSS is an enrichment, not a discovery feed. Include fresh KEV entries if available.
     try:
         kev = json.loads((OUT / "cisa-kev.json").read_text(encoding="utf-8"))
         if kev.get("feed") == "cisa-kev":
-            candidates = [x.get("cveID") for x in kev.get("items", [])[:30] if CVE.fullmatch(x.get("cveID", ""))] + candidates
+            kev_cves = [x.get("cveID") for x in kev.get("items", [])[:30]
+                        if CVE.fullmatch(x.get("cveID", ""))]
     except (OSError, ValueError, TypeError):
         pass
-    # Unique bounded CVEs, one call.
+    # Balanced, deduplicated candidate set; a single bounded EPSS request.
     try:
-        cves = list(dict.fromkeys(candidates))[:50]
+        cves = select_epss_cves(kev_cves, github_cves, nvd_cves)
         if cves:
             url, items = epss(cves)
             if not items:
