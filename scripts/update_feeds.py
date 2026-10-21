@@ -204,6 +204,24 @@ def merge_security_history(items, now):
         "note": "Rolling observed BSI items; gaps in the upstream feed cannot be ruled out.",
     }
 
+def trim_failed_optional_snapshot(name, now):
+    """On a failed optional fetch, drop outdated cached items without faking a refresh."""
+    path = OUT / (name + ".json")
+    if not path.exists():
+        return
+    snapshot = json.loads(path.read_text(encoding="utf-8"))
+    if snapshot.get("feed") != name or not isinstance(snapshot.get("items"), list):
+        raise ValueError("Invalid optional snapshot cache")
+    previous = snapshot["items"]
+    current = recent_items(previous, now)
+    start, end = berlin_window(now)
+    snapshot.setdefault("source_count", len(previous))
+    snapshot.update({"items": current, "count": len(current), "window_days": RECENT_DAYS,
+                     "window_start": start.isoformat(), "window_end": end.isoformat()})
+    # Important: NEVER change fetched_at when the actual upstream request failed.
+    write_json(path, snapshot)
+
+
 def main():
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     feeds = config["feeds"]
@@ -242,6 +260,11 @@ def main():
         except Exception as exc:
             if not feed.get("optional", False):
                 failures.append(name)
+            else:
+                try:
+                    trim_failed_optional_snapshot(name, datetime.now(timezone.utc))
+                except Exception as cache_exc:
+                    print("WARN: optional cache trim:", name, str(cache_exc), file=sys.stderr)
             print("ERROR:", name, str(exc), file=sys.stderr)
     if failures:
         print("Failed feeds:", ", ".join(failures), file=sys.stderr)
