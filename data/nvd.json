@@ -1,136 +1,10 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-17T20%3A36%3A01.000&pubEndDate=2026-10-20T20%3A36%3A01.000&resultsPerPage=200",
-  "fetched_at": "2026-10-20T20:36:01+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-18T05%3A36%3A11.000&pubEndDate=2026-10-21T05%3A36%3A11.000&resultsPerPage=200",
+  "fetched_at": "2026-10-21T05:36:11+00:00",
   "window_hours": 72,
   "count": 200,
   "items": [
-    {
-      "cve": "CVE-2026-111865",
-      "title": "CVE-2026-111865",
-      "description": "A security flaw has been discovered in THU-MIG yoloe up to 40cd606cabdbe2b566d6f14a6b162c89206e9a1b. This affects the function eval of the file ultralytics/nn/autobackend.py of the component AutoBackend Model Loading. The manipulation of the argument imgsz/names/kpt_shape results in improper neutralization of directives in dynamically evaluated code. The attack requires a local approach. The exploit has been released to the public and may be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-17T21:16:25.793",
-      "last_modified": "2026-10-19T22:10:00.130",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111865"
-    },
-    {
-      "cve": "CVE-2026-105391",
-      "title": "CVE-2026-105391",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-17T23:16:55.053",
-      "last_modified": "2026-10-18T22:10:00.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105391"
-    },
-    {
-      "cve": "CVE-2026-107274",
-      "title": "CVE-2026-107274",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-17T23:16:55.140",
-      "last_modified": "2026-10-18T22:10:00.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107274"
-    },
-    {
-      "cve": "CVE-2026-107345",
-      "title": "CVE-2026-107345",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-17T23:16:55.203",
-      "last_modified": "2026-10-18T22:10:00.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107345"
-    },
-    {
-      "cve": "CVE-2026-107772",
-      "title": "CVE-2026-107772",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-17T23:16:55.260",
-      "last_modified": "2026-10-18T22:10:00.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107772"
-    },
-    {
-      "cve": "CVE-2026-108117",
-      "title": "CVE-2026-108117",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-17T23:16:55.320",
-      "last_modified": "2026-10-18T22:10:00.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108117"
-    },
-    {
-      "cve": "CVE-2026-111866",
-      "title": "CVE-2026-111866",
-      "description": "A weakness has been identified in nemoTyrant manong up to 7c9e5228e133b9267ad3a415833bc9bb53193bb4. This impacts the function cache/del_cache/arr2sql of the file func.php. This manipulation causes sql injection. The attack may be initiated remotely. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The reported GitHub issue was closed with the reason \"completed\". However, it was not possible to determine the PR or commit which could have fixed this issue.",
-      "published": "2026-10-18T00:16:37.960",
-      "last_modified": "2026-10-19T17:17:04.660",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111866"
-    },
-    {
-      "cve": "CVE-2026-111868",
-      "title": "CVE-2026-111868",
-      "description": "A vulnerability was determined in datastax pulsar-jms up to 9.0.3. This issue affects the function decode of the file pulsar-jms/src/main/java/com/datastax/oss/pulsar/jms/messages/PulsarObjectMessage.java. This manipulation causes deserialization. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-18T01:16:34.483",
-      "last_modified": "2026-10-19T22:17:03.967",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111868"
-    },
-    {
-      "cve": "CVE-2026-111997",
-      "title": "CVE-2026-111997",
-      "description": "ip-address before 10.7.4 allows a denial of service (CPU consumption from quadratic complexity, and application stall) via many % characters in input reaching a function call that uses the Address6 constructor.",
-      "published": "2026-10-18T01:16:35.463",
-      "last_modified": "2026-10-19T21:13:39.973",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111997"
-    },
-    {
-      "cve": "CVE-2026-111869",
-      "title": "CVE-2026-111869",
-      "description": "A vulnerability was identified in makeplane plane up to 1.4.2. Impacted is an unknown function of the component API Endpoint. Such manipulation of the argument X-Forwarded-For leads to reliance on untrusted inputs in a security decision. It is possible to launch the attack remotely. The exploit is publicly available and might be used.",
-      "published": "2026-10-18T03:16:28.970",
-      "last_modified": "2026-10-18T03:16:30.107",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111869"
-    },
-    {
-      "cve": "CVE-2026-111870",
-      "title": "CVE-2026-111870",
-      "description": "A security flaw has been discovered in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. The affected element is the function isAdmin of the file admin/admin.php. Performing a manipulation results in missing authentication. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-18T04:16:31.750",
-      "last_modified": "2026-10-19T16:17:04.220",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111870"
-    },
-    {
-      "cve": "CVE-2026-111871",
-      "title": "CVE-2026-111871",
-      "description": "A weakness has been identified in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. The impacted element is an unknown function of the file qsdb/usersdb/brandb/topicsdb/subjectsdb.php. Executing a manipulation of the argument query/qtype/sortname/sortorder can lead to sql injection. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-18T04:16:35.227",
-      "last_modified": "2026-10-19T17:17:04.803",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111871"
-    },
-    {
-      "cve": "CVE-2026-111872",
-      "title": "CVE-2026-111872",
-      "description": "A security vulnerability has been detected in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. This affects the function MySQLDB::valid/MySQLDB::getresults/MySQLDB::noresults/MySQLDB::getExams/MySQLDB::latestExamID/MySQLDB::getreport of the file results.php/include/database.php. The manipulation of the argument id/user/topic leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-18T04:16:35.433",
-      "last_modified": "2026-10-19T22:17:04.097",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111872"
-    },
-    {
-      "cve": "CVE-2026-111873",
-      "title": "CVE-2026-111873",
-      "description": "A vulnerability was detected in itsmeravitejak Online-Examination-System up to e6208e630b14657999bbfe4c9912302d2a1e2449. This impacts the function MySQLDB::topicslist of the file exammanger.php of the component AJAX Endpoint. The manipulation of the argument subject results in sql injection. The attack may be launched remotely. The exploit is now public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-18T05:16:27.920",
-      "last_modified": "2026-10-19T15:16:45.150",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111873"
-    },
     {
       "cve": "CVE-2026-111874",
       "title": "CVE-2026-111874",
@@ -1804,8 +1678,134 @@
       "last_modified": "2026-10-19T10:19:08.960",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98534"
+    },
+    {
+      "cve": "CVE-2026-98535",
+      "title": "CVE-2026-98535",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfsl/fman: Fix clk reference leak in read_dts_node()\n\nof_clk_get() returns a clock with its reference count incremented, but\nread_dts_node() only uses it to read the rate and never calls clk_put().\nThe clock is not stored anywhere, so the reference cannot be released\nlater either.\n\nRelease the clock once its rate has been read, which also covers the\nerror path taken when the rate is zero.",
+      "published": "2026-10-18T16:17:05.223",
+      "last_modified": "2026-10-19T10:19:09.080",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98535"
+    },
+    {
+      "cve": "CVE-2026-98536",
+      "title": "CVE-2026-98536",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwriteback: report a Tasks-RCU quiescent state per cgwb drain pass\n\ncleanup_offline_cgwbs_workfn() drains a dying cgwb by calling\ncleanup_offline_cgwb() until it returns false, with a cond_resched()\nbetween passes.  On a CONFIG_PREEMPTION kernel that cond_resched() does\nnothing: _cond_resched() is a plain \"return 0\", and under PREEMPT_DYNAMIC\nthe full and lazy modes disable it.  Since commit 7dadeaa6e851 (\"sched:\nFurther restrict the preemption modes\") those are the only two models on\nthe architectures with PREEMPT_LAZY support, arm64 and x86 among them, so\nthe drain loop never reports a Tasks-RCU quiescent state.\n\nA worker draining a cgwb with millions of attached inodes runs for\nminutes.  On a 6.18 arm64 host in lazy mode the cgwb worker drained one\ndying cgroup's writeback domain for over 11 minutes.  A BPF program un",
+      "published": "2026-10-18T16:17:05.357",
+      "last_modified": "2026-10-19T10:19:09.220",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98536"
+    },
+    {
+      "cve": "CVE-2026-98537",
+      "title": "CVE-2026-98537",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nworkqueue: Fix NULL current_pwq deref in flush dependency check\n\ncheck_flush_dependency() uses current_wq_worker() to determine whether\nthe caller is a workqueue worker and then dereferences worker->current_pwq\nto test whether the current workqueue is WQ_MEM_RECLAIM.\n\ncurrent_wq_worker() only means that %current has PF_WQ_WORKER set. A\nkworker can reach check_flush_dependency() while it is not executing a\nwork item. One such path is worker_thread() acting as the pool manager,\nwhere create_worker() does GFP_KERNEL allocation and the allocation path\ninvokes the OOM notifier. In that state worker->current_pwq is NULL\nbecause current_pwq is set only by process_one_work() and cleared again\nafter the work function returns.\n\n[  416.760634][  T375] Call trace:\n[  416.760638][  T375]  check_flush_dependency+0x80/0x120 (P)\n[  416",
+      "published": "2026-10-18T16:17:05.480",
+      "last_modified": "2026-10-19T10:19:09.357",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98537"
+    },
+    {
+      "cve": "CVE-2026-98538",
+      "title": "CVE-2026-98538",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwriteback: bound cleanup_offline_cgwb() rescans by rotating scanned inodes\n\ncleanup_offline_cgwb() prepares at most WB_MAX_INODES_PER_ISW inodes\nper call and is called again until the dying wb is drained, but every\ncall walks wb->b_attached and then wb->b_dirty_time from the same end.\nInodes already prepared (they stay on the list with I_WB_SWITCH set\nuntil the switch worker runs) and inodes that cannot be switched\n(I_FREEING, I_WILL_FREE, !SB_ACTIVE, DAX, already on the target wb)\nstay where they are, so each pass rescans a growing run of them under\nwb->list_lock and a full drain is quadratic in the number of inodes on\nthe list. With ~17M inodes attached to one dying cgwb we saw this end\nin soft lockups, with CPUs reported stuck for 21-48s.\n\nWalk both lists from the oldest end and move every scanned inode to\nthe newest",
+      "published": "2026-10-18T16:17:05.613",
+      "last_modified": "2026-10-19T10:19:09.527",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98538"
+    },
+    {
+      "cve": "CVE-2026-98539",
+      "title": "CVE-2026-98539",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: use d_instantiate_new() in ntfs_create_inode() and murder syzbot's \"WARNING in do_new_mount\" saga\n\nntfs_create_inode() creates a new inode via ntfs_new_inode(). It hashes\nit with insert_inode_locked() and so it's marked as I_NEW until\nunlock_new_inode().\n\nntfs 3 calls d_instantiate() in between though... Since the dentry was\nalready hashed by the lookup before the create any path walk finds it\nwithout touching the parent's i_rwsem and so can lock the inode.\n\nIf the inode is a directory unlock_new_inode() calls\nlockdep_annotate_inode_mutex_key() and marks i_rwsem with the\ni_mutex_dir_key class.\n\nThat resets the count and the owner of a lock somebody else may already\nhold by now...\n\nsyzbot has been spamming us with the same godforsaken bug\n\n  \"WARNING in do_new_mount\"\n\nsince 2023. I can't take it anymore so I we",
+      "published": "2026-10-18T16:17:05.733",
+      "last_modified": "2026-10-19T10:19:09.680",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98539"
+    },
+    {
+      "cve": "CVE-2026-98540",
+      "title": "CVE-2026-98540",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfprobe: Terminate the fgraph_data list when the reservation is not filled\n\nfprobe_fgraph_entry() reserves shadow stack space for every fprobe with\nan exit handler, but only fills it for those whose entry handler returns\n0. fgraph_reserve_data() does not clear the area, so fprobe_return()\nparses the unused tail as headers left over from an earlier call, and an\nexit handler can run twice or despite its entry handler asking to skip\nit.\n\nWrite a zero word after the last entry to terminate the walk. A zeroed\nslot does not decode to a NULL fprobe on the arches that encode the\nheader into one unsigned long, since arch_decode_fprobe_header_fp() ORs\nin FPROBE_HEADER_MSB_PATTERN, so make read_fprobe_header() return NULL\nfor a zeroed slot.",
+      "published": "2026-10-18T16:17:05.863",
+      "last_modified": "2026-10-19T10:19:09.837",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98540"
+    },
+    {
+      "cve": "CVE-2026-98541",
+      "title": "CVE-2026-98541",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfou: reject omitted FOU_ATTR_IPPROTO on FOU_ENCAP_DIRECT\n\nCommit 7a9bc9e3f423 (\"fou: Don't allow 0 for FOU_ATTR_IPPROTO.\") added\nNLA_POLICY_MIN(NLA_U8, 1) to fou_nl_policy[FOU_ATTR_IPPROTO], which\nrejects an explicitly supplied FOU_ATTR_IPPROTO == 0 attribute with\n-ERANGE.\n\nHowever, FOU_ATTR_IPPROTO is an optional netlink attribute. When a user\nsends FOU_CMD_ADD with FOU_ATTR_TYPE set to FOU_ENCAP_DIRECT and omits\nFOU_ATTR_IPPROTO entirely, nla_policy validation succeeds and\nparse_nl_config() leaves cfg->protocol as 0 (from memset(cfg, 0,\nsizeof(*cfg))). fou_create() then creates a FOU_ENCAP_DIRECT socket with\nfou->protocol == 0.\n\nIn fou_udp_recv(), returning -fou->protocol to udp_queue_rcv_one_skb()\ntriggers IP protocol resubmission when fou->protocol > 0, whereas\nreturning 0 tells the UDP tunnel layer that the skb was",
+      "published": "2026-10-18T16:17:05.967",
+      "last_modified": "2026-10-19T10:19:09.957",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98541"
+    },
+    {
+      "cve": "CVE-2026-98542",
+      "title": "CVE-2026-98542",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncgroup/cpuset: Return PERR_NOCPUS in remote_partition_enable() on subpartitions_cpus conflict\n\nWhen a remote partition is created underneath an existing local partition\nvia a non-partition (PRS_MEMBER) intermediate cgroup, update_prstate() sees\nparent->partition_root_state == PRS_MEMBER and calls\nremote_partition_enable().\n\nCommit 86888c7bd117 (\"cgroup/cpuset: Add warnings to catch inconsistency\nin exclusive CPUs\") replaced the cpumask_intersects(tmp->new_cpus,\nsubpartitions_cpus) error check in remote_partition_enable() with\nWARN_ON_ONCE(). As a result, remote_partition_enable() emits a warning\nand proceeds to enable the remote partition on CPUs that are already\nowned by the ancestor local partition in subpartitions_cpus.\n\nThis can be reproduced on Linux 7.3.0-rc3 with:\n\n  mkdir -p /tmp/cg1\n  mount -t cgroup2 none /tmp",
+      "published": "2026-10-18T16:17:06.090",
+      "last_modified": "2026-10-19T10:19:10.107",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98542"
+    },
+    {
+      "cve": "CVE-2026-98543",
+      "title": "CVE-2026-98543",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: fs/xattr: don't assume the inode is locked in path_unlink/path_rmdir\n\nbpf_lsm_has_d_inode_locked() makes the verifier rewrite\nbpf_[set|remove]_dentry_xattr() to the _locked variants, which assume\nthat the caller already holds the inode's i_rwsem.  The path_unlink and\npath_rmdir hooks are listed, but security_path_unlink() and\nsecurity_path_rmdir() run before vfs_unlink()/vfs_rmdir() take the\nvictim inode's i_rwsem, so a sleepable BPF LSM program attached to\neither hook mutates the victim's xattrs without the lock held.\n\nDrop the two path hooks from d_inode_locked_hooks so that the verifier\nkeeps the locking bpf_[set|remove]_dentry_xattr() variants, which take\nthe lock themselves.",
+      "published": "2026-10-18T16:17:06.200",
+      "last_modified": "2026-10-19T10:19:10.220",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98543"
+    },
+    {
+      "cve": "CVE-2026-98544",
+      "title": "CVE-2026-98544",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbna: prevent IOC timer rearm during teardown\n\nbna: prevent IOC timer rearm during teardown\n\nbnad_pci_remove() and the probe disable_ioceth path call\ntimer_delete_sync() for ioc_timer, sem_timer and hb_timer, but not for\niocpf_timer.  bnad_iocpf_timeout() then takes bnad->bna_lock after\nfree_netdev() has freed the struct bnad.\n\nDeleting iocpf_timer last does not fix this.  sem_timer and\niocpf_timer rearm each other: bnad_iocpf_sem_timeout() can arm\niocpf_timer, and bnad_iocpf_timeout() arms sem_timer from\nbfa_ioc_hw_sem_get() when the semaphore is busy.\ntimer_delete_sync() only waits out its own callback.\nbnad_ioceth_disable() can time out and leave that callback live.\n\nShut all four IOC timers down with timer_shutdown_sync() on both\npaths, so a later mod_timer() is ignored.\n\nThis issue was identified during our ongoing ",
+      "published": "2026-10-18T16:17:06.300",
+      "last_modified": "2026-10-19T10:19:10.343",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98544"
+    },
+    {
+      "cve": "CVE-2026-98545",
+      "title": "CVE-2026-98545",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: libata-scsi: bound the ATA passthru sense descriptor writes\n\nWhen an ATA PASS-THROUGH command to an ATAPI device fails, the sense\nbuffer holds the device's REQUEST SENSE reply, and\nata_scsi_set_passthru_sense_fields() trusts its additional length\nbyte, sb[7], when adding the ATA Status Return descriptor.  A faulty\nor malicious device can use that to make the kernel read and write\npast the 96-byte buffer in three ways:\n\n- scsi_sense_desc_find() is passed sb[7] + 8 as the buffer length, so\n  its clamp against sb[7] does nothing and the walk runs off the end.\n- A type-9 descriptor found near the end is filled in unchecked.\n- A new descriptor at sb[8 + len] needs len + 22 bytes, not len + 14,\n  so len 75..82 writes up to 8 bytes past the end.\n\nReproduced with KASAN under qemu, with the emulated ATAPI REQUEST SENSE\nrepl",
+      "published": "2026-10-18T16:17:06.403",
+      "last_modified": "2026-10-19T10:19:10.470",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98545"
+    },
+    {
+      "cve": "CVE-2026-98546",
+      "title": "CVE-2026-98546",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64/boot: Disable trapping of PMZR_EL0 writes to EL2\n\n__init_el2_fgt2() writes one mask to both HDFGRTR2_EL2 and HDFGWTR2_EL2.\nPMZR_EL0 is write-only, so its trap bit, nPMZR_EL0, exists only in\nHDFGWTR2_EL2 and is therefore never set: a PMZR_EL0 write from the host\ntraps to EL2, where the nVHE hypervisor has no handler and BUG()s. The\nkernel never writes PMZR_EL0, but kernel.perf_user_access=1 has the PMU\ndriver set PMUSERENR_EL0.UEN for a task with a user-read event, so a\nwrite from EL0 reaches the trap and takes the host down without a panic\nmessage.\n\nAccumulate the HDFGWTR2_EL2 bits separately, as __init_el2_fgt() already\ndoes for HDFGWTR_EL2, and set nPMZR_EL0 with the other FEAT_PMUv3p9\nbits.",
+      "published": "2026-10-18T16:17:06.517",
+      "last_modified": "2026-10-19T10:19:10.600",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98546"
+    },
+    {
+      "cve": "CVE-2026-98547",
+      "title": "CVE-2026-98547",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_packet: fix integer overflow in prb_calc_retire_blk_tmo()\n\nprb_calc_retire_blk_tmo() computes in 32-bit int arithmetic:\n\n        mbits = (blk_size_in_bytes * 8) / (1024 * 1024);\n\nIf I'm reading the validation right, tp_block_size is user\ncontrolled and packet_set_ring() only rejects values that are <= 0\nas int or not page aligned, so a 256MiB block goes right through\n(and alloc_one_pg_vec_page() even has a vzalloc fallback for it).\n0x10000000 * 8 wraps to INT_MIN, and on a NIC reporting 1 Gbps\n(div == 1) the function ends up returning -2047.\n\nThe condition is actually (8 * size) mod 2^32 >= 2^31 && div == 1,\nso the trigger set is [256,512), [768,1024), [1280,1536) and\n[1792,2048) MiB. Other sizes wrap to non-negative values and faster\nlinks divide the unsigned value back below 2^31, which is why this\ndoesn't blow up ",
+      "published": "2026-10-18T16:17:06.630",
+      "last_modified": "2026-10-19T10:19:10.717",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98547"
+    },
+    {
+      "cve": "CVE-2026-98548",
+      "title": "CVE-2026-98548",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: discard the rest of the packet on a stale-cookie error\n\nWhen an association is in COOKIE-ECHOED state and the peer sends a\nbundled [ERROR(Stale Cookie)][DATA] packet from one of its non-primary\naddresses, processing the ERROR chunk takes the non-fatal stale-cookie\nretry path sctp_sf_do_5_2_6_stale(), which queues\nSCTP_CMD_DEL_NON_PRIMARY while keeping the association alive.\nsctp_cmd_del_non_primary() removes every non-primary transport -\nincluding the very transport this packet arrived on, which is still\nreferenced by the receive lookup and shared by all chunks of the\npacket via chunk->transport.\n\nsctp_assoc_rm_peer() does redirect asoc->peer.last_data_from away from\nthe removed transport, but right afterwards the bundled DATA chunk\nmakes sctp_assoc_bh_rcv() re-register\nasoc->peer.last_data_from = chunk->transport",
+      "published": "2026-10-18T16:17:06.767",
+      "last_modified": "2026-10-19T10:19:10.887",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98548"
     }
   ],
-  "total_results": 1494,
+  "total_results": 3123,
   "truncated": true
 }
