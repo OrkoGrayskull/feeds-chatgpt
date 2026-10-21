@@ -1,18 +1,54 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-18T22%3A00%3A00.000&pubEndDate=2026-10-21T10%3A50%3A51.000&resultsPerPage=200&startIndex=2461",
-  "fetched_at": "2026-10-21T10:50:51+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-18T22%3A00%3A00.000&pubEndDate=2026-10-21T11%3A29%3A46.000&resultsPerPage=200&startIndex=2465",
+  "fetched_at": "2026-10-21T11:29:46+00:00",
   "window_days": 3,
   "window_start": "2026-10-19",
   "window_end": "2026-10-21",
   "count": 200,
   "items": [
     {
+      "cve": "CVE-2026-87096",
+      "title": "CVE-2026-87096",
+      "description": "Sensitive information disclosure and manipulation due to improper authorization checks. The following products are affected: Acronis Cyber Infrastructure (ACI) before build 6.0.1-112, Acronis Cyber Infrastructure (ACI) before build 6.1.1-64, Acronis Cyber Infrastructure (ACI) before build 6.2.1-71.",
+      "published": "2026-10-21T11:17:09.600",
+      "last_modified": "2026-10-21T11:17:09.600",
+      "cvss": 3.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87096"
+    },
+    {
+      "cve": "CVE-2026-87095",
+      "title": "CVE-2026-87095",
+      "description": "Sensitive information disclosure and manipulation due to improper authorization checks. The following products are affected: Acronis Cyber Infrastructure (ACI) before build 6.0.1-112, Acronis Cyber Infrastructure (ACI) before build 6.1.1-64, Acronis Cyber Infrastructure (ACI) before build 6.2.1-71.",
+      "published": "2026-10-21T11:17:09.463",
+      "last_modified": "2026-10-21T11:17:09.463",
+      "cvss": 9.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87095"
+    },
+    {
+      "cve": "CVE-2026-58663",
+      "title": "CVE-2026-58663",
+      "description": "An authentication bypass vulnerability exists in Apache IoTDB's Thrift RPC service\n\n\n\nThis issue affects Apache IoTDB: from 2.0.0 before 2.0.11.\n\n\n\nUsers are recommended to upgrade to version 2.0.11, which fixes the issue.",
+      "published": "2026-10-21T11:17:07.950",
+      "last_modified": "2026-10-21T11:17:07.950",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58663"
+    },
+    {
+      "cve": "CVE-2026-41114",
+      "title": "CVE-2026-41114",
+      "description": "Uncontrolled Resource Consumption vulnerability in Apache IoTDB JDBC driver.\n\n\n\nThis issue affects Apache IoTDB JDBC driver: from 1.3.3 before 2.0.11.\n\n\n\nUsers are recommended to upgrade to version 2.0.11, which fixes the issue.",
+      "published": "2026-10-21T11:17:07.727",
+      "last_modified": "2026-10-21T11:17:07.727",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-41114"
+    },
+    {
       "cve": "CVE-2026-110884",
       "title": "CVE-2026-110884",
       "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in geekontheroad Live Summary for Gravity Forms live-summary-for-gravity-forms allows Reflected XSS.This issue affects Live Summary for Gravity Forms: from n/a through 1.2.10.",
       "published": "2026-10-21T10:16:55.520",
-      "last_modified": "2026-10-21T10:16:55.520",
+      "last_modified": "2026-10-21T11:17:04.857",
       "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110884"
     },
@@ -21,7 +57,7 @@
       "title": "CVE-2026-110370",
       "description": "Deserialization of Untrusted Data vulnerability in GS Plugins GS Pins for Pinterest gs-pinterest-portfolio allows Object Injection.This issue affects GS Pins for Pinterest: from n/a through 1.9.2.",
       "published": "2026-10-21T10:16:55.380",
-      "last_modified": "2026-10-21T10:16:55.380",
+      "last_modified": "2026-10-21T11:17:04.320",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110370"
     },
@@ -30,7 +66,7 @@
       "title": "CVE-2026-110369",
       "description": "Deserialization of Untrusted Data vulnerability in GS Plugins WordPress Team Members – GS Plugins gs-team-members allows Object Injection.This issue affects WordPress Team Members – GS Plugins: from n/a through 2.8.2.",
       "published": "2026-10-21T10:16:55.200",
-      "last_modified": "2026-10-21T10:16:55.200",
+      "last_modified": "2026-10-21T11:17:04.210",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110369"
     },
@@ -66,7 +102,7 @@
       "title": "CVE-2026-85683",
       "description": "The Jane Menu WordPress plugin before 1.5.1 does not have any capability or nonce checks on one of its form handlers, which is reachable by unauthenticated users, allowing them to bind any published page to a remote document of their choosing. The plugin then fetches that document and outputs its head and body into the page without escaping, so an unauthenticated attacker can run arbitrary JavaScript in the browser of any visitor to that page, including an administrator.",
       "published": "2026-10-21T09:17:08.057",
-      "last_modified": "2026-10-21T09:17:08.057",
+      "last_modified": "2026-10-21T11:17:09.200",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85683"
     },
@@ -111,7 +147,7 @@
       "title": "CVE-2026-14556",
       "description": "The HappyForms WordPress plugin before 1.26.15 does not sanitise or escape a user-controlled referral value before embedding it in the form notification email, allowing unauthenticated attackers to inject arbitrary HTML into the emails site administrators receive.",
       "published": "2026-10-21T09:17:07.173",
-      "last_modified": "2026-10-21T09:17:07.173",
+      "last_modified": "2026-10-21T11:17:07.173",
       "cvss": 5.4,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14556"
     },
@@ -147,7 +183,7 @@
       "title": "CVE-2026-107447",
       "description": "The Contest Gallery WordPress plugin before 34.0.1 does not reliably validate the visitor identity used to enforce its one-vote-per-entry restriction, trusting a client-supplied request header and an unbound client-generated token, which allows unauthenticated users to bypass the restriction and cast multiple votes for the same contest entry, inflating its vote total.",
       "published": "2026-10-21T09:17:06.307",
-      "last_modified": "2026-10-21T09:17:06.307",
+      "last_modified": "2026-10-21T11:17:02.933",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107447"
     },
@@ -156,7 +192,7 @@
       "title": "CVE-2026-105256",
       "description": "The LatePoint WordPress plugin before 5.7.5 does not validate the client-supplied value that determines how much is charged for a booking against the amounts the service and site actually allow, allowing an unauthenticated visitor to make the amount due resolve to zero and obtain a confirmed appointment and a recorded order without completing any payment.",
       "published": "2026-10-21T09:17:06.197",
-      "last_modified": "2026-10-21T09:17:06.197",
+      "last_modified": "2026-10-21T11:17:01.227",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105256"
     },
@@ -165,7 +201,7 @@
       "title": "CVE-2026-104642",
       "description": "The Simple Shopping Cart WordPress plugin before 5.3.3 does not verify submitted product prices against a value only the site owner can set, allowing users with the Contributor role and above to register attacker-chosen prices for existing products, which any visitor can then use to add those products to the cart at that price.",
       "published": "2026-10-21T09:17:06.093",
-      "last_modified": "2026-10-21T09:17:06.093",
+      "last_modified": "2026-10-21T11:17:01.110",
       "cvss": 2.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104642"
     },
@@ -174,7 +210,7 @@
       "title": "CVE-2026-104641",
       "description": "The Simple Shopping Cart WordPress plugin before 5.3.3 does not verify that a PayPal payment notification is for a payment received by the site owner's PayPal account in its default configuration, allowing unauthenticated attackers to have their orders marked as paid using a payment made to an account they control.",
       "published": "2026-10-21T09:17:05.987",
-      "last_modified": "2026-10-21T09:17:05.987",
+      "last_modified": "2026-10-21T11:17:00.997",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104641"
     },
@@ -183,7 +219,7 @@
       "title": "CVE-2026-103301",
       "description": "The Payment Gateway for Telcell WordPress plugin before 2.0.5 does not verify the authenticity of incoming payment notifications, because the secret used to sign them is empty by default, allowing unauthenticated attackers to forge a valid notification and mark arbitrary WooCommerce orders as paid. The same handler also marks an attacker-chosen order as failed when given an invalid signature.",
       "published": "2026-10-21T09:17:05.883",
-      "last_modified": "2026-10-21T09:17:05.883",
+      "last_modified": "2026-10-21T11:17:00.720",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103301"
     },
@@ -192,7 +228,7 @@
       "title": "CVE-2026-101138",
       "description": "The CMP – Coming Soon & Maintenance WordPress plugin before 4.1.21 does not correctly apply maintenance mode to pages added to its page whitelist by manually entered URL pattern, allowing unauthenticated visitors to view the content of those pages while maintenance mode is active.",
       "published": "2026-10-21T09:17:05.760",
-      "last_modified": "2026-10-21T09:17:05.760",
+      "last_modified": "2026-10-21T11:16:59.213",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101138"
     },
@@ -228,7 +264,7 @@
       "title": "CVE-2026-110899",
       "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Kevin Stover Ninja Forms ninja-forms allows Stored XSS.This issue affects Ninja Forms: from n/a through 3.15.5.",
       "published": "2026-10-21T08:16:42.670",
-      "last_modified": "2026-10-21T08:16:42.670",
+      "last_modified": "2026-10-21T11:17:04.967",
       "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110899"
     },
@@ -237,7 +273,7 @@
       "title": "CVE-2026-107435",
       "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WP Chill Strong Testimonials strong-testimonials allows Stored XSS.This issue affects Strong Testimonials: from n/a through 3.3.12.",
       "published": "2026-10-21T08:16:41.613",
-      "last_modified": "2026-10-21T08:16:41.613",
+      "last_modified": "2026-10-21T11:17:02.827",
       "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107435"
     },
@@ -246,8 +282,8 @@
       "title": "CVE-2026-96901",
       "description": "The Cart Abandonment Recovery for WooCommerce  WordPress plugin before 2.2.0 does not verify the integrity of its cart-recovery token before acting on it and still accepts an unsigned legacy token format, allowing unauthenticated attackers who know a victim's cart session identifier to modify that victim's abandoned-cart record, for example unsubscribing them from recovery emails or applying an arbitrary coupon to their restored cart.",
       "published": "2026-10-21T06:16:51.170",
-      "last_modified": "2026-10-21T06:16:51.170",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:12.797",
+      "cvss": 3.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96901"
     },
     {
@@ -264,8 +300,8 @@
       "title": "CVE-2026-92999",
       "description": "The Click n Chat (Chat Widget Integration) WordPress plugin before 1.1.3 does not perform any authorization check on a lead-export handler, allowing unauthenticated users to download every captured contact record (names, email addresses and phone numbers).",
       "published": "2026-10-21T06:16:50.920",
-      "last_modified": "2026-10-21T06:16:50.920",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:12.650",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92999"
     },
     {
@@ -273,8 +309,8 @@
       "title": "CVE-2026-92998",
       "description": "The Click n Chat (Chat Widget Integration) WordPress plugin before 1.1.3 does not sanitise sort parameters before using them in a SQL ORDER BY clause, allowing unauthenticated attackers to perform SQL injection attacks.",
       "published": "2026-10-21T06:16:50.823",
-      "last_modified": "2026-10-21T06:16:50.823",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:12.503",
+      "cvss": 8.6,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92998"
     },
     {
@@ -282,8 +318,8 @@
       "title": "CVE-2026-92997",
       "description": "The Click n Chat (Chat Widget Integration) WordPress plugin before 1.1.3 does not properly validate a parameter before using it as a column identifier in a SQL query, allowing unauthenticated attackers to perform SQL injection attacks.",
       "published": "2026-10-21T06:16:50.720",
-      "last_modified": "2026-10-21T06:16:50.720",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:12.357",
+      "cvss": 8.6,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92997"
     },
     {
@@ -291,8 +327,8 @@
       "title": "CVE-2026-88784",
       "description": "The Translate WordPress with Weglot 2.0  WordPress plugin before 6.4.3 does not escape the URLs it re-inserts into a page when rewriting links for a translated language, and reverses the encoding that was applied to them beforehand, allowing unauthenticated users to store a payload which executes in the browser of anyone viewing the page in a translated language.",
       "published": "2026-10-21T06:16:50.617",
-      "last_modified": "2026-10-21T06:16:50.617",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:10.360",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88784"
     },
     {
@@ -300,8 +336,8 @@
       "title": "CVE-2026-87838",
       "description": "The Wava Payment Plugin WordPress plugin before 0.3.10 does not perform any authorisation, nonce or origin verification on one of its public REST endpoints, allowing unauthenticated attackers to overwrite the stored credential that identifies the merchant account the store's payments are created against, to force the integration into a verified state the site owner never completed, and to remove the payment method from the store's checkout.",
       "published": "2026-10-21T06:16:50.523",
-      "last_modified": "2026-10-21T06:16:50.523",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:10.187",
+      "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87838"
     },
     {
@@ -309,8 +345,8 @@
       "title": "CVE-2026-87837",
       "description": "The Wava Payment Plugin WordPress plugin before 0.3.10 does not verify the authenticity of incoming payment-provider notifications, nor restrict who may send them, allowing unauthenticated attackers to change the status of any WooCommerce order in the store, including marking an unpaid order as paid and completed, and cancelling other customers' orders.\n\nIn versions up to 0.3.7 the response additionally returns the affected order's billing details, disclosing customer names, addresses, email addresses and phone numbers to the same unauthenticated caller.",
       "published": "2026-10-21T06:16:50.413",
-      "last_modified": "2026-10-21T06:16:50.413",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:10.027",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87837"
     },
     {
@@ -318,8 +354,8 @@
       "title": "CVE-2026-86611",
       "description": "The Download Manager WordPress plugin before 3.3.71, Download Manager WordPress plugin before 7.5.9 does not have CSRF checks in some places, allowing attackers to make a logged in admin update its privacy and storage settings via a crafted link, including the credential that gates its unauthenticated maintenance endpoint.",
       "published": "2026-10-21T06:16:50.300",
-      "last_modified": "2026-10-21T06:16:50.300",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:09.313",
+      "cvss": 4.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86611"
     },
     {
@@ -327,8 +363,8 @@
       "title": "CVE-2026-85642",
       "description": "The Formidable Forms  WordPress plugin before 7.0 does not verify the identity of the caller before recording the timestamp it uses to rate limit payment gateway verification requests, allowing unauthenticated attackers to consume the daily allowance and cause legitimate verification attempts to be refused for the next 24 hours.",
       "published": "2026-10-21T06:16:50.190",
-      "last_modified": "2026-10-21T06:16:50.190",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:09.050",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85642"
     },
     {
@@ -336,8 +372,8 @@
       "title": "CVE-2026-81813",
       "description": "The Elementor Website Builder  WordPress plugin before 4.3.5 does not sanitize the text content of SVG files, checking only their elements and attributes, allowing users with the Contributor role and above to store a payload which breaks out when the SVG is rendered inline in a page and executes in the browser of any user viewing it. Execution is specific to Chromium-based browsers; Firefox is not affected.",
       "published": "2026-10-21T06:16:49.833",
-      "last_modified": "2026-10-21T06:16:49.833",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:08.560",
+      "cvss": 6.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-81813"
     },
     {
@@ -345,8 +381,8 @@
       "title": "CVE-2026-81812",
       "description": "The Elementor Website Builder  WordPress plugin before 4.3.5 does not sanitize uploaded SVG files on every upload route, allowing users with the Author role and above to upload a file containing JavaScript, which will run in the browser of any user who opens it. Exploitation requires unfiltered file uploads to be enabled in the Elementor Website Builder  WordPress plugin before 4.3.5 settings, which is not the default.",
       "published": "2026-10-21T06:16:49.730",
-      "last_modified": "2026-10-21T06:16:49.730",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:08.387",
+      "cvss": 6.4,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-81812"
     },
     {
@@ -354,8 +390,8 @@
       "title": "CVE-2026-79627",
       "description": "The Advanced File Manager  WordPress plugin before 6.0.0 does not correctly determine whether a stored file is an SVG before sanitising it, allowing users granted file-manager access by an administrator to store a file containing script that is not stripped and that runs in the browser of anyone who opens it, including an administrator.",
       "published": "2026-10-21T06:16:49.623",
-      "last_modified": "2026-10-21T06:16:49.623",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:08.203",
+      "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79627"
     },
     {
@@ -372,8 +408,8 @@
       "title": "CVE-2026-15261",
       "description": "The TI WooCommerce Wishlist WordPress plugin before 2.13.0 does not enforce the same owner-only access control on its REST API that it applies on the front-end, allowing unauthenticated users to read the metadata and item contents of private wishlists.",
       "published": "2026-10-21T06:16:48.940",
-      "last_modified": "2026-10-21T06:16:48.940",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:07.293",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15261"
     },
     {
@@ -381,8 +417,8 @@
       "title": "CVE-2026-111957",
       "description": "The SUMIT Payment Gateway for WooCommerce WordPress plugin before 4.0.0 does not bind the payment it confirms with the provider to the order being completed, nor check the payment amount against the order total, allowing unauthenticated users to mark a pending order as paid by replaying a payment identifier obtained from any single genuine payment.",
       "published": "2026-10-21T06:16:48.840",
-      "last_modified": "2026-10-21T06:16:48.840",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:06.493",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111957"
     },
     {
@@ -390,8 +426,8 @@
       "title": "CVE-2026-111956",
       "description": "The WholesaleX  WordPress plugin before 3.0.9 does not protect or remove the user-import file it keeps in a publicly accessible location under a predictable name, allowing unauthenticated users to download the most recently imported user data, including any account passwords and customer contact and address details it contains.",
       "published": "2026-10-21T06:16:48.743",
-      "last_modified": "2026-10-21T06:16:48.743",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:06.350",
+      "cvss": 5.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111956"
     },
     {
@@ -399,8 +435,8 @@
       "title": "CVE-2026-111955",
       "description": "The WholesaleX  WordPress plugin before 3.0.9 does not check that a stored account confirmation code is set before comparing it with the one supplied in a request, allowing unauthenticated users to activate pending accounts and bypass the administrator approval required before login.",
       "published": "2026-10-21T06:16:48.643",
-      "last_modified": "2026-10-21T06:16:48.643",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:06.203",
+      "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111955"
     },
     {
@@ -408,8 +444,8 @@
       "title": "CVE-2026-111949",
       "description": "The miniOrange 2FA  WordPress plugin before 6.3.1 does not prevent a pending passkey login from registering an additional passkey on an account that already has one configured, allowing an attacker who knows a user's password to add their own authenticator and bypass the second factor.",
       "published": "2026-10-21T06:16:48.543",
-      "last_modified": "2026-10-21T06:16:48.543",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:06.063",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111949"
     },
     {
@@ -417,8 +453,8 @@
       "title": "CVE-2026-111948",
       "description": "The User Profile Builder  WordPress plugin before 4.0.1 does not escape the current page URL before outputting it in a JavaScript context on one of its admin pages, leading to Reflected Cross-Site Scripting against high-privilege users.",
       "published": "2026-10-21T06:16:48.450",
-      "last_modified": "2026-10-21T06:16:48.450",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:05.910",
+      "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111948"
     },
     {
@@ -426,8 +462,8 @@
       "title": "CVE-2026-111947",
       "description": "The Pricing Table WordPress Plugin  WordPress plugin before 4.1.3 does not perform authorisation checks when duplicating a legacy pricing table, allowing users with the contributor role and above to clone and publish any post or page on the site, including private and draft content belonging to other users.",
       "published": "2026-10-21T06:16:48.343",
-      "last_modified": "2026-10-21T06:16:48.343",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:05.743",
+      "cvss": 5.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111947"
     },
     {
@@ -435,8 +471,8 @@
       "title": "CVE-2026-111596",
       "description": "The Kliken: Ads + Pixel for Meta WordPress plugin before 1.2.3 does not verify that a visitor holds an order's key before outputting that order's details on the order confirmation page, allowing unauthenticated users to retrieve the billing location, purchased products and totals of other customers' orders by enumerating order IDs.",
       "published": "2026-10-21T06:16:48.237",
-      "last_modified": "2026-10-21T06:16:48.237",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:05.490",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111596"
     },
     {
@@ -444,8 +480,8 @@
       "title": "CVE-2026-111574",
       "description": "The Redirection for Contact Form 7 WordPress plugin before 3.2.12 does not sanitise or escape submitted form data stored as lead entries before outputting it in the lead debug metabox, allowing unauthenticated attackers to store a malicious script that executes when a logged-in user views the entry with the Redirection for Contact Form 7 WordPress plugin before 3.2.12's debug mode enabled.",
       "published": "2026-10-21T06:16:48.137",
-      "last_modified": "2026-10-21T06:16:48.137",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:05.270",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111574"
     },
     {
@@ -453,8 +489,8 @@
       "title": "CVE-2026-110982",
       "description": "The AI Engine  WordPress plugin before 3.8.6 does not check that the caller is allowed to edit the targeted object before updating its title and excerpt, allowing users with the Editor role and above to modify arbitrary posts of any type, including content they cannot otherwise edit such as navigation menus, block templates, global styles and WooCommerce coupons.",
       "published": "2026-10-21T06:16:48.030",
-      "last_modified": "2026-10-21T06:16:48.030",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:05.070",
+      "cvss": 4.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110982"
     },
     {
@@ -462,8 +498,8 @@
       "title": "CVE-2026-110651",
       "description": "The Swift Performance Lite WordPress plugin before 2.3.7.4 does not properly sanitize and escape a value before using it in a SQL statement, which could allow users with the author role and above to perform SQL injection attacks.",
       "published": "2026-10-21T06:16:47.930",
-      "last_modified": "2026-10-21T06:16:47.930",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:04.717",
+      "cvss": 6.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110651"
     },
     {
@@ -471,8 +507,8 @@
       "title": "CVE-2026-110523",
       "description": "The WP User Manager  WordPress plugin before 2.9.26 does not keep its paid-registration capability restrictions in force once the payment gateway is disconnected, while a published paid registration form continues to assign its configured role, allowing unauthenticated users to register and immediately obtain a privileged administrator-equivalent role without completing the payment meant to gate it.",
       "published": "2026-10-21T06:16:47.830",
-      "last_modified": "2026-10-21T06:16:47.830",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:04.570",
+      "cvss": 8.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110523"
     },
     {
@@ -480,8 +516,8 @@
       "title": "CVE-2026-110514",
       "description": "The WPZOOM Portfolio Lite  WordPress plugin before 1.4.34 does not check that a user is allowed to edit a post before changing its type and order, which could allow users with the contributor role and above to convert any other user's posts and pages into portfolio items, removing them from their original listings and URLs.",
       "published": "2026-10-21T06:16:47.727",
-      "last_modified": "2026-10-21T06:16:47.727",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:04.427",
+      "cvss": 4.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110514"
     },
     {
@@ -489,8 +525,8 @@
       "title": "CVE-2026-109926",
       "description": "The Productive Commerce  WordPress plugin before 1.1.49 does not perform a capability check in one of its AJAX actions and exposes the nonce that guards it on every admin-area page, allowing any authenticated user such as a subscriber to activate arbitrary Productive Commerce  WordPress plugin before 1.1.49 already installed on the site.",
       "published": "2026-10-21T06:16:47.623",
-      "last_modified": "2026-10-21T06:16:47.623",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:04.050",
+      "cvss": 4.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109926"
     },
     {
@@ -498,8 +534,8 @@
       "title": "CVE-2026-109147",
       "description": "The WP Booking System  WordPress plugin before 2.1.0.3 does not validate and escape one of its parameters before reflecting it back in an admin page, leading to Reflected Cross-Site Scripting which could be used against high privilege users such as administrators.",
       "published": "2026-10-21T06:16:47.510",
-      "last_modified": "2026-10-21T06:16:47.510",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.900",
+      "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109147"
     },
     {
@@ -507,8 +543,8 @@
       "title": "CVE-2026-108073",
       "description": "The SureCart  WordPress plugin before 4.9.5 does not restrict which related objects an anonymous visitor may include when reading a single upsell funnel through its REST API, nor strip private fields from those objects, allowing unauthenticated users to read merchant-private catalog data such as pricing, commission, stock, SKU and tax internals, including unpublished products.",
       "published": "2026-10-21T06:16:47.403",
-      "last_modified": "2026-10-21T06:16:47.403",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.630",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108073"
     },
     {
@@ -516,8 +552,8 @@
       "title": "CVE-2026-107790",
       "description": "The HireZoot  WordPress plugin before 4.1.1 does not sanitise and escape some of its stored data before outputting it in the admin dashboard, and additionally reverses the HTML-entity encoding that would otherwise neutralise it, allowing users with the Author role to perform Stored Cross-Site Scripting attacks that execute in the context of a logged-in administrator.",
       "published": "2026-10-21T06:16:47.300",
-      "last_modified": "2026-10-21T06:16:47.300",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.480",
+      "cvss": 6.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107790"
     },
     {
@@ -525,8 +561,8 @@
       "title": "CVE-2026-107789",
       "description": "The SmartyParcel  WordPress plugin before 1.23.4 does not perform authorisation checks when serving shipping label downloads, allowing unauthenticated users to obtain the shipping labels of arbitrary orders, which contain customer names, addresses and phone numbers.",
       "published": "2026-10-21T06:16:47.200",
-      "last_modified": "2026-10-21T06:16:47.200",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.340",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107789"
     },
     {
@@ -534,8 +570,8 @@
       "title": "CVE-2026-107788",
       "description": "The SmartyParcel  WordPress plugin before 1.23.4 does not perform authorisation checks when deleting shipping label records, allowing any authenticated user such as a subscriber to delete the shipping label and tracking records of arbitrary orders store-wide.",
       "published": "2026-10-21T06:16:47.100",
-      "last_modified": "2026-10-21T06:16:47.100",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.190",
+      "cvss": 4.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107788"
     },
     {
@@ -543,8 +579,8 @@
       "title": "CVE-2026-107506",
       "description": "The Simple Banner  WordPress plugin before 3.3.3 does not correctly limit the capabilities it grants to the user roles an administrator allows to manage its banners, granting such roles the full administrator capability, which allows users in a low-privileged role to escalate their privileges and fully compromise the site.",
       "published": "2026-10-21T06:16:46.993",
-      "last_modified": "2026-10-21T06:16:46.993",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:03.047",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107506"
     },
     {
@@ -552,8 +588,8 @@
       "title": "CVE-2026-107237",
       "description": "The Backup and Staging by WP Time Capsule WordPress plugin before 1.22.28 does not perform capability or nonce checks on the handler that deploys a staging site to the live site, allowing any authenticated user with a Subscriber account on a WP Time Capsule staging site to overwrite the separate live site's database and configuration and take it offline.",
       "published": "2026-10-21T06:16:46.893",
-      "last_modified": "2026-10-21T06:16:46.893",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:02.680",
+      "cvss": 8.2,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107237"
     },
     {
@@ -561,8 +597,8 @@
       "title": "CVE-2026-107128",
       "description": "The Uncanny Toolkit for LearnDash WordPress plugin before 3.8.2 does not verify that the acting user is permitted to manage the targeted accounts before changing their verification state, allowing a subsite administrator on a multisite network to mark arbitrary network users outside their own site as unverified and prevent those users from logging in.",
       "published": "2026-10-21T06:16:46.793",
-      "last_modified": "2026-10-21T06:16:46.793",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:02.527",
+      "cvss": 5.0,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107128"
     },
     {
@@ -570,8 +606,8 @@
       "title": "CVE-2026-107127",
       "description": "The Uncanny Toolkit for LearnDash WordPress plugin before 3.8.2 does not validate the origin of a password-reset request, allowing an unauthenticated attacker to set the password of a user who is partway through a password reset to an attacker-chosen value through a forged request, resulting in full account takeover.",
       "published": "2026-10-21T06:16:46.687",
-      "last_modified": "2026-10-21T06:16:46.687",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:02.373",
+      "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107127"
     },
     {
@@ -579,8 +615,8 @@
       "title": "CVE-2026-106932",
       "description": "The Moloni WordPress plugin before 5.0.14 does not perform capability or nonce checks on several of its authenticated AJAX actions, relying only on whether the site holds a stored connection to its external invoicing provider, allowing any authenticated user such as a Subscriber to generate fiscal invoices for arbitrary orders, discard arbitrary orders, and create or modify products and stock.",
       "published": "2026-10-21T06:16:46.580",
-      "last_modified": "2026-10-21T06:16:46.580",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:02.227",
+      "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106932"
     },
     {
@@ -588,8 +624,8 @@
       "title": "CVE-2026-105999",
       "description": "The Booking Package WordPress plugin before 1.7.31 does not perform authorization checks before returning calendar-account configuration in a response, allowing unauthenticated users to disclose sensitive settings including the administrator's notification email addresses.",
       "published": "2026-10-21T06:16:46.477",
-      "last_modified": "2026-10-21T06:16:46.477",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:02.080",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105999"
     },
     {
@@ -597,8 +633,8 @@
       "title": "CVE-2026-105998",
       "description": "The Booking Package WordPress plugin before 1.7.31 does not perform any authorization or validity check before resetting its premium subscription state, allowing unauthenticated attackers to disable the Booking Package WordPress plugin before 1.7.31's paid features.",
       "published": "2026-10-21T06:16:46.360",
-      "last_modified": "2026-10-21T06:16:46.360",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:01.933",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105998"
     },
     {
@@ -606,8 +642,8 @@
       "title": "CVE-2026-105996",
       "description": "The Booking Package WordPress plugin before 1.7.31 does not generate booking cancellation tokens using a secure source of randomness, deriving them instead from values it exposes publicly, so an unauthenticated attacker can reconstruct an arbitrary booking's token, disclose that booking's personal data and, where visitor cancellation is enabled, cancel the booking.",
       "published": "2026-10-21T06:16:46.260",
-      "last_modified": "2026-10-21T06:16:46.260",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:01.787",
+      "cvss": 4.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105996"
     },
     {
@@ -615,8 +651,8 @@
       "title": "CVE-2026-105992",
       "description": "The Ettrick Escape Room Booking WordPress plugin before 1.3.1 does not verify a booking's payment status against the payment provider before marking it paid and confirmed, allowing unauthenticated attackers to mark bookings as paid without paying.",
       "published": "2026-10-21T06:16:46.160",
-      "last_modified": "2026-10-21T06:16:46.160",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:01.640",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105992"
     },
     {
@@ -624,8 +660,8 @@
       "title": "CVE-2026-105262",
       "description": "The Falang multilanguage for WordPress plugin before 1.4.6 does not perform a capability check when saving term translations, and exposes a valid nonce to any logged-in user through an unprotected handler, allowing users with Subscriber-level access and above to store content that is later output without proper escaping, leading to Stored Cross-Site Scripting that executes in the context of higher-privileged users such as administrators.",
       "published": "2026-10-21T06:16:46.053",
-      "last_modified": "2026-10-21T06:16:46.053",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:01.493",
+      "cvss": 8.0,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105262"
     },
     {
@@ -633,8 +669,8 @@
       "title": "CVE-2026-105257",
       "description": "The Appointment Booking Plugin  WordPress plugin before 5.7.5 does not verify that an authenticated agent-level user is assigned to a customer before returning or searching that customer's record, allowing any agent to read and enumerate the personal information of every customer on the site, including those managed by other agents.",
       "published": "2026-10-21T06:16:45.937",
-      "last_modified": "2026-10-21T06:16:45.937",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:01.343",
+      "cvss": 2.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105257"
     },
     {
@@ -642,8 +678,8 @@
       "title": "CVE-2026-103302",
       "description": "The Payment Gateway for Idram WordPress plugin before 2.1.6 does not verify the authenticity of incoming payment notifications, because the merchant credentials used to compute their checksum are empty by default, allowing unauthenticated attackers to forge a valid payment confirmation and mark arbitrary orders as paid, and to force arbitrary orders into a failed state regardless of the gateway's configuration.",
       "published": "2026-10-21T06:16:45.827",
-      "last_modified": "2026-10-21T06:16:45.827",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:00.847",
+      "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103302"
     },
     {
@@ -651,8 +687,8 @@
       "title": "CVE-2026-102499",
       "description": "The Modern Events Calendar Lite WordPress plugin before 7.37.0, Modern Event Calendar Pro WordPress plugin before 7.37.0 do not sanitise and escape a parameter before using it in a SQL statement, which allows authenticated users with Subscriber-level access and above to append additional SQL queries into already existing queries and extract sensitive data from the database.",
       "published": "2026-10-21T06:16:45.713",
-      "last_modified": "2026-10-21T06:16:45.713",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:17:00.567",
+      "cvss": 7.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102499"
     },
     {
@@ -660,8 +696,8 @@
       "title": "CVE-2026-100145",
       "description": "The Synchrony Financing WordPress plugin before 1.1.2 does not properly authorise requests to one of its REST routes that modifies WooCommerce orders, allowing unauthenticated attackers to reassign any order to an account they control, tamper with its details, and read the associated customer's personal data.",
       "published": "2026-10-21T06:16:44.480",
-      "last_modified": "2026-10-21T06:16:44.480",
-      "cvss": null,
+      "last_modified": "2026-10-21T11:16:57.880",
+      "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100145"
     },
     {
@@ -1767,49 +1803,13 @@
       "title": "CVE-2026-91665",
       "description": "Vulnerability in Oracle Essbase (component: Security).   The supported version that is affected is 21.8.3.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Essbase.  Successful attacks of this vulnerability can result in takeover of Oracle Essbase. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
       "published": "2026-10-20T22:21:06.960",
-      "last_modified": "2026-10-20T22:21:06.960",
+      "last_modified": "2026-10-21T11:17:12.240",
       "cvss": 9.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91665"
-    },
-    {
-      "cve": "CVE-2026-91664",
-      "title": "CVE-2026-91664",
-      "description": "Vulnerability in Oracle Essbase (component: Security).   The supported version that is affected is 21.8.3.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Essbase.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Essbase. CVSS 3.1 Base Score 7.5 (Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).",
-      "published": "2026-10-20T22:21:06.847",
-      "last_modified": "2026-10-20T22:21:06.847",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91664"
-    },
-    {
-      "cve": "CVE-2026-91663",
-      "title": "CVE-2026-91663",
-      "description": "Vulnerability in Oracle Essbase (component: Security).   The supported version that is affected is 21.8.3.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Oracle Essbase.  While the vulnerability is in Oracle Essbase, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle Essbase. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
-      "published": "2026-10-20T22:21:06.723",
-      "last_modified": "2026-10-20T22:21:06.723",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91663"
-    },
-    {
-      "cve": "CVE-2026-91662",
-      "title": "CVE-2026-91662",
-      "description": "Vulnerability in Oracle Essbase (component: Java Based Agent).   The supported version that is affected is 21.8.3.0.0. Difficult to exploit vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Essbase executes to compromise Oracle Essbase.  While the vulnerability is in Oracle Essbase, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Essbase accessible data as well as  unauthorized update, insert or delete access to some of Oracle Essbase accessible data. CVSS 3.1 Base Score 6.4 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:N).",
-      "published": "2026-10-20T22:21:06.610",
-      "last_modified": "2026-10-20T22:21:06.610",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91662"
-    },
-    {
-      "cve": "CVE-2026-91661",
-      "title": "CVE-2026-91661",
-      "description": "Vulnerability in Oracle Essbase (component: Security).   The supported version that is affected is 21.8.3.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Essbase.  While the vulnerability is in Oracle Essbase, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Essbase accessible data. CVSS 3.1 Base Score 7.7 (Confidentiality impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).",
-      "published": "2026-10-20T22:21:06.493",
-      "last_modified": "2026-10-20T22:21:06.493",
-      "cvss": 7.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91661"
     }
   ],
-  "total_results": 2661,
+  "total_results": 2665,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 2461
+  "start_index": 2465
 }
