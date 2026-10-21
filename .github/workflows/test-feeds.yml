@@ -1,0 +1,25 @@
+name: Validate feed scripts
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/update-feeds.yml'
+      - '.github/workflows/test-feeds.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Run offline parser regression tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
