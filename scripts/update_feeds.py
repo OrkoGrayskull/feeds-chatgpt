@@ -66,6 +66,7 @@ def recent_items(items, now=None, days=RECENT_DAYS):
     """Only published items from the chosen local calendar dates; undated items excluded."""
     start, end = berlin_window(now, days)
     filtered = []
+    dated = 0
     for item in items:
         value = item.get("published")
         if not isinstance(value, str):
@@ -80,8 +81,11 @@ def recent_items(items, now=None, days=RECENT_DAYS):
                 published_day = stamp.astimezone(BERLIN).date()
         except ValueError:
             continue
+        dated += 1
         if start <= published_day <= end:
             filtered.append(item)
+    if items and dated == 0:
+        raise ValueError("Source has no parseable publication dates")
     return filtered
 
 def download(url):
