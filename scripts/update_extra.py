@@ -6,6 +6,7 @@ import sys
 from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
+from urllib.error import HTTPError, URLError
 
 import update_feeds as common
 
@@ -131,6 +132,21 @@ def parse_bfdi_html(payload, source):
     items.sort(key=lambda x: x['published'], reverse=True)
     return items[:100]
 
+def download_bfdi(url):
+    """One bounded retry for transient failures of this central upstream source."""
+    try:
+        return common.download(url)
+    except (TimeoutError, URLError) as exc:
+        if isinstance(exc, HTTPError):
+            transient = exc.code in (429, 500, 502, 503, 504)
+        else:
+            transient = isinstance(exc, TimeoutError) or "timed out" in str(exc).lower()
+        if not transient:
+            raise
+        print("WARN: temporary BfDI download failure, retrying once", file=sys.stderr)
+        return common.download(url)
+
+
 def update(feed):
     name, kind = feed['id'], feed['type']
     urls = feed.get('urls') or [feed['url']]
@@ -141,7 +157,7 @@ def update(feed):
         if urlparse(url).scheme != 'https':
             raise ValueError('Only HTTPS URLs allowed')
         try:
-            payload = common.download(url)
+            payload = download_bfdi(url) if kind == 'bfdi' else common.download(url)
             if kind == 'kev':
                 result = parse_kev(payload, url)
             else:

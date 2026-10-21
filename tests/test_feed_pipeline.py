@@ -126,6 +126,28 @@ class ArchiveAndCacheTests(unittest.TestCase):
 
 
 class SpecializedSourceTests(unittest.TestCase):
+    def test_bfdi_retries_a_transient_timeout_once(self):
+        from urllib.error import URLError
+        url = "https://www.bfdi.bund.de/example"
+        with patch.object(extra.common, "download",
+                          side_effect=[URLError(TimeoutError("timed out")), b"new HTML"]) as download:
+            self.assertEqual(extra.download_bfdi(url), b"new HTML")
+            self.assertEqual(download.call_count, 2)
+
+    def test_bfdi_does_not_retry_permanent_or_repeated_errors(self):
+        from urllib.error import HTTPError
+        url = "https://www.bfdi.bund.de/example"
+        permanent = HTTPError(url, 404, "not found", None, None)
+        with patch.object(extra.common, "download", side_effect=permanent) as download:
+            with self.assertRaises(HTTPError):
+                extra.download_bfdi(url)
+            download.assert_called_once()
+        temporary = HTTPError(url, 503, "unavailable", None, None)
+        with patch.object(extra.common, "download", side_effect=[temporary, temporary]) as download:
+            with self.assertRaises(HTTPError):
+                extra.download_bfdi(url)
+            self.assertEqual(download.call_count, 2)
+
     def test_kev_catalog_validation_and_three_date_window(self):
         catalog = {"catalogVersion": "1.0", "dateReleased": "2026-10-21",
                    "count": 2, "vulnerabilities": [
