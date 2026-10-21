@@ -161,7 +161,7 @@ def write_json(path, obj):
             os.unlink(tmp)
 
 
-def merge_security_history(items, now):
+def merge_security_history(items, now, source_limit=MAX_ITEMS):
     """Retain 72 hours of BSI observations for the optional 72h fallback."""
     cutoff = now - timedelta(hours=72)
     path = OUT / "security.json"
@@ -198,7 +198,7 @@ def merge_security_history(items, now):
         "history_cutoff": cutoff.isoformat(timespec="seconds"),
         "history_hours": 72,
         "source_may_be_truncated": bool(
-            fresh_count >= 100 and oldest_fresh
+            fresh_count >= source_limit and oldest_fresh
             and datetime.fromisoformat(iso_date(oldest_fresh)) >= now - timedelta(hours=72)
         ),
         "note": "Rolling observed BSI items; gaps in the upstream feed cannot be ruled out.",
@@ -239,12 +239,13 @@ def main():
         if urlparse(url).scheme != "https":
             raise ValueError("Only HTTPS URLs are supported")
         try:
-            items = parse_feed(download(url), max_items=feed.get("max_items", MAX_ITEMS), description_limit=feed.get("description_limit"), legacy_link_base=url if name == "baylfd" else None)
+            source_limit = feed.get("max_items", MAX_ITEMS)
+            items = parse_feed(download(url), max_items=source_limit, description_limit=feed.get("description_limit"), legacy_link_base=url if name == "baylfd" else None)
             fetched = datetime.now(timezone.utc)
             if name == "security":
                 # Security is the sole rolling-72h RSS exception: preserve the
                 # existing optional 72h IT-security fallback despite RSS limits.
-                items, extra = merge_security_history(items, fetched)
+                items, extra = merge_security_history(items, fetched, source_limit=source_limit)
             else:
                 original_count = len(items)
                 items = recent_items(items, fetched)
