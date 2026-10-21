@@ -11,7 +11,9 @@ from pathlib import Path
 import update_feeds as common
 
 NOW = datetime.now(timezone.utc)
-START = NOW - timedelta(days=3)
+TODAY_BERLIN = NOW.astimezone(common.BERLIN).date()
+START_DAY = TODAY_BERLIN - timedelta(days=2)
+START = datetime.combine(START_DAY, datetime.min.time(), tzinfo=common.BERLIN).astimezone(timezone.utc)
 CVE = re.compile(r"^CVE-\d{4}-\d{4,}$")
 HEADERS = {"User-Agent": "feeds-chatgpt/1.0", "Accept": "application/json"}
 OUT = Path(__file__).resolve().parents[1] / "data"
@@ -42,7 +44,7 @@ def github():
     items = []
     for x in data:
         published = stamp(x.get("published_at"))
-        if not published or published < START:
+        if not published or published < START or published > NOW + timedelta(minutes=5):
             continue
         items.append({"cve": x.get("cve_id"), "ghsa": x.get("ghsa_id"), "title": x.get("summary"),
                       "description": (x.get("description") or "")[:900], "severity": x.get("severity"),
@@ -50,15 +52,29 @@ def github():
     return url, items
 
 def nvd():
-    # One bounded query, without an API key or pagination.
-    url = "https://services.nvd.nist.gov/rest/json/cves/2.0?" + urlencode({
+    """Read a bounded, latest-first selection from the NVD's oldest-first pages."""
+    endpoint = "https://services.nvd.nist.gov/rest/json/cves/2.0?"
+    params = {
         "pubStartDate": START.strftime("%Y-%m-%dT%H:%M:%S.000"),
         "pubEndDate": NOW.strftime("%Y-%m-%dT%H:%M:%S.000"),
-        "resultsPerPage": 200})
+    }
+    # Discover the result count before selecting the latest 200. The first
+    # page alone would miss the newest entries in busy publication periods.
+    head_url = endpoint + urlencode({**params, "resultsPerPage": 1})
+    summary = fetch(head_url)
+    total = summary.get("totalResults")
+    if not isinstance(total, int) or total < 0:
+        raise ValueError("Invalid NVD totalResults")
+    if total == 0:
+        return head_url, [], 0
+    page_size = min(200, total)
+    index = max(0, total - page_size)
+    url = endpoint + urlencode({**params, "resultsPerPage": page_size,
+                                "startIndex": index})
     data = fetch(url)
     records = data.get("vulnerabilities")
-    if not isinstance(records, list):
-        raise ValueError("Invalid NVD response")
+    if not isinstance(records, list) or not records:
+        raise ValueError("Invalid or empty latest NVD page")
     items = []
     for x in records:
         c = x.get("cve", {})
@@ -74,7 +90,8 @@ def nvd():
                       "published": c.get("published"), "last_modified": c.get("lastModified"),
                       "cvss": max(scores) if scores else None,
                       "link": "https://nvd.nist.gov/vuln/detail/" + id_})
-    return url, items, data.get("totalResults", 0)
+    items.sort(key=lambda x: (x["published"] or "", x["cve"]), reverse=True)
+    return url, items, total
 
 def epss(cves):
     if not cves:
@@ -90,7 +107,9 @@ def epss(cves):
 def save(name, source, items, **extra):
     common.write_json(OUT / (name + ".json"), {
         "feed": name, "source": source, "fetched_at": NOW.isoformat(timespec="seconds"),
-        "window_hours": 72, "count": len(items), "items": items, **extra})
+        "window_days": 3, "window_start": START_DAY.isoformat(),
+        "window_end": TODAY_BERLIN.isoformat(),
+        "count": len(items), "items": items, **extra})
     print("OK", name, len(items))
 
 def main():
@@ -98,17 +117,14 @@ def main():
     candidates = []
     try:
         url, items = github()
-        if not items:
-            raise ValueError("No recent reviewed advisories")
         save("github-advisories", url, items)
         candidates += [x["cve"] for x in items if x.get("cve") and CVE.fullmatch(x["cve"])]
     except Exception as exc:
         errors.append("github-advisories: " + str(exc))
     try:
         url, items, total = nvd()
-        if not items:
-            raise ValueError("No recent CVEs")
-        save("nvd", url, items, total_results=total, truncated=total > len(items))
+        save("nvd", url, items, total_results=total, truncated=total > len(items),
+             selection="latest_published", start_index=max(0, total - 200))
         candidates += [x["cve"] for x in items if x.get("cvss") is not None and x["cvss"] >= 8.0]
     except Exception as exc:
         errors.append("nvd: " + str(exc))
@@ -129,7 +145,8 @@ def main():
             save("epss", url, items, evaluated_cves=len(cves),
                  note="EPSS is a probability estimate, not evidence of exploitation.")
         else:
-            print("SKIP epss: no CVE candidates")
+            save("epss", "https://api.first.org/data/v1/epss", [],
+                 evaluated_cves=0, note="No eligible recent CVEs; no EPSS query required.")
     except Exception as exc:
         errors.append("epss: " + str(exc))
     for error in errors:
