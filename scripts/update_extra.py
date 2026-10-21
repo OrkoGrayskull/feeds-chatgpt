@@ -19,7 +19,7 @@ def parse_kev(payload, url):
         raise ValueError('Invalid KEV catalog or mismatched count')
     if not catalog.get('catalogVersion') or not common.iso_date(catalog.get('dateReleased')):
         raise ValueError('Missing KEV catalog version or release date')
-    cutoff = date.today() - timedelta(days=60)
+    cutoff, today = common.berlin_window()
     recent = []
     for record in records:
         cve = record.get('cveID', '')
@@ -30,7 +30,7 @@ def parse_kev(payload, url):
             added_date = date.fromisoformat(added)
         except (ValueError, TypeError) as exc:
             raise ValueError('Malformed KEV dateAdded') from exc
-        if added_date >= cutoff:
+        if cutoff <= added_date <= today:
             recent.append({key: record.get(key) for key in (
                 'cveID', 'dateAdded', 'vendorProject', 'product', 'vulnerabilityName',
                 'shortDescription', 'requiredAction', 'dueDate', 'knownRansomwareCampaignUse', 'notes'
@@ -42,7 +42,8 @@ def parse_kev(payload, url):
         'catalogVersion': catalog['catalogVersion'],
         'dateReleased': catalog['dateReleased'],
         'catalog_count': len(records),
-        'window_days': 60, 'window_start': cutoff.isoformat(),
+        'window_days': 3, 'window_start': cutoff.isoformat(),
+        'window_end': today.isoformat(),
         'count': len(recent), 'items': recent,
     }
 
@@ -150,8 +151,14 @@ def update(feed):
                     if kind != 'bfdi':
                         raise
                     items = parse_bfdi_html(payload, url)
+                fetched = datetime.now(timezone.utc)
+                source_count = len(items)
+                items = common.recent_items(items, fetched)
+                start, end = common.berlin_window(fetched)
                 result = {'feed': name, 'source': url,
-                          'fetched_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+                          'fetched_at': fetched.isoformat(timespec='seconds'),
+                          'source_count': source_count, 'window_days': 3,
+                          'window_start': start.isoformat(), 'window_end': end.isoformat(),
                           'count': len(items), 'items': items}
             common.write_json(common.OUT / (name + '.json'), result)
             print('OK:', name, 'count=', result['count'], 'source=', url)
