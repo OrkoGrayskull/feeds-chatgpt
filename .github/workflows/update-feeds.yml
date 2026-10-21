@@ -52,6 +52,9 @@ jobs:
           echo "Selected refresh mode: $mode"
       - uses: actions/checkout@v5
         if: steps.mode.outputs.mode != 'skip'
+        with:
+          # Resolve main when the queued job starts, not when it was dispatched.
+          ref: main
       - uses: actions/setup-python@v6
         if: steps.mode.outputs.mode != 'skip'
         with:
@@ -92,7 +95,24 @@ jobs:
           git add data/
           if ! git diff --cached --quiet; then
             git commit -m "Refresh public feed snapshots"
-            git push
+            # A different writer may advance main during this job. Retry only
+            # after a clean rebase. Never force-push or overwrite conflicts.
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "::error::Push failed after three attempts."
+                exit 1
+              fi
+              echo "Remote main advanced. Fetching and rebasing (attempt $attempt)."
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "::error::Data changed concurrently and rebase conflicted; refusing unsafe overwrite."
+                exit 1
+              fi
+            done
           fi
       - name: Mark required-source errors as failed
         if: steps.mode.outputs.mode != 'skip' && (steps.fetch.outcome == 'failure' || steps.bsi.outcome == 'failure' || steps.extras.outcome == 'failure' || steps.cellar.outcome == 'failure')
