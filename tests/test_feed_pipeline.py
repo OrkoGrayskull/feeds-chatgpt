@@ -80,6 +80,31 @@ class FeedParsingTests(unittest.TestCase):
         self.assertEqual(feeds.parse_feed(atom)[0]["link"], "https://example.org/atom")
         self.assertEqual(feeds.parse_feed(rdf)[0]["link"], "https://example.org/rdf")
 
+    def test_atom_uses_original_publication_date_not_later_update(self):
+        atom = b"""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>Existing announcement</title>
+          <link rel="alternate" href="https://example.org/old-announcement"/>
+          <published>2026-10-10T14:00:00Z</published>
+          <updated>2026-10-21T09:00:00Z</updated>
+          <summary>Subsequent correction</summary></entry></feed>"""
+        entry = feeds.parse_feed(atom)[0]
+        self.assertEqual(entry["published"], "2026-10-10T14:00:00+00:00")
+        self.assertEqual(entry["updated"], "2026-10-21T09:00:00+00:00")
+        self.assertEqual(entry["publication_date_source"], "published")
+        self.assertEqual(feeds.recent_items([entry], datetime(2026, 10, 21, 10, tzinfo=UTC)), [])
+
+    def test_atom_updated_fallback_is_explicit_if_published_missing(self):
+        atom = b"""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>Update-only entry</title>
+          <link href="https://example.org/updated-only"/>
+          <updated>2026-10-21T09:00:00Z</updated>
+          <summary>Content</summary></entry></feed>"""
+        entry = feeds.parse_feed(atom)[0]
+        self.assertEqual(entry["published"], "2026-10-21T09:00:00+00:00")
+        self.assertEqual(entry["updated"], "2026-10-21T09:00:00+00:00")
+        self.assertEqual(entry["publication_date_source"], "updated_fallback")
+        self.assertEqual(feeds.recent_items([entry], datetime(2026, 10, 21, 10, tzinfo=UTC)), [entry])
+
     def test_bad_or_invalid_feed_rejected(self):
         with self.assertRaises(ValueError):
             feeds.parse_feed(b"<rss><channel></channel></rss>")
