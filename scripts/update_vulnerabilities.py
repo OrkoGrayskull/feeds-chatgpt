@@ -18,8 +18,8 @@ CVE = re.compile(r"^CVE-\d{4}-\d{4,}$")
 HEADERS = {"User-Agent": "feeds-chatgpt/1.0", "Accept": "application/json"}
 OUT = Path(__file__).resolve().parents[1] / "data"
 
-def fetch(url):
-    with urlopen(Request(url, headers=HEADERS), timeout=25) as response:
+def fetch(url, timeout=25):
+    with urlopen(Request(url, headers=HEADERS), timeout=timeout) as response:
         if not response.geturl().startswith("https://"):
             raise ValueError("Insecure redirect")
         raw = response.read(6_000_001)
@@ -61,7 +61,7 @@ def nvd():
     # Discover the result count before selecting the latest 200. The first
     # page alone would miss the newest entries in busy publication periods.
     head_url = endpoint + urlencode({**params, "resultsPerPage": 1})
-    summary = fetch(head_url)
+    summary = fetch(head_url, timeout=45)
     total = summary.get("totalResults")
     if not isinstance(total, int) or total < 0:
         raise ValueError("Invalid NVD totalResults")
@@ -71,7 +71,7 @@ def nvd():
     index = max(0, total - page_size)
     url = endpoint + urlencode({**params, "resultsPerPage": page_size,
                                 "startIndex": index})
-    data = fetch(url)
+    data = fetch(url, timeout=45)
     records = data.get("vulnerabilities")
     if not isinstance(records, list) or not records:
         raise ValueError("Invalid or empty latest NVD page")
