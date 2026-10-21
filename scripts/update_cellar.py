@@ -4,14 +4,16 @@ import json
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 ENDPOINT = "https://publications.europa.eu/webapi/rdf/sparql"
 OUT = Path("data/eu-rechtsprechung.json")
 now = datetime.now(timezone.utc)
-start = (now.date() - timedelta(days=14)).isoformat()
-end = now.date().isoformat()
+today = now.astimezone(ZoneInfo("Europe/Berlin")).date()
+start = (today - timedelta(days=2)).isoformat()
+end = today.isoformat()
 QUERY = """PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT DISTINCT ?work ?celex ?date ?type WHERE {
@@ -35,6 +37,8 @@ def main():
             raise ValueError("Bad SPARQL response")
     obj = json.loads(data)
     rows = obj["results"]["bindings"]
+    if not isinstance(rows, list):
+        raise ValueError("Invalid CELLAR binding list")
     if len(rows) >= 1000:
         raise ValueError("Result limit reached: completeness not assured")
     seen = {}
@@ -54,11 +58,10 @@ def main():
                 raise ValueError("Conflicting metadata for CELEX " + celex)
             continue
         seen[celex] = item
-    if not seen:
-        raise ValueError("No court decisions returned; refusing empty overwrite")
+    # A valid response with no judgments in these three dates is not a failure.
     result = {"feed": "eu-rechtsprechung", "source": ENDPOINT,
               "fetched_at": now.isoformat(timespec="seconds"), "window_start": start,
-              "window_end": end, "count": len(seen),
+              "window_end": end, "window_days": 3, "count": len(seen),
               "items": sorted(seen.values(), key=lambda x: (x["published"], x["celex"]), reverse=True),
               "note": "Official CELLAR metadata. No topical relevance filter; inspect original decisions."}
     OUT.parent.mkdir(exist_ok=True)
