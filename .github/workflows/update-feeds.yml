@@ -14,9 +14,9 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Full refresh at 02:15 and 07:45 Europe/Berlin (DST-aware).
-    - cron: '15 0 * * *'
-    - cron: '15 1 * * *'
+    # Full refresh at 05:45 and 07:45 Europe/Berlin (DST-aware).
+    - cron: '45 3 * * *'
+    - cron: '45 4 * * *'
     - cron: '45 5 * * *'
     - cron: '45 6 * * *'
     # BSI-only updates preserve fast-moving notices without re-fetching all sources.
@@ -45,9 +45,8 @@ jobs:
             mode=security
           else
             # Compare the scheduled UTC hour with the Berlin-local intended
-            # 02:15/07:45 trigger. fold=0 prevents a duplicate 02:15 run
-            # when clocks move back in October.
-            expected=$(python3 -c 'from datetime import datetime, timezone; from zoneinfo import ZoneInfo; now=datetime.now(ZoneInfo("Europe/Berlin")); local=datetime(now.year,now.month,now.day,2 if "${{ github.event.schedule }}" in ("15 0 * * *","15 1 * * *") else 7,45,tzinfo=ZoneInfo("Europe/Berlin"),fold=0); print(local.astimezone(timezone.utc).strftime("%M %H * * *"))')
+            # 05:45/07:45 trigger.
+            expected=$(python3 -c 'from datetime import datetime, timezone; from zoneinfo import ZoneInfo; now=datetime.now(ZoneInfo("Europe/Berlin")); local=datetime(now.year,now.month,now.day,5 if "${{ github.event.schedule }}" in ("45 3 * * *","45 4 * * *") else 7,45,tzinfo=ZoneInfo("Europe/Berlin"),fold=0); print(local.astimezone(timezone.utc).strftime("%M %H * * *"))')
             if [[ "${{ github.event.schedule }}" == "$expected" ]]; then
               mode=daily
             fi
