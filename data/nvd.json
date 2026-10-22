@@ -1,12 +1,138 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-19T22%3A00%3A00.000&pubEndDate=2026-10-22T05%3A49%3A33.000&resultsPerPage=200&startIndex=2545",
-  "fetched_at": "2026-10-22T05:49:33+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-19T22%3A00%3A00.000&pubEndDate=2026-10-22T06%3A59%3A18.000&resultsPerPage=200&startIndex=2559",
+  "fetched_at": "2026-10-22T06:59:18+00:00",
   "window_days": 3,
   "window_start": "2026-10-20",
   "window_end": "2026-10-22",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-97328",
+      "title": "CVE-2026-97328",
+      "description": "The WebP Express WordPress plugin before 0.25.16 does not escape values that its bundled HTML parser re-emits into element attributes when a non-default image delivery mode is enabled, allowing unauthenticated users to submit content that is stored and later executed as Cross-Site Scripting in the browser of any user viewing an affected page, including administrators.",
+      "published": "2026-10-22T06:17:15.930",
+      "last_modified": "2026-10-22T06:17:15.930",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97328"
+    },
+    {
+      "cve": "CVE-2026-88849",
+      "title": "CVE-2026-88849",
+      "description": "The MasterStudy LMS WordPress Plugin  WordPress plugin before 3.7.55 does not verify that a user targeted through its student-enrolment feature has any relationship to the requesting instructor, allowing users with the Instructor role to overwrite the first name, last name and public display name of any registered user on the site, including administrators, enabling impersonation and phishing.",
+      "published": "2026-10-22T06:17:15.597",
+      "last_modified": "2026-10-22T06:17:15.597",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88849"
+    },
+    {
+      "cve": "CVE-2026-78392",
+      "title": "CVE-2026-78392",
+      "description": "The Link Library WordPress plugin before 7.9.6 does not sanitise and escape a link field before outputting it inside an attribute of a link preview, allowing users with the Contributor role and above to perform Stored Cross-Site Scripting attacks. The preview is generated without authentication and without checking whether the link has been published, so an unapproved submission is enough to reach any visitor who opens it.",
+      "published": "2026-10-22T06:17:15.303",
+      "last_modified": "2026-10-22T06:17:15.303",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-78392"
+    },
+    {
+      "cve": "CVE-2026-114570",
+      "title": "CVE-2026-114570",
+      "description": "WordPress Core is vulnerable to Stored Cross-Site Scripting via Quick Edit in all versions up to, and including, 7.0.2 due to insufficient escaping of user display names. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a higher privileged user accesses the affected administrative screens. This issue only affects sites with a large number of users.",
+      "published": "2026-10-22T06:17:14.437",
+      "last_modified": "2026-10-22T06:17:14.437",
+      "cvss": 4.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114570"
+    },
+    {
+      "cve": "CVE-2026-111972",
+      "title": "CVE-2026-111972",
+      "description": "The Photo Engine (Media Organizer & Lightroom) WordPress plugin before 6.5.8 does not verify that a user is authorised to act on the targeted media attachment, allowing authenticated users with the author role and above to delete arbitrary media attachments, including those uploaded by other users and administrators.",
+      "published": "2026-10-22T06:17:14.333",
+      "last_modified": "2026-10-22T06:17:14.333",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111972"
+    },
+    {
+      "cve": "CVE-2026-111971",
+      "title": "CVE-2026-111971",
+      "description": "The Photo Engine (Media Organizer & Lightroom) WordPress plugin before 6.5.8 does not sanitise and escape collection and gallery names before storing them and outputting them in an administrative dashboard, allowing authenticated users with the author role and above to perform Stored Cross-Site Scripting attacks.",
+      "published": "2026-10-22T06:17:14.233",
+      "last_modified": "2026-10-22T06:17:14.233",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111971"
+    },
+    {
+      "cve": "CVE-2026-111958",
+      "title": "CVE-2026-111958",
+      "description": "The Royal MCP  WordPress plugin before 1.5.7 does not limit a preview-link token to the single preview it was issued for, so any party that obtains a valid token is authenticated as the token's owning user, an administrator in the default configuration, across the entire REST API with no nonce, leading to full site takeover.",
+      "published": "2026-10-22T06:17:14.113",
+      "last_modified": "2026-10-22T06:17:14.113",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111958"
+    },
+    {
+      "cve": "CVE-2026-110011",
+      "title": "CVE-2026-110011",
+      "description": "The MB Custom Post Types & Custom Taxonomies WordPress plugin before 2.12.3 does not perform a capability check in its export feature, allowing users with a role as low as Contributor to read the configuration of admin-only custom post types and taxonomies, as well as the titles, dates, statuses and some stored content of other users' non-public posts and pages.",
+      "published": "2026-10-22T06:17:14.013",
+      "last_modified": "2026-10-22T06:17:14.013",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110011"
+    },
+    {
+      "cve": "CVE-2026-110010",
+      "title": "CVE-2026-110010",
+      "description": "The MB Custom Post Types & Custom Taxonomies WordPress plugin before 2.12.3 does not perform any capability or authentication check before allowing an unauthenticated request to re-run a legacy data migration, letting anyone revert a custom post type or taxonomy definition on sites upgraded from a pre-2.0 release back to its pre-upgrade state. This discards configuration changes an administrator made after upgrading and, where those changes had restricted a definition's visibility, silently re-exposes the definition and its content to anonymous visitors.",
+      "published": "2026-10-22T06:17:13.910",
+      "last_modified": "2026-10-22T06:17:13.910",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110010"
+    },
+    {
+      "cve": "CVE-2026-109987",
+      "title": "CVE-2026-109987",
+      "description": "The PixelYourSite  WordPress plugin before 11.4.3, PixelYourSite Pro WordPress plugin before 12.6.8 do not sanitise and escape a cookie value before printing it into the page output, which, on a site running a full-page cache, allows unauthenticated attackers to store a Cross-Site Scripting payload in the cached page that is then served to other visitors.",
+      "published": "2026-10-22T06:17:13.800",
+      "last_modified": "2026-10-22T06:17:13.800",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109987"
+    },
+    {
+      "cve": "CVE-2026-109931",
+      "title": "CVE-2026-109931",
+      "description": "The Infility Global WordPress plugin before 2.16.25 does not perform any authorisation or nonce check on an AJAX action available to unauthenticated users, allowing any visitor to overwrite a machine-translation configuration value belonging to a companion Infility Global WordPress plugin before 2.16.25.",
+      "published": "2026-10-22T06:17:13.697",
+      "last_modified": "2026-10-22T06:17:13.697",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109931"
+    },
+    {
+      "cve": "CVE-2026-109927",
+      "title": "CVE-2026-109927",
+      "description": "The HIPAA Forms WordPress plugin before 3.3.2 does not perform a capability check when handling a request that rebuilds its own custom user role, allowing a user who already holds that role to grant it administrator-level capabilities and escalate their privileges.",
+      "published": "2026-10-22T06:17:13.590",
+      "last_modified": "2026-10-22T06:17:13.590",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109927"
+    },
+    {
+      "cve": "CVE-2026-103234",
+      "title": "CVE-2026-103234",
+      "description": "The WP Ultimate Review WordPress plugin before 2.4.5 does not neutralise shortcodes in all of the review fields submitted through its public review form, which is available to unauthenticated visitors, allowing them to execute arbitrary shortcodes when the affected field is displayed, provided user reviews and that field's display are enabled.",
+      "published": "2026-10-22T06:17:13.477",
+      "last_modified": "2026-10-22T06:17:13.477",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103234"
+    },
+    {
+      "cve": "CVE-2026-100142",
+      "title": "CVE-2026-100142",
+      "description": "The FluentCart A New Era of eCommerce  WordPress plugin before 2.2.0 does not verify that a stored customer address selected during checkout belongs to the requester, allowing unauthenticated attackers to attach any customer's stored address to an order they place and read it back, disclosing customers' postal addresses, phone numbers and company details.",
+      "published": "2026-10-22T06:17:12.237",
+      "last_modified": "2026-10-22T06:17:12.237",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-100142"
+    },
     {
       "cve": "CVE-2026-114223",
       "title": "CVE-2026-114223",
@@ -1680,136 +1806,10 @@
       "last_modified": "2026-10-21T21:20:32.650",
       "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96642"
-    },
-    {
-      "cve": "CVE-2026-96641",
-      "title": "CVE-2026-96641",
-      "description": "Pillow is a Python imaging library. Prior to 13.0.0, PILfont text-width accumulation in src/_imaging.c checks positive glyph advances against INT_MAX but does not check negative advances against INT_MIN. Repeating a signed 16-bit advance of -32768 can therefore execute a signed C integer overflow in xsize += dx, producing a large positive width from a negative mathematical result. Applications that use getlength(), getsize(), or derived layout, quota, serialization, or allocation calculations can experience logic-integrity errors or resource consumption, while the high-level mask path commonly retains a decompression-bomb check. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:32.500",
-      "last_modified": "2026-10-21T21:20:32.500",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96641"
-    },
-    {
-      "cve": "CVE-2026-96640",
-      "title": "CVE-2026-96640",
-      "description": "Pillow is a Python imaging library. From 5.1.0 until 13.0.0, PdfParser.linearize_page_tree() in src/PIL/PdfParser.py treats a PDF /Pages graph as a tree without tracking duplicate indirect references. When Image.save(..., format=\"PDF\", append=True) processes an attacker-controlled existing PDF whose /Kids arrays repeatedly reference the same child /Pages node, Pillow expands the shared subtree as distinct pages. A compact malformed PDF can therefore create exponentially many page references and consume disproportionate CPU before the append completes. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:32.357",
-      "last_modified": "2026-10-21T21:20:32.357",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96640"
-    },
-    {
-      "cve": "CVE-2026-96639",
-      "title": "CVE-2026-96639",
-      "description": "Pillow is a Python imaging library. From 11.0.0 until 13.0.0, multi-frame loaders can retain an ImagingCore allocation created for a narrow frame mode while a later frame of the same dimensions changes the logical mode and decoder tiles to wider RGB or CMYK data. ImageFile.load_prepare() reuses the stale native storage because _im is non-null without verifying that its mode and size still match. Crafted PSD, MPO, DCX, or MIC frame transitions can then write wider pixels into the narrow allocation, causing native out-of-bounds writes and crashes. The MPO path can also cause a native over-read and, in demonstrated runtime-specific profiles, command execution. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:32.217",
-      "last_modified": "2026-10-21T21:20:32.217",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96639"
-    },
-    {
-      "cve": "CVE-2026-96638",
-      "title": "CVE-2026-96638",
-      "description": "Pillow is a Python imaging library. From 9.1.0 until 13.0.0, BmpRleDecoder.decode() in src/PIL/BmpImagePlugin.py permits crafted RLE BMP delta escapes and absolute-mode runs to append beyond the remaining dest_length without a per-branch cap. A delta can add roughly 255 image rows in one iteration, so a kilobyte-sized file with a large but permitted width can expand the data bytearray to hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:32.067",
-      "last_modified": "2026-10-21T21:20:32.067",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96638"
-    },
-    {
-      "cve": "CVE-2026-96637",
-      "title": "CVE-2026-96637",
-      "description": "Pillow is a Python imaging library. Prior to 13.0.0, SpiderImageFile.seek() in src/PIL/SpiderImagePlugin.py reparses a later SPIDER stack frame and replaces self._size without rerunning Image._decompression_bomb_check(). A tiny file can use a safe first frame to pass Image.open() and then declare very large dimensions in a later mode F frame. Loading that frame allocates approximately four bytes per attacker-declared pixel and can consume multiple gigabytes of memory. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:31.927",
-      "last_modified": "2026-10-21T21:20:31.927",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96637"
-    },
-    {
-      "cve": "CVE-2026-96636",
-      "title": "CVE-2026-96636",
-      "description": "Pillow is a Python imaging library. Prior to 13.0.0, MpoImageFile.seek() and DcxImageFile.seek() reparse later MPO or DCX frames and replace self._size without rerunning Image._decompression_bomb_check(). A crafted multi-frame image can use a tiny first frame to pass Image.open() and then declare an over-limit later frame. Normal frame iteration through seek(), load(), or ImageSequence.Iterator can decode that frame and commit hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0.",
-      "published": "2026-10-21T21:20:31.760",
-      "last_modified": "2026-10-21T21:20:31.760",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96636"
-    },
-    {
-      "cve": "CVE-2026-82987",
-      "title": "CVE-2026-82987",
-      "description": "There exists a screen capture endpoint in vCast media streaming service in ViewSonic ViewBoard unknown allows a remote, unauthenticated attacker to capture and exfiltrate the current screen content via GET requests to an unauthenticated /snapshot or /screen endpoint returning JPEGs",
-      "published": "2026-10-21T21:19:17.507",
-      "last_modified": "2026-10-21T21:19:17.507",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82987"
-    },
-    {
-      "cve": "CVE-2026-29001",
-      "title": "CVE-2026-29001",
-      "description": "TastyIgniter through 4.4.5 contain a PHP object injection vulnerability that allows authenticated administrators to achieve arbitrary code execution by submitting a serialized PHP object as a settings value, which is stored unsanitized and later unserialized by getValueAttribute() when the setting is read. Attackers can submit a serialized gadget chain, such as one generated via phpggc, through the admin settings form (for example the maintenance_message setting loaded by CheckMaintenance.php) to achieve arbitrary operating-system command execution as the PHP application process user, with the impact persisting until the value is overwritten.",
-      "published": "2026-10-21T21:17:59.230",
-      "last_modified": "2026-10-21T21:17:59.230",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-29001"
-    },
-    {
-      "cve": "CVE-2026-114406",
-      "title": "CVE-2026-114406",
-      "description": "The system certificate authority (CA) store in Red Hat products, distributed via ca-certificates RPM packages, included multiple root CA certificates of authorities, which signed intermediate CA certificates with weak private keys issued by the eMudhra certificate authority. A man-in-the-middle attacker could use this flaw to issue certificates for arbitrary host names signed by the weak intermediate CA certificates, which would be considered trusted by a TLS/SSL client using system CA store and cause such clients to connect to malicious sites.\n\nDue to inability to only distrust specific intermediate certificates in all clients using the system CA store, root CA certificates of authorities that signed weak intermediate CA certificates are being removed.",
-      "published": "2026-10-21T21:17:58.547",
-      "last_modified": "2026-10-22T04:17:34.957",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114406"
-    },
-    {
-      "cve": "CVE-2026-114380",
-      "title": "CVE-2026-114380",
-      "description": "A vulnerability was found in itsourcecode Online Cake Ordering System 1.0. Impacted is an unknown function of the file /inserttrans.php. Performing a manipulation of the argument prcd results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used.",
-      "published": "2026-10-21T21:17:58.113",
-      "last_modified": "2026-10-21T21:17:58.113",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114380"
-    },
-    {
-      "cve": "CVE-2026-114379",
-      "title": "CVE-2026-114379",
-      "description": "A flaw has been found in EKKOLearnAI ekko-studio up to 1.0.6. This vulnerability affects the function saveGeneratedImages of the file packages/server/src/modules/studio/controllers/media.ts of the component Media Generation API. This manipulation of the argument output_path causes file inclusion. Remote exploitation of the attack is possible. Patch name: 1d42459c292f89e412f7f6243829e7fed2e85bf5. It is recommended to apply a patch to fix this issue.",
-      "published": "2026-10-21T21:17:57.927",
-      "last_modified": "2026-10-21T21:17:57.927",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114379"
-    },
-    {
-      "cve": "CVE-2026-114378",
-      "title": "CVE-2026-114378",
-      "description": "A vulnerability was detected in itsourcecode Online Cake Ordering System 1.0. This affects an unknown part of the file /deleteproduct.php. The manipulation of the argument ID results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
-      "published": "2026-10-21T21:17:57.747",
-      "last_modified": "2026-10-21T21:17:57.747",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114378"
-    },
-    {
-      "cve": "CVE-2026-114377",
-      "title": "CVE-2026-114377",
-      "description": "A security vulnerability has been detected in leomoon-studios wiki-go up to 1.9.1. Affected by this issue is the function DeleteComment of the file internal/comments/comments.go of the component Comment Deletion Handler. The manipulation of the argument documentPath leads to path traversal. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 1.9.2 can resolve this issue. The identifier of the patch is 224ef2a11facddef6b3a3c1f0a69156d1e574a33. It is advisable to upgrade the affected component.",
-      "published": "2026-10-21T21:17:57.547",
-      "last_modified": "2026-10-21T21:17:57.547",
-      "cvss": 3.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114377"
-    },
-    {
-      "cve": "CVE-2026-114145",
-      "title": "CVE-2026-114145",
-      "description": "GitPython is a python library used to interact with Git repositories. Prior to 3.2.1, create_submodule() in git/objects/submodule/base.py accepts an attacker-influenced submodule path such as .git/hooks and invokes _clone_repo() before safely rejecting the destination. In 3.1.x, _validate_repo_path() does not exist and the call succeeds silently, while in 3.2.0 and later affected revisions the check in git/index/base.py raises ValueError only after the clone has written to disk and does not remove the planted file. An attacker-controlled submodule can therefore place an executable post-checkout hook that a later Git operation executes. Exploitation requires an application to accept an untrusted submodule path and a clone destination such as .git/hooks that is empty enough for Git to clone into it, which commonly means that default sample hooks are absent. This issue is fixed in version 3",
-      "published": "2026-10-21T21:17:57.250",
-      "last_modified": "2026-10-21T21:17:57.250",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114145"
     }
   ],
-  "total_results": 2745,
+  "total_results": 2759,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 2545
+  "start_index": 2559
 }
