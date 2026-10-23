@@ -54,7 +54,9 @@ Die offline ausführbaren Tests in `tests/test_feed_pipeline.py` prüfen Datumsg
 
 ## Aktualisierung und Nutzung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) aktualisiert alle Quellen täglich um **07:00 Uhr (Europe/Berlin)** und die BSI-Feeds zusätzlich mehrfach über den Tag. Manuelle Läufe sind möglich. GitHub kann Startzeiten verzögern. Konfiguration: [feeds.json](feeds.json). Aktualität anhand der Workflow-Ergebnisse und JSON-Zeitstempel prüfen.
+[GitHub Actions](.github/workflows/update-feeds.yml) sieht zwei **vollständige Aktualisierungen täglich um 05:45 und 07:45 Uhr (Europe/Berlin)** vor. Die beiden Cron-Einträge verwenden `timezone: Europe/Berlin`, sodass GitHub die Sommer-/Winterzeit berücksichtigt. Zusätzlich laufen **BSI-Zwischenabrufe** über den separaten UTC-Cron `10 0,3,9,12,15,18,21 * * *` (nur `security.json` und `buergercert.json`); sie aktualisieren keine anderen Quellen. Die Zeitangaben sind Sollzeiten: GitHub kann geplante Starts verzögern oder einzelne Läufe auslassen. Ein erfolgreicher BSI-Lauf ist daher **kein Beleg** für eine erfolgreiche vollständige Aktualisierung.
+
+Manuelle Starts (`workflow_dispatch`) und Pushes auf `main`, die konfigurierte Dateien (Quellenkonfiguration, Skripte, Tests oder Aktualisierungsworkflow) verändern, lösen ebenfalls einen vollständigen Abruf aus. Eine reine README-Änderung löst keinen Abruf aus. Der Workflow protokolliert Ereignistyp, Cron-Ausdruck und gewählten Modus (`daily`, `security` oder `skip`). Unbekannte geplante Auslöser werden übersprungen und als Warnung markiert. Vor den Abrufen laufen Offline-Regressionstests; bei Fehlern verpflichtender Quellen wird der Lauf nach dem Versuch, andere Snapshots zu speichern, als fehlgeschlagen markiert. Fehler der optionalen Bluesky- und Schwachstellensignale blockieren die Pflichtquellen nicht. Konfiguration: [feeds.json](feeds.json). Für die tatsächliche Aktualität **Modus, einzelne Abrufschritte und `fetched_at` der benötigten JSON-Dateien** prüfen, nicht allein den grünen Gesamtstatus.
 
 Dateien bevorzugt über die verbundene GitHub-App lesen, bei Fehler höchstens einmal über die öffentliche URL:
 
