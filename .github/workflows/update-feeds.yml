@@ -14,11 +14,11 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Full refresh at 05:45 and 07:45 Europe/Berlin (DST-aware).
-    - cron: '45 3 * * *'
-    - cron: '45 4 * * *'
+    # Full refreshes in Berlin local time, with automatic DST handling.
     - cron: '45 5 * * *'
-    - cron: '45 6 * * *'
+      timezone: 'Europe/Berlin'
+    - cron: '45 7 * * *'
+      timezone: 'Europe/Berlin'
     # BSI-only updates preserve fast-moving notices without re-fetching all sources.
     - cron: '10 0,3,9,12,15,18,21 * * *'
 
@@ -37,22 +37,23 @@ jobs:
       - name: Choose full, BSI-only or skipped run
         id: mode
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           mode=skip
-          if [[ "${{ github.event_name }}" != "schedule" ]]; then
+          if [[ "$EVENT_NAME" != "schedule" ]]; then
             mode=daily
-          elif [[ "${{ github.event.schedule }}" == "10 0,3,9,12,15,18,21 * * *" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "10 0,3,9,12,15,18,21 * * *" ]]; then
             mode=security
-          else
-            # Compare the scheduled UTC hour with the Berlin-local intended
-            # 05:45/07:45 trigger.
-            expected=$(python3 -c 'from datetime import datetime, timezone; from zoneinfo import ZoneInfo; now=datetime.now(ZoneInfo("Europe/Berlin")); local=datetime(now.year,now.month,now.day,5 if "${{ github.event.schedule }}" in ("45 3 * * *","45 4 * * *") else 7,45,tzinfo=ZoneInfo("Europe/Berlin"),fold=0); print(local.astimezone(timezone.utc).strftime("%M %H * * *"))')
-            if [[ "${{ github.event.schedule }}" == "$expected" ]]; then
-              mode=daily
-            fi
+          elif [[ "$EVENT_SCHEDULE" == "45 5 * * *" || "$EVENT_SCHEDULE" == "45 7 * * *" ]]; then
+            mode=daily
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "Selected refresh mode: $mode"
+          echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; selected mode: $mode"
+          if [[ "$mode" == "skip" ]]; then
+            echo "::warning::Unrecognized scheduled trigger; no sources refreshed"
+          fi
       - uses: actions/checkout@v5
         if: steps.mode.outputs.mode != 'skip'
         with:
