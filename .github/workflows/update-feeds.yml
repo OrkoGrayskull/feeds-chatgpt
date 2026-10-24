@@ -14,12 +14,13 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Two independent UTC attempts for the morning full refresh.
-    # CEST: 05:10 and 07:10; CET: 04:10 and 06:10.
-    # The 03:10 UTC slot previously ran BSI-only reliably.
-    - cron: '10 3 * * *'
-    - cron: '10 5 * * *'
-    # Intermediate BSI-only checks; 03:10 UTC moved to the full refresh.
+    # Two daily full refreshes at 07:05 and 08:05 Europe/Berlin.
+    # UTC candidates are selected using the Berlin offset below, including DST.
+    # The out-of-season candidate is intentionally skipped.
+    - cron: '5 5 * * *'
+    - cron: '5 6 * * *'
+    - cron: '5 7 * * *'
+    # Separate BSI-only intermediate checks (UTC).
     - cron: '10 0,9,12,15,18,21 * * *'
 
 permissions:
@@ -42,18 +43,25 @@ jobs:
           EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           mode=skip
+          berlin_offset="$(TZ=Europe/Berlin date +%z)"
           if [[ "$EVENT_NAME" != "schedule" ]]; then
             mode=daily
           elif [[ "$EVENT_SCHEDULE" == "10 0,9,12,15,18,21 * * *" ]]; then
             mode=security
-          elif [[ "$EVENT_SCHEDULE" == "10 3 * * *" || "$EVENT_SCHEDULE" == "10 5 * * *" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "5 6 * * *" ]]; then
+            # 08:05 CEST / 07:05 CET.
             mode=daily
+          elif [[ "$EVENT_SCHEDULE" == "5 5 * * *" ]]; then
+            # 07:05 CEST; skip in winter.
+            if [[ "$berlin_offset" == "+0200" ]]; then mode=daily; fi
+          elif [[ "$EVENT_SCHEDULE" == "5 7 * * *" ]]; then
+            # 08:05 CET; skip in summer.
+            if [[ "$berlin_offset" == "+0100" ]]; then mode=daily; fi
+          else
+            echo "::warning::Unrecognized scheduled trigger"
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; selected mode: $mode"
-          if [[ "$mode" == "skip" ]]; then
-            echo "::warning::Unrecognized scheduled trigger; no sources refreshed"
-          fi
+          echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; Berlin offset: $berlin_offset; selected mode: $mode"
       - uses: actions/checkout@v5
         if: steps.mode.outputs.mode != 'skip'
         with:
