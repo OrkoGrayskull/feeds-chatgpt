@@ -14,14 +14,14 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Two daily full refreshes at 07:05 and 08:05 Europe/Berlin.
-    # UTC candidates are selected using the Berlin offset below, including DST.
-    # The out-of-season candidate is intentionally skipped.
-    - cron: '5 5 * * *'
-    - cron: '5 6 * * *'
-    - cron: '5 7 * * *'
-    # Separate BSI-only intermediate checks (UTC).
-    - cron: '10 0,9,12,15,18,21 * * *'
+    # Full refresh at exactly 05:45 and 07:45 Europe/Berlin (scheduled time).
+    # Use UTC triggers: select the appropriate pair for CET or CEST below.
+    - cron: '45 3 * * *'  # 05:45 CEST
+    - cron: '45 4 * * *'  # 05:45 CET
+    - cron: '45 5 * * *'  # 07:45 CEST
+    - cron: '45 6 * * *'  # 07:45 CET
+    # BSI-only intermediate checks are unchanged (UTC).
+    - cron: '10 0,3,9,12,15,18,21 * * *'
 
 permissions:
   contents: write
@@ -46,19 +46,13 @@ jobs:
           berlin_offset="$(TZ=Europe/Berlin date +%z)"
           if [[ "$EVENT_NAME" != "schedule" ]]; then
             mode=daily
-          elif [[ "$EVENT_SCHEDULE" == "10 0,9,12,15,18,21 * * *" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "10 0,3,9,12,15,18,21 * * *" ]]; then
             mode=security
-          elif [[ "$EVENT_SCHEDULE" == "5 6 * * *" ]]; then
-            # 08:05 CEST / 07:05 CET.
+          elif [[ "$EVENT_SCHEDULE" == "45 3 * * *" && "$berlin_offset" == "+0200" ]] ||
+               [[ "$EVENT_SCHEDULE" == "45 4 * * *" && "$berlin_offset" == "+0100" ]] ||
+               [[ "$EVENT_SCHEDULE" == "45 5 * * *" && "$berlin_offset" == "+0200" ]] ||
+               [[ "$EVENT_SCHEDULE" == "45 6 * * *" && "$berlin_offset" == "+0100" ]]; then
             mode=daily
-          elif [[ "$EVENT_SCHEDULE" == "5 5 * * *" ]]; then
-            # 07:05 CEST; skip in winter.
-            if [[ "$berlin_offset" == "+0200" ]]; then mode=daily; fi
-          elif [[ "$EVENT_SCHEDULE" == "5 7 * * *" ]]; then
-            # 08:05 CET; skip in summer.
-            if [[ "$berlin_offset" == "+0100" ]]; then mode=daily; fi
-          else
-            echo "::warning::Unrecognized scheduled trigger"
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
           echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; Berlin offset: $berlin_offset; selected mode: $mode"
