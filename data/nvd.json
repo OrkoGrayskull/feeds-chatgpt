@@ -1,12 +1,219 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-21T22%3A00%3A00.000&pubEndDate=2026-10-24T07%3A09%3A01.000&resultsPerPage=200&startIndex=859",
-  "fetched_at": "2026-10-24T07:09:01+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-21T22%3A00%3A00.000&pubEndDate=2026-10-24T10%3A20%3A58.000&resultsPerPage=200&startIndex=882",
+  "fetched_at": "2026-10-24T10:20:58+00:00",
   "window_days": 3,
   "window_start": "2026-10-22",
   "window_end": "2026-10-24",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-115998",
+      "title": "CVE-2026-115998",
+      "description": "IDOR in Cervantes version v1.3-beta could allow an authenticated attacker ca access sensitive findings, proof-of-concept details, credentials, and client information from projects they do not belong to. Additionally, they can modify finding statuses and transfer findings to their own projects, compromising data confidentiality and integrity.",
+      "published": "2026-10-24T10:17:10.743",
+      "last_modified": "2026-10-24T10:17:10.743",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115998"
+    },
+    {
+      "cve": "CVE-2026-115994",
+      "title": "CVE-2026-115994",
+      "description": "BOLA Allows Cross-Project Target Tampering \nin Cervantes version v1.3-beta could allow an attacker modify or delete targets belonging to other projects without authorization, compromising the integrity of penetration testing scopes, results, and associated security reports.",
+      "published": "2026-10-24T10:17:10.600",
+      "last_modified": "2026-10-24T10:17:10.600",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115994"
+    },
+    {
+      "cve": "CVE-2026-114705",
+      "title": "CVE-2026-114705",
+      "description": "Missing Authorization vulnerability in quadlayers WP Social Feed Gallery insta-gallery allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP Social Feed Gallery: from n/a through 5.0.13.",
+      "published": "2026-10-24T10:17:10.453",
+      "last_modified": "2026-10-24T10:17:10.453",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114705"
+    },
+    {
+      "cve": "CVE-2026-114194",
+      "title": "CVE-2026-114194",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Igor Funa Ad Inserter ad-inserter allows Reflected XSS.This issue affects Ad Inserter: from n/a through 2.8.18.",
+      "published": "2026-10-24T10:17:08.090",
+      "last_modified": "2026-10-24T10:17:08.090",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114194"
+    },
+    {
+      "cve": "CVE-2026-115993",
+      "title": "CVE-2026-115993",
+      "description": "Stored XSS vulnerability in the “Notes” field of the Checklists in Cervantes version v1.3-beta could allow an attacker to execute arbitrary code in another user's browser with elevated privileges",
+      "published": "2026-10-24T09:16:44.270",
+      "last_modified": "2026-10-24T09:16:44.270",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115993"
+    },
+    {
+      "cve": "CVE-2026-94075",
+      "title": "CVE-2026-94075",
+      "description": "Deserialization of Untrusted Data vulnerability in Tribulant Software Newsletters newsletters-lite allows Object Injection.This issue affects Newsletters: from n/a through 4.18.1.",
+      "published": "2026-10-24T08:16:52.790",
+      "last_modified": "2026-10-24T08:16:52.790",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94075"
+    },
+    {
+      "cve": "CVE-2026-115975",
+      "title": "CVE-2026-115975",
+      "description": "Broken access control in JiraController in Cervantes version v1.3-beta could allow an attacker to create, edit, or delete Jira tickets for vulnerabilities in other projects",
+      "published": "2026-10-24T08:16:52.630",
+      "last_modified": "2026-10-24T08:16:52.630",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115975"
+    },
+    {
+      "cve": "CVE-2026-114697",
+      "title": "CVE-2026-114697",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in QuarkA QA Analytics qa-heatmap-analytics allows Stored XSS.This issue affects QA Analytics: from n/a through 5.3.0.1.",
+      "published": "2026-10-24T08:16:52.490",
+      "last_modified": "2026-10-24T08:16:52.490",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114697"
+    },
+    {
+      "cve": "CVE-2026-114695",
+      "title": "CVE-2026-114695",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Infomaniak Network VOD Infomaniak vod-infomaniak allows Stored XSS.This issue affects VOD Infomaniak: from n/a through 1.5.14.",
+      "published": "2026-10-24T08:16:52.360",
+      "last_modified": "2026-10-24T08:16:52.360",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114695"
+    },
+    {
+      "cve": "CVE-2026-114694",
+      "title": "CVE-2026-114694",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Pixelite Events Manager events-manager allows Reflected XSS.This issue affects Events Manager: from n/a through 7.4.8.",
+      "published": "2026-10-24T08:16:52.230",
+      "last_modified": "2026-10-24T08:16:52.230",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114694"
+    },
+    {
+      "cve": "CVE-2026-114693",
+      "title": "CVE-2026-114693",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Plugins360 Labs All-in-One Video Gallery all-in-one-video-gallery allows Stored XSS.This issue affects All-in-One Video Gallery: from n/a through 4.9.7.",
+      "published": "2026-10-24T08:16:52.093",
+      "last_modified": "2026-10-24T08:16:52.093",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114693"
+    },
+    {
+      "cve": "CVE-2026-114196",
+      "title": "CVE-2026-114196",
+      "description": "Deserialization of Untrusted Data vulnerability in paytiumsupport Paytium paytium allows Object Injection.This issue affects Paytium: from n/a through 5.0.5.",
+      "published": "2026-10-24T08:16:51.963",
+      "last_modified": "2026-10-24T08:16:51.963",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114196"
+    },
+    {
+      "cve": "CVE-2026-114190",
+      "title": "CVE-2026-114190",
+      "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Hai Zheng / Lite Speed Cache LiteSpeed Cache litespeed-cache allows Retrieve Embedded Sensitive Data.This issue affects LiteSpeed Cache: from n/a through 7.9.",
+      "published": "2026-10-24T08:16:51.830",
+      "last_modified": "2026-10-24T08:16:51.830",
+      "cvss": 5.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114190"
+    },
+    {
+      "cve": "CVE-2026-114179",
+      "title": "CVE-2026-114179",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in wordplus BP Better Messages bp-better-messages allows DOM-Based XSS.This issue affects BP Better Messages: from n/a through 3.1.3.",
+      "published": "2026-10-24T08:16:51.700",
+      "last_modified": "2026-10-24T08:16:51.700",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114179"
+    },
+    {
+      "cve": "CVE-2026-114178",
+      "title": "CVE-2026-114178",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Bold Grid W3 Total Cache w3-total-cache allows Stored XSS.This issue affects W3 Total Cache: from n/a through 2.10.7.",
+      "published": "2026-10-24T08:16:51.567",
+      "last_modified": "2026-10-24T08:16:51.567",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114178"
+    },
+    {
+      "cve": "CVE-2026-112869",
+      "title": "CVE-2026-112869",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Noah Hearle We’re Open! opening-hours allows Reflected XSS.This issue affects We’re Open!: from n/a through 2.6.",
+      "published": "2026-10-24T08:16:51.437",
+      "last_modified": "2026-10-24T08:16:51.437",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112869"
+    },
+    {
+      "cve": "CVE-2026-112866",
+      "title": "CVE-2026-112866",
+      "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in WPFactory Product Filter by WBW woo-product-filter allows Blind SQL Injection.This issue affects Product Filter by WBW: from n/a through 3.4.6.",
+      "published": "2026-10-24T08:16:51.303",
+      "last_modified": "2026-10-24T08:16:51.303",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112866"
+    },
+    {
+      "cve": "CVE-2026-112844",
+      "title": "CVE-2026-112844",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Arraytics WP Event Solution wp-event-solution allows Stored XSS.This issue affects WP Event Solution: from n/a through 4.1.26.",
+      "published": "2026-10-24T08:16:51.160",
+      "last_modified": "2026-10-24T08:16:51.160",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112844"
+    },
+    {
+      "cve": "CVE-2026-111402",
+      "title": "CVE-2026-111402",
+      "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Tribulant Software Newsletters newsletters-lite allows SQL Injection.This issue affects Newsletters: from n/a through 4.18.1.",
+      "published": "2026-10-24T08:16:50.877",
+      "last_modified": "2026-10-24T08:16:50.877",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111402"
+    },
+    {
+      "cve": "CVE-2026-110892",
+      "title": "CVE-2026-110892",
+      "description": "Missing Authorization vulnerability in Brainstorm Force SureDash suredash allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects SureDash: from n/a through 1.12.2.",
+      "published": "2026-10-24T08:16:49.753",
+      "last_modified": "2026-10-24T08:16:49.753",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110892"
+    },
+    {
+      "cve": "CVE-2026-115803",
+      "title": "CVE-2026-115803",
+      "description": "A flaw has been found in Scada-LTS 2.8.0. Affected by this vulnerability is the function HttpServletRequest.getParameter of the file AmChartValuesAPI.java of the component AmCharts Data API. Executing a manipulation of the argument ids can lead to authorization bypass. The attack can be executed remotely. The exploit has been published and may be used. The vendor announces: \"At this moment we are working on new release with security enhancements which will be introduced to the community soon.\"",
+      "published": "2026-10-24T07:16:46.637",
+      "last_modified": "2026-10-24T07:16:46.793",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115803"
+    },
+    {
+      "cve": "CVE-2026-115802",
+      "title": "CVE-2026-115802",
+      "description": "A weakness has been identified in InternScience InternAgent 1.5.0. This affects the function train of the file tasks/AutoChem/code/experiment.py of the component LoRA Loading. This manipulation of the argument base_model_name_or_path causes inclusion of functionality from untrusted control sphere. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+      "published": "2026-10-24T07:16:46.273",
+      "last_modified": "2026-10-24T07:16:46.273",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115802"
+    },
+    {
+      "cve": "CVE-2026-108013",
+      "title": "CVE-2026-108013",
+      "description": "BigFix Platform uses Mozilla CA certificate bundle (PEM). Versions of the bundle dated before 2026/10/20 still trust certificates whose private keys have been compromised. When BigFix Platform validates servers using such a bundle, an on-path attacker can impersonate remote servers and tamper with files downloaded by the application. The issue is resolved by using bundle version 2026/10/20 or later. The fixed bundle is available starting from BES Support v1520.",
+      "published": "2026-10-24T07:16:44.990",
+      "last_modified": "2026-10-24T07:16:44.990",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108013"
+    },
     {
       "cve": "CVE-2026-97353",
       "title": "CVE-2026-97353",
@@ -1599,217 +1806,10 @@
       "last_modified": "2026-10-23T13:17:30.140",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99063"
-    },
-    {
-      "cve": "CVE-2026-99062",
-      "title": "CVE-2026-99062",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: account only unread bytes in read_skb()\n\nAfter a partial stream receive, rx_bytes tracks the unread suffix while\nbuf_used and peer credit still cover the whole packet.\nvirtio_transport_read_skb() dequeues that packet but passes pkt_len for\nboth counters, underflowing rx_bytes.\n\nOn a connected CID_LOCAL stream with an SK_SKB verdict, a 40-byte read\nfrom a 100-byte packet made SIOCINQ report -40, an empty recv return\nELOOP, and poll report the empty socket readable.  After verdict detach,\nreceiving 40 bytes wrapped the counter to zero and hid those queued bytes\nuntil one more byte arrived.  The fixed run kept the counter balanced\nand exposed all queued data immediately.\n\nThis was found during an LLM-assisted manual source audit of VSOCK\nreceive accounting while re-evaluating virtio_transport_read_skb() after",
-      "published": "2026-10-23T13:17:30.020",
-      "last_modified": "2026-10-23T13:17:30.020",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99062"
-    },
-    {
-      "cve": "CVE-2026-99061",
-      "title": "CVE-2026-99061",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix P2P device removal race in brcmf_detach()\n\nWhen the driver is removed while the user space process that created\nthe P2P device (e.g. wpa_supplicant) is still exiting, the P2P device\ninterface is removed twice and the kernel crashes.\n\nThe two paths are:\n\n - wpa_supplicant, on exit, sends NL80211_CMD_DEL_INTERFACE for the P2P\n   device. nl80211_del_interface() holds RTNL and the wiphy mutex and\n   calls brcmf_p2p_del_vif(), which disables discovery and waits up to\n   1.5 s for BRCMF_E_IF_DEL. Then it calls brcmf_remove_interface(),\n   which unregisters the wdev and frees the vif and the ifp.\n\n - brcmf_detach() sets the bus down, so BRCMF_E_IF_DEL never arrives,\n   and calls brcmf_remove_interface(ifp, false) for the same ifp.\n   brcmf_p2p_ifp_removed() reads ifp->vif and then blocks on\n   rtnl_lock(). ",
-      "published": "2026-10-23T13:17:29.873",
-      "last_modified": "2026-10-23T13:17:29.873",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99061"
-    },
-    {
-      "cve": "CVE-2026-99060",
-      "title": "CVE-2026-99060",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7603: initialize global station WCID\n\nmt7603 uses a driver-private global station WCID for frames that have\nneither a station nor a vif, including frames injected through a monitor\ninterface. Unlike the core global WCID initialized by\nmt76_register_device(), this WCID is published without ever being passed\nto mt76_wcid_init().\n\nSince commit 0335c034e726 (\"wifi: mt76: fix race condition related to\nchecking tx queue fill status\"), mt76_tx() queues every such frame on the\nWCID's tx_pending or tx_offchannel queue and links its tx_list. The first\ninjected frame therefore reaches __skb_queue_tail() with an uninitialized\nsk_buff_head and dereferences a NULL prev pointer.\n\nInitialize the WCID before publishing it.\n\nThe fix was tested on an MT7603 PCIe device. Three wildcard probe requests\nwere injected through a m",
-      "published": "2026-10-23T13:17:29.753",
-      "last_modified": "2026-10-23T13:17:29.753",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99060"
-    },
-    {
-      "cve": "CVE-2026-99059",
-      "title": "CVE-2026-99059",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwireguard: noise: reject response consumption after intermediate initiation\n\nTwo threads begin processing the identical response message, received\ntwice. The first thread, A, runs. While it's running, the second one,\nB, gets partway through, and during that slow calculation, or even while\nblocking on down_write(), A completes and then also a handshake\ninitiation that's already been queued up runs in thread C, which itself\ntakes that same down_write(). The handshake initiation creation\nsucceeds, and sets the state back to waiting-for-response, and calls\nup_write(), at which point thread B resumes, because either its finished\nits calculations or was finally allowed to acquire down_write(). Thread\nB then copies the state back to the peer, and begins a new session,\nusing that state, which is the same session as the one made",
-      "published": "2026-10-23T13:17:29.620",
-      "last_modified": "2026-10-23T13:17:29.620",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99059"
-    },
-    {
-      "cve": "CVE-2026-99058",
-      "title": "CVE-2026-99058",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nworkqueue: Fix NULL current_pwq deref in chained work check\n\ncurrent_wq_worker() only tells us that %current is a kworker. It does\nnot guarantee that the worker is currently executing a work item, as\nworker->current_pwq is populated only while process_one_work() is running\nthe work function.\n\nis_chained_work() can be reached while queueing on a draining or\ndestroying workqueue. If a kworker outside work-item execution reaches\nthat path, current_wq_worker() returns a worker but worker->current_pwq is\nNULL, and the chained-work test can fault before it emits the intended\nwarning.\n\nGuard the chained-work test with worker->current_pwq. A kworker without\ncurrent_pwq is not executing work on the target workqueue, so the helper\nshould return false and let the draining/destroying warning fire.",
-      "published": "2026-10-23T13:17:29.503",
-      "last_modified": "2026-10-23T13:17:29.503",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99058"
-    },
-    {
-      "cve": "CVE-2026-99057",
-      "title": "CVE-2026-99057",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/netfront: don't leak the skb when xennet_fill_frags() fails\n\nWhen a response chain has more slots than fit in the skb's frags,\nxennet_fill_frags() returns an error and xennet_poll() jumps to its\nerror path.  That path moves what's left on tmpq to errq to be freed,\nbut the skb being filled was already dequeued from tmpq, so it's never\nfreed.  Each chain that overflows leaks the skb and the pages attached\nto it as frags, and the backend decides how many slots it sends.\n\nPut the skb back on tmpq before taking the error path, like the\nxennet_set_skb_gso() failure just above it does.",
-      "published": "2026-10-23T13:17:29.373",
-      "last_modified": "2026-10-23T13:17:29.373",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99057"
-    },
-    {
-      "cve": "CVE-2026-99056",
-      "title": "CVE-2026-99056",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstrparser: make sure __strp_recv isn't running before tearing down the parser\n\nThe comment above strp_done() claims that if strp is stopped,\nstrp_recv will no longer be called. That's only true if the caller has\na mechanism (eg locking) to guarantee that strp_recv() calls that\nstarted before strp_stop() have completed by the time we call\nstrp_done().\n\nThis adds a dummy lock_sock/release_sock pair to guarantee that any\nin-flight strp_recv() (which runs under either bh_lock_sock or\nlock_sock, depending if it's called from ->sk_data_ready or strp_work)\nhas completed.\n\nOnly espintcp can be affected by this race condition, but this patch\nmakes sure no future user of strp can have the bug.\n\nThis could crash on strp->sk (\"general mode\" of strp), but this mode\nhas been here for 9 years and has never been used. It'll be gone soo",
-      "published": "2026-10-23T13:17:29.257",
-      "last_modified": "2026-10-23T13:17:29.257",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99056"
-    },
-    {
-      "cve": "CVE-2026-99055",
-      "title": "CVE-2026-99055",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: reject net_iov in zerocopy receive mapping hints\n\nAfter copying a readable prefix, receive_fallback_to_copy() asks\ntcp_zerocopy_set_hint_for_skb() where page mapping can resume. If the\nnext skb is unreadable, find_next_mappable_frag() passes its net_iov\nfragment to can_map_frag().\n\nskb_frag_page() returns NULL for a net_iov, but can_map_frag()\ndereferences it in PageCompound(). A v7.2 KASAN run on a connected TCP\nsocket with 64 readable bytes followed by a 4096-byte NET_IOV_DMABUF\nfragment reported:\n\n  BUG: KASAN: null-ptr-deref in can_map_frag\n  tcp_zerocopy_receive -> can_map_frag\n  Kernel panic - not syncing: KASAN: panic_on_warn set\n\nThe diagnostic inserted the net_iov directly because the test host has\nno devmem-capable NIC. Hardware end-to-end reachability remains untested\nand requires CONFIG_NET_DEVMEM plus ",
-      "published": "2026-10-23T13:17:29.140",
-      "last_modified": "2026-10-23T13:17:29.140",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99055"
-    },
-    {
-      "cve": "CVE-2026-99054",
-      "title": "CVE-2026-99054",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: destroy topsrv workqueues before closing connections\n\ntipc_topsrv_stop() closed subscriber connections while the topology\nserver's send and receive workqueues were still running. Socket\ncallbacks and subscription events could then queue more work, and\nin-flight send/recv work could drop the last connection reference\nduring the conn_idr walk.\n\nThat race produced several teardown failures: refcount_t addition on\n0 from conn_get() on a connection whose release was blocked on\nidr_lock, a subsequent use-after-free in tipc_conn_close(),\nqueue_work() on an already destroyed workqueue from the listener\ndata-ready callback, and an RCU stall in tipc_topsrv_exit_net()\nwhile the walk spun under idr_lock.\n\nClear srv->listener under idr_lock so it acts as a shutdown flag,\nskip queue_work() once it is NULL, destroy the workqueue",
-      "published": "2026-10-23T13:17:29.013",
-      "last_modified": "2026-10-23T13:17:29.013",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99054"
-    },
-    {
-      "cve": "CVE-2026-99053",
-      "title": "CVE-2026-99053",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: hold a reference to nodes found by link name\n\ntipc_node_find_by_name() returns a node after dropping its RCU read lock\nwithout taking a reference.  The LINK_SET, LINK_GET and LINK_RESET_STATS\nhandlers then lock and access the node, racing with timer-driven cleanup of\na down peer.  Generic netlink serialization does not exclude the node\ntimer.\n\nThe following interleaving can leave a handler using a freed node:\n\n  CPU 0: find the node under RCU and release the node read lock\n  CPU 1: tipc_node_timeout() clears the links and unlinks the down node\n  CPU 1: drop the list and timer references, queuing tipc_node_free()\n  CPU 0: leave the RCU read-side critical section\n  CPU 1: complete the grace period and free the node\n  CPU 0: acquire the node lock through the stale pointer\n\nLINK_SET also uses the node's media address ",
-      "published": "2026-10-23T13:17:28.877",
-      "last_modified": "2026-10-23T13:17:28.877",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99053"
-    },
-    {
-      "cve": "CVE-2026-99052",
-      "title": "CVE-2026-99052",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: preserve NATIVE_LABELS on already-initialized sb in set_mnt_opts\n\nWhen an NFSv4 filesystem exported with security_label is mounted a\nsecond time, sget_fc() returns the existing superblock and\nnfs_get_root() calls security_sb_set_mnt_opts() again on it. Since the\nsuperblock is already SB_INITIALIZED, selinux_set_mnt_opts() takes an\nearly exit without setting SECURITY_LSM_NATIVE_LABELS in\n*set_kern_flags. nfs_get_root() then sees kflags without\nSECURITY_LSM_NATIVE_LABELS set and clears NFS_CAP_SECURITY_LABEL on\nthe shared nfs_server, silently disabling per-file labeling for both\nthe new and the original mount.\n\nCommit 3815a245b501 (\"security/selinux: fix SECURITY_LSM_NATIVE_LABELS\non reused superblock\") fixed the same problem in\nselinux_sb_clone_mnt_opts().  The reused-superblock path for a plain\nsecond mount now",
-      "published": "2026-10-23T13:17:28.747",
-      "last_modified": "2026-10-23T13:17:28.747",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99052"
-    },
-    {
-      "cve": "CVE-2026-99051",
-      "title": "CVE-2026-99051",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfsverity: RCU-delay the freeing of struct fsverity_info\n\n__fsverity_get_info() calls rhashtable_lookup_fast(), which just uses\nrcu_read_lock() and doesn't directly synchronize with\nfsverity_remove_info().\n\nFor the same inode this isn't a problem: its fsverity_info is removed\nonly at inode eviction time or upon failure to enable verity, when the\ninode no longer needs its fsverity_info and it will no longer be\naccessed via that inode.\n\nHowever, this is broken and can cause a use-after-free for concurrent\n__fsverity_get_info() for *different* inodes.  Those rely on following\nfsverity_info::rhash_head in the rhashtable under rcu_read_lock() only.\nThey also use fsverity_info::inode to do the key comparison.\n\nFix this by RCU-delaying the freeing of 'struct fsverity_info' after\nit's been removed from the rhashtable.",
-      "published": "2026-10-23T13:17:28.633",
-      "last_modified": "2026-10-23T13:17:28.633",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99051"
-    },
-    {
-      "cve": "CVE-2026-99050",
-      "title": "CVE-2026-99050",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: mpsse: fix race when arming the IRQ poll worker\n\ngpio_mpsse_irq_enable() arms the poll worker before publishing it:\nschedule_work() runs before the worker is added to priv->workers. If\ngpio_mpsse_disconnect() walks the list in that window it misses the\nworker, and once disconnect returns, the USB core frees mpsse_priv\nwhile the orphaned gpio_mpsse_poll() work keeps accessing it, causing\na use-after-free.\n\nFix this by publishing and arming the worker in one irq_spin\ncritical section. Teardown walks the same list under irq_spin, so a\nworker found on the list is guaranteed to be armed, and\ncancel_work_sync() handles it whether it is queued or running.\n\nA worker armed after the disconnect walk would still be missed, so\nalso set a new priv->dying flag under irq_spin before the teardown\nwalk, and check it in the same cr",
-      "published": "2026-10-23T13:17:28.513",
-      "last_modified": "2026-10-23T13:17:28.513",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99050"
-    },
-    {
-      "cve": "CVE-2026-99049",
-      "title": "CVE-2026-99049",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: xilinx: fix runtime PM leak on request error path\n\npm_runtime_get_sync() leaves the usage counter incremented even when it\nfails, and xgpio_request() returns the error without dropping it.\n\ngpiolib does not call ->free() when ->request() fails, so xgpio_free(),\nwhich holds the only matching pm_runtime_put(), never runs. The reference\nis leaked and the controller can no longer runtime-suspend, so its clock\nstays enabled.\n\nSwitch to pm_runtime_resume_and_get(), which only increments the usage\ncounter on success.",
-      "published": "2026-10-23T13:17:28.403",
-      "last_modified": "2026-10-23T13:17:28.403",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99049"
-    },
-    {
-      "cve": "CVE-2026-99048",
-      "title": "CVE-2026-99048",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix napi_disable deadlock when attempting to disable XSK pools\n\nWhen disabling XSK pools, GVE calls the unlocked versions of\nnapi_disable and napi_enable. However, the netdev lock has already been\nacquired before ndo_bpf is called because GVE supports queue management\nops. Calling the unlocked versions of napi_disable/enable results in a\ndeadlock when attempting to disable XSK pools, as the thread attempts to\nre-acquire a lock it already holds.\n\nUpdate the NAPI calls to use the locked versions.\n\nThis issue was found in production.",
-      "published": "2026-10-23T13:17:28.293",
-      "last_modified": "2026-10-23T13:17:28.293",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99048"
-    },
-    {
-      "cve": "CVE-2026-99047",
-      "title": "CVE-2026-99047",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix XSK buffer leak when rings are stopped\n\nGVE does not free XSK buffers when resetting ring state as a part of\nstopping queues. This causes all XSK buffers which are posted to the\nNIC to be leaked.\n\nFree XSK buffers attached to an allocated buf_state when stopping rings.\n\nThis issue was hit in production.",
-      "published": "2026-10-23T13:17:28.183",
-      "last_modified": "2026-10-23T13:17:28.183",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99047"
-    },
-    {
-      "cve": "CVE-2026-99046",
-      "title": "CVE-2026-99046",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix XSK buffer leak on error descriptor\n\nWhen the error bit is set in the RX completion descriptor, the buf_state\nand its attached buffer should be freed. In the case of AF_XDP ZC, the\nXSK buffer was not freed, leading to a leak.\n\nThis issue was caught by LLM.",
-      "published": "2026-10-23T13:17:28.073",
-      "last_modified": "2026-10-23T13:17:28.073",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99046"
-    },
-    {
-      "cve": "CVE-2026-99045",
-      "title": "CVE-2026-99045",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nibmveth: h_free logical LAN on open-fail after register\n\nibmveth_open() registers the logical LAN, then allocates the RX\nbuffer pools. A pool failure jumps to out_free_buffer_pools without\nh_free_logical_lan(), so PHYP still owns the buffer-list page when\nit is unmapped. request_irq() failure already issued the hypercall\nbefore taking the same label.\n\nMove that h_free to the shared post-register unwind so both paths\nderegister before the buffer list is unmapped.",
-      "published": "2026-10-23T13:17:27.953",
-      "last_modified": "2026-10-23T13:17:27.953",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99045"
-    },
-    {
-      "cve": "CVE-2026-99044",
-      "title": "CVE-2026-99044",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: fix use-after-free in dynamic port cleanup\n\nice_dealloc_dynamic_port() uses dyn_port->vsi->idx to erase the dynamic\nport from pf->dyn_ports. However, it frees the VSI before reading the\nindex for the erase, resulting in a use-after-free.\n\nFollow the reverse of the allocation order in ice_alloc_dynamic_port()\nby erasing the xarray entry before freeing the VSI.",
-      "published": "2026-10-23T13:17:27.843",
-      "last_modified": "2026-10-23T13:17:27.843",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99044"
-    },
-    {
-      "cve": "CVE-2026-99043",
-      "title": "CVE-2026-99043",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: fix metadata_dst refcount handling on representor teardown\n\nice_eswitch_release_repr() uses metadata_dst_free() to release the\nrepresentor's metadata_dst.  metadata_dst_free() directly frees the\nunderlying memory without checking the dst_entry refcount.\n\nWhen ice_eswitch_port_start_xmit() processes a packet, it takes a\nreference via dst_hold() and attaches the metadata_dst to the skb.\nIf the representor is torn down while packets are still queued on\nthe lower device (e.g. in a qdisc), the metadata_dst is freed while\nreferences are still held.\n\nUse dst_release() instead, which correctly decrements the refcount\nand only frees the object when all references are dropped.  The dst\nsubsystem already handles metadata_dst cleanup in dst_destroy() when\nDST_METADATA is set.\n\nOther drivers sharing this pattern (nfp, airoha, b",
-      "published": "2026-10-23T13:17:27.723",
-      "last_modified": "2026-10-23T13:17:27.723",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99043"
-    },
-    {
-      "cve": "CVE-2026-99042",
-      "title": "CVE-2026-99042",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/net: populate CONNECT filter fields for 24-byte sockaddr_in6\n\nio_connect_bpf_populate() fills connect.port and connect.v6_addr for\nAF_INET6 only when addr_len >= sizeof(struct sockaddr_in6), i.e. 28\nbytes.\n\nThe IPv6 connect paths accept SIN6_LEN_RFC2133 (24 bytes), which\nalready holds sin6_port and sin6_addr. io_connect() passes addr_len to\nthe socket layer unchanged.\n\nAt addr_len 24 the filter sees family AF_INET6 with port and address\nzero, while the kernel connects to the real destination. A filter that\ndenies an IPv6 port or address is bypassed. Denying connect.port == P\nrejects [::1]:P with -EACCES at addr_len 28 but connects at addr_len 24.\n\nUse SIN6_LEN_RFC2133 as the threshold. sin6_scope_id stays zero when\nabsent.\n\nThe threshold mismatch was found by an AI coding assistant (Claude Code)\ncomparing this ",
-      "published": "2026-10-23T13:17:27.610",
-      "last_modified": "2026-10-23T13:17:27.610",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99042"
-    },
-    {
-      "cve": "CVE-2026-99041",
-      "title": "CVE-2026-99041",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nip6_gre: remove obsolete ERSPAN PMTU update\n\nA tc tunnel_key action can attach a METADATA_IP_TUNNEL dst to an skb,\nand mirred can redirect it to a native ip6erspan device. The legacy PMTU\nupdate in ip6erspan_tunnel_xmit() treats that metadata dst as a route.\nSince it has no output device, dst_dev(dst)->mtu dereferences NULL.\n\nOn v7.2 with KASAN, an initial UID/GID 65534 process with CapEff 0 used\nself-created user and network namespaces to trigger:\n\n  KASAN: null-ptr-deref\n  RIP: ip6erspan_tunnel_xmit+0x10fc/0x2cc0\n  Kernel panic - not syncing: Fatal exception in interrupt\n\nThe update is obsolete. Commit fe1a4ca0a2b7 (\"ip6_gre: process toobig\nin a better way\") changed IPv6 GRE Too Big handling to update the\nunderlay route and removed the equivalent block from __gre6_xmit().\nip6_tnl_xmit() then propagates the underlay PM",
-      "published": "2026-10-23T13:17:27.487",
-      "last_modified": "2026-10-23T13:17:27.487",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99041"
-    },
-    {
-      "cve": "CVE-2026-99040",
-      "title": "CVE-2026-99040",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: Fix add_key() race with keyring restriction\n\n__key_create_or_update() snapshots keyring->restrict_link before taking\nthe destination keyring's semaphore.  keyring_restrict() installs a\nrestriction while holding that semaphore.\n\nThis allows a writer to observe no restriction, wait for the keyring\nowner to install a reject-all restriction and return successfully, and\nthen link a key using the stale NULL snapshot.  The writer only needs\nwrite permission on the destination keyring.\n\nMove the restrict_link read after __key_link_lock() and\n__key_link_begin().  The read and the subsequent restriction check are\nthen serialized with restriction installation by keyring->sem.\n\nThe race was reproduced on v7.2.8 in 19 executions where restriction\ninstallation returned before the link completed.  All 19 linked the key\ndespite t",
-      "published": "2026-10-23T13:17:27.360",
-      "last_modified": "2026-10-23T13:17:27.360",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99040"
     }
   ],
-  "total_results": 1059,
+  "total_results": 1082,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 859
+  "start_index": 882
 }
