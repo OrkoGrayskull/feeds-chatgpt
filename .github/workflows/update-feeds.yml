@@ -14,13 +14,13 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Full refreshes in Berlin local time, with automatic DST handling.
-    - cron: '45 5 * * *'
-      timezone: 'Europe/Berlin'
-    - cron: '45 7 * * *'
-      timezone: 'Europe/Berlin'
-    # BSI-only updates preserve fast-moving notices without re-fetching all sources.
-    - cron: '10 0,3,9,12,15,18,21 * * *'
+    # Two independent UTC attempts for the morning full refresh.
+    # CEST: 05:10 and 07:10; CET: 04:10 and 06:10.
+    # The 03:10 UTC slot previously ran BSI-only reliably.
+    - cron: '10 3 * * *'
+    - cron: '10 5 * * *'
+    # Intermediate BSI-only checks; 03:10 UTC moved to the full refresh.
+    - cron: '10 0,9,12,15,18,21 * * *'
 
 permissions:
   contents: write
@@ -44,9 +44,9 @@ jobs:
           mode=skip
           if [[ "$EVENT_NAME" != "schedule" ]]; then
             mode=daily
-          elif [[ "$EVENT_SCHEDULE" == "10 0,3,9,12,15,18,21 * * *" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "10 0,9,12,15,18,21 * * *" ]]; then
             mode=security
-          elif [[ "$EVENT_SCHEDULE" == "45 5 * * *" || "$EVENT_SCHEDULE" == "45 7 * * *" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "10 3 * * *" || "$EVENT_SCHEDULE" == "10 5 * * *" ]]; then
             mode=daily
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
