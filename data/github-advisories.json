@@ -1,11 +1,11 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-10-24T10:20:58+00:00",
+  "fetched_at": "2026-10-25T06:55:10+00:00",
   "window_days": 3,
-  "window_start": "2026-10-22",
-  "window_end": "2026-10-24",
-  "count": 100,
+  "window_start": "2026-10-23",
+  "window_end": "2026-10-25",
+  "count": 82,
   "items": [
     {
       "cve": "CVE-2026-112937",
@@ -744,168 +744,6 @@
       "severity": "medium",
       "published": "2026-10-23T17:28:19+00:00",
       "link": "https://github.com/advisories/GHSA-c5xx-h28h-f682"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-8cqv-vvq2-6p8c",
-      "title": "Duplicate Advisory: Mistune: Path Traversal and XSS in Include directive",
-      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-h7ww-273w-6cm8. This link is maintained to preserve external references.\n\n## Original Description\nMistune before 3.3.0 contains a path traversal vulnerability in the Include directive that allows attackers to read arbitrary files by supplying ../ sequences in include paths. Attackers can also inject HTML through unescaped error messages and included file contents to perform cross-site scripting even when escape=True is set.",
-      "severity": "high",
-      "published": "2026-10-22T21:32:36+00:00",
-      "link": "https://github.com/advisories/GHSA-8cqv-vvq2-6p8c"
-    },
-    {
-      "cve": "CVE-2026-113721",
-      "ghsa": "GHSA-558c-9hv2-4prj",
-      "title": "virtualenv: Generated files can follow existing destination links",
-      "description": "## Summary\n\nGenerated activation files and pyvenv.cfg can follow existing links and write outside the requested environment. The\ntemplate writer tests exists() before unlinking, which misses dangling symlinks; the configuration writer opens the\nexisting path directly.\n\nAnthropic's OSS Scanner reported this as `ANT-2026-XBEOCBS1` in `virtualenv-20261015-005`, received on 15 October 2026.\n\n## Affected area\n\nFinal file entries written during environment creation and seeding.\n\n## Attacker-controlled input\n\nAnother account must be able to prepare file links in the destination before creation. The invoking user must have write\npermission at the linked target. The destination parent must remain controlled during creation; concurrent\nparent-directory replacement is a separate concern.\n\n## Affected code\n\nThe relevant 21.14.8 source is in\n[template writer](https://github.com/pypa/virtualenv/blob/a",
-      "severity": "medium",
-      "published": "2026-10-22T17:03:12+00:00",
-      "link": "https://github.com/advisories/GHSA-558c-9hv2-4prj"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-78g4-xqwv-q3g8",
-      "title": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
-      "description": "### Summary\n\nEvery Pillow wheel from 11.1.0 onward bundles a libopenjp2 containing a heap-buffer-overflow **write** that is fixed upstream on master but has never appeared in an OpenJPEG release. See https://osv.dev/vulnerability/OSV-2025-219\n\nBecause the wheel bundles its own copy, a patched host OS does not help. It is reachable from `Image.open(fp); im.load()` with default settings.\n\nI am reporting it here rather than only upstream because Pillow is where the vulnerable binary actually reaches users.\n\nNote the inversion that makes this easy to miss: **OpenJPEG 2.5.2 and earlier are safe.** The bug was introduced in `954c6e3c` (2024-06-25), so keeping the dependency current is what creates the exposure.\n\n### Details\n\n## Affected wheels\n\nFrom `.github/dependencies.json` (`openjpeg`) at each tag:\n\n| Pillow | bundled OpenJPEG | status |\n|---|---|---|\n| 10.4.0 | 2.5.2 | safe |\n| 11.0.0 | 2",
-      "severity": "high",
-      "published": "2026-10-22T17:01:08+00:00",
-      "link": "https://github.com/advisories/GHSA-78g4-xqwv-q3g8"
-    },
-    {
-      "cve": "CVE-2026-114132",
-      "ghsa": "GHSA-vjh5-4x84-xrqp",
-      "title": "Nuxt: Server-side route rules (`redirect`, `headers`, `proxy`, `ssr`) are skipped for case-variant paths when routing is case-insensitive",
-      "description": "## Impact\n\nWith the default `router.options.sensitive: false`, Nuxt's page router resolves routes case-insensitively, so `/Admin` renders the same page as `/admin`. On the server, however, route rules were resolved with Nitro's route-rule matcher, which matches keys case-sensitively. A request whose path differs from a rule key only in letter case therefore rendered the page with none of that rule applied.\n\nEarlier fixes ([GHSA-mm7m-92g8-7m47](https://github.com/nuxt/nuxt/security/advisories/GHSA-mm7m-92g8-7m47), [GHSA-hxvh-4h3w-prp9](https://github.com/nuxt/nuxt/security/advisories/GHSA-hxvh-4h3w-prp9)) case-folded the route rules that the Nuxt app itself reads, such as `appMiddleware`. This advisory covers the rules applied on the server:\n\n- `redirect`: a rule used to send visitors away from a page, such as `'/admin/**': { redirect: '/login' }`, was skipped, and the page and its server",
-      "severity": "medium",
-      "published": "2026-10-22T16:59:55+00:00",
-      "link": "https://github.com/advisories/GHSA-vjh5-4x84-xrqp"
-    },
-    {
-      "cve": "CVE-2026-114133",
-      "ghsa": "GHSA-xfq5-w38q-pc2x",
-      "title": "Nuxt server islands render `useHeadSafe` input without sanitisation",
-      "description": "## Impact\n\n`useHeadSafe` restricts head input to an allowlist of safe tags and attributes. For example, `bodyAttrs` is limited to `class` and `style`, event handler attributes are removed, and `<script>` tags are only kept for JSON types.\n\nWhen `useHeadSafe` is called inside a server island (a `.server.vue` component or page, or a component rendered with `<NuxtIsland>`), the island renderer serialises the raw input of every head entry into the island response without the option that marks it as safe input. `<NuxtIsland>` then pushes that input into the page's head as a regular entry, both during server rendering and when hydrating or refetching on the client.\n\nAs a result, input that `useHeadSafe` would normally strip (such as `bodyAttrs.onload` or executable `<script>` content) is rendered into the page. If an application passes user-controlled data to `useHeadSafe` inside a server isla",
-      "severity": "medium",
-      "published": "2026-10-22T16:58:00+00:00",
-      "link": "https://github.com/advisories/GHSA-xfq5-w38q-pc2x"
-    },
-    {
-      "cve": "CVE-2026-114130",
-      "ghsa": "GHSA-jjm6-p2m9-9w4x",
-      "title": "Nuxt: Incomplete fix for GHSA-934w-87qh-qr26: a `javascript:` URL prefixed with an ASCII control character executes from `<NuxtLink>` when `pages` is disabled",
-      "description": "## Impact\n\nAn application that renders `<NuxtLink :to=\"...\">` with a value it does not control can be made to render an anchor whose `href` executes script in the application's origin when clicked.\n\nThis is an incomplete fix for [GHSA-934w-87qh-qr26](https://github.com/nuxt/nuxt/security/advisories/GHSA-934w-87qh-qr26) (CVE-2026-53722). It only affects applications running without a `pages/` directory, where `pages` resolves to `false` and Nuxt registers its own router in place of vue-router. Applications using vue-router are not affected.\n\nPrefixing `javascript:` with an ASCII C0 control character, for example `%01`, meant the value was not recognised as having a protocol. It was classified as an internal route and so never reached the protocol check added in GHSA-934w-87qh-qr26, and the router used for `pages: false` passed it through to the rendered `href` unchanged. Browsers strip th",
-      "severity": "low",
-      "published": "2026-10-22T16:51:37+00:00",
-      "link": "https://github.com/advisories/GHSA-jjm6-p2m9-9w4x"
-    },
-    {
-      "cve": "CVE-2026-114131",
-      "ghsa": "GHSA-6gq8-jgmh-3ffp",
-      "title": "Nuxt: Route rules are matched against the raw request path, so a percent-encoded segment can bypass `appMiddleware` on dynamic and catch-all routes",
-      "description": "### Summary\n\nNuxt compared `routeRules` keys against the raw request path, without decoding percent-encoding, while the router decodes parameters when it resolves a route. A request whose path is percent-encoded can therefore resolve to a page while failing to match the route rule meant to protect it, so the rule's `appMiddleware` never runs, including during server rendering.\n\n### Impact\n\nFor a page served through a dynamic or catch-all route, an attacker can percent-encode a character in the path to skip the rule:\n\n```ts\nexport default defineNuxtConfig({\n  routeRules: {\n    '/users/admin': { appMiddleware: 'auth' },\n  },\n})\n```\n\nRequesting `/users/%61dmin` still renders `app/pages/users/[id].vue` with `id` decoded to `admin`, but the rule keyed `/users/admin` does not match, so `auth` does not run and the server renders and returns the gated page to an unauthenticated visitor. No privi",
-      "severity": "medium",
-      "published": "2026-10-22T16:50:53+00:00",
-      "link": "https://github.com/advisories/GHSA-6gq8-jgmh-3ffp"
-    },
-    {
-      "cve": "CVE-2026-113789",
-      "ghsa": "GHSA-6vvc-x485-93v7",
-      "title": "pypdf: Possible long runtimes/large memory usage when retrieving form fields",
-      "description": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to large memory usage and/or long runtimes. This requires retrieving the form fields of a document.\n\n### Patches\n\nThis has been fixed in [pypdf==6.21.0](https://github.com/py-pdf/pypdf/releases/tag/6.21.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4219](https://github.com/py-pdf/pypdf/pull/4219).",
-      "severity": "medium",
-      "published": "2026-10-22T16:49:56+00:00",
-      "link": "https://github.com/advisories/GHSA-6vvc-x485-93v7"
-    },
-    {
-      "cve": "CVE-2026-113790",
-      "ghsa": "GHSA-f54x-cmq8-qg57",
-      "title": "pypdf: Possible large memory usage when parsing arrays and dictionaries",
-      "description": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to large memory usage. This requires parsing arrays and/or dictionaries with lots of elements.\n\n### Patches\n\nThis has been fixed in [pypdf==6.21.0](https://github.com/py-pdf/pypdf/releases/tag/6.21.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4218](https://github.com/py-pdf/pypdf/pull/4218).",
-      "severity": "medium",
-      "published": "2026-10-22T16:49:40+00:00",
-      "link": "https://github.com/advisories/GHSA-f54x-cmq8-qg57"
-    },
-    {
-      "cve": "CVE-2026-113791",
-      "ghsa": "GHSA-cgf9-327m-v77c",
-      "title": "pypdf: Possible large memory usage when parsing content streams",
-      "description": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to large memory usage. This requires parsing content streams with many small operations.\n\n### Patches\n\nThis has been fixed in [pypdf==6.21.0](https://github.com/py-pdf/pypdf/releases/tag/6.21.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#4218](https://github.com/py-pdf/pypdf/pull/4218).",
-      "severity": "medium",
-      "published": "2026-10-22T16:49:22+00:00",
-      "link": "https://github.com/advisories/GHSA-cgf9-327m-v77c"
-    },
-    {
-      "cve": "CVE-2026-113796",
-      "ghsa": "GHSA-2p8c-gr87-2676",
-      "title": "Electron: SameSite cookie restrictions are not applied to windows opened from links",
-      "description": "### Impact\n\nPages opened into a new window from a link were loaded as if the app itself had navigated there rather than the page that contained the link, so the request was treated as same-site: `SameSite=Strict` cookies were sent and `Sec-Fetch-Site` did not identify the initiating page. Content shown in the app could use this to make a credentialed top-level request to another site that relies on SameSite cookies as a CSRF defence.\n\nApps are only affected if they load untrusted content and allow it to open new windows. Apps that deny new windows from untrusted content with `setWindowOpenHandler` are not affected.\n\n### Workarounds\n\nReturn `{ action: 'deny' }` from `setWindowOpenHandler` for windows opened by untrusted content.\n\n### Fixed Versions\n\n* `45.0.0-alpha.6`\n* `44.3.0`\n* `43.7.0`\n* `42.11.3`\n\n### For more information\n\nIf you have any questions or comments about this advisory, em",
-      "severity": "medium",
-      "published": "2026-10-22T16:47:54+00:00",
-      "link": "https://github.com/advisories/GHSA-2p8c-gr87-2676"
-    },
-    {
-      "cve": "CVE-2026-113798",
-      "ghsa": "GHSA-x562-297c-g43g",
-      "title": "Electron: Pointer lock permission requests can be attributed to the wrong frame",
-      "description": "### Impact\nFor `pointerLock` permission requests made from some cross-origin iframes, `session.setPermissionRequestHandler()` was given the top-level frame's `requestingUrl` and `isMainFrame` instead of the requesting frame's. Apps that grant pointer lock based on the requesting origin could grant it to embedded content under the top-level page's identity.\n\nApps are only affected if they embed untrusted content in iframes and decide `pointerLock` requests by origin in `setPermissionRequestHandler`. Apps that do not embed untrusted content, or that deny `pointerLock` for it, are not affected.\n\n### Workarounds\nDeny the `pointerLock` permission for web contents that embed untrusted frames.\n\n### Fixed Versions\n* `45.0.0-alpha.13`\n* `44.5.0`\n* `43.7.6`\n* `42.11.9`\n\n### For more information\nIf you have any questions or comments about this advisory, email us at [security@electronjs.org](mailto:",
-      "severity": "medium",
-      "published": "2026-10-22T16:47:15+00:00",
-      "link": "https://github.com/advisories/GHSA-x562-297c-g43g"
-    },
-    {
-      "cve": "CVE-2026-113797",
-      "ghsa": "GHSA-98mx-cjp9-gchm",
-      "title": "Electron: Extension tabs.query returns tab URLs and titles without the tabs permission",
-      "description": "### Impact\n`chrome.tabs.query()` returned each tab's `url` and `title` to extensions that held neither the `tabs` permission nor matching host permissions, so any loaded extension could read the URL and title of every webContents in its session.\n\nApps are only affected if they load extensions (`session.extensions.loadExtension`) that they do not fully trust. Apps that load no extensions, or only trusted ones, are not affected.\n\n### Workarounds\nDo not load untrusted or unvalidated extensions. In general you should only load trusted extensions.\n\n### Fixed Versions\n* `45.0.0-alpha.4`\n* `44.1.1`\n* `43.5.1`\n* `42.11.1`\n\n### For more information\nIf you have any questions or comments about this advisory, email us at [security@electronjs.org](mailto:security@electronjs.org)",
-      "severity": "low",
-      "published": "2026-10-22T16:46:33+00:00",
-      "link": "https://github.com/advisories/GHSA-98mx-cjp9-gchm"
-    },
-    {
-      "cve": "CVE-2026-114122",
-      "ghsa": "GHSA-3qxv-5xgr-q7w9",
-      "title": "Electron: Frame subscription trusts GPU-supplied frame geometry",
-      "description": "### Impact\nFrame data received from the GPU process for `webContents.beginFrameSubscription` was not fully validated by the main process. A compromised GPU process could cause the main process to read out-of-bounds memory while producing the captured frame images, disclosing memory or crashing the app.\n\nApps are only affected if they use `webContents.beginFrameSubscription` and an attacker has separately gained code execution in the GPU process. Apps that do not subscribe to captured frames are not affected.\n\n### Workarounds\nThere are no app side workarounds, you must update to a patched version of Electron.\n\n### Fixed Versions\n* `45.0.0-alpha.9`\n* `44.4.3`\n* `43.7.3`\n* `42.11.6`\n\n### For more information\nIf you have any questions or comments about this advisory, email us at [security@electronjs.org](mailto:security@electronjs.org)",
-      "severity": "low",
-      "published": "2026-10-22T16:46:06+00:00",
-      "link": "https://github.com/advisories/GHSA-3qxv-5xgr-q7w9"
-    },
-    {
-      "cve": "CVE-2026-114124",
-      "ghsa": "GHSA-h3v5-h239-pg29",
-      "title": "Electron: Off-screen rendering on macOS trusts GPU-supplied frame geometry",
-      "description": "### Impact\nIn offscreen rendering mode on macOS, frame data received from the GPU process was not fully validated by the main process. A compromised GPU process could cause the main process to read out-of-bounds memory while producing `paint` event images, disclosing memory or crashing the app. GHSA-pfmc-3mgc-p6fp covers the same issue on the other capture paths.\n\nApps are only affected if they use offscreen rendering (`webPreferences.offscreen`) on macOS and an attacker has separately gained code execution in the GPU process. Apps that do not use offscreen rendering are not affected.\n\n### Workarounds\nThere are no app side workarounds, you must update to a patched version of Electron.\n\n### Fixed Versions\n* `45.0.0-alpha.9`\n* `44.4.3`\n* `43.7.3`\n* `42.11.6`\n\n### For more information\nIf you have any questions or comments about this advisory, email us at [security@electronjs.org](mailto:sec",
-      "severity": "low",
-      "published": "2026-10-22T16:44:33+00:00",
-      "link": "https://github.com/advisories/GHSA-h3v5-h239-pg29"
-    },
-    {
-      "cve": "CVE-2026-114121",
-      "ghsa": "GHSA-997q-gvvc-jwmx",
-      "title": "Electron: openExternal permission requests can be attributed to the wrong origin",
-      "description": "### Impact\nRequests to open external protocol URLs could be attributed to a document other than the one that asked for them, so the `requestingUrl` passed to `session.setPermissionRequestHandler` was a trusted origin for a launch untrusted content had requested. An origin-based handler could therefore let untrusted content launch an OS-registered external application.\n\nApps are only affected if they grant `openExternal` based on the requesting origin and let untrusted content open or navigate windows. Apps whose permission handler denies `openExternal` for untrusted content are not affected.\n\n### Workarounds\nDeny the `openExternal` permission for untrusted content, or deny the windows it opens with `setWindowOpenHandler`.\n\n### Fixed Versions\n* `45.0.0-alpha.5`\n* `44.3.0`\n* `43.7.0`\n* `42.11.3`\n\n### For more information\nIf you have any questions or comments about this advisory, email us a",
-      "severity": "medium",
-      "published": "2026-10-22T16:43:59+00:00",
-      "link": "https://github.com/advisories/GHSA-997q-gvvc-jwmx"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-673q-mjm6-r5xr",
-      "title": "Next.js: Unauthenticated Remote Code Execution in `use cache` functions returning typed arrays",
-      "description": "## Impact\n\nA vulnerability in applications using App router with Cache Component can lead to remote code execution. The application needs to have a `use cache` function that returns multiple typed arrays.\n\n## Workaround\n\nThere is no known workaround for affected applications with such `use cache` functions. You should upgrade immediately even if your application does not have similar functions.",
-      "severity": "critical",
-      "published": "2026-10-22T16:42:31+00:00",
-      "link": "https://github.com/advisories/GHSA-673q-mjm6-r5xr"
-    },
-    {
-      "cve": "CVE-2026-114145",
-      "ghsa": "GHSA-83vg-56qc-22m7",
-      "title": "GitPython validates a submodule's \".git\" path only after cloning into it (RCE)",
-      "description": "### Summary\n\n\n`create_submodule(name, path, url)` clones a submodule into the repo's own `.git`\ndirectory before it rejects the path. A `path` of \".git/hooks\" is accepted by the\npre-clone check, so the submodule is cloned straight into the live hooks directory,\nand a file named `post-checkout` in the submodule becomes an executable\n`.git/hooks/post-checkout`. On 3.2.0+ the later index check does raise `ValueError`,\nbut only after the clone already wrote to disk, and it does not remove the planted\nhook; on 3.1.x there is no such check and the call succeeds silently. Either way the\nhook runs on the next git operation (e.g. checkout), giving code execution.\n\n### Details\n\n\nThe checkout path is validated too late, after the clone has already mutated disk.\nThis breaks the \"validate before mutation\" invariant that commit 43a43cd8 (\"Validate\nsubmodule checkout and metadata paths before mutation\"",
-      "severity": "high",
-      "published": "2026-10-22T16:41:14+00:00",
-      "link": "https://github.com/advisories/GHSA-83vg-56qc-22m7"
     }
   ]
 }
