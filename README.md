@@ -35,6 +35,6 @@ Ein Snapshot kann beispielsweise über die öffentliche Rohdatei abgerufen werde
 https://raw.githubusercontent.com/OrkoGrayskull/feeds-chatgpt/main/data/DATEINAME.json
 ```
 
-Bei Nutzung durch die Rechercheagenten wird jede benötigte Datei einzeln auf Gültigkeit und Aktualität geprüft (Berliner Tagesdatum, höchstens acht Stunden alt). Fehlende oder veraltete Quellen werden für den betroffenen Bereich als nicht geprüft behandelt; es gibt keinen globalen Abbruch wegen einer einzelnen Quelle.
+Bei Nutzung durch die Rechercheagenten wird jede benötigte Datei einzeln auf Gültigkeit und Aktualität geprüft (Berliner Tagesdatum, höchstens acht Stunden alt). Fehlende oder veraltete Quellen werden einzeln verworfen. Andere Quellen und Recherchebereiche bleiben davon unberührt; es gibt keinen globalen Abbruch wegen einer einzelnen Quelle.
 
 **Vor einer Veröffentlichung Aussagen stets anhand der Originalquellen verifizieren.**
