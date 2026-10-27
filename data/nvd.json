@@ -1,12 +1,210 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-24T22%3A00%3A00.000&pubEndDate=2026-10-27T06%3A51%3A44.000&resultsPerPage=200&startIndex=758",
-  "fetched_at": "2026-10-27T06:51:44+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-24T22%3A00%3A00.000&pubEndDate=2026-10-27T10%3A03%3A55.000&resultsPerPage=200&startIndex=780",
+  "fetched_at": "2026-10-27T10:03:55+00:00",
   "window_days": 3,
   "window_start": "2026-10-25",
   "window_end": "2026-10-27",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-92885",
+      "title": "CVE-2026-92885",
+      "description": "The Qode Membership plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in all versions up to, and including, 2.0.6.2 via the qode_membership_check_facebook_user AJAX action. This is due to a typographic error in the Facebook OAuth token verification guard within the qode_membership_login_user_from_social_network function — the guard condition tests an undefined variable ($check_social_useqoder instead of $check_social_user), causing empty() to always return true and rendering the Graph API token verification branch dead code, leaving wp_set_auth_cookie() reachable with no credential or token validation whatsoever. This makes it possible for unauthenticated attackers to log in as any existing WordPress account — including Administrator-level accounts — by supplying a known or enumerated administrator login name (rather than an email address) in the res",
+      "published": "2026-10-27T09:16:34.630",
+      "last_modified": "2026-10-27T09:16:34.630",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92885"
+    },
+    {
+      "cve": "CVE-2026-65213",
+      "title": "CVE-2026-65213",
+      "description": "This issue may allow an IPMI authenticated administrator to execute commands as the operating system root user on the BMC",
+      "published": "2026-10-27T09:16:34.503",
+      "last_modified": "2026-10-27T09:16:34.503",
+      "cvss": 6.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65213"
+    },
+    {
+      "cve": "CVE-2026-65211",
+      "title": "CVE-2026-65211",
+      "description": "This issue may allow an authenticated IPMI Administrator to read and write arbitrary BMC physical memory and thereby execute code on the BMC operating system.",
+      "published": "2026-10-27T09:16:33.400",
+      "last_modified": "2026-10-27T09:16:33.400",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65211"
+    },
+    {
+      "cve": "CVE-2026-65220",
+      "title": "CVE-2026-65220",
+      "description": "A logic flaw in the BMC IPMI implementation may allow an attacker to send specially crafted RAKP+ messages and escalate an account to administrator privileges.",
+      "published": "2026-10-27T08:16:54.487",
+      "last_modified": "2026-10-27T08:16:54.487",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65220"
+    },
+    {
+      "cve": "CVE-2026-65219",
+      "title": "CVE-2026-65219",
+      "description": "A flaw in the BMC RAKP+ implementation may allow an attacker to send a request followed by a specially crafted RAKP message and establish an RMCP+ session, which could then be used to execute commands.",
+      "published": "2026-10-27T08:16:54.363",
+      "last_modified": "2026-10-27T08:16:54.363",
+      "cvss": 7.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65219"
+    },
+    {
+      "cve": "CVE-2026-65210",
+      "title": "CVE-2026-65210",
+      "description": "This issue may allow an authenticated IPMI Administrator to read arbitrary files from the BMC filesystem, disclosing material well beyond the intended IPMI management role.",
+      "published": "2026-10-27T08:16:54.240",
+      "last_modified": "2026-10-27T08:16:54.240",
+      "cvss": 4.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65210"
+    },
+    {
+      "cve": "CVE-2026-18451",
+      "title": "CVE-2026-18451",
+      "description": "The HTML5 KVM-over-IP console authenticates with a token returned by the web interface. Weaknesses in token generation may allow an attacker to guess the session token and take control of the KVM session.",
+      "published": "2026-10-27T08:16:53.827",
+      "last_modified": "2026-10-27T08:16:53.827",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18451"
+    },
+    {
+      "cve": "CVE-2026-18450",
+      "title": "CVE-2026-18450",
+      "description": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An attacker may be able to craft packets that execute arbitrary commands on an active session.",
+      "published": "2026-10-27T08:16:53.710",
+      "last_modified": "2026-10-27T08:16:53.710",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18450"
+    },
+    {
+      "cve": "CVE-2026-18449",
+      "title": "CVE-2026-18449",
+      "description": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An attacker may be able to craft packets that execute arbitrary commands on an active session.",
+      "published": "2026-10-27T08:16:53.583",
+      "last_modified": "2026-10-27T08:16:53.583",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18449"
+    },
+    {
+      "cve": "CVE-2026-16521",
+      "title": "CVE-2026-16521",
+      "description": "An OS command injection vulnerability exists because of insufficient input filtering. An attacker can inject a command payload into a BMC function; the payload may execute when the related service is restarted.",
+      "published": "2026-10-27T08:16:53.443",
+      "last_modified": "2026-10-27T08:16:53.443",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16521"
+    },
+    {
+      "cve": "CVE-2026-111461",
+      "title": "CVE-2026-111461",
+      "description": "An OS command injection vulnerability exists in OnCell G3150A-LTE Series. When the SMS management functionality is enabled and configured, a remote attacker with the required privileges could exploit insufficient input validation in the SMS management functionality to execute arbitrary commands on the affected device.",
+      "published": "2026-10-27T08:16:53.260",
+      "last_modified": "2026-10-27T08:16:53.260",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111461"
+    },
+    {
+      "cve": "CVE-2026-111460",
+      "title": "CVE-2026-111460",
+      "description": "A hard-coded cryptographic key vulnerability exists in the OnCell G3150A-LTE Series. Under certain conditions, an unauthenticated remote attacker could obtain shared cryptographic key material and use it to impersonate affected devices that have not regenerated their cryptographic keys, potentially compromising the confidentiality and integrity of management communications.",
+      "published": "2026-10-27T08:16:53.110",
+      "last_modified": "2026-10-27T08:16:53.110",
+      "cvss": 7.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111460"
+    },
+    {
+      "cve": "CVE-2026-111459",
+      "title": "CVE-2026-111459",
+      "description": "An improper certificate validation vulnerability exists in Moxa Remote Connect Suite (MRC Client). Under certain conditions, an unauthenticated attacker with on-path access to the communication between the MRC Client and its server could impersonate a trusted server and conduct a man-in-the-middle attack, potentially compromising the confidentiality and integrity of communications.",
+      "published": "2026-10-27T08:16:52.953",
+      "last_modified": "2026-10-27T08:16:52.953",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111459"
+    },
+    {
+      "cve": "CVE-2026-10511",
+      "title": "CVE-2026-10511",
+      "description": "The Jupiter X Core plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'forget_password_link' parameter in all versions up to, and including, 4.61.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-27T08:16:52.800",
+      "last_modified": "2026-10-27T08:16:52.800",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-10511"
+    },
+    {
+      "cve": "CVE-2026-107472",
+      "title": "CVE-2026-107472",
+      "description": "An out-of-bounds read vulnerability in the QTextCodec TSCII encoding of the Qt 5 Compatibility APIs module (Qt Core in Qt 5 and earlier) impacts Qt. Applications that convert text to the TSCII encoding through QTextCodec may read memory outside the input buffer, which can cause the application to crash or misinterpret the data.",
+      "published": "2026-10-27T08:16:52.660",
+      "last_modified": "2026-10-27T08:16:52.660",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107472"
+    },
+    {
+      "cve": "CVE-2026-101034",
+      "title": "CVE-2026-101034",
+      "description": "An attacker who obtained the hardcoded key could decrypt domain/service account passwords, task run-as credentials, and sysprep passwords stored in or transmitted by GSS Deployment Server installation.",
+      "published": "2026-10-27T08:16:52.340",
+      "last_modified": "2026-10-27T08:16:52.340",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101034"
+    },
+    {
+      "cve": "CVE-2026-75891",
+      "title": "CVE-2026-75891",
+      "description": "The Kirki plugin for WordPress is vulnerable to Privilege Escalation via PHP Object Injection in all versions up to, and including, 6.2.5 via deserialization of untrusted input through the 'get-single-symbol' branch of the kirki_post_apis() AJAX dispatcher due to a missing capability check. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject a PHP Object. The additional presence of a POP chain allows attackers to overwrite an administrator's password and gain administrative access.",
+      "published": "2026-10-27T07:16:32.500",
+      "last_modified": "2026-10-27T07:16:32.500",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-75891"
+    },
+    {
+      "cve": "CVE-2026-110910",
+      "title": "CVE-2026-110910",
+      "description": "### Summary\n\n\n\n`qs.stringify` with `allowEmptyArrays: true` writes the key of an empty array without encoding it, even though keys are encoded by default. A key that contains `&` (or the configured `delimiter`), `=`, or `#` ∴ becomes query string syntax instead of data, so a caller-supplied key name can add parameters to the serialized query string, or cut it short.\n\n\n\n### Details\n\n\n\nIn `lib/stringify.js`, the `allowEmptyArrays` branch returns `adjustedPrefix + '[]'` early, before the code that passes every other key through `encoder` and `formatter`. So `{ \"x&k=v\": [\"1\"] }` serializes as `x%26k%3Dv%5B0%5D=1`, but `{ \"x&k=v\": [] }` serializes as `x&k=v[]`. The early return applies at any depth (`{ \"a\": { \"b&k=v\": [] } }` gives `a[b&k=v][]`), under every `arrayFormat`, with `allowDots`, and with a custom `encoder`, which is never called for that key. With `encode: false` or `encodeValuesO",
+      "published": "2026-10-27T07:16:32.263",
+      "last_modified": "2026-10-27T07:16:32.263",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110910"
+    },
+    {
+      "cve": "CVE-2026-106174",
+      "title": "CVE-2026-106174",
+      "description": "A improper locking vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.4 through 7.6.6 may allow an unauthenticated attacker with network access to the device to cause a denial of service of the HTTPS management interface via crafted HTTP requests.",
+      "published": "2026-10-27T07:16:32.040",
+      "last_modified": "2026-10-27T07:16:32.040",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106174"
+    },
+    {
+      "cve": "CVE-2026-105946",
+      "title": "CVE-2026-105946",
+      "description": "Out-of-bounds read in the QAuthenticator NTLM authentication handling in the Qt Network module in Qt Group Qt allows remote attackers to obtain sensitive information (heap memory contents) or cause a denial of service (application crash) via a crafted NTLM challenge sent by a malicious server or proxy, when an application using QNetworkAccessManager or QTcpSocket authenticates with NTLM.",
+      "published": "2026-10-27T07:16:31.860",
+      "last_modified": "2026-10-27T07:16:31.860",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105946"
+    },
+    {
+      "cve": "CVE-2026-103359",
+      "title": "CVE-2026-103359",
+      "description": "The PayDunya WooCommerce Payment Gateway WordPress plugin through 1.1.6 does not verify the authenticity of incoming payment notifications and, until the gateway is configured, authenticates them with a value derived from an empty secret that anyone can compute, allowing unauthenticated attackers to mark arbitrary WooCommerce orders as paid and completed.",
+      "published": "2026-10-27T07:16:31.737",
+      "last_modified": "2026-10-27T07:16:31.737",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103359"
+    },
+    {
+      "cve": "CVE-2026-103325",
+      "title": "CVE-2026-103325",
+      "description": "The TiendaCrypto para WooCommerce WordPress plugin through 1.2.1 does not correctly verify the authenticity of its payment webhook, validating the request signature against a key that is always empty, which allows unauthenticated attackers to forge webhook notifications and mark arbitrary WooCommerce orders as paid on web servers that preserve request header case.",
+      "published": "2026-10-27T07:16:31.453",
+      "last_modified": "2026-10-27T07:16:31.453",
+      "cvss": 3.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103325"
+    },
     {
       "cve": "CVE-2026-117472",
       "title": "CVE-2026-117472",
@@ -1608,208 +1806,10 @@
       "last_modified": "2026-10-26T21:18:42.567",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65363"
-    },
-    {
-      "cve": "CVE-2026-65350",
-      "title": "CVE-2026-65350",
-      "description": "A use-after-free issue was addressed with improved memory management. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2, tvOS 27.2, visionOS 27.2, watchOS 27.2. An app may be able to cause unexpected system termination or corrupt kernel memory.",
-      "published": "2026-10-26T21:18:41.050",
-      "last_modified": "2026-10-26T21:18:41.050",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65350"
-    },
-    {
-      "cve": "CVE-2026-65327",
-      "title": "CVE-2026-65327",
-      "description": "A logic issue was addressed with improved checks. This issue is fixed in macOS Golden Gate 27.2, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. A local attacker may be able to elevate their privileges.",
-      "published": "2026-10-26T21:18:36.653",
-      "last_modified": "2026-10-27T04:17:55.673",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65327"
-    },
-    {
-      "cve": "CVE-2026-64789",
-      "title": "CVE-2026-64789",
-      "description": "This issue was addressed with improved validation of file attributes. This issue is fixed in macOS Golden Gate 27, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. A malicious application may bypass Gatekeeper checks.",
-      "published": "2026-10-26T21:18:36.320",
-      "last_modified": "2026-10-26T21:18:36.320",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64789"
-    },
-    {
-      "cve": "CVE-2026-64759",
-      "title": "CVE-2026-64759",
-      "description": "An integer overflow was addressed with improved input validation. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27 and iPadOS 27, macOS Golden Gate 27, macOS Sequoia 15.8, macOS Tahoe 26.7. Processing a maliciously crafted image may lead to arbitrary code execution.",
-      "published": "2026-10-26T21:18:33.897",
-      "last_modified": "2026-10-27T04:17:55.447",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64759"
-    },
-    {
-      "cve": "CVE-2026-64750",
-      "title": "CVE-2026-64750",
-      "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.2 and iPadOS 26.7.2, iOS 27 and iPadOS 27, macOS Golden Gate 27, macOS Sequoia 15.8.2, macOS Tahoe 26.7.2. Processing a maliciously crafted image may result in memory corruption.",
-      "published": "2026-10-26T21:18:33.057",
-      "last_modified": "2026-10-26T21:18:33.057",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64750"
-    },
-    {
-      "cve": "CVE-2026-43736",
-      "title": "CVE-2026-43736",
-      "description": "An authorization issue was addressed with improved state management. This issue is fixed in macOS Golden Gate 27, macOS Tahoe 26.7.2. An app may be able to access sensitive user data.",
-      "published": "2026-10-26T21:18:28.443",
-      "last_modified": "2026-10-26T21:18:28.443",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-43736"
-    },
-    {
-      "cve": "CVE-2026-116671",
-      "title": "CVE-2026-116671",
-      "description": "Infinite loop in Xpdf 4.06 and earlier, due to incorrect validation of progression order field in JPEG 2000 image.",
-      "published": "2026-10-26T21:18:17.410",
-      "last_modified": "2026-10-26T21:18:17.410",
-      "cvss": 2.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116671"
-    },
-    {
-      "cve": "CVE-2026-116584",
-      "title": "CVE-2026-116584",
-      "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. From 1.4.1 until 1.6.8, fromJSON and fromCrossJSON do not require an array node's element list to be an actual array. A small crafted payload can supply an attacker-controlled length that determines memory allocation and decoder iterations independently of payload size, allowing an unauthenticated request to exhaust the process or block its thread. This issue is a residual bypass of the remediation for CVE-2026-23957. This issue is fixed in version 1.6.8.",
-      "published": "2026-10-26T21:18:17.053",
-      "last_modified": "2026-10-26T21:18:17.373",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116584"
-    },
-    {
-      "cve": "CVE-2026-116583",
-      "title": "CVE-2026-116583",
-      "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. From 1.6.0 until 1.6.11, the JavaScript-output APIs derive a typed array's constructor name from a property on the value that can be replaced by an own constructor property. When application code copies untrusted properties onto a typed array and then passes it to serialize, serializeAsync, crossSerialize, crossSerializeAsync, crossSerializeStream, Serializer, or compileJSON, the attacker-controlled name is written as executable JavaScript and can run in the page receiving the output. This issue is fixed in version 1.6.11.",
-      "published": "2026-10-26T21:18:16.653",
-      "last_modified": "2026-10-26T21:18:17.010",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116583"
-    },
-    {
-      "cve": "CVE-2026-116582",
-      "title": "CVE-2026-116582",
-      "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. Prior to 1.0.0 and from 1.5.5 until 1.6.10, the JavaScript-output APIs serialize a RegExp source containing a less-than character without the escaping needed for an HTML script element. An application is affected when it builds regular expression syntax from untrusted input, serializes that RegExp through serialize, serializeAsync, crossSerialize, crossSerializeAsync, crossSerializeStream, Serializer, or compileJSON, and embeds the result in an HTML script element. The crafted source can terminate the element and execute script in the page received by another user. This issue is fixed in version 1.6.10.",
-      "published": "2026-10-26T21:18:16.267",
-      "last_modified": "2026-10-26T21:18:16.613",
-      "cvss": 4.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116582"
-    },
-    {
-      "cve": "CVE-2026-116581",
-      "title": "CVE-2026-116581",
-      "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. Prior to 1.6.8, fromJSON and fromCrossJSON do not validate a sequence node's done index. A crafted done index can create an iterator that never finishes when application code consumes it to completion. An unauthenticated request to a service that deserializes untrusted input can therefore block the event loop, exhaust process memory, or make the service unavailable. This issue is fixed in version 1.6.8.",
-      "published": "2026-10-26T21:18:15.903",
-      "last_modified": "2026-10-26T21:18:16.233",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116581"
-    },
-    {
-      "cve": "CVE-2026-116580",
-      "title": "CVE-2026-116580",
-      "description": "Seroval facilitates JavaScript value stringification, including complex structures beyond JSON.stringify capabilities. Prior to 1.6.8, fromJSON rebuilds an AsyncIteratorFactoryInstance by calling source.on(listener) without requiring source to be a genuine internal stream. With untrusted Seroval input and an application plugin that returns a callable value or an object exposing an on method, a crafted node can reuse an identifier so the deserializer invokes the plugin-produced value. This is an incomplete-fix variant of CVE-2026-59940. The resulting confidentiality, integrity, or availability impact depends on the behavior exposed by the application plugin. This issue is fixed in version 1.6.8.",
-      "published": "2026-10-26T21:18:15.523",
-      "last_modified": "2026-10-26T21:18:15.870",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116580"
-    },
-    {
-      "cve": "CVE-2026-116579",
-      "title": "CVE-2026-116579",
-      "description": "Autobahn Python is a WebSocket and WAMP implementation for Python that supports Twisted and asyncio. From 26.7.1 until 26.10.1, PerMessageBrotli.decompress_message_data in compress_brotli.py calls the Brotli decompressor without an output limit and checks maxMessagePayloadSize only after a complete frame has been inflated. An unauthenticated WebSocket client can send a small, highly compressed frame that allocates hundreds of MiB before rejection, causing memory-exhaustion denial of service on servers that enable the opt-in permessage-brotli feature through the compress extra. Deflate and bzip2 already enforce the remaining output budget and are outside this residual vulnerability. This issue is fixed in version 26.10.1.",
-      "published": "2026-10-26T21:18:15.117",
-      "last_modified": "2026-10-26T21:18:15.117",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116579"
-    },
-    {
-      "cve": "CVE-2026-116578",
-      "title": "CVE-2026-116578",
-      "description": "Tornado is a Python web framework and asynchronous networking library. Prior to 6.6, tornado.web.RedirectHandler URL templates can place regex-capture substitutions where crafted request paths change the redirect scheme or network location. Affected placements include substitutions at the start of a path, directly after a fixed host, or at the beginning of the template, including protocol-relative, absolute, backslash, encoded, host-extension, and user-info variants interpreted by browsers as attacker-controlled destinations. Static templates and substitutions after a fixed host followed by a slash are not affected. An attacker can use the resulting open redirect on the application's domain for phishing. This issue is fixed in version 6.6.",
-      "published": "2026-10-26T21:18:14.747",
-      "last_modified": "2026-10-26T21:18:15.077",
-      "cvss": 2.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116578"
-    },
-    {
-      "cve": "CVE-2026-116577",
-      "title": "CVE-2026-116577",
-      "description": "Tornado is a Python web framework and asynchronous networking library. Prior to 6.6, Tornado's HTTP header parser accepts obsolete line folding and repeatedly concatenates short continuation lines, causing quadratic CPU consumption on the IOLoop thread. An unauthenticated client can submit a header block containing many obsolete line-folding continuations before application code runs, blocking other connections served by the process. The cost grows with max_header_size, and only availability is affected. This issue is fixed in version 6.6.",
-      "published": "2026-10-26T21:18:14.087",
-      "last_modified": "2026-10-26T21:18:14.710",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116577"
-    },
-    {
-      "cve": "CVE-2026-116576",
-      "title": "CVE-2026-116576",
-      "description": "systeminformation is a System and OS information library for node.js. Prior to 5.33.16, services() in lib/processes.js inserts a caller-supplied service name into a PowerShell Get-CimInstance filter after processing it with sanitizeShellString() in lib/util.js. On Windows, the sanitizer removes ASCII quotes but permits Unicode quotation marks that PowerShell accepts as string delimiters, allowing crafted input to terminate the filter and place a PowerShell expression in the command executed by util.powerShell(). The expression runs with the Node.js process account's permissions and may read or change accessible files, alter application data, or disrupt the service. The package does not expose a network service itself, so remote reachability depends on a consuming application forwarding attacker-controlled input to services() or getDynamicData(). This issue is fixed in version 5.33.16.",
-      "published": "2026-10-26T21:18:13.720",
-      "last_modified": "2026-10-26T21:18:14.050",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116576"
-    },
-    {
-      "cve": "CVE-2026-116575",
-      "title": "CVE-2026-116575",
-      "description": "Mem0 provides persistent memory infrastructure for AI agents and applications. Prior to Python SDK 2.0.18 and TypeScript SDK 3.1.6, _build_session_scope() in mem0/memory/main.py and Memory.buildSessionScope() in the TypeScript SDK join caller-controlled user_id, agent_id, and run_id values using unescaped & and = delimiters. A caller can embed another scope component in a controlled identifier so that distinct tenant tuples produce the same session_scope key. Memory.add(), AsyncMemory.add(), and the REST POST /memories flow use that key to read and save recent raw messages, allowing cross-tenant conversation disclosure and eviction or interleaving of another tenant's history. This issue is fixed in Python SDK 2.0.18 and TypeScript SDK 3.1.6.",
-      "published": "2026-10-26T21:18:13.360",
-      "last_modified": "2026-10-26T21:18:13.360",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116575"
-    },
-    {
-      "cve": "CVE-2026-116506",
-      "title": "CVE-2026-116506",
-      "description": "A vulnerability was determined in TOTOLINK A950RG 4.1.2cu.5268_B20221104. Affected is the function apmib_set of the file firewall.so. This manipulation causes command injection. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
-      "published": "2026-10-26T21:18:13.047",
-      "last_modified": "2026-10-26T21:18:13.047",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116506"
-    },
-    {
-      "cve": "CVE-2026-116505",
-      "title": "CVE-2026-116505",
-      "description": "A vulnerability was found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This impacts the function getDeviceInfo of the file /var/lib/misc/udhcpd.leases of the component device-information Handler. The manipulation of the argument MAC address results in command injection. The attack can be launched remotely. The exploit has been made public and could be used.",
-      "published": "2026-10-26T21:18:12.730",
-      "last_modified": "2026-10-26T21:18:12.730",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116505"
-    },
-    {
-      "cve": "CVE-2026-116504",
-      "title": "CVE-2026-116504",
-      "description": "A vulnerability has been found in TOTOLINK A950RG 4.1.2cu.5268_B20221104. This affects the function setCloudUpgradeFW of the file lib/cste_modules/upgrade.so of the component Cloud Upgrade. The manipulation of the argument FileName leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
-      "published": "2026-10-26T21:18:12.420",
-      "last_modified": "2026-10-26T21:18:12.420",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116504"
-    },
-    {
-      "cve": "CVE-2026-116502",
-      "title": "CVE-2026-116502",
-      "description": "A flaw has been found in turboderp-org ExLlamaV2 up to 0.3.2. The impacted element is the function QMatrix::make_sequential of the file exllamav2/exllamav2_ext/cuda/q_matrix.cu of the component GPTQ Index Handler. Executing a manipulation of the argument g_idx can lead to out-of-bounds write. The attack needs to be launched locally. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-10-26T21:18:12.097",
-      "last_modified": "2026-10-26T21:18:12.097",
-      "cvss": 4.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116502"
-    },
-    {
-      "cve": "CVE-2026-113952",
-      "title": "CVE-2026-113952",
-      "description": "A logic issue was addressed with improved checks. This issue is fixed in Safari 27.2, iOS 26.7.2 and iPadOS 26.7.2, iOS 27.2 and iPadOS 27.2, macOS Golden Gate 27.2. A website may be able to use a media format that should be restricted in Lockdown Mode.",
-      "published": "2026-10-26T21:18:11.920",
-      "last_modified": "2026-10-26T21:18:11.920",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113952"
     }
   ],
-  "total_results": 958,
+  "total_results": 980,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 758
+  "start_index": 780
 }
