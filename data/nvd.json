@@ -1,12 +1,237 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-26T23%3A00%3A00.000&pubEndDate=2026-10-29T07%3A40%3A54.000&resultsPerPage=200&startIndex=1324",
-  "fetched_at": "2026-10-29T07:40:54+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-26T23%3A00%3A00.000&pubEndDate=2026-10-29T11%3A07%3A16.000&resultsPerPage=200&startIndex=1349",
+  "fetched_at": "2026-10-29T11:07:16+00:00",
   "window_days": 3,
   "window_start": "2026-10-27",
   "window_end": "2026-10-29",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-91153",
+      "title": "CVE-2026-91153",
+      "description": "The Everest Forms – Contact Form, Payment Form, Quiz, Survey & Custom Form Builder with AI plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.6.2 via the process. This makes it possible for unauthenticated attackers to extract arbitrary WordPress post meta values — including license keys, API tokens, SMTP credentials, and Stripe or AWS secrets stored on any post type — via form submission notification emails or stored entries. The submission nonce is publicly rendered in every embedded form and can additionally be minted anonymously via the nopriv everest_forms_get_form_update_nonce action, meaning no account or prior authentication of any kind is required to complete the exploit.",
+      "published": "2026-10-29T10:17:06.840",
+      "last_modified": "2026-10-29T10:17:06.840",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91153"
+    },
+    {
+      "cve": "CVE-2026-91152",
+      "title": "CVE-2026-91152",
+      "description": "The Everest Forms – Contact Form, Payment Form, Quiz, Survey & Custom Form Builder with AI plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'evf_toast_type' parameter in all versions up to, and including, 3.6.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. Exploitation requires the sibling evf_toast parameter to decode successfully via atob(), but this is a trivially attacker-controlled prerequisite.",
+      "published": "2026-10-29T10:17:06.693",
+      "last_modified": "2026-10-29T10:17:06.693",
+      "cvss": 6.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91152"
+    },
+    {
+      "cve": "CVE-2026-88941",
+      "title": "CVE-2026-88941",
+      "description": "Kaspersky has fixed a vulnerability in the Network Agent for Windows module of Kaspersky Security Center. The vulnerability could potentially cause the Network Agent module of Kaspersky Security Center to malfunction. There are no evidence of the vulnerability exploitation in-the-wild.",
+      "published": "2026-10-29T10:17:06.520",
+      "last_modified": "2026-10-29T10:17:06.520",
+      "cvss": 6.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88941"
+    },
+    {
+      "cve": "CVE-2026-118192",
+      "title": "CVE-2026-118192",
+      "description": "The JoomSport – for Sports: Team & League, Football, Hockey & more plugin for WordPress is vulnerable to generic SQL Injection via the 'team_id' parameter in all versions up to, and including, 5.7.11 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The vulnerable code path is reached when the season has no associated joomsport_tournament term, which is the default state for newly created seasons.",
+      "published": "2026-10-29T10:17:03.997",
+      "last_modified": "2026-10-29T10:17:03.997",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118192"
+    },
+    {
+      "cve": "CVE-2026-117611",
+      "title": "CVE-2026-117611",
+      "description": "Improper certificate validation in Checkmk <2.5.0p18, <2.4.0p39, <2.3.0p52 and 2.2.0 (EOL): the Certificate Authority stores bundled with \"certifi\" and \"webpki-roots\" include a root CA that trusts eMudhra (emSign) intermediate certificates whose private keys are public.",
+      "published": "2026-10-29T10:17:03.730",
+      "last_modified": "2026-10-29T10:17:03.930",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117611"
+    },
+    {
+      "cve": "CVE-2026-116763",
+      "title": "CVE-2026-116763",
+      "description": "The LiteSpeed Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 7.9.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only exploitable when the HTML Minify option (O_OPTM_HTML_MIN) is enabled and a companion plugin renders stored comment content into a raw-text context such as a JSON-LD script block on the same page.",
+      "published": "2026-10-29T10:17:03.590",
+      "last_modified": "2026-10-29T10:17:03.590",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116763"
+    },
+    {
+      "cve": "CVE-2026-111419",
+      "title": "CVE-2026-111419",
+      "description": "A sensitive information exposure vulnerability exists on the Foxit official website because JavaScript code contains third-party authorization information. This may allow unauthorized parties to obtain or misuse the exposed credentials.",
+      "published": "2026-10-29T10:17:03.440",
+      "last_modified": "2026-10-29T10:17:03.440",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111419"
+    },
+    {
+      "cve": "CVE-2026-111418",
+      "title": "CVE-2026-111418",
+      "description": "A server-side request forgery (SSRF) vulnerability exists in the Foxit official website’s HTML-to-PDF conversion service. Support for ZIP-formatted input can bypass restrictions on requests to internal IP addresses, potentially allowing discovery of internal network resources.",
+      "published": "2026-10-29T10:17:03.313",
+      "last_modified": "2026-10-29T10:17:03.313",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111418"
+    },
+    {
+      "cve": "CVE-2026-111417",
+      "title": "CVE-2026-111417",
+      "description": "A broken access control vulnerability exists in the Foxit official website’s HTML-to-PDF conversion service due to the use of a shared token for submitted conversion documents. This may allow unauthorized users to access documents submitted by other users.",
+      "published": "2026-10-29T10:17:03.160",
+      "last_modified": "2026-10-29T10:17:03.160",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111417"
+    },
+    {
+      "cve": "CVE-2026-111318",
+      "title": "CVE-2026-111318",
+      "description": "The HT Mega Addons for Elementor – Elementor Widgets & Template Builder plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'href attribute of <a> inside .htmega-tab-nav' parameter in all versions up to, and including, 3.2.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires a co-installed plugin such as wpDiscuz with its rich editor enabled whose markup allowlist permits span[class] and a[href] storage, an HT Mega Tabs widget present on the same page as the comment section, and a victim user click on the injected anchor link.",
+      "published": "2026-10-29T10:17:03.017",
+      "last_modified": "2026-10-29T10:17:03.017",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111318"
+    },
+    {
+      "cve": "CVE-2026-110707",
+      "title": "CVE-2026-110707",
+      "description": "The RSS Aggregator by Feedzy – Feed to Post, Autoblogging, News & YouTube Video Feeds Aggregator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'media:group/media:description (XML element in the imported feed)' parameter in all versions up to, and including, 5.2.12 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires an administrator to configure a Feed-to-Post import pointing at an attacker-controlled feed URL and trigger the import via the Run Now action or setup wizard, which is the plugin's standard configuration flow.",
+      "published": "2026-10-29T10:17:02.877",
+      "last_modified": "2026-10-29T10:17:02.877",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110707"
+    },
+    {
+      "cve": "CVE-2026-109215",
+      "title": "CVE-2026-109215",
+      "description": "The LiteSpeed Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'bbp_reply_content' parameter in all versions up to, and including, 7.9.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that an administrator has enabled Viewport Images (VPI) and configured a VPI filename that matches an image the attacker can embed in user-generated content — such as a bbPress topic where Subscriber-level Participants are permitted to post replies containing raw img tags.",
+      "published": "2026-10-29T10:17:02.727",
+      "last_modified": "2026-10-29T10:17:02.727",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109215"
+    },
+    {
+      "cve": "CVE-2026-107743",
+      "title": "CVE-2026-107743",
+      "description": "The Mapster WP Maps plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.0.5. This is due to the /wp-json/mapster-wp-maps/save-mapmaker REST route being registered with a permission_callback that unconditionally returns true (no capability check, no nonce), together with the mapster_write_config_to_acf() helper only sanitizing string config values with sanitize_text_field() — which strips HTML tags but leaves quote characters intact — and the mapster_wp_map shortcode renderer in mapster_wordpress_maps_shortcode_display() concatenating the stored loading_background_color value into a single-quoted inline style attribute without esc_attr(). This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-29T10:17:02.580",
+      "last_modified": "2026-10-29T10:17:02.580",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107743"
+    },
+    {
+      "cve": "CVE-2026-107629",
+      "title": "CVE-2026-107629",
+      "description": "The Greenshift – animation and page builder blocks plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 13.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the affected post page to include an Advanced HTML Element block with Split Text animation enabled wrapping a Latest Comments block that displays comment excerpts, as this configuration causes splittext.js to be enqueued and to process the comment content container.",
+      "published": "2026-10-29T10:17:02.440",
+      "last_modified": "2026-10-29T10:17:02.440",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107629"
+    },
+    {
+      "cve": "CVE-2026-107627",
+      "title": "CVE-2026-107627",
+      "description": "The Greenshift – animation and page builder blocks plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 13.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires an administrator to have published a page containing a Text Animated block with Content set to Blocks, a Latest Comments block with excerpts enabled nested inside it, and at least one Animated Texts value configured — conditions that cause the gs-textanimate script to be enqueued and process the comment excerpts.",
+      "published": "2026-10-29T10:17:02.293",
+      "last_modified": "2026-10-29T10:17:02.293",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107627"
+    },
+    {
+      "cve": "CVE-2026-104727",
+      "title": "CVE-2026-104727",
+      "description": "The Sequential Order Numbers for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'condition' Post Meta Array Keys in all versions up to, and including, 3.6.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-10-29T10:17:02.133",
+      "last_modified": "2026-10-29T10:17:02.133",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104727"
+    },
+    {
+      "cve": "CVE-2026-103875",
+      "title": "CVE-2026-103875",
+      "description": "The Media Library Assistant plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'search-string' parameter in all versions up to, and including, 3.42 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. Exploitation requires the targeted site to have a publicly accessible page containing an [mla_gallery] shortcode configured with a pagination output mode and an mla_link_href template that reflects a {+request:...+} token, along with enough attachments to trigger pagination.",
+      "published": "2026-10-29T10:17:01.977",
+      "last_modified": "2026-10-29T10:17:01.977",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103875"
+    },
+    {
+      "cve": "CVE-2026-103485",
+      "title": "CVE-2026-103485",
+      "description": "The Extensions for Leaflet Map plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'feature.properties[<template-token>]' parameter in all versions up to, and including, 5.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that a site administrator has previously configured a public map using the [leaflet-map]+[leaflet-geojson]+[choropleth] shortcode combination whose GeoJSON src URL is one the attacker controls — for example, through compromise of an external data host, a subdomain takeover, or a site intentionally pointing at an attacker-hosted feed.",
+      "published": "2026-10-29T10:17:00.737",
+      "last_modified": "2026-10-29T10:17:00.737",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103485"
+    },
+    {
+      "cve": "CVE-2026-85498",
+      "title": "CVE-2026-85498",
+      "description": "A flaw was found in polkit. When processing input that begins with a null byte, an arithmetic error in the authentication agent helper causes an integer underflow during buffer length calculation, resulting in an out-of-bounds memory read. An attacker capable of supplying crafted input can trigger this flaw, potentially causing an application crash and resulting in a Denial of Service (DoS).",
+      "published": "2026-10-29T09:17:08.400",
+      "last_modified": "2026-10-29T09:17:08.543",
+      "cvss": 3.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85498"
+    },
+    {
+      "cve": "CVE-2026-7190",
+      "title": "CVE-2026-7190",
+      "description": "A cross-site scripting (XSS) vulnerability in the ICTBroadcast software, which affects the demo environment. The vulnerability is found in the ‘login.php’ endpoint, where the ‘editForm[extension_username]’ parameter is reflected in the response without proper filtering. Successful exploitation of this vulnerability could allow an attacker to execute arbitrary JavaScript code in the victim’s browser once the victim accesses the malicious URL.",
+      "published": "2026-10-29T09:17:08.250",
+      "last_modified": "2026-10-29T09:17:08.250",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-7190"
+    },
+    {
+      "cve": "CVE-2026-115303",
+      "title": "CVE-2026-115303",
+      "description": "The Contact Form by Supsystic WordPress plugin before 1.11.1 does not strip CR/LF characters or re-validate submitted field values before concatenating them into outgoing email headers when a form is configured to map a submitted field into its Reply-To, From or Cc header, allowing unauthenticated users to inject arbitrary email headers such as additional Bcc or Cc recipients into the notification email.",
+      "published": "2026-10-29T09:17:08.097",
+      "last_modified": "2026-10-29T09:17:08.097",
+      "cvss": 3.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115303"
+    },
+    {
+      "cve": "CVE-2026-114358",
+      "title": "CVE-2026-114358",
+      "description": "This\nvulnerability exists in the Radius\nXenia M2M Platform due to insufficient validation of user supplied input in\nthe password recovery functionality in the web management interface. An\nunauthenticated remote attacker could exploit this vulnerability by supplying\ncrafted SQL query through input fields to the targeted system. \n\n\n\nSuccessful exploitation of this vulnerability\ncould allow the attacker to gain unauthorized access to sensitive information,\nenumerate database structure or modify database records on the targeted system.",
+      "published": "2026-10-29T09:17:07.910",
+      "last_modified": "2026-10-29T09:17:07.910",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114358"
+    },
+    {
+      "cve": "CVE-2026-117174",
+      "title": "CVE-2026-117174",
+      "description": "Rejected reason: VUL-2026-008368 為先回報之相同問題",
+      "published": "2026-10-29T08:17:00.210",
+      "last_modified": "2026-10-29T08:17:00.210",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117174"
+    },
+    {
+      "cve": "CVE-2025-62841",
+      "title": "CVE-2025-62841",
+      "description": "An use of hard-coded cryptographic key vulnerability has been reported to affect HBS 3 Hybrid Backup Sync and Hybrid Backup Sync. If exploited, the vulnerability could allow remote attackers to compromise the security of the system.\n\nWe have already fixed the vulnerability in the following version:\nHBS 3 Hybrid Backup Sync 26.4.0.521 and later\nHybrid Backup Sync 26.4.0.521 and later\nHybrid Backup Sync 26.4.1.563 and later",
+      "published": "2026-10-29T08:17:00.057",
+      "last_modified": "2026-10-29T08:17:00.163",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-62841"
+    },
+    {
+      "cve": "CVE-2025-62839",
+      "title": "CVE-2025-62839",
+      "description": "An use of hard-coded cryptographic key vulnerability has been reported to affect HBS 3 Hybrid Backup Sync and Hybrid Backup Sync. If exploited, the vulnerability could allow remote attackers to compromise the security of the system.\n\nWe have already fixed the vulnerability in the following version:\nHBS 3 Hybrid Backup Sync 26.4.0.521 and later\nHybrid Backup Sync 26.4.0.521 and later\nHybrid Backup Sync 26.4.1.563 and later",
+      "published": "2026-10-29T08:16:59.863",
+      "last_modified": "2026-10-29T08:17:00.010",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-62839"
+    },
     {
       "cve": "CVE-2026-118030",
       "title": "CVE-2026-118030",
@@ -1581,235 +1806,10 @@
       "last_modified": "2026-10-28T19:17:29.900",
       "cvss": 8.4,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118255"
-    },
-    {
-      "cve": "CVE-2026-118254",
-      "title": "CVE-2026-118254",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 2.0.0 until 3.2.0, Highcharts Grid writes pagination language strings into the DOM as markup instead of text. An attacker who controls the Grid language configuration can provide elements with event handlers, which execute in the hosting page origin when pagination controls render. Exploitation requires pagination to be enabled but does not require additional user interaction. This issue is fixed in 3.2.0.",
-      "published": "2026-10-28T19:17:29.763",
-      "last_modified": "2026-10-28T19:17:29.763",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118254"
-    },
-    {
-      "cve": "CVE-2026-118253",
-      "title": "CVE-2026-118253",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until 4.2.3, Highcharts Dashboards edit mode parses fullscreen language labels as HTML rather than inserting them as text. An attacker who controls Dashboards language options can supply markup with event handlers, which execute in the hosting page origin when the fullscreen control is rendered. The label is reachable only when edit mode is enabled and viewFullscreen is present in the context-menu items. This issue is fixed in 4.2.3.",
-      "published": "2026-10-28T19:17:29.627",
-      "last_modified": "2026-10-28T19:17:29.627",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118253"
-    },
-    {
-      "cve": "CVE-2026-118252",
-      "title": "CVE-2026-118252",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until 4.2.3, Highcharts Dashboards edit-mode sidebar parses component language strings as HTML rather than inserting them as text. An attacker who controls the Dashboards language configuration can provide markup containing event handlers, which execute in the hosting page origin when a user opens the edit-mode sidebar and the affected labels render. This issue is fixed in 4.2.3.",
-      "published": "2026-10-28T19:17:29.483",
-      "last_modified": "2026-10-28T19:17:29.483",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118252"
-    },
-    {
-      "cve": "CVE-2026-118251",
-      "title": "CVE-2026-118251",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. Prior to 11.4.9, 12.6.1, and 13.1.0, Highcharts assigns credits.href to the window location when the credits label is clicked without checking the URL against the allowed-scheme list. An attacker who controls chart configuration can provide a javascript URL and run script in the origin of the hosting page when a user clicks the credits label. Highcharts Stock, Maps, and Gantt are included because they ship from the same package. This issue is fixed in 11.4.9, 12.6.1 and 13.1.0.",
-      "published": "2026-10-28T19:17:29.340",
-      "last_modified": "2026-10-28T19:17:29.340",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118251"
-    },
-    {
-      "cve": "CVE-2026-106484",
-      "title": "CVE-2026-106484",
-      "description": "Insufficient policy enforcement in chrome-devtools-mcp in Google Chrome on Linux prior to 1.5.0 allowed a local attacker to perform arbitrary read/write via a malicious file. (Chromium security severity: Medium)",
-      "published": "2026-10-28T19:17:21.860",
-      "last_modified": "2026-10-29T02:16:46.267",
-      "cvss": 4.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106484"
-    },
-    {
-      "cve": "CVE-2026-84725",
-      "title": "CVE-2026-84725",
-      "description": "when EAP runs with -secmgr, the openjdk-orb's JDKBridge honours attacker-supplied CDR codebase URLs during object unmarshalling on :3528, allowing an unauthenticated attacker to load and instantiate arbitrary classes from a remote URL in the server JVM before EJB security interceptors run.",
-      "published": "2026-10-28T18:17:20.420",
-      "last_modified": "2026-10-28T18:17:20.563",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84725"
-    },
-    {
-      "cve": "CVE-2026-79656",
-      "title": "CVE-2026-79656",
-      "description": "A user with read access to Grafana's server logs, or to a log store they are shipped to, can recover the OAuth and OIDC access, refresh and ID tokens of users who sign in through the Generic OAuth, Google or GitLab providers. Grafana writes these tokens to its logs unredacted when an access or ID token is not a valid JWT, when the ID token is missing (at debug level) or is not a string (exposure of sensitive information in log files). The exposure is bounded by the scopes granted to the configured OAuth client.",
-      "published": "2026-10-28T18:17:20.270",
-      "last_modified": "2026-10-28T18:17:20.270",
-      "cvss": 6.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-79656"
-    },
-    {
-      "cve": "CVE-2026-58458",
-      "title": "CVE-2026-58458",
-      "description": "Don't Starve Together (Steam AppID 322330) through build 747465 contains a memory-corruption vulnerability in the native persistent-string decoder that allows a remote attacker operating a public dedicated server to crash a victim's game client by publishing crafted world_gen_data with an invalid Klei persistent blob header length. Attackers can craft a malicious public lobby server listing that, once viewed or selected by the victim, triggers client-side decoding of the attacker-controlled data to corrupt native memory and cause a remote denial of service.",
-      "published": "2026-10-28T18:17:20.080",
-      "last_modified": "2026-10-28T18:17:20.080",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58458"
-    },
-    {
-      "cve": "CVE-2026-118250",
-      "title": "CVE-2026-118250",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 6.1.0 until 11.4.9, 12.6.1, and 3.1.0, Highcharts follows dot-separated series.keys paths without filtering each segment. An attacker who controls series.keys and matching point data can use a path through __proto__ to assign arbitrary named properties to Object.prototype. Those properties are visible to all JavaScript in the page, and no user interaction is required beyond rendering the chart. This issue is fixed in 11.4.9, 12.6.1, and 3.1.0.",
-      "published": "2026-10-28T18:17:16.543",
-      "last_modified": "2026-10-28T18:17:16.543",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118250"
-    },
-    {
-      "cve": "CVE-2026-118249",
-      "title": "CVE-2026-118249",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 13.0.0 until 13.1.0, Highcharts builds series data columns by using point option keys directly as column IDs. Own enumerable __proto__ and constructor keys from parsed point objects can therefore direct integer-indexed writes to Object.prototype or the Object constructor. The inherited values affect reads and for-in enumeration across the page and can disrupt rendering or alter consuming application behavior without user interaction beyond rendering the chart. This issue is fixed in 13.1.0.",
-      "published": "2026-10-28T18:17:16.273",
-      "last_modified": "2026-10-28T18:17:16.273",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118249"
-    },
-    {
-      "cve": "CVE-2026-118248",
-      "title": "CVE-2026-118248",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until 4.2.2, Highcharts Dashboards edit mode walks editableOptions propertyPath segments without rejecting prototype-related keys. An attacker who controls editableOptions can provide a path through __proto__ or constructor, and a user's edit writes the configured value onto Object.prototype. The property then becomes visible to JavaScript throughout the page, with consequences determined by the consuming application. This issue is fixed in 4.2.2.",
-      "published": "2026-10-28T18:17:15.870",
-      "last_modified": "2026-10-28T18:17:15.870",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118248"
-    },
-    {
-      "cve": "CVE-2026-118247",
-      "title": "CVE-2026-118247",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until Dashboards 4.2.2, and from 2.0.0 until Grid Pro 3.2.0, Highcharts DataTable single-cell writers use an untrusted column ID as a key without rejecting __proto__ or constructor. DataTable.setCell, including Dashboards connector write-back and Grid Pro editing paths, can therefore write integer-indexed values onto Object.prototype or the Object constructor. In Dashboards releases with column aliases, a literal __proto__ ID is redirected by the alias map, while an alias targeting __proto__ reaches the unsafe write; later releases without aliases accept the unsafe ID directly. Those inherited values affect array and object reads and for-in enumeration throughout the page, which can alter application control flow or disrupt rendering. Exploitation requires control of the table or component column ID and a cell, point",
-      "published": "2026-10-28T18:17:15.690",
-      "last_modified": "2026-10-28T18:17:15.690",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118247"
-    },
-    {
-      "cve": "CVE-2026-118246",
-      "title": "CVE-2026-118246",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 10.0.0 until 11.4.9, 12.6.1, and 13.1.0, Highcharts applies breadcrumbs.style as SVG attributes rather than CSS and does not filter the attribute names. An attacker who controls chart configuration can provide event-handler keys through drilldown.breadcrumbs, navigation.breadcrumbs, or hierarchical series breadcrumb options. The keys become active handlers on the breadcrumb button and execute in the hosting page origin after the user navigates to a level and hovers over or activates the button. Styled-mode charts do not apply this option and are not affected. This issue is fixed in 11.4.9, 12.6.1 and 13.1.0.",
-      "published": "2026-10-28T18:17:15.540",
-      "last_modified": "2026-10-28T18:17:15.540",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118246"
-    },
-    {
-      "cve": "CVE-2026-118245",
-      "title": "CVE-2026-118245",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until 4.2.2, Highcharts Dashboards uses chartConstructor as an unchecked property lookup in the Highcharts namespace and invokes the selected member with the component container and chartOptions. An attacker who controls dashboard configuration can select a public utility function instead of a supported chart constructor, causing attacker-controlled options to be copied to the container as properties or attributes. Markup and event handlers can then execute in the hosting page origin when the board renders. No user interaction beyond rendering the board is required. This issue is fixed in 4.2.2.",
-      "published": "2026-10-28T18:17:15.403",
-      "last_modified": "2026-10-28T18:17:15.403",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118245"
-    },
-    {
-      "cve": "CVE-2026-118244",
-      "title": "CVE-2026-118244",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 12.0.0 until 12.6.1 and 13.1.0, Highcharts falls back to assigning raw markup to innerHTML when DOMParser cannot return a document, before its allow-list is applied. In Chromium, the Trusted Types callback can throw while a beforeprint handler runs, so a page that redraws a chart during beforeprint can insert untrusted HTML text options into the hosting document. Event handlers in that markup then run in the page origin when printing begins. The issue affects HTML-rendered titles, labels, data labels, responsive text, and the Stock, Maps, and Gantt products shipped in the same package. This issue is fixed in 12.6.1 and 13.1.0.",
-      "published": "2026-10-28T18:17:15.260",
-      "last_modified": "2026-10-28T18:17:15.260",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118244"
-    },
-    {
-      "cve": "CVE-2026-118243",
-      "title": "CVE-2026-118243",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 1.0.0 until 4.2.2, Highcharts Dashboards stores DataCursor listener and state maps in plain objects keyed by DataTable ID. A __proto__ table ID supplied through dataPool connector configuration resolves to Object.prototype, and sync registration creates an enumerable property there whose suffix can be influenced through the sync group option. The property is visible on every object, and lasting sync states can throw and stop features such as extremes synchronization. Exploitation requires untrusted dashboard configuration and an enabled component sync, but no user interaction beyond loading the board. This issue is fixed in 4.2.2.",
-      "published": "2026-10-28T18:17:15.103",
-      "last_modified": "2026-10-28T18:17:15.103",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118243"
-    },
-    {
-      "cve": "CVE-2026-118242",
-      "title": "CVE-2026-118242",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 2.3.0 until 3.2.0, Highcharts Grid creates SVG path elements from rendering.icons object definitions and previously copied every child key with setAttribute. An attacker who controls Grid configuration can supply event-handler attribute names in an icon definition. Because custom icons override built-ins, the attacker can replace default sort or pagination icons, and script runs in the hosting page origin when a user hovers over or activates the affected icon. This issue is fixed in 3.2.0.",
-      "published": "2026-10-28T18:17:14.963",
-      "last_modified": "2026-10-28T18:17:14.963",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118242"
-    },
-    {
-      "cve": "CVE-2026-117501",
-      "title": "CVE-2026-117501",
-      "description": "HTTP::Body versions before 1.24_01 for Perl allow memory exhaustion via unbounded buffering of chunked request bodies.\n\nIn chunked mode, used when no content length is given, add() holds each chunk in memory until all of it has arrived. A line that is not a chunk-size line, a size line without CRLF, or a size too large to fit an integer leaves the parser waiting forever, and every later add() grows the buffer.\n\nA remote attacker can exhaust memory in applications that pass chunked request bodies to HTTP::Body.",
-      "published": "2026-10-28T18:17:14.857",
-      "last_modified": "2026-10-28T18:17:14.857",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117501"
-    },
-    {
-      "cve": "CVE-2026-117500",
-      "title": "CVE-2026-117500",
-      "description": "HTTP::Body versions before 1.24_01 for Perl allow CPU exhaustion via regex backtracking on the filename of a multipart upload.\n\nFor every file part, the multipart parser finds the suffix of the uploaded filename by matching the default $basename_regexp, qr/[^.]+(\\.[^\\\\\\/]+)$/, against the whole basename. A basename made of many dots and ending in a backslash makes the regex backtrack in time quadratic in its length.\n\nA remote attacker can exhaust CPU with one request, as a basename of about 32 KB takes several seconds to match and every file part is matched separately.",
-      "published": "2026-10-28T18:17:14.747",
-      "last_modified": "2026-10-28T18:17:14.747",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117500"
-    },
-    {
-      "cve": "CVE-2026-116797",
-      "title": "CVE-2026-116797",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 2.0.0 until 3.2.0, Highcharts Grid Pro input renderers copy the cells.renderer.attributes and cells.editMode.renderer.attributes maps to input or select elements with raw setAttribute calls. An attacker who controls column configuration can add event-handler attributes to every rendered row or to the control created when a cell enters edit mode. Script then runs in the hosting page origin when a user hovers over or focuses an input or begins editing. This issue is fixed in Grid Pro 3.2.0.",
-      "published": "2026-10-28T18:17:14.607",
-      "last_modified": "2026-10-28T20:17:21.307",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116797"
-    },
-    {
-      "cve": "CVE-2026-116796",
-      "title": "CVE-2026-116796",
-      "description": "Highcharts JS is a JavaScript charting library based on SVG. From 10.3.2 until 11.4.9, 12.6.2, and 13.1.1, Highcharts accepts an SVG anchor xlink:href attribute without applying the allowed-scheme check used for href and src. An attacker who controls a chart text option can preserve a javascript URL in serialized chart output. When exported or server-rendered SVG is parsed again and a user activates the link, script runs in the origin of that document. This issue is fixed in 11.4.9, 12.6.2 and 13.1.1.",
-      "published": "2026-10-28T18:17:14.460",
-      "last_modified": "2026-10-28T18:17:14.460",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116796"
-    },
-    {
-      "cve": "CVE-2026-116795",
-      "title": "CVE-2026-116795",
-      "description": "RE2JS is the JavaScript port of RE2, a regular expression engine that provides linear time matching. From 2.2.0 until 2.8.7, enabling LOOKBEHINDS and using repeated matching through matcher().find(), matchAll(), split(), or matcher().replaceAll() can cause quadratic total work. Machine.match restarts lookbehind scanning from offset zero for each requested start position, while Matcher-based APIs request capture slots that prevent the early exit used for captureless matching. Dense matches therefore repeatedly rescan the input, allowing attacker-influenced text to monopolize a single-threaded worker and deny service. This issue is fixed in version 2.8.7.",
-      "published": "2026-10-28T18:17:14.303",
-      "last_modified": "2026-10-28T18:17:14.303",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116795"
-    },
-    {
-      "cve": "CVE-2026-116794",
-      "title": "CVE-2026-116794",
-      "description": "russh is a Rust SSH client and server library that includes an SSH agent protocol implementation. From 0.50.0-beta.12 until 0.65.0, the agent server's Connection::try_sign path in russh/src/keys/agent/server.rs recognizes SSH_AGENT_CONSTRAIN_CONFIRM but returns a hard-coded successful result instead of calling Agent::confirm. In applications that override Agent::confirm to require user approval or another policy check, a process that can reach the agent socket, including the remote side of a forwarded agent, can use a key added through ssh-add -c without that check and can authenticate or sign data as the user while the key remains loaded. The separate Agent::confirm_request hook still runs for every signing request, so checks implemented there remain effective, and implementations that retain the default always-successful Agent::confirm do not lose an approval check through this regress",
-      "published": "2026-10-28T18:17:14.127",
-      "last_modified": "2026-10-28T18:17:14.260",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116794"
-    },
-    {
-      "cve": "CVE-2026-116531",
-      "title": "CVE-2026-116531",
-      "description": "HTTP::Body versions before 1.23_01 for Perl lose track of chunk boundaries in chunked request bodies when a read ends inside a chunk.\n\nIn chunked mode, used when no content length is given, add() treats a chunk as complete once the buffer is as long as the chunk's declared size, but the buffer still holds the chunk-size line. When a read ends in the last bytes of a chunk, add() takes the chunk short and parses the leftover data as the next chunk-size line.\n\nA remote attacker can make a chunked body never complete, hanging a server that reads until the body is done, and may make it complete early, leaving the remaining bytes to be read as the next request.",
-      "published": "2026-10-28T18:17:14.013",
-      "last_modified": "2026-10-28T18:17:14.013",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116531"
-    },
-    {
-      "cve": "CVE-2026-116285",
-      "title": "CVE-2026-116285",
-      "description": "HTTP::Body versions before 1.23_01 for Perl allow CPU exhaustion via quadratic regex backtracking when parsing chunked request bodies.\n\nIn chunked mode, used when no content length is given, add() matches each chunk-size line with `/^([\\da-fA-F]+).*\\x0D\\x0A/`. On a line of hex digits whose first LF has no CR before it, the digits and `.*` backtrack against each other, so a single add() takes time quadratic in the line's length. Nothing limits how long the line can be.\n\nA remote attacker can exhaust CPU in applications that pass chunked request bodies to HTTP::Body.",
-      "published": "2026-10-28T18:17:13.903",
-      "last_modified": "2026-10-28T18:17:13.903",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116285"
     }
   ],
-  "total_results": 1524,
+  "total_results": 1549,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1324
+  "start_index": 1349
 }
