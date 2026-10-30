@@ -1,12 +1,156 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-27T23%3A00%3A00.000&pubEndDate=2026-10-30T07%3A44%3A39.000&resultsPerPage=200&startIndex=1377",
-  "fetched_at": "2026-10-30T07:44:39+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-27T23%3A00%3A00.000&pubEndDate=2026-10-30T11%3A02%3A43.000&resultsPerPage=200&startIndex=1393",
+  "fetched_at": "2026-10-30T11:02:43+00:00",
   "window_days": 3,
   "window_start": "2026-10-28",
   "window_end": "2026-10-30",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-14467",
+      "title": "CVE-2026-14467",
+      "description": "An information disclosure vulnerability in the Forocoches comments editor that allows an attacker to obtain unauthorised user information by inserting an image containing a malicious external URL into a comment. When a victim views the discussion thread, their browser automatically sends an HTTP/HTTPS request to the server controlled by the attacker, who can then collect information such as the source IP address, the User-Agent header, the date and time of access, and other metadata derived from the request, thereby compromising the user’s privacy.",
+      "published": "2026-10-30T10:16:53.820",
+      "last_modified": "2026-10-30T10:16:53.820",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14467"
+    },
+    {
+      "cve": "CVE-2026-97209",
+      "title": "CVE-2026-97209",
+      "description": "Insecure Temporary File vulnerability in Mix deps.partition in Elixir allows a local user to execute code as another user via a swapped partition config file. Partitioned dependency compilation passes the project configuration to each partition VM through a file in a fixed-name directory under the shared system temporary directory, and the partition trusts what it reads back. Another local user on the same host can exploit this during a mix deps.compile run that uses partitioned compilation.\n\nMix.Tasks.Deps.Partition.server/4 in lib/mix/lib/mix/tasks/deps.partition.ex creates the directory with File.mkdir_p/1, which accepts an existing directory without checking its owner, so a user who created it first can replace the file before client/0 reads it.\n\nThis issue affects mix: from 1.20.0-rc.4 before 1.20.5.",
+      "published": "2026-10-30T09:17:15.640",
+      "last_modified": "2026-10-30T09:17:15.640",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97209"
+    },
+    {
+      "cve": "CVE-2026-65874",
+      "title": "CVE-2026-65874",
+      "description": "This issue affects Apache Fineract versions up to and including 1.15.0. The Center read endpoint (GET /api/v1/centers) and the datatable entry read endpoints (GET /api/v1/datatables/{datatable}/{apptableId} and GET /api/v1/datatables/{datatable}/{apptableId}/{datatableId}) concatenate caller-supplied ordering parameters (orderBy, sortOrder, order) directly into the SQL ORDER BY clause. The existing regex-based input validation can be bypassed, allowing time-based blind SQL injection by any authenticated user with read access to centers or to the targeted datatable.\n\nUsers are recommended to upgrade to 1.16.1 which fixes the issue.",
+      "published": "2026-10-30T09:17:15.487",
+      "last_modified": "2026-10-30T10:16:55.310",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65874"
+    },
+    {
+      "cve": "CVE-2026-64618",
+      "title": "CVE-2026-64618",
+      "description": "Improper Neutralization of Special Elements used in an SQL Command (\"SQL Injection\") vulnerability exists in Apache Fineract (through version 1.15.0). The vulnerability affects the outStandingAmountPercentageCondition parameter of the /fineract-provider/api/v1/search/advance HTTP API endpoint, allowing SQL injection due to insufficient input neutralization. Users are recommended to upgrade to version 1.16.1, which will fix the issue.",
+      "published": "2026-10-30T09:17:15.337",
+      "last_modified": "2026-10-30T10:16:55.190",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64618"
+    },
+    {
+      "cve": "CVE-2026-59396",
+      "title": "CVE-2026-59396",
+      "description": "A denial-of-service vulnerability exists in UAA's private_key_jwt client-authentication mechanism. When UAA retrieves a remote JWKS URI, it caches the response. Invalid authentication attempts can trigger full deserialization of this cached data. An attacker with prerequisites (write access to clients or a compromised endpoint) can send anonymous requests that force repeated parsing of large cached objects, causing excessive CPU usage and potential Java heap exhaustion via OutOfMemoryError, resulting in service unavailability.",
+      "published": "2026-10-30T09:17:15.197",
+      "last_modified": "2026-10-30T09:17:15.197",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59396"
+    },
+    {
+      "cve": "CVE-2026-59388",
+      "title": "CVE-2026-59388",
+      "description": "Cloud Controller (CAPI) leaks sensitive data into audit logs in multiple instances: custom buildpack credentials are exposed in audit events for app manifest application, creation, and updates; syslog drain URL credentials are exposed in user-provided service instance audit events; and service binding parameters are leaked in app manifest and service binding audit events.",
+      "published": "2026-10-30T09:17:15.063",
+      "last_modified": "2026-10-30T10:16:54.983",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59388"
+    },
+    {
+      "cve": "CVE-2026-59387",
+      "title": "CVE-2026-59387",
+      "description": "The Nginx routing configuration for Cloud Controller blocks unauthenticated access to /internal/v4/ and /internal/v5/ endpoints but omits an equivalent deny rule for /internal/v3/. As a result, the staging callback endpoints /internal/v3/staging/:guid/droplet_completed and /internal/v3/staging/:guid/build_completed are reachable from the public API listener without OAuth or mutual TLS.\n\n\n\n \n\n\n\nAn attacker with a valid build or droplet GUID can submit a forged staging callback, transition a droplet to STAGED, and persist arbitrary process metadata and sidecar data with no associated package or actor. A SpaceAuditor can enumerate GUIDs without write permissions, making this an effective privilege escalation beyond the intended role boundary.",
+      "published": "2026-10-30T09:17:14.913",
+      "last_modified": "2026-10-30T09:17:14.913",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59387"
+    },
+    {
+      "cve": "CVE-2026-59386",
+      "title": "CVE-2026-59386",
+      "description": "A SpaceSupporter could improperly modify an application's start command and buildpack—actions requiring SpaceDeveloper privileges. This privilege escalation enables unauthorized retrieval of service credentials through malicious start commands or custom buildpacks.",
+      "published": "2026-10-30T09:17:14.790",
+      "last_modified": "2026-10-30T09:17:14.790",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59386"
+    },
+    {
+      "cve": "CVE-2026-59385",
+      "title": "CVE-2026-59385",
+      "description": "A user with SpaceDeveloper privileges could modify the URL of a space-scoped broker without altering its credentials, enabling extraction of existing broker credentials by redirecting them to a broker under their control. The CF API does not permit direct reading of broker credentials, making this an indirect extraction method.",
+      "published": "2026-10-30T09:17:14.643",
+      "last_modified": "2026-10-30T09:17:14.643",
+      "cvss": 2.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59385"
+    },
+    {
+      "cve": "CVE-2026-115456",
+      "title": "CVE-2026-115456",
+      "description": "A flaw was found in gcc. An attacker could cause a Denial of Service (DoS) by passing a string that is not null-terminated to the std::from_chars() function in the libstdc++ library. This issue triggers an out-of-bounds read beyond the allocated buffer, potentially leading to invalid data parsing or an application crash.",
+      "published": "2026-10-30T09:17:14.413",
+      "last_modified": "2026-10-30T09:17:14.537",
+      "cvss": 3.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115456"
+    },
+    {
+      "cve": "CVE-2026-115274",
+      "title": "CVE-2026-115274",
+      "description": "Improper Validation of Specified Quantity in Input vulnerability in the Elixir standard library's JSON module allows an unauthenticated attacker who supplies a JSON document to cause a denial of service through CPU and memory exhaustion.\n\nJSON.decode/1 and JSON.decode!/1 convert each integer literal with erlang:binary_to_integer/1 and do not bound its length. A literal of one million digits decodes successfully but costs 100 to 300 times as much CPU as a string of the same length, so one request body of a few megabytes holds a scheduler for about a second. A literal of more than about 1.29 million digits raises SystemLimitError. Applications generated by phx.new decode request bodies with JSON in Plug.Parsers, before routing and authentication.\n\nThis issue affects elixir: from 1.18.0-rc.0 before 1.18.6, from 1.19.0-rc.0 before 1.19.7, and from 1.20.0-rc.0 before 1.20.5.",
+      "published": "2026-10-30T09:17:14.103",
+      "last_modified": "2026-10-30T09:17:14.103",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115274"
+    },
+    {
+      "cve": "CVE-2026-109821",
+      "title": "CVE-2026-109821",
+      "description": "Improper Validation of Specified Quantity in Input vulnerability in the Elixir standard library's URI module allows an attacker who supplies a URL to cause a denial of service through CPU exhaustion.\n\nURI.parse/1 converts the port component with String.to_integer/1 in split_authority/1 (lib/elixir/lib/uri.ex) without bounding its length, so a port of up to 1,262,592 decimal digits produces a bignum of that size and a longer one raises SystemLimitError. Rendering the parsed URI back to text (URI.to_string/1, inspect/1, logging, error formatting) converts the bignum with :erlang.integer_to_binary/1, which is quadratic on Erlang/OTP 27, 28 and 29.0: a 400,000-digit port renders in about 2.6 seconds and a 1 MB port in about 18 seconds. Ports above 65535 are also accepted.\n\nThis issue affects elixir: from 0.5.0 before 1.18.6, from 1.19.0-rc.0 before 1.19.7, and from 1.20.0-rc.0 before 1.20.5.",
+      "published": "2026-10-30T09:17:12.143",
+      "last_modified": "2026-10-30T09:17:12.143",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109821"
+    },
+    {
+      "cve": "CVE-2026-82104",
+      "title": "CVE-2026-82104",
+      "description": "In Teltonika Networks RUTOS devices running versions from 7.22 through 7.24.2 and TSWOS devices running versions 1.9 through 1.10, a vulnerability exists whereby an unauthenticated user can directly call LUA functions, bypassing validations that might be called under normal API requests. Due to those requests not following proper flows, this could lead to OS command execution.\n\n\n\nThis issue affects RUT: from 7.22 through 7.24.2; RUTX: from 7.22 through 7.24.2; RUTM: from 7.22 through 7.24.2; RUTC: from 7.22 through 7.24.2; ATRM: from 7.22 through 7.24.2; TAP: from 7.22 through 7.24.2; CAP: from 7.22 through 7.24.2; OXA: from 7.22 through 7.24.2; DAP: from 7.22 through 7.24.2; TRB: from 7.22 through 7.24.2; OTD: from 7.22 through 7.24.2; EBG: from 7.22 through 7.24.2; SWM: from 1.9 through 1.10; TSW: from 1.9 through 1.10.",
+      "published": "2026-10-30T08:17:00.240",
+      "last_modified": "2026-10-30T08:17:00.240",
+      "cvss": 9.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82104"
+    },
+    {
+      "cve": "CVE-2026-115455",
+      "title": "CVE-2026-115455",
+      "description": "A flaw was found in GCC libstdc++. When an application extracts data into a bitset from a wide-character stream, internal stack memory allocation fails to properly account for character size and alignment. An attacker capable of supplying crafted input to an affected application could trigger a stack-based buffer overflow leading denial of service (DoS).",
+      "published": "2026-10-30T08:16:55.463",
+      "last_modified": "2026-10-30T08:16:55.590",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115455"
+    },
+    {
+      "cve": "CVE-2026-114691",
+      "title": "CVE-2026-114691",
+      "description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector<bool>) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+      "published": "2026-10-30T08:16:55.257",
+      "last_modified": "2026-10-30T08:16:55.380",
+      "cvss": 5.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114691"
+    },
+    {
+      "cve": "CVE-2026-114690",
+      "title": "CVE-2026-114690",
+      "description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+      "published": "2026-10-30T08:16:55.047",
+      "last_modified": "2026-10-30T08:16:55.177",
+      "cvss": 6.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114690"
+    },
     {
       "cve": "CVE-2026-97645",
       "title": "CVE-2026-97645",
@@ -1662,154 +1806,10 @@
       "last_modified": "2026-10-29T22:17:01.367",
       "cvss": 5.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119285"
-    },
-    {
-      "cve": "CVE-2026-119284",
-      "title": "CVE-2026-119284",
-      "description": "joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.6, joserfc compact JWS deserialization calls bytes.split() before enforcing the existing aggregate segment-size limits. When attacker-controlled compact serialization bytes reach deserialize_compact(), the split creates copies of the header, payload, and signature segments before ExceededSizeError rejects them, causing an additional allocation approximately proportional to the supplied token. Requests that exhaust available process memory can therefore cause an availability failure even though signature verification fails. This issue is fixed in version 1.7.6.",
-      "published": "2026-10-29T22:17:01.210",
-      "last_modified": "2026-10-29T22:17:01.327",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119284"
-    },
-    {
-      "cve": "CVE-2026-119283",
-      "title": "CVE-2026-119283",
-      "description": "joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.5, joserfc.jwe.decrypt_json() accepts a JWE General JSON Serialization recipients array without a count limit and calls decrypt_cek() for every entry. An unauthenticated attacker who can submit a JWE to an endpoint using an RSA key-management algorithm can choose the number of private-key decryption operations performed by one request. The verify_all_recipients option does not reduce this work because the affected loop processes every recipient before consulting that setting, allowing repeated requests to exhaust service CPU without affecting confidentiality or integrity. This issue is fixed in version 1.7.5.",
-      "published": "2026-10-29T22:17:01.047",
-      "last_modified": "2026-10-29T22:17:01.167",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119283"
-    },
-    {
-      "cve": "CVE-2026-119282",
-      "title": "CVE-2026-119282",
-      "description": "Nx is a monorepo solution for TypeScript and polyglot codebases. From 22.0.2 until 22.7.9 and 23.1.2 for @nx/maven, and from 21.0.0 until 22.7.9 and 23.1.2 for @nx/gradle, the plugins' project-graph analyzers launch through a shell and interpolate plugin options from nx.json into command arguments. The @nx/maven targetNamePrefix value and arbitrary @nx/gradle option names or values can therefore be interpreted as shell syntax whenever an nx command constructs the project graph. A user who runs Nx in an attacker-controlled repository or pull request can execute injected commands with the user's privileges, while workspaces that register neither affected plugin are not exposed to this path. Remediation requires upgrading both nx and each affected plugin to matching releases because the plugin fix depends on code in the nx package. This issue is fixed in versions 22.7.9 and 23.1.2.",
-      "published": "2026-10-29T22:17:00.887",
-      "last_modified": "2026-10-29T22:17:00.887",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119282"
-    },
-    {
-      "cve": "CVE-2026-115943",
-      "title": "CVE-2026-115943",
-      "description": "Spreadsheet::XLSX versions before 0.19 for Perl allow code execution via string eval of number format conditions in ExcelFmt.\n\nWhen a number format has a condition such as [>100], ExcelFmt chooses the format section by passing the condition and the cell value to a string eval. Both come from the workbook, and the eval runs while Spreadsheet::XLSX->new parses it.\n\nAn attacker who supplies an XLSX file can run arbitrary Perl code.",
-      "published": "2026-10-29T22:17:00.767",
-      "last_modified": "2026-10-30T02:17:08.467",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115943"
-    },
-    {
-      "cve": "CVE-2026-61576",
-      "title": "CVE-2026-61576",
-      "description": "Lightdash is an open source business intelligence platform. In affected versions through 0.3213.0, the dbt Cloud webhook `POST /api/v1/projects/{projectUuid}/dbt-cloud/webhook` has no authentication middleware or signature validation. In `packages/backend/src/controllers/projectController.ts`, `testWebhook()` accepts `accountId` and `runId` from a `job.run.completed` request and passes them to `createPreviewWithExplores()` in `packages/backend/src/services/ProjectService/ProjectService.ts`. These unsanitized values are interpolated into the server-side dbt Cloud API URL, which is requested with the victim project's API key in the `Authorization` header. Path traversal through `accountId` changes the requested path on `cloud.getdbt.com` without changing its host, so the credential-bearing request reaches an attacker-influenced path on that fixed host. The advisory claims API-key theft, bu",
-      "published": "2026-10-29T21:17:27.313",
-      "last_modified": "2026-10-29T21:17:27.440",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61576"
-    },
-    {
-      "cve": "CVE-2026-13303",
-      "title": "CVE-2026-13303",
-      "description": "HashiCorp Boundary and Boundary Enterprise are vulnerable to a server-side request forgery in the Vault credential store integration that may allow an authenticated user with permission to manage credential stores and credential libraries within a project to cause the Boundary controller to issue outbound requests to a network destination of the requester's choosing and to receive the response. This may expose endpoints reachable only from the controller's host, such as a cloud instance metadata service. This vulnerability, CVE-2026-13303, is fixed in Boundary Enterprise 1.0.2 and 0.21.6.",
-      "published": "2026-10-29T21:17:22.000",
-      "last_modified": "2026-10-29T21:17:22.000",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13303"
-    },
-    {
-      "cve": "CVE-2026-119325",
-      "title": "CVE-2026-119325",
-      "description": "Bricks Theme 2.4 and before for WordPress contains an unauthenticated broken access control vulnerability in the load_popup_content REST endpoint that allows anonymous attackers to read draft and unpublished page content by supplying a popupId parameter without any status or capability checks. Attackers can obtain a public nonce via the bricks_regenerate_query_nonce action and then increment the popupId value in requests to the /wp-json/bricks/v1/load_popup_content endpoint to enumerate and disclose confidential content from any unpublished post on the site.",
-      "published": "2026-10-29T21:17:21.870",
-      "last_modified": "2026-10-29T21:17:21.870",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119325"
-    },
-    {
-      "cve": "CVE-2026-119281",
-      "title": "CVE-2026-119281",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.11, the connector assumed result bytes were UTF-8 but guarded only changes to character_set_client. It did not reject non-UTF-8 character_set_results changes and relied on the server's global session_track_system_variables configuration to report character-set changes. A malicious or compromised server, or a machine-in-the-middle attacker, could suppress tracking or change the result charset so application strings differed from the returned bytes, potentially defeating application-side validation or escaping that depended on the decoded values. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.11.",
-      "published": "2026-10-29T21:17:21.710",
-      "last_modified": "2026-10-29T21:17:21.710",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119281"
-    },
-    {
-      "cve": "CVE-2026-119280",
-      "title": "CVE-2026-119280",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.11, the MariaDbPoolConnection.recover() and MariaDbPoolPinnedConnection.recover() implementations trusted the gtrid_length and bqual_length columns returned by XA RECOVER. The methods allocated and split Xid byte arrays without validating the lengths against Xid.MAXGTRIDSIZE, Xid.MAXBQUALSIZE, or the actual data payload. A malicious or compromised server, or a machine-in-the-middle attacker, could cause large allocations, NegativeArraySizeException, or ArrayIndexOutOfBoundsException during XA recovery. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.11.",
-      "published": "2026-10-29T21:17:21.553",
-      "last_modified": "2026-10-29T21:17:21.553",
-      "cvss": 3.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119280"
-    },
-    {
-      "cve": "CVE-2026-119279",
-      "title": "CVE-2026-119279",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.10, the ReadableByteBuf.readLength() and ReadableByteBuf.readIntLengthEncodedNotNull() methods narrowed the protocol's unsigned 8-byte length-encoded integer to a Java int without checking that the value fit a non-negative integer. Values above Integer.MAX_VALUE could wrap to a negative or unrelated length that downstream allocation and read paths used. A malicious or compromised server, or a machine-in-the-middle attacker, could trigger NegativeArraySizeException, out-of-bounds failures, or oversized allocation behavior in client connection handling. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.10.",
-      "published": "2026-10-29T21:17:21.387",
-      "last_modified": "2026-10-29T21:17:21.387",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119279"
-    },
-    {
-      "cve": "CVE-2026-119278",
-      "title": "CVE-2026-119278",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7 and 3.4.5, during caching_sha2_password authentication, the authentication-more-data response was treated as a length-encoded byte array, memory was allocated from the server-declared length, and authResult[0] was accessed without ensuring a byte existed. A malicious or compromised server, or a machine-in-the-middle attacker, could declare a very large length or send an empty response before any password was transmitted. The malformed packet could cause excessive allocation or an unchecked ArrayIndexOutOfBoundsException escaping from DriverManager.getConnection(). This issue is fixed in versions 3.3.7 and 3.4.5.",
-      "published": "2026-10-29T21:17:21.237",
-      "last_modified": "2026-10-29T21:17:21.237",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119278"
-    },
-    {
-      "cve": "CVE-2026-119277",
-      "title": "CVE-2026-119277",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.11, decoders for OK packet session-state blocks, column definition packets, text row data, or binary row data used server-declared lengths without confirming that the requested bytes remained in the receive buffer. The decoders could position reads, create sub-buffers, or decode strings beyond the packet boundary. A malicious or compromised server, or a machine-in-the-middle attacker, could trigger unchecked ArrayIndexOutOfBoundsException or IllegalArgumentException failures inside JDBC calls and terminate connection handling. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.11.",
-      "published": "2026-10-29T21:17:21.067",
-      "last_modified": "2026-10-29T21:17:21.067",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119277"
-    },
-    {
-      "cve": "CVE-2026-119276",
-      "title": "CVE-2026-119276",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.11, when CLIENT_SESSION_TRACK was negotiated, the OkPacket.parse() and OkPacket.parseWithInfo() paths allocated byte arrays using server-declared lengths for the OK packet info field and session-state variable names and values before confirming that the bytes remained in the packet. A malicious or compromised server, or a machine-in-the-middle attacker, could send a small OK packet declaring a much larger length and repeatedly force attacker-controlled heap allocations before the subsequent copy failed. This could create garbage-collection pressure or an OutOfMemoryError in the client application. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.11.",
-      "published": "2026-10-29T21:17:20.907",
-      "last_modified": "2026-10-29T21:17:20.907",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119276"
-    },
-    {
-      "cve": "CVE-2026-119210",
-      "title": "CVE-2026-119210",
-      "description": "MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.11, the ClientMessage.validateLocalFileName() check used a regular expression that could match LOAD DATA LOCAL INFILE text inside quoted identifiers, string literals, or comments instead of requiring a real statement. A malicious or compromised server, or a machine-in-the-middle attacker, could return crafted database or table identifiers that the connector reused in metadata or updatable-result queries, then answer with a LOCAL INFILE request for a client file. With allowLocalInfile enabled, this caused the connector to stream any readable client-host file named by the crafted text, including through DatabaseMetaData.getImportedKeys(), DatabaseMetaData.getExportedKeys(), or ResultSet.updateRow() paths. This issue is fixed in versions 3.3.7, 3.4.5, ",
-      "published": "2026-10-29T21:17:20.403",
-      "last_modified": "2026-10-29T21:17:20.403",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119210"
-    },
-    {
-      "cve": "CVE-2026-119209",
-      "title": "CVE-2026-119209",
-      "description": "pypdf is a free and open-source pure-python PDF library. Prior to 6.21.3, pypdf can consume excessive memory while opening a crafted PDF containing cross-reference streams that declare very large entry counts. Highly compressible streams and /Prev chains can multiply the number of parsed entries across a document, while negative /Index counts can bypass the existing per-stream clamp. This issue is fixed in version 6.21.3.",
-      "published": "2026-10-29T21:17:20.230",
-      "last_modified": "2026-10-29T21:17:20.230",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119209"
-    },
-    {
-      "cve": "CVE-2026-119208",
-      "title": "CVE-2026-119208",
-      "description": "pypdf is a free and open-source pure-python PDF library. Prior to 6.21.3, pypdf can consume excessive time and memory when an application accesses the page count of a crafted encrypted PDF whose page tree declares a forged /Count value. Even after successful decryption, page-count retrieval trusts the unvalidated declared count instead of walking the page tree, allowing the attacker-controlled value to drive excessive work and memory use. This issue is fixed in version 6.21.3.",
-      "published": "2026-10-29T21:17:20.090",
-      "last_modified": "2026-10-29T21:17:20.090",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119208"
     }
   ],
-  "total_results": 1577,
+  "total_results": 1593,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1377
+  "start_index": 1393
 }
