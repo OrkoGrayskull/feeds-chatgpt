@@ -1,12 +1,948 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-27T23%3A00%3A00.000&pubEndDate=2026-10-30T11%3A02%3A43.000&resultsPerPage=200&startIndex=1393",
-  "fetched_at": "2026-10-30T11:02:43+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-27T23%3A00%3A00.000&pubEndDate=2026-10-30T13%3A35%3A13.000&resultsPerPage=200&startIndex=1497",
+  "fetched_at": "2026-10-30T13:35:13+00:00",
   "window_days": 3,
   "window_start": "2026-10-28",
   "window_end": "2026-10-30",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-91917",
+      "title": "CVE-2026-91917",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Input Validation vulnerability. A low privileged attacker with adjacent network access could potentially exploit this vulnerability, leading to Code execution.",
+      "published": "2026-10-30T13:20:53.097",
+      "last_modified": "2026-10-30T13:20:53.097",
+      "cvss": 8.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91917"
+    },
+    {
+      "cve": "CVE-2026-87768",
+      "title": "CVE-2026-87768",
+      "description": "DateTime::Lite versions before 0.8.1 for Perl allow CPU exhaustion via a per-day loop when adding seconds.\n\n_normalize_leap_seconds crosses day boundaries one day at a time, so add(seconds => $n) on an object with a non-floating time zone takes about |$n|/86400 iterations, and nothing limits $n. The XS implementation and the pure-Perl fallback both have the loop.\n\nAn attacker who controls the number of seconds added can keep the process busy for as long as they choose.",
+      "published": "2026-10-30T13:20:15.910",
+      "last_modified": "2026-10-30T13:20:15.910",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87768"
+    },
+    {
+      "cve": "CVE-2026-75882",
+      "title": "CVE-2026-75882",
+      "description": "An improper access control vulnerability in ESET Endpoint Encryption and ESET Full Disk Encryption allow attacker with standard user permissions access a device interface belonging to a privileged kernel driver and send specially crafted requests.",
+      "published": "2026-10-30T13:20:06.177",
+      "last_modified": "2026-10-30T13:20:06.177",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-75882"
+    },
+    {
+      "cve": "CVE-2026-64860",
+      "title": "CVE-2026-64860",
+      "description": "Rejected reason: Further research determined the issue is not a vulnerability.",
+      "published": "2026-10-30T13:19:38.980",
+      "last_modified": "2026-10-30T13:19:38.980",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64860"
+    },
+    {
+      "cve": "CVE-2026-13576",
+      "title": "CVE-2026-13576",
+      "description": "CallBackery versions before 0.62.0 for Perl store user passwords as unsalted HMAC-SHA1 hashes.\n\nPasswords are hashed with hmac_sha1_sum() from Mojo::Util with no key, a single fast SHA-1 HMAC. There is no salt, so equal passwords give equal hashes, and no work factor slows down guessing.\n\nAn attacker who obtains the user table can recover passwords by fast offline guessing.",
+      "published": "2026-10-30T13:18:32.900",
+      "last_modified": "2026-10-30T13:18:32.900",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13576"
+    },
+    {
+      "cve": "CVE-2026-119038",
+      "title": "CVE-2026-119038",
+      "description": "Business::GoCardless versions before 1.01 for Perl complete redirect flows without checking the session token, letting a leaked redirect flow ID create payments against another customer's mandate.\n\nconfirm_resource takes no session token from the caller. It reads the redirect flow back from the GoCardless API and completes it with the token from that response, so the check that the flow is completed by the session that started it always passes. It then creates the requested payment or subscription against the flow's mandate. Since version 1.00, a flow that already has a mandate is returned as confirmed without being completed again, so the same ID creates a new payment on every call.\n\nA remote attacker who obtains another customer's redirect flow ID can create payments or subscriptions against that customer's mandate.",
+      "published": "2026-10-30T13:18:32.783",
+      "last_modified": "2026-10-30T13:18:32.783",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119038"
+    },
+    {
+      "cve": "CVE-2026-119037",
+      "title": "CVE-2026-119037",
+      "description": "Business::GoCardless versions before 1.01 for Perl accept forged webhooks when a configured webhook secret is undef or empty.\n\nsignature_valid uses each configured secret as the HMAC key, and nothing rejects undef or an empty string, both of which Digest::SHA treats as an empty key. A secret read from an unset environment variable, or an empty entry in a list of rotated secrets, is used as is.\n\nA remote attacker can sign a forged webhook with an empty key and have it accepted as sent by GoCardless.",
+      "published": "2026-10-30T13:18:32.670",
+      "last_modified": "2026-10-30T13:18:32.670",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119037"
+    },
+    {
+      "cve": "CVE-2026-119036",
+      "title": "CVE-2026-119036",
+      "description": "Business::GoCardless versions before 1.01 for Perl allow memory exhaustion by flattening legacy webhook payloads before checking their signature.\n\nA webhook body with a top-level \"payload\" key is verified as a legacy webhook. To rebuild the signed string, the payload is flattened into one key and value pair per leaf, each key carrying the full path to that leaf, and the pairs are then encoded, sorted and joined. A long key holding a long array costs memory proportional to the key length times the array length.\n\nA remote attacker can exhaust memory in the process receiving webhooks with a single request that carries no valid signature.",
+      "published": "2026-10-30T13:18:32.553",
+      "last_modified": "2026-10-30T13:18:32.553",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119036"
+    },
+    {
+      "cve": "CVE-2026-118996",
+      "title": "CVE-2026-118996",
+      "description": "CallBackery versions before 0.62.0 for Perl send users their own password hash and the admin-only user note via getUserConfig.\n\ngetUserConfig() returns the caller's whole cbuser row, including the stored password hash and the note field that the user interface shows only to administrators. getTableData() and getAllFieldValues() in the user management plugins also return the note to users without the admin right.\n\nA non-administrator can read the notes administrators keep about them, and an attacker who obtains a session token can get that user's password hash and crack it offline.",
+      "published": "2026-10-30T13:18:32.430",
+      "last_modified": "2026-10-30T13:18:32.430",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118996"
+    },
+    {
+      "cve": "CVE-2026-118995",
+      "title": "CVE-2026-118995",
+      "description": "CallBackery versions before 0.62.0 for Perl accept unintended values in form fields checked by createRxValidator.\n\ncreateRxValidator() is documented to anchor the supplied pattern at both ends, but builds /^${rx}$/ without grouping the pattern. An alternation such as yes|no then accepts any value starting with yes or ending with no, and $ also accepts a value with one trailing newline.\n\nAn authenticated user can submit values the pattern was meant to reject, which an application may then write into generated configuration files.",
+      "published": "2026-10-30T13:18:32.320",
+      "last_modified": "2026-10-30T13:18:32.320",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118995"
+    },
+    {
+      "cve": "CVE-2026-118994",
+      "title": "CVE-2026-118994",
+      "description": "CallBackery versions before 0.62.0 for Perl allow log injection via newlines in the login name.\n\nlogin() writes the login name to the application log without escaping control characters. The login RPC method needs no authentication, so a name containing a newline followed by text in the log record format adds a forged record.\n\nAn unauthenticated attacker can forge log records, such as a successful administrator login from an address of their choosing.",
+      "published": "2026-10-30T13:18:32.213",
+      "last_modified": "2026-10-30T13:18:32.213",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118994"
+    },
+    {
+      "cve": "CVE-2026-118993",
+      "title": "CVE-2026-118993",
+      "description": "CallBackery versions before 0.62.0 for Perl allow denial of service via the request path interpolated as a regular expression under CGI, FastCGI and PSGI.\n\nThe before_dispatch hook installed by startup() removes PATH_INFO from the end of the request URI with a substitution that interpolates PATH_INFO unquoted. Under CGI, FastCGI and PSGI both values come from the request, so the client chooses both the pattern and the string it is matched against.\n\nA short unauthenticated request with a backreference in the path backtracks exponentially and can keep a worker process busy for minutes.",
+      "published": "2026-10-30T13:18:32.100",
+      "last_modified": "2026-10-30T13:18:32.100",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118993"
+    },
+    {
+      "cve": "CVE-2026-118992",
+      "title": "CVE-2026-118992",
+      "description": "CallBackery versions before 0.62.0 for Perl allow OS command execution via sqlite3 shell commands in a restored configuration backup.\n\nrestoreConfigBlob() feeds the database dump in a backup to the sqlite3 command-line shell. The shell runs lines starting with a dot as its own commands, so .shell or .system in the dump runs an OS command and .load loads native code.\n\nAnyone who can supply a backup to be restored can run arbitrary commands as the application user.",
+      "published": "2026-10-30T13:18:31.990",
+      "last_modified": "2026-10-30T13:18:31.990",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118992"
+    },
+    {
+      "cve": "CVE-2026-118991",
+      "title": "CVE-2026-118991",
+      "description": "CallBackery versions before 0.62.0 for Perl encrypt configuration backups with the padded password as the AES key.\n\ngetCrypt() pads the backup password with \"x\" characters and cuts it to 32 bytes to form the AES key, with no salt and no key derivation. The first block of a backup holds a 16 hex digit length field, so decrypting one block confirms a password guess at raw AES speed.\n\nAn attacker who obtains a backup can recover its password by fast offline guessing, and with it every credential the backup holds.",
+      "published": "2026-10-30T13:18:31.880",
+      "last_modified": "2026-10-30T13:18:31.880",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118991"
+    },
+    {
+      "cve": "CVE-2026-118990",
+      "title": "CVE-2026-118990",
+      "description": "CallBackery versions before 0.62.0 for Perl leave a world-readable dump of the configuration database in /tmp when taking a configuration backup.\n\ngetConfigBlob() has the sqlite3 shell write the dump to /tmp/cbdump<pid> and never removes it. The file takes the process umask, and a symlink planted at that predictable name is followed.\n\nThe dump holds every user's password hash and every value saved by the application's forms. A local user can read these after any backup, and may redirect the dump to a file of their choosing.",
+      "published": "2026-10-30T13:18:31.763",
+      "last_modified": "2026-10-30T13:18:31.763",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118990"
+    },
+    {
+      "cve": "CVE-2026-118988",
+      "title": "CVE-2026-118988",
+      "description": "CallBackery versions before 0.60.1 for Perl let unauthenticated clients read the POD of any file via path traversal in the /doc route.\n\nEvery CallBackery application mounts its documentation plugin at /doc, ahead of any session check. The route passes the requested name to Pod::Simple::Search->find without validation. find splits the name on \"::\" and joins the parts into a file path, so a name such as \"..::..::..::etc::motd\" escapes @INC.\n\nAny file the server process can read is reachable. Only POD is rendered, but a file with a POD directive and no \"=cut\" is POD to the end of the file.",
+      "published": "2026-10-30T13:18:31.647",
+      "last_modified": "2026-10-30T13:18:31.647",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118988"
+    },
+    {
+      "cve": "CVE-2026-116130",
+      "title": "CVE-2026-116130",
+      "description": "HTTP::Parser::XS versions before 0.18 for Perl truncate PATH_INFO at an encoded NUL byte in parse_http_request.\n\nThe XS parser URL-decodes the request path and measures the result with strlen(), so PATH_INFO ends at the first byte decoded from %00. The pure-Perl backend is not affected.\n\nA remote attacker can send a path that a proxy or filter checks in full while the application routes on a shorter one.",
+      "published": "2026-10-30T13:18:31.407",
+      "last_modified": "2026-10-30T13:18:31.407",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116130"
+    },
+    {
+      "cve": "CVE-2026-116128",
+      "title": "CVE-2026-116128",
+      "description": "Starlet versions from 0.20 before 0.33 for Perl allow memory exhaustion via unbounded buffering when decoding chunked request bodies.\n\nThe decoder adds each read to one buffer of unconsumed input. Nothing limits the length of a chunk-size line, so a line without a CRLF grows the buffer for as long as the client keeps sending, and the read timeout restarts after every read. The data of a large chunk is also held in the buffer until the whole chunk has arrived.\n\nA remote attacker can exhaust a worker's memory with a single request.",
+      "published": "2026-10-30T13:18:31.293",
+      "last_modified": "2026-10-30T13:18:31.293",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116128"
+    },
+    {
+      "cve": "CVE-2026-116127",
+      "title": "CVE-2026-116127",
+      "description": "Starlet versions before 0.33 for Perl send a body in responses to HEAD requests, corrupting the next response on a persistent or pipelined connection.\n\nThe request method is not passed to the response writer, so whatever body the application returns for a HEAD request is sent. With Plack::Middleware::Head the body is empty, but an HTTP/1.1 response without a Content-Length header still gets the chunked encoding terminator. Responses with status 204 or 304 are also sent with their body.\n\nPipelined GET and HEAD requests keep the connection open even when keep-alive is disabled, which is the default. A client or proxy reading the connection takes the extra bytes as the start of the next response, which may desynchronize a proxy that shares the connection across clients.",
+      "published": "2026-10-30T13:18:31.180",
+      "last_modified": "2026-10-30T13:18:31.180",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116127"
+    },
+    {
+      "cve": "CVE-2026-115866",
+      "title": "CVE-2026-115866",
+      "description": "Starlet versions from 0.20 before 0.33 for Perl allow CPU exhaustion via regular expression backtracking when decoding chunked request bodies.\n\nA chunk-size line is matched as a run of hex digits, then .* and a CRLF. A run followed by a bare LF and then a CRLF can never match, and the engine retries the match once for each digit, so the time taken grows with the square of the run length. Nothing limits the length of the run, which can span several reads.\n\nA remote attacker can occupy a worker for about a minute of CPU time with one 128 KiB request, before the application is called.",
+      "published": "2026-10-30T13:18:31.070",
+      "last_modified": "2026-10-30T13:18:31.070",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115866"
+    },
+    {
+      "cve": "CVE-2026-115865",
+      "title": "CVE-2026-115865",
+      "description": "Starlet versions before 0.33 for Perl allow a request declaring a large Content-Length to kill a worker by exhausting memory.\n\nThe request body is read in a loop that asks sysread for all of the remaining declared length at once. Perl grows the read buffer to that size before any data arrives, so a length larger than available memory makes the worker exit with an uncatchable out of memory error before the application is called.\n\nA remote attacker can force a worker restart with each request of a few bytes.",
+      "published": "2026-10-30T13:18:30.947",
+      "last_modified": "2026-10-30T13:18:30.947",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115865"
+    },
+    {
+      "cve": "CVE-2026-112374",
+      "title": "CVE-2026-112374",
+      "description": "FOSSBilling before 0.8.9 contains a Cross-Site Request Forgery vulnerability in the staff guest login endpoint (POST /api/guest/staff/login) that allows remote attackers to force authentication because checkGuestClientAuthentication() only allowlists client_login and client_create, leaving staff_login without CSRF or Origin validation. Attackers can host an auto-submitting HTML form with attacker-controlled credentials to silently log a victim's browser into the attacker's staff account.",
+      "published": "2026-10-30T13:18:29.093",
+      "last_modified": "2026-10-30T13:18:29.223",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112374"
+    },
+    {
+      "cve": "CVE-2026-111503",
+      "title": "CVE-2026-111503",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information exposure.",
+      "published": "2026-10-30T13:18:28.453",
+      "last_modified": "2026-10-30T13:18:28.453",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111503"
+    },
+    {
+      "cve": "CVE-2026-111502",
+      "title": "CVE-2026-111502",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Insufficiently Protected Credentials vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure.",
+      "published": "2026-10-30T13:18:28.333",
+      "last_modified": "2026-10-30T13:18:28.333",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111502"
+    },
+    {
+      "cve": "CVE-2026-111501",
+      "title": "CVE-2026-111501",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Restriction of Excessive Authentication Attempts vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Launch of phishing attacks.",
+      "published": "2026-10-30T13:18:28.203",
+      "last_modified": "2026-10-30T13:18:28.203",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111501"
+    },
+    {
+      "cve": "CVE-2026-119591",
+      "title": "CVE-2026-119591",
+      "description": "SQLite before 3.54.0 contains a stack exhaustion vulnerability in countOfViewOptimization() that allows attackers to crash the host process via count(*) over a large multi-row VALUES clause. Attackers supplying SQL or a database file with a crafted view can trigger deeply nested TK_PLUS expressions whose recursive freeing in sqlite3ExprDeleteNN() exhausts the C stack, causing denial of service.",
+      "published": "2026-10-30T12:16:44.873",
+      "last_modified": "2026-10-30T12:16:44.873",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119591"
+    },
+    {
+      "cve": "CVE-2026-119586",
+      "title": "CVE-2026-119586",
+      "description": "SQLite command-line shell through 3.54.1 contains a command injection vulnerability in the .recover command that emits attacker-planted dot-commands stored in sqlite_schema.sql values verbatim. Attackers can craft a database whose schema holds a valid CREATE statement followed by a .shell or .system line, executing OS commands when victims pipe .recover output into sqlite3.",
+      "published": "2026-10-30T12:16:44.730",
+      "last_modified": "2026-10-30T12:16:44.730",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119586"
+    },
+    {
+      "cve": "CVE-2026-119568",
+      "title": "CVE-2026-119568",
+      "description": "vsftpd through 3.0.5 contains an authentication bypass vulnerability in ssl_data_accept() that allows unauthenticated attackers to hijack FTPS data connections by resuming their own TLS session ticket. Attackers sharing the victim's source IP can obtain a ticket via AUTH TLS, then connect to the victim's PASV port to steal downloads or inject upload data.",
+      "published": "2026-10-30T12:16:44.580",
+      "last_modified": "2026-10-30T12:16:44.580",
+      "cvss": 9.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119568"
+    },
+    {
+      "cve": "CVE-2026-119567",
+      "title": "CVE-2026-119567",
+      "description": "vsftpd through 3.0.5 contains an access control bypass vulnerability that allows authenticated FTP users to execute denied commands by issuing RFC 775 X-prefixed aliases. The cmds_denied check in process_post_login() compares literal tokens, so attackers can send XRMD, XMKD, XCWD, XPWD, or XCUP to perform blocked operations like deleting directories.",
+      "published": "2026-10-30T12:16:44.433",
+      "last_modified": "2026-10-30T12:16:44.433",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119567"
+    },
+    {
+      "cve": "CVE-2026-119566",
+      "title": "CVE-2026-119566",
+      "description": "Prometheus through 3.15.1 contains a credential leak vulnerability that allows attackers to capture Azure AD or Google IAM bearer tokens by redirecting remote_write requests to another host. Attackers controlling the remote-write endpoint or a redirecting server can return a 3xx to their host and replay the token, for example to write metrics to the victim's backend.",
+      "published": "2026-10-30T12:16:44.287",
+      "last_modified": "2026-10-30T12:16:44.287",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119566"
+    },
+    {
+      "cve": "CVE-2026-119565",
+      "title": "CVE-2026-119565",
+      "description": "Plausible Analytics through 3.2.1 contains a mass assignment vulnerability in update_traffic_change_notification that allows authenticated site editors to reassign notifications by supplying a site_id parameter. Attackers can submit traffic_change_notification[site_id] set to another site's primary key via PUT /sites/:domain/traffic-change-notification/:type to receive that site's traffic alerts and visitor figures.",
+      "published": "2026-10-30T12:16:44.140",
+      "last_modified": "2026-10-30T12:16:44.140",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119565"
+    },
+    {
+      "cve": "CVE-2026-119564",
+      "title": "CVE-2026-119564",
+      "description": "Plausible Analytics Community Edition through 3.2.1 contains an information exposure vulnerability that allows site editors to obtain pending invitation and ownership-transfer IDs from the settings/people page. Attackers can register with the invitee's email using the exposed ID and accept it, gaining the invited role or taking site ownership.",
+      "published": "2026-10-30T12:16:43.990",
+      "last_modified": "2026-10-30T12:16:43.990",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119564"
+    },
+    {
+      "cve": "CVE-2026-119563",
+      "title": "CVE-2026-119563",
+      "description": "phpMyAdmin through 5.2.3 contains a stored cross-site scripting vulnerability that allows database users with CREATE privilege to inject script via unescaped table names in DesignerHistory.display(). Attackers can create a table whose name contains HTML markup that executes in another user's session when they add a condition on it in Designer query mode.",
+      "published": "2026-10-30T12:16:43.830",
+      "last_modified": "2026-10-30T12:16:43.830",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119563"
+    },
+    {
+      "cve": "CVE-2026-119562",
+      "title": "CVE-2026-119562",
+      "description": "phpMyAdmin through 5.2.3 contains an sql injection vulnerability that allows authenticated users to inject SQL by supplying unescaped col_extra and col_attribute values to /database/central-columns. Attackers can inject SQL into pma__central_columns INSERT and UPDATE queries run with controluser privileges, reading or modifying other users' configuration-storage data.",
+      "published": "2026-10-30T12:16:43.667",
+      "last_modified": "2026-10-30T12:16:43.667",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119562"
+    },
+    {
+      "cve": "CVE-2026-119561",
+      "title": "CVE-2026-119561",
+      "description": "phpMyAdmin through 5.2.3 contains an authentication bypass vulnerability in CustomServer::parseAndValidateAssertionResponse() that never verifies WebAuthn assertion signatures against stored public keys. Attackers holding a victim's MySQL credentials can POST a crafted webauthn_request_response with matching challenge, origin, and rpIdHash to bypass the second factor and gain database privileges.",
+      "published": "2026-10-30T12:16:43.513",
+      "last_modified": "2026-10-30T12:16:43.513",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119561"
+    },
+    {
+      "cve": "CVE-2026-119560",
+      "title": "CVE-2026-119560",
+      "description": "OPNsense core through 26.7.8 contains a configuration injection vulnerability that allows authenticated users to append ntpd.conf directives by embedding newlines in the fudge and refid fields. Attackers holding the page-services-ntp-gps or PPS privilege can submit CR/LF characters via services_ntpd_gps.php or services_ntpd_pps.php to inject directives loaded by ntpd running as root.",
+      "published": "2026-10-30T12:16:43.363",
+      "last_modified": "2026-10-30T12:16:43.363",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119560"
+    },
+    {
+      "cve": "CVE-2026-119559",
+      "title": "CVE-2026-119559",
+      "description": "OpenLiteSpeed through 1.9.4 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to evade virtual host client certificate requirements over HTTP/3. Because QuicStream inherits a verifyContext() implementation that always returns true, attackers can present a non-mTLS host's SNI with a protected Host header to access protected content.",
+      "published": "2026-10-30T12:16:43.210",
+      "last_modified": "2026-10-30T12:16:43.210",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119559"
+    },
+    {
+      "cve": "CVE-2026-119558",
+      "title": "CVE-2026-119558",
+      "description": "OpenCart through 4.1.0.4 contains a business logic vulnerability that allows logged-in customers to place unpaid full-price orders by clearing reward points after selecting Free Checkout. Attackers can apply points, save Free Checkout, then submit zero points via reward.save so the confirm handler advances the order to Free Checkout status without payment.",
+      "published": "2026-10-30T12:16:43.057",
+      "last_modified": "2026-10-30T12:16:43.057",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119558"
+    },
+    {
+      "cve": "CVE-2026-119557",
+      "title": "CVE-2026-119557",
+      "description": "n8n from 2.14.0 through 2.46.3 contains a path traversal vulnerability in the Databricks node that allows unauthenticated attackers to reach arbitrary Databricks API endpoints by injecting unencoded resource identifiers. Attackers can supply ../ sequences and query strings via webhook, chat, or form inputs mapped to spaceId, indexName, or filePath to read secrets using the stored credential.",
+      "published": "2026-10-30T12:16:42.887",
+      "last_modified": "2026-10-30T12:16:43.010",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119557"
+    },
+    {
+      "cve": "CVE-2026-119556",
+      "title": "CVE-2026-119556",
+      "description": "Moodle 4.2.0 through 4.5.15, 5.0.0 through 5.0.11, 5.1.0 through 5.1.8, 5.2.0 through 5.2.4, and 5.3.0 contain a missing capability check in the core_grades_get_gradeitems web service that allows enrolled students to view hidden grade items. Authenticated course users can call the AJAX or mobile web service to list hidden grade item ids, names, and categories that the gradebook conceals from them.",
+      "published": "2026-10-30T12:16:42.737",
+      "last_modified": "2026-10-30T12:16:42.737",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119556"
+    },
+    {
+      "cve": "CVE-2026-119555",
+      "title": "CVE-2026-119555",
+      "description": "Moodle 4.2.0 through 4.5.15, 5.0.0 through 5.0.11, 5.1.0 through 5.1.8, 5.2.0 through 5.2.4, and 5.3.0 contain an information disclosure vulnerability in the core_grades_get_feedback web service. The service lacks group-membership and enrolment checks, so non-editing teachers can iterate userid values to read other groups' grade feedback and users' names and identity fields such as email.",
+      "published": "2026-10-30T12:16:42.577",
+      "last_modified": "2026-10-30T12:16:42.577",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119555"
+    },
+    {
+      "cve": "CVE-2026-119554",
+      "title": "CVE-2026-119554",
+      "description": "Moodle 5.3.0, 5.2.0 through 5.2.4, 5.1.0 through 5.1.8, 5.0.0 through 5.0.11, and through 4.5.15 contain an sql injection vulnerability in the External database enrolment plugin via course idnumber. Editing teachers can store a backslash-quote payload in idnumber that executes during scheduled sync on MySQL/MariaDB external databases, reading data and manipulating enrolment results.",
+      "published": "2026-10-30T12:16:42.423",
+      "last_modified": "2026-10-30T12:16:42.423",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119554"
+    },
+    {
+      "cve": "CVE-2026-119553",
+      "title": "CVE-2026-119553",
+      "description": "Moodle 5.3.0, 5.2.0 through 5.2.4, 5.1.0 through 5.1.8, 5.0.0 through 5.0.11, and through 4.5.15 contains a path traversal vulnerability in the Blackboard question import format. Teachers with question import or lesson edit rights can upload a crafted zip with img src values containing ../ sequences, copying server files like config.php into their draft area.",
+      "published": "2026-10-30T12:16:42.273",
+      "last_modified": "2026-10-30T12:16:42.273",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119553"
+    },
+    {
+      "cve": "CVE-2026-119552",
+      "title": "CVE-2026-119552",
+      "description": "Uptime Kuma through 2.5.8 contains a race condition in the Socket.IO first-run setup handler that allows unauthenticated attackers to create an additional administrator account. Attackers can send concurrent setup requests during the bcrypt hashing window to bypass the empty user table check, then modify monitors, API keys, and enable disableAuth.",
+      "published": "2026-10-30T12:16:42.100",
+      "last_modified": "2026-10-30T12:16:42.100",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119552"
+    },
+    {
+      "cve": "CVE-2026-119551",
+      "title": "CVE-2026-119551",
+      "description": "Jellyfin through 12.4 contains an authorization bypass vulnerability in SuggestionsController.GetSuggestions that allows authenticated non-administrator users to bypass library and parental restrictions by omitting the userId parameter. Attackers can repeatedly call GET /Items/Suggestions without userId to enumerate restricted items, including IDs and server filesystem paths, and then stream them.",
+      "published": "2026-10-30T12:16:41.933",
+      "last_modified": "2026-10-30T12:16:41.933",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119551"
+    },
+    {
+      "cve": "CVE-2026-119550",
+      "title": "CVE-2026-119550",
+      "description": "Jellyfin through 12.4 contains an information disclosure vulnerability in PlaylistsController.GetPlaylist that allows authenticated users to read hidden item IDs by requesting public or shared playlists. Restricted or parental-controlled users can obtain GUIDs of inaccessible library items from unfiltered playlist ItemIds and then stream that hidden media.",
+      "published": "2026-10-30T12:16:41.783",
+      "last_modified": "2026-10-30T12:16:41.783",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119550"
+    },
+    {
+      "cve": "CVE-2026-119549",
+      "title": "CVE-2026-119549",
+      "description": "Jellyfin through 12.4 contains a server-side request forgery vulnerability that lets authenticated users bypass SvgSecurityValidator by embedding gzip-compressed SVG in non-SVG image data URIs. Attackers can upload such profile images via POST /UserImage, then trigger unauthenticated rendering via GET /UserImage to fetch internal URLs, read local image files, or exhaust memory.",
+      "published": "2026-10-30T12:16:41.330",
+      "last_modified": "2026-10-30T12:16:41.330",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119549"
+    },
+    {
+      "cve": "CVE-2026-119548",
+      "title": "CVE-2026-119548",
+      "description": "Lago through 1.55.0 contains an authorization bypass vulnerability in Invoices::Payments::StripeService that allows users of one organization to mark another organization's invoice as paid due to an unscoped invoice lookup. Attackers controlling their organization's Stripe integration can sign a payment_intent.succeeded event carrying a victim invoice UUID to unlock wallet top-ups or payment-gated subscriptions.",
+      "published": "2026-10-30T12:16:41.163",
+      "last_modified": "2026-10-30T12:16:41.163",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119548"
+    },
+    {
+      "cve": "CVE-2026-119547",
+      "title": "CVE-2026-119547",
+      "description": "Forgejo through 15.0.11, 16.0.0 through 16.0.7, and 17.0.0 through 17.0.1 contains an information disclosure vulnerability in the GetPublicKey API handler that lacks an ownership check on key lookups. Authenticated users with a read:user token or session can enumerate sequential key IDs to obtain titles, fingerprints and public key material of other users' SSH, deploy and principal keys.",
+      "published": "2026-10-30T12:16:40.977",
+      "last_modified": "2026-10-30T12:16:41.107",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119547"
+    },
+    {
+      "cve": "CVE-2026-119546",
+      "title": "CVE-2026-119546",
+      "description": "Forgejo through 15.0.11, 16.0.0 through 16.0.7, and 17.0.0 through 17.0.1 contains a path traversal vulnerability in restore-repo that allows attackers to read files outside the dump directory via crafted asset paths. Attackers can supply a dump whose release.yml DownloadURL or PatchURL contains ../ sequences, importing files like app.ini as release attachments when an administrator restores it.",
+      "published": "2026-10-30T12:16:40.783",
+      "last_modified": "2026-10-30T12:16:40.920",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119546"
+    },
+    {
+      "cve": "CVE-2026-119545",
+      "title": "CVE-2026-119545",
+      "description": "Forgejo through 15.0.11, 16.0.0 through 16.0.7, and 17.0.0 through 17.0.1 contains a server-side request forgery vulnerability that allows unauthenticated attackers to make the server issue requests by submitting arbitrary OpenID identifier URLs. Attackers can POST crafted identifiers to /user/login/openid to trigger blind discovery GET requests to loopback, cloud metadata, and internal addresses for port scanning and probing.",
+      "published": "2026-10-30T12:16:40.343",
+      "last_modified": "2026-10-30T12:16:40.610",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119545"
+    },
+    {
+      "cve": "CVE-2026-119429",
+      "title": "CVE-2026-119429",
+      "description": "phpMyAdmin through 5.2.3 contains a missing re-authentication vulnerability that allows authenticated attackers to remove two-factor authentication by posting the 2fa key to /config/set. Attackers holding a hijacked session can submit key=2fa with a null JSON value to SetConfigController, stripping 2FA so later logins require only the MySQL password.",
+      "published": "2026-10-30T12:16:40.187",
+      "last_modified": "2026-10-30T12:16:40.187",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119429"
+    },
+    {
+      "cve": "CVE-2026-119428",
+      "title": "CVE-2026-119428",
+      "description": "phpMyAdmin through 5.2.3 contains a server-side request forgery vulnerability that allows unauthenticated attackers to trigger outbound connections via setup/validate.php, which lacks the setup-disabled guard. Attackers can POST attacker-chosen host and port values reaching Validator::testDBConnection() to open MySQL-protocol connections and probe internal ports using returned error messages.",
+      "published": "2026-10-30T12:16:40.033",
+      "last_modified": "2026-10-30T12:16:40.033",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119428"
+    },
+    {
+      "cve": "CVE-2026-119427",
+      "title": "CVE-2026-119427",
+      "description": "phpMyAdmin through 5.2.3 contains an sql injection vulnerability in Designer saveSetting() that allows authenticated users to inject SQL via unescaped json_encode() output. Attackers can send crafted index or value parameters with operation=save_setting_value to /database/designer to overwrite other users' designer settings or run controluser subqueries.",
+      "published": "2026-10-30T12:16:39.843",
+      "last_modified": "2026-10-30T12:16:39.843",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119427"
+    },
+    {
+      "cve": "CVE-2026-119426",
+      "title": "CVE-2026-119426",
+      "description": "phpMyAdmin through 5.2.3 contains a cross-site request forgery vulnerability that allows remote attackers to execute arbitrary SQL by bypassing CSRF token checks on non-AJAX POST requests. Attackers can lure authenticated victims into submitting cross-site POSTs carrying sql_query to /sql or /database/sql, running SQL with the victim's database privileges under http or config authentication.",
+      "published": "2026-10-30T12:16:39.683",
+      "last_modified": "2026-10-30T12:16:39.683",
+      "cvss": 7.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119426"
+    },
+    {
+      "cve": "CVE-2026-119425",
+      "title": "CVE-2026-119425",
+      "description": "OPNsense core 26.1.6 through 26.7.7 contains an authentication bypass vulnerability in the captive portal roaming feature that lets unauthenticated attackers hijack authorized client sessions by spoofing unauthenticated MAC-to-IP observations. Attackers on the same Layer-2 segment can send forged gratuitous ARP replies binding their IP to a victim's MAC, gaining portal access with traffic attributed to the victim.",
+      "published": "2026-10-30T12:16:39.527",
+      "last_modified": "2026-10-30T12:16:39.527",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119425"
+    },
+    {
+      "cve": "CVE-2026-119424",
+      "title": "CVE-2026-119424",
+      "description": "OPNsense core before 26.7.8 contains a configuration line injection vulnerability that allows authenticated users with wireless-edit privilege to inject directives by embedding CR/LF characters in WPA fields. Attackers can place newlines in wpa.identity, wpa.passphrase, or RADIUS shared secrets to append arbitrary wpa_supplicant or hostapd directives loaded by root-run daemons.",
+      "published": "2026-10-30T12:16:39.370",
+      "last_modified": "2026-10-30T12:16:39.370",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119424"
+    },
+    {
+      "cve": "CVE-2026-119423",
+      "title": "CVE-2026-119423",
+      "description": "OPNsense core before 26.7.8 contains a log injection vulnerability that allows unauthenticated attackers to plant victim IP addresses in the lockout_handler by submitting crafted WebGUI login usernames. Attackers can submit usernames like 'Invalid user <victim-ip>' repeatedly to add the victim to the sshlockout table, blocking SSH and WebGUI access and killing its pf states.",
+      "published": "2026-10-30T12:16:39.210",
+      "last_modified": "2026-10-30T12:16:39.210",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119423"
+    },
+    {
+      "cve": "CVE-2026-119422",
+      "title": "CVE-2026-119422",
+      "description": "Juspay Hyperswitch before 1.128.0 contains an authentication bypass vulnerability that allows unauthenticated attackers to forge payment status updates because the Worldpayxml connector's verify_webhook_source always returns true without enforced mTLS. Attackers knowing the merchant_id and Worldpay orderCode can POST unsigned XML with lastEvent SETTLED to the worldpayxml webhook endpoint, marking unpaid payments as charged or triggering refund, dispute and payout events.",
+      "published": "2026-10-30T12:16:39.047",
+      "last_modified": "2026-10-30T12:16:39.047",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119422"
+    },
+    {
+      "cve": "CVE-2026-119421",
+      "title": "CVE-2026-119421",
+      "description": "Juspay Hyperswitch through 1.128.0 (and builds before 2026.10.19.0) contains a missing authorization vulnerability that allows unauthenticated attackers to confirm payouts with any client_secret via POST /payouts/{payout_id}/confirm. Attackers holding the merchant's publishable key and a payout_id can confirm payouts and overwrite amount, currency, connector, and routing fields to trigger unauthorized merchant payouts.",
+      "published": "2026-10-30T12:16:38.887",
+      "last_modified": "2026-10-30T12:16:38.887",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119421"
+    },
+    {
+      "cve": "CVE-2026-119420",
+      "title": "CVE-2026-119420",
+      "description": "Lago through 1.55.0 contains an authentication bypass vulnerability that allows organization administrators to obtain session tokens for existing accounts via the acceptInvite mutation without a password check. Attackers can invite a victim's email, accept with an arbitrary password, and receive a JWT to access the victim's organizations, billing data, API keys and payment integrations.",
+      "published": "2026-10-30T12:16:38.717",
+      "last_modified": "2026-10-30T12:16:38.717",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119420"
+    },
+    {
+      "cve": "CVE-2026-119419",
+      "title": "CVE-2026-119419",
+      "description": "CakePHP through 5.4.3 contains an sql injection vulnerability that allows attackers to inject SQL by supplying unvalidated collation values to StringExpression and IdentifierExpression. Attackers controlling a collation name passed to the constructor or setCollation() can append SQL after the unquoted COLLATE clause, affecting every database driver within the connection's privileges.",
+      "published": "2026-10-30T12:16:38.550",
+      "last_modified": "2026-10-30T12:16:38.550",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119419"
+    },
+    {
+      "cve": "CVE-2026-119418",
+      "title": "CVE-2026-119418",
+      "description": "CakePHP through 5.4.3 contains an sql injection vulnerability that allows attackers to inject SQL by supplying unvalidated frame offsets and directions to WindowExpression::range() and frame(). Attackers can pass crafted values through applications forwarding user input into the OVER clause to execute SQL with the database connection's privileges.",
+      "published": "2026-10-30T12:16:38.390",
+      "last_modified": "2026-10-30T12:16:38.390",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119418"
+    },
+    {
+      "cve": "CVE-2026-119417",
+      "title": "CVE-2026-119417",
+      "description": "CakePHP 4.5.12, 4.6.5, 5.1.8 through 5.1.10, 5.2.14 through 5.2.15, 5.3.7, and 5.4.0 through 5.4.3 contain an email header injection vulnerability because SmtpTransport and MailTransport strip only CRLF pairs from header values, an incomplete fix for CVE-2026-77634. Attackers controlling custom headers set via Message::setHeaders() or Message::addHeaders() can insert a bare CR or LF to inject headers like Bcc, redirecting or altering outgoing mail.",
+      "published": "2026-10-30T12:16:38.213",
+      "last_modified": "2026-10-30T12:16:38.213",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119417"
+    },
+    {
+      "cve": "CVE-2026-119416",
+      "title": "CVE-2026-119416",
+      "description": "CakePHP through 5.4.3 contains an improper cookie domain validation vulnerability in the Http Client CookieCollection that allows malicious servers to receive and plant cookies by abusing unanchored suffix matching. Attackers controlling a host such as one ending in a victim domain suffix, or sending Set-Cookie Domain values for unrelated hosts, can steal session cookies or inject cookies into shared client cookie jars.",
+      "published": "2026-10-30T12:16:38.043",
+      "last_modified": "2026-10-30T12:16:38.043",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119416"
+    },
+    {
+      "cve": "CVE-2026-119415",
+      "title": "CVE-2026-119415",
+      "description": "CakePHP through 5.4.3 contains a header injection vulnerability in FormDataPart that allows attackers to inject MIME part headers via unsanitized Content-Type and Content-ID values. Attackers can supply CR/LF sequences in attachment MIME types or Content-IDs passed to Message::setAttachments() or HTTP client multipart data to add arbitrary headers or content.",
+      "published": "2026-10-30T12:16:37.850",
+      "last_modified": "2026-10-30T12:16:37.850",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119415"
+    },
+    {
+      "cve": "CVE-2026-119414",
+      "title": "CVE-2026-119414",
+      "description": "Bitwarden Server before 2026.10.1 on Entity Framework backends contains an authorization bypass vulnerability that allows organization members to add ciphers to collections they cannot edit. Attackers can call POST /api/ciphers/create, where a nulled UserId is treated as administrative, to inject vault items synced to read-only or inaccessible collections' members.",
+      "published": "2026-10-30T12:16:37.673",
+      "last_modified": "2026-10-30T12:16:37.673",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119414"
+    },
+    {
+      "cve": "CVE-2026-119409",
+      "title": "CVE-2026-119409",
+      "description": "OPNsense before 26.7.8 contains a command injection vulnerability that allows authenticated users with the System: Firmware privilege to execute commands as root by storing a malicious firmware mirror URL. Attackers can submit shell metacharacters through POST /api/core/firmware/set that opnsense-update evaluates with eval, and can also disable package signature verification through sed injection.",
+      "published": "2026-10-30T12:16:37.510",
+      "last_modified": "2026-10-30T12:16:37.510",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119409"
+    },
+    {
+      "cve": "CVE-2026-119408",
+      "title": "CVE-2026-119408",
+      "description": "n8n before 2.42.6, 2.43.x before 2.43.3, and 3.x before 3.0.1 contains a remote code execution vulnerability via deprecated Function, Function Item, and LangChain Code nodes running outside task runner isolation. Authenticated users who can create, modify, or import workflows naming these hidden node types can execute JavaScript in the n8n main process.",
+      "published": "2026-10-30T12:16:37.283",
+      "last_modified": "2026-10-30T12:16:37.413",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119408"
+    },
+    {
+      "cve": "CVE-2026-119407",
+      "title": "CVE-2026-119407",
+      "description": "Element Web and Element Desktop before 1.12.32 accept guest credentials from URL fragment parameters in loadSession, allowing remote unauthenticated attackers to log out users and clear local stores. Attackers can lure logged-in users into opening links with guest_user_id and guest_access_token to force an attacker-controlled guest session and destroy unbacked end-to-end encryption keys.",
+      "published": "2026-10-30T12:16:37.120",
+      "last_modified": "2026-10-30T12:16:37.120",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119407"
+    },
+    {
+      "cve": "CVE-2026-119379",
+      "title": "CVE-2026-119379",
+      "description": "SQLite before 3.54.0 built with the session extension contains a heap buffer overflow vulnerability in sqlite3changeset_apply() that allows attackers to corrupt heap memory by supplying crafted changesets. Attackers can repeat a table name in a second changeset block with a larger column count, causing sessionUpdateFind() to memset past the undersized aUpdateMask allocation.",
+      "published": "2026-10-30T12:16:36.967",
+      "last_modified": "2026-10-30T12:16:36.967",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119379"
+    },
+    {
+      "cve": "CVE-2026-119378",
+      "title": "CVE-2026-119378",
+      "description": "SQLite before 3.54.0 contains a use-after-free vulnerability in the R-Tree extension that allows attackers to make applications use freed heap memory by manipulating the %_node shadow table. Attackers can supply a database declaring %_node WITHOUT ROWID or with a RAISE(IGNORE) trigger so nodeWrite() hashes nodes as 0, crashing the process after node splits.",
+      "published": "2026-10-30T12:16:36.807",
+      "last_modified": "2026-10-30T12:16:36.807",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119378"
+    },
+    {
+      "cve": "CVE-2026-119377",
+      "title": "CVE-2026-119377",
+      "description": "SQLite before 3.54.0 contains an authorization bypass vulnerability in lookupName() that invokes the authorizer only for the first joined table's USING column. Attackers able to submit SQL can query a shared USING column in a RIGHT or FULL JOIN to read columns denied via sqlite3_set_authorizer() SQLITE_READ restrictions.",
+      "published": "2026-10-30T12:16:36.650",
+      "last_modified": "2026-10-30T12:16:36.650",
+      "cvss": 2.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119377"
+    },
+    {
+      "cve": "CVE-2026-119376",
+      "title": "CVE-2026-119376",
+      "description": "SQLite before 3.54.0 contains a stack exhaustion vulnerability that allows attackers to bypass the SQLITE_LIMIT_EXPR_DEPTH limit by chaining COLLATE postfix operators. Attackers can supply roughly 175,000 chained COLLATE operators in SQL or an untrusted database view to trigger unbounded recursion in sqlite3WalkExprNN() and crash the process.",
+      "published": "2026-10-30T12:16:36.490",
+      "last_modified": "2026-10-30T12:16:36.490",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119376"
+    },
+    {
+      "cve": "CVE-2026-119375",
+      "title": "CVE-2026-119375",
+      "description": "SQLite before 3.54.0 contains an information disclosure vulnerability that allows attackers to read uninitialized page-cache memory by supplying a WAL file with an undersized page size. Attackers can craft a database and WAL file whose oversized record payload makes queries like substr() return stale bytes, disclosing other table rows and internal pointers.",
+      "published": "2026-10-30T12:16:36.340",
+      "last_modified": "2026-10-30T12:16:36.340",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119375"
+    },
+    {
+      "cve": "CVE-2026-119374",
+      "title": "CVE-2026-119374",
+      "description": "SQLite before 3.54.0 built with FTS5 contains a heap buffer overflow in fts5DoSecureDelete() that allows attackers to write past the leaf page buffer via crafted footer key offsets. Attackers can supply a database file with a corrupted FTS5 index that, when deleted from with secure-delete enabled, corrupts heap memory and crashes the application.",
+      "published": "2026-10-30T12:16:36.187",
+      "last_modified": "2026-10-30T12:16:36.187",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119374"
+    },
+    {
+      "cve": "CVE-2026-119373",
+      "title": "CVE-2026-119373",
+      "description": "SQLite before 3.54.0 built with FTS5 contains a heap buffer overflow in fts5MergeRowidLists() that undersizes the output buffer when merging detail=none prefix doclists. Attackers who can populate a detail=none FTS5 table with negative rowids and run a prefix MATCH query can write past the allocation, corrupting heap memory and crashing the process.",
+      "published": "2026-10-30T12:16:36.027",
+      "last_modified": "2026-10-30T12:16:36.027",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119373"
+    },
+    {
+      "cve": "CVE-2026-119372",
+      "title": "CVE-2026-119372",
+      "description": "SQLite before 3.54.0 built with FTS3/FTS4 and SQLITE_ENABLE_FTS3_PARENTHESIS contains a use-after-free vulnerability in fts3BestSnippet() caused by dangling cached position-list pointers. Attackers can run a full-text MATCH query combining OR and NEAR operators with snippet() to read freed heap memory and crash the process.",
+      "published": "2026-10-30T12:16:35.873",
+      "last_modified": "2026-10-30T12:16:35.873",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119372"
+    },
+    {
+      "cve": "CVE-2026-119371",
+      "title": "CVE-2026-119371",
+      "description": "SQLite before 3.54.0 contains a stack exhaustion vulnerability that allows attackers to bypass the SQLITE_LIMIT_EXPR_DEPTH nesting limit because common table expressions are not counted against it. Attackers can supply a WITH clause chaining tens of thousands of CTEs, via plain SQL or a view in an untrusted database file, causing unbounded selectExpander() recursion that crashes the process.",
+      "published": "2026-10-30T12:16:35.690",
+      "last_modified": "2026-10-30T12:16:35.690",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119371"
+    },
+    {
+      "cve": "CVE-2026-119364",
+      "title": "CVE-2026-119364",
+      "description": "ProFTPD through 1.3.9e and 1.3.10rc1 through 1.3.10rc4 contains a link-following vulnerability in mod_copy that allows authenticated FTP users to bypass Limit WRITE restrictions via symlinks. Attackers can place a symlink in a writable directory and use SITE COPY or SITE CPTO to overwrite files in write-denied locations.",
+      "published": "2026-10-30T12:16:35.533",
+      "last_modified": "2026-10-30T12:16:35.533",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119364"
+    },
+    {
+      "cve": "CVE-2026-119147",
+      "title": "CVE-2026-119147",
+      "description": "ProFTPD before 1.3.9e and 1.3.10rc5 contains an authorization bypass in the mod_sftp copy-file extension handler that skips Limit WRITE checks for new destination files. Authenticated SFTP users can copy any readable file to a new path in write-denied directories, creating files where uploads are forbidden.",
+      "published": "2026-10-30T12:16:35.373",
+      "last_modified": "2026-10-30T12:16:35.373",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119147"
+    },
+    {
+      "cve": "CVE-2026-119146",
+      "title": "CVE-2026-119146",
+      "description": "ProFTPD before 1.3.9e and 1.3.10rc5 contains a buffer overflow vulnerability in the mod_rewrite int:utf8trans RewriteMap that allows remote attackers to overwrite static buffers. Attackers can send FTP command arguments longer than 1024 bytes, without authentication if pre-login commands are rewritten, to corrupt session memory and crash the session.",
+      "published": "2026-10-30T12:16:35.207",
+      "last_modified": "2026-10-30T12:16:35.207",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119146"
+    },
+    {
+      "cve": "CVE-2026-111505",
+      "title": "CVE-2026-111505",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+      "published": "2026-10-30T12:16:35.070",
+      "last_modified": "2026-10-30T12:16:35.070",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111505"
+    },
+    {
+      "cve": "CVE-2026-111504",
+      "title": "CVE-2026-111504",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges.",
+      "published": "2026-10-30T12:16:34.943",
+      "last_modified": "2026-10-30T12:16:34.943",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111504"
+    },
+    {
+      "cve": "CVE-2026-110972",
+      "title": "CVE-2026-110972",
+      "description": "Płatnik performs client-side authentication. An attacker with access to any application instance connected to the backend server can bypass the login verification process and authenticate as an arbitrary user.\n\n\n\nThis issue was fixed in metric 242 in version 10.02.002.",
+      "published": "2026-10-30T12:16:34.803",
+      "last_modified": "2026-10-30T12:16:34.803",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110972"
+    },
+    {
+      "cve": "CVE-2026-110971",
+      "title": "CVE-2026-110971",
+      "description": "Use of a weak password encoding algorithm in Płatnik software allows a user who obtains encoded password to easily decode it. \n\n\nThis issue was fixed in metric 242 in version 10.02.002.",
+      "published": "2026-10-30T12:16:34.663",
+      "last_modified": "2026-10-30T12:16:34.663",
+      "cvss": 7.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110971"
+    },
+    {
+      "cve": "CVE-2026-110970",
+      "title": "CVE-2026-110970",
+      "description": "Płatnik uses HTTP protocol to download updates, libraries and support files. It allows an attacker to conduct a Man-In-The-Middle attack, obtain transmitted data and replace the original files with their own.\n\n\n\n\nThis issue was fixed in metric 242 in version 10.02.002.",
+      "published": "2026-10-30T12:16:34.530",
+      "last_modified": "2026-10-30T12:16:34.530",
+      "cvss": 2.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110970"
+    },
+    {
+      "cve": "CVE-2026-105924",
+      "title": "CVE-2026-105924",
+      "description": "A NULL pointer dereference vulnerability in the Qt QCborValue to JSON conversion of the Qt Core module.",
+      "published": "2026-10-30T12:16:34.390",
+      "last_modified": "2026-10-30T12:16:34.390",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105924"
+    },
+    {
+      "cve": "CVE-2026-101214",
+      "title": "CVE-2026-101214",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+      "published": "2026-10-30T12:16:34.260",
+      "last_modified": "2026-10-30T12:16:34.260",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101214"
+    },
+    {
+      "cve": "CVE-2026-101213",
+      "title": "CVE-2026-101213",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Privilege Management vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.",
+      "published": "2026-10-30T12:16:34.130",
+      "last_modified": "2026-10-30T12:16:34.130",
+      "cvss": 7.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101213"
+    },
+    {
+      "cve": "CVE-2026-101210",
+      "title": "CVE-2026-101210",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+      "published": "2026-10-30T12:16:34.000",
+      "last_modified": "2026-10-30T12:16:34.000",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101210"
+    },
+    {
+      "cve": "CVE-2026-101209",
+      "title": "CVE-2026-101209",
+      "description": "Dell OpenManage Enterprise, versions prior to 4.8.0, contains a Server-Side Request Forgery (SSRF) vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Information exposure.",
+      "published": "2026-10-30T12:16:33.867",
+      "last_modified": "2026-10-30T12:16:33.867",
+      "cvss": 2.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101209"
+    },
+    {
+      "cve": "CVE-2025-68395",
+      "title": "CVE-2025-68395",
+      "description": "ARKETEAM Protectel modules PROTECTELMAJ and BDF  contain a note editor module vulnerable to Stored XSS. A low privileged attacker can inject arbitrary HTML and JS into notes, which will be rendered/executed when a user visits this module.\nThis issue has been fixed in: PROTECTELMAJ v6.5.19 and BDF v6.4.67",
+      "published": "2026-10-30T12:16:33.727",
+      "last_modified": "2026-10-30T12:16:33.727",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-68395"
+    },
+    {
+      "cve": "CVE-2025-68394",
+      "title": "CVE-2025-68394",
+      "description": "ARKETEAM Protectel modules PROTECTELMAJ and BDF are vulnerable to SQL injection vulnerability. Improper neutralization of input provided by a low privileged user into \"profilInput\" parameter allows for SQL Injection attacks.\nThis issue has been fixed in: PROTECTELMAJ v6.5.19 and BDF v6.4.67",
+      "published": "2026-10-30T12:16:33.590",
+      "last_modified": "2026-10-30T12:16:33.590",
+      "cvss": 8.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-68394"
+    },
+    {
+      "cve": "CVE-2025-68393",
+      "title": "CVE-2025-68393",
+      "description": "ARKETEAM Protectel modules PROTECTELMAJ and BDF are vulnerable to SQL injection vulnerability. Improper neutralization of input provided by a low privileged user into \"Utilisateur\" parameter allows for SQL Injection attacks.\nThis issue has been fixed in: PROTECTELMAJ v6.5.19 and BDF v6.4.67",
+      "published": "2026-10-30T12:16:33.447",
+      "last_modified": "2026-10-30T12:16:33.447",
+      "cvss": 8.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-68393"
+    },
+    {
+      "cve": "CVE-2025-68392",
+      "title": "CVE-2025-68392",
+      "description": "ARKETEAM Protectel modules PROTECTELMAJ and BDF allow low privileged users to use some of the functionalities reserved for admin users by forging direct requests to a specific endpoint. \nThis issue has been fixed in: PROTECTELMAJ v6.5.19 and BDF v6.4.67",
+      "published": "2026-10-30T12:16:33.303",
+      "last_modified": "2026-10-30T12:16:33.303",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-68392"
+    },
+    {
+      "cve": "CVE-2025-68391",
+      "title": "CVE-2025-68391",
+      "description": "ARKETEAM Protectel modules PROTECTELMAJ and BDF are vulnerable to arbitrary file upload. Any user is able to upload arbitrary file and override existing files in a temporary folder. This vulnerability might lead to execution of embedded JavaScript scripts when an authenticated user tries to download the uploaded file. \nThis issue has been fixed in: PROTECTELMAJ v6.5.19 and BDF v6.4.67",
+      "published": "2026-10-30T12:16:32.063",
+      "last_modified": "2026-10-30T12:16:32.063",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-68391"
+    },
+    {
+      "cve": "CVE-2026-85268",
+      "title": "CVE-2026-85268",
+      "description": "A Cross-Site Scripting (XSS) (CWE-79) vulnerability in the auth/handler in Google Cloud Identity Platform and Firebase Authentication versions prior to 2026-08-14 on iOS allows an unauthenticated remote attacker to execute arbitrary JavaScript using a malicious iOS bundle ID.",
+      "published": "2026-10-30T11:17:33.750",
+      "last_modified": "2026-10-30T11:17:33.750",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85268"
+    },
+    {
+      "cve": "CVE-2026-22114",
+      "title": "CVE-2026-22114",
+      "description": "HTTP basic auth enforces no retry limit or backoff. Combined with the default service password, the keyspace is exhaustible.",
+      "published": "2026-10-30T11:17:33.200",
+      "last_modified": "2026-10-30T11:17:33.200",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-22114"
+    },
+    {
+      "cve": "CVE-2026-22110",
+      "title": "CVE-2026-22110",
+      "description": "The web server does not check authentication on POST or PUT. An unauthenticated attacker can reboot the charger; by brute-forcing the configid, they can also set the service password and then change any setting.",
+      "published": "2026-10-30T11:17:33.040",
+      "last_modified": "2026-10-30T11:17:33.040",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-22110"
+    },
+    {
+      "cve": "CVE-2026-22109",
+      "title": "CVE-2026-22109",
+      "description": "The shipped WebUI template database retains the factory default passwords for all five account types in cleartext. Defaults are identical across devices and were unchanged on the tested unit.",
+      "published": "2026-10-30T11:17:32.860",
+      "last_modified": "2026-10-30T11:17:32.860",
+      "cvss": 8.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-22109"
+    },
+    {
+      "cve": "CVE-2026-22105",
+      "title": "CVE-2026-22105",
+      "description": "Delta UFC500 charging stations derive the default credentials of the Service account from character positions of the device serial number. An unauthenticated attacker with adjacent network access can reconstruct the resulting password, or exhaust the keyspace, and log in to read and change sensitive settings such as the OCPP backend.",
+      "published": "2026-10-30T11:17:32.700",
+      "last_modified": "2026-10-30T11:17:32.700",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-22105"
+    },
+    {
+      "cve": "CVE-2026-116366",
+      "title": "CVE-2026-116366",
+      "description": "An issue has been discovered in ClickHouse Server that, under certain conditions, could allow an unauthenticated user with network access to execute arbitrary code on the ClickHouse Server.",
+      "published": "2026-10-30T11:17:32.540",
+      "last_modified": "2026-10-30T11:17:32.540",
+      "cvss": 9.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116366"
+    },
+    {
+      "cve": "CVE-2025-31704",
+      "title": "CVE-2025-31704",
+      "description": "A vulnerability has been found in the Dahua Intelligent Connection Center. A remote attacker could send a specially crafted request to the affected system, allowing the attacker to execute arbitrary commands, resulting in remote code execution.",
+      "published": "2026-10-30T11:17:31.450",
+      "last_modified": "2026-10-30T11:17:31.450",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-31704"
+    },
     {
       "cve": "CVE-2026-14467",
       "title": "CVE-2026-14467",
@@ -870,946 +1806,10 @@
       "last_modified": "2026-10-30T04:18:13.267",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114543"
-    },
-    {
-      "cve": "CVE-2026-114542",
-      "title": "CVE-2026-114542",
-      "description": "Use of Web Browser Cache Containing Sensitive Information vulnerability in Drupal Simple OAuth (OAuth2) & OpenID Connect allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Simple OAuth (OAuth2) & OpenID Connect versions: from 6.1.0 to 6.1.3.",
-      "published": "2026-10-30T04:18:13.140",
-      "last_modified": "2026-10-30T04:18:13.140",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114542"
-    },
-    {
-      "cve": "CVE-2026-114541",
-      "title": "CVE-2026-114541",
-      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Frontend Editing allows Cross Site Request Forgery. This issue affects Frontend Editing versions: from 0.0.0 to 1.9.3.",
-      "published": "2026-10-30T04:18:13.023",
-      "last_modified": "2026-10-30T04:18:13.023",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114541"
-    },
-    {
-      "cve": "CVE-2026-114540",
-      "title": "CVE-2026-114540",
-      "description": "Incorrect Authorization vulnerability in Drupal Domain allows Forceful Browsing. This issue affects Domain versions: from 3.0.0 to 3.0.2.",
-      "published": "2026-10-30T04:18:12.907",
-      "last_modified": "2026-10-30T04:18:12.907",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114540"
-    },
-    {
-      "cve": "CVE-2026-114539",
-      "title": "CVE-2026-114539",
-      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal DocCheck Basic allows Authentication Bypass. This issue affects DocCheck Basic versions: 7.x.",
-      "published": "2026-10-30T04:18:12.797",
-      "last_modified": "2026-10-30T04:18:12.797",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114539"
-    },
-    {
-      "cve": "CVE-2026-114538",
-      "title": "CVE-2026-114538",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Bootstrap allows Cross-Site Scripting (XSS). This issue affects Bootstrap versions: from 0.0.0 to 3.45.0.",
-      "published": "2026-10-30T04:18:12.680",
-      "last_modified": "2026-10-30T04:18:12.680",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114538"
-    },
-    {
-      "cve": "CVE-2026-114537",
-      "title": "CVE-2026-114537",
-      "description": "Incorrect Authorization vulnerability in Drupal View Unpublished allows Forceful Browsing. This issue affects View Unpublished versions: from 0.0.0 to 1.5.0.",
-      "published": "2026-10-30T04:18:12.563",
-      "last_modified": "2026-10-30T04:18:12.563",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114537"
-    },
-    {
-      "cve": "CVE-2026-114536",
-      "title": "CVE-2026-114536",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal USWDS Paragraph Components allows Stored XSS. This issue affects USWDS Paragraph Components versions: from 0.0.0 to 3.1.3.",
-      "published": "2026-10-30T04:18:12.447",
-      "last_modified": "2026-10-30T04:18:12.447",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114536"
-    },
-    {
-      "cve": "CVE-2026-114535",
-      "title": "CVE-2026-114535",
-      "description": "Missing Authorization vulnerability in Drupal Swiper formatter allows Forceful Browsing. This issue affects Swiper formatter versions: from 0.0.0 to 2.1.2, from 3.0.1 to 3.1.0.",
-      "published": "2026-10-30T04:18:12.333",
-      "last_modified": "2026-10-30T04:18:12.333",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114535"
-    },
-    {
-      "cve": "CVE-2026-114534",
-      "title": "CVE-2026-114534",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Block Attributes allows Stored XSS. This issue affects Block Attributes versions: from 0.0.0 to 2.1.0.",
-      "published": "2026-10-30T04:18:12.217",
-      "last_modified": "2026-10-30T04:18:12.217",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114534"
-    },
-    {
-      "cve": "CVE-2026-114533",
-      "title": "CVE-2026-114533",
-      "description": "Missing Authorization vulnerability in Drupal Ágora Transparency Theme allows Forceful Browsing. This issue affects Ágora Transparency Theme versions: from 0.0.0 to 1.2.3.",
-      "published": "2026-10-30T04:18:12.100",
-      "last_modified": "2026-10-30T04:18:12.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114533"
-    },
-    {
-      "cve": "CVE-2026-114532",
-      "title": "CVE-2026-114532",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal UI Icons allows Cross-Site Scripting (XSS). This issue affects UI Icons versions: from 0.0.0 to 1.1.3, from 2.0.0 to 2.0.2.",
-      "published": "2026-10-30T04:18:11.980",
-      "last_modified": "2026-10-30T04:18:11.980",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114532"
-    },
-    {
-      "cve": "CVE-2026-114531",
-      "title": "CVE-2026-114531",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Swiper formatter allows Stored XSS. This issue affects Swiper formatter versions: from 0.0.0 to 2.1.2, from 3.0.1 to 3.1.0.",
-      "published": "2026-10-30T04:18:11.860",
-      "last_modified": "2026-10-30T04:18:11.860",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114531"
-    },
-    {
-      "cve": "CVE-2026-114530",
-      "title": "CVE-2026-114530",
-      "description": "Incorrect Authorization vulnerability in Drupal Dopup allows Forceful Browsing. This issue affects Dopup versions: from 0.0.0 to 1.0.7.",
-      "published": "2026-10-30T04:18:11.740",
-      "last_modified": "2026-10-30T04:18:11.740",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114530"
-    },
-    {
-      "cve": "CVE-2026-114529",
-      "title": "CVE-2026-114529",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal CSV Field allows Stored XSS. This issue affects CSV Field versions: from 0.0.0 to 2.0.10, from 3.0.0 to 3.0.7.",
-      "published": "2026-10-30T04:18:11.610",
-      "last_modified": "2026-10-30T04:18:11.610",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114529"
-    },
-    {
-      "cve": "CVE-2026-114528",
-      "title": "CVE-2026-114528",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Zero Point allows Stored XSS. This issue affects Zero Point versions: from 0.0.0 to 1.30.0, from 2.0.0 to 2.0.1.",
-      "published": "2026-10-30T04:18:11.490",
-      "last_modified": "2026-10-30T04:18:11.490",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114528"
-    },
-    {
-      "cve": "CVE-2026-114527",
-      "title": "CVE-2026-114527",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal UI Icons allows Cross-Site Scripting (XSS). This issue affects UI Icons versions: from 0.0.0 to 1.1.3, from 2.0.0 to 2.0.2.",
-      "published": "2026-10-30T04:18:11.377",
-      "last_modified": "2026-10-30T04:18:11.377",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114527"
-    },
-    {
-      "cve": "CVE-2026-114526",
-      "title": "CVE-2026-114526",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Black Hole allows Stored XSS. This issue affects Black Hole versions: from 0.0.0 to 1.26.0, from 2.0.0 to 2.0.1.",
-      "published": "2026-10-30T04:18:11.247",
-      "last_modified": "2026-10-30T04:18:11.247",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114526"
-    },
-    {
-      "cve": "CVE-2026-114525",
-      "title": "CVE-2026-114525",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal ABC allows Stored XSS. This issue affects ABC versions: from 0.0.0 to 1.25.0, from 2.0.0 to 2.0.1.",
-      "published": "2026-10-30T04:18:11.120",
-      "last_modified": "2026-10-30T04:18:11.120",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114525"
-    },
-    {
-      "cve": "CVE-2026-114524",
-      "title": "CVE-2026-114524",
-      "description": "Privilege Defined With Unsafe Actions vulnerability in Drupal Custom Formatters allows Privilege Escalation. This issue affects Custom Formatters versions: from 0.0.0 to 4.2.1.",
-      "published": "2026-10-30T04:18:10.953",
-      "last_modified": "2026-10-30T04:18:10.953",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114524"
-    },
-    {
-      "cve": "CVE-2026-114523",
-      "title": "CVE-2026-114523",
-      "description": "Improper Neutralization of Special Elements used in an OS Command (\"OS Command Injection\") vulnerability in Drupal Ffmpeg Image Toolkit allows OS Command Injection. This issue affects Ffmpeg Image Toolkit versions: from 0.0.0 to 1.0.3.",
-      "published": "2026-10-30T04:18:10.373",
-      "last_modified": "2026-10-30T04:18:10.373",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114523"
-    },
-    {
-      "cve": "CVE-2026-110738",
-      "title": "CVE-2026-110738",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Gin Admin Theme allows Cross-Site Scripting (XSS). This issue affects Gin Admin Theme versions: from 0.0.0 to 4.1.4, from 5.0.0 to 5.0.16.",
-      "published": "2026-10-30T04:18:09.667",
-      "last_modified": "2026-10-30T04:18:09.667",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110738"
-    },
-    {
-      "cve": "CVE-2026-108515",
-      "title": "CVE-2026-108515",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T04:18:07.017",
-      "last_modified": "2026-10-30T04:18:07.017",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108515"
-    },
-    {
-      "cve": "CVE-2026-108514",
-      "title": "CVE-2026-108514",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal core allows Cross-Site Scripting (XSS). This issue affects Drupal core versions: from 10.3.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T04:18:05.750",
-      "last_modified": "2026-10-30T04:18:05.750",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108514"
-    },
-    {
-      "cve": "CVE-2026-108099",
-      "title": "CVE-2026-108099",
-      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Entity  List allows Reflection Injection. This issue affects Entity  List versions: from 0.0.0 to 3.0.10.",
-      "published": "2026-10-30T04:18:04.260",
-      "last_modified": "2026-10-30T04:18:04.260",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108099"
-    },
-    {
-      "cve": "CVE-2026-108097",
-      "title": "CVE-2026-108097",
-      "description": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Drupal Drupal core allows Reflection Injection. This issue affects Drupal core versions: from 8.9.0 to 10.6.19, from 11.0.0 to 11.3.19, from 11.4.0 to 11.4.10, from 12.0.0-alpha1 to 12.0.0-beta2.",
-      "published": "2026-10-30T04:18:04.130",
-      "last_modified": "2026-10-30T04:18:04.130",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108097"
-    },
-    {
-      "cve": "CVE-2026-107312",
-      "title": "CVE-2026-107312",
-      "description": "Allocation of Resources Without Limits or Throttling vulnerability in Drupal Examples for Developers allows Excessive Allocation. This issue affects Examples for Developers versions: from 0.0.0 to 4.0.7.",
-      "published": "2026-10-30T04:17:59.090",
-      "last_modified": "2026-10-30T04:17:59.090",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107312"
-    },
-    {
-      "cve": "CVE-2026-107311",
-      "title": "CVE-2026-107311",
-      "description": "Improper Check for Unusual or Exceptional Conditions vulnerability in Drupal Permissions by Term allows Forceful Browsing. This issue affects Permissions by Term versions: from 0.0.0 to 3.1.41.",
-      "published": "2026-10-30T04:17:58.963",
-      "last_modified": "2026-10-30T04:17:58.963",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107311"
-    },
-    {
-      "cve": "CVE-2026-107310",
-      "title": "CVE-2026-107310",
-      "description": "Server-Side Request Forgery (SSRF) vulnerability in Drupal Freelinking allows Server Side Request Forgery. This issue affects Freelinking versions: from 0.0.0 to 4.0.3.",
-      "published": "2026-10-30T04:17:58.833",
-      "last_modified": "2026-10-30T04:17:58.833",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107310"
-    },
-    {
-      "cve": "CVE-2026-107309",
-      "title": "CVE-2026-107309",
-      "description": "Missing Authorization vulnerability in Drupal Easy Breadcrumb allows Forceful Browsing. This issue affects Easy Breadcrumb versions: from 0.0.0 to 2.0.11.",
-      "published": "2026-10-30T04:17:58.720",
-      "last_modified": "2026-10-30T04:17:58.720",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107309"
-    },
-    {
-      "cve": "CVE-2026-107308",
-      "title": "CVE-2026-107308",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Country allows Cross-Site Scripting (XSS). This issue affects Country versions: from 0.0.0 to 2.1.3, from 2.2.0 to 2.2.1.",
-      "published": "2026-10-30T04:17:58.590",
-      "last_modified": "2026-10-30T04:17:58.590",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107308"
-    },
-    {
-      "cve": "CVE-2026-107307",
-      "title": "CVE-2026-107307",
-      "description": "Incorrect Authorization vulnerability in Drupal SmartLinker AI allows Forceful Browsing. This issue affects SmartLinker AI versions: from 0.0.0 to 1.0.3.",
-      "published": "2026-10-30T04:17:58.483",
-      "last_modified": "2026-10-30T04:17:58.483",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107307"
-    },
-    {
-      "cve": "CVE-2026-107306",
-      "title": "CVE-2026-107306",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Menu Link Attributes allows Stored XSS. This issue affects Menu Link Attributes versions: from 0.0.0 to 1.8.0.",
-      "published": "2026-10-30T04:17:58.360",
-      "last_modified": "2026-10-30T04:17:58.360",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107306"
-    },
-    {
-      "cve": "CVE-2026-107268",
-      "title": "CVE-2026-107268",
-      "description": "Insertion of Sensitive Information Into Sent Data vulnerability in Drupal Two Factor Authentication - TFA / Passwordless Login allows Forceful Browsing. This issue affects Two Factor Authentication - TFA / Passwordless Login versions: from 0.0.0 to 5.4.1, from 5.5.0 to 5.5.2.",
-      "published": "2026-10-30T04:17:58.230",
-      "last_modified": "2026-10-30T04:17:58.230",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107268"
-    },
-    {
-      "cve": "CVE-2026-107267",
-      "title": "CVE-2026-107267",
-      "description": "Missing Authorization vulnerability in Drupal DKAN allows Forceful Browsing. This issue affects DKAN versions: from 0.0.0 to 4.0.4, from 4.1.0 to 4.1.5.",
-      "published": "2026-10-30T04:17:58.113",
-      "last_modified": "2026-10-30T04:17:58.113",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107267"
-    },
-    {
-      "cve": "CVE-2026-107266",
-      "title": "CVE-2026-107266",
-      "description": "Missing Authorization vulnerability in Drupal Views Share allows Forceful Browsing. This issue affects Views Share versions: from 0.0.0 to 2.0.1.",
-      "published": "2026-10-30T04:17:57.663",
-      "last_modified": "2026-10-30T04:17:57.663",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107266"
-    },
-    {
-      "cve": "CVE-2026-107265",
-      "title": "CVE-2026-107265",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Leaflet allows Stored XSS. This issue affects Leaflet versions: from 0.0.0 to 10.4.13.",
-      "published": "2026-10-30T04:17:56.237",
-      "last_modified": "2026-10-30T04:17:56.237",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107265"
-    },
-    {
-      "cve": "CVE-2026-107264",
-      "title": "CVE-2026-107264",
-      "description": "Improper Neutralization of Special Elements Used in a Template Engine vulnerability in Drupal Inline Formatter Field allows Code Injection. This issue affects Inline Formatter Field versions: from 0.0.0 to 4.2.0.",
-      "published": "2026-10-30T04:17:56.113",
-      "last_modified": "2026-10-30T04:17:56.113",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107264"
-    },
-    {
-      "cve": "CVE-2026-107263",
-      "title": "CVE-2026-107263",
-      "description": "Incorrect Authorization vulnerability in Drupal Gutenberg allows Forceful Browsing. This issue affects Gutenberg versions: from 0.0.0 to 2.15.0, from 3.0.0 to 3.0.7.",
-      "published": "2026-10-30T04:17:55.993",
-      "last_modified": "2026-10-30T04:17:55.993",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107263"
-    },
-    {
-      "cve": "CVE-2026-107262",
-      "title": "CVE-2026-107262",
-      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Drupal Advanced Filesystem allows Cross Site Request Forgery. This issue affects Advanced Filesystem versions: from 0.0.0 to 1.0.28.",
-      "published": "2026-10-30T04:17:55.620",
-      "last_modified": "2026-10-30T04:17:55.620",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107262"
-    },
-    {
-      "cve": "CVE-2026-107261",
-      "title": "CVE-2026-107261",
-      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.1.",
-      "published": "2026-10-30T04:17:55.493",
-      "last_modified": "2026-10-30T04:17:55.493",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107261"
-    },
-    {
-      "cve": "CVE-2026-107260",
-      "title": "CVE-2026-107260",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Sector Distribution allows Stored XSS. This issue affects Sector Distribution versions: from 0.0.0 to 10.3.3, from 10.4.0 to 10.4.2.",
-      "published": "2026-10-30T04:17:55.360",
-      "last_modified": "2026-10-30T04:17:55.360",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107260"
-    },
-    {
-      "cve": "CVE-2026-107259",
-      "title": "CVE-2026-107259",
-      "description": "Improper Neutralization of Special Elements Used in a Template Engine vulnerability in Drupal Linked Field allows Code Injection. This issue affects Linked Field versions: from 0.0.0 to 1.8.0.",
-      "published": "2026-10-30T04:17:55.090",
-      "last_modified": "2026-10-30T04:17:55.090",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107259"
-    },
-    {
-      "cve": "CVE-2026-107258",
-      "title": "CVE-2026-107258",
-      "description": "Incorrect Authorization vulnerability in Drupal Inline Entity Form Dialog allows Forceful Browsing. This issue affects Inline Entity Form Dialog versions: from 0.0.0 to 1.0.6.",
-      "published": "2026-10-30T04:17:54.913",
-      "last_modified": "2026-10-30T04:17:54.913",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107258"
-    },
-    {
-      "cve": "CVE-2026-107257",
-      "title": "CVE-2026-107257",
-      "description": "Incorrect Authorization vulnerability in Drupal Actstream allows Forceful Browsing. This issue affects Actstream versions: from 0.0.0 to 2.0.1, from 2.1.0 to 2.1.1.",
-      "published": "2026-10-30T04:17:53.833",
-      "last_modified": "2026-10-30T04:17:53.833",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107257"
-    },
-    {
-      "cve": "CVE-2026-107256",
-      "title": "CVE-2026-107256",
-      "description": "Improper Restriction of Excessive Authentication Attempts vulnerability in Drupal Shield allows Brute Force. This issue affects Shield versions: from 0.0.0 to 1.9.0.",
-      "published": "2026-10-30T04:17:52.230",
-      "last_modified": "2026-10-30T04:17:52.230",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107256"
-    },
-    {
-      "cve": "CVE-2026-107255",
-      "title": "CVE-2026-107255",
-      "description": "Incorrect Authorization vulnerability in Drupal Restrict route by IP allows Forceful Browsing. This issue affects Restrict route by IP versions: from 0.0.0 to 1.3.1, from 2.0.0 to 2.0.1.",
-      "published": "2026-10-30T04:17:51.290",
-      "last_modified": "2026-10-30T04:17:51.290",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107255"
-    },
-    {
-      "cve": "CVE-2026-107254",
-      "title": "CVE-2026-107254",
-      "description": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Drupal Authenticator Login Plus (2FA) allows Authentication Bypass. This issue affects Authenticator Login Plus (2FA) versions: from 0.0.0 to 1.0.1.",
-      "published": "2026-10-30T04:17:48.483",
-      "last_modified": "2026-10-30T04:17:48.483",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107254"
-    },
-    {
-      "cve": "CVE-2026-107253",
-      "title": "CVE-2026-107253",
-      "description": "Vulnerability in Drupal Orphans Media. This issue affects Orphans Media versions: *.*.",
-      "published": "2026-10-30T04:17:47.927",
-      "last_modified": "2026-10-30T04:17:47.927",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107253"
-    },
-    {
-      "cve": "CVE-2026-107252",
-      "title": "CVE-2026-107252",
-      "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal MathJax: LaTeX for Drupal allows Cross-Site Scripting (XSS). This issue affects MathJax: LaTeX for Drupal versions: from 0.0.0 to 4.1.2.",
-      "published": "2026-10-30T04:17:47.337",
-      "last_modified": "2026-10-30T04:17:47.337",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107252"
-    },
-    {
-      "cve": "CVE-2026-107251",
-      "title": "CVE-2026-107251",
-      "description": "Incorrect Authorization vulnerability in Drupal Entity Reference Manager (Merge entities) allows Forceful Browsing. This issue affects Entity Reference Manager (Merge entities) versions: from 0.0.0 to 1.0.3.",
-      "published": "2026-10-30T04:17:45.453",
-      "last_modified": "2026-10-30T04:17:45.453",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107251"
-    },
-    {
-      "cve": "CVE-2026-107250",
-      "title": "CVE-2026-107250",
-      "description": "Vulnerability in Drupal ECA Helper. This issue affects ECA Helper versions: *.*.",
-      "published": "2026-10-30T04:17:45.330",
-      "last_modified": "2026-10-30T04:17:45.330",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107250"
-    },
-    {
-      "cve": "CVE-2026-107249",
-      "title": "CVE-2026-107249",
-      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Drupal Block AJAX allows Object Injection. This issue affects Block AJAX versions: from 0.0.0 to 3.0.2.",
-      "published": "2026-10-30T04:17:43.030",
-      "last_modified": "2026-10-30T04:17:43.030",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107249"
-    },
-    {
-      "cve": "CVE-2026-91920",
-      "title": "CVE-2026-91920",
-      "description": "A flaw was found in the ChunkReader component of the Undertow web server, which is used to handle chunked transfer encoding in HTTP requests. The issue occurs because a security check for the chunk size is performed before the value is shifted, allowing a specifically crafted 15-digit chunk size to bypass the limit and overflow into internal state flags. This can cause the server to terminate a request body prematurely and interpret the remaining data as a separate, smuggled request.",
-      "published": "2026-10-30T02:17:10.140",
-      "last_modified": "2026-10-30T02:17:10.267",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91920"
-    },
-    {
-      "cve": "CVE-2026-74915",
-      "title": "CVE-2026-74915",
-      "description": "A web page that contains unusual WebGPU content loaded into the GPU GLES render process can trigger a OOB read and/or write crash in the GPU GLES user-space shared library. On certain platforms, when the process executing graphics workload has system privileges this could enable further exploits on the device.",
-      "published": "2026-10-30T02:17:09.850",
-      "last_modified": "2026-10-30T02:17:09.850",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-74915"
-    },
-    {
-      "cve": "CVE-2026-74912",
-      "title": "CVE-2026-74912",
-      "description": "On GPU systems with the security vulnerability fix for CVE-2026-49746 applied, the mapping range of graphics buffers is limited which causes errors when the mapping outside of that range.\n\nInteger truncation caused when mapping GPU buffer pages in the buffer’s range 0GB - 4GB, produces error and limits the functionality of the kernel mode driver.",
-      "published": "2026-10-30T02:17:09.727",
-      "last_modified": "2026-10-30T02:17:09.727",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-74912"
-    },
-    {
-      "cve": "CVE-2026-65587",
-      "title": "CVE-2026-65587",
-      "description": "A web page that contains unusual WebGPU content loaded into the GPU GLES render process can trigger an OOB write in the GPU user-space driver, leading to memory corruption and possible browser/GPU process crash.\n\n\n\nThe software writes data past the end of an intended memory offset. Writing outside the bounds of allocated memory can corrupt adjacent memory, crash the process, or cause undefined behaviour.",
-      "published": "2026-10-30T02:17:09.607",
-      "last_modified": "2026-10-30T02:17:09.607",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65587"
-    },
-    {
-      "cve": "CVE-2026-65586",
-      "title": "CVE-2026-65586",
-      "description": "Software installed and run as a non-privileged user may conduct improper GPU system calls to free memory in still in use, replace with another allocation and cause arbitrary memory reads or writes to physical memory pages.\n\n\n\nA memory buffer managed by a CPU thread of control (driver) and accessed by a GPU thread of control (firmware) can be freed while in use. Software installed and run as a non-privileged user may replace that buffer with another and replace a shared resource (memory page address list) managed by the CPU thread of control (driver) leading to the GPU accessing memory not managed by the CPU thread of control (driver).",
-      "published": "2026-10-30T02:17:09.493",
-      "last_modified": "2026-10-30T02:17:09.493",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65586"
-    },
-    {
-      "cve": "CVE-2026-65584",
-      "title": "CVE-2026-65584",
-      "description": "Software installed and run as a non-privileged user may conduct improper GPU system calls causing a stack overflow in the kernel. The overflow occurs when processing resolved Linux/Android fence synchronization checkpoints, while user checkpoints are excluded from the stack array. Successful exploitation can cause kernel memory corruption and typically results in a denial-of-service condition through a kernel crash.\n\n\n\nThe code vulnerability is a buffer write beyond the allocated array on the stack caused by copying excessive data from an internal buffer.",
-      "published": "2026-10-30T02:17:09.370",
-      "last_modified": "2026-10-30T02:17:09.370",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65584"
-    },
-    {
-      "cve": "CVE-2026-19199",
-      "title": "CVE-2026-19199",
-      "description": "Software installed and run as a non-privileged user may conduct improper system calls to allocate physical memory. A 32-bit integer overflow in the KM driver during page-to-byte conversion of an allocation size can result in an undersized kernel buffer allocation. This may allow unallocated or previously allocated physical pages to be mapped into an attacker-controlled GPU MMU context, leading to disclosure of sensitive kernel data.",
-      "published": "2026-10-30T02:17:09.237",
-      "last_modified": "2026-10-30T02:17:09.237",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19199"
-    },
-    {
-      "cve": "CVE-2026-18629",
-      "title": "CVE-2026-18629",
-      "description": "A web page that contains unusual GPU shader code is loaded into the GPU compiler process and can lead memory allocation failure. If the allocation failure is not properly handled, the compiler may dereference a NULL pointer at a controlled offset, resulting in a crash of the compiler process. On certain platforms, when the compiler process has system privileges this could lead to crashes or enable further exploits on the device.\n\n\n\nThe weakness results from performing arithmetic operations on values derived from the shader program without properly preventing integer overflow. The overflow can cause incorrect memory size calculations, leading to memory allocation failures and subsequent invalid program behaviour. Integer overflow can produce unexpected values that affect memory allocation and other security-relevant operations.",
-      "published": "2026-10-30T02:17:09.117",
-      "last_modified": "2026-10-30T02:17:09.117",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18629"
-    },
-    {
-      "cve": "CVE-2026-15466",
-      "title": "CVE-2026-15466",
-      "description": "Software installed and run as a non-privileged user may conduct improper GPU system calls to cause race condition in hardware performance counters buffer’s destruction path leading to read and/or write UAF.\n\n\n\nThe race condition in the destruction path could lead to reference counter being decremented in non-atomical way allowing other code paths using a freed object to read and/or write kernel heap memory.",
-      "published": "2026-10-30T02:17:08.980",
-      "last_modified": "2026-10-30T02:17:08.980",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15466"
-    },
-    {
-      "cve": "CVE-2026-118475",
-      "title": "CVE-2026-118475",
-      "description": "A flaw was found in Eye of GNOME. When parsing a specially crafted PNG image containing malformed color profile metadata, the application fails to validate chunk boundaries while searching for a null terminator. An attacker could trick a user into opening a malicious image, causing the application to read past the allocated buffer. This issue can lead to an application crash, resulting in a Denial of Service (DoS), or potentially expose sensitive memory contents.",
-      "published": "2026-10-30T02:17:08.583",
-      "last_modified": "2026-10-30T02:17:08.707",
-      "cvss": 3.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118475"
-    },
-    {
-      "cve": "CVE-2026-112922",
-      "title": "CVE-2026-112922",
-      "description": "A flaw was found in Ghostscript. A remote attacker could exploit this vulnerability by enticing a user to process a specially crafted PDF or PostScript document containing malicious mesh shading data. Due to improper bounds validation during the processing of indexed color values, Ghostscript triggers an out-of-bounds memory read. Successful exploitation can lead to a Denial of Service (DoS) through an application crash or result in limited information disclosure.",
-      "published": "2026-10-30T02:17:08.303",
-      "last_modified": "2026-10-30T02:17:08.427",
-      "cvss": 3.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112922"
-    },
-    {
-      "cve": "CVE-2026-76031",
-      "title": "CVE-2026-76031",
-      "description": "Use after free in Input in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.717",
-      "last_modified": "2026-10-30T01:16:47.807",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76031"
-    },
-    {
-      "cve": "CVE-2026-76030",
-      "title": "CVE-2026-76030",
-      "description": "Memory corruption in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.593",
-      "last_modified": "2026-10-30T01:16:47.687",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76030"
-    },
-    {
-      "cve": "CVE-2026-76029",
-      "title": "CVE-2026-76029",
-      "description": "Memory corruption in Network in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.467",
-      "last_modified": "2026-10-30T01:16:47.567",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76029"
-    },
-    {
-      "cve": "CVE-2026-76028",
-      "title": "CVE-2026-76028",
-      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.337",
-      "last_modified": "2026-10-30T01:16:47.433",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76028"
-    },
-    {
-      "cve": "CVE-2026-76027",
-      "title": "CVE-2026-76027",
-      "description": "Memory corruption in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to read memory via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.213",
-      "last_modified": "2026-10-30T01:16:47.303",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76027"
-    },
-    {
-      "cve": "CVE-2026-76026",
-      "title": "CVE-2026-76026",
-      "description": "Memory corruption in Autofill in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:47.093",
-      "last_modified": "2026-10-30T01:16:47.180",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76026"
-    },
-    {
-      "cve": "CVE-2026-76025",
-      "title": "CVE-2026-76025",
-      "description": "Use after free in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:46.970",
-      "last_modified": "2026-10-30T01:16:47.067",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76025"
-    },
-    {
-      "cve": "CVE-2026-76024",
-      "title": "CVE-2026-76024",
-      "description": "Memory corruption in MediaStream in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
-      "published": "2026-10-30T01:16:46.840",
-      "last_modified": "2026-10-30T01:16:46.940",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76024"
-    },
-    {
-      "cve": "CVE-2026-119272",
-      "title": "CVE-2026-119272",
-      "description": "Out of bounds read in FileSystem in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to read memory inside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "published": "2026-10-30T01:16:46.200",
-      "last_modified": "2026-10-30T01:16:46.297",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119272"
-    },
-    {
-      "cve": "CVE-2026-119271",
-      "title": "CVE-2026-119271",
-      "description": "Use after free in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:46.063",
-      "last_modified": "2026-10-30T01:16:46.170",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119271"
-    },
-    {
-      "cve": "CVE-2026-119270",
-      "title": "CVE-2026-119270",
-      "description": "Improper input validation in CacheStorage in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.937",
-      "last_modified": "2026-10-30T01:16:46.030",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119270"
-    },
-    {
-      "cve": "CVE-2026-119269",
-      "title": "CVE-2026-119269",
-      "description": "Use after free in Blink in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.807",
-      "last_modified": "2026-10-30T01:16:45.910",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119269"
-    },
-    {
-      "cve": "CVE-2026-119268",
-      "title": "CVE-2026-119268",
-      "description": "Integer overflow in Editing in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.680",
-      "last_modified": "2026-10-30T01:16:45.780",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119268"
-    },
-    {
-      "cve": "CVE-2026-119267",
-      "title": "CVE-2026-119267",
-      "description": "Memory corruption in DOM in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.553",
-      "last_modified": "2026-10-30T01:16:45.650",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119267"
-    },
-    {
-      "cve": "CVE-2026-119266",
-      "title": "CVE-2026-119266",
-      "description": "Use after free in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.430",
-      "last_modified": "2026-10-30T01:16:45.523",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119266"
-    },
-    {
-      "cve": "CVE-2026-119265",
-      "title": "CVE-2026-119265",
-      "description": "Memory corruption in Quota in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.303",
-      "last_modified": "2026-10-30T01:16:45.400",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119265"
-    },
-    {
-      "cve": "CVE-2026-119264",
-      "title": "CVE-2026-119264",
-      "description": "Memory corruption in Dawn in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.177",
-      "last_modified": "2026-10-30T01:16:45.277",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119264"
-    },
-    {
-      "cve": "CVE-2026-119263",
-      "title": "CVE-2026-119263",
-      "description": "Memory corruption in GarbageCollection in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:45.047",
-      "last_modified": "2026-10-30T01:16:45.140",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119263"
-    },
-    {
-      "cve": "CVE-2026-119262",
-      "title": "CVE-2026-119262",
-      "description": "Improper input validation in V8 in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.920",
-      "last_modified": "2026-10-30T01:16:45.010",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119262"
-    },
-    {
-      "cve": "CVE-2026-119261",
-      "title": "CVE-2026-119261",
-      "description": "Improper input validation in Skia in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.797",
-      "last_modified": "2026-10-30T01:16:44.893",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119261"
-    },
-    {
-      "cve": "CVE-2026-119260",
-      "title": "CVE-2026-119260",
-      "description": "Use after free in Frames in Google Chrome prior to 156.0.8078.79 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
-      "published": "2026-10-30T01:16:44.663",
-      "last_modified": "2026-10-30T01:16:44.767",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119260"
-    },
-    {
-      "cve": "CVE-2026-118959",
-      "title": "CVE-2026-118959",
-      "description": "A flaw was found in the required action provider mechanism of Keycloak. The issue occurs when an authorization request includes the kc_action query parameter set to a mandatory action already assigned to the user, such as profile verification or terms and conditions. Due to incorrect handling of application-initiated actions, Keycloak may skip these mandatory challenges and issue an authorization code. This can allow a user to bypass administrative requirements and gain access to the application without completing necessary profile updates or agreeing to terms.",
-      "published": "2026-10-30T01:16:44.510",
-      "last_modified": "2026-10-30T01:16:44.630",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118959"
-    },
-    {
-      "cve": "CVE-2026-118947",
-      "title": "CVE-2026-118947",
-      "description": "A flaw was found in the UMA resource registration endpoint of the keycloak-services component, which provides the core logic for Keycloak's authorization and identity services. The issue occurs when remote resource management is enabled, allowing an authenticated user with specific permissions to update resources they do not own by providing a target resource ID in a request. This can lead to unauthorized modification of resource configurations, such as names, URIs, and scopes.",
-      "published": "2026-10-30T01:16:44.347",
-      "last_modified": "2026-10-30T01:16:44.480",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118947"
-    },
-    {
-      "cve": "CVE-2026-112605",
-      "title": "CVE-2026-112605",
-      "description": "This issue was addressed with improved handling of symlinks. This issue is fixed in Xcode 27.2. An app may be able to read arbitrary files.",
-      "published": "2026-10-30T01:16:44.087",
-      "last_modified": "2026-10-30T01:16:44.087",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112605"
-    },
-    {
-      "cve": "CVE-2026-112602",
-      "title": "CVE-2026-112602",
-      "description": "An authorization issue was addressed with improved state management. This issue is fixed in Xcode 27.2. An app may be able to access sensitive user data.",
-      "published": "2026-10-30T01:16:43.960",
-      "last_modified": "2026-10-30T01:16:43.960",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112602"
-    },
-    {
-      "cve": "CVE-2026-110133",
-      "title": "CVE-2026-110133",
-      "description": "A flaw was found in Ghostscript. When processing a specially crafted TrueType font or document embedding one, an accounting error during font rendering can bypass buffer size checks, triggering a heap-based buffer overflow. A remote attacker could exploit this by enticing a victim or automated service to open the malicious content, potentially resulting in a Denial of Service (DoS) crash or arbitrary code execution.",
-      "published": "2026-10-30T01:16:43.730",
-      "last_modified": "2026-10-30T01:16:43.880",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110133"
-    },
-    {
-      "cve": "CVE-2026-92744",
-      "title": "CVE-2026-92744",
-      "description": "Under certain conditions, privilege manager agent allows a remote unauthenticated attacker to execute\narbitrary code as LocalSystem.",
-      "published": "2026-10-29T23:17:02.190",
-      "last_modified": "2026-10-29T23:17:02.190",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92744"
-    },
-    {
-      "cve": "CVE-2026-112211",
-      "title": "CVE-2026-112211",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-10-29T23:16:55.143",
-      "last_modified": "2026-10-29T23:16:55.143",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112211"
-    },
-    {
-      "cve": "CVE-2026-107239",
-      "title": "CVE-2026-107239",
-      "description": "A vulnerability allowing a member of the Veeam Virtualization Extensions Users group to perform remote code execution (RCE) on servers running the Veeam Management Pack for Microsoft System Center Collector service.",
-      "published": "2026-10-29T23:16:54.887",
-      "last_modified": "2026-10-29T23:16:54.887",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107239"
-    },
-    {
-      "cve": "CVE-2026-107238",
-      "title": "CVE-2026-107238",
-      "description": "A vulnerability allowing an authenticated domain user to perform remote code execution (RCE) as the LocalSystem account on servers running the Veeam Management Pack for Microsoft System Center Collector service.",
-      "published": "2026-10-29T23:16:54.760",
-      "last_modified": "2026-10-29T23:16:54.760",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107238"
-    },
-    {
-      "cve": "CVE-2023-22793",
-      "title": "CVE-2023-22793",
-      "description": "A vulnerability allowing an unauthenticated attacker to perform remote code execution (RCE) on servers running the Veeam Virtualization Extensions service of Veeam Management Pack for Microsoft System Center.",
-      "published": "2026-10-29T23:16:54.270",
-      "last_modified": "2026-10-29T23:16:54.270",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-22793"
-    },
-    {
-      "cve": "CVE-2026-61719",
-      "title": "CVE-2026-61719",
-      "description": "WeGIA is a web manager for charitable institutions. Prior to 3.8.7, a stored cross-site scripting vulnerability in `saude/historico_prontuarios.php` arises because the `textoProntuario` field accepts arbitrary HTML or JavaScript without proper sanitization. An attacker able to create or access a patient's medical record can submit the field through `POST /controle/control.php` with `nomeClasse=SaudeControle`, `metodo=alterarProntuario`, and `id_fichamedica`. The stored content is rendered when another user accesses `/html/saude/historico_prontuarios.php` with `id_historico`, automatically executing attacker-controlled JavaScript in the victim's browser. The vulnerability permits session cookie theft and potential account compromise depending on the victim's privileges. This issue is fixed in version 3.8.7.",
-      "published": "2026-10-29T22:17:05.763",
-      "last_modified": "2026-10-29T22:17:05.883",
-      "cvss": 8.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61719"
-    },
-    {
-      "cve": "CVE-2026-61707",
-      "title": "CVE-2026-61707",
-      "description": "SOCFortress CoPilot focuses on providing a single pane of glass for all your security operations needs. Prior to 0.1.76, in the reported deployment, case-report templates uploaded by `customer_user`, the lowest-privilege portal role, are later executed by non-sandboxed Jinja2 engines when an admin or analyst generates a report. The `/case-report-template/upload` route in `backend/app/incidents/routes/db_operations.py` validates only the filename-derived MIME type, not the template content. Templates share a global store without customer_code scoping, and `customer_user` can also list, download and delete them, allowing an attacker to replace a legitimate default template under the same name. In `backend/app/incidents/services/reports.py`, `render_document_with_context` uses `DocxTemplate` without a sandbox; in `backend/app/incidents/services/reports_pdf.py`, `render_html_template` uses a",
-      "published": "2026-10-29T22:17:05.603",
-      "last_modified": "2026-10-29T22:17:05.603",
-      "cvss": 9.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61707"
-    },
-    {
-      "cve": "CVE-2026-61673",
-      "title": "CVE-2026-61673",
-      "description": "WeGIA is a web manager for charitable institutions. Prior to 3.8.7, a stored DOM cross-site scripting vulnerability in `web/html/memorando/listar_despachos.php` results from unsafe handling of the `texto` field. The affected flow spans `web/controle/memorando/DespachoControle.php` and `web/dao/memorando/DespachoDAO.php`: `FILTER_SANITIZE_SPECIAL_CHARS` is applied during storage, but `html_entity_decode()` later decodes the stored content and `jQuery .html()` inserts the result into the DOM. An attacker able to submit a memorandum dispatch through `/controle/control.php` using `DespachoControle` and `metodo=incluir` can store malicious HTML or JavaScript. The code executes automatically when another user views the memorandum thread through `/html/memorando/listar_despachos.php` with `id_memorando`. This permits arbitrary JavaScript execution, theft of administrator `PHPSESSID` session tok",
-      "published": "2026-10-29T22:17:05.447",
-      "last_modified": "2026-10-29T22:17:05.563",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61673"
-    },
-    {
-      "cve": "CVE-2026-61671",
-      "title": "CVE-2026-61671",
-      "description": "WeGIA is a web manager for charitable institutions. Prior to the advisory's stated patched version 3.8.7, the `/controle/control.php` dispatch endpoint accepts attacker-controlled `nomeClasse`, `metodo`, and record identifier parameters through `extract($_REQUEST)`, including id, `idatendido`, `idInterno`, and `id_funcionario`, while the affected Controle CRUD methods do not verify record ownership. Any authenticated user can view, modify, or delete another user's records, exposing CPF, RG, addresses, medical records, financial data, and employee records. `AtendidoControle` lacks ownership checks on alterar, excluir, `listarUm`, `alterarInfPessoal`, `alterarDocumentacao`, `alterarImagem`, `alterarEndereco`, and `alterarStatus`; `InternoControle` lacks them on incluir, alterar, excluir, `listarUm`, `listarTodos`, and `listarCpf`. `FuncionarioControle` lacks ownership checks on `alterarInf",
-      "published": "2026-10-29T22:17:05.273",
-      "last_modified": "2026-10-29T22:17:05.407",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61671"
-    },
-    {
-      "cve": "CVE-2026-61654",
-      "title": "CVE-2026-61654",
-      "description": "Lightdash is an open source business intelligence platform. In affected versions through 0.3213.0, the dbt Cloud webhook `POST /api/v1/projects/{projectUuid}/dbt-cloud/webhook` has no authentication middleware or signature validation. In `packages/backend/src/controllers/projectController.ts`, `testWebhook()` accepts `accountId` and `runId` from a `job.run.completed` request and passes them to `createPreviewWithExplores()` in `packages/backend/src/services/ProjectService/ProjectService.ts`. These unsanitized values are interpolated into the server-side dbt Cloud API URL, which is requested with the victim project's API key in the `Authorization` header. Path traversal through `accountId` changes the requested path on `cloud.getdbt.com` without changing its host, so the credential-bearing request reaches an attacker-influenced path on that fixed host. The advisory claims API-key theft, bu",
-      "published": "2026-10-29T22:17:05.110",
-      "last_modified": "2026-10-29T22:17:05.227",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61654"
-    },
-    {
-      "cve": "CVE-2026-61645",
-      "title": "CVE-2026-61645",
-      "description": "Docat is a tool for hosting versioned static documentation. In the affected implementation, an arbitrary file upload vulnerability in the `Upload API` arises because the API does not validate the `uploaded file path or type`. An attacker can overwrite sensitive configuration files or place malicious files on the Docat web server. Depending on deployment context, uploaded content can enable remote code execution or cross-site scripting intended to steal cookies or redirect users to malicious websites. Version 1.6.0 mitigates filename-based path traversal; remediation of unrestricted file types or deployment-dependent malicious-content effects is not established by the verified patch.",
-      "published": "2026-10-29T22:17:04.963",
-      "last_modified": "2026-10-29T22:17:04.963",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61645"
-    },
-    {
-      "cve": "CVE-2026-45049",
-      "title": "CVE-2026-45049",
-      "description": "Open Access Management (OpenAM) is an access management solution. Prior to 16.1.1, the `Cross-Domain Single Sign-On` (`CDSSO`) servlet allows a logged-in user's raw OpenAM session token to be POSTed to an attacker-controlled URL. An attacker who induces an authenticated victim to visit a crafted URL can receive the session credential and potentially hijack the session. Deployments must have `CDSSO` enabled, as is common in multi-domain deployments, and exploitation is additionally gated on a non-default configuration being absent. This issue is fixed in version 16.1.1.",
-      "published": "2026-10-29T22:17:02.400",
-      "last_modified": "2026-10-29T22:17:02.400",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-45049"
-    },
-    {
-      "cve": "CVE-2026-119317",
-      "title": "CVE-2026-119317",
-      "description": "On Linux, an authenticated, low-privileged Nessus user with scan-creation rights could read arbitrary text files on the scanner host with the privileges of the nessusd process by running a custom Unix compliance audit against the scanner itself.",
-      "published": "2026-10-29T22:17:01.670",
-      "last_modified": "2026-10-29T22:17:01.670",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119317"
-    },
-    {
-      "cve": "CVE-2026-119286",
-      "title": "CVE-2026-119286",
-      "description": "GraphQL-core is a Python port of the GraphQL.js reference implementation. From 3.3.0a3 until 3.3.1, validate() reuses a module-level ValidationAbortedError when a document exceeds max_errors. Python appends frames to the reused exception's traceback on every raise, retaining each document, validation context, and error set for the process lifetime. An unauthenticated client can repeatedly submit a small document with more than 100 validation errors to cause unbounded memory growth before query execution, eventually exhausting worker memory without disclosing or modifying data. This issue is fixed in version 3.3.1.",
-      "published": "2026-10-29T22:17:01.517",
-      "last_modified": "2026-10-29T22:17:01.517",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119286"
-    },
-    {
-      "cve": "CVE-2026-119285",
-      "title": "CVE-2026-119285",
-      "description": "Fiber is an Express inspired web framework written in Go. From 2.52.1 until 2.52.3, the CORS middleware's validateDomain wildcard matcher in middleware/cors/utils.go strips the scheme and checks only a host suffix without requiring a dot boundary. An application configured with a wildcard-subdomain AllowOrigins value and AllowCredentials enabled can reflect an unrelated attacker-controlled origin whose host merely ends with the configured base domain. A user who visits that origin can expose authenticated cross-origin responses to the attacker's page; empty-label origins and later comma-space parsing hardening are outside this advisory. This issue is fixed in version 2.52.3.",
-      "published": "2026-10-29T22:17:01.367",
-      "last_modified": "2026-10-29T22:17:01.367",
-      "cvss": 5.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119285"
     }
   ],
-  "total_results": 1593,
+  "total_results": 1697,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1393
+  "start_index": 1497
 }
