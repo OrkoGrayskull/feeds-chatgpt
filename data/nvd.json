@@ -1,12 +1,21 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-28T23%3A00%3A00.000&pubEndDate=2026-10-31T10%3A37%3A23.000&resultsPerPage=200&startIndex=1122",
-  "fetched_at": "2026-10-31T10:37:23+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-28T23%3A00%3A00.000&pubEndDate=2026-10-31T13%3A04%3A42.000&resultsPerPage=200&startIndex=1123",
+  "fetched_at": "2026-10-31T13:04:42+00:00",
   "window_days": 3,
   "window_start": "2026-10-29",
   "window_end": "2026-10-31",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-15272",
+      "title": "CVE-2026-15272",
+      "description": "The Web 2.0 Directory plugin for WordPress is vulnerable to time-based SQL Injection via the 'w2dc_level_filter' parameter in all versions up to, and including, 2.10.12 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Because the parameter is used in integer context without surrounding quotes, WordPress's built-in addslashes/magic_quotes escaping provides no protection against time-based payloads such as SLEEP-based conditionals.",
+      "published": "2026-10-31T12:16:27.790",
+      "last_modified": "2026-10-31T12:16:27.790",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-15272"
+    },
     {
       "cve": "CVE-2026-96554",
       "title": "CVE-2026-96554",
@@ -1797,19 +1806,10 @@
       "last_modified": "2026-10-30T20:17:02.433",
       "cvss": 9.2,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116238"
-    },
-    {
-      "cve": "CVE-2026-115830",
-      "title": "CVE-2026-115830",
-      "description": "In Secret Server versions earlier than 12.3.1, a user under certain conditions could submit an unsigned JWT and receive cloudadmin permissions in response.",
-      "published": "2026-10-30T20:17:02.240",
-      "last_modified": "2026-10-30T20:17:02.240",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115830"
     }
   ],
-  "total_results": 1322,
+  "total_results": 1323,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1122
+  "start_index": 1123
 }
