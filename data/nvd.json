@@ -1,12 +1,228 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-29T23%3A00%3A00.000&pubEndDate=2026-11-01T08%3A11%3A21.000&resultsPerPage=200&startIndex=620",
-  "fetched_at": "2026-11-01T08:11:21+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-29T23%3A00%3A00.000&pubEndDate=2026-11-01T11%3A30%3A36.000&resultsPerPage=200&startIndex=644",
+  "fetched_at": "2026-11-01T11:30:36+00:00",
   "window_days": 3,
   "window_start": "2026-10-30",
   "window_end": "2026-11-01",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-13575",
+      "title": "CVE-2026-13575",
+      "description": "HTTP::Session versions before 0.54 for Perl allow memcached command injection via unfiltered session ids in HTTP::Session::Store::CHI.\n\nThe session id from the client's cookie reaches the CHI cache unchanged. The sibling HTTP::Session::Store::Memcached rejects ids that contain control characters, but the CHI store has no such check, and CHI does not escape keys for its memcached drivers.\n\nWith a memcached driver, a CR and LF in the session id end the cache command early, and the server reads the bytes after them as further commands.",
+      "published": "2026-11-01T11:18:58.040",
+      "last_modified": "2026-11-01T11:18:58.040",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13575"
+    },
+    {
+      "cve": "CVE-2026-120225",
+      "title": "CVE-2026-120225",
+      "description": "A weakness has been identified in Oray Pugongying X5 Pro up to 7.6.1. Affected by this vulnerability is the function config_restore_ex of the file /etc/openwrt_release. This manipulation of the argument filename causes relative path traversal. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-01T11:18:57.843",
+      "last_modified": "2026-11-01T11:18:57.843",
+      "cvss": 9.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120225"
+    },
+    {
+      "cve": "CVE-2026-120224",
+      "title": "CVE-2026-120224",
+      "description": "A security flaw has been discovered in Oray Pugongying X5 Pro up to 7.6.1. Affected is the function run_apis_by_json/run_async_task of the component API Authorization. The manipulation results in improper authorization. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-01T11:18:57.437",
+      "last_modified": "2026-11-01T11:18:57.437",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120224"
+    },
+    {
+      "cve": "CVE-2026-120263",
+      "title": "CVE-2026-120263",
+      "description": "When `[oauth2_client].ACCOUNT_LINKING` is set to `auto` (not the default) and registration is enabled, the link-account sign-up form looked up the existing account to link by the user name or email submitted in the form instead of the identity asserted by the OAuth2 provider. An attacker with an account on a configured OAuth2 provider could submit another user's name, link their external identity to that Gitea account and be signed in as it without its password, including as an administrator. The link persisted for later sign-ins. Automatic linking now only happens when the existing account matches the provider's email or provider-derived user name; otherwise the account password is required.",
+      "published": "2026-11-01T10:18:37.520",
+      "last_modified": "2026-11-01T10:18:37.637",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120263"
+    },
+    {
+      "cve": "CVE-2026-120223",
+      "title": "CVE-2026-120223",
+      "description": "A vulnerability was identified in Oray Pugongying X5 Pro up to 7.6.1. This impacts the function session_get of the file session.lua of the component Session ID Handler. The manipulation of the argument _user leads to insufficiently random values. The attack can be initiated remotely. The attack's complexity is rated as high. The exploitability is said to be difficult. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-01T10:18:37.230",
+      "last_modified": "2026-11-01T10:18:37.230",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120223"
+    },
+    {
+      "cve": "CVE-2026-119627",
+      "title": "CVE-2026-119627",
+      "description": "The web profile and RSS/Atom feed routes of users and organizations checked only whether a signed-in viewer could see a limited-visibility owner, without considering the `public-only` restriction of the personal access token used to authenticate. Any user holding a public-only token could send it over HTTP Basic authentication to read the profile and activity feed of limited-visibility users and organizations, which are hidden from anonymous visitors and refused on the equivalent API routes. The disclosure covers existence, profile metadata and public activity; it does not grant write access.",
+      "published": "2026-11-01T10:18:37.073",
+      "last_modified": "2026-11-01T10:18:37.183",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119627"
+    },
+    {
+      "cve": "CVE-2026-119625",
+      "title": "CVE-2026-119625",
+      "description": "The `/{username}` web route accepted personal access tokens over HTTP Basic authentication without checking their scope. A token confined to an unrelated scope, such as `read:issue`, could read its owner's private activity through the user RSS/Atom feed and the profile activity tab, and other members' activity in a private organization through the organization feed; a public-only token could list the owner's private repositories and organizations and render private profile READMEs. For a site administrator's token this applied to every account. Tokens are now accepted on this route only for feeds, which require `read:user` or `read:organization`.",
+      "published": "2026-11-01T10:18:36.937",
+      "last_modified": "2026-11-01T10:18:37.040",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119625"
+    },
+    {
+      "cve": "CVE-2026-119533",
+      "title": "CVE-2026-119533",
+      "description": "Repository and organization project boards listed the pull requests that reference each issue on the board without checking whether the viewer can read them. When a private pull request mentions an issue on a board the viewer can open, the board revealed the private repository's path and the pull request's number, title and state, to anonymous visitors in the case of a public board. The pull request body, diff and files were not exposed. Boards now skip linked pull requests in repositories where the viewer cannot read pull requests.",
+      "published": "2026-11-01T10:18:36.787",
+      "last_modified": "2026-11-01T10:18:36.897",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119533"
+    },
+    {
+      "cve": "CVE-2026-119441",
+      "title": "CVE-2026-119441",
+      "description": "`DELETE /api/v1/orgs/{org}/repos` deletes all repositories of an organization, but it did not enforce the public-only restriction of access tokens: the route only checked that the organization itself was public. A public-only token of an owner of a public organization could therefore permanently delete the organization's private repositories, which such a token must not reach. Routes that require organization ownership now reject public-only tokens.",
+      "published": "2026-11-01T10:18:36.643",
+      "last_modified": "2026-11-01T10:18:36.750",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119441"
+    },
+    {
+      "cve": "CVE-2026-118504",
+      "title": "CVE-2026-118504",
+      "description": "The web interface blocks issue and pull request changes on archived repositories, but several issue routes of the REST API did not check whether the repository is archived. A user allowed to change issues of an archived repository could use the API to edit, close or delete issues, change labels and deadlines, add or delete tracked time and stopwatches, add reactions, change issue blocks, and pin issues, altering data that archiving is meant to freeze. Gitea 28.2.0 added the check to the issue edit, delete and label routes; Gitea 28.3.0 applies it to all modifying repository API requests.",
+      "published": "2026-11-01T10:18:36.507",
+      "last_modified": "2026-11-01T10:18:36.603",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118504"
+    },
+    {
+      "cve": "CVE-2026-118395",
+      "title": "CVE-2026-118395",
+      "description": "Gitea 1.27.3 stopped personal access tokens restricted to public resources (`public-only`) from creating repositories through `POST /api/v1/user/repos` and `POST /api/v1/repos/migrate`, but `POST /api/v1/org/{org}/repos`, `POST /api/v1/orgs/{org}/repos`, `POST /api/v1/orgs` and `POST /api/v1/repos/{owner}/{repo}/generate` still accepted such tokens. A holder of a public-only token with the needed write scopes could create private repositories in organizations where the token's owner may create repositories, create private organizations, and generate private repositories from templates. The token still could not read the private repositories it created.",
+      "published": "2026-11-01T10:18:36.370",
+      "last_modified": "2026-11-01T10:18:36.467",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118395"
+    },
+    {
+      "cve": "CVE-2026-118394",
+      "title": "CVE-2026-118394",
+      "description": "The OAuth2 userinfo endpoint (`/login/oauth/userinfo`) decided whether to limit the `groups` claim to public organizations by re-parsing the `Authorization` header as an OAuth2 access token instead of using the scope of the credential that authenticated the request. When a public-only OAuth2 token was sent as a query parameter or form field, or a public-only personal access token was used, that scope came back empty and the claim listed the token owner's private organizations, teams and concealed memberships. The disclosure is limited to the owner's organization and team names and memberships; no repository content is exposed. The endpoint now uses the scope of the authenticating token.",
+      "published": "2026-11-01T10:18:36.227",
+      "last_modified": "2026-11-01T10:18:36.330",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118394"
+    },
+    {
+      "cve": "CVE-2026-118386",
+      "title": "CVE-2026-118386",
+      "description": "Workflows triggered by a pull request review were read from the commit named in the review's `commit_id`, while the fork restrictions were decided by the reviewed pull request, and the commit was not checked to belong to that pull request. A user with read access to a repository could place a commit of their own in it, through a fork pull request or an AGit push, and submit a review naming that commit on a pull request whose head branch is in the same repository. On instances with a runner serving the repository, the attacker's workflow then ran without approval, received the Actions secrets of the repository and its owner, and got a `GITEA_TOKEN` with write access to the repository. Review-triggered workflows now run on the pull request head.",
+      "published": "2026-11-01T10:18:36.073",
+      "last_modified": "2026-11-01T10:18:36.187",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118386"
+    },
+    {
+      "cve": "CVE-2026-117685",
+      "title": "CVE-2026-117685",
+      "description": "The OCI registry's cross-repository blob mount checked the target package against the token's `public-only` restriction, but checked the source blob only against the full account permissions of the token owner. A `public-only` token with `write:package` scope, whose owner can read a private package and write to a public package namespace, could mount a blob of the private package into the public package. The private blob, such as a container layer, could then be downloaded by anyone through the public package.",
+      "published": "2026-11-01T10:18:35.933",
+      "last_modified": "2026-11-01T10:18:36.033",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117685"
+    },
+    {
+      "cve": "CVE-2026-117677",
+      "title": "CVE-2026-117677",
+      "description": "When parsing an uploaded Helm chart, Gitea decompressed the archive and read every tar entry while looking for `Chart.yaml` without limiting the decompressed size, and did so before the package size quota was checked; the quota only considers the compressed upload size. A user with package write access to an owner, for example their own account on an instance with open registration, could repeatedly upload small, highly compressed archives that make the server spend CPU time proportional to the decompressed size, degrading the availability of the Gitea instance. The issue does not allow code execution or data access.",
+      "published": "2026-11-01T10:18:35.780",
+      "last_modified": "2026-11-01T10:18:35.893",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117677"
+    },
+    {
+      "cve": "CVE-2026-117649",
+      "title": "CVE-2026-117649",
+      "description": "The issue timeline API and the web issue page hid cross-reference events that point at issues the reader cannot access, but not \"dependency added\" and \"dependency removed\" events. When a readable issue had been linked as a dependency to an issue in a repository the reader cannot access, for example a private repository, any reader of the first issue, including anonymous users of a public repository, received the linked issue's current title, body, state, labels, poster and attachment names through the API, and its repository, number and title on the web page. Creating the link requires access to both issues; comments and attachment downloads of the linked issue stayed protected. Dependency events are now filtered with the same read permission check; a related exposure of unlinked attachment metadata through hidden dependency placeholders was already fixed in 28.2.0.",
+      "published": "2026-11-01T10:18:35.623",
+      "last_modified": "2026-11-01T10:18:35.733",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117649"
+    },
+    {
+      "cve": "CVE-2026-117646",
+      "title": "CVE-2026-117646",
+      "description": "The repositories, stars and watching tabs of user profiles and the repository list of organization home pages included private repositories for every signed-in request without checking whether the request used a personal access token restricted to public resources (`public-only`). A holder of such a token could list the private repositories visible to the token's owner, and that user's stars and watches of private repositories. The API and the profile activity tab already applied the restriction. The impact is disclosure of repository names and metadata, not of repository content.",
+      "published": "2026-11-01T10:18:35.477",
+      "last_modified": "2026-11-01T10:18:35.587",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117646"
+    },
+    {
+      "cve": "CVE-2026-117635",
+      "title": "CVE-2026-117635",
+      "description": "The `/api/v1/admin` route group did not enforce the `public-only` restriction of personal access tokens. A public-only token with admin scope issued by a site administrator could therefore list private organizations and the email addresses of all users, create organizations, obtain runner registration tokens and create new site administrator accounts, the last of which persists after the token is revoked. Tokens of users who are not site administrators cannot reach these routes; public-only tokens are now rejected on the admin API.",
+      "published": "2026-11-01T10:18:35.320",
+      "last_modified": "2026-11-01T10:18:35.437",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117635"
+    },
+    {
+      "cve": "CVE-2026-116474",
+      "title": "CVE-2026-116474",
+      "description": "The `GITEA_TOKEN` of a Gitea Actions job authenticates as the `gitea-actions` system user, and the `/api/v1/user` email and GPG key endpoints accepted that user, so a job could register an email address and a GPG key on it; without required email confirmation (the default) the address is stored as activated. Commit verification treats a key without a real owner as the instance signing key, so any user who can run a workflow job could make commits signed with their own key show as trusted and signed by the instance in every repository where they appear, including pull requests to repositories the user cannot write to. The impact is limited to the displayed signature status: enforcement such as required signed commits only checks that a signature is verified and is unaffected, and no access is gained. The `/api/v1/user` routes now reject system users.",
+      "published": "2026-11-01T10:18:35.170",
+      "last_modified": "2026-11-01T10:18:35.283",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116474"
+    },
+    {
+      "cve": "CVE-2026-116296",
+      "title": "CVE-2026-116296",
+      "description": "The API routes for releases, release assets, milestones and repository labels did not reject changes to archived repositories. A user with write access to an archived repository, or a holder of such a user's write-scoped token, could replace or delete release assets while keeping their download URLs, delete releases and tags, and create, edit or delete milestones and labels of a repository that is meant to be read-only. Changing requests on these routes now return 423 Locked for archived repositories.",
+      "published": "2026-11-01T10:18:35.020",
+      "last_modified": "2026-11-01T10:18:35.130",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116296"
+    },
+    {
+      "cve": "CVE-2026-116289",
+      "title": "CVE-2026-116289",
+      "description": "Gitea did not reject personal access tokens restricted to public resources (`public-only`) on the organization Actions runner registration-token endpoint, and the runner registered with the resulting token was not limited to public repositories. Holding only such a token with `write:organization` that belongs to an owner of a public organization, an attacker could register an organization-level runner and receive jobs of the organization's private repositories that have Actions enabled, including the workflow content, Actions secrets and variables, and a task token with access to the private repository. The issue widens what the restricted token can reach; it gives nothing beyond what the owner's full account can already do.",
+      "published": "2026-11-01T10:18:34.873",
+      "last_modified": "2026-11-01T10:18:34.983",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116289"
+    },
+    {
+      "cve": "CVE-2026-114199",
+      "title": "CVE-2026-114199",
+      "description": "`GET /api/v1/users/{username}/heatmap` computed the contribution heatmap with the repository access of the token owner and ignored the public-only restriction of the access token, unlike the activity feed endpoints. A holder of a user's public-only token could read contribution counts and their 15-minute time buckets that stem from that user's activity in private repositories. Repository names and contents were not disclosed. For public-only tokens the heatmap now only counts activity visible to anonymous users.",
+      "published": "2026-11-01T10:18:34.710",
+      "last_modified": "2026-11-01T10:18:34.833",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114199"
+    },
+    {
+      "cve": "CVE-2026-113429",
+      "title": "CVE-2026-113429",
+      "description": "Legacy (v1 to v3) Actions artifact uploads stored the request's `Content-Encoding` header unchecked in the column that is served as the artifact's `Content-Type` on download, and a value starting with `video/` or `audio/` also removed the sandboxing Content-Security-Policy. A user who can run an Actions job could upload an artifact that a browser renders as HTML on the Gitea origin when the direct artifact download URL is opened, and the URL is reachable anonymously on public repositories. A victim who opens the link runs the attacker's script with their own session, which for an administrator means control of the instance. Legacy uploads now store only the `gzip` marker, and the special serve headers are chosen only for valid media types.",
+      "published": "2026-11-01T10:18:34.557",
+      "last_modified": "2026-11-01T10:18:34.670",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113429"
+    },
+    {
+      "cve": "CVE-2026-112887",
+      "title": "CVE-2026-112887",
+      "description": "Gitea Actions task tokens authenticate to the REST API as a shared system user with a negative ID, which repository, organization, project and key filters treated as having no owner restriction, and the token carried no API scope to restrict user-scoped routes. A user who can run a workflow could use the job's token with `GET /api/v1/user/repos` to list every repository on the instance, including private repositories of other users and organizations, with their metadata. Repository contents remained protected by per-repository permission checks. System users now own nothing, and `/api/v1/user` routes other than `GET /api/v1/user` accept only individual and bot accounts.",
+      "published": "2026-11-01T10:18:33.457",
+      "last_modified": "2026-11-01T10:18:34.510",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112887"
+    },
     {
       "cve": "CVE-2026-120218",
       "title": "CVE-2026-120218",
@@ -1590,226 +1806,10 @@
       "last_modified": "2026-10-30T21:17:15.997",
       "cvss": 8.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62989"
-    },
-    {
-      "cve": "CVE-2026-62979",
-      "title": "CVE-2026-62979",
-      "description": "jack lets users share media libraries through their Radarr/Sonarr stack, peer-to-peer. Prior to 0.1.0, `middleware/handle-error.ts` serializes raw `FetchError` objects into HTTP responses. `lib/servers/base.ts` attaches outbound request headers on upstream non-success responses and schema-validation failures; the public `extras` field in `lib/errors/FetchError.ts` remains enumerable and is emitted by JSON serialization. These headers include the internal Radarr/Sonarr `X-Api-Key` and custom connector headers such as `CF-Access-Client-Secret`. `lib/redact.ts` redacts logs and spans but not this response path. Any client with the shared peer API key, plus Cloudflare Access credentials if required by the deployment, can force an error without a race or user interaction. `GET /peer/items/:id` and `GET /servers/health` can expose the internal media-server key, while `GET /torznab/download/:id",
-      "published": "2026-10-30T21:17:15.593",
-      "last_modified": "2026-10-30T23:17:13.267",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62979"
-    },
-    {
-      "cve": "CVE-2026-62968",
-      "title": "CVE-2026-62968",
-      "description": "Dream Displays provides in-game screens for streaming videos in Minecraft. From 1.5.0 until 1.8.2, user-controlled input can influence arguments passed to `yt-dlp` under specific conditions. Unintended command-line options may be interpreted by `yt-dlp`, potentially altering its behavior. This issue is fixed in version 1.8.2.",
-      "published": "2026-10-30T21:17:15.433",
-      "last_modified": "2026-10-30T23:17:13.150",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62968"
-    },
-    {
-      "cve": "CVE-2026-62967",
-      "title": "CVE-2026-62967",
-      "description": "ZTNET is a ZeroTier web UI for private controllers with multiuser and organization support. Prior to 0.8.0, any authenticated low-privilege user can permanently deactivate another account, including an administrator, through `POST /api/auth/user/invalidateUser`. In `src/pages/api/auth/user/invalidateUser.ts`, `getServerSession` checks only that a session exists and does not compare `session.user.id` with the client-supplied `userId`. Supplying a victim's `userId` and a `deviceId` for which no matching pair exists in `UserDevice` makes the handler set the target account's `isActive` to false. Login is then refused by `src/server/auth.ts` with `account-expired`. An attacker needs only a normal authenticated account and the victim's user ID, which may be obtainable from member lists, UI responses, logs, or other application metadata. This can lock administrators out, disrupt organization ma",
-      "published": "2026-10-30T21:17:15.290",
-      "last_modified": "2026-10-30T21:17:15.290",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62967"
-    },
-    {
-      "cve": "CVE-2026-62966",
-      "title": "CVE-2026-62966",
-      "description": "ESPAsyncWebServer is an asynchronous HTTP and WebSocket server library for ESP32, ESP8266, RP2040 and RP2350. Prior to version 3.11.2, the multipart parser in `src/WebRequest.cpp` frees `_itemBuffer` and sets it to NULL when `BOUNDARY_OR_DATA` matches the closing boundary of a file part, before confirming the following terminator, while leaving `_itemIsFile` true. If the next byte is neither the final closing dashes nor a clean CRLF, the `DASH3_OR_RETURN2` or `EXPECT_FEED2` rewind branch re-injects provisionally consumed bytes through `itemWriteByte`. Because `_itemIsFile` remains true, `_itemBuffer`[`_itemBufferIndex`++] writes through a null pointer. On ESP32 this causes a `StoreProhibited` exception, panic and device reboot, producing remote denial of service. A route with a non-trivial body/upload handler, such as a file-upload or web-OTA endpoint, must be present. This issue is fixe",
-      "published": "2026-10-30T21:17:15.137",
-      "last_modified": "2026-10-30T21:17:15.257",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62966"
-    },
-    {
-      "cve": "CVE-2026-62965",
-      "title": "CVE-2026-62965",
-      "description": "SABnzbd is an open source automated Usenet download tool. Prior to 5.1.0Beta3, orphan-job management in `sabnzbd/api.py` accepts the user-controlled `value` parameter without path confinement before `os.path.join()` with `download_dir`. An absolute path discards that base directory. An attacker with a valid API key can invoke `mode=status` with `name=delete_orphan` to reach `_api_delete_orphan` and `remove_all()` in `sabnzbd/filesystem.py`, which uses `shutil.rmtree()` for recursive deletion. The advisory also identifies `_api_add_orphan` and `_api_delete_all_orphan` as affected by the path-validation issue, while its concrete arbitrary-deletion trace is through `_api_delete_orphan`. The API key is stored in plaintext in `sabnzbd.ini`. The attacker can delete files or directories writable by the SABnzbd process, including configuration, queue data, and downloads, but system files outside",
-      "published": "2026-10-30T21:17:14.993",
-      "last_modified": "2026-10-30T21:17:14.993",
-      "cvss": 7.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62965"
-    },
-    {
-      "cve": "CVE-2026-62958",
-      "title": "CVE-2026-62958",
-      "description": "libriscv is a RISC-V sandbox and emulator. Prior to 1.18, a crafted ELF binary can cause out-of-bounds reads in the host emulator. `Memory<W>::binary_loader` checks `PT_LOAD` program-header bounds, but `Memory<W>::serialize_execute_segment` trusts section-header `sh_offset` and `sh_size` when locating `.text` without verifying the file range against `m_binary.size()`; `Memory<W>::lookup()` has a similar section-table problem. Malformed `.text` or `.symtab` offsets can therefore bypass the program-header checks and point outside the binary buffer, crashing rvlinux. With suitable memory layout or integer overflow, out-of-buffer host heap memory may instead be mapped into the guest by `create_execute_segment()`, potentially exposing host memory. The reported reproducer demonstrates a host SIGSEGV, while memory disclosure through grooming is described as possible rather than demonstrated. Th",
-      "published": "2026-10-30T21:17:14.840",
-      "last_modified": "2026-10-30T21:17:14.840",
-      "cvss": 7.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62958"
-    },
-    {
-      "cve": "CVE-2026-62864",
-      "title": "CVE-2026-62864",
-      "description": "Ring is a Clojure web applications library inspired by Python's WSGI and Ruby's Rack. Prior to 1.15.5, `wrap-nested-params` in the `ring.middleware.nested-params` namespace uses a backtracking regular expression to match parameter names from URL query strings and HTTP request bodies. An attacker can craft a parameter name that drives quadratic O(n^2) matching work, causing regular-expression denial of service in applications using the middleware. `Ring-Defaults` users are also exposed because nested-params is enabled by default. Applications omitting the middleware do not expose this parsing path. This issue is fixed in version 1.15.5.",
-      "published": "2026-10-30T21:17:14.693",
-      "last_modified": "2026-10-30T21:17:14.693",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62864"
-    },
-    {
-      "cve": "CVE-2026-62863",
-      "title": "CVE-2026-62863",
-      "description": "MoLing is a computer-use and browser-use based MCP server. Prior to 0.5.0, when MoLing runs in SSE mode using `-l`, its `/sse` and `/message` HTTP endpoints do not authenticate requests and the `mcp-go` dependency sets `Access-Control-Allow-Origin: *`. A malicious web page can open a cross-origin `EventSource` to `/sse`, including a loopback listener, and read the `endpoint` event to obtain `sessionId`. After a victim running SSE mode visits that page, the attacker can use the disclosed `sessionId` against `/message` to send unauthorized MCP tool calls. Depending on the configured tools, those calls can read or write local files, execute commands or perform other actions. Binding only to loopback does not prevent this browser-mediated attack. This issue is fixed in version 0.5.0.",
-      "published": "2026-10-30T21:17:14.547",
-      "last_modified": "2026-10-30T21:17:14.547",
-      "cvss": 9.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62863"
-    },
-    {
-      "cve": "CVE-2026-62860",
-      "title": "CVE-2026-62860",
-      "description": "Picsou is a self-hosted personal finance dashboard. In the affected login implementation, the `/api/auth/login` endpoint reveals whether a username exists through a timing discrepancy. In `backend/src/main/java/com/picsou/controller/AuthController.java`, `AuthController.login()` throws `BadCredentialsException` immediately for an unknown username, before `passwordEncoder.matches(...)`, whereas an existing username with an incorrect password incurs the `bcrypt` comparison cost. Both cases return the same generic `HTTP 401` response, but repeated latency measurements disclose valid usernames without credentials. Login rate limiting, a small user population, and deployments inaccessible from outside the local network limit practical exposure; the weakness does not itself read or modify account data, though enumerated usernames can assist credential stuffing or brute-force attacks. This issu",
-      "published": "2026-10-30T21:17:14.400",
-      "last_modified": "2026-10-30T21:17:14.400",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62860"
-    },
-    {
-      "cve": "CVE-2026-62853",
-      "title": "CVE-2026-62853",
-      "description": "ThingLinks is an enterprise IoT platform. Prior to 1.4.0, the `/groovyScriptTest/registerScript` endpoint accepts user-supplied Groovy script content and passes it to an unsandboxed `Groovy compilation and loading` flow. An authenticated attacker can provide code that is compiled and instantiated on the server, resulting in arbitrary server-side code execution. The issue affects the `rule engine`'s Groovy script test/register flow. This issue is fixed in version 1.4.0.",
-      "published": "2026-10-30T21:17:14.267",
-      "last_modified": "2026-10-30T21:17:14.267",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62853"
-    },
-    {
-      "cve": "CVE-2026-62849",
-      "title": "CVE-2026-62849",
-      "description": "ThingLinks is an enterprise IoT platform. Prior to 1.4.0, an unauthenticated SQL injection vulnerability in the `TDengine TDS APIs` allows request-controlled JSON field values submitted to `/anyUser/tds/insertTableData` to reach unsafe SQL construction in the `TDS mapper`. A remote unauthenticated attacker can tamper with TDengine time-series data, including inserting unintended rows or overwriting existing readings. The affected surface is the TDS module's insert-table-data flow and TDengine mapper SQL generation. This issue is fixed in version 1.4.0.",
-      "published": "2026-10-30T21:17:14.120",
-      "last_modified": "2026-10-30T23:17:13.043",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62849"
-    },
-    {
-      "cve": "CVE-2026-62848",
-      "title": "CVE-2026-62848",
-      "description": "Metalama is a Roslyn-based open-source patterns and architecture toolkit for C#. From 2023.0.101-rc until 2025.1.18, 2026.0.25 and 2026.1.19, the Windows Visual Studio integration deserializes local named-pipe messages without restricting which CLR types can be instantiated. The pipe connects `devenv`, the out-of-process Roslyn code-analysis process and the `CodeLens` process, and has the predictable name `Metalama_{role}_{processId}_{hash(PackageVersion)}`. Releases from the first public 2023.0 line through 2026.0.x use Newtonsoft.Json with `TypeNameHandling.All`; the later `SerializationBinder` only remaps assembly names, and `BindToType` resolves arbitrary wire-supplied types without an allow-list. Releases 2026.1.0 through 2026.1.18 use typeless MessagePack with `TypelessObjectResolver` and likewise instantiate arbitrary types. A same-user local process able to write to the pipe can ",
-      "published": "2026-10-30T21:17:13.957",
-      "last_modified": "2026-10-30T21:17:13.957",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62848"
-    },
-    {
-      "cve": "CVE-2026-62847",
-      "title": "CVE-2026-62847",
-      "description": "Metalama is a Roslyn-based open-source patterns and architecture toolkit for C#. Prior to 2025.1.18, 2026.0.25 and 2026.1.19, Metalama.Framework and Metalama.Tool load and execute compile-time assemblies, auxiliary executable tools and embedded helper assemblies from predictable temporary directories. On `Linux` and `macOS`, the default `Path.GetTempPath()` location is world-writable, and existing artifacts are trusted based on sentinel or `.completed` marker files rather than integrity verification. A local unprivileged user on a shared machine or CI/build agent can pre-create the deterministic directory structure and plant a malicious DLL with the matching sentinel. When a higher-privileged developer or build account subsequently builds, Metalama skips regeneration and executes the planted artifact in the compiler, IDE or MSBuild process as the building user. This permits cross-user pr",
-      "published": "2026-10-30T21:17:13.807",
-      "last_modified": "2026-10-30T23:17:12.923",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62847"
-    },
-    {
-      "cve": "CVE-2026-62300",
-      "title": "CVE-2026-62300",
-      "description": "Filecoin Pin is an IPFS Pinning Service API implementation that pins to Filecoin's PDP service. In daemon deployments up to and including version 1.1.0, `POST /pins` in `src/filecoin-pinning-server.ts` checks a caller-supplied CID with `CID.parse` and passes it to `pinStore.pin`, but does not enforce request rate limits or per-user quotas. In `src/filecoin-pin-store.ts`, each pin independently schedules `_processPinInBackground` with `setTimeout` without a queue, semaphore or concurrency cap, then recursively traverses the full DAG using `helia.pins.add(cid)`. The per-pin Helia/Bitswap node in `src/create-pinning-helia.ts` has no application-level byte, block or traversal-time limits. Blocks are written under `carStoragePath` by `src/core/car/car-blockstore-base.ts` and `src/core/car/car-file-backend.ts`, with `stats.totalSize` updated only after writing. An authenticated caller, or an a",
-      "published": "2026-10-30T21:17:13.670",
-      "last_modified": "2026-10-30T21:17:13.670",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62300"
-    },
-    {
-      "cve": "CVE-2026-62297",
-      "title": "CVE-2026-62297",
-      "description": "ag-psd is a JavaScript library for reading and writing Photoshop Document files. Before the allocation-limit remediation attempt in version 31.0.0, `readPsd()` commits image and layer buffers from attacker-declared PSD geometry before validating the declarations against the actual available data or sane allocation limits. The `psdReader.js` implementation sizes off-heap typed arrays using `width`, `height`, `channels`, `depth` and `per-layer rectangles`, so a tiny PSD declaring enormous geometry can force multi-gigabyte memory allocation before a later bounds error. The reported 52-byte input on Node 24 produced approximately 3.17 GB peak RSS before a RangeError; under memory pressure the process can be terminated before the error can be caught, and concurrent inputs can exhaust memory. Services reading untrusted PSDs are exposed to denial of service. This differs from genuinely large PS",
-      "published": "2026-10-30T21:17:13.520",
-      "last_modified": "2026-10-30T21:17:13.520",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62297"
-    },
-    {
-      "cve": "CVE-2026-62254",
-      "title": "CVE-2026-62254",
-      "description": "LibreDWG is a free C library to read and write DWG files. Prior to 0.14, a specially crafted R13-R2000 DWG can trigger algorithmic resource exhaustion in `decode_R13_R2000` in `src/decode.c`. The class-decoding loop performs `realloc` on every iteration without a sanity check on `num_classes`. Manipulating that field forces an extremely slow allocation loop and denial of service when the file is parsed. Running the parser in a sandbox with memory limits is a workaround rather than a remediation. This issue is fixed in version 0.14.",
-      "published": "2026-10-30T21:17:13.370",
-      "last_modified": "2026-10-30T23:17:12.327",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62254"
-    },
-    {
-      "cve": "CVE-2026-62250",
-      "title": "CVE-2026-62250",
-      "description": "LibreDWG is a free C library to read and write DWG files. Prior to 0.14.8413, a crafted pre-R13 DWG can make `decode_preR13_entities()` in `src/decode.c` enter a nonterminating loop that allocates a new object each iteration. `decode_preR13` in `src/decode_r11.c` computes `size` from the raw file-controlled `entities_start` and `entities_end` header bounds; the callee clamps `end` to `dat->size` but never recalculates `size`. At `end` of input, `bit_read_RC` and `bit_read_RS` stop advancing `dat->byte`, the overflow guard fails because `end` equals `dat->size`, and the no-advance check compares against `oldpos` saved before the loop instead of the previous iteration. This leaves repeated allocation of `dwg->object` entries until allocation fails or the process is OOM-killed, not merely a constant-memory CPU hang. The defect remains after the clamping and no-progress changes associated wi",
-      "published": "2026-10-30T21:17:13.230",
-      "last_modified": "2026-10-30T23:17:12.220",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62250"
-    },
-    {
-      "cve": "CVE-2026-59993",
-      "title": "CVE-2026-59993",
-      "description": "Picotls is a TLS protocol library that allows users select different crypto backends based on their use case. In affected revisions through 44bc503, when picotls is used as a `client-side TLS stack`, a peer can send a `HelloRetryRequest` followed by a `spoofed Hello message` that causes a null-pointer dereference. This can terminate the consuming process, including a process performing other work, resulting in denial of service. This issue is fixed in commit a06ca41.",
-      "published": "2026-10-30T21:17:13.067",
-      "last_modified": "2026-10-30T21:17:13.193",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59993"
-    },
-    {
-      "cve": "CVE-2026-58412",
-      "title": "CVE-2026-58412",
-      "description": "Filecoin Pin is an IPFS Pinning Service API implementation that pins to Filecoin's PDP service. Prior to 1.1.0, the upload GitHub Action's fork detection in `upload-action/src/build.js` checks only `event.pull_request`. In the documented two-workflow pattern, an untrusted fork pull-request workflow produces an artifact and a privileged `workflow_run` workflow downloads and uploads it. Because `workflow_run` has no `event.pull_request`, `isForkPR` becomes false and `uploadStatus` becomes `pending-upload`. The action later resolves `workflow_run.pull_requests` without repeating the fork check before initializing the wallet with `walletPrivateKey` and uploading the artifact. An external contributor can therefore cause attacker-controlled artifacts to be stored using the repository owner's Filecoin wallet, incurring unauthorized storage expenditure, dataset pollution and consumption of confi",
-      "published": "2026-10-30T21:17:12.910",
-      "last_modified": "2026-10-30T21:17:12.910",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58412"
-    },
-    {
-      "cve": "CVE-2026-54610",
-      "title": "CVE-2026-54610",
-      "description": "LibreDWG is a free C library to read and write DWG files. Prior to 0.14, `bit_TV_to_utf8()` in `src/bits.c` can write to the caller-provided `src` buffer despite accepting const input. On an `iconv()` error other than `E2BIG`, the function frees its output buffer and passes the original input alias to `bit_u_expand()`, which expands or shrinks Unicode and multibyte escape sequences in place. If the input is a string literal, read-only mapping, or other immutable buffer, the write can cause a segmentation fault and denial of service; mutable caller-owned input can be unexpectedly modified before being returned. This affects applications that expose the conversion API to untrusted input under those conditions. Direct file-triggered exploitability through normal DWG decode/export paths remains unconfirmed because many TV strings are heap allocated by bit_read_TV(). This issue is fixed in ve",
-      "published": "2026-10-30T21:16:57.520",
-      "last_modified": "2026-10-30T21:16:57.520",
-      "cvss": 3.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54610"
-    },
-    {
-      "cve": "CVE-2026-40573",
-      "title": "CVE-2026-40573",
-      "description": "NovumOS is a custom 32-bit operating system written in Zig and x86 Assembly. Prior to version 0.25-beta.1, the `Nova` interpreter runs in Ring 0 with unrestricted kernel-memory access. Loading a malicious `.nv` script through the shell permits a local user to execute code with kernel privileges without security checks. The advisory identifies VM initialization in `zig/nova/vm.zig` as the affected component; script execution is not isolated in a restricted Ring 3 privilege domain. This issue is fixed in version 0.25-beta.1.",
-      "published": "2026-10-30T21:16:53.670",
-      "last_modified": "2026-10-30T21:16:53.670",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-40573"
-    },
-    {
-      "cve": "CVE-2026-119343",
-      "title": "CVE-2026-119343",
-      "description": "Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. Prior to 3.0.0, POST /api/v1/ai/tools/create-pdf-from-html-agent accepts attacker-controlled htmlContent and passes it to WeasyPrint without CustomHtmlSanitizer, unlike the sanitized /api/v1/convert/html/pdf control path. HTTP and HTTPS resource references can make server-side requests to internal or cloud-metadata destinations, while file references can embed local content readable by the Stirling-PDF process into the generated PDF. The endpoint is reachable without credentials when security.enableLogin is false, and the flaw is distinct from earlier Stirling-PDF WeasyPrint vulnerabilities in older conversion paths. This issue is fixed in version 3.0.0.",
-      "published": "2026-10-30T21:16:53.417",
-      "last_modified": "2026-10-30T21:16:53.607",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119343"
-    },
-    {
-      "cve": "CVE-2026-119342",
-      "title": "CVE-2026-119342",
-      "description": "Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. From 2.13.1 until 2.13.2, the POST /api/v1/convert/svg/pdf endpoint renders attacker-supplied SVG through Apache Batik, and a scheme-less root-relative image reference bypasses SvgSanitizer.isExternalUrl() before Batik resolves it against the file:///input.svg document base as a same-origin local file. The convert() and addSvgAsPage() paths in app/core/src/main/java/stirling/software/SPDF/utils/SvgToPdf.java can then render image-decodable server files into the returned PDF when sanitization is enabled, including without authentication on login-disabled deployments or with non-admin access when login is enabled. The issue discloses PNG, JPG, GIF, or SVG content and provides an existence oracle only for image-decodable paths; plain text, binary files, directories, XInclude text, external ent",
-      "published": "2026-10-30T21:16:53.137",
-      "last_modified": "2026-10-30T21:16:53.350",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119342"
-    },
-    {
-      "cve": "CVE-2026-119341",
-      "title": "CVE-2026-119341",
-      "description": "Tesseract is an open source OCR engine. Prior to 5.5.4, ReadAdaptedClass in src/classify/adaptive.cpp raw-reads an ADAPT_CLASS_STRUCT from a pre-adapted-template .a file without neutralizing TempProtos and Config pointer fields before any destructor path. When the legacy engine is selected, classify_use_pre_adapted_templates is enabled, and an attacker can write the output-basename .a file, the success or rejection path can pass file-controlled pointers to ~ADAPT_CLASS_STRUCT and operator delete, causing memory corruption and denial of service. This issue is fixed in version 5.5.4.",
-      "published": "2026-10-30T21:16:52.290",
-      "last_modified": "2026-10-30T21:16:52.290",
-      "cvss": 0.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119341"
     }
   ],
-  "total_results": 820,
+  "total_results": 844,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 620
+  "start_index": 644
 }
