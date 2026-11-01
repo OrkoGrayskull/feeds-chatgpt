@@ -1,12 +1,57 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-29T23%3A00%3A00.000&pubEndDate=2026-11-01T11%3A30%3A36.000&resultsPerPage=200&startIndex=644",
-  "fetched_at": "2026-11-01T11:30:36+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-29T23%3A00%3A00.000&pubEndDate=2026-11-01T13%3A48%3A19.000&resultsPerPage=200&startIndex=649",
+  "fetched_at": "2026-11-01T13:48:19+00:00",
   "window_days": 3,
   "window_start": "2026-10-30",
   "window_end": "2026-11-01",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-120308",
+      "title": "CVE-2026-120308",
+      "description": "A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration. Nothing checks that the identifier names a volume that workspace owns. Parent-directory segments in the identifier collapse the joined path to the worker's filesystem root, and the worker bind-mounts that path into the sandbox read-write unless the volume was explicitly marked read-only. A tenant with a workspace token can therefore read and write the worker's files, including other tenants' volumes stored on that machine. Confirmed against gateway 0.1.769 and worker 0.1.745. Fixed in gateway 0.1.776 and worker 0.1.756: volume identifiers and mount paths are validated before a mount is built, including for stubs saved before the check existed, and the gateway r",
+      "published": "2026-11-01T13:18:01.670",
+      "last_modified": "2026-11-01T13:18:01.670",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308"
+    },
+    {
+      "cve": "CVE-2026-120307",
+      "title": "CVE-2026-120307",
+      "description": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as ro",
+      "published": "2026-11-01T13:18:01.497",
+      "last_modified": "2026-11-01T13:18:01.497",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120307"
+    },
+    {
+      "cve": "CVE-2026-120306",
+      "title": "CVE-2026-120306",
+      "description": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespac",
+      "published": "2026-11-01T13:18:01.300",
+      "last_modified": "2026-11-01T13:18:01.300",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120306"
+    },
+    {
+      "cve": "CVE-2026-120227",
+      "title": "CVE-2026-120227",
+      "description": "A vulnerability was detected in WAVLINK WN701AE M01AE_V260105. This affects the function del_staticrule of the file static_route_setting.sh of the component ioos Web Backend. Performing a manipulation of the argument rule_name results in os command injection. Remote exploitation of the attack is possible. The exploit is now public and may be used. The vendor was contacted early about this disclosure.",
+      "published": "2026-11-01T13:18:00.643",
+      "last_modified": "2026-11-01T13:18:00.643",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120227"
+    },
+    {
+      "cve": "CVE-2026-120226",
+      "title": "CVE-2026-120226",
+      "description": "A security vulnerability has been detected in Hangzhou Xiongmai Technology P2PAPI.dll 1.3.3.32 on Windows. Affected by this issue is the function P2PAPI_Connect of the component P2P SDK. Such manipulation of the argument input as part of String leads to buffer overflow. An attack has to be approached locally. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-01T12:17:09.640",
+      "last_modified": "2026-11-01T12:17:09.640",
+      "cvss": 3.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120226"
+    },
     {
       "cve": "CVE-2026-13575",
       "title": "CVE-2026-13575",
@@ -1761,55 +1806,10 @@
       "last_modified": "2026-10-30T22:16:54.193",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16760"
-    },
-    {
-      "cve": "CVE-2026-118938",
-      "title": "CVE-2026-118938",
-      "description": "In Trail of Bits fickling through 0.1.12, a pickle STACK_GLOBAL operand carrying a dotted __qualname__ (for example \"Values.read_file\") is resolved by pickle's find_class through _getattribute to an arbitrary attribute path rather than to a module-level function. Fickling records only the leading component of the name in its import tracking and renders the operation as a plain import (for instance, 'python -m fickling' displays it as 'from optparse import Values.read_file'), so the trailing attribute reference is never analyzed as a call. The OvertlyBadEvals analysis pass does not flag it, and check_safety() returns LIKELY_SAFE with zero findings. This allows an attacker to reach a class method that performs code execution: optparse.Values.read_file executes exec(open(filename).read(), vars), achieving arbitrary code execution when the crafted pickle is loaded through fickling.load(), wh",
-      "published": "2026-10-30T22:16:54.020",
-      "last_modified": "2026-10-30T22:16:54.020",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118938"
-    },
-    {
-      "cve": "CVE-2026-111578",
-      "title": "CVE-2026-111578",
-      "description": "The PDF Invoices & Packing Slips for WooCommerce WordPress plugin from 5.16.2 before 5.16.5 does not properly escape several customer-supplied order fields — including the billing and shipping address values and the customer order note — before they are output in generated invoice and packing-slip documents, allowing unauthenticated users placing guest orders to store a malicious script that executes when a shop administrator views the document, leading to Stored Cross-Site Scripting.",
-      "published": "2026-10-30T22:16:53.880",
-      "last_modified": "2026-10-31T01:17:06.210",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111578"
-    },
-    {
-      "cve": "CVE-2026-62991",
-      "title": "CVE-2026-62991",
-      "description": "Shopper is a Headless e-commerce Admin Panel. Prior to 2.10.1, the customer detail route `/cpanel/customers/{user}/show` in `packages/admin/src/Livewire/Pages/Customers/Show.php` checks `read_customers` but looks up an arbitrary user ID without applying the `customers` role scope used by the listing. Authenticated staff holding `access_dashboard` and `read_customers` can change the user ID to retrieve administrator or staff profiles despite lacking `view_users`, which protects the separate team-management interface. The flaw exposes account profile data and permits user-ID enumeration through differing success, denial, and not-found responses. If the same role also holds `delete_customers`, `anonymizeAction()` operates on the unrestricted loaded user model and can enable destructive follow-up against non-customer accounts. This issue is fixed in version 2.10.1.",
-      "published": "2026-10-30T21:17:16.190",
-      "last_modified": "2026-10-30T21:17:16.310",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62991"
-    },
-    {
-      "cve": "CVE-2026-62990",
-      "title": "CVE-2026-62990",
-      "description": "Shopper is a Headless e-commerce Admin Panel. In versions from 2.0.0 prior to 2.10.1 and in the 3.0.0 prereleases beta.1 and beta.2, authenticated back-office staff with a content-upload permission can store executable media on the administrator's own origin. In the 2.x implementation, relevant upload permissions include `edit_products` or `add_brands`, and `packages/admin/config/media.php` allows `image/svg+xml` in every media collection, including image fields whose image/* validation also accepts SVG. The product files collection in `packages/admin/src/Livewire/Components/Products/Form/Files.php` has no MIME restriction and accepts `text/html` as well. Media is served inline from the `public` disk under `/storage/` with its own content type, without `Content-Disposition: attachment` or a `Content-Security-Policy`. When an administrator opens an uploaded HTML or SVG file, stored script",
-      "published": "2026-10-30T21:17:16.030",
-      "last_modified": "2026-10-30T21:17:16.157",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62990"
-    },
-    {
-      "cve": "CVE-2026-62989",
-      "title": "CVE-2026-62989",
-      "description": "Shopper is a Headless e-commerce Admin Panel. Prior to 2.10.0, the Variants Livewire component in `packages/admin/src/Livewire/Components/Products/Form/Variants.php` exposes `DeleteAction` and `DeleteBulkAction` without server-side authorization. An authenticated staff user with `edit_products` can access `/shopper/products/{id}/edit` and obtain the signed component state even without `delete_product_variants`. The `callTableAction` and `callTableBulkAction` paths then permanently delete individual or multiple variants without checking that dedicated permission. For variant products, this can destroy the sellable catalogue and disrupt storefront product pages, cart, and checkout. This issue is fixed in version 2.10.0.",
-      "published": "2026-10-30T21:17:15.873",
-      "last_modified": "2026-10-30T21:17:15.997",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-62989"
     }
   ],
-  "total_results": 844,
+  "total_results": 849,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 644
+  "start_index": 649
 }
