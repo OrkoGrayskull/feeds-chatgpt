@@ -1,12 +1,255 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-31T23%3A00%3A00.000&pubEndDate=2026-11-03T12%3A23%3A40.000&resultsPerPage=200&startIndex=484",
-  "fetched_at": "2026-11-03T12:23:40+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-31T23%3A00%3A00.000&pubEndDate=2026-11-03T14%3A40%3A04.000&resultsPerPage=200&startIndex=511",
+  "fetched_at": "2026-11-03T14:40:04+00:00",
   "window_days": 3,
   "window_start": "2026-11-01",
   "window_end": "2026-11-03",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-89295",
+      "title": "CVE-2026-89295",
+      "description": "In Eclipse Mnestix AAS Generator versions 0.1.0 up until but excluding 1.5.0, a practical upper bound on the client-supplied count parameter of the GET /api/v1/IdGenerator/submodelIds/{count} and GET /api/v2/IdGenerator/submodelIds/{count} endpoints is not enforced. The service generates and retains identifiers in memory before returning a response. A remote unauthenticated attacker can submit a large count to cause excessive memory consumption, potentially resulting in denial of service. Exploitation requires network access to the endpoint and successful retrieval of the ID-generation configuration from the configured backend repository.",
+      "published": "2026-11-03T14:17:39.480",
+      "last_modified": "2026-11-03T14:17:39.480",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89295"
+    },
+    {
+      "cve": "CVE-2026-85035",
+      "title": "CVE-2026-85035",
+      "description": "The can_add_rx_filter_msgq() system call installs a CAN RX filter whose callback (can_msgq_put() in drivers/can/can_common.c) is handed the caller's struct k_msgq * as user_data. The controller driver stores that raw pointer in its filter table and dereferences it from the RX path every time a matching frame arrives. The system call verifier z_vrfy_can_add_rx_filter_msgq() in drivers/can/can_handlers.c validated the queue only with K_SYSCALL_OBJ(), which is a point-in-time check of type, initialization and caller permission and says nothing about the object's lifetime.\n\nOn a build with CONFIG_USERSPACE=y and CONFIG_DYNAMIC_OBJECTS=y, an unprivileged user-mode thread that has been granted access to a CAN device can obtain a message queue whose lifetime it fully controls: k_object_alloc(K_OBJ_MSGQ) followed by k_msgq_alloc_init(). The lifetime of such an object is driven solely by its perm",
+      "published": "2026-11-03T14:17:39.290",
+      "last_modified": "2026-11-03T14:17:39.430",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85035"
+    },
+    {
+      "cve": "CVE-2026-85034",
+      "title": "CVE-2026-85034",
+      "description": "The Bluetooth host's GATT client passed the value of a received Handle Value Notification, Handle Value Indication or Multiple Handle Value Notification to bt_gatt_subscribe_params::notify callbacks using only the length derived from the received ATT PDU. bt_att_recv() in subsys/bluetooth/host/att.c validates only a minimum PDU length and does not enforce the negotiated ATT MTU, and the fixed ATT L2CAP channel in subsys/bluetooth/host/l2cap.c applies no rx.mtu check either, so the only ceiling was the ACL reassembly buffer CONFIG_BT_BUF_ACL_RX_SIZE. Values longer than the 512-octet maximum attribute length defined by the Bluetooth Core Specification (Vol 3, Part F, Section 3.2.9) could therefore be handed to subscribers that size their buffers to that documented limit.\n\nA remote peer that a device has connected and subscribed to — a malicious, spoofed or compromised GATT server within ra",
+      "published": "2026-11-03T14:17:39.100",
+      "last_modified": "2026-11-03T14:17:39.227",
+      "cvss": 6.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85034"
+    },
+    {
+      "cve": "CVE-2026-85033",
+      "title": "CVE-2026-85033",
+      "description": "The AVRCP Target role in subsys/bluetooth/host/classic/avrcp.c keeps its vendor-dependent response transmit state in a per-connection object selected by connection index (get_avrcp_tg()), with the per-transfer context (tid, sent_len, and the BT_AVRCP_TG_FLAG_TX_ONGOING flag) stored in the user_data of the queued response net_buf. The AVCTP teardown handler avrcp_disconnected() did not cancel tg->vd_rsp_tx_work and did not release the buffers still queued on tg->vd_rsp_tx_pending, so a link drop in the middle of a fragmented response left the buffer on the list with TX_ONGOING still set.\n\nA remote AVRCP Controller can trigger this deterministically: it issues a vendor-dependent command whose response exceeds one AVRCP fragment (for example GetElementAttributes or GetCapabilities), lets bt_avrcp_tg_vendor_tx_work() emit the START fragment, and then drops the ACL link instead of sending REQ",
+      "published": "2026-11-03T14:17:38.933",
+      "last_modified": "2026-11-03T14:17:39.063",
+      "cvss": 4.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85033"
+    },
+    {
+      "cve": "CVE-2026-85032",
+      "title": "CVE-2026-85032",
+      "description": "The MCTP over USB device class in subsys/pmci/mctp/mctp_usb.c splits RX handling across two threads: the system workqueue runs mctp_usb_class_out_work(), which parses host OUT data byte by byte and fills a packet buffer at usb->rx_pkt, while the USB device stack thread runs mctp_usb_class_disable(). The disable handler used k_work_cancel(), which removes a queued work item but returns immediately without waiting for a handler that is already running, and then called mctp_usb_reset_rx_state() to mctp_pktbuf_free() the packet buffer the worker may still be using.\n\nBoth entry points into mctp_usb_class_disable() are driven by the attached USB host: a SET_CONFIGURATION request and a USB bus reset both reach it via usbd_config_reset() in subsys/usb/device_next/usbd_config.c. A host that streams partial MCTP frames on the bulk OUT endpoint and repeatedly forces a configuration change or bus re",
+      "published": "2026-11-03T14:17:38.707",
+      "last_modified": "2026-11-03T14:17:38.847",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85032"
+    },
+    {
+      "cve": "CVE-2026-120572",
+      "title": "CVE-2026-120572",
+      "description": "Incorrect boundary conditions in the Layout: Block and Inline component. This vulnerability was fixed in Firefox 159.0.1.",
+      "published": "2026-11-03T14:17:35.447",
+      "last_modified": "2026-11-03T14:17:35.447",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120572"
+    },
+    {
+      "cve": "CVE-2026-119742",
+      "title": "CVE-2026-119742",
+      "description": "Nagios XI before 2026R2 contains an OS command injection vulnerability in the MIB upload feature where the install_mib() function in mibs.php sanitizes uploaded filenames with an incomplete character deny-list that omits semicolons and pipes before passing them to a grep command executed via exec(). An authenticated administrator can upload a MIB file with a crafted filename using tab characters to bypass the deny-list and pipe to sh via a multipart POST request to mibs.php, resulting in arbitrary OS command execution as the web server user.",
+      "published": "2026-11-03T14:17:34.843",
+      "last_modified": "2026-11-03T14:17:34.843",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119742"
+    },
+    {
+      "cve": "CVE-2026-119179",
+      "title": "CVE-2026-119179",
+      "description": "A flaw in the connection management layer of the MongoDB Node.js driver can leave a pooled network connection in the pool for reuse while data from an earlier operation is still outstanding on it. In applications that enable an optional client-side operation timeout, an unauthenticated party that can send ordinary requests to the application may cause database replies to be paired with the wrong requests. This may result in unintended disclosure of other users' records, incorrect operation results being returned, and failures of legitimate requests.",
+      "published": "2026-11-03T14:17:33.617",
+      "last_modified": "2026-11-03T14:17:33.617",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119179"
+    },
+    {
+      "cve": "CVE-2026-99270",
+      "title": "CVE-2026-99270",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: Fix potential UAF in reqsk_timer_handler().\n\nWhen TCP socket migration fails at inet_ehash_insert() in\nreqsk_timer_handler(), we jump to the no_ownership: label\nand free the new reqsk immediately with __reqsk_free().\n\nThus, we must stop the new reqsk's timer before jumping to the\nlabel, but the timer might be missed since the cited commit,\nresulting in UAF.\n\nAs we are in the original reqsk's timer context, we can safely\ncall timer_delete_sync() for the new reqsk.\n\nLet's pass false to __inet_csk_reqsk_queue_drop() to stop\nthe new reqsk's timer.",
+      "published": "2026-11-03T13:17:24.097",
+      "last_modified": "2026-11-03T13:17:24.097",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99270"
+    },
+    {
+      "cve": "CVE-2026-76124",
+      "title": "CVE-2026-76124",
+      "description": "The BuddyBoss App plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 3.2.1 via the send_feedback function. This is due to insufficient file type validation that relies solely on the client-supplied Content-Type header without server-side content inspection or extension validation. This makes it possible for authenticated attackers, with subscriber-level access and above, to upload files that may be executable, which makes remote code execution possible. While uploaded files are deleted after email transmission, a race condition exists during SMTP execution that allows access to the file, and files persist indefinitely when wp_mail() fails.",
+      "published": "2026-11-03T13:17:23.413",
+      "last_modified": "2026-11-03T13:17:23.547",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76124"
+    },
+    {
+      "cve": "CVE-2026-65160",
+      "title": "CVE-2026-65160",
+      "description": "NVIDIA nvJPEG contains a vulnerability where an attacker could cause a divide-by-zero. A successful exploit of this vulnerability might lead to denial of service.",
+      "published": "2026-11-03T13:17:23.053",
+      "last_modified": "2026-11-03T14:17:37.000",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65160"
+    },
+    {
+      "cve": "CVE-2026-121458",
+      "title": "CVE-2026-121458",
+      "description": "Instatic before 0.0.21 contains a missing authorization vulnerability in its AI/MCP content read tools that allows low-privileged authenticated users with ai.chat and content.edit.own capabilities to access data rows belonging to other users by calling content_get_document and content_list_documents without the object-level authorization checks enforced by the normal HTTP API. Attackers can use the MCP interface to retrieve private or unpublished draft content and enumerate rows from the posts system table, resulting in cross-user data disclosure.",
+      "published": "2026-11-03T13:17:21.997",
+      "last_modified": "2026-11-03T13:17:21.997",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121458"
+    },
+    {
+      "cve": "CVE-2026-108060",
+      "title": "CVE-2026-108060",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:CVE-2026-108060: Nombre in ‘/Trabajadores/Create’.",
+      "published": "2026-11-03T13:17:19.277",
+      "last_modified": "2026-11-03T14:17:24.390",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108060"
+    },
+    {
+      "cve": "CVE-2026-108059",
+      "title": "CVE-2026-108059",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108059: Observaciones in ‘/Terceros/Create’;",
+      "published": "2026-11-03T13:17:19.127",
+      "last_modified": "2026-11-03T14:17:24.250",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108059"
+    },
+    {
+      "cve": "CVE-2026-108058",
+      "title": "CVE-2026-108058",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108058: Nombre in ‘/PlantillasMail/Edit’;",
+      "published": "2026-11-03T13:17:18.980",
+      "last_modified": "2026-11-03T14:17:24.113",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108058"
+    },
+    {
+      "cve": "CVE-2026-108057",
+      "title": "CVE-2026-108057",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108057: Nombre in ‘/PlantillasPdf/Edit/1273129’;",
+      "published": "2026-11-03T13:17:18.830",
+      "last_modified": "2026-11-03T14:17:23.957",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108057"
+    },
+    {
+      "cve": "CVE-2026-108056",
+      "title": "CVE-2026-108056",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108056: NombrePF in ‘/Empresas/Create’;",
+      "published": "2026-11-03T13:17:18.680",
+      "last_modified": "2026-11-03T14:17:23.813",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108056"
+    },
+    {
+      "cve": "CVE-2026-108055",
+      "title": "CVE-2026-108055",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108055: Nombre in ‘/Inmuebles/Create’;",
+      "published": "2026-11-03T13:17:18.527",
+      "last_modified": "2026-11-03T14:17:23.667",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108055"
+    },
+    {
+      "cve": "CVE-2026-108054",
+      "title": "CVE-2026-108054",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108054: Nombre in ‘/Familias/Edit/{id}’;",
+      "published": "2026-11-03T13:17:18.377",
+      "last_modified": "2026-11-03T14:17:23.330",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108054"
+    },
+    {
+      "cve": "CVE-2026-108053",
+      "title": "CVE-2026-108053",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108053: Nombre in ‘/CuentasCorrientes/Create’;",
+      "published": "2026-11-03T13:17:18.227",
+      "last_modified": "2026-11-03T14:17:23.130",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108053"
+    },
+    {
+      "cve": "CVE-2026-108052",
+      "title": "CVE-2026-108052",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108052: Codigo in ‘/CategoriasFicheros/Edit/{id}’;",
+      "published": "2026-11-03T13:17:18.073",
+      "last_modified": "2026-11-03T14:17:20.073",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108052"
+    },
+    {
+      "cve": "CVE-2026-108051",
+      "title": "CVE-2026-108051",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108051: Nombre in ‘/Articulos/Create’;",
+      "published": "2026-11-03T13:17:17.937",
+      "last_modified": "2026-11-03T14:17:19.080",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108051"
+    },
+    {
+      "cve": "CVE-2026-108050",
+      "title": "CVE-2026-108050",
+      "description": "A stored Cross-Site Scripting (XSS) vulnerability in Alosuite that affects the delivery note functionality. Insufficient sanitization and encoding of the specified fields allow JavaScript to be stored, which executes in other users’ browsers when they view the affected records. Exploitation requires authenticated access to the affected functionality. The code can alter the displayed content and perform actions within the context of the victim’s session. The list of features, parameters, and endpoints is as follows:\n\nCVE-2026-108050: ReferenceOtherParty in ‘/Documents/DeliveryNotes/Edit/{id}’;",
+      "published": "2026-11-03T13:17:17.783",
+      "last_modified": "2026-11-03T14:17:18.813",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108050"
+    },
+    {
+      "cve": "CVE-2026-108049",
+      "title": "CVE-2026-108049",
+      "description": "Clickjacking vulnerability in the Alosuite web application. The affected login interface can be embedded in a web page controlled by an attacker because it does not implement adequate user interface protection mechanisms, such as the X-Frame-Options header or an appropriate Content-Security-Policy (frame-ancestors) directive. By tricking a victim into interacting with a malicious web page, an attacker can trigger unwanted actions within the Alosuite application embedded in the frame, which could compromise the integrity of user interactions and facilitate further attacks against authenticated users.",
+      "published": "2026-11-03T13:17:17.630",
+      "last_modified": "2026-11-03T14:17:18.383",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108049"
+    },
+    {
+      "cve": "CVE-2026-108048",
+      "title": "CVE-2026-108048",
+      "description": "Vulnerability due to a lack of request limits in Alosuite’s password recovery functionality. The ‘/Account/resetPwd’ endpoint does not enforce adequate restrictions on the number or frequency of password reset requests sent for a single account. As a result, a remote attacker can repeatedly call the endpoint to generate an unlimited number of password reset emails addressed to a user, causing an email flood and enabling abuse of the password recovery mechanism. The absence of request limits or other controls against automation can harm legitimate users, consume application and email infrastructure resources, and facilitate automated attacks against the password recovery service.",
+      "published": "2026-11-03T13:17:17.480",
+      "last_modified": "2026-11-03T14:17:18.060",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108048"
+    },
+    {
+      "cve": "CVE-2026-108047",
+      "title": "CVE-2026-108047",
+      "description": "Inadequate authorization vulnerability in Alosuite’s user invitation functionality. The ‘/Requests/userInvitation’ endpoint does not properly validate the assignment of privileges on the server, allowing an attacker to manipulate the invitation parameters during the request process. By intercepting and modifying a legitimate invitation request, an unauthenticated attacker can assign administrative privileges to a newly invited user without the appropriate authorization checks. A successful exploit results in unauthorized privilege escalation, granting full administrative access to the affected application.",
+      "published": "2026-11-03T13:17:17.337",
+      "last_modified": "2026-11-03T14:17:17.857",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108047"
+    },
+    {
+      "cve": "CVE-2026-108046",
+      "title": "CVE-2026-108046",
+      "description": "Direct Object Reference (IDOR) vulnerability in Alosuite due to insufficient authorization checks when processing object identifiers. By modifying the identifier provided to the ‘/Companies/Edit/{id}’ endpoint, an attacker can access information associated with other companies or users without the appropriate authorization. The vulnerability allows unauthenticated remote attackers to enumerate valid object identifiers and retrieve information that should be restricted to authorized users, resulting in the unauthorized disclosure of application data.",
+      "published": "2026-11-03T13:17:17.167",
+      "last_modified": "2026-11-03T14:17:17.680",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108046"
+    },
     {
       "cve": "CVE-2026-99269",
       "title": "CVE-2026-99269",
@@ -381,7 +624,7 @@
       "title": "CVE-2026-119843",
       "description": "A flaw was found in GStreamer's gst-plugins-good package. The FLV media demuxer does not properly validate buffer sizes and data availability when processing enhanced audio and video tags in malformed or truncated FLV streams. A remote attacker could exploit this vulnerability by providing a specially crafted FLV media file that, when opened or streamed by a GStreamer-based application, triggers an assertion failure or a process crash, leading to denial of service.",
       "published": "2026-11-03T10:17:16.113",
-      "last_modified": "2026-11-03T10:17:16.260",
+      "last_modified": "2026-11-03T14:17:35.010",
       "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119843"
     },
@@ -561,7 +804,7 @@
       "title": "CVE-2026-105980",
       "description": "Improper input validation in the WireGuard VPN function may allow a remote attacker with high privileges to inject system commands and execute them with root privileges.",
       "published": "2026-11-03T09:17:10.073",
-      "last_modified": "2026-11-03T09:17:10.073",
+      "last_modified": "2026-11-03T14:17:17.180",
       "cvss": 8.6,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105980"
     },
@@ -768,7 +1011,7 @@
       "title": "CVE-2026-120578",
       "description": "The AI Alt Text Generator plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.7.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to modify the alt text, and optionally the title, caption, and description of arbitrary attachments owned by other users. Exploiting this vulnerability requires a Contributor-level account to retrieve the nonce from the page source of post.php, post-new.php, or upload.php; additionally, overwriting post_title, post_excerpt, and post_content requires the plugin's set_title, set_caption, or set_description options to be enabled.",
       "published": "2026-11-03T05:18:34.467",
-      "last_modified": "2026-11-03T05:18:34.620",
+      "last_modified": "2026-11-03T14:17:35.590",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120578"
     },
@@ -813,7 +1056,7 @@
       "title": "CVE-2026-120561",
       "description": "The JetFormBuilder — Dynamic Blocks Form Builder plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'do_action' function in the 'Update_Options' action class in all versions up to, and including, 3.6.2. This makes it possible for unauthenticated attackers to modify JetEngine Options Page values when an administrator has configured a form with the \"Update Options\" post-submission action. The vulnerability requires that both JetFormBuilder and JetEngine are installed and active, and that an administrator has specifically configured a form with the Update Options action.",
       "published": "2026-11-03T05:18:33.447",
-      "last_modified": "2026-11-03T05:18:33.600",
+      "last_modified": "2026-11-03T14:17:35.287",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120561"
     },
@@ -858,7 +1101,7 @@
       "title": "CVE-2026-120544",
       "description": "The Academy LMS – AI Course Builder, Quizzes, Certificates & eLearning plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 4.0.1 via the 'id' parameter. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary .html files on the server. The plugin appends a '.html' extension to the attacker-supplied path before reading it, so files with any other extension — including wp-config.php — are out of reach. The file's contents are returned in full in the REST JSON response's content field.",
       "published": "2026-11-03T05:18:32.427",
-      "last_modified": "2026-11-03T05:18:32.583",
+      "last_modified": "2026-11-03T14:17:35.153",
       "cvss": 4.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120544"
     },
@@ -903,7 +1146,7 @@
       "title": "CVE-2026-111464",
       "description": "The WP Fastest Cache plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.5.3. The plugin caches the response of Core’s wp-activate.php without honoring its no-store/no-cache headers, the wp-activate-* cookie, or the WP_INSTALLING state, writing the credential-bearing activation response to a publicly accessible cache file. This makes it possible for unauthenticated attackers to retrieve the plaintext username and twelve-character password of the most recently activated Multisite registrant from that cached wp-activate.php response. Exploitation requires a Multisite subdirectory installation with public user and site registration enabled, and the credentials are only exposed after a genuine registrant follows their activation link.",
       "published": "2026-11-03T03:16:42.977",
-      "last_modified": "2026-11-03T03:16:43.173",
+      "last_modified": "2026-11-03T14:17:24.540",
       "cvss": 5.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111464"
     },
@@ -1173,7 +1416,7 @@
       "title": "CVE-2026-116958",
       "description": "A flaw was found in konflux-ci. This vulnerability allows arbitrary code execution due to improper quoting of shell variables in deployment scripts. A local attacker who can supply arguments to the affected scripts could exploit this issue to trigger unintended command substitution, executing commands with the privileges of the deployment runner.",
       "published": "2026-11-02T21:17:25.467",
-      "last_modified": "2026-11-02T21:17:25.467",
+      "last_modified": "2026-11-03T14:17:24.717",
       "cvss": 6.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116958"
     },
@@ -1563,253 +1806,10 @@
       "last_modified": "2026-11-03T05:18:50.550",
       "cvss": 8.4,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-59000"
-    },
-    {
-      "cve": "CVE-2026-58997",
-      "title": "CVE-2026-58997",
-      "description": "In validateImageInfo of Bitmap.cpp, there is a possible out-of-bounds read due to a precondition check failure. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.940",
-      "last_modified": "2026-11-02T20:17:54.940",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58997"
-    },
-    {
-      "cve": "CVE-2026-58995",
-      "title": "CVE-2026-58995",
-      "description": "In getEntryFileName of ZipFileRO.cpp, there is a possible memory safety issue due to a heap buffer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.830",
-      "last_modified": "2026-11-02T20:17:54.830",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58995"
-    },
-    {
-      "cve": "CVE-2026-58994",
-      "title": "CVE-2026-58994",
-      "description": "In multiple functions of NfcService.java, there is a possible permission bypass due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.717",
-      "last_modified": "2026-11-02T20:17:54.717",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58994"
-    },
-    {
-      "cve": "CVE-2026-58990",
-      "title": "CVE-2026-58990",
-      "description": "In l2c_fcr_process_peer_cfg_req of l2c_fcr.cc, there is a possible memory safety issue due to an integer overflow. This could lead to remote information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.603",
-      "last_modified": "2026-11-02T20:17:54.603",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58990"
-    },
-    {
-      "cve": "CVE-2026-58989",
-      "title": "CVE-2026-58989",
-      "description": "In setOemUnlockAllowedByUser of OemLockService.java, there is a possible way to bypass FRP due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.500",
-      "last_modified": "2026-11-02T20:17:54.500",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58989"
-    },
-    {
-      "cve": "CVE-2026-58988",
-      "title": "CVE-2026-58988",
-      "description": "In isValid of ShimConverter.cpp, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.390",
-      "last_modified": "2026-11-02T20:17:54.390",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58988"
-    },
-    {
-      "cve": "CVE-2026-58986",
-      "title": "CVE-2026-58986",
-      "description": "In notifyPictureProfileHandleSelection of MediaQualityService.java, there is a possible permission bypass due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.270",
-      "last_modified": "2026-11-02T20:17:54.270",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58986"
-    },
-    {
-      "cve": "CVE-2026-58985",
-      "title": "CVE-2026-58985",
-      "description": "In handleConnectInternal of RpcServerTrusty.cpp, there is a possible denial of service due to a logic error in the code. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.153",
-      "last_modified": "2026-11-02T20:17:54.153",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58985"
-    },
-    {
-      "cve": "CVE-2026-58984",
-      "title": "CVE-2026-58984",
-      "description": "In multiple locations, there is a possible memory corruption due to a use-after-free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:54.047",
-      "last_modified": "2026-11-03T05:18:50.333",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58984"
-    },
-    {
-      "cve": "CVE-2026-58979",
-      "title": "CVE-2026-58979",
-      "description": "In canPresent of PresentationController.java, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.930",
-      "last_modified": "2026-11-02T20:17:53.930",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58979"
-    },
-    {
-      "cve": "CVE-2026-58978",
-      "title": "CVE-2026-58978",
-      "description": "In multiple locations, there is a possible permission bypass due to a logic error in the code. This could lead to physical escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.827",
-      "last_modified": "2026-11-02T20:17:53.827",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58978"
-    },
-    {
-      "cve": "CVE-2026-58976",
-      "title": "CVE-2026-58976",
-      "description": "In getSelectionBySubIds of ProviderUtil.java, there is a possible cross-user data leak due to a logic error in the code. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.717",
-      "last_modified": "2026-11-02T20:17:53.717",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58976"
-    },
-    {
-      "cve": "CVE-2026-58975",
-      "title": "CVE-2026-58975",
-      "description": "In multiple locations, there is a possible out-of-bounds write due to a missing bounds check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.600",
-      "last_modified": "2026-11-02T20:17:53.600",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58975"
-    },
-    {
-      "cve": "CVE-2026-58974",
-      "title": "CVE-2026-58974",
-      "description": "In multiple locations, there is a possible permission bypass due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.490",
-      "last_modified": "2026-11-02T20:17:53.490",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58974"
-    },
-    {
-      "cve": "CVE-2026-58971",
-      "title": "CVE-2026-58971",
-      "description": "In _mupdf_get_hdr of wprint_mupdf.c, there is a possible out-of-bounds read due to an integer overflow. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.380",
-      "last_modified": "2026-11-02T20:17:53.380",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58971"
-    },
-    {
-      "cve": "CVE-2026-58970",
-      "title": "CVE-2026-58970",
-      "description": "In deliverResult of AppTimeTracker.java, there is a possible background activity launch due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.263",
-      "last_modified": "2026-11-03T05:18:50.127",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58970"
-    },
-    {
-      "cve": "CVE-2026-58969",
-      "title": "CVE-2026-58969",
-      "description": "In multiple functions of MediaQualityService.java, there is a possible permission bypass due to a missing permission check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.150",
-      "last_modified": "2026-11-02T20:17:53.150",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58969"
-    },
-    {
-      "cve": "CVE-2026-58968",
-      "title": "CVE-2026-58968",
-      "description": "In oapvd_vlc_metadata of oapv_vlc.c, there is a possible memory corruption due to a double free. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:53.030",
-      "last_modified": "2026-11-02T20:17:53.030",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58968"
-    },
-    {
-      "cve": "CVE-2026-58966",
-      "title": "CVE-2026-58966",
-      "description": "In multiple functions of hppsfilter.c, there is a possible out-of-bounds write due to a stack buffer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.913",
-      "last_modified": "2026-11-02T20:17:52.913",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58966"
-    },
-    {
-      "cve": "CVE-2026-58965",
-      "title": "CVE-2026-58965",
-      "description": "In handleAudioEffectBroadcast of MusicFxHelper.java, there is a possible permission bypass due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.807",
-      "last_modified": "2026-11-03T05:18:49.913",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58965"
-    },
-    {
-      "cve": "CVE-2026-58964",
-      "title": "CVE-2026-58964",
-      "description": "In checkDestination of SmsUsageMonitor.java, there is a possible permission bypass due to improper input validation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.700",
-      "last_modified": "2026-11-02T20:17:52.700",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58964"
-    },
-    {
-      "cve": "CVE-2026-58963",
-      "title": "CVE-2026-58963",
-      "description": "In multiple locations, there is a possible denial of service due to improper input validation. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.590",
-      "last_modified": "2026-11-02T20:17:52.590",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58963"
-    },
-    {
-      "cve": "CVE-2026-58962",
-      "title": "CVE-2026-58962",
-      "description": "In moveTaskToFrontLocked of ActivityTaskManagerService.java, there is a possible permission bypass due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.490",
-      "last_modified": "2026-11-02T20:17:52.490",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58962"
-    },
-    {
-      "cve": "CVE-2026-58961",
-      "title": "CVE-2026-58961",
-      "description": "In moveTaskToFrontLocked of ActivityTaskManagerService.java, there is a possible background activity launch due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.387",
-      "last_modified": "2026-11-02T20:17:52.387",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58961"
-    },
-    {
-      "cve": "CVE-2026-58957",
-      "title": "CVE-2026-58957",
-      "description": "In resolveToHeavyWeightSwitcherIfNeeded of ActivityStarter.java, there is a possible background activity launch due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.280",
-      "last_modified": "2026-11-03T05:18:49.677",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58957"
-    },
-    {
-      "cve": "CVE-2026-58956",
-      "title": "CVE-2026-58956",
-      "description": "In modpowF4 of avb_rsa.c, there is a possible signature verification bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.167",
-      "last_modified": "2026-11-02T20:17:52.167",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58956"
-    },
-    {
-      "cve": "CVE-2026-58955",
-      "title": "CVE-2026-58955",
-      "description": "In updateNotificationChannel of PreferencesHelper.java, there is a possible ui obfuscation issue due to a logic error in the code. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:52.060",
-      "last_modified": "2026-11-02T20:17:52.060",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58955"
     }
   ],
-  "total_results": 684,
+  "total_results": 711,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 484
+  "start_index": 511
 }
