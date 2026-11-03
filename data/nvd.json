@@ -1,12 +1,597 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-31T23%3A00%3A00.000&pubEndDate=2026-11-03T08%3A36%3A51.000&resultsPerPage=200&startIndex=419",
-  "fetched_at": "2026-11-03T08:36:51+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-10-31T23%3A00%3A00.000&pubEndDate=2026-11-03T12%3A23%3A40.000&resultsPerPage=200&startIndex=484",
+  "fetched_at": "2026-11-03T12:23:40+00:00",
   "window_days": 3,
   "window_start": "2026-11-01",
   "window_end": "2026-11-03",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-99269",
+      "title": "CVE-2026-99269",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Wait for SCX_OPSS_DISPATCHING before moving tasks off DSQs\n\nA task can be found on a non-local DSQ while the CPU which dispatched it\nis still running ops.dequeue() and hasn't cleared SCX_OPSS_DISPATCHING.\nThe DSQ consume and move paths don't wait for the dispatch to finish and\ncan operate on the task concurrently with the dispatcher.\n\nCall scx_wait_dispatching() in scx_move_local_task_to_local_dsq(),\nunlink_dsq_and_switch_rq_lock() and move_task_between_dsqs() before they\noperate on the task. In scx_move_local_task_to_local_dsq(), wait before\nscx_resolve_local_dsq() as it may update p->scx.flags.",
+      "published": "2026-11-03T12:17:34.117",
+      "last_modified": "2026-11-03T12:17:34.117",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99269"
+    },
+    {
+      "cve": "CVE-2026-99268",
+      "title": "CVE-2026-99268",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: wake ring pollers for local task_work\n\nWith IORING_SETUP_DEFER_TASKRUN completions are queued as local work, and\nonly become CQEs when the submitter enters the kernel to wait for events.\nFor an application that finds out via poll() or epoll on the ring fd when\nit is time to do that, io_uring_poll() reports EPOLLIN if local work is\npending.\n\nThat only helps if the work is there at the time of the call. When\nDEFER_TASKRUN was added, io_req_local_work_add() did io_cqring_wake(),\nwhich took care of tasks sleeping in poll() as well. Then polling got a\nwait queue of its own, ->poll_wq, and the wake up in\nio_req_local_work_add() was replaced by waking the submitter directly.\nSince then ->poll_wq is only woken when CQEs are committed, which for\nsuch a ring is done by the very task that is waiting to be told to:\n\n  sub",
+      "published": "2026-11-03T12:17:33.980",
+      "last_modified": "2026-11-03T12:17:33.980",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99268"
+    },
+    {
+      "cve": "CVE-2026-99267",
+      "title": "CVE-2026-99267",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/napi: make stale entries time out after 60s\n\nWith dynamic tracking a NAPI id that hasn't been seen for a minute is\nmeant to be dropped from the list the ring busy polls. The timeout is\nadded to jiffies, but it is defined as 60 * SEC_CONVERSION, and\nSEC_CONVERSION isn't the number of jiffies in a second. It is the\ninternal factor of __timespec64_to_jiffies(), HZ scaled up by\nSEC_JIFFIE_SC bits. For HZ=1000 that is 1000 << 22, which puts the\ntimeout at about eight years. On 32-bit the multiplication overflows.\n\nSo entries are never removed, and every id that a socket of the ring\never had keeps being polled on each wait.",
+      "published": "2026-11-03T12:17:33.860",
+      "last_modified": "2026-11-03T12:17:33.860",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99267"
+    },
+    {
+      "cve": "CVE-2026-99266",
+      "title": "CVE-2026-99266",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/zcrx: fix buffer offsets in areas above 4GB\n\nio_zcrx_queue_cqe() computes the offset of the buffer in its area from\nnet_iov_idx(), which is an unsigned int, so the shift is done in 32 bits\nand only the result is widened to the u64 that goes into the CQE. An area\ncan be up to 1TB in size. For every niov beyond the first 4GB the CQE\npoints the application at a buffer 4GB, or a multiple of that, below the\none which has the data. It reads the wrong data, and then returns a\nbuffer it doesn't own via the refill queue while the real one is never\ngiven back.",
+      "published": "2026-11-03T12:17:33.747",
+      "last_modified": "2026-11-03T12:17:33.747",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99266"
+    },
+    {
+      "cve": "CVE-2026-99265",
+      "title": "CVE-2026-99265",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/openclose: keep the lock in io_pipe_fixed()\n\nio_pipe_fixed() installs both ends of the pipe in the fixed file table,\ndrops ->uring_lock, and copies the slot numbers to the application. If\nthat faults, it takes the lock again and removes whatever is in these\nslots.\n\nIf the request is run by io-wq the lock really is dropped in between, and\nthe slots are visible to everybody else. By the time the error path gets\nto them, they may have been closed and reused, by IORING_OP_CLOSE and a\ndirect open or accept, or by IORING_REGISTER_FILES_UPDATE. Then a file is\nremoved from the table that has nothing to do with the failed request.\n\nDo the copy with the lock held. Faulting in user memory under\n->uring_lock is fine, the registration paths do it all the time.",
+      "published": "2026-11-03T12:17:33.627",
+      "last_modified": "2026-11-03T12:17:33.627",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99265"
+    },
+    {
+      "cve": "CVE-2026-99264",
+      "title": "CVE-2026-99264",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/net: don't retry recv on uncommitted buffers\n\nCommit 41b70df5b38b (\"io_uring/net: commit partial buffers on retry\")\ncommits ring provided buffers when a receive is going to be retried after\na partial transfer, so that another request using the same buffer group\ncan't be handed the memory the first one keeps receiving into. It commits\nthe number of bytes received so far. That does the job for a single\nbuffer which is consumed as a whole, but the request hangs on to all it\nhas mapped:\n\n- For a buffer ring with IOU_PBUF_RING_INC only these bytes are consumed.\n  The rest of the buffer stays at the head of the ring.\n- For a bundle only the buffers which hold these bytes are consumed, the\n  others that were peeked stay in the ring.\n\nIn both cases the next receive with that buffer group gets memory that\nthe retried re",
+      "published": "2026-11-03T12:17:33.490",
+      "last_modified": "2026-11-03T12:17:33.490",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99264"
+    },
+    {
+      "cve": "CVE-2026-99263",
+      "title": "CVE-2026-99263",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/poll: avoid retry wakeup loss when dropping ownership\n\nIf a wakeup sets IO_POLL_RETRY_FLAG between the owning task consuming\nthe existing instance of IO_POLL_RETRY_FLAG and the loop check\nof io_poll_check_events(), then we stall on processing the request\nuntil an unrelated wakeup comes along.\n\nUsing atomic_cmpxchg instead of atomic_sub_return to guarantee both the\ncount v and poll_refs are 0 and no wake-ups are missed.",
+      "published": "2026-11-03T12:17:33.347",
+      "last_modified": "2026-11-03T12:17:33.347",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99263"
+    },
+    {
+      "cve": "CVE-2026-99262",
+      "title": "CVE-2026-99262",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/timeout: don't lose a cancel as io-wq arms a timeout\n\nAn IORING_OP_TIMEOUT run by io-wq, because of IOSQE_ASYNC, has the same\nproblem as poll, futex and waitid. io_wq_submit_work() looks at\nIO_WQ_WORK_CANCEL once, before it issues the request. A cancel in between\nflags the work, gets -EALREADY, and searches ->timeout_list in vain,\nwhile the worker then adds the request and starts the timer:\n\n  io-wq worker                          io_try_cancel()\n  io_wq_submit_work()\n    IO_WQ_WORK_CANCEL isn't set\n                                        io_async_cancel_one()\n                                          sets IO_WQ_WORK_CANCEL\n                                          = -EALREADY\n                                        io_timeout_cancel() = -ENOENT\n    io_timeout()\n      adds the request to ->timeout_list\n      hr",
+      "published": "2026-11-03T12:17:33.210",
+      "last_modified": "2026-11-03T12:17:33.210",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99262"
+    },
+    {
+      "cve": "CVE-2026-99261",
+      "title": "CVE-2026-99261",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: correct reservation fence slots for userq per-vm BOs eviction\n\nIt fixes both the move overflow and the eviction fence add for\nevicting these per-vm BOs.",
+      "published": "2026-11-03T12:17:33.090",
+      "last_modified": "2026-11-03T12:17:33.090",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99261"
+    },
+    {
+      "cve": "CVE-2026-99260",
+      "title": "CVE-2026-99260",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: fix resident conversion in ntfs_new_attr_flags\n\nWhen setting sparse/compressed flags on a resident attribute, the\nfunction skipped the resident-to-non-resident conversion and\nterminated.",
+      "published": "2026-11-03T12:17:32.970",
+      "last_modified": "2026-11-03T12:17:32.970",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99260"
+    },
+    {
+      "cve": "CVE-2026-99259",
+      "title": "CVE-2026-99259",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc/tegra: pmc: Fix uninitialised clock rate\n\nFor legacy 32-bit Tegra devices, the warning in the\ntegra_pmc_enter_suspend_mode() function is being triggered because the\nearly_pmc->rate variable is never configured and hence, always 0. This\nissue started occurring after updating the PMC driver to create the PMC\ncontext dynamically which causes the 'rate' to be set in the new dynamic\ncontext, but missed updating the rate in the early PMC context.\n\nFix this by initialising the early_pmc->rate variable for 32-bit Tegra\ndevices when the rate for the PMC context is initialised.\n\n[treding@nvidia.com: move assignment to existing #ifdef block]",
+      "published": "2026-11-03T12:17:32.847",
+      "last_modified": "2026-11-03T12:17:32.847",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99259"
+    },
+    {
+      "cve": "CVE-2026-99258",
+      "title": "CVE-2026-99258",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/hyperv: Avoid using per-cpu output page in hv_apicid_to_vp_index()\n\nhv_apicid_to_vp_index() currently uses the per-cpu hypercall input\nand output pages. This function is called when running in VTL2 and\nwhen running in an SEV-SNP CoCo VM with no paravisor. In the former\ncase, the output page is allocated, but in the latter case it is\nnot, so the hypervisor stores the output VP index in memory that has\nnot been allocated by the guest.\n\nFix this by using the input page for both input and output. The\nhypercall has very small input and output, so sharing the same\npage for both is straightforward. An alternative fix is to\nallocate the per-cpu output page when running in an SEV-SNP CoCo\nguest, but this uses significantly more memory, particularly\nwith larger vCPUs counts.",
+      "published": "2026-11-03T12:17:32.713",
+      "last_modified": "2026-11-03T12:17:32.713",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99258"
+    },
+    {
+      "cve": "CVE-2026-99257",
+      "title": "CVE-2026-99257",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: shared: gracefully handle no-device lookup of shared GPIOs\n\nWe use platform lookup tables for shared GPIOs. This mechanism needs a\nstruct device to work so fwnode-based lookup with no device associated\ncurrently causes a NULL-pointer deference.\n\nAdding this functionality will require a larger rework and it has never\nworked anyway so add a check that allows the kernel to gracefully handle\nthis situation with an error ahead of implementing that functionality as\na new feature.",
+      "published": "2026-11-03T12:17:32.590",
+      "last_modified": "2026-11-03T12:17:32.590",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99257"
+    },
+    {
+      "cve": "CVE-2026-99256",
+      "title": "CVE-2026-99256",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm cache: fix issue with background work locking\n\ndm cache used a rw_semaphore for background_work_lock. Write locks on\nrw_semaphores have strict owner semantics, but there was no guarantee\nthat the process that locked background_work_lock was the same process\nthat unlocked it. This can be easily seen using a kernel compiled with\nCONFIG_DEBUG_RWSEMS. Given a dm cache device <cache>, run: 'dmsetup\nsuspend <cache> && dmsetup resume <cache>'. This will trigger a kernel\nwarning:\n\nDEBUG_RWSEMS_WARN_ON((rwsem_owner(sem) != current) && !rwsem_test_oflags(sem, RWSEM_NONSPINNABLE))\n\ntriggered by cache_resume(). To fix this, switch from a rw_semaphore to\na spinlock and a wait queue. dm cache already has a wait queue and\nassociated counter, migration_wait and nr_allocated_migrations, that was\ngetting woken up when background work ",
+      "published": "2026-11-03T12:17:32.437",
+      "last_modified": "2026-11-03T12:17:32.437",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99256"
+    },
+    {
+      "cve": "CVE-2026-99255",
+      "title": "CVE-2026-99255",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/io-wq: don't hide a link from cancellations\n\nA task that exits cancels its tracked requests and waits until they are\ngone. io_uring_cancel_generic() looks everywhere a request can be, and\ngoes to sleep if it found nothing to cancel. It is woken up each time\none of the requests of the task is completed by task work or freed.\n\nWhen io-wq is done with a request that has a link, there is a time in which\nthe next request of the link can't be found:\n\n  io_worker_handle_work()\n    io_assign_current_work(worker, NULL)\n    io_wq_free_work(work)\n      io_req_find_next()           // takes the link off the request\n      io_free_req()                // task work for the task\n    io_assign_current_work(worker, linked)\n      io_run_task_work()\n      cond_resched()\n      worker->cur_work = linked\n\nIt is not pending, it is not",
+      "published": "2026-11-03T12:17:32.290",
+      "last_modified": "2026-11-03T12:17:32.290",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99255"
+    },
+    {
+      "cve": "CVE-2026-99254",
+      "title": "CVE-2026-99254",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: don't flood a cancelling task with task_work\n\nio_ring_exit_work() asks each task which has used the ring to remove its\ntctx node, by task_work, and repeats that until the list is empty.\nio_tctx_exit_cb() doesn't touch the node while the task is in\nio_uring_cancel_generic(), which removes all the nodes at its end. So the\nwork item queues the callback again as soon as it has completed, for\nnothing.\n\nThat is more than a waste of time. task_work_run() only returns when it\nfinds the list empty. If the rings are released from inside the\ncancellation, because requests of other rings held the last references to\ntheir files, up to 64 work items keep sending callbacks to the one task\nwhich is running them. It never finds the list empty, never gets back to\nthe cancellation, the nodes stay, and so it goes on: a task with ",
+      "published": "2026-11-03T12:17:32.137",
+      "last_modified": "2026-11-03T12:17:32.137",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99254"
+    },
+    {
+      "cve": "CVE-2026-99253",
+      "title": "CVE-2026-99253",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/cancel: rearm local work wake up before sleep\n\nio_uring_try_cancel_requests() sets ->cq_wait_nr to 1 so that the next\nio_req_local_work_add() wakes the cancelling task. The add that takes the\ncount to zero is the only one that wakes, later ones see a count <= 0 and\nreturn. io_uring_cancel_generic() however only becomes\nTASK_INTERRUPTIBLE much later, so the one wake up can be spent on a\nrunning task. That is fine as long as the entry of that add is still\nqueued, as the io_local_work_pending() check then skips the sleep. It is\nnot if the add was delayed after queueing its entry:\n\nCPU0 (submitter in exec or exit)      CPU1 (io_req_local_work_add)\n                                      mpscq_push(req A)\nio_uring_try_cancel_requests()\n  io_run_local_work()  // runs req A\nio_uring_try_cancel_requests()\n  atomic_set(&c",
+      "published": "2026-11-03T12:17:32.013",
+      "last_modified": "2026-11-03T12:17:32.013",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99253"
+    },
+    {
+      "cve": "CVE-2026-99252",
+      "title": "CVE-2026-99252",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/mpscq: disable preemption while pushing\n\nA push makes the node the new tail, and then links it to its predecessor.\nIn between the queue isn't empty, but mpscq_pop() can't get at the node.\nThe consumers deal with that by trying again, with a cond_resched() in\nthe loop to give a preempted producer the chance to finish.\n\ncond_resched() doesn't do that if the consumer has a higher priority than\nthe producer and both have to use the same CPU:\n\n  producer (SCHED_OTHER)              consumer (SCHED_FIFO), same CPU\n  io_req_local_work_add()\n    mpscq_push()\n      prev = xchg(&q->tail, node)\n  <preempted>                         io_cqring_wait()\n                                        __io_run_local_work()\n                                      again:\n                                          cond_resched()  // nothing t",
+      "published": "2026-11-03T12:17:31.890",
+      "last_modified": "2026-11-03T12:17:31.890",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99252"
+    },
+    {
+      "cve": "CVE-2026-99251",
+      "title": "CVE-2026-99251",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nDrivers: hv: Avoid infinite retry loop in init_vp_index()\n\nThere is a retry loop in init_vp_index() where the CPUs from a certain\nnode are stripped out if they have already been in the allocated cpumask\nor not in HK_TYPE_MANAGED_IRQ housekeeping cpumask. If there is no\nCPU left, the allocated cpumask is ignored and the process is retried\nagain. However, if the HK_TYPE_MANAGED_IRQ housekeeping cpumask turns\nout not to contain any CPU in that particular node, that will become an\ninfinite retry loop.  This particular problem was reported by sashiko\n[1]. This should rarely happen, but we still need to guard against this.\n\nFix this infinite loop problem by also skipping NUMA node that has no\nhousekeeping CPU in the inner while loop of init_vp_index(). Also update\nthe early abort check to check for the absence of online house",
+      "published": "2026-11-03T12:17:31.740",
+      "last_modified": "2026-11-03T12:17:31.740",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99251"
+    },
+    {
+      "cve": "CVE-2026-99250",
+      "title": "CVE-2026-99250",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nprintk: Postpone kthread startup\n\nThere have been various bug reports related to SMP systems hanging\non boot. The reports vary but seem to have some overlap with regard\nto missed IPI's during SMP setup. The reports also show that\nreverting NBCON console usage allows the bugs to disappear.\n\nThe NBCON kthreads for console printing are started very early\nduring boot using early_initcall(). Since these kthreads are\nasynchronously enabling/disabling interrupts during early boot, they\nmay be interfering with early SMP setup on some hardware platforms.\n\nStarting the console printing kthreads later has shown to avoid the\nhanging on systems that could previously reproduce the issue.\n\nPostpone kthread starting until after all arch initcalls have\ncompleted.",
+      "published": "2026-11-03T12:17:31.603",
+      "last_modified": "2026-11-03T12:17:31.603",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99250"
+    },
+    {
+      "cve": "CVE-2026-99249",
+      "title": "CVE-2026-99249",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npid_namespace: make zap_pid_ns_processes() freezable\n\nWhen the init of a pid namespace exits, zap_pid_ns_processes() waits\nuntil all other pids in the namespace are freed. A tracer outside the\nnamespace that does not reap its traced zombies keeps those pids\nallocated, so this wait has no upper bound, and while it lasts every\nsuspend attempt fails:\n\n  Freezing user space processes failed after 20.006 seconds (2 tasks refusing to freeze, wq_busy=0):\n\nNeither wait is freezable. The first loop sleeps in do_wait(), which\nreturns -ERESTARTSYS on the freezer's fake signal; the loop then clears\nTIF_SIGPENDING and waits again without ever freezing. The final loop\nsleeps in TASK_INTERRUPTIBLE, and since nothing clears TIF_SIGPENDING\nthere, schedule() returns immediately after the first freeze attempt\nand the task spins until the ",
+      "published": "2026-11-03T12:17:31.460",
+      "last_modified": "2026-11-03T12:17:31.460",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99249"
+    },
+    {
+      "cve": "CVE-2026-99248",
+      "title": "CVE-2026-99248",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: xiic: restore non-managed runtime PM to fix clk WARN flood\n\nThe devres conversion replaced manual pm_runtime_enable()/disable() with\ndevm_pm_runtime_set_active_enabled() and dropped the remove-time runtime\nPM teardown. The managed release tears runtime PM down in the wrong\norder: it calls pm_runtime_dont_use_autosuspend() before\npm_runtime_disable(), i.e. while runtime PM is still enabled, and devres\nis LIFO so the devm_clk_get_enabled() release runs afterwards.\n\nAt remove(), pm_runtime_put_sync() leaves the device active with the\nautosuspend timer armed. Clearing use_autosuspend then makes rpm_idle()\nsuspend immediately, and xiic_i2c_runtime_suspend() clk_disable()s the\nclock. The later devm_clk_get_enabled() release clk_disable_unprepare()s\nthe already-disabled clock, so clk_core_disable() WARNs (\"clkN already\ndi",
+      "published": "2026-11-03T12:17:31.333",
+      "last_modified": "2026-11-03T12:17:31.333",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99248"
+    },
+    {
+      "cve": "CVE-2026-99247",
+      "title": "CVE-2026-99247",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Do not initialize tracefs work if tracing is disabled\n\nIf trace buffer allocation fails during early boot (e.g.  in\nearly_trace_init() -> allocate_trace_buffers()), tracing_disabled is\nleft set to 1 and the global trace array events list remains\nuninitialized.\n\nLater during boot, tracer_init_tracefs() (invoked via fs_initcall)\nqueues tracerfs_init_work asynchronously without checking if tracing was\ndisabled.  When tracer_init_tracefs_work_func() runs, it calls\nevent_trace_init() and init_tracer_tracefs(&global_trace, NULL)\nunconditionally.  This leads to __find_event_file() dereferencing an\nuninitialized tr->events list, causing an early boot NULL pointer\ndereference Oops:\n\n  BUG: Kernel NULL pointer dereference on read at 0x00000010\n  Faulting instruction address: 0xc000000000485be0\n  Oops: Kernel access of ba",
+      "published": "2026-11-03T12:17:31.190",
+      "last_modified": "2026-11-03T12:17:31.190",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99247"
+    },
+    {
+      "cve": "CVE-2026-99246",
+      "title": "CVE-2026-99246",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: protect node reset trace dump with node lock\n\nThe tipc_node_reset_links trace event asks tipc_node_dump() to walk the\nnode's link entries. Unlike the other node events that request link data,\nthis event runs without the node lock.\n\nThis permits bearer teardown to free a link while the trace callback is\ndumping it:\n\n  CPU 0                                CPU 1\n  trace_tipc_node_reset_links()\n    tipc_node_dump()\n      l = n->links[0].link\n                                       tipc_node_write_lock()\n                                       kfree(l)\n                                       n->links[0].link = NULL\n                                       tipc_node_write_unlock()\n      tipc_link_dump(l)\n\ntipc_link_dump() then dereferences the stale pointer. KASAN reported:\n\n  BUG: KASAN: slab-use-after-free in tipc_link_dum",
+      "published": "2026-11-03T12:17:31.030",
+      "last_modified": "2026-11-03T12:17:31.030",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99246"
+    },
+    {
+      "cve": "CVE-2026-99245",
+      "title": "CVE-2026-99245",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: Fix key_reject_and_link() race with keyring restriction\n\nThe restrict_link check in key_reject_and_link() is done before taking\nthe keyring semaphore, racing with a concurrent keyring_restrict()\nthat installs the restriction while holding the semaphore in write\nmode.\n\nMove the check to after __key_link_lock(), so it is done under the\nsemaphore, matching the pattern used in __key_create_or_update().",
+      "published": "2026-11-03T12:17:30.877",
+      "last_modified": "2026-11-03T12:17:30.877",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99245"
+    },
+    {
+      "cve": "CVE-2026-99244",
+      "title": "CVE-2026-99244",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npid_namespace: prevent TIF_NOTIFY_SIGNAL from interrupting the reaper\n\nSince commit 7fea700e04bd (\"zap_pid_ns_processes: clear\nTIF_NOTIFY_SIGNAL along with TIF_SIGPENDING\") zap_pid_ns_processes()\nclears TIF_NOTIFY_SIGNAL before every kernel_wait4() call. Otherwise\nkernel_wait4() doesn't sleep and returns -ERESTARTSYS if\nsignal_pending() is true and the reaper busy-waits.\n\nBut clearing TIF_NOTIFY_SIGNAL doesn't fix it. It can get raised again.\nFor example, klp_send_signals() sets it raw against any task that hasn't\ntransitioned yet. And it keeps sending it until the livepatch finishes.\n\nThe sleep loop waiting for pid_allocated to drop has the same problem\nand it doesn't even clear anything. So a schedule() in\nTASK_INTERRUPTIBLE returns immediately.\n\nUse a no_notify_signal guard. signal_pending() will ignore\nTIF_NOTIFY_SI",
+      "published": "2026-11-03T12:17:30.710",
+      "last_modified": "2026-11-03T12:17:30.710",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99244"
+    },
+    {
+      "cve": "CVE-2026-99243",
+      "title": "CVE-2026-99243",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio-wq: order the exit bit against worker creation task work\n\nio_wq_exit_workers() cancels task work for queued worker creation with\ntask_work_cancel_match(). That has a plain load of task->task_works.\n\nio_queue_worker_create() adds the new entry and tests IO_WQ_BIT_EXIT to\ncancel it if the workqueue is already on its way out.\n\nThat must be ordered. task_work_add() has a full barrier via cmpxchg().\nBut io_wq_exit_start() sets the bit with set_bit() which doesn't have\nany memory ordering.\n\nSo afaict, on weakly ordered architectures the exiting task may load\ntask_works before the store of the bit is visible. The other side tests\nthe bit before the store is visible as well. So the entry remains queued\nwith worker_refs and the exiting task waits on worker_done indefinitely.\n\nIf the task still has rings then io_uring_del_tctx",
+      "published": "2026-11-03T12:17:30.553",
+      "last_modified": "2026-11-03T12:17:30.553",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99243"
+    },
+    {
+      "cve": "CVE-2026-114442",
+      "title": "CVE-2026-114442",
+      "description": "Apache HertzBeat versions 1.7.1, 1.7.2, 1.7.3, 1.8.0, and 1.9.0 have incomplete XPath expression validation in the HTTP collector XML parsing path. An authenticated user with permission to create monitor templates can supply XPath expressions through metrics.aliasFields that are evaluated without the validation applied to parseScript. When processing a crafted XML response, repeated evaluation may consume excessive CPU resources and impair collector availability. This is a follow-up to the incomplete fix for CVE-2026-24343. The fix is included in Apache HertzBeat 1.9.1. Users should upgrade to 1.9.1 or a later version.",
+      "published": "2026-11-03T11:16:52.130",
+      "last_modified": "2026-11-03T11:16:52.130",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114442"
+    },
+    {
+      "cve": "CVE-2026-89293",
+      "title": "CVE-2026-89293",
+      "description": "In Eclipse Mnestix Browser versions 1.2.0 up until but excluding 2.3.0 it was possible for an unauthenticated attacker to perform actions that are only allowed to be executed by an authorized Mnestix user, like changing the Infrastructure settings or calling the connected and authenticated Mnestix AAS Generator backend.",
+      "published": "2026-11-03T10:17:20.257",
+      "last_modified": "2026-11-03T10:17:20.257",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89293"
+    },
+    {
+      "cve": "CVE-2026-89292",
+      "title": "CVE-2026-89292",
+      "description": "In Eclipse Mnestix Browser versions 1.6.0 up until but excluding 2.3.0 it was possible for an unauthenticated attacker to exfiltrate the MNESTIX_BACKEND_API_KEY for all configured Infrastructures.",
+      "published": "2026-11-03T10:17:20.077",
+      "last_modified": "2026-11-03T10:17:20.077",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89292"
+    },
+    {
+      "cve": "CVE-2026-89229",
+      "title": "CVE-2026-89229",
+      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') in the ShareActivity component of BlueLM Copilot (com.vivo.ai.copilot) allows a malicious application installed on the same device to write arbitrary files via a crafted ACTION_SEND intent with a ContentProvider-supplied file name containing '..' sequences.",
+      "published": "2026-11-03T10:17:19.913",
+      "last_modified": "2026-11-03T10:17:19.913",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-89229"
+    },
+    {
+      "cve": "CVE-2026-77778",
+      "title": "CVE-2026-77778",
+      "description": "ZohoCorp ManageEngine Key Manager Plus versions up to 7150 allow authenticated users to export certificates belonging to other users to their own registered key vaults.",
+      "published": "2026-11-03T10:17:19.773",
+      "last_modified": "2026-11-03T10:17:19.773",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77778"
+    },
+    {
+      "cve": "CVE-2026-77777",
+      "title": "CVE-2026-77777",
+      "description": "ManageEngine Key Manager Plus versions before 7151 are vulnerable to an improper access control issue that allow authenticated users to modify another user's ACME certificate deployment credentials.",
+      "published": "2026-11-03T10:17:19.640",
+      "last_modified": "2026-11-03T10:17:19.640",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77777"
+    },
+    {
+      "cve": "CVE-2026-77691",
+      "title": "CVE-2026-77691",
+      "description": "ZohoCorp ManageEngine Key Manager Plus versions before 7151 allow authenticated users to enter malicious input when configuring a Microsoft CA",
+      "published": "2026-11-03T10:17:18.890",
+      "last_modified": "2026-11-03T10:17:18.890",
+      "cvss": 8.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77691"
+    },
+    {
+      "cve": "CVE-2026-120333",
+      "title": "CVE-2026-120333",
+      "description": "The actions linked in the emails of the extension (e.g. to confirm a registration or the deletion of an account) do not reject requests with a missing or invalid hash. Instead, the frontend user given in the request is used. Unauthenticated attackers can therefore perform these actions for arbitrary active frontend users. This allows them to retrieve the email address or username of all frontend users and to delete arbitrary frontend user accounts.",
+      "published": "2026-11-03T10:17:18.270",
+      "last_modified": "2026-11-03T10:17:18.270",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120333"
+    },
+    {
+      "cve": "CVE-2026-120332",
+      "title": "CVE-2026-120332",
+      "description": "The HTML content of mails and tracked URLs are rendered unescaped in the backend module. Backend users with access to the mail module can inject arbitrary HTML and JavaScript, which is executed in the context of other backend users viewing the mail preview or report.",
+      "published": "2026-11-03T10:17:18.123",
+      "last_modified": "2026-11-03T10:17:18.123",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120332"
+    },
+    {
+      "cve": "CVE-2026-120331",
+      "title": "CVE-2026-120331",
+      "description": "Content of external URL mails, their stylesheets and images to embed is fetched by the server without validating the target host. Backend users with access to the mail module can make the server send requests to hosts in the internal network.",
+      "published": "2026-11-03T10:17:17.970",
+      "last_modified": "2026-11-03T10:17:17.970",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120331"
+    },
+    {
+      "cve": "CVE-2026-120330",
+      "title": "CVE-2026-120330",
+      "description": "Backend actions and ajax routes of the mail module do not check whether the backend user has access to the page of the requested mail or recipient group. Backend users with access to the mail module can view, change, send and export mails and recipient groups outside their web mounts, including the personal data of recipients.",
+      "published": "2026-11-03T10:17:17.820",
+      "last_modified": "2026-11-03T10:17:17.820",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120330"
+    },
+    {
+      "cve": "CVE-2026-120329",
+      "title": "CVE-2026-120329",
+      "description": "Saving the configuration of the mail backend module writes submitted settings to the page TSconfig without restricting them to the configuration options of the module. Backend users with access to the mail module can write arbitrary page TSconfig.",
+      "published": "2026-11-03T10:17:17.677",
+      "last_modified": "2026-11-03T10:17:17.677",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120329"
+    },
+    {
+      "cve": "CVE-2026-120328",
+      "title": "CVE-2026-120328",
+      "description": "The click tracking middleware does not validate the authentication code of a recipient if the code is omitted. Unauthenticated attackers can retrieve personal data of newsletter recipients, which is inserted into links of sent mails.",
+      "published": "2026-11-03T10:17:17.527",
+      "last_modified": "2026-11-03T10:17:17.527",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120328"
+    },
+    {
+      "cve": "CVE-2026-120327",
+      "title": "CVE-2026-120327",
+      "description": "The click tracking middleware accepts an arbitrary target URL and redirects to it. Attackers can misuse links to the website to redirect users to external sites.",
+      "published": "2026-11-03T10:17:17.363",
+      "last_modified": "2026-11-03T10:17:17.363",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120327"
+    },
+    {
+      "cve": "CVE-2026-119843",
+      "title": "CVE-2026-119843",
+      "description": "A flaw was found in GStreamer's gst-plugins-good package. The FLV media demuxer does not properly validate buffer sizes and data availability when processing enhanced audio and video tags in malformed or truncated FLV streams. A remote attacker could exploit this vulnerability by providing a specially crafted FLV media file that, when opened or streamed by a GStreamer-based application, triggers an assertion failure or a process crash, leading to denial of service.",
+      "published": "2026-11-03T10:17:16.113",
+      "last_modified": "2026-11-03T10:17:16.260",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119843"
+    },
+    {
+      "cve": "CVE-2026-119724",
+      "title": "CVE-2026-119724",
+      "description": "** UNSUPPORTED WHEN ASSIGNED ** Improper restriction of recursive entity references in DTDs ('XML entity expansion') vulnerability in Apache JClouds.\n\n\n\nThis issue affects Apache JClouds: all versions.\n\n\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the instance to trusted users.\n\n\n\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
+      "published": "2026-11-03T10:17:15.150",
+      "last_modified": "2026-11-03T10:17:15.150",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119724"
+    },
+    {
+      "cve": "CVE-2026-119641",
+      "title": "CVE-2026-119641",
+      "description": "** UNSUPPORTED WHEN ASSIGNED ** Improper input validation vulnerability in Apache Oozie. An authenticated Oozie user can reconfigure another tenant's\nworkflow job and change its ownership.\n\n\n\nThis issue affects Apache Oozie: all versions.\n\n\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the instance to trusted users.\n\n\n\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
+      "published": "2026-11-03T10:17:14.987",
+      "last_modified": "2026-11-03T10:17:14.987",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119641"
+    },
+    {
+      "cve": "CVE-2026-92610",
+      "title": "CVE-2026-92610",
+      "description": "In esmf-sdk-py-aspect-model-loader versions 2.1.2 to 2.2.1, the Aspect Model loader resolves cross-file model references by extracting the third and fourth colon-separated components of any urn:samm:… namespace declared in a parsed Turtle file to build a directory to scan. A model file containing @prefix x: <urn:samm:../../../foo:bar#> or @prefix x: <urn:samm:/abs/path:bar#> causes the loader to glob and parse *.ttl files from arbitrary directories outside the intended models root, merging their contents into the returned graph.",
+      "published": "2026-11-03T09:17:13.693",
+      "last_modified": "2026-11-03T09:17:13.693",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92610"
+    },
+    {
+      "cve": "CVE-2026-91075",
+      "title": "CVE-2026-91075",
+      "description": "The Eupago Gateway For Woocommerce WordPress plugin from 4.5.0 through 4.7.5 does not verify the authenticity of incoming payment-confirmation webhook requests in some configurations, allowing unauthenticated attackers to forge a payment confirmation and mark a pending order as paid without paying for it.",
+      "published": "2026-11-03T09:17:13.553",
+      "last_modified": "2026-11-03T09:17:13.553",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91075"
+    },
+    {
+      "cve": "CVE-2026-121024",
+      "title": "CVE-2026-121024",
+      "description": "Incorrect Authorization (CWE-863) in the Health Monitoring service in AxxonSoft AxxonNet before 3.28.0 on Linux allows a remote attacker in possession of a shared report token, which is intended for read-only access, to create, modify or delete monitoring alerts via the monitoring API.",
+      "published": "2026-11-03T09:17:12.337",
+      "last_modified": "2026-11-03T09:17:12.337",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121024"
+    },
+    {
+      "cve": "CVE-2026-121023",
+      "title": "CVE-2026-121023",
+      "description": "Insertion of Sensitive Information into Log File (CWE-532) in the ARP Agent component in AxxonSoft AxxonNet before 3.25.0 on Windows and Linux allows a local attacker with read access to ARP Agent log files or support packages to obtain the plaintext password of the LDAP directory service account via WARNING-level log entries that contain serialized user synchronization data.",
+      "published": "2026-11-03T09:17:12.177",
+      "last_modified": "2026-11-03T09:17:12.177",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121023"
+    },
+    {
+      "cve": "CVE-2026-121022",
+      "title": "CVE-2026-121022",
+      "description": "Use of Default Password (CWE-1393) in the web client in AxxonSoft Axxon One before 3.0.0 on Windows and Linux allows a remote unauthenticated attacker to log in as the built-in administrator with the default credentials on a newly installed system, because the web client did not enforce the mandatory change of the default password on first login.",
+      "published": "2026-11-03T09:17:11.980",
+      "last_modified": "2026-11-03T09:17:11.980",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121022"
+    },
+    {
+      "cve": "CVE-2026-121021",
+      "title": "CVE-2026-121021",
+      "description": "Plaintext Storage of a Password (CWE-256) in the SecurityManager shared configuration in AxxonSoft Axxon One before 3.1.0 on Windows and Linux allows a local attacker with read access to the configuration directory or to configuration backups to obtain the password of the LDAP directory service account via the main.conf configuration file.",
+      "published": "2026-11-03T09:17:11.807",
+      "last_modified": "2026-11-03T09:17:11.807",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121021"
+    },
+    {
+      "cve": "CVE-2026-121020",
+      "title": "CVE-2026-121020",
+      "description": "Exposure of Sensitive Information to an Unauthorized Actor (CWE-200) in the security configuration API in AxxonSoft Axxon One before 3.2.0 on Windows and Linux allows a remote authenticated user with limited privileges to enumerate all user accounts and roles configured in the system via the user configuration request, which returned the complete lists of users and roles regardless of the caller's permissions.",
+      "published": "2026-11-03T09:17:11.653",
+      "last_modified": "2026-11-03T09:17:11.653",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121020"
+    },
+    {
+      "cve": "CVE-2026-118448",
+      "title": "CVE-2026-118448",
+      "description": "A use of uninitialized memory vulnerability in the pybddisasm Python bindings affects nd_to_text. If the underlying text conversion fails, including failures caused by invalid parameters, the output buffer may remain uninitialized while still being converted into a Python return value. This may disclose residual process memory or cause the Python process to crash. Exploitation requires an application to invoke nd_to_text in a way that causes conversion to fail and to return or otherwise use the resulting output. The pybddisasm package is no longer maintained.",
+      "published": "2026-11-03T09:17:11.520",
+      "last_modified": "2026-11-03T09:17:11.520",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118448"
+    },
+    {
+      "cve": "CVE-2026-118447",
+      "title": "CVE-2026-118447",
+      "description": "A use of uninitialized memory vulnerability in the pybddisasm Python bindings may disclose process memory when instruction decoding fails. The nd_decode, nd_decode_ex, nd_decode_ex2, and nd_decode_with_context functions may return an INSTRUX object whose contents have not been initialized after an unsuccessful decoding operation, including failures caused by invalid parameters. Accessing members of the returned object may expose residual process memory. Exploitation requires an application to access and expose the returned object contents after a decoding failure. The pybddisasm package is no longer maintained.",
+      "published": "2026-11-03T09:17:11.387",
+      "last_modified": "2026-11-03T09:17:11.387",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118447"
+    },
+    {
+      "cve": "CVE-2026-118446",
+      "title": "CVE-2026-118446",
+      "description": "A use-after-free vulnerability in the pybddisasm Python bindings affects array-valued members of INSTRUX objects, including ND_OPERAND arrays. These arrays are exposed as Python lists whose elements reference memory owned by the parent INSTRUX object. Retaining a list or an element does not keep the parent allocation alive. Accessing an element after the parent INSTRUX object has been freed therefore accesses freed memory. Depending on how the element is used and whether the freed allocation has been reused, this may expose process memory or cause the Python process to crash. Exploitation requires an application to retain and subsequently access an array element after the parent object has been freed. The pybddisasm package is no longer maintained.",
+      "published": "2026-11-03T09:17:11.250",
+      "last_modified": "2026-11-03T09:17:11.250",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118446"
+    },
+    {
+      "cve": "CVE-2026-118445",
+      "title": "CVE-2026-118445",
+      "description": "A use-after-free vulnerability in the pybddisasm Python bindings affects structure-valued members of INSTRUX objects. These members are exposed through Python objects that reference memory owned by the parent INSTRUX object. A retained reference to a member does not keep the parent allocation alive. Accessing the member after the parent INSTRUX object has been freed therefore accesses freed memory. Depending on how the member is used and whether the freed allocation has been reused, this may expose process memory or cause the Python process to crash. Exploitation requires an application to retain and subsequently access a member reference after the parent object has been freed. The pybddisasm package is no longer maintained.",
+      "published": "2026-11-03T09:17:11.110",
+      "last_modified": "2026-11-03T09:17:11.110",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118445"
+    },
+    {
+      "cve": "CVE-2026-118444",
+      "title": "CVE-2026-118444",
+      "description": "Out-of-bounds read vulnerabilities in the pybddisasm Python bindings may disclose adjacent process memory during instruction decoding. The nd_decode function may read up to 15 bytes without checking the actual length of the supplied Python buffer. The nd_decode_ex, nd_decode_ex2, and nd_decode_with_context functions pass the caller-supplied buffer size to the decoder without validating it against the actual length of the Python buffer. Data read beyond the buffer may be exposed through nd_get_instrux_bytes, which returns a fixed-length list of 16 bytes. Exploitation requires an application to invoke the affected APIs with a short buffer or an oversized length and to expose the resulting bytes to an attacker. The pybddisasm package is no longer maintained.",
+      "published": "2026-11-03T09:17:10.937",
+      "last_modified": "2026-11-03T09:17:10.937",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118444"
+    },
+    {
+      "cve": "CVE-2026-115231",
+      "title": "CVE-2026-115231",
+      "description": "In Eclipse ThreadX versions 6.0.1 through 6.5.2.202603, the Module Manager lets a user-mode, memory-protected module post a forged callback request to another module's callback request queue. The receiving module's callback thread calls the function pointer in the request without checking that the Module Manager sent it, so the attacker's code runs with the receiving module's privilege; when that module runs in privileged mode, a user-mode module gains privileged execution.",
+      "published": "2026-11-03T09:17:10.797",
+      "last_modified": "2026-11-03T09:17:10.797",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115231"
+    },
+    {
+      "cve": "CVE-2026-113421",
+      "title": "CVE-2026-113421",
+      "description": "In Eclipse ThreadX versions 6.0.1 through 6.5.2.202603, ThreadX Modules does not revoke a module's trace-buffer-full callback when the module is stopped and unloaded. With event tracing enabled and a kernel-owned trace buffer still active, a later buffer wrap invokes the callback from privileged thread context after the module's code has been released, so a user-mode module can have its code run with kernel privileges after unload, or, once the memory is reused, redirect control flow or cause a fault.",
+      "published": "2026-11-03T09:17:10.647",
+      "last_modified": "2026-11-03T09:17:10.647",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113421"
+    },
+    {
+      "cve": "CVE-2026-109161",
+      "title": "CVE-2026-109161",
+      "description": "Insufficient bounds checking in the Digital I/O function may allow a remote attacker with high privileges to cause a denial of service.",
+      "published": "2026-11-03T09:17:10.497",
+      "last_modified": "2026-11-03T09:17:10.497",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109161"
+    },
+    {
+      "cve": "CVE-2026-105982",
+      "title": "CVE-2026-105982",
+      "description": "Improper input validation in the IPsec VPN function may allow a remote attacker with high privileges to inject system commands and execute them with root privileges.",
+      "published": "2026-11-03T09:17:10.353",
+      "last_modified": "2026-11-03T09:17:10.353",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105982"
+    },
+    {
+      "cve": "CVE-2026-105981",
+      "title": "CVE-2026-105981",
+      "description": "Improper input validation in the Digital I/O function may allow a remote attacker with high privileges to inject operating system commands and execute them with root privileges.",
+      "published": "2026-11-03T09:17:10.217",
+      "last_modified": "2026-11-03T09:17:10.217",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105981"
+    },
+    {
+      "cve": "CVE-2026-105980",
+      "title": "CVE-2026-105980",
+      "description": "Improper input validation in the WireGuard VPN function may allow a remote attacker with high privileges to inject system commands and execute them with root privileges.",
+      "published": "2026-11-03T09:17:10.073",
+      "last_modified": "2026-11-03T09:17:10.073",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105980"
+    },
+    {
+      "cve": "CVE-2026-105979",
+      "title": "CVE-2026-105979",
+      "description": "Improper input validation in the ZeroTier VPN function may allow a remote attacker with high privileges to inject system commands and execute them with root privileges.",
+      "published": "2026-11-03T09:17:09.930",
+      "last_modified": "2026-11-03T09:17:09.930",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105979"
+    },
+    {
+      "cve": "CVE-2026-105978",
+      "title": "CVE-2026-105978",
+      "description": "Improper input validation in management control functions may allow a remote attacker with high privileges to inject operating system commands and execute them with root privileges.",
+      "published": "2026-11-03T09:17:09.747",
+      "last_modified": "2026-11-03T09:17:09.747",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105978"
+    },
+    {
+      "cve": "CVE-2026-103327",
+      "title": "CVE-2026-103327",
+      "description": "The CryptoCloud WordPress plugin from 3.0.0 through 3.0.1 does not verify the authenticity of the payment notifications received by its gateway callback, as the integrity check is skipped while the webhook secret is left at its empty default, allowing unauthenticated attackers to mark arbitrary orders as paid or failed without any payment being made.",
+      "published": "2026-11-03T09:17:08.647",
+      "last_modified": "2026-11-03T09:17:08.647",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103327"
+    },
     {
       "cve": "CVE-2026-74846",
       "title": "CVE-2026-74846",
@@ -1221,595 +1806,10 @@
       "last_modified": "2026-11-02T20:17:52.060",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58955"
-    },
-    {
-      "cve": "CVE-2026-58953",
-      "title": "CVE-2026-58953",
-      "description": "In dec_vlc_read of oapv_vlc.c, there is a possible out-of-bounds read due to a heap buffer overflow. This could lead to remote information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.950",
-      "last_modified": "2026-11-02T20:17:51.950",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58953"
-    },
-    {
-      "cve": "CVE-2026-58951",
-      "title": "CVE-2026-58951",
-      "description": "In multiple locations, there is a possible permission bypass due to a missing permission check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.840",
-      "last_modified": "2026-11-02T20:17:51.840",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58951"
-    },
-    {
-      "cve": "CVE-2026-58949",
-      "title": "CVE-2026-58949",
-      "description": "In parseMetaData of StagefrightMetadataRetriever.cpp, there is a possible denial of service due to a stack buffer overflow. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.720",
-      "last_modified": "2026-11-02T20:17:51.720",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58949"
-    },
-    {
-      "cve": "CVE-2026-58946",
-      "title": "CVE-2026-58946",
-      "description": "In navigateUpTo of ActivityClientController.java, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.610",
-      "last_modified": "2026-11-03T05:18:49.403",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58946"
-    },
-    {
-      "cve": "CVE-2026-58945",
-      "title": "CVE-2026-58945",
-      "description": "In multiple locations, there is a possible side channel information leak due to improperly used crypto. This could lead to paired device information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.500",
-      "last_modified": "2026-11-02T20:17:51.500",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58945"
-    },
-    {
-      "cve": "CVE-2026-58944",
-      "title": "CVE-2026-58944",
-      "description": "In moveTaskToFrontLocked of ActivityTaskManagerService.java, there is a possible background application launch (bal) issue due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.393",
-      "last_modified": "2026-11-03T05:18:49.187",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58944"
-    },
-    {
-      "cve": "CVE-2026-58943",
-      "title": "CVE-2026-58943",
-      "description": "In run of AddAccountSettings.java, there is a possible background activity launch due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.290",
-      "last_modified": "2026-11-03T05:18:48.970",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58943"
-    },
-    {
-      "cve": "CVE-2026-58942",
-      "title": "CVE-2026-58942",
-      "description": "In do_fault_around of memory.c, there is a possible use after free due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.170",
-      "last_modified": "2026-11-03T05:18:48.757",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58942"
-    },
-    {
-      "cve": "CVE-2026-58938",
-      "title": "CVE-2026-58938",
-      "description": "In parseChunk of MPEG4Extractor.cpp, there is a possible denial of service due to improper input validation. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:51.060",
-      "last_modified": "2026-11-02T20:17:51.060",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58938"
-    },
-    {
-      "cve": "CVE-2026-58937",
-      "title": "CVE-2026-58937",
-      "description": "In multiple locations, there is a possible persistent denial of service due to improper input validation. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.950",
-      "last_modified": "2026-11-02T20:17:50.950",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58937"
-    },
-    {
-      "cve": "CVE-2026-58936",
-      "title": "CVE-2026-58936",
-      "description": "In png_set_tRNS of pngset.c, there is a possible memory corruption due to a use-after-free. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.837",
-      "last_modified": "2026-11-02T20:17:50.837",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58936"
-    },
-    {
-      "cve": "CVE-2026-58934",
-      "title": "CVE-2026-58934",
-      "description": "In prepareWindowToDisplayDuringRelayout of WindowState.java, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.720",
-      "last_modified": "2026-11-03T05:18:48.543",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58934"
-    },
-    {
-      "cve": "CVE-2026-58933",
-      "title": "CVE-2026-58933",
-      "description": "In process of C2SoftApvDec.cpp, there is a possible out-of-bounds read due to a logic error in the code. This could lead to remote information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.607",
-      "last_modified": "2026-11-02T20:17:50.607",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58933"
-    },
-    {
-      "cve": "CVE-2026-58886",
-      "title": "CVE-2026-58886",
-      "description": "In updateInputWindows of InputMonitor.java, there is a possible tapjacking issue due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
-      "published": "2026-11-02T20:17:50.493",
-      "last_modified": "2026-11-03T05:18:48.390",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58886"
-    },
-    {
-      "cve": "CVE-2026-58885",
-      "title": "CVE-2026-58885",
-      "description": "In multiple locations, there is a possible permission bypass due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.387",
-      "last_modified": "2026-11-03T05:18:48.180",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58885"
-    },
-    {
-      "cve": "CVE-2026-58884",
-      "title": "CVE-2026-58884",
-      "description": "In startTetheredHotspotRequest of WifiServiceImpl.java, there is a possible permission bypass due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.280",
-      "last_modified": "2026-11-03T05:18:47.973",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58884"
-    },
-    {
-      "cve": "CVE-2026-58883",
-      "title": "CVE-2026-58883",
-      "description": "In multiple locations, there is a possible denial of service due to a logic error in the code. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.163",
-      "last_modified": "2026-11-02T20:17:50.163",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58883"
-    },
-    {
-      "cve": "CVE-2026-58882",
-      "title": "CVE-2026-58882",
-      "description": "In decodeWapPdu of WapPushOverSms.java, there is a possible out of bounds read due to an integer overflow. This could lead to a remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:50.057",
-      "last_modified": "2026-11-02T20:17:50.057",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58882"
-    },
-    {
-      "cve": "CVE-2026-58879",
-      "title": "CVE-2026-58879",
-      "description": "In descramble of multiple files, there is a possible out-of-bounds write due to improper casting. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.950",
-      "last_modified": "2026-11-02T20:17:49.950",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58879"
-    },
-    {
-      "cve": "CVE-2026-58877",
-      "title": "CVE-2026-58877",
-      "description": "In checkNearbyDevicesPermission of WifiP2pServiceImpl.java, there is a possible permission bypass due to a confused deputy. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.820",
-      "last_modified": "2026-11-02T20:17:49.820",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58877"
-    },
-    {
-      "cve": "CVE-2026-58876",
-      "title": "CVE-2026-58876",
-      "description": "In multiple locations, there is a possible memory safety issue due to a use-after-free. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.707",
-      "last_modified": "2026-11-02T20:17:49.707",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58876"
-    },
-    {
-      "cve": "CVE-2026-58875",
-      "title": "CVE-2026-58875",
-      "description": "In multiple locations, there is a possible denial of service due to improper input validation. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.590",
-      "last_modified": "2026-11-02T20:17:49.590",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58875"
-    },
-    {
-      "cve": "CVE-2026-58871",
-      "title": "CVE-2026-58871",
-      "description": "In set_type4_frame_classifier of sta_iface.cpp, there is a possible memory safety issue due to a heap buffer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.477",
-      "last_modified": "2026-11-02T20:17:49.477",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58871"
-    },
-    {
-      "cve": "CVE-2026-58870",
-      "title": "CVE-2026-58870",
-      "description": "In onPersistentGroupsChanged of WifiP2pServiceImpl.java, there is a possible permission bypass due to a missing permission check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.363",
-      "last_modified": "2026-11-02T20:17:49.363",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58870"
-    },
-    {
-      "cve": "CVE-2026-58868",
-      "title": "CVE-2026-58868",
-      "description": "In onOutputReceived of FrameDecoder.cpp, there is a possible out-of-bounds write due to a heap buffer overflow. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.247",
-      "last_modified": "2026-11-03T05:18:47.813",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58868"
-    },
-    {
-      "cve": "CVE-2026-58867",
-      "title": "CVE-2026-58867",
-      "description": "In getMessenger of WifiP2pServiceImpl.java, there is a possible permission bypass due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.137",
-      "last_modified": "2026-11-02T20:17:49.137",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58867"
-    },
-    {
-      "cve": "CVE-2026-58866",
-      "title": "CVE-2026-58866",
-      "description": "In setAccessibilityWindowAttributes of AccessibilityWindowManager.java, there is a possible untrusted/misleading UI issue due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:49.013",
-      "last_modified": "2026-11-03T05:18:47.603",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58866"
-    },
-    {
-      "cve": "CVE-2026-58857",
-      "title": "CVE-2026-58857",
-      "description": "In decrypt of CryptoHalHidl.cpp, there is a possible use-after-free due to a race condition. This could lead to remote code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.893",
-      "last_modified": "2026-11-03T05:18:47.440",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58857"
-    },
-    {
-      "cve": "CVE-2026-58853",
-      "title": "CVE-2026-58853",
-      "description": "In multiple functions of ipphelper.c, there is a possible stack bugger overflow due to a missing bounds check. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.780",
-      "last_modified": "2026-11-03T05:18:47.223",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58853"
-    },
-    {
-      "cve": "CVE-2026-58847",
-      "title": "CVE-2026-58847",
-      "description": "In kvm_vfio_pviommu_attach of vfio.c, there is a possible double free due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.660",
-      "last_modified": "2026-11-03T05:18:47.077",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58847"
-    },
-    {
-      "cve": "CVE-2026-58845",
-      "title": "CVE-2026-58845",
-      "description": "In multiple locations, there is a possible out of bounds write due to an integer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.533",
-      "last_modified": "2026-11-03T05:18:46.927",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58845"
-    },
-    {
-      "cve": "CVE-2026-58844",
-      "title": "CVE-2026-58844",
-      "description": "In multiple locations, there is a possible out of bounds read/write due to an incorrect bounds check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.403",
-      "last_modified": "2026-11-03T05:18:46.773",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58844"
-    },
-    {
-      "cve": "CVE-2026-58838",
-      "title": "CVE-2026-58838",
-      "description": "In multiple functions of Helpers.java, there is a possible information disclosure due to improper input validation. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.287",
-      "last_modified": "2026-11-02T20:17:48.287",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58838"
-    },
-    {
-      "cve": "CVE-2026-58837",
-      "title": "CVE-2026-58837",
-      "description": "In multiple locations, there is a possible background activity launch due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.170",
-      "last_modified": "2026-11-03T05:18:46.563",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58837"
-    },
-    {
-      "cve": "CVE-2026-58836",
-      "title": "CVE-2026-58836",
-      "description": "In handlePackagePostInstall of InstallPackageHelper.java, there is a possible Enhanced Confirmation Mode (ECM) bypass vulnerability that allows a sideloaded application to modify the package source during a self-update due to a logic error in the code. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:48.053",
-      "last_modified": "2026-11-03T05:18:46.363",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58836"
-    },
-    {
-      "cve": "CVE-2026-58829",
-      "title": "CVE-2026-58829",
-      "description": "In fuse_backing_mmap of backing.c, there is a possible memory corruption due to a use after free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.940",
-      "last_modified": "2026-11-03T05:18:46.173",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58829"
-    },
-    {
-      "cve": "CVE-2026-58828",
-      "title": "CVE-2026-58828",
-      "description": "In multiple functions of base.c, there is a possible use-after-free due to a race condition. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.817",
-      "last_modified": "2026-11-03T05:18:45.987",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58828"
-    },
-    {
-      "cve": "CVE-2026-58827",
-      "title": "CVE-2026-58827",
-      "description": "In multiple functions of dma-buf.c, there is a possible use after free due to a race condition. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.703",
-      "last_modified": "2026-11-03T05:18:45.800",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58827"
-    },
-    {
-      "cve": "CVE-2026-58826",
-      "title": "CVE-2026-58826",
-      "description": "In ksys_unshare of fork.c, there is a possible memory corruption due to a use after free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.573",
-      "last_modified": "2026-11-03T05:18:45.577",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58826"
-    },
-    {
-      "cve": "CVE-2026-58825",
-      "title": "CVE-2026-58825",
-      "description": "In multiple functions of fork.c, there is a possible use after free due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.447",
-      "last_modified": "2026-11-03T05:18:45.390",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58825"
-    },
-    {
-      "cve": "CVE-2026-58824",
-      "title": "CVE-2026-58824",
-      "description": "In __pkvm_load_tracing of trace.c, there is a possible out-of-bounds write due to an incorrect bounds check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.317",
-      "last_modified": "2026-11-03T05:18:45.263",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58824"
-    },
-    {
-      "cve": "CVE-2026-58821",
-      "title": "CVE-2026-58821",
-      "description": "In multiple functions of SearchRequestDatabaseUtil.java, there is a possible way to access protected data due to SQL injection. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.200",
-      "last_modified": "2026-11-02T20:17:47.200",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58821"
-    },
-    {
-      "cve": "CVE-2026-58817",
-      "title": "CVE-2026-58817",
-      "description": "In parseKnownActivityEmbeddingCerts of ParsingUtils.java, there is a possible permanent denial of service due to improper input validation. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:47.083",
-      "last_modified": "2026-11-02T20:17:47.083",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58817"
-    },
-    {
-      "cve": "CVE-2026-58814",
-      "title": "CVE-2026-58814",
-      "description": "In parseContentType of PduParser.java, there is a possible denial of service due to an integer overflow. This could lead to remote denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:46.960",
-      "last_modified": "2026-11-02T20:17:46.960",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-58814"
-    },
-    {
-      "cve": "CVE-2026-55292",
-      "title": "CVE-2026-55292",
-      "description": "In rw_ci_data_cback of rw_ci.cc, there is a possible memory safety issue due to integer underflow. This could lead to remote information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:45.410",
-      "last_modified": "2026-11-02T20:17:45.410",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55292"
-    },
-    {
-      "cve": "CVE-2026-55289",
-      "title": "CVE-2026-55289",
-      "description": "In multiple functions in multiple locations, there is a possible execution of sensitive USSD codes due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:45.293",
-      "last_modified": "2026-11-03T05:18:45.080",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55289"
-    },
-    {
-      "cve": "CVE-2026-55288",
-      "title": "CVE-2026-55288",
-      "description": "In validEfCfis of SIMRecords.java, there is a possible way to cause a denial of service due to an uncaught exception. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:45.150",
-      "last_modified": "2026-11-02T20:17:45.150",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55288"
-    },
-    {
-      "cve": "CVE-2026-55287",
-      "title": "CVE-2026-55287",
-      "description": "In onCreate of GrantCredentialsPermissionActivity.java, there is a possible way to trick the user into granting account credentials due to misleading or insufficient UI. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:45.017",
-      "last_modified": "2026-11-03T05:18:44.890",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55287"
-    },
-    {
-      "cve": "CVE-2026-55283",
-      "title": "CVE-2026-55283",
-      "description": "In multiple locations, there is a possible memory safety issue due to a use-after-free. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.900",
-      "last_modified": "2026-11-03T05:18:44.713",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55283"
-    },
-    {
-      "cve": "CVE-2026-55275",
-      "title": "CVE-2026-55275",
-      "description": "In multiple locations, there is a possible use-after-free due to a race condition. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.783",
-      "last_modified": "2026-11-03T05:18:44.533",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55275"
-    },
-    {
-      "cve": "CVE-2026-55272",
-      "title": "CVE-2026-55272",
-      "description": "In loadDescription of DeviceAdminAdd.java, there is a possible denial of service due to improper input validation. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.677",
-      "last_modified": "2026-11-02T21:17:32.817",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55272"
-    },
-    {
-      "cve": "CVE-2026-55271",
-      "title": "CVE-2026-55271",
-      "description": "In forwardToPreferredActionPickHandler of ContactsPickerActivity.kt, there is a possible intent redirection due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.563",
-      "last_modified": "2026-11-03T05:18:44.363",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55271"
-    },
-    {
-      "cve": "CVE-2026-55264",
-      "title": "CVE-2026-55264",
-      "description": "In checkWhetherCallingAppHasAccess of DownloadProvider.java, there is a possible information leak due to a confused deputy. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.450",
-      "last_modified": "2026-11-02T20:17:44.450",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55264"
-    },
-    {
-      "cve": "CVE-2026-55263",
-      "title": "CVE-2026-55263",
-      "description": "In multiple functions of AllowBindAppWidgetActivity.java, there is a possible misunderstanding of reject/consent actions due to misleading or insufficient UI. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
-      "published": "2026-11-02T20:17:44.330",
-      "last_modified": "2026-11-02T20:17:44.330",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55263"
-    },
-    {
-      "cve": "CVE-2026-55262",
-      "title": "CVE-2026-55262",
-      "description": "In setNotificationListenerAccessGrantedForUserInternal of NotificationManagerService.java, there is a possible  policy desynchronization due to improper input validation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.217",
-      "last_modified": "2026-11-03T05:18:44.183",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55262"
-    },
-    {
-      "cve": "CVE-2026-55261",
-      "title": "CVE-2026-55261",
-      "description": "In nfa_t4tnfcee_store_rx_buf of nfa_nfcee_act.cc, there is a possible way to achieve code execution due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:44.100",
-      "last_modified": "2026-11-02T20:17:44.100",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55261"
-    },
-    {
-      "cve": "CVE-2026-55257",
-      "title": "CVE-2026-55257",
-      "description": "In UsbDialogHelper of UsbDialogHelper.java, there is a possible UI confusion due to misleading or insufficient UI. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:43.983",
-      "last_modified": "2026-11-03T05:18:44.010",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55257"
-    },
-    {
-      "cve": "CVE-2026-49935",
-      "title": "CVE-2026-49935",
-      "description": "In getXmlFileNameForUser of LocaleManagerService.java, there is a possible permission bypass due to a confusable path traversal. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:43.483",
-      "last_modified": "2026-11-02T20:17:43.483",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49935"
-    },
-    {
-      "cve": "CVE-2026-49934",
-      "title": "CVE-2026-49934",
-      "description": "In multiple functions of MmiUtils.java, there is a possible risk of USSD/MMI code execution due to improper input validation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
-      "published": "2026-11-02T20:17:43.293",
-      "last_modified": "2026-11-02T20:17:43.293",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49934"
-    },
-    {
-      "cve": "CVE-2026-49931",
-      "title": "CVE-2026-49931",
-      "description": "In onActivityResult in multiple locations, there is a possible contact leak from protected profile due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:43.170",
-      "last_modified": "2026-11-03T05:18:43.810",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49931"
-    },
-    {
-      "cve": "CVE-2026-49924",
-      "title": "CVE-2026-49924",
-      "description": "In ShortcutInfo of ShortcutInfo.java, there is a possible way to crash the launcher via unauthorized shortcuts due to resource exhaustion. This could lead to local denial of service with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:43.057",
-      "last_modified": "2026-11-02T20:17:43.057",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49924"
-    },
-    {
-      "cve": "CVE-2026-49923",
-      "title": "CVE-2026-49923",
-      "description": "In onResult of AccountManagerService.java, there is a possible untrusted/misleading UI issue due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:42.940",
-      "last_modified": "2026-11-03T05:18:43.600",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49923"
-    },
-    {
-      "cve": "CVE-2026-49922",
-      "title": "CVE-2026-49922",
-      "description": "In queryRemoteConnectionServices of ConnectionServiceWrapper.java, there is a possible permission bypass due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:42.830",
-      "last_modified": "2026-11-03T05:18:43.343",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49922"
-    },
-    {
-      "cve": "CVE-2026-49912",
-      "title": "CVE-2026-49912",
-      "description": "In multiple functions of MediaCarouselController.kt, there is a possible way for media to show up after disablement due to a logic error in the code. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:42.727",
-      "last_modified": "2026-11-02T20:17:42.727",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49912"
-    },
-    {
-      "cve": "CVE-2026-45514",
-      "title": "CVE-2026-45514",
-      "description": "In multiple functions of SaveUi.java, there is a possible bypass of package installation requirements due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "published": "2026-11-02T20:17:42.607",
-      "last_modified": "2026-11-03T05:18:42.963",
-      "cvss": 8.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-45514"
     }
   ],
-  "total_results": 619,
+  "total_results": 684,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 419
+  "start_index": 484
 }
