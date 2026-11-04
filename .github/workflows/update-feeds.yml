@@ -14,15 +14,14 @@ on:
       - 'tests/**'
       - '.github/workflows/update-feeds.yml'
   schedule:
-    # Full refresh at 02:45, 05:45 and 07:45 Europe/Berlin.
-    # UTC triggers; only matching summer/winter schedules run.
-    - cron: '45 0 * * *'  # 02:45 CEST
-    - cron: '45 1 * * *'  # 02:45 CET
-    - cron: '45 3 * * *'  # 05:45 CEST
-    - cron: '45 4 * * *'  # 05:45 CET
-    - cron: '45 5 * * *'  # 07:45 CEST
-    - cron: '45 6 * * *'  # 07:45 CET
-    # BSI-only intermediate checks are unchanged (UTC).
+    # Full refreshes in Europe/Berlin (DST handled by GitHub).
+    - cron: '53 0 * * *'
+      timezone: 'Europe/Berlin'
+    - cron: '19 3 * * *'
+      timezone: 'Europe/Berlin'
+    - cron: '37 6 * * *'
+      timezone: 'Europe/Berlin'
+    # BSI-only intermediate checks remain in UTC.
     - cron: '10 0,3,9,12,15,18,21 * * *'
 
 permissions:
@@ -47,28 +46,17 @@ jobs:
           EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           mode=skip
-          berlin_offset="$(TZ=Europe/Berlin date +%z)"
           if [[ "$EVENT_NAME" != "schedule" ]]; then
             mode=daily
           elif [[ "$EVENT_SCHEDULE" == "10 0,3,9,12,15,18,21 * * *" ]]; then
             mode=security
-          elif [[ "$EVENT_SCHEDULE" == "45 0 * * *" && "$berlin_offset" == "+0200" ]]; then
-            # On the October DST switch, prefer the later 02:45 CET
-            # occurrence; otherwise the repeated hour would refresh twice.
-            if [[ "$(TZ=Europe/Berlin date +%m)" != "10" ||
-                  "$(TZ=Europe/Berlin date +%u)" != "7" ||
-                  "$(TZ=Europe/Berlin date +%-d)" -lt 25 ]]; then
-              mode=daily
-            fi
-          elif [[ "$EVENT_SCHEDULE" == "45 1 * * *" && "$berlin_offset" == "+0100" ]] ||
-               [[ "$EVENT_SCHEDULE" == "45 3 * * *" && "$berlin_offset" == "+0200" ]] ||
-               [[ "$EVENT_SCHEDULE" == "45 4 * * *" && "$berlin_offset" == "+0100" ]] ||
-               [[ "$EVENT_SCHEDULE" == "45 5 * * *" && "$berlin_offset" == "+0200" ]] ||
-               [[ "$EVENT_SCHEDULE" == "45 6 * * *" && "$berlin_offset" == "+0100" ]]; then
+          elif [[ "$EVENT_SCHEDULE" == "53 0 * * *" ]] ||
+               [[ "$EVENT_SCHEDULE" == "19 3 * * *" ]] ||
+               [[ "$EVENT_SCHEDULE" == "37 6 * * *" ]]; then
             mode=daily
           fi
           echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; Berlin offset: $berlin_offset; selected mode: $mode"
+          echo "Event: $EVENT_NAME; schedule: ${EVENT_SCHEDULE:-none}; selected mode: $mode"
       - uses: actions/checkout@v5
         if: steps.mode.outputs.mode != 'skip'
         with:
