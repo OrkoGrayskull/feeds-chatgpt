@@ -16,7 +16,7 @@ Die konkreten JSON-Dateien liegen in [`data/`](data/). Quellen und Abruflogik si
 
 ## Aktualisierung
 
-[GitHub Actions](.github/workflows/update-feeds.yml) führt täglich um **02:45, 05:45 und 07:45 Uhr (Europe/Berlin)** vollständige Abrufe aus. Die Zeitumstellung wird berücksichtigt; beim Wechsel zur Sommerzeit entfällt die nicht existente 02:45-Uhr-Ausführung. Zusätzliche BSI-Zwischenabrufe aktualisieren ausschließlich `security.json` und `buergercert.json`.
+[GitHub Actions](.github/workflows/update-feeds.yml) führt täglich um **00:53, 03:19 und 06:37 Uhr (Europe/Berlin)** vollständige Abrufe aus. Die Zeitumstellung wird berücksichtigt. Zusätzliche BSI-Zwischenabrufe aktualisieren ausschließlich `security.json` und `buergercert.json`.
 
 Ein vollständiger Abruf lässt sich auch manuell starten; Änderungen an relevanten Konfigurations-, Skript- oder Testdateien lösen ihn ebenfalls aus. Eine reine README-Änderung startet keinen Abruf. Vor jedem Abruf laufen Offline-Tests; Pull Requests werden separat getestet.
 
