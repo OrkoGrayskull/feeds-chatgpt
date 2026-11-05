@@ -6,7 +6,9 @@ import re
 import sys
 import tempfile
 import os
+import time
 import urllib.request
+from urllib.error import HTTPError
 import xml.etree.ElementTree as ET
 from datetime import datetime, date, timezone, timedelta
 from email.utils import parsedate_to_datetime
@@ -93,10 +95,18 @@ def download(url):
         "User-Agent": "feeds-chatgpt/1.0",
         "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
     })
-    with urllib.request.urlopen(req, timeout=25) as response:
-        if urlparse(response.geturl()).scheme != "https":
-            raise ValueError("Redirect to non-HTTPS URL")
-        result = response.read(MAX_BYTES + 1)
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(req, timeout=25) as response:
+                if urlparse(response.geturl()).scheme != "https":
+                    raise ValueError("Redirect to non-HTTPS URL")
+                result = response.read(MAX_BYTES + 1)
+            break
+        except HTTPError as exc:
+            if attempt or exc.code not in (500, 502, 503, 504):
+                raise
+            print(f"WARN: HTTP {exc.code} for {url}, retrying once", file=sys.stderr)
+            time.sleep(2)
     if not result or len(result) > MAX_BYTES:
         raise ValueError("Empty or oversized feed")
     return result
