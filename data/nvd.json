@@ -1,12 +1,183 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-02T23%3A00%3A00.000&pubEndDate=2026-11-05T09%3A34%3A50.000&resultsPerPage=200&startIndex=1085",
-  "fetched_at": "2026-11-05T09:34:50+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-02T23%3A00%3A00.000&pubEndDate=2026-11-05T13%3A27%3A38.000&resultsPerPage=200&startIndex=1104",
+  "fetched_at": "2026-11-05T13:27:38+00:00",
   "window_days": 3,
   "window_start": "2026-11-03",
   "window_end": "2026-11-05",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-95652",
+      "title": "CVE-2026-95652",
+      "description": "Execution with unnecessary privileges vulnerability in TÜBİTAK BİLGEM Software Technologies Research Institute pardus-usb-formatter allows Privilege Abuse.\n\nThis issue affects pardus-usb-formatter: from 0.7.0 before 0.7.2.",
+      "published": "2026-11-05T13:17:08.437",
+      "last_modified": "2026-11-05T13:17:08.437",
+      "cvss": 6.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-95652"
+    },
+    {
+      "cve": "CVE-2026-123119",
+      "title": "CVE-2026-123119",
+      "description": "The Symfony HttpClient component NoPrivateNetworkHttpClient does not pin the checked IP address of cached hosts, allowing for DNS rebinding to bypass private network restrictions, resulting in enumeration of internal hosts and ports in Symfony versions prior to 5.4.56, 6.x prior to 6.4.50, 7.x prior to 7.4.23, and 8.x prior to 8.1.11.\n\nNoPrivateNetworkHttpClient resolves the host of each request and checks the IP before connecting. It caches the result per host, and passes the IP to the decorated client through the resolve option so that the client connects to the exact IP that was checked. The issue is that resolve was only passed on the first lookup of a host: on subsequent requests, the decorated client resolved the host again on its own.\n\nAn attacker who controls a host's DNS can exploit this with DNS rebinding by answering the first lookup with a public IP, and subsequent lookups wi",
+      "published": "2026-11-05T13:17:07.640",
+      "last_modified": "2026-11-05T13:17:07.640",
+      "cvss": 2.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123119"
+    },
+    {
+      "cve": "CVE-2026-123047",
+      "title": "CVE-2026-123047",
+      "description": "In Eclipse BaSyx Helm Charts versions 3.0.0-rc.1 to 3.12.1 of the `basyx` chart, deployments with the bundled Keycloak enabled store the passwords of the Keycloak users that the chart creates in cleartext in a Kubernetes ConfigMap.\n\n\n\nThe template `keycloak-init-config.yaml` rendered `keycloak.initialization.users`, including each user's `credentials[].value`, as `users.json` into the persistent ConfigMap `<release>-basyx-keycloak-init-config`. By default this includes the bootstrap administrator user. That user holds the `admin` role and has a non-temporary password. A principal that can read ConfigMaps but not Secrets in the release namespace, such as a holder of the built-in Kubernetes `view` ClusterRole, can read the password from the ConfigMap and log in to Keycloak as this user. The resulting token carries the `admin` role, which the default BaSyx ABAC rules map to full rights on a",
+      "published": "2026-11-05T13:17:07.493",
+      "last_modified": "2026-11-05T13:17:07.493",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123047"
+    },
+    {
+      "cve": "CVE-2026-123020",
+      "title": "CVE-2026-123020",
+      "description": "A security vulnerability has been detected in eosphoros-ai DB-GPT up to 0.8.1. The affected element is the function FileBasedSkill.get_prompt of the file packages/dbgpt-core/src/dbgpt/agent/skill/claude_skill/__init__.py of the component Jinja2 Template Handler. The manipulation leads to improper neutralization of special elements used in a template engine. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 0.8.2 is sufficient to fix this issue. The identifier of the patch is a9e7a3c026d114fcfb4ffe3eaf78851a636ded16. It is suggested to upgrade the affected component.",
+      "published": "2026-11-05T13:17:07.280",
+      "last_modified": "2026-11-05T13:17:07.433",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123020"
+    },
+    {
+      "cve": "CVE-2026-103866",
+      "title": "CVE-2026-103866",
+      "description": "Inconsistent interpretation of HTTP requests ('HTTP Request/Response smuggling') vulnerability in Apache Sling Engine. The engine's query/form parser accepts non-standard percent-escapes, wrong charsets, and continues request processing on such errors.\n\n\n\nThis issue affects Apache Sling Engine: before 3.0.4.\n\n\n\nUsers are recommended to upgrade to version 3.0.4, which fixes the issue.",
+      "published": "2026-11-05T13:17:07.143",
+      "last_modified": "2026-11-05T13:17:07.143",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103866"
+    },
+    {
+      "cve": "CVE-2026-103864",
+      "title": "CVE-2026-103864",
+      "description": "Improper output neutralization for logs in Apache Sling Engine.\n\n\n\nThis issue affects Apache Sling Engine: before 3.0.4.\n\n\n\nUsers are recommended to upgrade to version 3.0.4, which fixes the issue.",
+      "published": "2026-11-05T13:17:07.017",
+      "last_modified": "2026-11-05T13:17:07.017",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103864"
+    },
+    {
+      "cve": "CVE-2026-103863",
+      "title": "CVE-2026-103863",
+      "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Apache Sling Engine. Content-Type, charset, and redirect changes from an included component evade the  protectheaders / checkcontenttype  enforcement through setHeader(), repeated calls to setContentType(), the charset APIs, Servlet 6.1 redirect overloads, and stale config - enabling stored XSS despite enabled protections.\n\n\n\nThis issue affects Apache Sling Engine before 3.0.4.\n\n\n\nUsers are recommended to upgrade to version 3.0.4, which fixes the issue.",
+      "published": "2026-11-05T13:17:06.880",
+      "last_modified": "2026-11-05T13:17:06.880",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103863"
+    },
+    {
+      "cve": "CVE-2026-96677",
+      "title": "CVE-2026-96677",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Apache Juneau.\n\nHTML document serialization does not HTML-encode variable substitutions in the page chrome (header, nav, aside, footer and similar fields). Applications whose chrome includes request-derived variables, such as request headers, form data or path values, reflect those values unencoded, allowing cross-site scripting. The default chrome does not use request variables, so only applications that add them are affected.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:51.620",
+      "last_modified": "2026-11-05T12:17:51.620",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96677"
+    },
+    {
+      "cve": "CVE-2026-73117",
+      "title": "CVE-2026-73117",
+      "description": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting') vulnerability in Apache Juneau.\n\nThe Apache Juneau REST server passed response header values and redirect targets to the servlet container unchecked. An application that sets a response header or redirect target from request data could let a remote client inject header lines (where the servlet container does not itself reject CR/LF) or redirect users to an arbitrary external site. The framework itself does not build headers or redirects from request data; exposure depends on application code.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue. Header values are now sanitized by default; applications that build redirect targets from request data must also switch from sendRedirect() to the new sendSafeRedirect().",
+      "published": "2026-11-05T12:17:51.473",
+      "last_modified": "2026-11-05T12:17:51.473",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73117"
+    },
+    {
+      "cve": "CVE-2026-73116",
+      "title": "CVE-2026-73116",
+      "description": "Insufficiently Protected Credentials vulnerability in Apache Juneau.\n\nThe Apache Juneau RestClient followed HTTP redirects while keeping credential headers from the original request, so a server that redirected the client to a different host or port, or from HTTPS to HTTP, could receive headers such as Authorization, Cookie, Proxy-Authorization and X-API-Key.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue. The fix applies to HTTP clients created by the RestClient builder; applications that supply their own HttpClient must disable automatic redirects or strip credential headers on cross-origin redirects themselves.",
+      "published": "2026-11-05T12:17:51.333",
+      "last_modified": "2026-11-05T12:17:51.333",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73116"
+    },
+    {
+      "cve": "CVE-2026-73101",
+      "title": "CVE-2026-73101",
+      "description": "Generation of Error Message Containing Sensitive Information vulnerability in Apache Juneau.\n\nThe REST server sends the internal exception class and message to clients in a \"Thrown\" response header on every error response, and can include internal exception messages in the error body, even when stack-trace rendering is disabled. This reveals implementation details to remote clients.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:51.197",
+      "last_modified": "2026-11-05T12:17:51.197",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73101"
+    },
+    {
+      "cve": "CVE-2026-73100",
+      "title": "CVE-2026-73100",
+      "description": "Insertion of Sensitive Information into Log File vulnerability in Apache Juneau.\n\nThe default REST server call logger records request headers for requests that end in a server error, without redacting them. Any client able to cause a server error gets headers such as Authorization, Cookie, Proxy-Authorization and X-API-Key written in cleartext to the application log, exposing them to anyone who can read the logs.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:51.060",
+      "last_modified": "2026-11-05T12:17:51.060",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73100"
+    },
+    {
+      "cve": "CVE-2026-73099",
+      "title": "CVE-2026-73099",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Apache Juneau.\n\nThe REST server accepts a \"content\" query parameter that replaces the request body, and this is enabled by default on every HTTP method, including GET. A cross-site link can therefore deliver an attacker-chosen request body to an endpoint without a CORS preflight, defeating protections that rely on the HTTP method or content type instead of an anti-CSRF token.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue. Applications that do not use the content parameter can also set disableContentParam to true.",
+      "published": "2026-11-05T12:17:50.917",
+      "last_modified": "2026-11-05T12:17:50.917",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73099"
+    },
+    {
+      "cve": "CVE-2026-73098",
+      "title": "CVE-2026-73098",
+      "description": "Improper control of dynamically-loaded code vulnerability in Apache Juneau.\n\nWhen Apache Juneau parses a value into a property of type java.lang.Class (including parameterized forms), the default class swap loaded the named class with initialization enabled, so input naming a class on the application classpath ran that class's static initializer. The impact depends on the classes present in the deployment.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:50.770",
+      "last_modified": "2026-11-05T12:17:50.770",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73098"
+    },
+    {
+      "cve": "CVE-2026-73095",
+      "title": "CVE-2026-73095",
+      "description": "Allocation of Resources Without Limits or Throttling vulnerability in Apache Juneau.\n\nThe MessagePack parser, which the REST server enables by default, sizes buffers from length values in the input. An unauthenticated client can send a few bytes that force a multi-gigabyte allocation and an OutOfMemoryError, causing denial of service. Related unbounded allocations in REST request handling (multipart uploads and request reader buffers) are fixed at the same time.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:50.617",
+      "last_modified": "2026-11-05T12:17:50.617",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73095"
+    },
+    {
+      "cve": "CVE-2026-123019",
+      "title": "CVE-2026-123019",
+      "description": "A weakness has been identified in eosphoros-ai DB-GPT up to 0.8.2. Impacted is the function exec_module of the file hf_adapter.py of the component HuggingFace Adapter. Executing a manipulation of the argument trust_remote_code can lead to inclusion of functionality from untrusted control sphere. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-05T12:17:50.193",
+      "last_modified": "2026-11-05T12:17:50.347",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123019"
+    },
+    {
+      "cve": "CVE-2026-123018",
+      "title": "CVE-2026-123018",
+      "description": "A security flaw has been discovered in eosphoros-ai DB-GPT up to 0.8.2. This issue affects the function execute_code of the file code_utils.py of the component CodeAction. Performing a manipulation results in code injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-05T12:17:49.940",
+      "last_modified": "2026-11-05T12:17:50.097",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123018"
+    },
+    {
+      "cve": "CVE-2026-121489",
+      "title": "CVE-2026-121489",
+      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Apache Juneau.\n\nThe microservice DirectoryResource does not keep request paths inside its configured root directory. When an application enables the resource's view, upload or delete settings (all off by default), a client can read, write or delete files outside the root, anywhere the server process has access.\n\nThis issue affects Apache Juneau: through 9.2.0.\n\nUsers are recommended to upgrade to version 9.2.1, which fixes the issue.",
+      "published": "2026-11-05T12:17:49.643",
+      "last_modified": "2026-11-05T12:17:49.643",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121489"
+    },
+    {
+      "cve": "CVE-2026-123036",
+      "title": "CVE-2026-123036",
+      "description": "A flaw was found in ansible-core. When a task marked `no_log: true` fails, the task result is censored before being emitted, but the `exception` field is retained because it is present in the PRESERVE allow-list in lib/ansible/_internal/_task.py, and the default stdout callback prints it through CallbackBase._handle_exception. As a result, sensitive values the operator explicitly asked to hide can be disclosed: module argument-validation errors echo the argument value, templating errors print an Origin source snippet (the failing line plus the two preceding lines of the variables file, exposing neighbouring secrets from an -e @secrets.yml file), and fail/assert messages are printed in full. Secret material supplied as extra variables or variables files can therefore leak to terminal output, CI logs, and the stdout logs of any automation wrapping ansible-playbook, even though every task t",
+      "published": "2026-11-05T10:16:38.220",
+      "last_modified": "2026-11-05T10:16:38.370",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123036"
+    },
     {
       "cve": "CVE-2026-118869",
       "title": "CVE-2026-118869",
@@ -1635,181 +1806,10 @@
       "last_modified": "2026-11-04T22:17:44.440",
       "cvss": 9.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102894"
-    },
-    {
-      "cve": "CVE-2026-102280",
-      "title": "CVE-2026-102280",
-      "description": "Sandboxie-Plus is an open source sandbox-based isolation software for Windows. Prior to 1.18.6, a process inside a sandbox could send MSGID_FILE_SET_ATTRIBUTES or MSGID_FILE_SET_SHORT_NAME to SbieSvc and cause the SYSTEM service to open and modify an existing file outside the sandbox. The direct primitive changes file attributes, timestamps, writeability, or 8.3 short names; a short-name redirection can additionally contribute to SYSTEM code execution when a privileged process resolves an attacker-controlled short-name path in a location SbieSvc can open. This vulnerability is fixed in 1.18.6.",
-      "published": "2026-11-04T22:17:42.873",
-      "last_modified": "2026-11-04T22:17:42.873",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102280"
-    },
-    {
-      "cve": "CVE-2026-97373",
-      "title": "CVE-2026-97373",
-      "description": "draw.io is a configurable diagramming and whiteboarding application. Prior to 30.3.8, the optional /proxy endpoint contains an incomplete server-side request forgery blocklist. When the endpoint is enabled, the URL validator does not reject the RFC 6598 shared address range 100.64.0.0/10. An unauthenticated remote attacker can cause the draw.io server to request internal services that are reachable in this range, potentially disclosing data from Carrier-Grade NAT, Kubernetes, cloud, or overlay-network addresses. This vulnerability is fixed in 30.3.8.",
-      "published": "2026-11-04T21:18:17.063",
-      "last_modified": "2026-11-04T21:18:17.063",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97373"
-    },
-    {
-      "cve": "CVE-2026-82418",
-      "title": "CVE-2026-82418",
-      "description": "IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote attacker to execute arbitrary code due to a use-after-free vulnerability.",
-      "published": "2026-11-04T21:18:14.940",
-      "last_modified": "2026-11-04T21:18:15.060",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82418"
-    },
-    {
-      "cve": "CVE-2026-19319",
-      "title": "CVE-2026-19319",
-      "description": "IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote attacker to obtain sensitive information due to an out-of-bounds read.",
-      "published": "2026-11-04T21:18:13.353",
-      "last_modified": "2026-11-04T21:18:13.480",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19319"
-    },
-    {
-      "cve": "CVE-2026-18142",
-      "title": "CVE-2026-18142",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD could allow a remote authenticated attacker to cause a denial of service and perform limited memory corruption due to an integer overflow.",
-      "published": "2026-11-04T21:18:13.187",
-      "last_modified": "2026-11-04T21:18:13.310",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18142"
-    },
-    {
-      "cve": "CVE-2026-17493",
-      "title": "CVE-2026-17493",
-      "description": "IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote attacker to cause a denial of service due to an out-of-bounds read.",
-      "published": "2026-11-04T21:18:13.020",
-      "last_modified": "2026-11-04T21:18:13.147",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-17493"
-    },
-    {
-      "cve": "CVE-2026-16725",
-      "title": "CVE-2026-16725",
-      "description": "IBM Watson Speech Services Cartridge 4.0.0 through 5.4.0 could allow a remote authenticated attacker to read arbitrary files from the local filesystem due to path traversal.",
-      "published": "2026-11-04T21:18:12.860",
-      "last_modified": "2026-11-04T21:18:12.980",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16725"
-    },
-    {
-      "cve": "CVE-2026-14252",
-      "title": "CVE-2026-14252",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD stores potentially sensitive information in log files that could be read by a local user.",
-      "published": "2026-11-04T21:18:12.447",
-      "last_modified": "2026-11-04T21:18:12.567",
-      "cvss": 6.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14252"
-    },
-    {
-      "cve": "CVE-2026-13292",
-      "title": "CVE-2026-13292",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD could allow an authenticated attacker to execute arbitrary code by injecting malicious environment variables through transfer request metadata.",
-      "published": "2026-11-04T21:18:12.290",
-      "last_modified": "2026-11-04T21:18:12.403",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13292"
-    },
-    {
-      "cve": "CVE-2026-13289",
-      "title": "CVE-2026-13289",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD is vulnerable to an XML external entity injection (XXE) attack when processing XML data. A remote attacker could exploit this vulnerability to expose sensitive information or consume memory resources.",
-      "published": "2026-11-04T21:18:12.120",
-      "last_modified": "2026-11-04T21:18:12.243",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13289"
-    },
-    {
-      "cve": "CVE-2026-13284",
-      "title": "CVE-2026-13284",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD is vulnerable to an XML external entity injection (XXE) attack when processing XML data. A remote attacker could exploit this vulnerability to expose sensitive information or consume memory resources.",
-      "published": "2026-11-04T21:18:11.947",
-      "last_modified": "2026-11-04T21:18:12.077",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13284"
-    },
-    {
-      "cve": "CVE-2026-13271",
-      "title": "CVE-2026-13271",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD Managed File Transfer could allow an authenticated attacker to obtain sensitive information or cause a denial of service due to improper restriction of XML external entity references in command queue processing.",
-      "published": "2026-11-04T21:18:11.777",
-      "last_modified": "2026-11-04T21:18:11.900",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-13271"
-    },
-    {
-      "cve": "CVE-2026-12550",
-      "title": "CVE-2026-12550",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD could allow an authenticated attacker to obtain sensitive information or cause a denial of service due to improper validation of message selection parameters.",
-      "published": "2026-11-04T21:18:11.610",
-      "last_modified": "2026-11-04T21:18:11.733",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12550"
-    },
-    {
-      "cve": "CVE-2026-12538",
-      "title": "CVE-2026-12538",
-      "description": "IBM MQ 9.4.0.0 to 9.4.0.26, 9.4.1.0 to 9.4.5.3, and 10.0.0.1 to 10.0.0.5 could allow an authenticated attacker to obtain sensitive information or cause a denial of service due to improper validation of message header structure length fields.",
-      "published": "2026-11-04T21:18:11.440",
-      "last_modified": "2026-11-04T21:18:11.563",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12538"
-    },
-    {
-      "cve": "CVE-2026-12356",
-      "title": "CVE-2026-12356",
-      "description": "IBM MQ 9.2.0.0 through 9.2.0.44 LTS, 9.3.0.0 through 9.3.0.42 LTS, 9.4.0.0 through 9.4.0.26 LTS, 9.4.0.0 through 9.4.5.1 CD, and 10.0.0.0 through 10.0.0.5 LTS and CD could allow an authenticated user with command queue access to execute arbitrary code by injecting malicious arguments into Ant script commands.",
-      "published": "2026-11-04T21:18:11.270",
-      "last_modified": "2026-11-04T21:18:11.390",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12356"
-    },
-    {
-      "cve": "CVE-2026-122235",
-      "title": "CVE-2026-122235",
-      "description": "Jan from 0.8.5 before 0.8.8 contains a workspace guard bypass vulnerability in the agent-tools gate.rs that allows attackers to write files outside the workspace via dangling symlinks. Attackers supplying a malicious repository can use prompt injection to make the write or edit tools follow symlinks, creating files like ~/.ssh/authorized_keys on the host.",
-      "published": "2026-11-04T21:18:11.103",
-      "last_modified": "2026-11-04T21:18:11.103",
-      "cvss": 5.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122235"
-    },
-    {
-      "cve": "CVE-2026-122234",
-      "title": "CVE-2026-122234",
-      "description": "jsondiffpatch before 0.7.7 contains a cross-site scripting vulnerability that allows attackers to inject markup by supplying an unescaped array-move destination index in a delta. Attackers who control a delta passed to formatters.html.format() or formatters.annotated.format() can embed script that executes in the application's origin when output is rendered.",
-      "published": "2026-11-04T21:18:10.930",
-      "last_modified": "2026-11-04T21:18:10.930",
-      "cvss": 4.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122234"
-    },
-    {
-      "cve": "CVE-2026-122233",
-      "title": "CVE-2026-122233",
-      "description": "FrankenPHP before 1.13.4 contains an information disclosure vulnerability in worker mode that fails to clear last HTTP stream response headers between requests, because the reset only happens in RSHUTDOWN, which worker requests skip. Later requests calling http_get_last_response_headers() can read headers fetched by earlier requests on the same worker thread, exposing other users' Set-Cookie or token headers from backend APIs.",
-      "published": "2026-11-04T21:18:10.743",
-      "last_modified": "2026-11-04T21:18:10.877",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122233"
-    },
-    {
-      "cve": "CVE-2026-122224",
-      "title": "CVE-2026-122224",
-      "description": "WebVirtCloud through commit bb920b0 contains a missing authorization vulnerability that allows low-privileged authenticated users to reach MigrateViewSet and CreateInstanceViewSet because no permission_classes are declared, so Django REST Framework defaults to AllowAny. Attackers can send requests to /api/v1/migrate/ or the compute instance create endpoint to migrate or undefine other users' virtual machines and create volumes and domains on any compute host.",
-      "published": "2026-11-04T21:18:10.547",
-      "last_modified": "2026-11-04T21:18:10.687",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122224"
     }
   ],
-  "total_results": 1285,
+  "total_results": 1304,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1085
+  "start_index": 1104
 }
