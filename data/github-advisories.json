@@ -1,12 +1,39 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-04T08:35:53+00:00",
+  "fetched_at": "2026-11-05T03:47:58+00:00",
   "window_days": 3,
-  "window_start": "2026-11-02",
-  "window_end": "2026-11-04",
-  "count": 12,
+  "window_start": "2026-11-03",
+  "window_end": "2026-11-05",
+  "count": 13,
   "items": [
+    {
+      "cve": "CVE-2026-55098",
+      "ghsa": "GHSA-93cm-2v4m-c56c",
+      "title": "Arc: DuckDB I/O aliases bypass database RBAC after CVE-2026-47735",
+      "description": "### Summary\n\nThe fix for CVE-2026-47735 (released 2026.06.1) is incomplete. It added a DuckDB sandbox (`SET GLOBAL allowed_directories=[<storage root>]; SET GLOBAL enable_external_access=false`) and an Arc SQL-layer denylist of the **literal** functions `read_parquet(` and `arc_partition_agg(`. The sandbox correctly blocks reads **outside** the storage root (OS files, `http://` SSRF), but it allowlists the **entire multi-tenant storage root**, and the SQL denylist still misses the rest of the DuckDB I/O family the original advisory enumerated. As a result, any authenticated token — including one with `permissions: []` — can read or enumerate **every other database's data** within the deployment, defeating RBAC.\n\nVerified at HEAD `c08b892` (`v26.06.1-36`, includes 26.06.2). Confirmed still live; no later commit blocks these functions.\n\n### Root cause (three composing gaps)\n\n1. **Sandbox s",
+      "severity": "medium",
+      "published": "2026-11-04T17:02:37+00:00",
+      "link": "https://github.com/advisories/GHSA-93cm-2v4m-c56c"
+    },
+    {
+      "cve": "CVE-2026-93363",
+      "ghsa": "GHSA-mc8m-rr6c-r5qr",
+      "title": "@payloadcms/storage-vercel-blob has access control bypass of uploads in Vercel Storage adapter",
+      "description": "### Impact\nIn affected configurations, client upload access does not consistently align with the associated collection’s access configuration.\n\nYou are affected if:\n- You use client uploads with `@payloadcms/storage-vercel-blob`.\n- Authenticated users can access the client-upload route.\n\nApplications that do not enable client uploads are not affected.\n\n### Patches\nClient uploads now require authentication and the appropriate collection-level access before upload access is granted.\n\nUsers should upgrade Payload packages to `>= 3.90.0` or `>= 4.0.0-canary.34`.\n\n### Workarounds\nUpgrading to a patched version is recommended. Until you can upgrade, disable client uploads or configure the upload route’s access control to enforce the associated collection’s permissions.",
+      "severity": "medium",
+      "published": "2026-11-04T17:00:39+00:00",
+      "link": "https://github.com/advisories/GHSA-mc8m-rr6c-r5qr"
+    },
+    {
+      "cve": "CVE-2026-113787",
+      "ghsa": "GHSA-3cgg-c5pp-57h6",
+      "title": "odf-kit: HTML injection leading to XSS in odtToHtml() and odsToHtml() via unescaped style attribute values",
+      "description": "### Summary\n\nODF style attribute values are interpolated into `style=\"...\"` attributes without HTML-escaping in **both** of odf-kit's to-HTML renderers (`odtToHtml` and `odsToHtml`). A double-quote character inside an attacker-controlled style value breaks out of the attribute, allowing arbitrary HTML/attribute injection — and therefore script execution (XSS) — from a crafted `.odt` or `.ods` file wherever the rendered output is inserted as HTML, which is the documented purpose of both functions.\n\n### Details\n\n#### ODT renderer (`src/odt/to-html/html-renderer.ts`)\n\nThe renderer has an `escapeHtml()` helper and applies it consistently to text content and to attribute values — `href`, `src`, `alt`, `id`, `data-author`, `data-date`, citation text all go through it. The inline CSS strings do not.\n\nIn `renderTextSpan` (dist/odt/to-html/html-renderer.js:195):\n\n```js\nconst css = spanStyleToCss(",
+      "severity": "medium",
+      "published": "2026-11-04T16:14:34+00:00",
+      "link": "https://github.com/advisories/GHSA-3cgg-c5pp-57h6"
+    },
     {
       "cve": "CVE-2026-115878",
       "ghsa": "GHSA-gh9r-c94j-cmp5",
@@ -96,24 +123,6 @@
       "severity": "low",
       "published": "2026-11-03T16:29:38+00:00",
       "link": "https://github.com/advisories/GHSA-m3qr-fvp4-78xj"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-j656-3hf2-fvjc",
-      "title": "DBHub: MySQL and MariaDB comment interpretation bypasses read-only SQL validation",
-      "description": "The read-only mode can be bypassed on the MySQL and MariaDB connectors. In read-only mode a caller can still execute arbitrary write and DDL statements (for example DROP TABLE), which defeats the protection that read-only mode is meant to provide when a database is exposed to an AI agent.\n\nRoot cause\n\nThe problem is a mismatch between how DBHub's SQL parser handles single-line comments and how MySQL and MariaDB actually parse them.\n\nIn src/utils/sql-parser.ts, scanSingleLineComment treats \"--\" as the start of a comment no matter what character follows it. MySQL and MariaDB only begin a \"--\" comment when the two dashes are followed by whitespace, a control character, or the end of the line. Otherwise the dashes are read as two minus signs and the rest of the line is ordinary SQL.\n\nThe read-only check in src/tools/execute-sql.ts splits the input and validates each statement with isReadOnly",
-      "severity": "medium",
-      "published": "2026-11-02T17:57:51+00:00",
-      "link": "https://github.com/advisories/GHSA-j656-3hf2-fvjc"
-    },
-    {
-      "cve": "CVE-2026-62374",
-      "ghsa": "GHSA-f9j6-8p6x-r9j6",
-      "title": "SD JWT JS: Tampered disclosures silently dropped instead of rejected",
-      "description": "## Summary\n\nWhen one Disclosure in an SD-JWT presentation is tampered so its digest no longer matches the Issuer-signed `_sd` array, `@sd-jwt/decode` 0.19.0 does **not** reject the presentation. It silently drops the unmatched Disclosure and returns a **reduced claim set**, reporting success. The Issuer signature is untouched and valid.\n\nThis is a downgrade/omission primitive. A malicious or curious **holder** can present a tampered Disclosure and have the relying party receive *fewer* claims than the credential carries, with no error surfaced. Where the relying party does **not** enforce key binding, an **in-transit (on-path) attacker** can achieve the same by mangling one Disclosure's bytes; where key binding **is** enforced, on-path tampering instead breaks the holder's KB-JWT `sd_hash` binding (so it is rejected), and the downgrade is then exercisable by the key-bound holder — confir",
-      "severity": "high",
-      "published": "2026-11-02T17:54:39+00:00",
-      "link": "https://github.com/advisories/GHSA-f9j6-8p6x-r9j6"
     }
   ]
 }
