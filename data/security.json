@@ -1,9 +1,27 @@
 {
   "feed": "security",
   "source": "https://wid.cert-bund.de/content/public/securityAdvisory/rss",
-  "fetched_at": "2026-11-06T03:44:31+00:00",
-  "count": 508,
+  "fetched_at": "2026-11-06T09:28:15+00:00",
+  "count": 509,
   "items": [
+    {
+      "title": "[NEU] [hoch] OpenSSH: Schwachstelle ermöglicht Erlangen von Administratorrechten",
+      "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4365",
+      "published": "2026-11-06T08:39:56+00:00",
+      "description": "Ein entfernter, anonymer Angreifer kann eine Schwachstelle in OpenSSH (in Kombination mit musl libc und ohne PAM) ausnutzen, um Administratorrechte zu erlangen."
+    },
+    {
+      "title": "[UPDATE] [hoch] Barracuda Networks Email Security Gateway und Web Application Firewall: Mehrere Schwachstellen",
+      "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4295",
+      "published": "2026-11-06T06:54:56+00:00",
+      "description": "Ein entfernter, authentisierter Angreifer kann mehrere Schwachstellen in Barracuda Networks Email Security Gateway und Barracuda Networks Web Application Firewall ausnutzen, um beliebigen Programmcode mit Administratorrechten auszuführen und die Authentifizierung zu umgehen. Durch die Kombination dieser Schwachstellen kann der Angreifer Root-Zugriff auf das Gerät erlangen."
+    },
+    {
+      "title": "[UPDATE] [hoch] IBM MQ: Mehrere Schwachstellen",
+      "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4343",
+      "published": "2026-11-06T06:44:56+00:00",
+      "description": "Ein Angreifer kann mehrere Schwachstellen in IBM MQ ausnutzen, um beliebigen Programmcode auszuführen, um einen Denial of Service Angriff durchzuführen, um Informationen offenzulegen und um Daten zu manipulieren."
+    },
     {
       "title": "[UPDATE] [hoch] Oracle Java SE and GraalVM, und OpenJDK: Schwachstelle ermöglicht Umgehen von Sicherheitsvorkehrungen",
       "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4139",
@@ -213,12 +231,6 @@
       "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4344",
       "published": "2026-11-05T11:09:56+00:00",
       "description": "Ein entfernter, authentisierter Angreifer kann mehrere Schwachstellen in OpenCTI ausnutzen, um seine Privilegien zu erhöhen oder Cross-Site-Scripting-Angriffe durchzuführen."
-    },
-    {
-      "title": "[NEU] [hoch] IBM MQ: Mehrere Schwachstellen",
-      "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4343",
-      "published": "2026-11-05T11:09:55+00:00",
-      "description": "Ein Angreifer kann mehrere Schwachstellen in IBM MQ ausnutzen, um beliebigen Programmcode auszuführen, um einen Denial of Service Angriff durchzuführen, um Informationen offenzulegen und um Daten zu manipulieren."
     },
     {
       "title": "[NEU] [hoch] Linux Kernel: Schwachstelle ermöglicht nicht spezifizierten Angriff",
@@ -2693,12 +2705,6 @@
       "description": "Ein Angreifer kann mehrere Schwachstellen in OpenSSL ausnutzen, um beliebigen Programmcode auszuführen, einen Denial-of-Service-Zustand zu verursachen oder vertrauliche Informationen offenzulegen."
     },
     {
-      "title": "[NEU] [hoch] Barracuda Networks Email Security Gateway und Web Application Firewall: Mehrere Schwachstellen",
-      "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4295",
-      "published": "2026-11-03T11:47:34+00:00",
-      "description": "Ein entfernter, authentisierter Angreifer kann mehrere Schwachstellen in Barracuda Networks Email Security Gateway und Barracuda Networks Web Application Firewall ausnutzen, um beliebigen Programmcode mit Administratorrechten auszuführen und die Authentifizierung zu umgehen. Durch die Kombination dieser Schwachstellen kann der Angreifer Root-Zugriff auf das Gerät erlangen."
-    },
-    {
       "title": "[NEU] [mittel] IBM App Connect Enterprise: Schwachstelle ermöglicht Denial of Service",
       "link": "https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2026-4294",
       "published": "2026-11-03T11:47:34+00:00",
@@ -3056,8 +3062,8 @@
   "archive_truncated": false,
   "history_item_limit": 1800,
   "source_count": 250,
-  "source_oldest_published": "2026-11-04T12:41:42+00:00",
-  "history_cutoff": "2026-11-03T03:44:31+00:00",
+  "source_oldest_published": "2026-11-04T12:41:43+00:00",
+  "history_cutoff": "2026-11-03T09:28:15+00:00",
   "history_hours": 72,
   "source_may_be_truncated": false,
   "note": "Rolling observed BSI items; gaps in the upstream feed cannot be ruled out."
