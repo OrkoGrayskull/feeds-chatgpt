@@ -1,12 +1,156 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-06T13:11:23+00:00",
+  "fetched_at": "2026-11-07T03:17:59+00:00",
   "window_days": 3,
-  "window_start": "2026-11-04",
-  "window_end": "2026-11-06",
-  "count": 7,
+  "window_start": "2026-11-05",
+  "window_end": "2026-11-07",
+  "count": 20,
   "items": [
+    {
+      "cve": null,
+      "ghsa": "GHSA-47w9-6r3f-938g",
+      "title": "LXD has restricted project bypass leading to arbitrary command execution",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv\n\n### Summary\n\nInstance snapshots ignore the `restricted.containers.lowlevel=block` setting;\nallowing for arbitrary command execution on the Incus server by abusing\nlowlevel hooks such as `raw.lxc` and `raw.qemu`.\n\n\n### Details\n\nInstance snapshots ignore the `restricted.containers.lowlevel=block` setting;\nallowing for arbitrary command execution on the Incus server by abusing\nlowlevel hooks such as `raw.lxc` and `raw.qemu`.\n\nAs snapshots can be moved from one server to another, a malicious\ninstance+snapshot can be crafted locally, moved to a restricted project\nand the snapshot restored for arbitrary command execution.\n\nIn practice, this allows a malicious actor to execute arbitrary commands\non the host with root privileges.\n\n\n### PoC\n\n```\n# remote, restricted\nincus project set rem:project restricted.true\nin",
+      "severity": "critical",
+      "published": "2026-11-06T19:51:26+00:00",
+      "link": "https://github.com/advisories/GHSA-47w9-6r3f-938g"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-7mr3-28h5-m5vx",
+      "title": "LXD has project restriction bypass for custom volume copy across projects ",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-64f3-v33m-w89f\n\n### Summary\n\nMissing authorization checks exist for custom volume copying where an attacker knowing the name of a project that they don't have access to and the name of a custom volume in that project can copy the custom volume to a new project. This issue could allow an attacker to access secrets in custom volumes they are not authorized to access.\n\n### Details\n\nThe storage volume creation handler authorizes creation in the target project, then passes `req.Source.Project` into the custom-volume copy path without checking that the caller can view the source volume. `req.Source.Project` is the attacker-controlled field. It is resolved to a storage volume project name and passed directly to `CreateCustomVolumeFromCopy`. No `allowPermission` or entitlement check (e.g. `CanView` on the source volume) is perfo",
+      "severity": "high",
+      "published": "2026-11-06T19:51:16+00:00",
+      "link": "https://github.com/advisories/GHSA-7mr3-28h5-m5vx"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-qx75-2p3r-pwm5",
+      "title": "LXD has project restriction bypass in instance copy across projects ",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-c9f5-j9c3-mhrg\n\n### Summary\nMissing authorization checks exist for instance copying where an attacker knowing the name of a project that they don't have access to and the name of an instance in that project can copy the instance to a new project. This issue could allow an attacker to access secrets in instances they are not authorized to access.\n\n### Details\n`cmd/incusd/instances.go` authorizes `POST /1.0/instances` against the target project. In the copy path, `cmd/incusd/instances_post.go` then loads the source instance from `req.Source.Project` without checking whether the caller can view that source instance.\n\nFrom my understanding, the copy must occur on the same server. However, once the copy has been done, nothing prevents a malicious actor from moving the instance to another server.\n\n### PoC\n\n#### Setup\n\nWe assum",
+      "severity": "high",
+      "published": "2026-11-06T19:51:00+00:00",
+      "link": "https://github.com/advisories/GHSA-qx75-2p3r-pwm5"
+    },
+    {
+      "cve": "CVE-2026-55649",
+      "ghsa": "GHSA-r4hm-p9f9-fj9v",
+      "title": "GeoNode has Stored XSS in Documents metadata abstract field",
+      "description": "The abstract metadata of documents is not sanitised. It’s possible to store arbitrary HTML (and JS) that will be executed when visiting the page.",
+      "severity": "medium",
+      "published": "2026-11-06T19:50:34+00:00",
+      "link": "https://github.com/advisories/GHSA-r4hm-p9f9-fj9v"
+    },
+    {
+      "cve": "CVE-2026-46429",
+      "ghsa": "GHSA-fqpv-mq26-pr4j",
+      "title": "GeoNode has Unrestricted File Upload",
+      "description": "The upload service validation can be circumvented with specially crafted requests, allowing for the storage and serving of malicious files.",
+      "severity": "medium",
+      "published": "2026-11-06T19:41:23+00:00",
+      "link": "https://github.com/advisories/GHSA-fqpv-mq26-pr4j"
+    },
+    {
+      "cve": "CVE-2026-33050",
+      "ghsa": "GHSA-9fpx-fr6j-2vh6",
+      "title": "GeoNode has OS command injection via uploaded file layer name",
+      "description": "Arbitrary OS commands can be executed on the GeoNode by uploading a vector file with a crafted layer name.",
+      "severity": "high",
+      "published": "2026-11-06T19:39:38+00:00",
+      "link": "https://github.com/advisories/GHSA-9fpx-fr6j-2vh6"
+    },
+    {
+      "cve": "CVE-2026-9639",
+      "ghsa": "GHSA-j93m-3j9p-m5m8",
+      "title": "LXD has CreateCustomVolumeFromBackup nil-pointer dereference on volumes[0].snapshots[*].expires_at",
+      "description": "## Summary\n\n(sibling-field variant of CVE-2026-40197 fix 05bc272)\n\n`(*lxdBackend).CreateCustomVolumeFromBackup` in [`lxd/storage/backend_lxd.go`](https://github.com/canonical/lxd/blob/05bc272/lxd/storage/backend_lxd.go) contains an unguarded `*time.Time` dereference on the `ExpiresAt` field of every volume-snapshot entry in an imported custom-volume backup. An authenticated user with `EntitlementCanCreateStorageVolumes` permission on any project can crash the `lxd` daemon by uploading a backup tarball whose `volumes[0].snapshots[*].expires_at` field is omitted.\n\nThis is a sibling-field variant of the CVE-2026-40197 fix (commit `05bc272`, \"Validate snapshots from backup.yaml are non-nil\", cherry-picked from incus commit `985a1dedf` / GHSA-r7w7-mmxr-47r9). That fix added `if snap == nil` guards at several consumer sites, but did not guard the adjacent `*snapshot.ExpiresAt` deref at line 82",
+      "severity": "medium",
+      "published": "2026-11-06T19:37:14+00:00",
+      "link": "https://github.com/advisories/GHSA-j93m-3j9p-m5m8"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-pjff-c2wc-f6jm",
+      "title": "LXD has arbitrary file write on client due to trusted image hash",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-f6m5-xw2g-xc4x\n\n### Summary\n\nAn arbitrary file write exists in the Incus client when a malicious image\nserver returns a crafted `Incus-Image-Hash` header. This can lead to\narbitrary command execution as root on the server.\n\n\n### Details\n\n- `cmd/incusd/images.go:611-684` handles `source.type=url` by HEADing the user-supplied URL, reading `Incus-Image-Hash` and `Incus-Image-URL`, and passing them to `imageDownload()` as `Alias`\n and `Server`.\n- `cmd/incusd/daemon_images.go:91-92` defaults `fp` to the caller-controlled alias string.\n- `cmd/incusd/daemon_images.go:333-335` builds `destName := filepath.Join(destDir, fp)`.\n- `cmd/incusd/daemon_images.go:469-523` enters the `direct` protocol branch, opens `destName` with `os.Create()`, and copies the HTTP response into that file.\n- `cmd/incusd/daemon_images.go:528-532` validate",
+      "severity": "critical",
+      "published": "2026-11-06T19:36:55+00:00",
+      "link": "https://github.com/advisories/GHSA-pjff-c2wc-f6jm"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-fmc8-p6q7-75cc",
+      "title": "LXD has argument injection in backup compression algorithm leading to AFW and ACE",
+      "description": "Reported from  https://github.com/lxc/incus/security/advisories/GHSA-v6mj-8pf4-hhw4\n\n### Summary\n\nImproper validation of user-provided backup compression algorithm leads to\nargument injection in the constructed command line. This leads to an\narbitrary file write on the host, possibly leading to arbitrary command\nexecution.\n\n\n### Details\n\nIncus validates `compression_algorithm` by parsing it into fields and checking\nonly the first token against an allowlist:\n\n```go\nfields, err := shellquote.Split(value)\n...\nif !slices.Contains([]string{\"bzip2\", \"gzip\", \"lz4\", \"lzma\", \"pigz\", \"pzstd\", \"pxz\", \"tar2sqfs\", \"xz\", \"zstd\"}, fields[0]) {\n    return fmt.Errorf(\"Compression algorithm %q isn't currently supported\", fields[0])\n}\n_, err = exec.LookPath(fields[0])\n```\n\nExtra arguments are not rejected. `compressFile()` then prepends `-c` and\npasses the remaining user-supplied fields to the compressor:\n",
+      "severity": "critical",
+      "published": "2026-11-06T19:36:37+00:00",
+      "link": "https://github.com/advisories/GHSA-fmc8-p6q7-75cc"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-vghh-5rfx-xhq8",
+      "title": "LXD has arbitrary file read+write on host via rootfs/ symlink in malicious image",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-2q3f-q5pq-g8wv\n\n### Summary\n\nA specially crafted image can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution.\n\n\n### Details\n\nIncus validates an image as soon as it sees a normal `metadata.yaml` and\na `rootfs/` entry, but full extraction can later process a duplicate top-level\n`rootfs` symlink. Later, the stopped-container file API opens\n`d.RootfsPath()` and passes that file descriptor to `forkfile`, which chroots to\nit.\n\n```\nmetadata.yaml\nrootfs/\nrootfs -> /\n```\n\nIn practice, this allows a malicious actor to access the host's filesystem\nwith root privileges.\n\n\n### PoC\n\nBelow, we map the container's rootfs to `/` on the host, but it can be\nmapped anywhere. We then retrieve the host's `/etc/shadow` file and\ncreate a file in `/`.\n\n```\n#!/bin/sh\nset -eu\n\ntmpdir=$(mkt",
+      "severity": "critical",
+      "published": "2026-11-06T19:36:07+00:00",
+      "link": "https://github.com/advisories/GHSA-vghh-5rfx-xhq8"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-jpf8-86f3-wp38",
+      "title": "LXD has arbitrary file read+write on host via templates/ symlink in malicious image",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-vxp5-584q-c479\n\n### Summary\n\nA specially crafted image can be used to read or create/write arbitrary\nfiles on the host; possibly leading to arbitrary command execution.\n\n\n### Details\n\nFor container images, `internal/server/storage/utils.go` calls\n`archive.Unpack(imageFile, destPath, ...)`. The tar extraction path in\n`shared/archive/archive.go` excludes device nodes, but it does not\nreject a top-level `templates` symlink.\n\nIn practice, this allows a malicious actor to access an arbitrary\ndirectory and edit arbitrary files in it.\n\n\n### PoC\n\nBelow, we map the templates directory to `/etc/cron.d` on the host, but\nit can be mapped anywhere. We then create a cronjob to run `id` as root.\n\n```\n#!/bin/sh\nset -eu\n\ntmpdir=$(mktemp -d)\ncleanup() {\n    rm -rf \"${tmpdir}\"\n}\ntrap cleanup EXIT INT QUIT TERM HUP\n\nmkdir -p \"${tmpdir}/img/",
+      "severity": "critical",
+      "published": "2026-11-06T18:53:57+00:00",
+      "link": "https://github.com/advisories/GHSA-jpf8-86f3-wp38"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-9j25-mm2h-2f76",
+      "title": "LXD has arbitrary file write on host via `exec-output` symlink in crafted image",
+      "description": "Reported from https://github.com/lxc/incus/security/advisories/GHSA-48q5-w887-33wv\n\n### Summary\n\nThe `record-output` parameter of the `/instances/$name/exec` endpoint\nstores the output of the command in the `exec-output` directory of the\ninstance. If `exec-output` is a symlink, file named `exec_UUID.stdout`\nand `exec_UUID.stderr` can be written to an arbitrary location where\nthe `.stdout` file will contain arbitrary content. This behavior can be\nabused for arbitrary command execution.\n\n\n### Details\n\nWhen an image is unpacked, top-level symlinks are extracted as is;\nallowing for `exec-output` to be placed on disk. In `instance_exec.go`,\n`os.Mkdir` continues of `exec-output` exists and `os.OpenFile` follows\nthe `exec-output` symlink.\n\n\n### PoC\n\nBelow, we place the `exec_UUID.stdout` file in `/etc/cron.d` on\nthe host for arbitrary command execution.\n\n```\n#!/bin/sh\n# usage: $0 existing-image",
+      "severity": "critical",
+      "published": "2026-11-06T18:45:51+00:00",
+      "link": "https://github.com/advisories/GHSA-9j25-mm2h-2f76"
+    },
+    {
+      "cve": "CVE-2026-28385",
+      "ghsa": "GHSA-3gq2-x4qg-p4g6",
+      "title": "LXD: SSRF via image import from URL allows internal network probing by authenticated users",
+      "description": "## Summary\nThe LXD image import-from-URL endpoint (`POST /1.0/images` with `source.type=url`) makes server-side HTTP requests to an attacker-supplied URL without any private-IP or loopback blocking. An authenticated user with the `can_create_images` entitlement can force the LXD daemon to connect to internal network addresses (127.0.0.1, RFC1918 ranges, cloud metadata endpoints), enabling port scanning via error-based inference and interaction with internal HTTP services from the daemon's privileged network position.\n\n## Severity\n\n- **Attack Vector:** Network — LXD API is network-accessible.\n- **Attack Complexity:** Low — Single crafted API request with no special conditions.\n- **Privileges Required:** Low — Requires `can_create_images` entitlement, a non-admin permission commonly delegated to regular users.\n- **User Interaction:** None.\n- **Scope:** Changed — The attacker leverages LXD'",
+      "severity": "medium",
+      "published": "2026-11-06T18:29:18+00:00",
+      "link": "https://github.com/advisories/GHSA-3gq2-x4qg-p4g6"
+    },
+    {
+      "cve": "CVE-2026-62361",
+      "ghsa": "GHSA-xgjr-7j9q-2h4r",
+      "title": "listmonk: SQL Injection in `/api/subscribers/export` bypasses table access control, leaking admin password hashes and SMTP credentials",
+      "description": "### Summary\n\nA SQL injection vulnerability in `GET /api/subscribers/export` allows an authenticated user with the `subscribers:sql_query` permission to bypass the table access control that exists on the regular query endpoint (`GET /api/subscribers`) and read arbitrary tables from the database — including `users` (bcrypt password hashes) and `settings` (SMTP credentials, API keys). Both error-based and time-based exfiltration techniques are confirmed to work. This creates a privilege escalation path: `subscribers:sql_query` → hash exfiltration → offline bcrypt crack (cost factor 6) → Super Admin account takeover.\n\n---\n\n### Details\n\nThe subscriber query feature accepts a user-controlled `query` parameter that is injected directly into a SQL template via `strings.ReplaceAll`. The regular query endpoint `GET /api/subscribers` correctly calls `validateQueryTables` to block access to sensitiv",
+      "severity": "medium",
+      "published": "2026-11-06T18:15:17+00:00",
+      "link": "https://github.com/advisories/GHSA-xgjr-7j9q-2h4r"
+    },
+    {
+      "cve": "CVE-2026-62284",
+      "ghsa": "GHSA-5w5g-j6hw-6p8f",
+      "title": "OSAC operator: Kubeconfig credential-plugin execution and SSRF in console proxy",
+      "description": "### Impact\n\n The console-proxy's RemoteConfigResolver parses kubeconfig data from Kubernetes Secrets using clientcmd.RESTConfigFromKubeConfig without sanitizing the resulting rest.Config. A kubeconfig containing an exec\n  plugin stanza (under users[].user.exec) is faithfully preserved. When rest.TransportFor later builds the HTTP transport for the upstream WebSocket connection, client-go invokes the exec plugin — spawning an\n  arbitrary process as the osac-console-proxy service account.\n\n  This allows remote code execution inside the console-proxy pod for any principal that can create or modify a Secret with the label osac.openshift.io/remote-cluster-kubeconfig: \"true\" in a namespace where the\n  console-proxy has Secret read access (governed by its RoleBinding). A secondary vector exists via attacker-controlled clusters[].server, enabling server-side request forgery (SSRF) from within th",
+      "severity": "high",
+      "published": "2026-11-06T18:12:40+00:00",
+      "link": "https://github.com/advisories/GHSA-5w5g-j6hw-6p8f"
+    },
+    {
+      "cve": "CVE-2026-16454",
+      "ghsa": "GHSA-92r3-p8c2-3fpx",
+      "title": "Eclipse hawkBit DDI has Privilege Escalation that allows Tenant-Isolated Firmware Exfiltration",
+      "description": "## **Description**\nA privilege escalation vulnerability has been identified in the Direct Device Integration (DDI) Controller of **Eclipse hawkBit** (versions 1.0.3 and prior).\n\nThis vulnerability allows an authenticated device to escalate its permissions and bypass the strict boundaries of its assigned updates. Under normal operation, a device should be restricted **strictly to the specific firmware artifacts explicitly assigned to it**. However, this flaw enables any authenticated device to bypass this restriction and download any firmware artifact **within the same tenant**.\n\nThis is **not** an authentication bypass; the requesting device must possess valid credentials for its respective tenant. Instead, the issue stems from a flaw in object-level authorization validation.\n\nA related, lower-severity helper issue exists in the listing software modules artifacts metadata endpoint. This ",
+      "severity": "medium",
+      "published": "2026-11-06T18:09:45+00:00",
+      "link": "https://github.com/advisories/GHSA-92r3-p8c2-3fpx"
+    },
     {
       "cve": "CVE-2026-62300",
       "ghsa": "GHSA-m5ph-mmg5-6w5h",
@@ -42,33 +186,6 @@
       "severity": "high",
       "published": "2026-11-05T17:40:59+00:00",
       "link": "https://github.com/advisories/GHSA-hhf9-qw4v-72xp"
-    },
-    {
-      "cve": "CVE-2026-55098",
-      "ghsa": "GHSA-93cm-2v4m-c56c",
-      "title": "Arc: DuckDB I/O aliases bypass database RBAC after CVE-2026-47735",
-      "description": "### Summary\n\nThe fix for CVE-2026-47735 (released 2026.06.1) is incomplete. It added a DuckDB sandbox (`SET GLOBAL allowed_directories=[<storage root>]; SET GLOBAL enable_external_access=false`) and an Arc SQL-layer denylist of the **literal** functions `read_parquet(` and `arc_partition_agg(`. The sandbox correctly blocks reads **outside** the storage root (OS files, `http://` SSRF), but it allowlists the **entire multi-tenant storage root**, and the SQL denylist still misses the rest of the DuckDB I/O family the original advisory enumerated. As a result, any authenticated token — including one with `permissions: []` — can read or enumerate **every other database's data** within the deployment, defeating RBAC.\n\nVerified at HEAD `c08b892` (`v26.06.1-36`, includes 26.06.2). Confirmed still live; no later commit blocks these functions.\n\n### Root cause (three composing gaps)\n\n1. **Sandbox s",
-      "severity": "medium",
-      "published": "2026-11-04T17:02:37+00:00",
-      "link": "https://github.com/advisories/GHSA-93cm-2v4m-c56c"
-    },
-    {
-      "cve": "CVE-2026-93363",
-      "ghsa": "GHSA-mc8m-rr6c-r5qr",
-      "title": "@payloadcms/storage-vercel-blob has access control bypass of uploads in Vercel Storage adapter",
-      "description": "### Impact\nIn affected configurations, client upload access does not consistently align with the associated collection’s access configuration.\n\nYou are affected if:\n- You use client uploads with `@payloadcms/storage-vercel-blob`.\n- Authenticated users can access the client-upload route.\n\nApplications that do not enable client uploads are not affected.\n\n### Patches\nClient uploads now require authentication and the appropriate collection-level access before upload access is granted.\n\nUsers should upgrade Payload packages to `>= 3.90.0` or `>= 4.0.0-canary.34`.\n\n### Workarounds\nUpgrading to a patched version is recommended. Until you can upgrade, disable client uploads or configure the upload route’s access control to enforce the associated collection’s permissions.",
-      "severity": "medium",
-      "published": "2026-11-04T17:00:39+00:00",
-      "link": "https://github.com/advisories/GHSA-mc8m-rr6c-r5qr"
-    },
-    {
-      "cve": "CVE-2026-113787",
-      "ghsa": "GHSA-3cgg-c5pp-57h6",
-      "title": "odf-kit: HTML injection leading to XSS in odtToHtml() and odsToHtml() via unescaped style attribute values",
-      "description": "### Summary\n\nODF style attribute values are interpolated into `style=\"...\"` attributes without HTML-escaping in **both** of odf-kit's to-HTML renderers (`odtToHtml` and `odsToHtml`). A double-quote character inside an attacker-controlled style value breaks out of the attribute, allowing arbitrary HTML/attribute injection — and therefore script execution (XSS) — from a crafted `.odt` or `.ods` file wherever the rendered output is inserted as HTML, which is the documented purpose of both functions.\n\n### Details\n\n#### ODT renderer (`src/odt/to-html/html-renderer.ts`)\n\nThe renderer has an `escapeHtml()` helper and applies it consistently to text content and to attribute values — `href`, `src`, `alt`, `id`, `data-author`, `data-date`, citation text all go through it. The inline CSS strings do not.\n\nIn `renderTextSpan` (dist/odt/to-html/html-renderer.js:195):\n\n```js\nconst css = spanStyleToCss(",
-      "severity": "medium",
-      "published": "2026-11-04T16:14:34+00:00",
-      "link": "https://github.com/advisories/GHSA-3cgg-c5pp-57h6"
     }
   ]
 }
