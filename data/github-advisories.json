@@ -1,11 +1,11 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-07T11:54:10+00:00",
+  "fetched_at": "2026-11-08T02:46:40+00:00",
   "window_days": 3,
-  "window_start": "2026-11-05",
-  "window_end": "2026-11-07",
-  "count": 20,
+  "window_start": "2026-11-06",
+  "window_end": "2026-11-08",
+  "count": 16,
   "items": [
     {
       "cve": null,
@@ -150,42 +150,6 @@
       "severity": "medium",
       "published": "2026-11-06T18:09:45+00:00",
       "link": "https://github.com/advisories/GHSA-92r3-p8c2-3fpx"
-    },
-    {
-      "cve": "CVE-2026-62300",
-      "ghsa": "GHSA-m5ph-mmg5-6w5h",
-      "title": "filecoin-pin: Unbounded DAG pinning can exhaust server resources",
-      "description": "## Summary\n\nThe IPFS Pinning Service API implementation accepts a caller-controlled CID through `POST /pins`, queues background processing, and then recursively fetches the full DAG with `helia.pins.add(cid)`. The route and background pinning path do not enforce a request rate limit, per-user quota, maximum DAG byte count, maximum block count, traversal timeout, or concurrent pinning limit.\n\nAn authenticated caller, or an unauthenticated caller when the server is started with `ALLOW_NO_AUTH=true`, can submit one or more pins whose CIDs resolve to very large DAGs. The server writes fetched blocks to CAR files under `carStoragePath` and can consume disk, network, CPU, and libp2p resources until the process or host becomes unavailable.\n\n## Details\n\n`POST /pins` validates only that the request body contains a syntactically valid CID string, then forwards it to the pin store:\n\n- `src/filecoin",
-      "severity": "medium",
-      "published": "2026-11-05T18:07:30+00:00",
-      "link": "https://github.com/advisories/GHSA-m5ph-mmg5-6w5h"
-    },
-    {
-      "cve": "CVE-2026-61536",
-      "ghsa": "GHSA-64vx-6h2c-rjh7",
-      "title": "Banks: Unsafe importlib.import_module of attacker-controlled Tool.import_path in CompletionExtension allows RCE",
-      "description": "## Summary\n\n  `banks` parses `Tool` JSON objects from the rendered body of `{% completion %}` blocks and later resolves their\n  `import_path` field through `importlib.import_module(...)` + `getattr(...)` to obtain the callable that handles a tool\n   call. There is no allowlist or sanitization on `import_path`, so any importable Python attribute (e.g. `os.system`,\n  `subprocess.getoutput`) can be selected. When the LLM emits a `tool_calls` entry whose `function.name` matches the\n  attacker-supplied tool name, the resolved callable is invoked with kwargs decoded from `tool_call.function.arguments`,\n   yielding arbitrary code execution in the banks-hosting process.\n\n  This is distinct from GHSA-gphh-9q3h-jgpp / CVE-2026-44209. That advisory was fixed in 2.4.2 by switching\n  `src/banks/env.py` from `Environment` to `SandboxedEnvironment`. The fix does not touch\n  `src/banks/extensions/comple",
-      "severity": "high",
-      "published": "2026-11-05T17:51:02+00:00",
-      "link": "https://github.com/advisories/GHSA-64vx-6h2c-rjh7"
-    },
-    {
-      "cve": "CVE-2026-105769",
-      "ghsa": "GHSA-5q7h-w9jf-cx97",
-      "title": "kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts",
-      "description": "### Summary\n\nkaniko before v1.25.20 can send a Microsoft Entra ID (Azure AD) access token for Azure Resource Manager to a registry host an attacker controls. A Dockerfile that references an image on a lookalike host, such as `FROM x.azurecr.io.attacker.com/img`, is enough. The build needs no `RUN` instruction and never has to push.\n\nThe flaw is in the Azure Container Registry (ACR) credential helper, `github.com/chrismellard/docker-credential-acr-env`. kaniko links it into the executor and warmer (the built-in helper) and also builds it as the standalone `docker-credential-acr-env` binary. The helper decides whether a host is an ACR registry with an unanchored regex, so any hostname that contains `.azurecr.io` (or `.azurecr.cn`, `.azurecr.de`, `.azurecr.us`) passes. The upstream module is unmaintained and has no fixed release. The Go vulnerability database tracks the upstream flaw as [GO",
-      "severity": "critical",
-      "published": "2026-11-05T17:48:54+00:00",
-      "link": "https://github.com/advisories/GHSA-5q7h-w9jf-cx97"
-    },
-    {
-      "cve": "CVE-2026-12411",
-      "ghsa": "GHSA-hhf9-qw4v-72xp",
-      "title": "lxd allows Cross-guest volume hijack via DevLXD device patch",
-      "description": "### Summary\n\nA guest can mount another guest's custom storage volume over `/dev/lxd` and read or write its contents without owning it. The DevLXD storage API blocks access to volumes you don't own, but the instance device-update path that attaches a volume to a container without checks ownership. Any guest in a project with `security.devlxd.management.volumes` enabled can attach a volume belonging to a different guest by naming it in a device `PATCH`, giving one tenant full read and write access to another tenant's volume data.\n\n### Details\n\nVolumes created over DevLXD get `volatile.devlxd.owner` set to the calling identity. The storage handlers enforce it on `GET`/`PUT`/`DELETE` ([`isDevLXDVolumeOwner`, lxd/devlxd_storage.go:359](https://github.com/canonical/lxd/blob/d29ece6284a78e6c21d276be4e5fb6fef697c35e/lxd/devlxd_storage.go#L359)) and on volume-copy sources ([devlxd_storage.go:286]",
-      "severity": "high",
-      "published": "2026-11-05T17:40:59+00:00",
-      "link": "https://github.com/advisories/GHSA-hhf9-qw4v-72xp"
     }
   ]
 }
