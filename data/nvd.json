@@ -1,12 +1,30 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T09%3A04%3A58.000&resultsPerPage=200&startIndex=905",
-  "fetched_at": "2026-11-08T09:04:58+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T12%3A08%3A43.000&resultsPerPage=200&startIndex=907",
+  "fetched_at": "2026-11-08T12:08:43+00:00",
   "window_days": 3,
   "window_start": "2026-11-06",
   "window_end": "2026-11-08",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-124328",
+      "title": "CVE-2026-124328",
+      "description": "A vulnerability has been found in FlowCI flow-core-x up to 1.23.49. The affected element is the function ConditionManagerImpl.run of the file core/src/main/java/com/flowci/core/common/manager/ConditionManagerImpl.java of the component Groovy Script Evaluation. The manipulation of the argument condition leads to code injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-08T11:16:34.420",
+      "last_modified": "2026-11-08T11:16:34.733",
+      "cvss": 7.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124328"
+    },
+    {
+      "cve": "CVE-2026-124326",
+      "title": "CVE-2026-124326",
+      "description": "A flaw has been found in DataLinkDC Dinky up to 1.2.5. Impacted is the function file.getOriginalFilename of the file CatalogueController.java of the component Catalogue Upload. Executing a manipulation of the argument filename can lead to path traversal. The attack can be executed remotely. The exploit has been published and may be used. The researcher claims to have submitted a GHSA on the repository of the project.",
+      "published": "2026-11-08T10:16:51.850",
+      "last_modified": "2026-11-08T10:16:52.180",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124326"
+    },
     {
       "cve": "CVE-2026-97195",
       "title": "CVE-2026-97195",
@@ -210,7 +228,7 @@
       "title": "CVE-2026-114713",
       "description": "The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 \"label\" message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
       "published": "2026-11-08T03:16:33.410",
-      "last_modified": "2026-11-08T03:16:36.987",
+      "last_modified": "2026-11-08T11:16:32.810",
       "cvss": 8.6,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114713"
     },
@@ -1788,28 +1806,10 @@
       "last_modified": "2026-11-07T19:17:28.020",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123474"
-    },
-    {
-      "cve": "CVE-2026-123467",
-      "title": "CVE-2026-123467",
-      "description": "Missing Authorization vulnerability in StylemixThemes Motors motors-car-dealership-classified-listings allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Motors: from n/a through 1.4.128.",
-      "published": "2026-11-07T13:16:37.123",
-      "last_modified": "2026-11-07T19:17:27.780",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123467"
-    },
-    {
-      "cve": "CVE-2026-123462",
-      "title": "CVE-2026-123462",
-      "description": "Missing Authorization vulnerability in myCred myCred mycred allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects myCred: from n/a through 4.0.2.",
-      "published": "2026-11-07T13:16:36.953",
-      "last_modified": "2026-11-07T19:17:27.513",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123462"
     }
   ],
-  "total_results": 1105,
+  "total_results": 1107,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 905
+  "start_index": 907
 }
