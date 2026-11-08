@@ -1,12 +1,219 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T02%3A46%3A40.000&resultsPerPage=200&startIndex=882",
-  "fetched_at": "2026-11-08T02:46:40+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T09%3A04%3A58.000&resultsPerPage=200&startIndex=905",
+  "fetched_at": "2026-11-08T09:04:58+00:00",
   "window_days": 3,
   "window_start": "2026-11-06",
   "window_end": "2026-11-08",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-97195",
+      "title": "CVE-2026-97195",
+      "description": "The Secure Custom Fields WordPress plugin before 6.9.8 does not sanitize a persisted field definition before emitting part of it as an HTML attribute name, allowing a user able to configure its fields to store a payload that executes as JavaScript in the browser of any user who views a page rendering the affected field, which on multisite lets a site administrator who lacks the unfiltered_html capability inject script into other users' sessions.",
+      "published": "2026-11-08T06:17:06.350",
+      "last_modified": "2026-11-08T06:17:06.350",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97195"
+    },
+    {
+      "cve": "CVE-2026-97194",
+      "title": "CVE-2026-97194",
+      "description": "The Secure Custom Fields WordPress plugin before 6.9.8 does not perform a read-permission check when it renders and formats the values of its relational fields, allowing users with post-editing access (Contributor and above) to disclose the titles and non-public statuses of other users' unpublished posts.",
+      "published": "2026-11-08T06:17:06.240",
+      "last_modified": "2026-11-08T06:17:06.240",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97194"
+    },
+    {
+      "cve": "CVE-2026-97193",
+      "title": "CVE-2026-97193",
+      "description": "The Secure Custom Fields WordPress plugin before 6.9.8 does not verify that a user is allowed to edit the target object before writing to it during bidirectional relationship synchronization, allowing users with contributor-level access and above to add or remove a reference to their own object on arbitrary posts, users, or terms they cannot otherwise edit.",
+      "published": "2026-11-08T06:17:06.127",
+      "last_modified": "2026-11-08T06:17:06.127",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97193"
+    },
+    {
+      "cve": "CVE-2026-97192",
+      "title": "CVE-2026-97192",
+      "description": "The Secure Custom Fields WordPress plugin before 6.9.8 does not re-apply its field-group location rules when persisting values submitted through the post editor save path, allowing users with contributor-level access and above to write custom fields the site restricted to administrators onto their own posts.",
+      "published": "2026-11-08T06:17:06.003",
+      "last_modified": "2026-11-08T06:17:06.003",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97192"
+    },
+    {
+      "cve": "CVE-2026-96963",
+      "title": "CVE-2026-96963",
+      "description": "The Pie Register  WordPress plugin through 3.8.4.15 does not perform an authorisation check in one of its AJAX actions, allowing users with a role as low as contributor to modify existing administrator-created invitation-code records.",
+      "published": "2026-11-08T06:17:05.890",
+      "last_modified": "2026-11-08T06:17:05.890",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96963"
+    },
+    {
+      "cve": "CVE-2026-96961",
+      "title": "CVE-2026-96961",
+      "description": "The Pie Register  WordPress plugin through 3.8.4.15 does not perform any capability, nonce or authentication check on one of its request handlers, allowing unauthenticated attackers to reset the Pie Register  WordPress plugin through 3.8.4.15's settings to their defaults (disabling registration security controls such as new-user email verification) and to destroy a Pie Register  WordPress plugin through 3.8.4.15 data table.",
+      "published": "2026-11-08T06:17:05.763",
+      "last_modified": "2026-11-08T06:17:05.763",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96961"
+    },
+    {
+      "cve": "CVE-2026-85344",
+      "title": "CVE-2026-85344",
+      "description": "The FV Flowplayer Video Player WordPress plugin before 7.5.57.7212 does not perform any authorization check on an AJAX action that carries out a site-wide content rewrite, so any authenticated user, including subscriber-level, can trigger a bulk modification of posts they should not be able to edit.",
+      "published": "2026-11-08T06:17:05.643",
+      "last_modified": "2026-11-08T06:17:05.643",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85344"
+    },
+    {
+      "cve": "CVE-2026-122085",
+      "title": "CVE-2026-122085",
+      "description": "The Event Tickets Manager for WooCommerce WordPress plugin before 1.6.0 does not perform authorisation or a valid nonce check on its ticket-transfer feature, which is available to unauthenticated users, allowing them to transfer other attendees' guest-checkout tickets to an email address of their choosing, invalidating the legitimate ticket and causing the victim's ticket PDF, which contains attendee personal data, to be sent to the attacker.",
+      "published": "2026-11-08T06:17:05.213",
+      "last_modified": "2026-11-08T06:17:05.213",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122085"
+    },
+    {
+      "cve": "CVE-2026-122062",
+      "title": "CVE-2026-122062",
+      "description": "The Pronamic Pay WordPress plugin before 11.1.0, Pronamic Pay doneren met Mollie WordPress plugin before 1.7.1 do not restrict access to stored form submissions through the REST API, allowing unauthenticated users to read the messages that visitors submitted through the bundled forms.",
+      "published": "2026-11-08T06:17:05.097",
+      "last_modified": "2026-11-08T06:17:05.097",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122062"
+    },
+    {
+      "cve": "CVE-2026-122060",
+      "title": "CVE-2026-122060",
+      "description": "The WP Recipe Maker WordPress plugin before 10.9.2 does not check whether the post a recipe is embedded in is password protected before returning the recipe through its REST API and structured data output, allowing unauthenticated users to read the full content of recipes in password-protected posts.",
+      "published": "2026-11-08T06:17:04.957",
+      "last_modified": "2026-11-08T06:17:04.957",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122060"
+    },
+    {
+      "cve": "CVE-2026-114432",
+      "title": "CVE-2026-114432",
+      "description": "The Contact Form 7 WordPress plugin before 6.2.4 does not validate the type or extension of files uploaded through a form file field, and a flaw in its temporary-file cleanup leaves the uploaded file on disk, allowing unauthenticated users to upload arbitrary files to the site. On a stock Debian or Ubuntu Apache configuration, which lists directory contents and maps .phar to the PHP handler, the stored file can be located and executed, leading to Remote Code Execution. On other configurations, including nginx and Apache with .htaccess overrides enabled, the issue is limited to an arbitrary file written into the uploads directory, which may still be served as active content such as HTML or SVG from the site's own origin.",
+      "published": "2026-11-08T06:17:04.807",
+      "last_modified": "2026-11-08T06:17:04.807",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114432"
+    },
+    {
+      "cve": "CVE-2026-110963",
+      "title": "CVE-2026-110963",
+      "description": "The Userplace  WordPress plugin through 1.2.0 does not perform authorization checks on an AJAX action available to unauthenticated users and publicly exposes the nonce that protects it, allowing unauthenticated attackers to create an administrator account or write arbitrary site options, leading to full site takeover.",
+      "published": "2026-11-08T06:17:04.673",
+      "last_modified": "2026-11-08T06:17:04.673",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110963"
+    },
+    {
+      "cve": "CVE-2026-110132",
+      "title": "CVE-2026-110132",
+      "description": "The Sync Post With Other Site WordPress plugin before 1.9.4 does not properly authorize a content-management action for post types other than pages, allowing users with Contributor-level access or above to create and modify arbitrary custom post types, including reassigning content authorship.",
+      "published": "2026-11-08T06:17:04.557",
+      "last_modified": "2026-11-08T06:17:04.557",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110132"
+    },
+    {
+      "cve": "CVE-2026-109925",
+      "title": "CVE-2026-109925",
+      "description": "The Productive Commerce  WordPress plugin before 1.1.54 does not sanitise and escape a parameter before using it in a SQL statement, allowing unauthenticated attackers to perform SQL injection attacks.",
+      "published": "2026-11-08T06:17:04.443",
+      "last_modified": "2026-11-08T06:17:04.443",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109925"
+    },
+    {
+      "cve": "CVE-2026-106015",
+      "title": "CVE-2026-106015",
+      "description": "The Ecommerce Affiliate WordPress plugin through 1.0.0 does not restrict one-time password issuance and verification to the legitimate account owner, nor limit verification attempts, allowing unauthenticated attackers to take over any account, including administrators.",
+      "published": "2026-11-08T06:17:04.333",
+      "last_modified": "2026-11-08T06:17:04.333",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106015"
+    },
+    {
+      "cve": "CVE-2026-105970",
+      "title": "CVE-2026-105970",
+      "description": "The Thanh Toán Quét Mã QR Code Tự Động  WordPress plugin through 2.0.1 does not properly verify the authenticity of incoming bank-transfer payment notifications on a default installation, allowing unauthenticated attackers to mark arbitrary WooCommerce orders as paid.",
+      "published": "2026-11-08T06:17:04.227",
+      "last_modified": "2026-11-08T06:17:04.227",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105970"
+    },
+    {
+      "cve": "CVE-2026-104639",
+      "title": "CVE-2026-104639",
+      "description": "The Razorpay for WooCommerce WordPress plugin before 4.8.9 does not sanitize and escape a value derived from an incoming webhook request before using it in a SQL query, allowing users able to obtain the webhook secret (administrators) to perform SQL injection attacks.",
+      "published": "2026-11-08T06:17:04.113",
+      "last_modified": "2026-11-08T06:17:04.113",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104639"
+    },
+    {
+      "cve": "CVE-2026-104338",
+      "title": "CVE-2026-104338",
+      "description": "The Razorpay for WooCommerce WordPress plugin before 4.8.9 does not perform an authorization check on one of its REST routes and derives the acting user's identity from an unauthenticated request parameter, allowing an unauthenticated attacker to cause the request to execute as an arbitrary user account for the duration of the request. Exploitation additionally requires a specific coupon Razorpay for WooCommerce WordPress plugin before 4.8.9 to be active on the site.",
+      "published": "2026-11-08T06:17:04.000",
+      "last_modified": "2026-11-08T06:17:04.000",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104338"
+    },
+    {
+      "cve": "CVE-2026-104337",
+      "title": "CVE-2026-104337",
+      "description": "The Razorpay for WooCommerce WordPress plugin before 4.8.9 does not verify ownership of an order before returning a coupon discount computed against that order, allowing unauthenticated attackers to disclose the monetary value of arbitrary customer orders by enumerating order IDs.",
+      "published": "2026-11-08T06:17:03.880",
+      "last_modified": "2026-11-08T06:17:03.880",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104337"
+    },
+    {
+      "cve": "CVE-2026-104307",
+      "title": "CVE-2026-104307",
+      "description": "The BackUpWordPress plugin before 3.15 does not perform a capability or nonce check on an AJAX action that cleans up its backup directory, allowing any authenticated user (Subscriber and above) to delete the BackUpWordPress plugin before 3.15's backup protection and working files, removing download protection from stored backups and disrupting in-progress backups.",
+      "published": "2026-11-08T06:17:03.760",
+      "last_modified": "2026-11-08T06:17:03.760",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104307"
+    },
+    {
+      "cve": "CVE-2026-103375",
+      "title": "CVE-2026-103375",
+      "description": "The Antom Payments WordPress plugin through 2.0.11 does not perform any ownership or authorisation check before returning an order's confirmation link, which contains its secret key, to unauthenticated visitors, allowing attackers to view any customer's order details, including name, address, phone number and email.",
+      "published": "2026-11-08T06:17:03.643",
+      "last_modified": "2026-11-08T06:17:03.643",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103375"
+    },
+    {
+      "cve": "CVE-2026-103303",
+      "title": "CVE-2026-103303",
+      "description": "The Turisbook Booking System WordPress plugin through 1.3.8 does not have authorisation and CSRF checks when saving its settings, and does not sanitise and escape one of them before outputting it in an admin page, allowing unauthenticated users to perform Stored Cross-Site Scripting attacks against administrators.",
+      "published": "2026-11-08T06:17:02.487",
+      "last_modified": "2026-11-08T06:17:02.487",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-103303"
+    },
+    {
+      "cve": "CVE-2026-114713",
+      "title": "CVE-2026-114713",
+      "description": "The labeled-response module in UnrealIRCd 6.0.0 before 6.2.7.1 does not escape the IRCv3 \"label\" message tag when echoing it into replies, which allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority.",
+      "published": "2026-11-08T03:16:33.410",
+      "last_modified": "2026-11-08T03:16:36.987",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114713"
+    },
     {
       "cve": "CVE-2026-124422",
       "title": "CVE-2026-124422",
@@ -1599,217 +1806,10 @@
       "last_modified": "2026-11-07T19:17:27.513",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123462"
-    },
-    {
-      "cve": "CVE-2026-123183",
-      "title": "CVE-2026-123183",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in PluginUs.Net Active Products Tables for WooCommerce profit-products-tables-for-woocommerce allows Code Injection.This issue affects Active Products Tables for WooCommerce: from n/a through 2.1.6.",
-      "published": "2026-11-07T13:16:36.807",
-      "last_modified": "2026-11-07T13:16:36.920",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123183"
-    },
-    {
-      "cve": "CVE-2026-122669",
-      "title": "CVE-2026-122669",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Everest Forms Everest Forms everest-forms allows Stored XSS.This issue affects Everest Forms: from n/a through 3.6.3.",
-      "published": "2026-11-07T13:16:36.653",
-      "last_modified": "2026-11-07T18:17:20.580",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122669"
-    },
-    {
-      "cve": "CVE-2026-122663",
-      "title": "CVE-2026-122663",
-      "description": "Missing Authorization vulnerability in VillaTheme CURCY woo-multi-currency allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects CURCY: from n/a through 2.2.20.",
-      "published": "2026-11-07T13:16:36.507",
-      "last_modified": "2026-11-07T19:17:25.933",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122663"
-    },
-    {
-      "cve": "CVE-2026-122660",
-      "title": "CVE-2026-122660",
-      "description": "Missing Authorization vulnerability in BAKKBONE Australia FloristPress bakkbone-florist-companion allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects FloristPress: from n/a through 7.8.5.",
-      "published": "2026-11-07T13:16:36.357",
-      "last_modified": "2026-11-07T19:17:25.823",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122660"
-    },
-    {
-      "cve": "CVE-2026-122659",
-      "title": "CVE-2026-122659",
-      "description": "Missing Authorization vulnerability in WP ManageNinja LLC Fluent Booking fluent-booking allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Fluent Booking: from n/a through 2.5.0.",
-      "published": "2026-11-07T13:16:36.217",
-      "last_modified": "2026-11-07T19:17:25.703",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122659"
-    },
-    {
-      "cve": "CVE-2026-122041",
-      "title": "CVE-2026-122041",
-      "description": "The Checkout Field Editor for WooCommerce (Pro) plugin for WordPress is vulnerable to unauthorized deletion of arbitrary attachments due to a missing capability/ownership check in the ajax_remove_uploaded() function in versions up to, and including, 3.8.0. The handler is registered for both wp_ajax and wp_ajax_nopriv and is gated solely by the 'file_handling_nonce' nonce, which is emitted inside the public checkout page markup (data-nonce attribute) whenever a File Upload checkout field is configured. This makes it possible for unauthenticated attackers to delete arbitrary attachments (including those belonging to other users or posts) by submitting a crafted attachment_id, which can lead to loss of important media and potential denial of service.",
-      "published": "2026-11-07T13:16:36.067",
-      "last_modified": "2026-11-07T19:17:25.583",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122041"
-    },
-    {
-      "cve": "CVE-2026-121784",
-      "title": "CVE-2026-121784",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Magepeople inc. WpBookingly service-booking-manager allows Stored XSS.This issue affects WpBookingly: from n/a through 1.4.3.",
-      "published": "2026-11-07T13:16:35.920",
-      "last_modified": "2026-11-07T18:17:19.880",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121784"
-    },
-    {
-      "cve": "CVE-2026-121777",
-      "title": "CVE-2026-121777",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in Cool Plugins Cool Formkit Lite extensions-for-elementor-form allows Code Injection.This issue affects Cool Formkit Lite: from n/a through 2.7.10.",
-      "published": "2026-11-07T13:16:35.767",
-      "last_modified": "2026-11-07T13:16:35.880",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121777"
-    },
-    {
-      "cve": "CVE-2026-121775",
-      "title": "CVE-2026-121775",
-      "description": "Missing Authorization vulnerability in VillaTheme CURCY woo-multi-currency allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects CURCY: from n/a through 2.2.20.",
-      "published": "2026-11-07T13:16:35.613",
-      "last_modified": "2026-11-07T19:17:24.067",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121775"
-    },
-    {
-      "cve": "CVE-2026-121579",
-      "title": "CVE-2026-121579",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free Widgets, Addons, Templates) unlimited-elements-for-elementor allows Stored XSS.This issue affects Unlimited Elements For Elementor (Free Widgets, Addons, Templates): from n/a through 2.0.26.",
-      "published": "2026-11-07T13:16:35.453",
-      "last_modified": "2026-11-07T18:17:19.520",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121579"
-    },
-    {
-      "cve": "CVE-2026-121575",
-      "title": "CVE-2026-121575",
-      "description": "Missing Authorization vulnerability in WP User Manager WP User Manager wp-user-manager allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP User Manager: from n/a through 2.10.4.",
-      "published": "2026-11-07T13:16:35.293",
-      "last_modified": "2026-11-07T19:17:23.553",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121575"
-    },
-    {
-      "cve": "CVE-2026-120841",
-      "title": "CVE-2026-120841",
-      "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Magepeople inc. WpTravelly tour-booking-manager allows PHP Local File Inclusion.This issue affects WpTravelly: from n/a through 2.3.8.",
-      "published": "2026-11-07T13:16:35.130",
-      "last_modified": "2026-11-07T19:17:22.090",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120841"
-    },
-    {
-      "cve": "CVE-2026-120839",
-      "title": "CVE-2026-120839",
-      "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in Magepeople inc. WpTravelly tour-booking-manager allows PHP Local File Inclusion.This issue affects WpTravelly: from n/a through 2.3.8.",
-      "published": "2026-11-07T13:16:34.973",
-      "last_modified": "2026-11-07T19:17:21.873",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120839"
-    },
-    {
-      "cve": "CVE-2026-120579",
-      "title": "CVE-2026-120579",
-      "description": "The Active Woot Products Tables for WooCommerce. 100% FREE plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'help_title' parameter in all versions up to, and including, 2.1.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "published": "2026-11-07T13:16:34.803",
-      "last_modified": "2026-11-07T18:17:17.767",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120579"
-    },
-    {
-      "cve": "CVE-2026-119156",
-      "title": "CVE-2026-119156",
-      "description": "The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wpdm_reg[first_name], wpdm_reg[last_name], wpdm_reg[user_login]' parameter in all versions up to, and including, 7.5.9 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the site to have \"Anyone can register\" enabled, the plugin's [wpdm_reg_form] shortcode published on a public page, and at least one package authored by user ID 1 rendered with the Spotlight link template.",
-      "published": "2026-11-07T13:16:34.510",
-      "last_modified": "2026-11-07T18:17:14.450",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119156"
-    },
-    {
-      "cve": "CVE-2026-109973",
-      "title": "CVE-2026-109973",
-      "description": "The Image Hover Effects Ultimate Visual Composer (Flipbox - Awesomes Flip Boxes Image Overlay) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'flip-box-image-upload-url-01-alt' parameter in versions up to, and including, 3.1.1. This is due to the plugin saving the image-alt field through sanitize_text_field() in Inc/Style22::register_child() (and Inc/Style18, 19, 20, 25, 29) — which preserves the double-quote character — and then concatenating the stored value into a double-quoted HTML attribute in Public_Render/Style22::default_render() (and the corresponding Style18/19/20/25/29 renderers) with no esc_attr() escaping. This makes it possible for authenticated attackers, with contributor-level access and above (when an administrator has delegated the plugin's 'Who can edit' capability via the plugin Settings page, or on multisite installations where even adminis",
-      "published": "2026-11-07T13:16:33.347",
-      "last_modified": "2026-11-07T18:17:11.597",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109973"
-    },
-    {
-      "cve": "CVE-2026-96565",
-      "title": "CVE-2026-96565",
-      "description": "The WP-Members Membership Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via WooCommerce Checkout Multicheckbox/Multiselect Field (scalar bypass of wpmem_sanitize_array) in all versions up to, and including, 3.5.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only exploitable via the WooCommerce classic checkout path, as the sibling registration, profile, and account-edit handlers implode the value before sanitization, which raises a PHP 8 TypeError on scalar input and fails closed.",
-      "published": "2026-11-07T12:17:47.607",
-      "last_modified": "2026-11-07T18:17:30.127",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96565"
-    },
-    {
-      "cve": "CVE-2026-93766",
-      "title": "CVE-2026-93766",
-      "description": "The Happyforms Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'happyforms_client_referer' parameter in all versions up to, and including, 1.38.9 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "published": "2026-11-07T12:17:47.280",
-      "last_modified": "2026-11-07T18:17:29.877",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93766"
-    },
-    {
-      "cve": "CVE-2026-93755",
-      "title": "CVE-2026-93755",
-      "description": "The Happyforms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via spoofable client IP headers in versions up to, and including, 1.38.9. This is due to the happyforms_get_client_ip() function reading raw HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR request headers without any validation or sanitization, storing the value as post meta ('client_ip') via update_post_meta() during unauthenticated form submissions, and later echoing it in the admin submission edit screen's Details metabox without output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user (typically an administrator reviewing a submission) accesses an injected page.",
-      "published": "2026-11-07T12:17:47.120",
-      "last_modified": "2026-11-07T18:17:29.750",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93755"
-    },
-    {
-      "cve": "CVE-2026-93429",
-      "title": "CVE-2026-93429",
-      "description": "The VikBooking Hotel Booking Engine & PMS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'guests[][][documents]' Parameter in all versions up to, and including, 1.8.17 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the attacker to possess a valid booking sid/ts pair, which can be obtained by making a standard public booking, as the session token needed to satisfy the JSession::checkToken() gate is emitted in the publicly accessible pre-checkin form.",
-      "published": "2026-11-07T12:17:46.967",
-      "last_modified": "2026-11-07T18:17:29.627",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93429"
-    },
-    {
-      "cve": "CVE-2026-123776",
-      "title": "CVE-2026-123776",
-      "description": "RRD::CGI::Image versions through 0.01 for Perl pass CGI query parameters containting \"tz\" to tzset(), , so a FIFO or device path blocks the CGI process.\n\nThe normalize_params method sends any query key matching /tz/i to tz(), which sets $ENV{TZ} to that value, with no validation. It then calls tzset(). glibc treats a TZ value starting with / or : as a file path and opens it, so a value naming a FIFO or a blocking device stalls the process inside tzset().",
-      "published": "2026-11-07T12:17:46.093",
-      "last_modified": "2026-11-07T21:17:00.030",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123776"
-    },
-    {
-      "cve": "CVE-2026-123418",
-      "title": "CVE-2026-123418",
-      "description": "The Church Admin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'lat' parameter in all versions up to, and including, 5.1.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only exploitable when a Google Maps API key has been configured in Church Admin settings, as the vulnerable sink is only reached when that option is present.",
-      "published": "2026-11-07T12:17:45.933",
-      "last_modified": "2026-11-07T18:17:20.697",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123418"
-    },
-    {
-      "cve": "CVE-2026-122231",
-      "title": "CVE-2026-122231",
-      "description": "The WS Form LITE – Drag & Drop Contact Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'field_<id>[0][0]' parameter in all versions up to, and including, 1.12.18 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible because the client-side esc_html() helper returns any non-string value unchanged, allowing a nested-array payload coerced via Array.prototype.toString to reach jQuery .append() unescaped.",
-      "published": "2026-11-07T12:17:45.763",
-      "last_modified": "2026-11-07T18:17:20.460",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122231"
     }
   ],
-  "total_results": 1082,
+  "total_results": 1105,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 882
+  "start_index": 905
 }
