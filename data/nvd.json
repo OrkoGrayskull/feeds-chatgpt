@@ -1,12 +1,30 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T12%3A08%3A43.000&resultsPerPage=200&startIndex=907",
-  "fetched_at": "2026-11-08T12:08:43+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-05T23%3A00%3A00.000&pubEndDate=2026-11-08T13%3A24%3A41.000&resultsPerPage=200&startIndex=909",
+  "fetched_at": "2026-11-08T13:24:41+00:00",
   "window_days": 3,
   "window_start": "2026-11-06",
   "window_end": "2026-11-08",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-124330",
+      "title": "CVE-2026-124330",
+      "description": "A vulnerability was determined in FlowCI flow-core-x up to 1.23.49. This affects the function exist/save/read/remove of the file store/src/main/java/com/flowci/store/LocalFileManager.java of the component LocalFileManager. This manipulation of the argument fileName causes path traversal. It is possible to initiate the attack remotely. A high degree of complexity is needed for the attack. The exploitability is reported as difficult. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-08T13:16:33.400",
+      "last_modified": "2026-11-08T13:16:34.123",
+      "cvss": 5.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124330"
+    },
+    {
+      "cve": "CVE-2026-124329",
+      "title": "CVE-2026-124329",
+      "description": "A vulnerability was found in FlowCI flow-core-x up to 1.23.49. The impacted element is the function FileHelper.unzip of the file common/src/main/java/com/flowci/common/helper/FileHelper.java. The manipulation results in path traversal. The attack may be performed from remote. A high complexity level is associated with this attack. The exploitability is regarded as difficult. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-08T12:17:48.440",
+      "last_modified": "2026-11-08T12:17:49.283",
+      "cvss": 5.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124329"
+    },
     {
       "cve": "CVE-2026-124328",
       "title": "CVE-2026-124328",
@@ -1788,28 +1806,10 @@
       "last_modified": "2026-11-07T13:16:37.677",
       "cvss": 5.3,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123483"
-    },
-    {
-      "cve": "CVE-2026-123477",
-      "title": "CVE-2026-123477",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Crocoblock JetEngine jet-engine allows Stored XSS.This issue affects JetEngine: from n/a through 3.9.0.2.",
-      "published": "2026-11-07T13:16:37.420",
-      "last_modified": "2026-11-07T18:17:21.243",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123477"
-    },
-    {
-      "cve": "CVE-2026-123474",
-      "title": "CVE-2026-123474",
-      "description": "Missing Authorization vulnerability in LeapWorx Premium Blocks – Gutenberg Blocks for WordPress premium-blocks-for-gutenberg allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Premium Blocks – Gutenberg Blocks for WordPress: from n/a through 2.3.18.",
-      "published": "2026-11-07T13:16:37.267",
-      "last_modified": "2026-11-07T19:17:28.020",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123474"
     }
   ],
-  "total_results": 1107,
+  "total_results": 1109,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 907
+  "start_index": 909
 }
