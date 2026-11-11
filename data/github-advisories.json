@@ -1,12 +1,903 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-10T13:43:30+00:00",
+  "fetched_at": "2026-11-11T03:12:33+00:00",
   "window_days": 3,
-  "window_start": "2026-11-08",
-  "window_end": "2026-11-10",
-  "count": 45,
+  "window_start": "2026-11-09",
+  "window_end": "2026-11-11",
+  "count": 100,
   "items": [
+    {
+      "cve": "CVE-2026-118745",
+      "ghsa": "GHSA-x8x8-p968-x646",
+      "title": "Microsoft Security Advisory CVE-2026-118745 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nCrafted PDB line metadata can exceed the caller-provided buffer and cause a heap out-of-bounds write.\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-122\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** x86, x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nOn Windows x86, x64, and Arm64, Microsoft.DiaSymReader.Native versions earlier than 18.9.1-beta1.26515.1 are affected when reading crafted native PDBs.\n\n### .NET on Windows\n\nProduct | Affected version | Patched version\n--- | --- | ---\n.NET 8.0 installed on Windows ",
+      "severity": "high",
+      "published": "2026-11-11T00:47:20+00:00",
+      "link": "https://github.com/advisories/GHSA-x8x8-p968-x646"
+    },
+    {
+      "cve": "CVE-2026-114152",
+      "ghsa": "GHSA-xf35-v9jh-g65w",
+      "title": "Microsoft Security Advisory CVE-2026-114152 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nAttacker-controlled COFF relocation offsets can cause an out-of-bounds stack write in `DiaObjectFile::ApplyFixup`.\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-121, CWE-822\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** x86, x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nMicrosoft.DiaSymReader.Native versions earlier than 18.9.1-beta1.26515.1 are affected when loading document specifications from a PDB that references an attacker-influenced COFF object.\n\n### .NET on Windows\n\nProduct | Affected version | Patche",
+      "severity": "high",
+      "published": "2026-11-11T00:46:12+00:00",
+      "link": "https://github.com/advisories/GHSA-xf35-v9jh-g65w"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-6856-87hx-p5x7",
+      "title": "Microsoft Security Advisory CVE-2026-105544 - .NET Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nThe VSTest artifact postprocessor can consume a forged `executionComplete.json` from another local user and execute attacker-controlled output handling.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/517\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-284\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected versions of Microsoft.TestPlatform.CLI and their patched versions. The VST",
+      "severity": "medium",
+      "published": "2026-11-11T00:39:12+00:00",
+      "link": "https://github.com/advisories/GHSA-6856-87hx-p5x7"
+    },
+    {
+      "cve": "CVE-2026-114151",
+      "ghsa": "GHSA-fpxj-5c99-g7vj",
+      "title": "Microsoft Security Advisory CVE-2026-114151 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nA crafted PDB `LF_DECIMAL` payload can trigger an out-of-bounds stack write when processed by DIA.\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-502, CWE-121\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** x86, x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nMicrosoft.DiaSymReader.Native versions earlier than 18.9.1-beta1.26515.1 are affected when reading constants from attacker-supplied PDBs through `ISymUnmanagedConstant.GetValue`. The .NET runtime's native stack-trace reading path does not call `ISymUnmanagedC",
+      "severity": "high",
+      "published": "2026-11-11T00:35:02+00:00",
+      "link": "https://github.com/advisories/GHSA-fpxj-5c99-g7vj"
+    },
+    {
+      "cve": "CVE-2026-114158",
+      "ghsa": "GHSA-r8h3-p8p6-ggp7",
+      "title": "Microsoft Security Advisory CVE-2026-114158 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nA Portable PDB `EmbeddedSource` record with parent RID 0 can trigger an out-of-bounds write.\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-122\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** x86, x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nMicrosoft.DiaSymReader.Native components bundled with the affected .NET versions listed below are affected when initializing the native reader with a crafted Portable PDB containing an `EmbeddedSource` record with parent RID 0. The Windows runtime's native stack-trace reade",
+      "severity": "high",
+      "published": "2026-11-11T00:34:13+00:00",
+      "link": "https://github.com/advisories/GHSA-r8h3-p8p6-ggp7"
+    },
+    {
+      "cve": "CVE-2026-114159",
+      "ghsa": "GHSA-3cgx-w6gm-fqrx",
+      "title": "Microsoft Security Advisory CVE-2026-114159 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nAn oversized Portable PDB document name can be truncated during allocation and cause a heap out-of-bounds write.\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 8.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-122\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** x86, x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nMicrosoft.DiaSymReader.Native components bundled with the affected .NET versions listed below are affected when initializing the native reader with a Portable PDB containing an oversized document name. The Windows runtime's native stack-trace reader can ",
+      "severity": "high",
+      "published": "2026-11-11T00:32:59+00:00",
+      "link": "https://github.com/advisories/GHSA-3cgx-w6gm-fqrx"
+    },
+    {
+      "cve": "CVE-2026-120792",
+      "ghsa": "GHSA-q6jf-24jf-m3cg",
+      "title": "Microsoft Security Advisory CVE-2026-120792 - Aspire Information Disclosure Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in the Aspire CLI. This advisory provides guidance on updating affected applications and components.\n\nInsecure temporary files used by Aspire CLI can allow a local attacker to obtain sensitive configuration information.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/518\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.3\n- **Vector:** `CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:L/A:L`\n- **Weakness:** CWE-532 (Insertion of Sensitive Information into Log File)\n- **MSRC severity:** Important\n- **Impact:** Information Disclosure\n\n## Affected Platforms\n\n- **Platforms:** Linux, macOS\n- **Architectures:** x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\n### Standalone Aspire CLI\n\nPackage",
+      "severity": "high",
+      "published": "2026-11-11T00:31:23+00:00",
+      "link": "https://github.com/advisories/GHSA-q6jf-24jf-m3cg"
+    },
+    {
+      "cve": "CVE-2026-120778",
+      "ghsa": "GHSA-m63f-xhvm-6mv5",
+      "title": "Microsoft Security Advisory CVE-2026-120778 - Aspire Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in the Aspire CLI. This advisory provides guidance on updating affected applications and components.\n\nAn insecure temporary directory used by Aspire CLI-generated builds can allow a local attacker to influence MSBuild response-file discovery and execute code with the privileges of the developer running the CLI.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/519\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.3\n- **Vector:** `CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H`\n- **Weakness:** CWE-379 (Creation of Temporary File in Directory with Insecure Permissions)\n- **MSRC severity:** Important\n\n## Affected Platforms\n\n- **Platforms:** Linux, macOS\n- **Architectures:** x64, Arm64\n\n## <a name=\"aff",
+      "severity": "high",
+      "published": "2026-11-11T00:30:06+00:00",
+      "link": "https://github.com/advisories/GHSA-m63f-xhvm-6mv5"
+    },
+    {
+      "cve": "CVE-2026-114154",
+      "ghsa": "GHSA-3893-7fxc-qvff",
+      "title": "Microsoft Security Advisory CVE-2026-114154 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nMalformed chunked HttpSys requests containing conflicting content-length headers can retain request and connection resources.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/513\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-401\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### AS",
+      "severity": "medium",
+      "published": "2026-11-11T00:28:01+00:00",
+      "link": "https://github.com/advisories/GHSA-3893-7fxc-qvff"
+    },
+    {
+      "cve": "CVE-2026-114157",
+      "ghsa": "GHSA-7phj-vgxq-r67h",
+      "title": "Microsoft Security Advisory CVE-2026-114157 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core's Kestrel Named Pipes transport. This advisory provides guidance on updating affected applications and components.\n\nA Kestrel named-pipe listener configured with `CurrentUserOnly` can lose protected namespace ownership during recovery, allowing another local user to claim the pipe path.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/507\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-362\n- **MSRC severity:** Important\n- **Impact:** Security Feature Bypass\n\n## Affected Platforms\n\n- **Platforms:** Windows\n- **Architectures:** Arm64, x64, x86\n\n## <a name=\"affected-packag",
+      "severity": "medium",
+      "published": "2026-11-11T00:25:04+00:00",
+      "link": "https://github.com/advisories/GHSA-7phj-vgxq-r67h"
+    },
+    {
+      "cve": "CVE-2026-114156",
+      "ghsa": "GHSA-8w29-6cjc-h6w4",
+      "title": "Microsoft Security Advisory CVE-2026-114156 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\n`PathString.StartsWithSegments` can mishandle percent-encoded backslashes and permit authorization checks to match an unintended path.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/510\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 6.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-41\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are li",
+      "severity": "medium",
+      "published": "2026-11-11T00:24:05+00:00",
+      "link": "https://github.com/advisories/GHSA-8w29-6cjc-h6w4"
+    },
+    {
+      "cve": "CVE-2026-114147",
+      "ghsa": "GHSA-wr8v-9x5q-ggcm",
+      "title": "Microsoft Security Advisory CVE-2026-114147 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nSignalR Redis scale-out can mishandle case-mismatched group removal and leave subscriptions in a state that permits persistent resource amplification and denial of service.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/509\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-401\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Run",
+      "severity": "high",
+      "published": "2026-11-11T00:23:32+00:00",
+      "link": "https://github.com/advisories/GHSA-wr8v-9x5q-ggcm"
+    },
+    {
+      "cve": "CVE-2026-109478",
+      "ghsa": "GHSA-r3qf-p3jm-8h4p",
+      "title": "Microsoft Security Advisory CVE-2026-109478 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nProcessing comma-separated HTTP header values can cause excessive allocations and resource exhaustion.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/515\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-407\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 8.0 - ",
+      "severity": "medium",
+      "published": "2026-11-11T00:22:43+00:00",
+      "link": "https://github.com/advisories/GHSA-r3qf-p3jm-8h4p"
+    },
+    {
+      "cve": "CVE-2026-114146",
+      "ghsa": "GHSA-67wp-ghc2-fw2g",
+      "title": "Microsoft Security Advisory CVE-2026-114146 - ASP.NET Core Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nSignalR connections are not consistently bound to the identity negotiated at connection establishment, allowing injected messages to execute Hub invocations as the victim.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/504\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Critical\n- **Score:** 9.0 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-863\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. ",
+      "severity": "high",
+      "published": "2026-11-11T00:21:56+00:00",
+      "link": "https://github.com/advisories/GHSA-67wp-ghc2-fw2g"
+    },
+    {
+      "cve": "CVE-2026-114150",
+      "ghsa": "GHSA-6vjv-7wm8-p67r",
+      "title": "Microsoft Security Advisory CVE-2026-114150 - ASP.NET Core Information Disclosure Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nA reused `ResponseBufferingStream` can retain pooled tail memory and expose response-body data from another request through HTTP logging.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/514\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 5.9 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-908\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries ar",
+      "severity": "medium",
+      "published": "2026-11-11T00:20:47+00:00",
+      "link": "https://github.com/advisories/GHSA-6vjv-7wm8-p67r"
+    },
+    {
+      "cve": "CVE-2026-118748",
+      "ghsa": "GHSA-5h82-77p6-2wp3",
+      "title": "Microsoft Security Advisory CVE-2026-118748 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nBlazor static-SSR client validation retains attacker-controlled rendered field names in an unbounded singleton cache, allowing remote process memory exhaustion.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/516\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-770\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and sta",
+      "severity": "medium",
+      "published": "2026-11-11T00:11:03+00:00",
+      "link": "https://github.com/advisories/GHSA-5h82-77p6-2wp3"
+    },
+    {
+      "cve": "CVE-2026-114155",
+      "ghsa": "GHSA-q7j6-px74-p2vw",
+      "title": "Microsoft Security Advisory CVE-2026-114155 - .NET Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in the .NET SDK's dotnet-watch component. This advisory provides guidance on updating affected SDK installations.\n\nA local attacker who can replace or modify a temporary solution file used by dotnet-watch can alter a subsequent build. The fix stores generated solution files in a private temporary directory and keeps each file open with read-only sharing while the build uses it.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/502\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-367\n- **MSRC severity:** Important\n- **Impact:** Elevation of Privilege\n\n## Affected Platforms\n\n- **Platforms:",
+      "severity": "medium",
+      "published": "2026-11-11T00:09:46+00:00",
+      "link": "https://github.com/advisories/GHSA-q7j6-px74-p2vw"
+    },
+    {
+      "cve": "CVE-2026-109481",
+      "ghsa": "GHSA-xw2x-23jm-j582",
+      "title": "Microsoft Security Advisory CVE-2026-109481 - ASP.NET Core Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nThe Blazor/SignalR `/_blazor/refresh` path can accept a cross-site request that binds a victim's authenticated principal to an attacker-owned circuit.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/506\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-352\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone de",
+      "severity": "medium",
+      "published": "2026-11-10T23:33:36+00:00",
+      "link": "https://github.com/advisories/GHSA-xw2x-23jm-j582"
+    },
+    {
+      "cve": "CVE-2026-118750",
+      "ghsa": "GHSA-6527-9fp8-r4x6",
+      "title": "Microsoft Security Advisory CVE-2026-118750 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nFileBufferingReadStream buffer allocation can allow unauthenticated multipart-form requests to exhaust memory.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/512\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-770\n\n## Affected Platforms\n\n- **Platforms:** Any supported OS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe table lists the affected package range and the fixed NuGet version.\n\n### ASP.NET Core 2.3 - standalone packages\n\nPackage | Affected ve",
+      "severity": "medium",
+      "published": "2026-11-10T23:32:00+00:00",
+      "link": "https://github.com/advisories/GHSA-6527-9fp8-r4x6"
+    },
+    {
+      "cve": "CVE-2026-120006",
+      "ghsa": "GHSA-f7vh-h5g3-7jrh",
+      "title": "Microsoft Security Advisory CVE-2026-120006 - Aspire Elevation of Privilege Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in Aspire. This advisory provides guidance on updating affected applications and components.\n\nDisclosure of an Aspire Dashboard authentication cookie to a linked service can allow an attacker-controlled container to replay the authenticated session and execute code as the host developer.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/503\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5\n- **Vector:** `CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H`\n- **Weakness:** CWE-201 (Insertion of Sensitive Information Into Sent Data)\n\n## Affected Platforms\n\n- **Platforms:** macOS\n- **Architectures:** x64, Arm64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\n### Standalone Aspire\n\nPackage | Affect",
+      "severity": "high",
+      "published": "2026-11-10T23:24:48+00:00",
+      "link": "https://github.com/advisories/GHSA-f7vh-h5g3-7jrh"
+    },
+    {
+      "cve": "CVE-2026-118746",
+      "ghsa": "GHSA-ff4h-7rhj-jrjf",
+      "title": "Microsoft Security Advisory CVE-2026-118746 - .NET Security Feature Bypass Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nUnix Negotiate authentication can accept a request when required channel-binding information is missing.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/498\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 6.8 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-636\n\n## Affected Platforms\n\n- **Platforms:** Linux, macOS\n- **Architectures:** Arm, Arm64, x64\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected .NET 11 runtime package versions and fixed versions. The issue occurs during server-side Negotiate authentication wit",
+      "severity": "medium",
+      "published": "2026-11-10T23:23:57+00:00",
+      "link": "https://github.com/advisories/GHSA-ff4h-7rhj-jrjf"
+    },
+    {
+      "cve": "CVE-2026-109475",
+      "ghsa": "GHSA-3g4v-f5gv-c7xf",
+      "title": "Microsoft Security Advisory CVE-2026-109475 - .NET Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nManaged `HttpListener` can recursively process an unterminated request line and exhaust the process stack.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/500\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-121\n\n## Affected Platforms\n\n- **Platforms:** Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 8.0 - affected runt",
+      "severity": "medium",
+      "published": "2026-11-10T23:22:54+00:00",
+      "link": "https://github.com/advisories/GHSA-3g4v-f5gv-c7xf"
+    },
+    {
+      "cve": "CVE-2026-120796",
+      "ghsa": "GHSA-cpw3-h88j-9f6x",
+      "title": "Microsoft Security Advisory CVE-2026-120796 - .NET Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nInefficient algorithmic complexity in .NET allows an unauthorized attacker to deny service over a network.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/499\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 5.3 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L/E:U/RL:O/RC:C`\n- **Weakness:** CWE-407\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 11.0 - a",
+      "severity": "medium",
+      "published": "2026-11-10T23:21:36+00:00",
+      "link": "https://github.com/advisories/GHSA-cpw3-h88j-9f6x"
+    },
+    {
+      "cve": "CVE-2026-118747",
+      "ghsa": "GHSA-vmv3-wvjp-wqpj",
+      "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET. This advisory provides guidance on updating affected applications and components.\n\nColliding CBOR map keys can hash-flood uniqueness checks; the fix uses seeded Marvin hashing.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/501\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-407\n\n## Affected Platforms\n\n- **Platforms:** Any supported OS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected package versions and fixed versions. These are independently versioned NuGet packages, not runtime patch versions.\n\n### 8.0 - standalone p",
+      "severity": "medium",
+      "published": "2026-11-10T23:20:27+00:00",
+      "link": "https://github.com/advisories/GHSA-vmv3-wvjp-wqpj"
+    },
+    {
+      "cve": "CVE-2026-118749",
+      "ghsa": "GHSA-m28h-pj36-4364",
+      "title": "Microsoft Security Advisory CVE-2026-118749 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nMinimal API validation repeatedly copies a growing validation-error dictionary, allowing attacker-controlled collections to trigger quadratic CPU work after the client disconnects.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/505\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-407\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versi",
+      "severity": "medium",
+      "published": "2026-11-10T23:08:34+00:00",
+      "link": "https://github.com/advisories/GHSA-m28h-pj36-4364"
+    },
+    {
+      "cve": "CVE-2026-114149",
+      "ghsa": "GHSA-x33c-w48q-qrgc",
+      "title": "Microsoft Security Advisory CVE-2026-114149 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nMultipart form processing can bypass the configured header-count limit and consume excessive resources.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/511\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** High\n- **Score:** 7.5 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:U/RL:O/RC:C`\n- **Weakness:** CWE-770\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed separately.\n\n### .NET 8.0 -",
+      "severity": "high",
+      "published": "2026-11-10T23:06:32+00:00",
+      "link": "https://github.com/advisories/GHSA-x33c-w48q-qrgc"
+    },
+    {
+      "cve": "CVE-2026-109476",
+      "ghsa": "GHSA-xhj5-c3g8-pfj8",
+      "title": "Microsoft Security Advisory CVE-2026-109476 - ASP.NET Core Information Disclosure Vulnerability",
+      "description": "## Executive summary\n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in ASP.NET Core. This advisory provides guidance on updating affected applications and components.\n\nA crafted `X-Forwarded-Prefix` can inject cookie path delimiters unless PathBase-derived cookie paths percent-encode semicolons.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/508\n\n## CVSS Details\n\n- **Version:** 3.1\n- **Severity:** Medium\n- **Score:** 6.1 (base score)\n- **Vector:** `CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N/E:U/RL:O/RC:C`\n- **Weakness:** CWE-116\n\n## Affected Platforms\n\n- **Platforms:** Windows, Linux, macOS\n- **Architectures:** All\n\n## <a name=\"affected-packages\"></a>Affected Packages\n\nThe tables list affected version ranges and fixed package versions. Runtime and standalone deliveries are listed ",
+      "severity": "medium",
+      "published": "2026-11-10T23:02:40+00:00",
+      "link": "https://github.com/advisories/GHSA-xhj5-c3g8-pfj8"
+    },
+    {
+      "cve": "CVE-2026-126187",
+      "ghsa": "GHSA-xqc2-xf4c-x3h3",
+      "title": "React: Unauthenticated Remote Code Execution in React Server Components",
+      "description": "### Impact\n\nCrafted payloads targeting frameworks supporting React Server Components can lead to remote code execution. This only affects extremely rare cases where responses transport multiple typed arrays and an attacker-controlled value.\n\nUpdating immediately is recommended.\n\nThe vulnerability exists in versions 19.0.0 through 19.0.8, 19.1.0 through 19.1.9, 19.2.0 through 19.2.8 and 19.3.0 of:\n\n- react-server-dom-webpack\n- react-server-dom-parcel\n- react-server-dom-turbopack\n\n### Patches\n\nFixes were back ported to versions 19.0.09, 19.1.10, 19.2.9, and 19.3.1.\n\nIf applications are using any of the above packages please upgrade to any of the fixed versions immediately.\n\nIf an app’s React code does not use a server, the app is not affected by this vulnerability. If an app does not use a framework, bundler, or bundler plugin that supports React Server Components, the app is not affected ",
+      "severity": "critical",
+      "published": "2026-11-10T22:44:12+00:00",
+      "link": "https://github.com/advisories/GHSA-xqc2-xf4c-x3h3"
+    },
+    {
+      "cve": "CVE-2026-125123",
+      "ghsa": "GHSA-8v59-qmwv-4p6q",
+      "title": "compose-lint: File paths embedded in pull requests can inject CI workflow commands through command-line error messages ",
+      "description": "### Impact\n\n0.31.0 fixed GHSA-6f4g-xm8v-pgv6, where text from a Compose file became GitHub Actions workflow commands in compose-lint's output. The fix escapes the command openers in compose-lint's own output, but not in the argument parser's error messages. When a repository path reaches compose-lint's arguments without a `--` before it, the argument parser prints it raw in its error message. That includes a carriage return, which the runner treats as a line break, so a command can also start a new line there.\n\nA pull request can therefore create annotations, fold or hide parts of the job log, or issue other commands the runner accepts, when CI runs compose-lint over it, before anyone reviews it. The pass/fail result is not changed.\n\nAffected setups pass repository paths to compose-lint without a `--` before them: the pre-commit hook when `args:` is set without the documented trailing `-",
+      "severity": "low",
+      "published": "2026-11-10T21:58:53+00:00",
+      "link": "https://github.com/advisories/GHSA-8v59-qmwv-4p6q"
+    },
+    {
+      "cve": "CVE-2026-125125",
+      "ghsa": "GHSA-xcf7-88g6-7xr8",
+      "title": " compose-lint: Workflow command injection through SARIF-directory errors triggered by pull request symlinks ",
+      "description": "### Impact\n\nIn Action tags v0.30.0 and v0.31.0, when `sarif-file:` names a file in a subdirectory that can't be created, the Action prints the directory's resolved path in an error message. In v0.31.0 that message is outside the window in which the Action turns command processing off, and v0.30.0 has no such window. A pull request can commit a symlink on that path to a directory whose name contains a newline followed by a command.\n\nA pull request can therefore create annotations, fold or hide parts of the job log, or issue other commands the runner accepts, when CI runs compose-lint over it, before anyone reviews it. The pass/fail result is not changed.\n\nOnly the Action is affected, and only when `sarif-file:` points into a subdirectory. The documented setup, `sarif-file: results.sarif` at the repository root, is not affected. The `compose-lint` package, the pre-commit hook and the Docke",
+      "severity": "low",
+      "published": "2026-11-10T21:50:54+00:00",
+      "link": "https://github.com/advisories/GHSA-xcf7-88g6-7xr8"
+    },
+    {
+      "cve": "CVE-2026-125122",
+      "ghsa": "GHSA-hr4h-4c45-v4q4",
+      "title": "compose-lint: Text in a pull request can issue CI workflow commands through JSON and SARIF output on stdout",
+      "description": "### Impact\n\n0.31.0 fixed GHSA-6f4g-xm8v-pgv6, where text from a Compose file became GitHub Actions workflow commands in compose-lint's output. `--format json` and `--format sarif` output never passed through that fix, so `##[` inside a service name or other value reaches the log intact when the output is printed to stdout rather than written to a file. The runner acts on `##[` in the middle of a line, so the JSON layout does not prevent it.\n\nA pull request can therefore create annotations, fold or hide parts of the job log, or issue other commands the runner accepts, when CI runs compose-lint over it, before anyone reviews it. The pass/fail result is not changed.\n\nAffected setups print JSON or SARIF output to a CI log from the `compose-lint` package, the pre-commit hook or the Docker image. Writing that output to a file, which SARIF upload requires, is not affected. The GitHub Action tur",
+      "severity": "low",
+      "published": "2026-11-10T21:40:50+00:00",
+      "link": "https://github.com/advisories/GHSA-hr4h-4c45-v4q4"
+    },
+    {
+      "cve": "CVE-2026-126186",
+      "ghsa": "GHSA-v924-7rp8-4mxh",
+      "title": "Active Storage: Possible arbitrary file read and remote code execution in video previews, analysis and image processing",
+      "description": "### Impact\n`ActiveStorage::Blob#open` writes a blob to a tempfile whose name carries the extension of the uploaded filename, and hands that path to `ffprobe` (`VideoAnalyzer`, `AudioAnalyzer`), `ffmpeg` (`VideoPreviewer`) and ImageMagick (`ImageAnalyzer`, the `:mini_magick` variant processor). These tools select a decoder from the file extension when the content does not identify its own format, so an attacker who chooses the filename and declares the content type of an upload chooses which decoder processes it. An FFmpeg built with AviSynth support treats a file with the `.avs` extension as an AviSynth script and evaluates it, which could disclose files readable by the application process through the preview image, or load a native library the attacker has also uploaded, possibly leading to remote code execution in the FFmpeg process. ImageMagick selects its coders and delegates from th",
+      "severity": "high",
+      "published": "2026-11-10T21:38:55+00:00",
+      "link": "https://github.com/advisories/GHSA-v924-7rp8-4mxh"
+    },
+    {
+      "cve": "CVE-2026-126085",
+      "ghsa": "GHSA-hfr4-8rjc-97m2",
+      "title": "Active Storage: Possible circumvention of file size limits in Active Storage direct uploads to Google Cloud Storage",
+      "description": "### Impact\n`ActiveStorage::Service::GCSService#url_for_direct_upload` does not bind the declared content length into the signed direct-upload URL, and `#headers_for_direct_upload` returns no length constraint, so the URL authorizes an upload body of any size. A direct-upload client could store a file larger than the `byte_size` it declared, and the resulting blob keeps the declared size, possibly bypassing application file size validations and quotas. This is the weakness that CVE-2020-8162 fixed in the S3 service.\n\nApplications that store files in Google Cloud Storage and accept direct uploads are affected.\n\n### Details\nThe fixed releases sign an `x-goog-content-length-range` header that matches the blob's declared `byte_size` and return it from `headers_for_direct_upload`, so Cloud Storage rejects an upload body of any other size. Browsers send this header with the direct upload, so a ",
+      "severity": "medium",
+      "published": "2026-11-10T21:37:19+00:00",
+      "link": "https://github.com/advisories/GHSA-hfr4-8rjc-97m2"
+    },
+    {
+      "cve": "CVE-2026-126080",
+      "ghsa": "GHSA-8474-xrp6-wh69",
+      "title": "Active Support: Possible DoS vulnerability in Active Support safe_constantize",
+      "description": "### Impact\nWhen constant lookup raises `LoadError`, `ActiveSupport::Inflector#safe_constantize` (and `String#safe_constantize`) builds a regular expression from the requested constant name without escaping it, so a caller that passes untrusted input lets the attacker choose the source of a pattern that the application compiles. Crafted patterns can trigger defects in Ruby's regular expression compiler, possibly leading to a crash of the server process, and repeated requests could keep the application unavailable.\n\nAction Cable passes the `channel` value of each `subscribe` command to `safe_constantize` before any channel lookup, so in the default configuration an unauthenticated client of the Action Cable endpoint can reach this code.\n\n### Details\nThe check that decides whether `safe_constantize` returns `nil` or re-raises the `LoadError` now matches the first segment of the constant nam",
+      "severity": "high",
+      "published": "2026-11-10T21:34:11+00:00",
+      "link": "https://github.com/advisories/GHSA-8474-xrp6-wh69"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-fgfw-85w4-gx99",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-120792 - Aspire Information Disclosure Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-q6jf-24jf-m3cg. This link is maintained to preserve external references.\n\n## Original Description\nInsertion of sensitive information into log file in .NET Aspire allows an authorized attacker to disclose information locally.",
+      "severity": "high",
+      "published": "2026-11-10T21:33:44+00:00",
+      "link": "https://github.com/advisories/GHSA-fgfw-85w4-gx99"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-hfpm-4fc4-g2wc",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-120778 - Aspire Elevation of Privilege Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-m63f-xhvm-6mv5. This link is maintained to preserve external references.\n\n## Original Description\nCreation of temporary file in directory with insecure permissions in .NET Aspire allows an authorized attacker to elevate privileges locally.",
+      "severity": "high",
+      "published": "2026-11-10T21:33:43+00:00",
+      "link": "https://github.com/advisories/GHSA-hfpm-4fc4-g2wc"
+    },
+    {
+      "cve": "CVE-2026-126074",
+      "ghsa": "GHSA-p2pm-g2h6-7j5j",
+      "title": "Active Storage: Possible DoS vulnerability in Active Storage filename handling",
+      "description": "### Impact\n`ActiveStorage::Filename#base` and `#extension_with_delimiter`, and therefore `#extension`, pass the stored filename unmodified to `File.basename` and `File.extname`, which raise `ArgumentError` when the name contains a NUL byte. Active Storage stores the client-supplied filename verbatim, so a user who is permitted to upload an attachment could persist such a filename on databases that accept NUL bytes in string columns, such as SQLite and MySQL/MariaDB. Each subsequent request that builds a variant or preview of the blob, opens it, or renders it as an Action Text attachment then raises, possibly resulting in a persistent DoS vulnerability for the pages that display the blob until it is purged or its filename is corrected. Applications that use PostgreSQL are not affected, because PostgreSQL rejects the row.\n\n### Details\n`Filename#base` and `#extension_with_delimiter` now der",
+      "severity": "medium",
+      "published": "2026-11-10T21:33:12+00:00",
+      "link": "https://github.com/advisories/GHSA-p2pm-g2h6-7j5j"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-cfv6-4v53-fff6",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-118745 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-x8x8-p968-x646. This link is maintained to preserve external references.\n\n## Original Description\nHeap-based buffer overflow in Visual Studio allows an unauthorized attacker to execute code over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:33:10+00:00",
+      "link": "https://github.com/advisories/GHSA-cfv6-4v53-fff6"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-95x6-7hq8-2c37",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114157 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-7phj-vgxq-r67h. This link is maintained to preserve external references.\n\n## Original Description\nConcurrent execution using shared resource with improper synchronization ('race condition') in ASP.NET Core allows an authorized attacker to elevate privileges locally.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:52+00:00",
+      "link": "https://github.com/advisories/GHSA-95x6-7hq8-2c37"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-cjjx-gv54-83qh",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114158 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-r8h3-p8p6-ggp7. This link is maintained to preserve external references.\n\n## Original Description\nHeap-based buffer overflow in Visual Studio allows an unauthorized attacker to execute code over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:52+00:00",
+      "link": "https://github.com/advisories/GHSA-cjjx-gv54-83qh"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-c827-j3xf-67v6",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114156 - ASP.NET Core Security Feature Bypass Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-8w29-6cjc-h6w4. This link is maintained to preserve external references.\n\n## Original Description\nImproper input validation in ASP.NET Core allows an unauthorized attacker to bypass a security feature over a network.",
+      "severity": "medium",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-c827-j3xf-67v6"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-6rff-vv3p-7mrw",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114159 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-3cgx-w6gm-fqrx. This link is maintained to preserve external references.\n\n## Original Description\nHeap-based buffer overflow in Visual Studio allows an unauthorized attacker to execute code over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-6rff-vv3p-7mrw"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-49q5-vjx7-5gwr",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114154 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-3893-7fxc-qvff. This link is maintained to preserve external references.\n\n## Original Description\nUncontrolled resource consumption in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-49q5-vjx7-5gwr"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-mqcg-252r-5fj7",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114151 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-fpxj-5c99-g7vj. This link is maintained to preserve external references.\n\n## Original Description\nDeserialization of untrusted data in Visual Studio allows an unauthorized attacker to execute code over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-mqcg-252r-5fj7"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-hm4p-mv9w-4w8f",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114152 - Visual Studio Remote Code Execution Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-xf35-v9jh-g65w. This link is maintained to preserve external references.\n\n## Original Description\nStack-based buffer overflow in Visual Studio allows an unauthorized attacker to execute code over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-hm4p-mv9w-4w8f"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-gxg8-5rwf-cg43",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-114147 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-wr8v-9x5q-ggcm. This link is maintained to preserve external references.\n\n## Original Description\nMissing release of memory after effective lifetime in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:51+00:00",
+      "link": "https://github.com/advisories/GHSA-gxg8-5rwf-cg43"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-wrm2-c2h2-4w82",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-109478 - ASP.NET Core Denial of Service Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-r3qf-p3jm-8h4p. This link is maintained to preserve external references.\n\n## Original Description\nInefficient algorithmic complexity in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:29+00:00",
+      "link": "https://github.com/advisories/GHSA-wrm2-c2h2-4w82"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-r33q-3g5w-gqx6",
+      "title": "Duplicate Advisory: Microsoft Security Advisory CVE-2026-105544 - .NET Elevation of Privilege Vulnerability",
+      "description": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-6856-87hx-p5x7. This link is maintained to preserve external references.\n\n## Original Description\nImproper access control in .NET allows an authorized attacker to elevate privileges locally.",
+      "severity": "high",
+      "published": "2026-11-10T21:32:22+00:00",
+      "link": "https://github.com/advisories/GHSA-r33q-3g5w-gqx6"
+    },
+    {
+      "cve": "CVE-2026-126068",
+      "ghsa": "GHSA-5957-c7qm-m469",
+      "title": "Action Mailbox: Possible signature replay in Action Mailbox Mailgun ingress",
+      "description": "### Impact\nThe Action Mailbox Mailgun ingress authenticates a request with an HMAC of the `timestamp` and `token` parameters concatenated without a separator, and `ActionMailbox::Ingresses::Mailgun::InboundEmailsController::Authenticator#recent?` rejects only timestamps more than 2 minutes in the past. Because the signature does not fix the boundary between the two values, a captured signed request can be presented with a timestamp far in the future, which the ingress then accepts indefinitely. An attacker who obtains one signed Mailgun webhook request, but not the signing key, could submit arbitrary inbound email that Action Mailbox processes as genuine, possibly leading to forged messages attributed to the sender of the attacker's choosing.\n\nApplications that receive inbound email through the Action Mailbox Mailgun ingress are affected.\n\n### Details\nThe fixed releases also reject a Mai",
+      "severity": "low",
+      "published": "2026-11-10T21:28:16+00:00",
+      "link": "https://github.com/advisories/GHSA-5957-c7qm-m469"
+    },
+    {
+      "cve": "CVE-2026-126075",
+      "ghsa": "GHSA-2w9f-fxwj-w2qf",
+      "title": "Active Support: Possible XSS vulnerability in Active Support MessagePack serializer",
+      "description": "### Impact\n`ActiveSupport::MessagePack` serializes an `ActiveSupport::SafeBuffer` as its bytes alone and deserializes it as a new `SafeBuffer`, so a buffer that is no longer `html_safe?` (for example, one mutated in place with `gsub!`) is restored as `html_safe`. If such a buffer holds untrusted input and is stored through a MessagePack serializer, rendering it after it is loaded bypasses ERB auto-escaping, possibly leading to XSS.\n\nApplications on Rails 8.1 are affected if they use a MessagePack serializer, such as `config.action_dispatch.cookies_serializer = :message_pack` or `:message_pack_allow_marshal`, or `serializer: :message_pack` for `Rails.cache`, `ActiveSupport::MessageVerifier` or `ActiveSupport::MessageEncryptor`, and store a `SafeBuffer` that was mutated in place with untrusted input. Rails 8.0 and earlier do not serialize `SafeBuffer` with MessagePack and are not affected.",
+      "severity": "medium",
+      "published": "2026-11-10T21:27:12+00:00",
+      "link": "https://github.com/advisories/GHSA-2w9f-fxwj-w2qf"
+    },
+    {
+      "cve": "CVE-2026-126073",
+      "ghsa": "GHSA-r9jg-fmfx-2gv6",
+      "title": "Action Pack: Possible cache poisoning in Action Pack content negotiation",
+      "description": "### Impact\nAction Pack negotiates the format of a rendered response from the `Accept`, `X-Requested-With` and, for XHR requests without `Accept`, `Content-Type` request headers, but `ActionController::Rendering#_set_vary_header` adds `Vary: Accept` only when the request carries a usable `Accept` header and the response has no `Vary` header yet. A response to a request without `Accept`, or to an XHR request, therefore omits the headers that selected its representation, and a response whose `Vary` the application set before rendering (for example `Vary: Accept-Language`) never gains `Accept`. A shared cache that honours `Vary` could store such a response and serve it to later clients that request a different representation, possibly leading to cache poisoning in which visitors receive, until the entry expires, a page without its layout or HTML in place of JSON. The attacker cannot choose t",
+      "severity": "medium",
+      "published": "2026-11-10T21:26:12+00:00",
+      "link": "https://github.com/advisories/GHSA-r9jg-fmfx-2gv6"
+    },
+    {
+      "cve": "CVE-2026-126067",
+      "ghsa": "GHSA-gmj8-hvj3-49mw",
+      "title": "Action Pack: Missing SameSite attribute on session cookies from Action Pack session stores",
+      "description": "### Impact\nAction Pack session stores other than `ActionDispatch::Session::CookieStore` (`CacheStore`, `MemCacheStore`, and third-party stores built on `AbstractStore`, `AbstractSecureStore` or the session mixins) write the session cookie without a `SameSite` attribute, regardless of `config.action_dispatch.cookies_same_site_protection`, which defaults to `:lax`. Only `CookieStore` applies the configured policy. In browsers that do not treat a cookie without the attribute as `SameSite=Lax`, a cross-site request could carry the session cookie, possibly leading to cross-site request forgery against actions that do not verify an authenticity token, such as those of API-only applications.\n\nApplications are affected when they use a session store other than `CookieStore` and do not pass `same_site:` to `config.session_store`.\n\n### Details\nIn the fixed releases, every session store sets the ses",
+      "severity": "low",
+      "published": "2026-11-10T21:25:18+00:00",
+      "link": "https://github.com/advisories/GHSA-gmj8-hvj3-49mw"
+    },
+    {
+      "cve": "CVE-2026-126071",
+      "ghsa": "GHSA-4v2w-w6g6-f8f8",
+      "title": "Active Storage: Possible DoS vulnerability in Active Storage proxy mode via storage errors during streaming",
+      "description": "### Impact\nWhen Active Storage serves a file through its proxy controllers, `ActiveStorage::Streaming#send_blob_stream` handles an error from the storage service by calling `head` to send a 404 or 500 response. If the error occurs after the first chunk has been written, the response is already committed, and `head` replaces the response body while the server is still reading the original `ActionController::Live` buffer. That buffer is never closed, so the server thread handling the request blocks until the process restarts. Repeated failed downloads could exhaust the server's threads, possibly resulting in a DoS vulnerability.\n\nApplications are affected when they store files on a service that streams a download in several requests, such as Amazon S3, an S3-compatible service or Google Cloud Storage, and draw Active Storage's default routes. The proxy routes are drawn whether or not proxy",
+      "severity": "medium",
+      "published": "2026-11-10T21:24:31+00:00",
+      "link": "https://github.com/advisories/GHSA-4v2w-w6g6-f8f8"
+    },
+    {
+      "cve": "CVE-2026-126083",
+      "ghsa": "GHSA-2gff-2mmg-m73p",
+      "title": "Action Pack: Possible IP spoofing in Action Dispatch RemoteIp",
+      "description": "### Impact\nSince Rails 8.1.0, `ActionDispatch::RemoteIp` derives `request.remote_ip` from `Rack::Request#forwarded_for`, which under Rack 3 reads the RFC 7239 `Forwarded` header in preference to `X-Forwarded-For`. When a reverse proxy appends the client address to `X-Forwarded-For` but passes a client-supplied `Forwarded` header through unchanged, `request.remote_ip` returns an address chosen by the client, and the IP spoofing check does not raise, because it compares only `Client-Ip` with the forwarded addresses. An unauthenticated attacker could therefore spoof `request.remote_ip`, possibly bypassing IP-based access controls and rate limits keyed on the client address (including the default `by:` of `rate_limit`), and falsifying the client address in logs.\n\n### Details\nThe 8.1.0 change ([2d084af8](https://github.com/rails/rails/commit/2d084af8444a7b6b868c7cbb256172007871e78d)) switched",
+      "severity": "high",
+      "published": "2026-11-10T21:20:06+00:00",
+      "link": "https://github.com/advisories/GHSA-2gff-2mmg-m73p"
+    },
+    {
+      "cve": "CVE-2026-126076",
+      "ghsa": "GHSA-2586-8ghr-69fj",
+      "title": "Action Pack: Possible restoration of destroyed sessions in Action Dispatch CacheStore",
+      "description": "### Impact\n`ActionDispatch::Session::CacheStore` writes a session back to the cache at the end of each request that loaded it, without checking that the session's cache entry still exists. When a concurrent request destroys the session, through `reset_session` on logout or by deleting its cache entry on the server, a request that loaded the session earlier and finishes later restores it under its original session ID. Logout and server-side revocation could therefore fail to end a session, and an attacker who holds a stolen session cookie could keep that session valid across the victim's logout.\n\nApplications that use `config.session_store :cache_store` are affected, with any cache backend. `ActionDispatch::Session::CookieStore` is not affected, nor is `ActionDispatch::Session::MemCacheStore` with Dalli 4.0.0 or later, whose session store does not write back a session that was deleted.\n\n#",
+      "severity": "medium",
+      "published": "2026-11-10T21:19:09+00:00",
+      "link": "https://github.com/advisories/GHSA-2586-8ghr-69fj"
+    },
+    {
+      "cve": "CVE-2026-125335",
+      "ghsa": "GHSA-6889-vf6x-f3g5",
+      "title": "Forge: Ed25519 signature verification accepts small-order public keys",
+      "description": "### Summary\n`ed25519.verify()` does not reject public keys of small order, such as the identity point. Under such a key, a signature with `S = 0` and a small-order `R` verifies for many messages, or for every message with the identity key, without any private key. Fixed in node-forge 1.4.3.\n\n### Details\n`crypto_sign_open()` in `lib/ed25519.js` decodes the public key `A` with `unpackneg()`, which only checks that the point is on the curve, and then checks `R == [S]B - [k]A` with `k = SHA-512(R || A || M)`. Nothing rejects public keys of small order: the identity point, the other 7 points of order 2, 4 or 8, and their non-canonical encodings with `y >= p`.\n\nWith `S = 0`, the check becomes `R == [k](-A)`. For a small-order `A`, `[k](-A)` is one of at most 8 small-order points, so an attacker can make a valid signature by trying the small-order values of `R`. For the identity key (`01 00 … 0",
+      "severity": "low",
+      "published": "2026-11-10T21:18:23+00:00",
+      "link": "https://github.com/advisories/GHSA-6889-vf6x-f3g5"
+    },
+    {
+      "cve": "CVE-2026-125332",
+      "ghsa": "GHSA-w4xr-hqv8-ch44",
+      "title": "Forge: TLS client crash on an unsupported ServerHello compression method",
+      "description": "### Summary\nA `forge.tls` client accepts any compression method in the ServerHello, although it only offers no compression. An unknown method makes `connection.process()` throw an uncaught `Error` when the client handles ServerHelloDone, before the server is authenticated. A malicious server or an on-path attacker can use this to terminate a Node.js process. Fixed in node-forge 1.4.3.\n\n### Details\nThe client's ClientHello offers only the `null` compression method. `tls.parseHelloMessage()` in `lib/tls.js` stores the ServerHello's `compression_method` for the client without checking it (the code has a `TODO: handle compression methods`). When the client handles ServerHelloDone it calls `tls.createConnectionState()`, which throws `Error('Unsupported compression algorithm.')` for any method other than `null` (0) and `deflate` (1). The exception propagates out of `connection.process()`.\n\nThe",
+      "severity": "medium",
+      "published": "2026-11-10T21:17:14+00:00",
+      "link": "https://github.com/advisories/GHSA-w4xr-hqv8-ch44"
+    },
+    {
+      "cve": "CVE-2026-125333",
+      "ghsa": "GHSA-6cv4-p8m7-4r25",
+      "title": "Forge: ReDoS in forge.http response header and cookie trimming",
+      "description": "`forge.http` trims response header and `Set-Cookie` values with the regular expression `/\\s*$/`, which takes quadratic time on a long run of whitespace followed by another character. A server or on-path attacker can block a `forge.http` client for minutes with one large response header. Fixed in node-forge 1.4.3.\n\n### Details\n`_trimString()` in `lib/http.js` removes trailing whitespace with `str.replace(/\\s*$/, '')`. On a string of n whitespace characters followed by a non-whitespace character, the regular expression engine tries a match at each of the n positions and scans the rest of the run each time, so the work is O(n^2). `forge.http` calls `_trimString()` on every response header value read by `response.readHeader()`, and again on cookie names and values in `response.getCookies()`. There is no limit on header size.\n\nWith Node.js 24, an 80 KB header value takes about 4 seconds to pa",
+      "severity": "medium",
+      "published": "2026-11-10T21:16:22+00:00",
+      "link": "https://github.com/advisories/GHSA-6cv4-p8m7-4r25"
+    },
+    {
+      "cve": "CVE-2026-125334",
+      "ghsa": "GHSA-j8rw-jp99-435v",
+      "title": "Forge: TLS client crash on a handshake record received without a session",
+      "description": "### Summary\nA `forge.tls` client throws an uncaught `TypeError` from `connection.process()` when it receives a ServerHello while it has no session: after a `close_notify` alert or a call to `close()`, or before `handshake()` is called. A malicious server or an on-path attacker can use this to terminate a Node.js process. Fixed in node-forge 1.4.3.\n\n### Details\n`tls.handleHandshake()` in `lib/tls.js` updates the handshake digests with `c.session.md5.update(bytes)` before it calls the message handler. A client creates its session in `handshake()`, and `c.reset()` sets it to `null` when the connection is closed. Closing doesn't set the fail flag, and the client goes back to expecting a ServerHello, so a Handshake record received afterwards still reaches `handleHandshake()`, which throws `TypeError: Cannot read properties of null (reading 'md5')`.\n\nThis happens:\n- after the server sends a `c",
+      "severity": "medium",
+      "published": "2026-11-10T21:14:26+00:00",
+      "link": "https://github.com/advisories/GHSA-j8rw-jp99-435v"
+    },
+    {
+      "cve": "CVE-2026-126066",
+      "ghsa": "GHSA-474x-hrwr-fgx4",
+      "title": "fast-xml-parser: Quadratic CPU consumption scanning unterminated stop-node tags",
+      "description": "### Summary\n\nWith the non-default stopNodes option, a stop node's body with many \"<a \" fragments and no closing \">\" anywhere after makes readStopNodeData() rescan the entire remaining input from every \"<\". The failed lookahead is neither cached nor bounded, so n fragments cost O(n²) before the parser throws. Availability-only (CPU exhaustion), needs the non-default stopNodes option — not benchmarked yet, see Proof of Concept.\n\n### Details\n\n**CWE-407** — Inefficient Algorithmic Complexity\n\n**Code**\n- `OrderedObjParser.js:520` — `parseXml()` calls `readStopNodeData()` after a matching stop node opens\n- `OrderedObjParser.js:810` — calls `readTagExp()` for every non-special `<`\n- `OrderedObjParser.js:688-722` — `tagExpWithClosingIndex()` scans to end-of-input and returns `undefined` when no `>` exists\n- `OrderedObjParser.js:812-818` — on failure, `i` isn't advanced, so the next `<` repeats t",
+      "severity": "low",
+      "published": "2026-11-10T21:09:44+00:00",
+      "link": "https://github.com/advisories/GHSA-474x-hrwr-fgx4"
+    },
+    {
+      "cve": "CVE-2026-125116",
+      "ghsa": "GHSA-wr5m-5jph-8m96",
+      "title": "Mongoose: Discriminator key values matching inherited properties (e.g. __t: 'constructor') bypass schema casting and can poison collections",
+      "description": "### Summary\n\nMongoose chooses which discriminator model or schema to use by looking up the discriminator key value (`__t` by default) in a plain object of registered discriminators, for example `Model.discriminators[doc.__t]`. That value comes from user documents and query filters. Because the lookup did not check own properties, a value that names a property inherited from `Object.prototype` resolves to that inherited value instead of a discriminator. Examples are `'constructor'`, `'toString'` and `'hasOwnProperty'`.\n\n- `__t: 'constructor'` resolves to the global `Object` function. Mongoose then calls `new Object(doc)`, which returns the raw user object where a Mongoose document is expected.\n- `__t: 'toString'` and similar names resolve to built-in functions that throw when used as a constructor or schema.\n\nThe most serious effect: through `bulkWrite()` `insertOne` with `skipValidation:",
+      "severity": "medium",
+      "published": "2026-11-10T20:57:18+00:00",
+      "link": "https://github.com/advisories/GHSA-wr5m-5jph-8m96"
+    },
+    {
+      "cve": "CVE-2026-125117",
+      "ghsa": "GHSA-8332-j7wj-wjw4",
+      "title": "Mongoose walks into inherited properties when hydrating, setting, and merging, allowing overwrites of built-in functions (denial of service) and shared schema state",
+      "description": "### Summary\n\nThree Mongoose code paths copy data into objects by property name without checking whether the property is the object's own or inherited from its prototype:\n\n1. Loading a document from the database (`init()`, also used by `Model.hydrate()`)\n2. Setting a dotted path on a document (`$__set`, used by `new Model(obj)`, `doc.set()` and `doc.$set()`)\n3. Merging update documents (`utils.mergeClone`, used by `findOneAndReplace()`, chained update calls and `Query.prototype.merge()`)\n\nWhen a key names an inherited property, such as `toString` or `valueOf`, or a document internal such as `$__schema`, Mongoose writes into the shared object behind that property. The data comes from the attacker.\n\n- **Denial of service.** For example, `{ \"toString\": { \"call\": 1 } }` overwrites `Object.prototype.toString.call`. Mongoose and most other libraries rely on `Object.prototype.toString.call()`. A",
+      "severity": "high",
+      "published": "2026-11-10T20:56:16+00:00",
+      "link": "https://github.com/advisories/GHSA-8332-j7wj-wjw4"
+    },
+    {
+      "cve": "CVE-2026-126062",
+      "ghsa": "GHSA-v995-44v6-5fqm",
+      "title": "JRuby: NONET is bypassed for external DTDs and entities when the systemId uses a short-form IPv4 host",
+      "description": "### Summary\n\nOn JRuby, the `NONET` parse option did not block an external DTD or entity whose system identifier used a short-form IPv4 host, such as `http://127.1/` or `http://169.254.43518/`, or was an absolute path such as `/x.dtd` in a document parsed from a network URL. An application that parses untrusted XML with `DTDLOAD`, `DTDVALID` or `NOENT` could be made to send network requests, potentially enabling SSRF.\n\nNokogiri 1.19.5 applies the `XML::Schema` check from [GHSA-8678-w3jw-xfc2](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-8678-w3jw-xfc2): with `NONET` set, only local resources are loaded.\n\nOnly JRuby is affected. Default parse options are not affected.\n\n### Severity\n\nThe Nokogiri maintainers have evaluated this as low severity.\n\n### Mitigation\n\nUpgrade to Nokogiri 1.19.5 or later, or do not enable `DTDLOAD`, `DTDVALID` or `NOENT` for untrusted input.\n\n",
+      "severity": "low",
+      "published": "2026-11-10T20:52:38+00:00",
+      "link": "https://github.com/advisories/GHSA-v995-44v6-5fqm"
+    },
+    {
+      "cve": "CVE-2026-126064",
+      "ghsa": "GHSA-3w22-6jfg-527w",
+      "title": "Nokogiri: Use-After-Free in Nokogiri when replacing an attribute value",
+      "description": "### Summary\n\nNokogiri's CRuby native extension could leave a Ruby wrapper pointing to freed memory when replacing the value of an existing XML attribute via `Nokogiri::XML::Node#[]=` or `Nokogiri::XML::Node#lang=`. If Ruby code had already accessed the attribute's child nodes, replacing the value could free those native child nodes while their wrappers remained reachable. Using one of those child nodes afterwards could cause an invalid read and a possible segfault.\n\nThis is the same class of issue as [GHSA-phwj-rprq-35pp](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-phwj-rprq-35pp), which was fixed for `Attr#value=` in Nokogiri 1.19.4.\n\nNokogiri 1.19.5 preserves all already-wrapped attribute child nodes before replacing the attribute value.\n\nJRuby is not affected.\n\n### Severity\n\nThe Nokogiri maintainers have evaluated this as low severity. Reaching it requires an un",
+      "severity": "low",
+      "published": "2026-11-10T20:51:19+00:00",
+      "link": "https://github.com/advisories/GHSA-3w22-6jfg-527w"
+    },
+    {
+      "cve": "CVE-2026-126063",
+      "ghsa": "GHSA-4p39-36wj-23h4",
+      "title": "Nokogiri: Mutation XSS through `noscript` content in Nokogiri's HTML5 serializer",
+      "description": "### Summary\n\nNokogiri's HTML5 serializer did not escape text inside `noscript` elements, or `<` and `>` inside attribute values. When a document parsed with the default options is serialized, a browser with scripting enabled can parse the output into markup that Nokogiri's parser never produced. This is a mutation XSS for applications that sanitize untrusted HTML with `Nokogiri::HTML5`, allow `noscript` elements, and send the serialized output to browsers.\n\nNokogiri 1.19.5 escapes both, as the HTML standard's serialization algorithm requires. Text inside `noscript` is still emitted unescaped for documents parsed with `parse_noscript_content_as_text: true`.\n\nOnly the C extension (CRuby and TruffleRuby) is affected. JRuby does not implement `Nokogiri::HTML5`.\n\n### Severity\n\nThe Nokogiri maintainers have evaluated this as low severity (CVSS 2.3, `CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/",
+      "severity": "low",
+      "published": "2026-11-10T20:47:36+00:00",
+      "link": "https://github.com/advisories/GHSA-4p39-36wj-23h4"
+    },
+    {
+      "cve": "CVE-2026-125118",
+      "ghsa": "GHSA-6972-9mcm-vhwj",
+      "title": "Mongoose: Prototype pollution via Schema.prototype.virtual()",
+      "description": "### Summary\n\nPrototype pollution via Schema.prototype.virtual() — the 2022 fix for CVE-2022-2564 / CVE-2022-24304 protected Schema.path()/add() but never virtual(), so the same class of bug is still exploitable in all maintained release lines.\n\n### Details\n\nIn lib/schema.js, Schema.prototype.virtual() (defined at line 2643) builds the virtual path via:\n\n```javascript\nvirtuals[name] = parts.reduce(function(mem, part, i) {\nmem[part] || (mem[part] = (i === parts.length - 1)\n? new VirtualType(options, name)\n: {});\nreturn mem[part];\n}, this.tree); // lines 2755-2759\n```\n\nUnlike `path()`/`add()`, `virtual()` never received the `specialProperties` check added for CVE-2022-2564/CVE-2022-24304 (`lib/schema.js` lines 806, 1308, 1331).\n\nA path containing `__proto__`/`constructor`/`prototype` segments resolves through the prototype chain and writes onto `Object.prototype` / `Function.prototype`.\n\n##",
+      "severity": "medium",
+      "published": "2026-11-10T20:46:33+00:00",
+      "link": "https://github.com/advisories/GHSA-6972-9mcm-vhwj"
+    },
+    {
+      "cve": "CVE-2026-125119",
+      "ghsa": "GHSA-gg4r-jv3p-qx3c",
+      "title": "Mongoose: Connection-level sanitizeFilter not applied",
+      "description": "### Summary\n\nsanitizeFilter exists to stop query selector injection: it wraps operator objects such as `{ $ne: null }` in filter values in `$eq`, so they are matched literally. Set on a connection with `mongoose.connect()` or `createConnection(uri, { sanitizeFilter: true })`, the connection reports it as enabled but queries never apply it. An application that relies on the connection-level option and passes an attacker-controlled object into a filter therefore remains open to selector injection, and a password value of `{ $ne: null }` returns the account record without the password.\n\n### Details\n\n`NativeConnection#createClient()` at `lib/drivers/node-mongodb-native/connection.js:270-272` moves `options.sanitizeFilter` into `Connection.config` and deletes the original option. `Query#_castConditions()` at `lib/query.js:2413-2423` checks `Connection.options`, the global `options`, and the p",
+      "severity": "high",
+      "published": "2026-11-10T19:56:12+00:00",
+      "link": "https://github.com/advisories/GHSA-gg4r-jv3p-qx3c"
+    },
+    {
+      "cve": "CVE-2026-125120",
+      "ghsa": "GHSA-pcrw-h46h-c93h",
+      "title": "Mongoose: sanitizeFilter not applied on countDocuments",
+      "description": "### Impact\n\n`sanitizeFilter` is Mongoose's mechanism for protecting against query selector injection attacks. In older versions of Mongoose, `sanitizeFilter` was not applied for `countDocuments()` queries.\n\n### Patches\n\nPatches have been released for all supported Mongoose major release lines. Please upgrade to the following versions depending on which major version of Mongoose applications are using.\n\n1. `^9.9.2`\n2. `^8.24.3`\n3. `^7.8.12`\n4. `^6.13.11`\n\n### Workarounds\n\nMiddleware:\n\n```javascript\nmongoose.plugin(function() {\n  schema.pre('countDocuments', function() {\n    // This will always apply `sanitizeFilter` on `countDocuments`\n    mongoose.sanitizeFilter(this.getFilter());\n  });\n});\n```",
+      "severity": "critical",
+      "published": "2026-11-10T19:37:32+00:00",
+      "link": "https://github.com/advisories/GHSA-pcrw-h46h-c93h"
+    },
+    {
+      "cve": "CVE-2026-125111",
+      "ghsa": "GHSA-5v64-555j-wjxm",
+      "title": "Rack: Multipart parsing allows DoS via unbounded scan buffer growth",
+      "description": "## Summary\n\n`Rack::Multipart::Parser` reads the request body in chunks of `rack.multipart.buffer_size` (1 MiB by default) into an internal scan buffer. Parsed bytes are only discarded from that buffer when a chunk ends inside a part body. A request whose parts are sized so that every chunk ends inside, or immediately after, a part's headers is never compacted, so the buffer grows to the size of the request.\n\nThis results in a denial of service condition through memory exhaustion for applications that parse multipart requests.\n\n## Details\n\nThe parser appends each chunk read from the input to a `StringScanner` and advances through boundaries, headers, and bodies. In the body state, when no closing boundary is found, the consumed prefix is removed before more data is read. In the header state, and in the body state when no body bytes have been consumed yet, the parser requests more data wit",
+      "severity": "high",
+      "published": "2026-11-10T19:35:49+00:00",
+      "link": "https://github.com/advisories/GHSA-5v64-555j-wjxm"
+    },
+    {
+      "cve": "CVE-2026-125108",
+      "ghsa": "GHSA-p8x9-v4hv-2w4g",
+      "title": "Rack: Multipart boundary ambiguity guard in Rack::Multipart::Parser can be bypassed with a quoted boundary value, allowing WAF bypass",
+      "description": "## Summary\n\nThe guard added for CVE-2026-26961 (GHSA-vgpv-f759-9wx3), which rejects multipart requests with more than one `boundary` parameter, only inspects the part of the `Content-Type` header after the boundary it extracts. A `Content-Type` whose first `boundary` parameter is empty or begins with a quote, semicolon, or comma is skipped by the extraction pattern, so a second `boundary` parameter is accepted silently and Rack parses the body with a boundary that a conforming parser would not derive from the header.\n\n## Details\n\n`Rack::Multipart::Parser.parse_boundary` extracts the boundary with a regular expression that uses a lazy prefix and a value class excluding `\"`, `;`, and `,`. For a header such as `multipart/form-data; boundary=\";boundary=AaB03x\"` or `multipart/form-data; boundary=; boundary=AaB03x`, the pattern skips the first `boundary=` and anchors on the second, and the sub",
+      "severity": "low",
+      "published": "2026-11-10T19:26:28+00:00",
+      "link": "https://github.com/advisories/GHSA-p8x9-v4hv-2w4g"
+    },
+    {
+      "cve": "CVE-2026-79914",
+      "ghsa": "GHSA-wrr5-j383-f7h2",
+      "title": "NocoBase: @nocobase/plugin-action-custom-request allows server-side request forgery through runtime URL overrides",
+      "description": "### Summary\n\nA Server-Side Request Forgery vulnerability exists in NocoBase v2.1.10 in the `@nocobase/plugin-action-custom-request` plugin.\n\nA low-privileged authenticated user can call the `customRequests:send` endpoint and override the stored request URL at runtime using `options.url`. This causes the NocoBase server to perform outbound HTTP requests to attacker-controlled or internal URLs.\n\n* Product: NocoBase\n* Version: v2.1.10\n* Component: `@nocobase/plugin-action-custom-request`\n* Severity: Moderate\n* Required privilege: authenticated low-privileged user / member\n\nTesting was performed only in a local Docker lab environment at `http://127.0.0.1:13000`. No public NocoBase instance was tested.\n\nLab environment:\n\n* Docker image: `nocobase/nocobase:latest-full`\n* Commit: `23e2bd35625439594e4757bac31d57c9e8e695b9`\n* Database: PostgreSQL 16\n* Containers: `nocobase-lab`, `nocobase-postgre",
+      "severity": "medium",
+      "published": "2026-11-10T19:20:14+00:00",
+      "link": "https://github.com/advisories/GHSA-wrr5-j383-f7h2"
+    },
+    {
+      "cve": "CVE-2026-125109",
+      "ghsa": "GHSA-2j8w-xcrc-x985",
+      "title": "Rack: Rack::Request#host_with_port (and #base_url / #url) return the raw invalid Host header — incomplete fix of CVE-2026-34835",
+      "description": "## Summary\n\n`Rack::Request#host_with_port`, and therefore `#base_url` and `#url`, return the raw authority string when it fails validation. An attacker-controlled `Host`, `X-Forwarded-Host`, or `Forwarded: host=` value containing characters that are not permitted in an authority is embedded verbatim in URLs generated by the application.\n\nThis completes the fix for CVE-2026-34835 (GHSA-g2pf-xv49-m2h5), which made `#host` and `#hostname` return `nil` for an invalid authority but left this path unchanged.\n\n## Details\n\n`Rack::Request#host_with_port` splits the authority with `split_authority`. When the `AUTHORITY` pattern does not match, no components are returned and `host_with_port` falls back to returning the unvalidated authority string. `base_url` is `\"#{scheme}://#{host_with_port}\"` and `url` appends the full path, so both inherit the raw value.\n\nFor a request with `Host: evil.com/@leg",
+      "severity": "medium",
+      "published": "2026-11-10T19:11:28+00:00",
+      "link": "https://github.com/advisories/GHSA-2j8w-xcrc-x985"
+    },
+    {
+      "cve": "CVE-2026-125110",
+      "ghsa": "GHSA-wvg4-6p58-3gh3",
+      "title": "Rack: Rack::Static header_rules bypass via dot-segment normalization mismatch",
+      "description": "## Summary\n\n`Rack::Static` normalizes the request path with `Utils.clean_path_info` when deciding which file to serve, but matches `header_rules` against a path that is only URL-decoded. A request containing dot segments, raw or percent-encoded, is served the normalized target file while the header rules for that file's location are not applied.\n\nThis allows an attacker to receive a protected static file without the security headers configured for it.\n\n## Details\n\n`Rack::Static#call` computes the served path as `Utils.clean_path_info(Utils.unescape_path(path))`. `Rack::Static#applicable_rules` applies only `Utils.unescape_path` before testing string and regular expression rules. A request for `/assets/../uploads/file.html` or `/assets/..%2fuploads/file.html` is served as `uploads/file.html`, but the decoded path `/assets/../uploads/file.html` does not start with `uploads`, so a rule scop",
+      "severity": "medium",
+      "published": "2026-11-10T18:50:07+00:00",
+      "link": "https://github.com/advisories/GHSA-wvg4-6p58-3gh3"
+    },
+    {
+      "cve": "CVE-2026-125121",
+      "ghsa": "GHSA-r7j4-crjv-h467",
+      "title": "compose-lint: Text in a pull request can still issue CI workflow commands through compose-lint 0.31.0's output",
+      "description": "### Impact\n\n0.31.0 fixed GHSA-6f4g-xm8v-pgv6, where text from a Compose file became GitHub Actions workflow commands in compose-lint's output. The fix escapes the command openers in everything compose-lint prints, and the 0.31.0 changelog says the report \"escapes both openers (also covering Azure Pipelines)\". Five paths were left open:\n\n- **Unicode whitespace before a line-leading `::`.** The runner strips all Unicode whitespace from the start of a line before it looks for a command. compose-lint only accounted for spaces and tabs, so a no-break space or another Unicode space ahead of `::` is not escaped. It can come from a Compose value, or from a file name: the text report's file heading and per-file summary, and the `fix` summary on stderr, start with the path as given, so a directory named with a leading no-break space followed by `::` puts a command at the start of a line. This reac",
+      "severity": "medium",
+      "published": "2026-11-10T18:28:35+00:00",
+      "link": "https://github.com/advisories/GHSA-r7j4-crjv-h467"
+    },
+    {
+      "cve": "CVE-2026-118670",
+      "ghsa": "GHSA-xwgp-w3pj-q5h3",
+      "title": "OHIF Viewers: DOM-Based Cross Site Scripting (XSS) through MIME type of document",
+      "description": "### Summary\nAn XSS (Cross-Site Scripting) vulnerability occurs when an attacker is able to inject their own JavaScript code into a web page's source, which is subsequently processed by the victim's browser. A common cause of this vulnerability is the failure to validate user-supplied data before displaying it within the vulnerable application without proper filtering. To exploit the vulnerability, an attacker must input HTML code into a vulnerable parameter containing structures that trigger the execution of JavaScript. The DOM XSS variant occurs when user-supplied data is processed by a client-side script; if this data is not handled correctly by the script itself, it becomes possible to inject additional JavaScript commands.\n\n**Attacker model:** Any actor who can get a DICOM object in front of a victim — email a `.dcm`\nfor local viewing, upload to a shared PACS, or operate/compromise a",
+      "severity": "high",
+      "published": "2026-11-10T15:57:51+00:00",
+      "link": "https://github.com/advisories/GHSA-xwgp-w3pj-q5h3"
+    },
+    {
+      "cve": "CVE-2026-118774",
+      "ghsa": "GHSA-9wg5-mj3p-v49q",
+      "title": "Forge: Certificate signature verified with the issuer's RSA signature scheme",
+      "description": "### Summary\n\nWhen verifying a certificate, node-forge chose the RSA padding scheme (PKCS#1 v1.5 or RSASSA-PSS) and PSS parameters from the issuer certificate's own signature algorithm instead of the certificate being verified. A certificate labeled as signed with RSASSA-PSS could pass `verifyCertificateChain()` with a PKCS#1 v1.5 signature. Fixed in node-forge 1.4.1.\n\n### Details\n\n`certificate.verify(child)` in `lib/x509.js` hashes the child's TBSCertificate with the digest of the child's signature algorithm, then calls `_verifySignature()` with the issuer certificate. `_verifySignature()` selected the padding scheme from that certificate's `signatureOid` and `signatureParameters`, so the child was verified with the issuer's own scheme rather than the one the child declares.\n\nAs a result, a child certificate whose signature algorithm says RSASSA-PSS was accepted with a PKCS#1 v1.5 signat",
+      "severity": "low",
+      "published": "2026-11-10T15:57:48+00:00",
+      "link": "https://github.com/advisories/GHSA-9wg5-mj3p-v49q"
+    },
+    {
+      "cve": "CVE-2026-118776",
+      "ghsa": "GHSA-2vgq-wchc-25w7",
+      "title": "Forge: Incomplete PKCS#7 padding validation in AES/DES CBC and ECB decryption",
+      "description": "### Summary\n`decipher.finish()` in CBC and ECB mode accepted malformed PKCS#7 padding: only the last byte was checked, against a limit of four blocks, so mismatched padding bytes, a zero count and oversized counts were accepted and up to four blocks of plaintext could be silently removed. Fixed in node-forge 1.4.1.\n\n### Details\n`modes.cbc.prototype.unpad()` and `modes.ecb.prototype.unpad()` in `lib/cipherModes.js` read the last decrypted byte as the PKCS#7 padding count, rejected it only if it was larger than `blockSize << 2` (64 for AES, 32 for DES), and then removed that many bytes. They did not reject a count of 0 or a count larger than one block, and did not check that every padding byte equals the count, as PKCS#7 (RFC 5652 section 6.3) requires. On the Wycheproof AES-CBC-PKCS5 test vectors, 69 of 144 invalid vectors decrypted successfully.\n\nCBC and ECB without a MAC do not provide ",
+      "severity": "low",
+      "published": "2026-11-10T15:57:46+00:00",
+      "link": "https://github.com/advisories/GHSA-2vgq-wchc-25w7"
+    },
+    {
+      "cve": "CVE-2026-119189",
+      "ghsa": "GHSA-h46v-rmh6-fq4f",
+      "title": "Forge: X.509 pathLenConstraint not enforced by verifyCertificateChain() for CA certificates without keyUsage",
+      "description": "### Summary\n`forge.pki.verifyCertificateChain()` enforces the `pathLenConstraint` of a CA certificate's `basicConstraints` extension only when that certificate also has a `keyUsage` extension. For a CA certificate with a `pathLenConstraint` and no `keyUsage`, chains with more intermediate CA certificates below it than the constraint allows are accepted. Fixed in node-forge 1.4.1.\n\n### Details\nIn `pki.verifyCertificateChain()` (`lib/x509.js`), the path length check for a CA certificate was guarded by `keyUsageExt !== null && 'pathLenConstraint' in bcExt`. The `keyUsage` test was originally a proxy for \"a basicConstraints extension exists\". Since node-forge 1.4.0 (GHSA-2328-f5f3-gj25), basicConstraints is required for every certificate that reaches this check, so the only remaining effect of the guard is to skip `pathLenConstraint` enforcement for CA certificates without `keyUsage`.\n\nRFC 5",
+      "severity": "medium",
+      "published": "2026-11-10T15:57:43+00:00",
+      "link": "https://github.com/advisories/GHSA-h46v-rmh6-fq4f"
+    },
+    {
+      "cve": "CVE-2026-119191",
+      "ghsa": "GHSA-rhr8-3pm8-cq29",
+      "title": "Forge: ASN.1 resource exhaustion via BIT STRING decoding in asn1.fromDer",
+      "description": "### Summary\n`asn1.fromDer()` decodes the contents of BIT STRINGs as ASN.1 by default. That decode ignored the `maxDepth` recursion limit (an incomplete fix of CVE-2025-66031) and also decoded nested BIT STRINGs, keeping a full copy of the decoded contents at each level, so small crafted DER or PEM inputs (certificates, keys, PKCS structures) use excessive CPU time and memory and can abort the Node.js process. Fixed in node-forge 1.4.1.\n\n### Details\n`asn1.fromDer()` attempts by default to decode the contents of primitive BIT STRINGs as ASN.1 (`decodeBitStrings`, default `true`). Two flaws in that decode in `lib/asn1.js` allow resource exhaustion:\n\n1. `_fromDer()` started the BIT STRING decode with a new options object, `{strict: true, decodeBitStrings: true}`, that did not include `maxDepth`. Inside that decode the depth check compared against `undefined` and never triggered, so the recur",
+      "severity": "high",
+      "published": "2026-11-10T15:57:41+00:00",
+      "link": "https://github.com/advisories/GHSA-rhr8-3pm8-cq29"
+    },
+    {
+      "cve": "CVE-2026-119192",
+      "ghsa": "GHSA-6qrw-m8cv-hcxf",
+      "title": "Forge: RSA PKCS#1 v1.5 signature forgery via non-canonical DigestInfo encoding",
+      "description": "### Summary\nRSASSA-PKCS1-v1_5 signature verification (`publicKey.verify()` with the default scheme, also used by X.509 certificate and PKCS#7 verification) accepted non-canonical BER encodings of the DigestInfo, such as NULL parameters with content and non-minimal lengths. These leave attacker-controlled bytes inside an accepted DigestInfo, which allows signatures to be forged without the private key for RSA keys with a low public exponent (e=3). Fixed in node-forge 1.4.1.\n\n### Details\nIn `lib/rsa.js`, `key.verify()` with the default `RSASSA-PKCS1-V1_5` scheme removes the padding, parses the recovered DigestInfo with the lenient BER parser `asn1.fromDer()` and checks its structure with `asn1.validate()` against `digestInfoValidator`. Neither requires a canonical DER encoding, so verification accepted, among others:\n- NULL parameters with content bytes (e.g. `05 40 <64 bytes>`)\n- non-NULL",
+      "severity": "high",
+      "published": "2026-11-10T15:57:34+00:00",
+      "link": "https://github.com/advisories/GHSA-6qrw-m8cv-hcxf"
+    },
+    {
+      "cve": "CVE-2026-115779",
+      "ghsa": "GHSA-chp3-j5qr-2vfr",
+      "title": "Effect: Cookie attribute injection via domain, path, and name fields in @effect/platform makeCookie()",
+      "description": "### Impact\n\nThe `name`, `domain`, and `path` fields of `makeCookie()` were validated with a regex that allows `;`, the attribute separator in `Set-Cookie` headers. Because `serializeCookie()` writes those fields verbatim, a caller who passes untrusted input into any of them can append arbitrary attributes to the header.\n\nFor example, a `domain` of `\"legit.com; Domain=.parent.tld\"` serializes to `session=token; Domain=legit.com; Domain=.parent.tld`. RFC 6265 §5.3 takes the last occurrence, so the injected domain wins and the cookie widens to the parent domain. The same trick sets `SameSite=None` or `Max-Age` when the caller has not set those options itself.\n\nThe `value` field is unaffected: it passes through `encodeURIComponent`, which encodes `;`. CR and LF are rejected by the existing regex, so header splitting is not possible.\n\n### Patches\n\nFixed in #6763 (v4) and #6765 (v3): the share",
+      "severity": "medium",
+      "published": "2026-11-10T15:57:32+00:00",
+      "link": "https://github.com/advisories/GHSA-chp3-j5qr-2vfr"
+    },
+    {
+      "cve": "CVE-2026-123364",
+      "ghsa": "GHSA-p623-mxf7-qxjm",
+      "title": "OctoPrint: Stored XSS via saved connection parameters",
+      "description": "## Impact\n\nOctoPrint versions 2.0.0rc1 up until version 2.0.0rc6 are susceptible to cross-site scripting via a specially crafted default `port` or `baudrate` setting on the bundled Serial Connector plugin, supplied via the API as new defaults during a `connect` request.\n\n## Patches\n\nThe vulnerability is patched in 2.0.0rc7.\n\n## Workaround\n\nCheck `config.yaml` for Javascript fragments in `printerConnection.preferred.parameters.port` or `printerConnection.preferred.parameters.baudrate`. If found, remove them. You can check who of your users had access to your instance since you flashed 2.0.0rc1 or above via `auth.log`. \n\n## Credits\n\nThis vulnerability was discovered and responsibly disclosed to OctoPrint by \"mahn-don\".\n\n## Timeline\n\n2026-10-14: Report received\n2026-10-14: Report acknowledged\n2026-10-14: Report verified\n2026-10-14: Fix ready for 2.0.0rc7\n2026-10-20: CVE requested",
+      "severity": "low",
+      "published": "2026-11-10T15:57:29+00:00",
+      "link": "https://github.com/advisories/GHSA-p623-mxf7-qxjm"
+    },
+    {
+      "cve": "CVE-2026-110802",
+      "ghsa": "GHSA-752m-7p75-49gf",
+      "title": "Altair: DOM-based XSS via attacker-controlled script URLs in the iframe sandbox",
+      "description": "### Summary\nAltair `8.5.7` accepts plugin configuration directly from the `iframe-sandbox` query string.\n\nWhen `plugin_sandbox_opts` contains `type: \"scripts\"` and an attacker-controlled URL in `scriptUrls`, the sandbox page creates a classic `<script src=\"...\">` element and loads the supplied script.\n\nIn the intended plugin flow, this page runs inside an `<iframe sandbox=\"allow-scripts\">` without `allow-same-origin`, giving plugin code an opaque origin. However, if a victim opens the crafted sandbox URL directly, that iframe isolation is absent and the attacker-controlled script executes in the origin serving Altair, resulting in DOM-based cross-site scripting (XSS) / arbitrary JavaScript execution in the Altair hosting origin.\n\nExploitation requires the victim to open a crafted URL.\n\n### Details\nThe sandbox reads its configuration directly from `window.location.search`.\n\nIn `packages/a",
+      "severity": "medium",
+      "published": "2026-11-10T15:57:27+00:00",
+      "link": "https://github.com/advisories/GHSA-752m-7p75-49gf"
+    },
+    {
+      "cve": "CVE-2026-107846",
+      "ghsa": "GHSA-8vv3-6qpc-gpw6",
+      "title": "bitcoinjs-lib: Undetected merkle node duplication in block root computation validates a forged transaction list",
+      "description": "### Summary\n`fastMerkleRoot` pads an odd level by hashing the last node with itself. It does not report that it did so, and `checkTxRoots` never looks for repeated transactions. A peer can therefore duplicate transactions to fill the pad and produce a block with a different transaction list but the same merkle root. The block hash and block id do not change, so the header still carries valid proof of work. In the proof of concept a real mainnet block goes from nine transactions to ten, and separately to twelve, with the same id every time, and `checkTxRoots` accepts all three. Bitcoin Core rejects this case through the `mutated` flag in `ComputeMerkleRoot` and the `bad-txns-duplicate` reason in `CheckBlock`. This is CVE-2012-2459.\n\n### Details\nA bitcoin merkle tree pads an odd level by hashing the last node with itself. Duplicating transactions to fill that pad therefore yields the same ",
+      "severity": "critical",
+      "published": "2026-11-10T15:57:25+00:00",
+      "link": "https://github.com/advisories/GHSA-8vv3-6qpc-gpw6"
+    },
+    {
+      "cve": "CVE-2026-123796",
+      "ghsa": "GHSA-rm8w-w798-g545",
+      "title": "compose-lint: Incomplete fix for GHSA-jf3h-8jvx-vcrg: a run stopped at the finding limit quotes a secret from a CI-generated `.env`",
+      "description": "### Impact\n\nThis is an incomplete fix for GHSA-jf3h-8jvx-vcrg. 0.32.0 made findings quote the `${NAME}` a sibling `.env` filled in, instead of its value. The same release added a stop at 20,000 findings per document, and that stop is checked before the quoting step. A run that hits it reports the findings graded so far with the resolved values still in them, in text, JSON and SARIF output. That happens with or without `--allow-partial-coverage`.\n\nThe attack is the one GHSA-jf3h-8jvx-vcrg describes. In a CI workflow that writes secrets into the `.env` beside the Compose file, a pull request changes a line to `image: \"${DB_PASSWORD}\"`. It also pushes the document past 20,000 findings, which a few hundred lines can do, because an aliased list is graded once for each service that uses it. The secret's value is quoted in a finding that reaches the job log, the JSON output and the SARIF upload",
+      "severity": "low",
+      "published": "2026-11-10T15:57:22+00:00",
+      "link": "https://github.com/advisories/GHSA-rm8w-w798-g545"
+    },
+    {
+      "cve": "CVE-2026-103002",
+      "ghsa": "GHSA-3hch-x692-6qj3",
+      "title": "GPUStack: Missing authorization on several cluster and resource endpoints allows cross-user access and cluster takeover",
+      "description": "### Impact\n\nAn authenticated non-administrative user could access a Kubernetes cluster they are not authorized to access through GPUStack's Kubernetes API proxy.\n\nThe `cluster_apiserver_proxy` handler did not perform a resource-level authorization check before forwarding requests to the selected cluster. Requests were forwarded through a worker using its Kubernetes ServiceAccount credentials.\n\nDepending on the permissions granted to that ServiceAccount, an attacker could read sensitive Kubernetes resources, create or modify workloads, or delete resources and disrupt services. Creating attacker-controlled workloads could result in code execution in the target cluster.\n\nExploitation requires a Kubernetes-provider cluster with a reachable worker. The operations available to the attacker are limited by the worker's ServiceAccount permissions.\n\n### Patches\n\nFixed in `gpustack` `v2.2.2`.\n\n### ",
+      "severity": "high",
+      "published": "2026-11-10T15:57:20+00:00",
+      "link": "https://github.com/advisories/GHSA-3hch-x692-6qj3"
+    },
+    {
+      "cve": "CVE-2026-113663",
+      "ghsa": "GHSA-2h4w-29cv-2cmv",
+      "title": "AG2: Newline injection in SandboxShellTool bypasses allowed=[...] and readonly=True, enabling arbitrary command execution",
+      "description": "### Summary\nSandboxShellTool's restricted modes — allowed=[...] (explicit command allowlist) and readonly=True (implicit READONLY_COMMANDS allowlist) — can both be bypassed by embedding a newline character inside the command string. The filter only inspects a single-line set of shell metacharacters, but execution runs the raw string through `sh -c`, where a shell treats an embedded newline exactly like a `;` statement separator. An agent (or content that steers the agent, e.g. via prompt injection) can therefore run arbitrary shell commands even when the tool was configured to allow only a specific command prefix or only read-only commands. With the default LocalEnvironment() backend this is a real host subprocess (its own docstring: \"Commands run via subprocess on the host, so there is no real isolation\"), not an isolated container, so this is full host command execution, not merely an ",
+      "severity": "high",
+      "published": "2026-11-10T15:57:17+00:00",
+      "link": "https://github.com/advisories/GHSA-2h4w-29cv-2cmv"
+    },
+    {
+      "cve": "CVE-2026-102894",
+      "ghsa": "GHSA-62m9-f875-rqw6",
+      "title": "GPUStack: SAML callback trusts an unverified SAMLResponse, allowing authentication bypass and account takeover",
+      "description": "### Impact\n\nThe callback Base64-decodes the posted XML, reads NameID and attributes, resolves or provisions the user, and mints a gpustack_session JWT — but never calls OneLogin_Saml2_Auth.process_response(), the step that verifies the signature, issuer, audience, destination, and time conditions.\n\nNo credentials are required, and SAML SSO does not even need to be configured. The callback processes the payload and issues a session regardless of whether SAML is set up, so every deployment is affected, not only SAML-enabled ones. Anyone who can reach the endpoint over the network can authenticate as an arbitrary identity by posting a response that names it:\n\n- If the name matches an existing user (e.g. an administrator), the attacker receives that user's session — full account takeover, including administrator access.\n- Otherwise, a new non-admin user is provisioned.\n\nAdministrator access ",
+      "severity": "critical",
+      "published": "2026-11-10T15:57:15+00:00",
+      "link": "https://github.com/advisories/GHSA-62m9-f875-rqw6"
+    },
+    {
+      "cve": "CVE-2026-102650",
+      "ghsa": "GHSA-xxrh-5hgg-gj4h",
+      "title": "Nuxt Content: Unauthenticated SQLite Function DoS via Content Query API",
+      "description": "### Summary\n\nThe `POST /__nuxt_content/:collection/query` endpoint in `@nuxt/content` accepts an attacker-controlled `sql` field from the HTTP request body and executes it against a local SQLite database after passing it through an insufficient validator (`assertSafeQuery`). The validator only blocks a small set of SQL command keywords and does not reject expensive SQLite built-in functions such as `randomblob()`, `zeroblob()`, `hex()`, or `length()`. An unauthenticated remote attacker can craft a single request that forces SQLite to allocate hundreds of megabytes of memory and perform CPU-intensive work, causing server-wide denial of service. This endpoint is enabled by default for every collection and requires no authentication.\n\n### Details\n\nThe vulnerability spans three source files:\n\n**Route registration — `src/module.ts:207-208`**\n\nThe Nuxt Content module registers a public HTTP PO",
+      "severity": "high",
+      "published": "2026-11-10T15:57:12+00:00",
+      "link": "https://github.com/advisories/GHSA-xxrh-5hgg-gj4h"
+    },
+    {
+      "cve": "CVE-2026-123373",
+      "ghsa": "GHSA-whr6-fgpq-fpv9",
+      "title": "compose-lint: A committed symlink makes compose-lint quote a file from outside the project into its output",
+      "description": "### Impact\n\nLike Docker Compose, compose-lint follows symlinks when it reads a project's files. Unlike Compose, compose-lint up to 0.24.0 could then put the contents of a file from *outside* the project into its output, where the author of a pull request can read it.\n\nA pull request can commit a symlink, under a name compose-lint reads, pointing at a file on the CI runner:\n\n- **The Compose file itself (0.2.0–0.24.0).** A `compose.yml` that is a symlink, whether the pre-commit hook passes its name or the Action or a bare run finds it.\n- **`compose.override.yml` (0.22.0–0.24.0),** which compose-lint merges automatically.\n- **A `COMPOSE_FILE` entry (0.22.0–0.24.0)** in a `.env` beside the Compose file.\n\nWhen the target is not valid YAML, the parse error quotes the line it failed on. Docker Compose, given the same file, reports only a line number. That line reaches standard error (the job lo",
+      "severity": "low",
+      "published": "2026-11-10T15:57:10+00:00",
+      "link": "https://github.com/advisories/GHSA-whr6-fgpq-fpv9"
+    },
+    {
+      "cve": "CVE-2026-123371",
+      "ghsa": "GHSA-88f4-frh5-gmcr",
+      "title": "compose-lint: A `.compose-lint.yml` symlinked outside the project is read, and a parse error quotes part of the target",
+      "description": "### Impact\n\ncompose-lint automatically reads a `.compose-lint.yml` policy file beside the Compose file. It is meant to read nothing outside the project directory, but it follows that file if it is a symlink, wherever it points.\n\nA pull request can commit `.compose-lint.yml` as a symlink to a file on the CI runner. If the target is not valid YAML, the error compose-lint reports quotes part of the line the parser failed on. That quote reaches the job log (standard error), JSON `errors[]`, and the SARIF `toolExecutionNotifications`, which the Action uploads to Code Scanning. The run exits 2.\n\nWhat can be read is small. The quote is cut to about 30 characters around the error position, and the attacker cannot choose which line of the target the parser fails on. For an INI-style credentials file, this was the start of the second line (`aws_access_key_id = ` followed by the first characters of",
+      "severity": "low",
+      "published": "2026-11-10T15:57:07+00:00",
+      "link": "https://github.com/advisories/GHSA-88f4-frh5-gmcr"
+    },
+    {
+      "cve": "CVE-2026-123372",
+      "ghsa": "GHSA-jf3h-8jvx-vcrg",
+      "title": "compose-lint: A pull request can make compose-lint quote a secret from a CI-generated `.env` into its findings",
+      "description": "### Impact\n\nSince 0.22.0, compose-lint fills in `${VAR}` references from the `.env` beside the Compose file, as Compose does. The documentation says values under `environment:` are never resolved from a `.env`, \"that is where secrets live\". But `image:` values are resolved, and CL-0004 and CL-0019 quote the resolved image in their message and fix text.\n\nSome CI workflows write secrets into that `.env` before linting or building. In such a workflow, a pull request that changes one line to `image: \"${DB_PASSWORD}\"`, or `image: \"nginx:${DB_PASSWORD}\"`, gets the secret's value quoted in a finding. The finding reaches the job log, JSON output, and the SARIF uploaded to Code Scanning. GitHub masks registered secrets in the job log, but not in uploaded JSON or SARIF artifacts or in Code Scanning alert text. The pass/fail result is not affected.\n\nThis needs a workflow that writes secrets into th",
+      "severity": "low",
+      "published": "2026-11-10T15:57:05+00:00",
+      "link": "https://github.com/advisories/GHSA-jf3h-8jvx-vcrg"
+    },
+    {
+      "cve": "CVE-2026-123370",
+      "ghsa": "GHSA-65v8-q222-64xx",
+      "title": "compose-lint: `fix --apply` can delete a line the user did not select, including a security setting",
+      "description": "### Impact\n\n`compose-lint fix --apply` converts the line numbers its fixers work with into positions in the file. The YAML parser treats a lone carriage return, U+0085, U+2028 and U+2029 as line breaks, but the conversion counted only `\\n`. One of those characters inside a quoted value, which most editors and diff views don't show, shifted every later edit down by one line.\n\nA Compose file from a pull request can use this to make a fix delete the line after the one it meant to change. For example, fixing CL-0014 (`logging: driver: none`) instead removes `driver: none` and the following `networks: [internal]`, moving the service off an internal-only network onto the default bridge. The result is still valid Compose, every check `fix` runs after editing passes, and the command reports `applied 1 fix(es)` and exits 0. A later `compose-lint check` passes too, because no rule requires `networ",
+      "severity": "medium",
+      "published": "2026-11-10T15:57:02+00:00",
+      "link": "https://github.com/advisories/GHSA-65v8-q222-64xx"
+    },
+    {
+      "cve": "CVE-2026-123369",
+      "ghsa": "GHSA-6f4g-xm8v-pgv6",
+      "title": "compose-lint: Compose file text can issue GitHub Actions workflow commands through the compose-lint Action",
+      "description": "### Impact\n\nThe GitHub Actions runner treats certain text in a step's output as commands. The legacy form, `##[command]`, is recognized anywhere in a line. compose-lint's text report prints service names, environment keys and lines of the Compose file, and it does not neutralize `##[`. Inside the compose-lint Action, a Compose file from a pull request can therefore:\n\n- create fake error or warning annotations on the pull request (`##[error]`, `##[warning]`)\n- fold the rest of the log, including the real verdict, out of sight (`##[group]`)\n- blank out chosen strings for the rest of the log (`##[add-mask]`)\n\nGitHub has postponed removing the deprecated `set-output` log command, so the runner still honors it. A test run of the Action on a GitHub-hosted runner confirmed that a `::set-output` line from a Compose file is processed. Whether it can override the Action's own `sarif-written` outpu",
+      "severity": "medium",
+      "published": "2026-11-10T15:56:59+00:00",
+      "link": "https://github.com/advisories/GHSA-6f4g-xm8v-pgv6"
+    },
+    {
+      "cve": "CVE-2026-123368",
+      "ghsa": "GHSA-6wcv-rj3c-mhv3",
+      "title": "compose-lint: .env read through a symlink outside the project can expose the CI job's environment",
+      "description": "### Impact\n\ncompose-lint fills in `${VAR}` references from the `.env` file next to the Compose file. It is meant to read nothing outside the project directory, and `env_file:`, `include:` and `extends:` paths are checked for that. The `.env` read is not. If `.env` is a symlink, compose-lint follows it wherever it points.\n\nA pull request can add a `.env` symlink to any file on the CI runner and a Compose file that references a variable from it. compose-lint substitutes the value and quotes it in finding messages, which go to the log and to JSON and SARIF output.\n\nThe worst target is `/proc/self/environ`, the linter's own environment. The Compose file only needs to reference the name of the first variable in it: because that file separates variables with NUL bytes rather than newlines, the substituted value is the entire rest of the environment. On a CI runner that environment holds whatev",
+      "severity": "low",
+      "published": "2026-11-10T15:56:56+00:00",
+      "link": "https://github.com/advisories/GHSA-6wcv-rj3c-mhv3"
+    },
+    {
+      "cve": "CVE-2026-119345",
+      "ghsa": "GHSA-ghwv-vrp2-2975",
+      "title": "Cocos AI Intra-handshake attested TLS implementation is vulnerable to TOCTOU Attacks",
+      "description": "### Summary\nAn attacker who can modify the attested workload’s code, memory-backed state, or configuration after the initial attestation — but without necessarily terminating the existing TLS connection — can cause the peer to continue trusting the connection as if the originally attested state were still running.\n\n### Details\nOnce attestation is successfully appraised and connection is established, there is a window of vulnerability from the establishment of connection to the termination of connection where an attacker can modify the state of the workload and platform at runtime on the TLS endpoint acting as the Attester. Workload state includes code, data, and configuration. Other examples of state changes at the workload level include cases where a new device (such as a GPU) is connected, or where a connected device is disconnected, since the connection establishment.\n\nIn Cocos AI, th",
+      "severity": "high",
+      "published": "2026-11-10T15:56:54+00:00",
+      "link": "https://github.com/advisories/GHSA-ghwv-vrp2-2975"
+    },
+    {
+      "cve": "CVE-2026-95860",
+      "ghsa": "GHSA-xggf-m53x-jc3f",
+      "title": "node-opcua: Namespace-Level RBAC Fail-Open - Anonymous Write/Call Bypass via Unbound `DefaultRolePermissions",
+      "description": "## Summary\n\nAn unauthenticated (**Anonymous**) client can **Write** protected Variables and **Call** privileged Methods on any Node that lacks explicit per-node permissions.\n\nThis follows the inheritance model defined by OPC UA Part 3, §5.2.9, where nodes without an explicit `RolePermissions` attribute inherit the namespace `DefaultRolePermissions`. OPC 10000-3 §4.8.3 mandates a **default-deny** evaluation (`Bad_UserAccessDenied` when the operation bits are not set); `node-opcua` instead **grants all permissions**.\n\nThe root cause is a combination of an authorization **fail-open** and a **disconnect** between the configuration API and the runtime enforcement path.\n\n---\n\n## Affected configuration\nThis advisory covers two cases that are not equally severe:\n1. No RolePermissions declared anywhere - resolution is permissive. This is node-opcua's documented behaviour for a server with no acce",
+      "severity": "critical",
+      "published": "2026-11-10T15:56:52+00:00",
+      "link": "https://github.com/advisories/GHSA-xggf-m53x-jc3f"
+    },
+    {
+      "cve": "CVE-2026-119299",
+      "ghsa": "GHSA-358w-w75h-x6rx",
+      "title": "gopacket: SCTP chunk sub-decoder out-of-bounds panics on crafted segments",
+      "description": "## Summary\n\ngopacket decodes SCTP (IP protocol 132) by walking the chunk chain through per-chunk-type decoder functions (`decodeSCTPInit`, `decodeSCTPShutdown`, `decodeSCTPError`, `decodeSCTPSack`, in `layers/sctp.go`). Each of these reads fixed-size header fields and runs count-driven loops **without validating the chunk's declared length against the minimums those reads require**. A single crafted SCTP segment causes a runtime panic (out-of-bounds slice read, or inverted slice from unsigned length arithmetic) on any decode path that does not install gopacket's per-packet panic recovery (`gopacket.DecodeOptions.SkipDecodeRecovery: true`); with the default API the same input degrades to a per-packet decode error.\n\nThe defect is present in every released version through `v1.7.1` and at current `master` (18c5805). It is the SCTP component named - but not remediated - in CVE-2026-65819 (`GH",
+      "severity": "medium",
+      "published": "2026-11-10T15:56:49+00:00",
+      "link": "https://github.com/advisories/GHSA-358w-w75h-x6rx"
+    },
+    {
+      "cve": "CVE-2026-102943",
+      "ghsa": "GHSA-5m6c-38r8-5w76",
+      "title": "Dagu MCP DAG specification read bypasses path containment and workspace isolation",
+      "description": "## Summary\n\nThe traversal fix for CVE-2026-33344 was implemented as HTTP middleware installed only in the chi handler chain, but the MCP service calls the same API method in process, so arbitrary YAML file read is reachable again through the MCP tool surface with a viewer-role key. Read-only, limited to .yaml/.yml targets. Confirmed at HEAD f6c039f (post v2.10.7).\n\n## The defect\n\nThe fix for CVE-2026-33344 is a reflection-based HTTP middleware (internal/frontend/.../api.go, roughly lines 553-597) that inspects a request field named FileName and rejects anything that is not a plain name. It is installed in exactly one place: the chi strict-handler chain (api.go around line 419).\n\nThe MCP service does not go through that chain. internal/service/mcp/server.go calls the API method directly as an in-process Go call:\n\n```go\nfunc (svc *Service) getDAGSpec(ctx context.Context, name string) (map[",
+      "severity": "medium",
+      "published": "2026-11-10T15:56:49+00:00",
+      "link": "https://github.com/advisories/GHSA-5m6c-38r8-5w76"
+    },
     {
       "cve": "CVE-2026-88986",
       "ghsa": "GHSA-g3qx-frcg-j979",
@@ -15,402 +906,6 @@
       "severity": "medium",
       "published": "2026-11-09T23:25:58+00:00",
       "link": "https://github.com/advisories/GHSA-g3qx-frcg-j979"
-    },
-    {
-      "cve": "CVE-2026-88985",
-      "ghsa": "GHSA-r4mx-2gr2-8277",
-      "title": "Kubeflow Pipelines: SQL injection through unvalidated pagination tokens in Kubeflow Pipelines API server",
-      "description": "## Summary\n\nKubeflow Pipelines API server does not sufficiently validate SQL identifier fields decoded from the `page_token` pagination parameter. Client-controlled fields can reach SQL query construction, allowing SQL injection through list APIs.\n\nThis advisory consolidates the original pipeline-listing report and the later run-listing report in [GHSA-mhpc-2x8q-2vp9](https://github.com/kubeflow/pipelines/security/advisories/GHSA-mhpc-2x8q-2vp9). Their contributions and chronology are distinguished below.\n\n## Impact and prerequisites\n\nAn attacker able to invoke an affected list API may read data accessible to the API server's database account, including data belonging to other namespaces. The original report demonstrated database read access through an authenticated Kubeflow deployment.\n\nAuthentication and authorization requirements depend on deployment configuration. In multi-user deplo",
-      "severity": "medium",
-      "published": "2026-11-09T23:25:00+00:00",
-      "link": "https://github.com/advisories/GHSA-r4mx-2gr2-8277"
-    },
-    {
-      "cve": "CVE-2026-77433",
-      "ghsa": "GHSA-gcwf-c25f-p9rv",
-      "title": "Kiwi TCMS account confirmation open redirect through protocol-relative URLs",
-      "description": "## Summary\n\nIn Kiwi TCMS version 16.1, the fix for CVE-2026-54724 (open redirect via unvalidated `next` parameter) in the account confirmation endpoint is incomplete. The validation uses `startswith(\"/\")` to check if the redirect URL is local, but this is bypassed by protocol-relative URLs like `//evil.com` which start with `/` but redirect the browser to an external attacker-controlled domain. 16.1’s incomplete mitigation still allows protocol-relative destinations and earlier releases lack the mitigation.\n\n## Vulnerable Code\n\nIn `tcms/kiwi_auth/views.py`, the `Confirm` view (line ~113):\n\n    def get_redirect_url(self, *args, **kwargs):\n        self.url = self.request.GET.get(\"next\", reverse(\"core-views-index\"))\n        if not self.url.startswith(\"/\"):\n            self.url = reverse(\"core-views-index\")\n\nThe check `startswith(\"/\")` passes for `//evil.com` because it begins with `/`, but ",
-      "severity": "medium",
-      "published": "2026-11-09T23:24:14+00:00",
-      "link": "https://github.com/advisories/GHSA-gcwf-c25f-p9rv"
-    },
-    {
-      "cve": "CVE-2026-88984",
-      "ghsa": "GHSA-ghgh-57qv-h687",
-      "title": "Kubeflow Pipelines: RBAC bypass on shared pipelines allows any authenticated user to delete or modify global pipelines",
-      "description": "## Summary\n\nIn multi-user mode, the Kubeflow Pipelines API server skipped authorization checks for shared/global pipelines with an empty namespace. This exception applied to write and delete operations as well as reads, allowing an authenticated user to modify or delete shared pipelines without the required Kubernetes RBAC permissions.\n\n## Impact\n\nUnauthorized modification compromises the integrity of shared pipeline definitions and versions. Unauthorized deletion can make shared pipelines unavailable.\n\nExecution of a modified pipeline can cause attacker-controlled workload behavior, but this is a conditional downstream consequence requiring the modified pipeline to be executed. Modification alone does not demonstrate immediate worker code execution.\n\nReading shared pipelines is intentionally permitted and remains permitted after the fix. Consequently, access to shared pipeline configura",
-      "severity": "high",
-      "published": "2026-11-09T22:48:03+00:00",
-      "link": "https://github.com/advisories/GHSA-ghgh-57qv-h687"
-    },
-    {
-      "cve": "CVE-2026-88983",
-      "ghsa": "GHSA-f7vj-6669-qvv4",
-      "title": "Kubeflow Pipelines — API server fetches a caller-supplied pipelineURL without host validation",
-      "description": "## Summary\n\nThe Kubeflow Pipelines API server fetched caller-supplied pipeline package URLs without restricting the destination. A caller authorized to create a pipeline or pipeline version could cause requests to originate from the API server's network position, including to internal services that the caller could not otherwise reach.\n\n## Impact\n\nThe reported evidence demonstrates blind server-side request forgery and a limited status-code oracle. The fetched response is processed as a pipeline package; the report does not demonstrate arbitrary response-body disclosure or credential theft. A request to a cloud metadata endpoint returned HTTP 403, which does not establish access to metadata contents or tokens.\n\nThe confidentiality metric is Low to reflect the limited information obtainable through the status-code oracle. High confidentiality impact and integrity or availability impact ar",
-      "severity": "medium",
-      "published": "2026-11-09T22:44:17+00:00",
-      "link": "https://github.com/advisories/GHSA-f7vj-6669-qvv4"
-    },
-    {
-      "cve": "CVE-2026-88982",
-      "ghsa": "GHSA-2xwh-426q-42c5",
-      "title": "Kubeflow Pipelines: Cross-tenant execution-cache poisoning / output substitution via a namespace-blind cache key in the cache webhook (multi-user)",
-      "description": "## Summary\n\nThe legacy Kubeflow Pipelines V1/raw-Argo execution cache does not separate cached results by Kubernetes namespace. In multi-user deployments where tenants share the cache service, a tenant can receive another tenant's cached outputs or seed outputs that are subsequently substituted into another tenant's step.\n\nThis affects the Argo-template cache mutating webhook and its cache-server storage path. Standard KFP V2 component pods bypass this webhook cache; the separate V2 cache implementation is outside this advisory's scope.\n\n## Affected deployments and impact\n\nThe issue requires multiple tenant namespaces sharing the legacy cache service, cache-enabled V1/raw-Argo steps, and cache entries that satisfy the configured staleness policy. The standard multi-user configuration watches pods across namespaces.\n\nA tenant able to submit a step with the same cache-relevant template fie",
-      "severity": "medium",
-      "published": "2026-11-09T22:43:33+00:00",
-      "link": "https://github.com/advisories/GHSA-2xwh-426q-42c5"
-    },
-    {
-      "cve": "CVE-2026-88968",
-      "ghsa": "GHSA-5xjx-9qx6-jcrv",
-      "title": "Claude Code: TOCTOU Race in Edit Tool Allows File Writes Outside the Workspace",
-      "description": "Claude Code validated Edit tool targets using point-in-time pathname and symlink resolution that was not bound to the underlying directory inodes or file descriptors. On macOS, a process running inside Claude Code's Bash sandbox could exploit the resulting time-of-check to time-of-use window by atomically swapping an in-workspace parent directory with a symlink after validation completed, causing the unsandboxed Edit implementation to overwrite an attacker-selected user-writable file outside the workspace. Exploiting this required the ability to run attacker-controlled code inside the sandbox, such as through a malicious repository or dependency script.\n\nUsers on standard Claude Code auto-update have received this fix automatically. Users performing manual updates are advised to update to the latest version.\n\nClaude Code thanks hackerone.com/mahoraga007 (Sunder Singh) for reporting this ",
-      "severity": "high",
-      "published": "2026-11-09T22:42:03+00:00",
-      "link": "https://github.com/advisories/GHSA-5xjx-9qx6-jcrv"
-    },
-    {
-      "cve": "CVE-2026-119298",
-      "ghsa": "GHSA-x89h-7h96-v88f",
-      "title": "croc: Overwrite-confirmation bypass via a crafted \"croc-stdin-\" filename on receive",
-      "description": "## Summary\n\ncroc is an end-to-end encrypted peer-to-peer file transfer tool. On the receiving side, the confirmation that normally protects an existing file from being overwritten or resumed is skipped whenever the received file's name starts with `croc-stdin-`, regardless of whether the incoming transfer is actually a text transfer. A sender can therefore name a file `croc-stdin-<existing-name>` and silently overwrite, truncate, or replace an existing file of that name in the receiver's working directory - including removing the existing file and substituting a symlink - without the `Overwrite?` prompt that the standard path requires. The exemption was introduced to keep croc's internal text-transfer artifacts from triggering prompts, but it is keyed on the filename prefix rather than on the transfer type, so any ordinary file transfer can claim the exemption.\n\n## Vulnerability Details\n",
-      "severity": "medium",
-      "published": "2026-11-09T22:40:12+00:00",
-      "link": "https://github.com/advisories/GHSA-x89h-7h96-v88f"
-    },
-    {
-      "cve": "CVE-2026-108262",
-      "ghsa": "GHSA-9hq4-hm3j-jmph",
-      "title": "DDEV incomplete tar symlink traversal fix allows host file overwrite - Incomplete fix of CVE-2026-32885",
-      "description": "## Summary\n\nThe CVE-2026-32885 ZipSlip fix added a symlink-target escape check to Untar, but the check rebases an ABSOLUTE symlink target into dest before validating (filepath.Join(dest, \"/etc\") stays lexically inside dest and passes), while the symlink is then created with the RAW absolute target via os.Symlink(file.Linkname, ...), so a malicious archive plants a host-absolute symlink and a following regular-file entry writes through it, restoring arbitrary host file create/overwrite (reaching $HOME rc-files, hence RCE). Confirmed at HEAD.\n\n## The defect (the symlink check is a no-op for absolute targets)\n\nCVE-2026-32885 (fixed v1.25.2, commit 05cbe299) added a lexical containment check on the entry path and a NEW symlink-target validation. pkg/archive/archive.go, Untar, tar.TypeSymlink case:\n\n```go\nif filepath.IsAbs(file.Linkname) {\n    resolvedTarget = filepath.Join(dest, file.Linknam",
-      "severity": "high",
-      "published": "2026-11-09T22:37:58+00:00",
-      "link": "https://github.com/advisories/GHSA-9hq4-hm3j-jmph"
-    },
-    {
-      "cve": "CVE-2026-97705",
-      "ghsa": "GHSA-h89v-g948-47vp",
-      "title": "Moleculer: Unauthenticated Denial of Service via negative length field in the TCP transporter packet parser",
-      "description": "### Summary\n\nThe TCP transporter's packet parser (`src/transporters/tcp/parser.js`) reads the packet length field with `Buffer.prototype.readInt32BE`, a signed read. A crafted packet whose length field has the sign bit set yields a negative `length`. The parser then advances past the parsed message with `packet = packet.slice(length)`, but `Buffer.prototype.slice` clamps an out-of-range negative start index to `0`, so the buffer is returned unchanged. The `while (packet.length > 0)` loop condition therefore never becomes false, producing an infinite synchronous loop that blocks the Node.js event loop indefinitely.\n\n### Impact\n\nAny Moleculer node using the TCP transporter can be rendered completely unresponsive by an unauthenticated remote peer sending a single ~10-byte crafted TCP packet, before any protocol handshake or authentication takes place. `TcpReader.onTcpClientConnected` pipes ",
-      "severity": "high",
-      "published": "2026-11-09T22:31:16+00:00",
-      "link": "https://github.com/advisories/GHSA-h89v-g948-47vp"
-    },
-    {
-      "cve": "CVE-2026-85737",
-      "ghsa": "GHSA-9qq5-422f-33c2",
-      "title": "Velociraptor: Low-priv analyst reads arbitrary server files via ungated sql() VQL plugin",
-      "description": "## Summary\n\nThe `sql()` VQL plugin runs a caller-supplied database driver and connection string with no permission check (`vql/parsers/sql/sql.go:93`, `SQLPlugin.Call`). For `driver='mysql'` or `driver='postgres'` the handle comes from `GetHandleOther` (`sql.go:39`), which passes the connection string straight to Go `database/sql` `sql.Open` (`sql.go:51`) and executes the query (`sql.go:159`).\n\nThe plugin declares `FILESYSTEM_READ` only as `Info().Permissions` metadata (`sql.go:219`). That metadata is never consulted at runtime: `metadata.go:19` stores it as a string that only the documentation exporter reads (`api/reflect.go:82-110`). Every sibling network plugin (`http_client`, `netcat`, `s3`, `rsyslog`) calls `CheckAccess(acls.NETWORK)` in its own body; `sql()` calls nothing.\n\nThe built-in `analyst` role holds `ANY_QUERY` but not `FILESYSTEM_READ` or `NETWORK` (`acls/roles.go:222`), a",
-      "severity": "medium",
-      "published": "2026-11-09T22:25:14+00:00",
-      "link": "https://github.com/advisories/GHSA-9qq5-422f-33c2"
-    },
-    {
-      "cve": "CVE-2026-77596",
-      "ghsa": "GHSA-rjr3-43j3-4q8g",
-      "title": "Kubeflow Pipelines API server lacks authorization for shared pipeline uploads",
-      "description": "## Summary\n\nIn multi-user mode, the Kubeflow Pipelines API server's HTTP multipart upload endpoints (`POST /apis/v2beta1/pipelines/upload` and `POST /apis/v2beta1/pipelines/upload_version`) perform no authorization when the target namespace is empty. The authorization helper `canUploadVersionedPipeline` returns `nil`, skipping `SubjectAccessReview`, whenever the resolved namespace is the empty string (`backend/src/apiserver/server/pipeline_upload_server.go:401-403`). An empty namespace is how KFP addresses shared, cluster-wide pipelines and is the default whenever the caller omits the `namespace` query parameter, because `REQUIRE_NAMESPACE_FOR_PIPELINES` defaults to `false` and is unset in every shipped manifest. As a result, an arbitrary low-privilege tenant (or, when the API server is reachable, an unauthenticated caller) can create cluster-shared pipelines and inject new versions into",
-      "severity": "critical",
-      "published": "2026-11-09T22:22:41+00:00",
-      "link": "https://github.com/advisories/GHSA-rjr3-43j3-4q8g"
-    },
-    {
-      "cve": "CVE-2026-94619",
-      "ghsa": "GHSA-44r8-3p76-84mw",
-      "title": "FileGator: Missing authorization in POST /upload allows cross-user read and deletion of temporary files",
-      "description": "## Summary\n\n`POST /upload` uses the request-supplied `resumableFilename` directly as a key into the shared temporary directory, without the character filter it applies to `resumableIdentifier` and without namespacing it per user. A valid user holding the `upload` permission can read any file in that directory into their own home directory, append to it, and delete it.\n\nThis reproduces the cross-user batch-archive disclosure of GHSA-f74m-x83r-c4v4 through a different route — it still works with the fix for that advisory (PR #597) applied — and additionally allows deleting the login rate-limit lockfile.\n\nReported with explicit preconditions and bounded impact, as before: the primitive is confined to the temporary directory, not the whole filesystem.\n\n## Details\n\n- `backend/Controllers/UploadController.php:61` — `$file_name = $request->input('resumableFilename', 'file')` is **not** passed t",
-      "severity": "medium",
-      "published": "2026-11-09T22:20:08+00:00",
-      "link": "https://github.com/advisories/GHSA-44r8-3p76-84mw"
-    },
-    {
-      "cve": "CVE-2026-94618",
-      "ghsa": "GHSA-f74m-x83r-c4v4",
-      "title": "FileGator: Missing authorization in GET /batchdownload allows cross-user retrieval of another user's archive",
-      "description": "### Summary\n`GET /batchdownload` streams a batch ZIP to any requester who supplies its `uniqid`, without checking that the current user/session created it. In deployments where users have separate home directories, a valid low-privileged user who obtains an active archive id can download another user's batch archive, disclosing files the per-user boundary otherwise protects. Reported with explicit preconditions and bounded impact — not a universal \"any user steals any file\" issue.\n\n### Details\nThe archive id is generated with plain `uniqid()` and no ownership metadata is bound to it before streaming.\n\n- `backend/Services/Archiver/Adapters/ZipArchiver.php:44` — `createArchive()` uses plain `uniqid()`.\n- `backend/Controllers/DownloadController.php:144-145` — `batchDownloadStart()` reads the tmpfs file by the request-supplied `uniqid` after only a charset `preg_replace()`.\n- `backend/Contro",
-      "severity": "medium",
-      "published": "2026-11-09T22:17:36+00:00",
-      "link": "https://github.com/advisories/GHSA-f74m-x83r-c4v4"
-    },
-    {
-      "cve": "CVE-2026-87008",
-      "ghsa": "GHSA-85gg-2gfq-q95m",
-      "title": "Code Graph RAG structural tools follow out-of-root symlinks",
-      "description": "A remote/local attacker who can get a symbolic link included in a source-code repository that code-graph-rag analyzes can cause the `structural_search` and `structural_replace` tools (backed by `AstGrepService`, exposed both as MCP tools and as agentic AI tools) to read and -- via `structural_replace` with `dry_run=False` -- overwrite arbitrary files outside the configured project root, because the tool's path-containment check (`should_skip_path`/`_classify_file`) is performed lexically on the unresolved path and never checks `Path.is_symlink()` or calls `.resolve()`, unlike the project's own (correct) `validate_project_path` decorator used elsewhere.\n\nTested at commit `90a3ed3cbdc7d3bb8036985b851cc7c9a3ba9c57` (pyproject version 0.0.550), current `main` at test time. Confirmed this commit already contains the fix for the prior advisory (GHSA-vvr2-h2jp-838m: paginated `read_file` path t",
-      "severity": "high",
-      "published": "2026-11-09T22:16:41+00:00",
-      "link": "https://github.com/advisories/GHSA-85gg-2gfq-q95m"
-    },
-    {
-      "cve": "CVE-2026-102895",
-      "ghsa": "GHSA-gj9m-f8ph-pmhr",
-      "title": "GPUStack: Authentication bypass via trusted loopback source (reverse-proxy TCP peer or X-GPUStack-Real-IP header) grants unauthenticated admin",
-      "description": "### Impact\n\nIn GPUStack before v2.2.0, `get_current_user` (in `gpustack/api/auth.py`) promotes any request whose source is considered loopback to the built-in administrator account when `force_auth_localhost` is `False` (the default). The \"source\" is derived by `client_ip_getter`, which can be made to report `127.0.0.1` without any credentials in two ways:\n\n1. **Same-host reverse proxy (TCP peer).** In the canonical self-hosted shape —\n   GPUStack behind a same-host reverse proxy with `proxy_pass\n   http://127.0.0.1:<port>` — every remote request arrives at GPUStack with TCP\n   peer `127.0.0.1`, so the loopback auto-admin branch fires. No header or\n   credential is required. Verified end-to-end against HEAD `6bee5883`.\n2. **`X-GPUStack-Real-IP` header.** A forged `X-GPUStack-Real-IP: 127.0.0.1`\n   header can cause the request source to be treated as loopback.\n\nEither path yields **full, ",
-      "severity": "critical",
-      "published": "2026-11-09T22:15:27+00:00",
-      "link": "https://github.com/advisories/GHSA-gj9m-f8ph-pmhr"
-    },
-    {
-      "cve": "CVE-2026-115770",
-      "ghsa": "GHSA-rm8c-2cv8-jwf6",
-      "title": "Pocket ID: Email verification token remains valid after address change, enabling arbitrary verified-email spoofing",
-      "description": "## Summary\n\nAn authenticated Pocket ID user can request an email-verification token while their account uses an address they control, change the account email address, and then redeem the previously issued token. The token is bound only to the user ID, not to the address to which it was sent, and changing the address does not revoke outstanding tokens.\n\nAs a result, Pocket ID marks the newly supplied address as verified even though the user never proved control of it. Pocket ID subsequently returns that address with `email_verified: true` in OIDC claims. A relying party that trusts this claim for email-based account linking or provisioning can therefore link the attacker's Pocket ID identity to a victim's existing account, leading to cross-application account takeover.\n\nThis was verified against commit `9f559788a44cfea790de360da0a74d4bdf8ca5d5`.\n\n## Preconditions\n\n- The attacker has an o",
-      "severity": "critical",
-      "published": "2026-11-09T22:12:21+00:00",
-      "link": "https://github.com/advisories/GHSA-rm8c-2cv8-jwf6"
-    },
-    {
-      "cve": "CVE-2026-103022",
-      "ghsa": "GHSA-cp25-j9x5-p5xm",
-      "title": "Urwid: handle_short_request() crashes on non-ASCII POST body (UnicodeEncodeError DoS)",
-      "description": "### Summary\nThe `handle_short_request()` function in `urwid/display/web.py` raises an unhandled `UnicodeEncodeError` when processing a POST request body containing non-ASCII bytes. The function reads POST input and encodes it to ASCII before writing to a named pipe. Any byte value above `0x7F` causes the CGI process to exit with an unhandled exception, returning an HTTP 500 error to the client. Additionally, a file descriptor opened earlier in the same function is not closed before the exception propagates, causing a file descriptor leak for the lifetime of the CGI process.\n\nA second instance of missing exception handling exists in the polling update path, where non-UTF-8 socket output causes an unhandled `UnicodeDecodeError`.\n\n### Impact\nAn attacker who observes a valid `X-Urwid-ID` session token (transmitted in plaintext HTTP response headers) can send repeated POST requests containing",
-      "severity": "medium",
-      "published": "2026-11-09T22:05:06+00:00",
-      "link": "https://github.com/advisories/GHSA-cp25-j9x5-p5xm"
-    },
-    {
-      "cve": "CVE-2026-102657",
-      "ghsa": "GHSA-g3c2-rjq2-c763",
-      "title": "esm.sh: web.NewHandler allows arbitrary file read via encoded dot-segment path traversal",
-      "description": "### Summary\n\nThe documented `web.NewHandler` static file server can read files outside `Config.AppDir` when the request path contains URL-encoded dot-segments such as `%2e%2e`. Go's `ServeMux` redirects plain `/../` paths, but it passes encoded dot-segments to the handler after decoding `r.URL.Path`. The handler then calls `filepath.Join(s.config.AppDir, r.URL.Path)` without checking that the result remains under `AppDir`, allowing unauthenticated arbitrary file reads with the server process privileges.\n\n### Details\n\n`web/README.md:34-40` documents a network-facing setup:\n\n```go\nhttp.Handle(\"GET /\", web.NewHandler(web.Config{\n  AppDir: \"/path/to/webapp\",\n  Fallback: \"/index.html\",\n  Dev: false,\n}))\nlog.Fatal(http.ListenAndServe(\":8080\", nil))\n```\n\nIn `web/handler.go:62-75`, the handler takes `r.URL.Path` and joins it directly with `s.config.AppDir`:\n\n```go\npathname := r.URL.Path\nfilename",
-      "severity": "high",
-      "published": "2026-11-09T22:03:29+00:00",
-      "link": "https://github.com/advisories/GHSA-g3c2-rjq2-c763"
-    },
-    {
-      "cve": "CVE-2026-102610",
-      "ghsa": "GHSA-9vhv-g5hf-m7m7",
-      "title": "fast-agent: `fast-agent serve` binds HTTP to 0.0.0.0 with no authentication by default; with --shell this is unauthenticated remote command execution",
-      "description": "## Summary\n`fast-agent serve` exposes the agent over MCP. By default it uses HTTP transport bound to `0.0.0.0` (all interfaces) on port 8000 with **no authentication** (`auth=None`) and prints no warning. Any host that can reach the port can call the exposed `agent` tool. When the server is started with `--shell` (which is `-x`, the flag used in the README quickstart `uvx fast-agent mcp@latest -x`), the agent has a local `execute` shell tool, so an unauthenticated remote client can drive the agent into running arbitrary OS commands — unauthenticated RCE.\n\n## Affected code\n- `cli/commands/serve.py` — transport defaults to HTTP; `--host` defaults to `0.0.0.0`; port 8000.\n- `mcp/server/agent_server.py` — `auth_provider = None` unless `FAST_AGENT_SERVE_OAUTH=huggingface`;\n  `run_async(transport=\"http\", host=host, ...)` with `host` defaulting to `0.0.0.0`.\n- `tools/local_shell_executor.py` — ",
-      "severity": "medium",
-      "published": "2026-11-09T22:01:34+00:00",
-      "link": "https://github.com/advisories/GHSA-9vhv-g5hf-m7m7"
-    },
-    {
-      "cve": "CVE-2026-102340",
-      "ghsa": "GHSA-j8j4-rw65-56r6",
-      "title": "Telepresence: Traffic Manager gRPC has no auth — any pod claims arbitrary namespace and intercepts services, receiving victim environment secrets",
-      "description": "## Summary\n\nTelepresence's Traffic Manager gRPC API (port 8081) requires no authentication. Any pod with cluster-network access to the Traffic Manager can register as a client in an arbitrary managed namespace and create intercepts against services in that namespace, regardless of Kubernetes RBAC. On interception the victim pod's complete container environment (secrets, tokens, API keys) is delivered to the attacker. Tested on HEAD v2.28.0, commit b2231a4.\n\n## Details\n\nThe gRPC server is started with no auth interceptor (pkg/grpc/server/server.go). The connection uses plaintext: `grpc.WithTransportCredentials(insecure.NewCredentials())`.\n\n`ArriveAsClient` stores the caller-supplied `Namespace` without verifying the caller is in that namespace. The only gate is whether the namespace is in the Traffic Manager's watchlist (`ManagesNamespace`):\n\n```go\n// cmd/traffic/cmd/manager/service.go:18",
-      "severity": "high",
-      "published": "2026-11-09T21:59:49+00:00",
-      "link": "https://github.com/advisories/GHSA-j8j4-rw65-56r6"
-    },
-    {
-      "cve": "CVE-2026-102339",
-      "ghsa": "GHSA-6j3h-rp73-6rvf",
-      "title": "Telepresence: Tunnel endpoint accepts caller-supplied session ID with no ownership proof — active client sessions hijackable",
-      "description": "## Summary\n\nThe Traffic Manager `Tunnel` gRPC streaming endpoint accepts a session ID from the first bytes of the client-controlled message payload. No verification confirms the caller owns the session. An attacker supplying a valid active session ID receives a fully routed tunnel for that session, gaining the network routing capabilities of the legitimate Telepresence client. Tested on HEAD v2.28.0, commit b2231a4.\n\n## Details\n\nThe `Tunnel` handler reads identity from a client-provided binary payload rather than from a verified credential or prior authenticated gRPC call:\n\n```go\n// cmd/traffic/cmd/manager/service.go:1057-1063\nfunc (s *service) Tunnel(server grpc.BidiStreamingServer[...]) error {\n    stream, err := tunnel.NewServerStream(ctx, tunnel.ClientToManager, server)\n    return s.state.Tunnel(ctx, stream)  // stream.SessionID() is client-controlled\n}\n```\n\n`state.Tunnel` looks up t",
-      "severity": "high",
-      "published": "2026-11-09T21:58:00+00:00",
-      "link": "https://github.com/advisories/GHSA-6j3h-rp73-6rvf"
-    },
-    {
-      "cve": "CVE-2026-102289",
-      "ghsa": "GHSA-f42p-wjw5-97qh",
-      "title": "zizmor: Debug logging prints available GitHub credentials in cleartext",
-      "description": "### Summary\n\nzizmor 1.27.0 exposes GitHub access tokens in cleartext when debug-level logging is enabled. Tokens supplied via environment variables (`GH_TOKEN`, `GITHUB_TOKEN`, `ZIZMOR_GITHUB_TOKEN`), or the corresponding command-line options (`--gh-token`, `--github-token`, `--zizmor-github-token`) are included in the debug representation of the parsed application configuration and written to stderr.\n\nThe affected logging is enabled by a single `-v`/`--verbose` or an applicable `RUST_LOG` directive. \n\n### Details\n\nThe issue was introduced in commit [919bea46](https://github.com/zizmorcore/zizmor/commit/919bea4635bae204d5186e5743cb263c70b518b4), merged through [PR #2180](https://github.com/zizmorcore/zizmor/pull/2180). Version `1.26.1` and earlier are unaffected. Version `1.27.0` is the first and only affected release.\n\nzizmor accepts GitHub credentials to perform authenticated GitHub AP",
-      "severity": "high",
-      "published": "2026-11-09T21:56:25+00:00",
-      "link": "https://github.com/advisories/GHSA-f42p-wjw5-97qh"
-    },
-    {
-      "cve": "CVE-2026-86041",
-      "ghsa": "GHSA-wchh-mrv2-5h4q",
-      "title": "ezBookkeeping: Source-IP allowlist (MCP & API token) is bypassable via a spoofed `X-Forwarded-For` header",
-      "description": "### Summary\nA remote attacker from any IP address defeats the operator-configured source-IP allowlist (`mcp_allowed_remote_ips` / `api_token_allowed_remote_ips`) by sending a single `X-Forwarded-For: <allowlisted-ip>` header. The router is created with `gin.New()` and never calls `SetTrustedProxies`, so gin trusts every proxy by default and `c.ClientIP()` returns the attacker-supplied header verbatim. The same forged value is also written to `Transaction.CreatedIp` and the access log, so the attacker's real IP never appears in any record.\n\n### Details\n`cmd/webserver.go:104` builds the router with `gin.New()`. A grep of `cmd/` and `pkg/` confirms `SetTrustedProxies` is never called, leaving gin's default trusted-proxy range of `0.0.0.0/0` and `::/0`. `WebContext` (`pkg/core/context_web.go:39`) embeds `*gin.Context` and does not override `ClientIP()`.\n\nBoth allowlist middlewares match the ",
-      "severity": "medium",
-      "published": "2026-11-09T21:51:28+00:00",
-      "link": "https://github.com/advisories/GHSA-wchh-mrv2-5h4q"
-    },
-    {
-      "cve": "CVE-2026-63183",
-      "ghsa": "GHSA-m27g-v28p-f9fx",
-      "title": "OmniAuth: Host Header Injection Vulnerability",
-      "description": "### Impact\nHost header injection risk when using Omniauth with a web framework that does not verify incoming host headers. An example of a framework that provides host header validation is modern Rails when [configured appropriately](https://guides.rubyonrails.org/v6.1.1/configuring.html#configuring-middleware)\n\n### Patches\n2.2.0\n\n### Workarounds\n_Set the `full_host` config in the Omniauth config_",
-      "severity": "medium",
-      "published": "2026-11-09T21:49:04+00:00",
-      "link": "https://github.com/advisories/GHSA-m27g-v28p-f9fx"
-    },
-    {
-      "cve": "CVE-2026-75598",
-      "ghsa": "GHSA-rr8v-fxxf-c986",
-      "title": "Gradle Shadow: Zip Slip path traversal in ShadowCopyAction — no independent entry-name sanitization",
-      "description": "### Summary\nShadowCopyAction in the Shadow plugin does not validate or sanitize ZIP entry names before writing them to the output fat JAR. A malicious upstream dependency containing path traversal sequences (e.g. `../../../../tmp/pwned.txt`) in entry names will have those entries reproduced verbatim in the output shadow JAR.\n\n### Details\nThe vulnerability exists because Shadow relies entirely on Gradle's ZipFileTree for entry sanitization rather than implementing its own path validation. This means:\n\n1. Users on Gradle < 7.6.2 / 8.x < 8.2.0 are directly exploitable\n2. The produced shadow JAR becomes a Zip Slip weapon against any \ndownstream consumer using unprotected extraction (raw ZipInputStream, \nolder CI tooling, custom Java unpackers)\n3. If Shadow ever uses a non-ZipFileTree code path, protection \ndisappears silently\n\nAffected file: `src/main/kotlin/com/github/jengelman/gradle/plugi",
-      "severity": "high",
-      "published": "2026-11-09T21:48:13+00:00",
-      "link": "https://github.com/advisories/GHSA-rr8v-fxxf-c986"
-    },
-    {
-      "cve": "CVE-2026-77604",
-      "ghsa": "GHSA-vvr2-h2jp-838m",
-      "title": "Code Graph RAG: MCP paginated read_file path traversal / arbitrary file read",
-      "description": "### Summary\n\nThe `read_file` MCP tool in `codebase_rag/mcp/tools.py` contains a path traversal vulnerability in its paginated branch (when `offset` or `limit` is supplied). The handler constructs a file path using `Path(self.project_root) / file_path` without subsequently validating that the resolved path remains within the configured project root. Python's `pathlib` silently discards the left-hand component when the right-hand argument is an absolute path, allowing an attacker to read any UTF-8-readable file on the server by passing an absolute path such as `/etc/passwd`. \n\n### Details\n\n**Vulnerable location:** `codebase_rag/mcp/tools.py:556–565` (`MCPToolsRegistry.read_file`)\n\nThe `read_file` MCP tool accepts three parameters: `file_path`, `offset`, and `limit`. When either `offset` or `limit` is present the handler takes a distinct code path:\n\n```python\n# codebase_rag/mcp/tools.py:556",
-      "severity": "high",
-      "published": "2026-11-09T21:21:32+00:00",
-      "link": "https://github.com/advisories/GHSA-vvr2-h2jp-838m"
-    },
-    {
-      "cve": "CVE-2026-77463",
-      "ghsa": "GHSA-56x6-q882-mf27",
-      "title": "Remark42: Rate limit bypass via unconditional trust of X-Forwarded-For/X-Real-IP headers in direct-internet deployment",
-      "description": "### Summary\nRemark42 applied chi's `middleware.RealIP` globally, trusting `True-Client-IP` / `X-Real-IP` / `X-Forwarded-For` headers without verifying the request came from a trusted proxy. The per-IP rate limiters key on the overwritten `r.RemoteAddr`, so any client can bypass every per-IP rate limiter by rotating spoofed IP headers. The same spoofed IP also drives other per-IP controls (stored comment IP, anonymous identity derivation, and `--votes-ip` vote de-duplication). This affects deployments reachable directly from the internet (Remark42's built-in HTTP, static TLS, and ACME modes are all documented and supported), as well as any proxied deployment where the proxy forwards an attacker-controlled recognised header.\n\n### Details\nThe router applies `middleware.RealIP` globally, ahead of the per-route limiters, without any check that the server is behind a trusted proxy (in v1.16.1,",
-      "severity": "medium",
-      "published": "2026-11-09T21:18:29+00:00",
-      "link": "https://github.com/advisories/GHSA-56x6-q882-mf27"
-    },
-    {
-      "cve": "CVE-2026-62662",
-      "ghsa": "GHSA-q4xm-p75h-h9p3",
-      "title": "Pocket ID: The client credentials grant allows any OIDC client to obtain tokens for arbitrary audiences",
-      "description": "## Summary\n\nThe client credentials grant (`grant_type=client_credentials`) does not validate the resource parameter before embedding it as the aud claim in the issued JWT. Any authenticated OIDC client can obtain a Pocket ID-signed access token claiming authorization for any arbitrary audience, including other registered OIDC clients. There is no check that the requested audience is a registered resource server, and no check that the requesting client has been granted permission to access it.\n\n## Details\n\nIn `backend/internal/service/oidc_service.go`, `createTokenFromClientCredentials` accepts the resource parameter from the token request and places it directly into the `aud` claim of the issued JWT without validation:\n\n```golang\n  audClaim := client.ID\n  if input.Resource != \"\" {\n      audClaim = input.Resource  // no validation performed\n  }\n  accessToken, err := s.jwtService.GenerateO",
-      "severity": "high",
-      "published": "2026-11-09T21:17:04+00:00",
-      "link": "https://github.com/advisories/GHSA-q4xm-p75h-h9p3"
-    },
-    {
-      "cve": "CVE-2026-76893",
-      "ghsa": "GHSA-h7c4-q426-7jh9",
-      "title": "tsParticles: A single anonymous MCP session can monopolize HTTP mode and deny new clients",
-      "description": "## Summary\n\nThe HTTP mode of `@tsparticles/mcp-server` creates a single stateful `StreamableHTTPServerTransport` instance and reuses it for all clients. The first anonymous client that initializes the MCP endpoint claims the shared transport state, and later clients cannot create their own sessions.\n\nThis was verified on `v4.3.0` at commit `0266d469aa2d719cb66a9c6bf09aded4186ec17c`. The same singleton transport pattern is still present in `v4.3.1` and current `main`.\n\n## Affected Code\n\nThe server creates one shared transport before accepting requests:\n\n    const transport = new StreamableHTTPServerTransport({\n      sessionIdGenerator: () => randomUUID(),\n    });\n\n    const httpServer = createServer(async (req, res) => {\n      ...\n      await transport.handleRequest(req, res, parsedBody);\n    });\n\nBecause the same transport object is reused across all requests, the first successful `initi",
-      "severity": "medium",
-      "published": "2026-11-09T21:14:51+00:00",
-      "link": "https://github.com/advisories/GHSA-h7c4-q426-7jh9"
-    },
-    {
-      "cve": "CVE-2026-76892",
-      "ghsa": "GHSA-4p8p-pjpq-2w7h",
-      "title": "tsParticles: Malformed JSON requests can terminate the @tsparticles/mcp-server HTTP process",
-      "description": "## Summary\n\nThe HTTP mode of `@tsparticles/mcp-server` parses incoming `/mcp` request bodies with `JSON.parse()` outside a request-local error boundary. A single malformed JSON request causes the async request handler to throw and terminates the Node.js process.\n\nThis was verified on `v4.3.0` at commit `0266d469aa2d719cb66a9c6bf09aded4186ec17c`. Version `4.3.1` appears to fix this by returning HTTP 400 for invalid JSON.\n\n## Affected Code\n\nThe vulnerable handler is:\n\n    if (req.method === \"POST\" && req.url === \"/mcp\") {\n      const body = await new Promise<string>((resolve, reject) => {\n        const chunks: Buffer[] = [];\n        req.on(\"data\", (chunk) => chunks.push(Buffer.from(chunk)));\n        req.on(\"end\", () => resolve(Buffer.concat(chunks).toString(\"utf8\")));\n        req.on(\"error\", reject);\n      });\n\n      const parsedBody = body ? JSON.parse(body) : undefined;\n      await trans",
-      "severity": "high",
-      "published": "2026-11-09T21:13:55+00:00",
-      "link": "https://github.com/advisories/GHSA-4p8p-pjpq-2w7h"
-    },
-    {
-      "cve": "CVE-2026-59171",
-      "ghsa": "GHSA-ghc9-756g-vrcv",
-      "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
-      "description": "## 1. Executive Summary\n\nJSON-java version 20260522 contains an unguarded path from an HTTP request body to unbounded `BigInteger` and `BigDecimal` construction. `JSONTokener.nextSimpleValue()` accumulates numeric characters into a `StringBuilder` with no length cap, then passes the full string to `JSONObject.stringToNumber()`, which calls `new BigInteger(val)` or `new BigDecimal(val)` directly. Both constructors have polynomial time complexity (O(n^1.585) for `BigInteger`).\n\nA 488 KB JSON body — well within nginx's default 1 MB body-size limit — contains a 500,000-digit numeric literal that blocks the handling thread for approximately 3 seconds. Spring Boot has no default size limit for `application/json` request bodies. No parser configuration option (`withStrictMode`, `withKeepStrings`) prevents this. All three primary entry points are affected: `new JSONObject(String)`, `new JSONArra",
-      "severity": "medium",
-      "published": "2026-11-09T21:12:46+00:00",
-      "link": "https://github.com/advisories/GHSA-ghc9-756g-vrcv"
-    },
-    {
-      "cve": "CVE-2026-63655",
-      "ghsa": "GHSA-447x-qqwf-m7xq",
-      "title": "tsParticles: Unbounded HTTP Request Body Buffering in @tsparticles/mcp-server Leads to Remote DoS",
-      "description": "### Summary\n\nThe HTTP server mode of `@tsparticles/mcp-server` accumulates all incoming request body chunks into an in-memory `Buffer[]` array with no size limit before calling `JSON.parse`. An unauthenticated remote attacker can stream an arbitrarily large body to `POST /mcp`, exhausting the Node.js process memory and causing a Denial of Service. The official Docker image ships with HTTP mode enabled by default (`--port 3000` on `0.0.0.0`), making this exploitable without any special configuration in containerized deployments.\n\n### Details\n\nThe vulnerability exists in `integrations/mcp-server/src/index.ts` at lines 399–407. The `POST /mcp` request handler resolves a `Promise` that pushes every incoming data chunk into a `Buffer[]` array without checking the cumulative size, a `Content-Length` header, or any other guard:\n\n```ts\n// integrations/mcp-server/src/index.ts:399-407\nif (req.meth",
-      "severity": "high",
-      "published": "2026-11-09T21:10:46+00:00",
-      "link": "https://github.com/advisories/GHSA-447x-qqwf-m7xq"
-    },
-    {
-      "cve": "CVE-2026-63501",
-      "ghsa": "GHSA-6w3r-6hpr-hp6p",
-      "title": "ag-psd: Uncontrolled Memory Allocation in PSD Layer Decoding (totalMemoryLimit bypass)",
-      "description": "### Summary\nThe `readPsd()` function in `ag-psd` accepts a `totalMemoryLimit` option to cap memory usage when parsing untrusted PSD files, but this limit is never forwarded to the layer image buffer allocation path. A property name mismatch (`totalMemoryLimit` vs. `memoryLimit`) causes the size guard inside `createImageDataBitDepth` to be skipped unconditionally. An attacker who can supply a crafted PSD to any application using `ag-psd` for server-side parsing can force an unbounded heap allocation — a 5000×5000 layer in a 86-byte file allocates 200 MB — leading to denial of service through process memory exhaustion regardless of what limit the caller specified.\n\n### Details\n`readPsd()` (exported from `src/index.ts:22`) wraps caller-supplied bytes in a `PsdReader` object that inherits `ReadOptions`, which defines `totalMemoryLimit?: number` (`src/psd.ts:1819`). A default of 2 GB is writt",
-      "severity": "high",
-      "published": "2026-11-09T21:08:28+00:00",
-      "link": "https://github.com/advisories/GHSA-6w3r-6hpr-hp6p"
-    },
-    {
-      "cve": "CVE-2026-63499",
-      "ghsa": "GHSA-v2g6-7r9j-v6px",
-      "title": "zt-zip: ZipUtil.unpack can change file permissions of output directory",
-      "description": "### Summary\nWhen using one of the `ZipUtil.unpack` overloads, the file permissions of the output directory can be changed. For example, when the output directory was only accessible to the 'owner' it could be instead made accessible to every OS user.\n\n### Details\nWhen the name of a ZIP entry resolves to the output directory itself (e.g. the name `/`), the path traversal checks permit it and then perform actions on that directory, such as applying the file permissions of the ZIP entry to it.\n\n### PoC\nThis proof of concept requires an OS with support for POSIX file permissions. This issue itself is however not limited to those OS' with POSIX file permissions, see zt-zip's `ZTFilePermissionsUtil.fetchDefaultStrategy` which uses a fallback in that case.\n\n```java\n// Uses Apache Commons Compress to create the malicious ZIP file\n// The issue itself is however in how zt-zip processes that ZIP fi",
-      "severity": "medium",
-      "published": "2026-11-09T21:03:31+00:00",
-      "link": "https://github.com/advisories/GHSA-v2g6-7r9j-v6px"
-    },
-    {
-      "cve": "CVE-2026-63198",
-      "ghsa": "GHSA-8cfq-jgf7-8m27",
-      "title": "traQ: Privilege escalation by OAuth prompt=none request",
-      "description": "In OAuth2 silent authorization (`prompt=none`), when the `scope` parameter was empty or omitted, all scopes registered for the OAuth client became eligible for issuance. However, the prior consent check was performed against the empty requested scope set. As a result, an attacker could obtain an access token with broader scopes than the user had previously consented to, without requiring additional consent.\n\n## Impact\n\nIf an attacker controls an OAuth client capable of receiving authorization codes, and a user has already consented to only a subset of that client’s scopes, the attacker may be able to obtain a token containing all scopes registered for that client by sending an authorization request with `prompt=none` and an empty or omitted `scope`.\n\nIf the user has not consented to the client at all, `consent_required` is returned as usual.\n\n## Patches\n\nThis issue has been fixed in v3.2",
-      "severity": "high",
-      "published": "2026-11-09T20:55:17+00:00",
-      "link": "https://github.com/advisories/GHSA-8cfq-jgf7-8m27"
-    },
-    {
-      "cve": "CVE-2026-63197",
-      "ghsa": "GHSA-p74g-f95m-7fx7",
-      "title": "traQ: XSS in the User Uploaded File Retrieval API",
-      "description": "### Impact\n\nFor instances where `TRAQ_STORAGE_TYPE` is set to `local`, the file retrieval API `/files/{fileId}` could serve user-uploaded SVG or HTML files in a way that allowed them to be rendered directly in the browser.\n\nAs a result, an attacker who can upload files to traQ could upload a crafted SVG or HTML file and trick a victim into opening the file URL, allowing the attacker to execute arbitrary JavaScript in the victim's browser.\n\n### Patches\n\nThis issue has been fixed in v3.28.3.\n\nAfter this fix, the file retrieval API always adds the `Content-Disposition` header to its responses regardless of the value of the `dl` query parameter. This prevents user-uploaded files from being displayed directly in the browser.\n\n### Workarounds\n\nTo mitigate the impact of this issue, apply either of the following workarounds:\n\n* Change `TRAQ_STORAGE_TYPE` to a storage backend other than `local`.\n",
-      "severity": "high",
-      "published": "2026-11-09T20:52:49+00:00",
-      "link": "https://github.com/advisories/GHSA-p74g-f95m-7fx7"
-    },
-    {
-      "cve": "CVE-2026-63478",
-      "ghsa": "GHSA-cw2g-2vwq-88w6",
-      "title": "isomorphic-git: Path traversal via a \"..\" tree-entry name writes files outside the working directory on clone/checkout",
-      "description": "### Summary\nisomorphic-git's tree parser (`src/models/GitTree.js`) validates each entry name only against the path separators `/` and `\\`. It does not reject the standalone reserved name `..`, so a malicious repository can, on a single `clone`/`checkout`, **write files outside the working\ndirectory** (unbounded depth). Works on any host-backed `fs` provider.\n\n### Details\nThe guard is:\n\n```js\n// src/models/GitTree.js\nif (path.includes('\\\\') || path.includes('/')) {\n  throw new UnsafeFilepathError(path)\n}\n```\n\nThe standalone string `..` passes. isomorphic-git assembles the full path incrementally across tree levels, so nesting `..` trees yields `../escaped.txt`, `../../escaped.txt`, … with unbounded depth (each level is a separate tree object that passes the per-entry guard). On checkout `mkdir(workdir/..)` hits `EEXIST` (ignored) and the file is written above the working directory. Depth ",
-      "severity": "medium",
-      "published": "2026-11-09T20:13:52+00:00",
-      "link": "https://github.com/advisories/GHSA-cw2g-2vwq-88w6"
-    },
-    {
-      "cve": "CVE-2026-63475",
-      "ghsa": "GHSA-96wc-2m84-2cj7",
-      "title": "isomorphic-git: Circular symbolic references cause non-terminating resolution (DoS)",
-      "description": "### Summary\nA malicious server can advertise circular `symref=` capabilities (e.g. `a → b` and `b → a`). isomorphic-git writes them to disk as loose symrefs, and `GitRefManager.resolve()` follows them with no depth limit and no cycle detection, so any later operation that resolves one of them (`log`, `status`, `checkout`, `branch`, …) **loops forever** — a persistent denial of service from a single clone.\n\n### Details\n`src/managers/GitRefManager.js` — `resolve()` only enforces a depth limit when a `depth` argument is passed (`depth = undefined` by default), and has no visited-set:\n\n```js\nstatic async resolve({ fs, gitdir, ref, depth = undefined }) {\n  if (depth !== undefined) { depth--; if (depth === -1) return ref }\n  …\n}\n```\n\n`updateRemoteRefs` persists all server-supplied symrefs unconditionally. After clone the client has `refs/remotes/origin/a → ref: refs/remotes/origin/b` and `b → ",
-      "severity": "medium",
-      "published": "2026-11-09T19:58:32+00:00",
-      "link": "https://github.com/advisories/GHSA-96wc-2m84-2cj7"
-    },
-    {
-      "cve": "CVE-2026-63395",
-      "ghsa": "GHSA-9qw7-j9xw-fv9c",
-      "title": "isomorphic-git: Arbitrary file write outside of working tree via directory symlink during checkout (potential RCE)",
-      "description": "### Summary\n`git.checkout` writes working-tree files through a directory **symlink** without checking the leading path, so a malicious repository can write **outside the intended working directory**. The defect is in isomorphic-git's checkout logic itself and is therefore **independent of the `fs` provider**. The *impact* depends on the configured filesystem; worst case is arbitrary file write on the host, e.g. injecting an attacker key into `~/.ssh/authorized_keys` → remote login / code execution.\n\n### Details\nA single git tree can't hold a name as both a symlink and a directory, so the attack uses two states:\n\n```\nCommit N:    config            (mode 120000, symlink → ../.ssh)\nCommit N+1:  config/           (mode 040000, tree)\n               authorized_keys (mode 100644, attacker public key)\n```\n\nChecking out commit N writes `config` as a directory symlink. Checking out commit N+1 sees",
-      "severity": "high",
-      "published": "2026-11-09T19:53:44+00:00",
-      "link": "https://github.com/advisories/GHSA-9qw7-j9xw-fv9c"
-    },
-    {
-      "cve": "CVE-2026-63471",
-      "ghsa": "GHSA-p2mm-64f6-gmpp",
-      "title": "fastapi-code-generator: Import-time RCE via route path -> unescaped @app.get('...') decorator",
-      "description": "### Summary\n\nfastapi-code-generator (koxudaxi) emits the OpenAPI path into the generated main.py route decorator as a single-quoted string literal (`@app.get('/u/<path>/x')`) without escaping the `'`. A `'` in the path closes the decorator string and, via concatenation, injects a live expression that the decorator argument evaluates when main.py is imported (the ASGI server imports it at startup) -- code execution, no request needed. The path is a pure data field. Verified on fastapi-code-generator 0.8.0 / Python 3 / FastAPI.\n\n### Details\n\n```python\n@app.get('/u/'+(__import__(\"os\").system('…') or \"\")+'/x', response_model=None)\ndef get_thing() -> None:\n pass\n```\n\nThe generator post-processes output with black/isort, so a syntax-breaking payload aborts generation (DoS); a valid-Python concat (`'+expr+'`, kept valid with `(… or \"\")`) is written and runs at import. info.description (`descrip",
-      "severity": "critical",
-      "published": "2026-11-09T19:48:08+00:00",
-      "link": "https://github.com/advisories/GHSA-p2mm-64f6-gmpp"
-    },
-    {
-      "cve": "CVE-2026-63469",
-      "ghsa": "GHSA-6xmv-cjr5-w3q8",
-      "title": "fastapi-code-generator: Import-time RCE via response status-code key -> unescaped @app.get(..., responses={...}) dict",
-      "description": "### Summary\n\nfastapi-code-generator (koxudaxi) emits an operation's extra responses into the route decorator's responses={...} dict, using each response's status-code key as a single-quoted string literal without escaping the '. A ' in a status-code key closes the dict-key string and, via concatenation, injects a live expression that the decorator argument evaluates when main.py is imported (the ASGI server imports it at startup) -- code execution, no request. The status-code key is a pure data field. Verified on\nfastapi-code-generator 0.8.0 / Python 3 / FastAPI.\n\n### Details\n\n```python\n@app.get(\n '/u', response_model=None,\n responses={\n '404' + (__import__(\"os\").system('…') or \"\") + 'x': {'model': Thing}\n },\n)\ndef get_thing() -> None:\n pass\n```\n\nThe responses={...} dict is emitted only when the operation has a second (non-primary) response, so the malicious key is any additional respons",
-      "severity": "critical",
-      "published": "2026-11-09T19:46:27+00:00",
-      "link": "https://github.com/advisories/GHSA-6xmv-cjr5-w3q8"
-    },
-    {
-      "cve": "CVE-2026-63470",
-      "ghsa": "GHSA-h667-4jj2-cgv4",
-      "title": "fastapi-code-generator: Call-time RCE via operation summary -> unescaped route-handler docstring",
-      "description": "### Summary\n\nfastapi-code-generator (koxudaxi) emits an operation's `summary` as the generated route handler's docstring, using a triple-quoted string without escaping `\"\"\"`. A `\"\"\"` in the summary closes the docstring and, via concatenation, injects a live expression that becomes an expression statement in the handler body -- which runs when the route handler is CALLED (the endpoint is hit). The summary is a pure data field. Verified on fastapi-code-generator 0.8.0 / Python 3 / FastAPI.\n\n### Details\n\n```python\ndef get_thing() -> None:\n (\n \"\"\"\n x\"\"\"\n + (__import__(\"os\").system('…') or \"\")\n + \"\"\"y\n \"\"\"\n )\n pass\n```\n\nThe generator post-processes with black/isort, so a syntax-breaking payload aborts generation; a valid-Python breakout (`\"\"\"+expr+\"\"\"`, kept valid with `(… or \"\")`) is written and executes at call time. info.description, tags, parameter defaults are escaped; operation descript",
-      "severity": "critical",
-      "published": "2026-11-09T18:50:00+00:00",
-      "link": "https://github.com/advisories/GHSA-h667-4jj2-cgv4"
-    },
-    {
-      "cve": "CVE-2026-63436",
-      "ghsa": "GHSA-52c6-99qm-3hqr",
-      "title": "zt-zip: Path traversal in fluent API unpack",
-      "description": "### Summary\n\n`ZipUtil.unpack(...)` rejects ZIP entries that escape the target output directory, but the `Zips` fluent API appears to use a separate unpack implementation that does not apply the same destination-boundary check.\n\nA ZIP entry such as:\n\n```text\n../escape/poc.txt\n```\n\nis written outside the configured destination directory when processed with:\n\n```java\nZips.get(zip).unpack().destination(outputDir).process();\n```\n\nThe transformer branch is affected as well.\n\n### Tested Version\n\ncommit: 067935dca375500d3ff025aafcdf0e4283931b1a\n\n### Root Cause\n\nIn `src/main/java/org/zeroturnaround/zip/Zips.java`, `Zips.UnpackingCallback.process(...)` builds the output file directly from the ZIP entry name:\n\n```java\nString entryName = zipEntry.getName();\nFile file = new File(destination, entryName);\n```\n\nThe method then creates directories/files and copies content to that path:\n\n```java\nFileUtils",
-      "severity": "high",
-      "published": "2026-11-09T18:47:27+00:00",
-      "link": "https://github.com/advisories/GHSA-52c6-99qm-3hqr"
-    },
-    {
-      "cve": "CVE-2026-63417",
-      "ghsa": "GHSA-w7qv-268h-9h3f",
-      "title": "Logging Redactor: PII data in str/repr of non primitive objects was not being redacted",
-      "description": "Impact\nPII data in str/repr of non primitive objects was not being redacted, leading to leakage of PII in logs that should have been redacted for custom `__str__` and `__repr__` functions\n\nPatches\nThe problem has been patched in version 0.0.7.\n\nWorkarounds\nNone without patching.",
-      "severity": "high",
-      "published": "2026-11-09T18:15:18+00:00",
-      "link": "https://github.com/advisories/GHSA-w7qv-268h-9h3f"
     }
   ]
 }
