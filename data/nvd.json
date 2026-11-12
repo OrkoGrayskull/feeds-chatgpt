@@ -1,12 +1,372 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-09T23%3A00%3A00.000&pubEndDate=2026-11-12T04%3A24%3A20.000&resultsPerPage=200&startIndex=2672",
-  "fetched_at": "2026-11-12T04:24:20+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-09T23%3A00%3A00.000&pubEndDate=2026-11-12T09%3A54%3A53.000&resultsPerPage=200&startIndex=2712",
+  "fetched_at": "2026-11-12T09:54:53+00:00",
   "window_days": 3,
   "window_start": "2026-11-10",
   "window_end": "2026-11-12",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-90908",
+      "title": "CVE-2026-90908",
+      "description": "A vulnerability in the GenericAdminAuthenticator component of Azul Payara Server and Azul Payara Micro allows a remote, unauthenticated attacker to bypass JMX/RMI administrative access restrictions by spoofing the client host address. Successful exploitation can grant administrative access to the MBean server and lead to remote code execution. Azul Payara Micro is affected only when its JMX connector is enabled.",
+      "published": "2026-11-12T09:16:40.297",
+      "last_modified": "2026-11-12T09:16:40.297",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-90908"
+    },
+    {
+      "cve": "CVE-2026-126642",
+      "title": "CVE-2026-126642",
+      "description": "An incorrect authorization flaw was found in AWX, the automation controller component of Red Hat Ansible Automation Platform. The API access classes for JobTemplate and WorkflowJobTemplate do not check the caller's Credential use_role when assigning the single-valued webhook_credential foreign key: JobTemplateAccess.can_add/can_change and WorkflowJobTemplateAccess.can_change in awx/main/access.py omit the check_related('webhook_credential', Credential, ..., role_field='use_role') call that UnifiedCredentialsMixin.can_attach performs for the normal many-to-many credentials relationship, and the serializer validates only the credential's type and namespace. A user who may administer their own job template (or workflow job template) and use its project and inventory can therefore attach a webhook token credential (for example a GitLab token) that they do not have use permission on. The temp",
+      "published": "2026-11-12T09:16:40.020",
+      "last_modified": "2026-11-12T09:16:40.177",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126642"
+    },
+    {
+      "cve": "CVE-2026-110003",
+      "title": "CVE-2026-110003",
+      "description": "A vulnerability in the administration REST interface of Azul Payara allows a remote, unauthenticated attacker to bypass secure-admin remote-access restrictions by supplying an arbitrary value in the X-GlassFish-authToken HTTP header. The header's presence waives the remote-rejection check before the token is validated, and an invalid token falls through to password-based authentication, which succeeds without credentials on default domains configured with an empty administrative password. Successful exploitation grants execution of arbitrary administrative commands, equivalent to complete compromise of the server.",
+      "published": "2026-11-12T09:16:39.813",
+      "last_modified": "2026-11-12T09:16:39.813",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110003"
+    },
+    {
+      "cve": "CVE-2026-82292",
+      "title": "CVE-2026-82292",
+      "description": "A NULL pointer dereference vulnerability in the Qt Framework QDomDocument::setContent() XML parsing path of the Qt XML module (qtbase).",
+      "published": "2026-11-12T08:16:42.167",
+      "last_modified": "2026-11-12T08:16:42.167",
+      "cvss": 1.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-82292"
+    },
+    {
+      "cve": "CVE-2026-47832",
+      "title": "CVE-2026-47832",
+      "description": "The vulnerability lies in the way application credentials are handled within the BOSH deployment.\nbosh-openstack-cpi-release: all versions from v55 to v55.0.4 (inclusive)",
+      "published": "2026-11-12T08:16:41.947",
+      "last_modified": "2026-11-12T08:16:41.947",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-47832"
+    },
+    {
+      "cve": "CVE-2026-40820",
+      "title": "CVE-2026-40820",
+      "description": "A high privileged remote attacker can exploit an unauthenticated SQL Injection vulnerability in the getVpnData function due to improper neutralization of special elements in a SQL SELECT command. This can result in a total loss of confidentiality.",
+      "published": "2026-11-12T08:16:41.760",
+      "last_modified": "2026-11-12T08:16:41.760",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-40820"
+    },
+    {
+      "cve": "CVE-2026-126991",
+      "title": "CVE-2026-126991",
+      "description": "The Wikidata Lookup expansion module (wiki.py) in MISP misp-modules contained a SPARQL injection vulnerability. The handler function constructed a SPARQL query by directly concatenating the user-supplied text value into the query string without any escaping or parameterization: 'SELECT ?item WHERE { ?item rdfs:label\"' + request.get(\"text\") + '\" @en }'. An authenticated MISP user with access to the module could supply a crafted text attribute value containing SPARQL syntax (quotes, closing braces, UNION, SERVICE, LIMIT, etc.) to alter the structure of the query sent to the Wikidata SPARQL endpoint. This could allow an attacker to modify the query logic, extract unintended data, or cause the query to fail in ways that expose internal error details. Additionally, the old error handling path formatted raw exception objects into the response string ('wikidata API not accessible {}'.format(e))",
+      "published": "2026-11-12T08:16:41.480",
+      "last_modified": "2026-11-12T08:16:41.630",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126991"
+    },
+    {
+      "cve": "CVE-2026-125836",
+      "title": "CVE-2026-125836",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in Nicu Micle Simple JWT Login simple-jwt-login allows Cross Site Request Forgery.This issue affects Simple JWT Login: from n/a through 3.6.8.",
+      "published": "2026-11-12T08:16:41.267",
+      "last_modified": "2026-11-12T08:16:41.403",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125836"
+    },
+    {
+      "cve": "CVE-2026-123133",
+      "title": "CVE-2026-123133",
+      "description": "Rejected reason: This CVE ID is a duplicate of CVE-2026-116518 and was never published. Both IDs were assigned to the same vulnerability in the ElasticPress WordPress plugin. All CVE users should reference CVE-2026-116518 instead of this ID.",
+      "published": "2026-11-12T08:16:41.187",
+      "last_modified": "2026-11-12T08:16:41.187",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123133"
+    },
+    {
+      "cve": "CVE-2026-118855",
+      "title": "CVE-2026-118855",
+      "description": "Akaunting 3.3.0 contains a stored cross-site scripting vulnerability through invoice import. An authenticated user with invoice-creation permission can import HTML in an invoice status field. When another authenticated user opens that invoice's edit form, Akaunting renders the stored status in a hidden input with raw Blade output, allowing attacker-controlled markup to execute in the victim's Akaunting origin.",
+      "published": "2026-11-12T08:16:39.930",
+      "last_modified": "2026-11-12T08:16:39.930",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118855"
+    },
+    {
+      "cve": "CVE-2026-8333",
+      "title": "CVE-2026-8333",
+      "description": "A stored cross-site scripting vulnerability in Microchip the TimePictra platform could allow an authenticated, low-privileged attacker to store malicious script content that executes when another user views the affected page",
+      "published": "2026-11-12T07:16:49.413",
+      "last_modified": "2026-11-12T07:16:49.413",
+      "cvss": 9.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-8333"
+    },
+    {
+      "cve": "CVE-2026-8332",
+      "title": "CVE-2026-8332",
+      "description": "A hard-coded root password in Microchip TimePictra platform installation files could allow an attacker with access to those files to obtain privileged credentials",
+      "published": "2026-11-12T07:16:48.747",
+      "last_modified": "2026-11-12T07:16:48.747",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-8332"
+    },
+    {
+      "cve": "CVE-2026-8331",
+      "title": "CVE-2026-8331",
+      "description": "An unrestricted upload of files with dangerous type vulnerability in the Microchip TimePictra platform allows functionality not properly constrained by access control lists, potentially resulting in remote code execution.",
+      "published": "2026-11-12T07:16:47.963",
+      "last_modified": "2026-11-12T07:16:47.963",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-8331"
+    },
+    {
+      "cve": "CVE-2026-87772",
+      "title": "CVE-2026-87772",
+      "description": "Incorrect Authorization vulnerability in TÜBİTAK BİLGEM Software Technologies Research Institute Pardus About allows Privilege Escalation.\n\nThis issue affects Pardus About: before 1.2.5.",
+      "published": "2026-11-12T07:16:47.580",
+      "last_modified": "2026-11-12T07:16:47.580",
+      "cvss": 7.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87772"
+    },
+    {
+      "cve": "CVE-2026-12591",
+      "title": "CVE-2026-12591",
+      "description": "Zohocorp ManageEngine M365 Manager Plus versions below 4818 is affected by an authenticated technician may exploit insufficient permission validation in the delegated administration interface to escalate privileges beyond their intended scope, which could result in remote code execution during administrative processing.",
+      "published": "2026-11-12T07:16:47.260",
+      "last_modified": "2026-11-12T07:16:47.260",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12591"
+    },
+    {
+      "cve": "CVE-2026-12507",
+      "title": "CVE-2026-12507",
+      "description": "Zohocorp ManageEngine AssetExplorer versions below 7860, ServiceDesk Plus versions below 15290, ServiceDesk Plus MSP versions below 15150, and SupportCenter Plus versions below 15150 are affected by a authenticated remote code execution vulnerability in the Reports module. An authenticated user with the Create Query Reports permission could exploit specially crafted database queries to execute arbitrary commands on the underlying server.",
+      "published": "2026-11-12T07:16:46.750",
+      "last_modified": "2026-11-12T07:16:46.750",
+      "cvss": 9.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-12507"
+    },
+    {
+      "cve": "CVE-2026-113408",
+      "title": "CVE-2026-113408",
+      "description": "Path traversal in Git allows writing to arbitrary file via cloning and committing to bad repository",
+      "published": "2026-11-12T07:16:45.597",
+      "last_modified": "2026-11-12T07:16:45.597",
+      "cvss": 3.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113408"
+    },
+    {
+      "cve": "CVE-2026-76792",
+      "title": "CVE-2026-76792",
+      "description": "The User Verification by PickPlugins WordPress plugin before 2.0.49 does not rate limit the verification step of its one-time-password login, and does not expire the generated code, allowing unauthenticated attackers to brute force it and log in as any user, including administrators, where the code is configured to use digits only.",
+      "published": "2026-11-12T06:17:14.937",
+      "last_modified": "2026-11-12T06:17:14.937",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76792"
+    },
+    {
+      "cve": "CVE-2026-124817",
+      "title": "CVE-2026-124817",
+      "description": "The Clockinator Lite WordPress plugin before 1.1.0 does not check authorisation or ownership when updating leave requests, allowing unauthenticated users to modify any leave record, including approving or rejecting requests and reassigning them to other users.",
+      "published": "2026-11-12T06:17:13.963",
+      "last_modified": "2026-11-12T06:17:13.963",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124817"
+    },
+    {
+      "cve": "CVE-2026-124815",
+      "title": "CVE-2026-124815",
+      "description": "The Clockinator Lite WordPress plugin before 1.1.0 does not restrict access to several of its record deletion actions, and uses a user-supplied table name in a SQL query without validating or escaping it, allowing unauthenticated users to perform SQL injection attacks, deleting data from any database table and extracting sensitive information such as password hashes.",
+      "published": "2026-11-12T06:17:13.853",
+      "last_modified": "2026-11-12T06:17:13.853",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124815"
+    },
+    {
+      "cve": "CVE-2026-124814",
+      "title": "CVE-2026-124814",
+      "description": "The Ultimate Addons for Elementor Forms WordPress plugin before 1.0.8 does not properly validate the extension of uploaded files in its bundled file upload field, allowing unauthenticated users to upload arbitrary files such as PHP scripts and achieve remote code execution.",
+      "published": "2026-11-12T06:17:13.743",
+      "last_modified": "2026-11-12T06:17:13.743",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124814"
+    },
+    {
+      "cve": "CVE-2026-124665",
+      "title": "CVE-2026-124665",
+      "description": "The Order Tracking  WordPress plugin before 3.6.2 does not verify that a visitor owns the customer or sales representative account whose orders they request, and the account numbers default to sequential values, allowing unauthenticated users to retrieve the order history of every customer and sales representative, including order contact email addresses in some versions.",
+      "published": "2026-11-12T06:17:13.627",
+      "last_modified": "2026-11-12T06:17:13.627",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124665"
+    },
+    {
+      "cve": "CVE-2026-124653",
+      "title": "CVE-2026-124653",
+      "description": "The Mine CloudVod WordPress plugin before 2.6.6 does not restrict who can request cloud storage upload credentials from several of its REST API routes, allowing unauthenticated attackers to obtain signed upload policies and temporary credentials for the site's configured Alibaba Cloud OSS, Tencent Cloud COS and Dogecloud accounts and use them to upload or overwrite files in the site's storage.",
+      "published": "2026-11-12T06:17:13.513",
+      "last_modified": "2026-11-12T06:17:13.513",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124653"
+    },
+    {
+      "cve": "CVE-2026-124652",
+      "title": "CVE-2026-124652",
+      "description": "The Mine CloudVod WordPress plugin before 2.6.6 does not verify that an order belongs to the requesting user before returning its payment status, allowing any authenticated user, such as subscriber, to read other customers' order status, the purchased item and, while an Alipay payment is in progress, the buyer's Alipay account identifier.",
+      "published": "2026-11-12T06:17:13.400",
+      "last_modified": "2026-11-12T06:17:13.400",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124652"
+    },
+    {
+      "cve": "CVE-2026-124648",
+      "title": "CVE-2026-124648",
+      "description": "The TI WooCommerce Wishlist WordPress plugin before 2.13.0 does not verify that a visitor who is not logged in owns a registered user's wishlist before letting them manage it, allowing unauthenticated users who know or guess a wishlist's share key to delete items from other customers' wishlists.",
+      "published": "2026-11-12T06:17:13.270",
+      "last_modified": "2026-11-12T06:17:13.270",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124648"
+    },
+    {
+      "cve": "CVE-2026-124647",
+      "title": "CVE-2026-124647",
+      "description": "The TI WooCommerce Wishlist WordPress plugin before 2.0.7 does not sanitise and escape user input before using it in a SQL statement in a front-end endpoint, allowing unauthenticated users to perform SQL injection attacks.",
+      "published": "2026-11-12T06:17:13.150",
+      "last_modified": "2026-11-12T06:17:13.150",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124647"
+    },
+    {
+      "cve": "CVE-2026-123092",
+      "title": "CVE-2026-123092",
+      "description": "The WP Remote Users Sync WordPress plugin before 2.3.0 does not restrict which user metadata keys may be written through its incoming user synchronisation requests, allowing a site that holds the shared synchronisation keys to set the capabilities of any existing account and escalate it to administrator.",
+      "published": "2026-11-12T06:17:13.023",
+      "last_modified": "2026-11-12T06:17:13.023",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123092"
+    },
+    {
+      "cve": "CVE-2026-123044",
+      "title": "CVE-2026-123044",
+      "description": "The ContentPen WordPress plugin before 1.1.1 discloses its REST API key to unauthenticated users, who can then use it to create posts containing unfiltered JavaScript, leading to Stored XSS that executes in the browser of any visitor, including administrators.",
+      "published": "2026-11-12T06:17:12.920",
+      "last_modified": "2026-11-12T06:17:12.920",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123044"
+    },
+    {
+      "cve": "CVE-2026-122003",
+      "title": "CVE-2026-122003",
+      "description": "The Abilities Bridge WordPress plugin before 1.4.2 does not require a valid nonce before re-authenticating a REST API request from the logged-in session cookie, allowing attackers to make a logged-in administrator perform any REST API action, including creating a new administrator account and taking over the site, by tricking them into opening a crafted page (CSRF).",
+      "published": "2026-11-12T06:17:12.810",
+      "last_modified": "2026-11-12T06:17:12.810",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122003"
+    },
+    {
+      "cve": "CVE-2026-121498",
+      "title": "CVE-2026-121498",
+      "description": "The AskAny  WordPress plugin before 2.2.1 does not verify that a chat session belongs to the requester before returning or changing it, allowing unauthenticated users who obtain or guess another visitor's session identifier to read that visitor's chat transcript, name, email address and IP address, and to add messages to their conversation or overwrite their details.",
+      "published": "2026-11-12T06:17:12.547",
+      "last_modified": "2026-11-12T06:17:12.547",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121498"
+    },
+    {
+      "cve": "CVE-2026-119040",
+      "title": "CVE-2026-119040",
+      "description": "The Defender Security  WordPress plugin before 6.4.1 does not limit the number of failed two-factor authentication attempts in its default configuration, allowing an attacker who already knows a victim's password to brute-force the one-time code and defeat the second authentication factor.",
+      "published": "2026-11-12T06:17:12.257",
+      "last_modified": "2026-11-12T06:17:12.257",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119040"
+    },
+    {
+      "cve": "CVE-2026-119039",
+      "title": "CVE-2026-119039",
+      "description": "The Defender Security  WordPress plugin before 6.4.1 does not verify that the client IP address it derives for its firewall and lockout decisions actually originates from a trusted source, trusting a user-supplied value by default, allowing unauthenticated attackers to spoof their IP address and evade IP-based protections such as login lockout and IP banning, impersonate an allowlisted address, and poison the Defender Security  WordPress plugin before 6.4.1's activity logs.",
+      "published": "2026-11-12T06:17:12.143",
+      "last_modified": "2026-11-12T06:17:12.143",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119039"
+    },
+    {
+      "cve": "CVE-2026-118597",
+      "title": "CVE-2026-118597",
+      "description": "Akaunting 3.3.0 contains a stored cross-site scripting vulnerability in custom invoice payment terms. An authenticated Manager can save a crafted custom payment-term value. When an authorized user opens Invoice Settings for the same company, Akaunting inserts the stored value into a client-side event-handler expression, causing attacker-controlled JavaScript to execute in the victim's authenticated origin.",
+      "published": "2026-11-12T06:17:11.980",
+      "last_modified": "2026-11-12T06:17:11.980",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118597"
+    },
+    {
+      "cve": "CVE-2026-118531",
+      "title": "CVE-2026-118531",
+      "description": "The Directorist: AI-Powered Business Directory, Listings & Classified Ads WordPress plugin before 8.11.1 does not prevent a listing's own author from changing its status from pending to published, allowing users with a Subscriber-level account and above to bypass the administrator's listing moderation and publish their own pending listings.",
+      "published": "2026-11-12T06:17:11.850",
+      "last_modified": "2026-11-12T06:17:11.850",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118531"
+    },
+    {
+      "cve": "CVE-2026-118421",
+      "title": "CVE-2026-118421",
+      "description": "The WP Directory Kit WordPress plugin before 1.6.3 does not properly sanitise and escape a parameter used to order results on one of its admin screens before using it in a SQL statement, relying on a keyword deny-list whose replacement order can be bypassed, making it possible for users holding the WP Directory Kit WordPress plugin before 1.6.3's custom Listing Admin role, and above, to perform SQL injection attacks.",
+      "published": "2026-11-12T06:17:11.700",
+      "last_modified": "2026-11-12T06:17:11.800",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118421"
+    },
+    {
+      "cve": "CVE-2026-110959",
+      "title": "CVE-2026-110959",
+      "description": "The Descope WordPress plugin before 1.2.0 does not validate the authentication token it receives before creating a WordPress session, accepting any non-empty token, so an unauthenticated attacker can obtain a session for any existing account, including an administrator, by supplying that account's email address.",
+      "published": "2026-11-12T06:17:11.100",
+      "last_modified": "2026-11-12T06:17:11.100",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110959"
+    },
+    {
+      "cve": "CVE-2026-110072",
+      "title": "CVE-2026-110072",
+      "description": "The Photo Gallery by 10Web  WordPress plugin before 1.8.49 does not escape a shortcode attribute that sets a gallery watermark image before rendering it into an HTML image attribute, and decodes percent-encoded characters in the value, allowing users with Contributor-level access and above to perform Stored Cross-Site Scripting that executes in the browser of any user, including an administrator, who views the published gallery.",
+      "published": "2026-11-12T06:17:10.983",
+      "last_modified": "2026-11-12T06:17:10.983",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110072"
+    },
+    {
+      "cve": "CVE-2026-110041",
+      "title": "CVE-2026-110041",
+      "description": "The Crop Thumbnails WordPress plugin before 1.10.0 does not perform object-level authorization when reading and re-cropping media attachments, allowing any authenticated user with the upload capability (the Author role by default) to read the metadata of, and overwrite the generated thumbnail files and stored metadata of, media attachments belonging to other users.",
+      "published": "2026-11-12T06:17:10.863",
+      "last_modified": "2026-11-12T06:17:10.863",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110041"
+    },
+    {
+      "cve": "CVE-2026-106027",
+      "title": "CVE-2026-106027",
+      "description": "The Oxygen MyData for WooCommerce WordPress plugin before 3.0.9 does not have proper authorisation, nor validate the authenticity of the request, on one of its payment callbacks, allowing unauthenticated users to mark arbitrary WooCommerce orders as completed.",
+      "published": "2026-11-12T06:17:10.350",
+      "last_modified": "2026-11-12T06:17:10.350",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106027"
+    },
+    {
+      "cve": "CVE-2026-101107",
+      "title": "CVE-2026-101107",
+      "description": "An OS command Injection issue exists in Air Terminal 6 provided by SoftBank Corp. Arbitrary commands may be executed with the root privilege by a user who can log in to the web management console of the affected product.",
+      "published": "2026-11-12T06:17:10.053",
+      "last_modified": "2026-11-12T06:17:10.053",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101107"
+    },
     {
       "cve": "CVE-2026-92379",
       "title": "CVE-2026-92379",
@@ -552,7 +912,7 @@
       "title": "CVE-2026-126673",
       "description": "Data::Dump::Streamer versions before 3.00 for Perl allow code injection via unescaped Regexp patterns in _dump_qr.\n\nA Regexp's pattern is written into a qr literal without escaping \"$\" or \"@\", so \"@{[ ... ]}\" and \"${\\ ... }\" in the pattern run as code when the dump is evaluated. An already escaped delimiter gets a second backslash, which leaves the delimiter bare and ends the qr literal early.\n\nAn attacker who supplies a pattern that an application compiles, dumps and later restores with eval or do can run arbitrary Perl code.",
       "published": "2026-11-12T01:17:11.457",
-      "last_modified": "2026-11-12T01:17:11.457",
+      "last_modified": "2026-11-12T06:17:14.380",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126673"
     },
@@ -1446,370 +1806,10 @@
       "last_modified": "2026-11-11T22:17:30.630",
       "cvss": 7.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-68539"
-    },
-    {
-      "cve": "CVE-2026-68538",
-      "title": "CVE-2026-68538",
-      "description": "fulgur converts untrusted HTML/CSS into PDF, commonly on a server that processes input supplied by many tenants. From version 0.15.0 to before version 0.27.0, resolving the CSS counters(name, sep) function in generated content was bounded neither in the size of a single expansion nor in the aggregate work across an element tree. An attacker able to submit HTML/CSS to a fulgur-based conversion service can trigger CPU and memory exhaustion with a trivially small payload, denying service to the host and any co-tenants. This issue has been patched in version 0.27.0.",
-      "published": "2026-11-11T22:17:30.313",
-      "last_modified": "2026-11-11T22:17:30.440",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-68538"
-    },
-    {
-      "cve": "CVE-2026-68512",
-      "title": "CVE-2026-68512",
-      "description": "Paaster is a pastebin application. Prior to version 3.3.0, Paaster's account login has no rate limiting, lockout, or CAPTCHA of any kind, and a companion endpoint openly discloses whether a username exists along with that account's password-hashing salts. Together these let an attacker enumerate real accounts and then brute-force their passwords with unlimited, unthrottled attempts. This issue has been patched in version 3.3.0.",
-      "published": "2026-11-11T22:17:30.163",
-      "last_modified": "2026-11-11T22:17:30.163",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-68512"
-    },
-    {
-      "cve": "CVE-2026-68511",
-      "title": "CVE-2026-68511",
-      "description": "Paaster is a pastebin application. Prior to version 3.3.0, Paaster's \"view once\" (burn-after-reading) paste mode can be bypassed with concurrent requests. The check that's supposed to enforce single-use is a plain read followed by a separate write, with no atomicity, so multiple simultaneous requests can all see the paste as \"not yet read\" and all successfully retrieve it. This issue has been patched in version 3.3.0.",
-      "published": "2026-11-11T22:17:30.013",
-      "last_modified": "2026-11-11T22:17:30.013",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-68511"
-    },
-    {
-      "cve": "CVE-2026-67548",
-      "title": "CVE-2026-67548",
-      "description": "taOS is a self-hosted AI agent OS. Prior to version 1.0.0-beta.25, tinyagentos (taOS) registers all system settings routes under a single APIRouter() instance created with no admin authorization dependency. Any authenticated user—including non-admin invited users whose is_admin flag is explicitly False—can read the full system configuration, overwrite it, modify platform settings, trigger a git pull + dependency reinstall + service restart, and switch the tracked update branch. Successful exploitation of the write endpoints causes immediate configuration corruption or a denial of service for all users on the instance from a low-privileged account. This issue has been patched in version 1.0.0-beta.25.",
-      "published": "2026-11-11T22:17:29.863",
-      "last_modified": "2026-11-11T22:17:29.863",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67548"
-    },
-    {
-      "cve": "CVE-2026-67547",
-      "title": "CVE-2026-67547",
-      "description": "taOS is a self-hosted AI agent OS. Prior to version 1.0.0-beta.23, the POST /api/skill-exec/{skill_id}/call endpoint in taOS executes built-in skills — including the code_exec skill which runs arbitrary Python via subprocess.run([\"python3\", \"-c\", code]) — without performing any admin role check, skill ownership check, or agent assignment verification. Any authenticated non-admin user can supply attacker-controlled Python code in the request body and have it executed as the taOS backend process user on the host, achieving full remote code execution with no privilege escalation required beyond a valid (non-admin) session. This issue has been patched in version 1.0.0-beta.23.",
-      "published": "2026-11-11T22:17:29.710",
-      "last_modified": "2026-11-11T22:17:29.710",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67547"
-    },
-    {
-      "cve": "CVE-2026-67546",
-      "title": "CVE-2026-67546",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.75, the same POST /api/mcp/fetch-tools endpoint (any authenticated user, lowest role) also accepts the stdio transport, which spawns the attacker-supplied command with attacker-supplied args and an environment merged over os.environ. The process executes on the shared backend host before MCP protocol validation fails — so side effects fire regardless of whether the command speaks MCP. This is a distinct weakness class and exploit primitive from the SSRF (Advisory 2) on the same endpoint, and needs a different fix (role gating / opt-in trust boundary rather than egress controls). This issue has been patched in version 0.0.75.",
-      "published": "2026-11-11T22:17:29.533",
-      "last_modified": "2026-11-11T22:17:29.673",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67546"
-    },
-    {
-      "cve": "CVE-2026-67545",
-      "title": "CVE-2026-67545",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.73, the HTTP workflow node in Heym makes outbound HTTP requests to user-supplied URLs without validation of the target host or IP address. If a workflow author has already configured an HTTP node that targets internal addresses such as cloud metadata endpoints or private network hosts, and exposed the workflow with anonymous execution, an unauthenticated attacker can trigger the preconfigured SSRF sink. The same project has comprehensive SSRF protection in its MCP integration, which is absent from the HTTP node. This issue has been patched in version 0.0.73.",
-      "published": "2026-11-11T22:17:29.360",
-      "last_modified": "2026-11-11T22:17:29.497",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67545"
-    },
-    {
-      "cve": "CVE-2026-67544",
-      "title": "CVE-2026-67544",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.71, Heym's workflow engine accepts an arbitrary Python code string in the playwrightCode field of a Playwright node. This string is written to a temporary .py file and executed directly by the backend process via subprocess.Popen([sys.executable, script_path]) with no sandboxing, AST validation, or role gate. Any authenticated user — including a freshly registered account — can achieve full remote code execution (RCE) on the backend host, running as the service process user (observed as root in the default Docker deployment). This issue has been patched in version 0.0.71.",
-      "published": "2026-11-11T22:17:29.180",
-      "last_modified": "2026-11-11T22:17:29.323",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67544"
-    },
-    {
-      "cve": "CVE-2026-67543",
-      "title": "CVE-2026-67543",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, heym hardens one untrusted-code path but not its sibling. The Python tool executor (python_tool_executor.py) treats user code as untrusted and mandates a Docker sandbox (no network, read-only fs, non-root, no docker socket), failing closed. The skill executor (skill_python_executor.py) runs skill Python via a local backend subprocess with no Docker isolation — only a 512 MB RLIMIT and a 7-key env denylist — so a skill executes inside the backend execution context, with filesystem access, network egress, and non-denylisted environment variables that should not be exposed to untrusted/shared skills. In the shipped Docker config (backend runs as root + /var/run/docker.sock mounted), this escalates to host root. This issue has been patched in version 0.0.70.",
-      "published": "2026-11-11T22:17:28.997",
-      "last_modified": "2026-11-11T22:17:29.140",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67543"
-    },
-    {
-      "cve": "CVE-2026-67542",
-      "title": "CVE-2026-67542",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, POST /api/mcp/fetch-tools is reachable by any authenticated user (lowest role; no admin/workflow association) and fetches an attacker-supplied URL through the sse and streamable_http transports with no scheme / private-IP / allowlist / redirect guard. The transport error is reflected in the HTTP 422 response, giving a semi-blind SSRF oracle, and the attacker also controls the outbound request headers. This issue has been patched in version 0.0.70.",
-      "published": "2026-11-11T22:17:28.813",
-      "last_modified": "2026-11-11T22:17:28.960",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67542"
-    },
-    {
-      "cve": "CVE-2026-67541",
-      "title": "CVE-2026-67541",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, team-member management (add / remove / update) is gated only on team membership, not on the team creator/admin role — and TeamMember has no role column. Any non-creator member can seat an attacker account into the team; because credential team-shares are scoped only by TeamMember.user_id, the newly-added attacker can then decrypt every credential shared into that team (provider API keys, OAuth tokens. This issue has been patched in version 0.0.70.",
-      "published": "2026-11-11T22:17:28.620",
-      "last_modified": "2026-11-11T22:17:28.770",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67541"
-    },
-    {
-      "cve": "CVE-2026-67540",
-      "title": "CVE-2026-67540",
-      "description": "Heym builds and runs agentic systems and business-process automations on self-hosted infrastructure. Prior to version 0.0.70, get_workflow_template / get_node_template fetches a template by ID with no visibility / author / shared_with predicate, so any authenticated user can read (and use) any other tenant's private (visibility=specific_users) template — including its full node/edge graph and the email addresses it was shared with. The list endpoint enforces visibility correctly; the single-item get/use paths do not. This issue has been patched in version 0.0.70.",
-      "published": "2026-11-11T22:17:28.433",
-      "last_modified": "2026-11-11T22:17:28.577",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67540"
-    },
-    {
-      "cve": "CVE-2026-67449",
-      "title": "CVE-2026-67449",
-      "description": "Portabase is a database backup and restore tool for PostgreSQL, MySQL, MsSQL, MariaDB, Firebird SQL, SQLite, MongoDB, Redis, Files and Docker Volume. Prior to version 1.21.2, a path traversal in the TUS upload webhook handler (app/api/tus/hooks/route.ts) allowed an unauthenticated attacker to overwrite arbitrary files under the private data directory, including /data/private/keys/master_key.bin (the AES-256-GCM master key). This issue has been patched in version 1.21.2.",
-      "published": "2026-11-11T22:17:28.257",
-      "last_modified": "2026-11-11T22:17:28.257",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-67449"
-    },
-    {
-      "cve": "CVE-2026-65971",
-      "title": "CVE-2026-65971",
-      "description": "Livewire PowerGrid creates data tables based on Laravel Livewire library. From version 6.0.0 to before version 6.10.4, the public Livewire property sortDirection is interpolated verbatim into a raw SQL ORDER BY clause and is not restricted to asc/desc, allowing arbitrary SQL injection through POST /livewire/update. This issue has been patched in version 6.10.4.",
-      "published": "2026-11-11T22:17:28.090",
-      "last_modified": "2026-11-11T22:17:28.090",
-      "cvss": 7.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65971"
-    },
-    {
-      "cve": "CVE-2026-65952",
-      "title": "CVE-2026-65952",
-      "description": "Improper neutralization of special elements used in an OS command in the remote SSH operation functionality of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to execute arbitrary OS commands with the privileges of the configured SSH account on a managed server by supplying a specially crafted remote path.",
-      "published": "2026-11-11T22:17:27.917",
-      "last_modified": "2026-11-11T22:17:27.917",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65952"
-    },
-    {
-      "cve": "CVE-2026-65951",
-      "title": "CVE-2026-65951",
-      "description": "A path traversal vulnerability in the TAR.GZ extraction logic of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to write arbitrary files with the privileges of the OneCLI process by convincing a user to process a specially crafted TAR.GZ update package.",
-      "published": "2026-11-11T22:17:27.753",
-      "last_modified": "2026-11-11T22:17:27.753",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65951"
-    },
-    {
-      "cve": "CVE-2026-65950",
-      "title": "CVE-2026-65950",
-      "description": "A path traversal vulnerability in the ZIP extraction logic of Lenovo XClarity Essentials OneCLI 5.5.0 for Linux could allow an attacker to write arbitrary files with the privileges of the OneCLI process by convincing a user to process a specially crafted ZIP-based update package.",
-      "published": "2026-11-11T22:17:27.570",
-      "last_modified": "2026-11-11T22:17:27.570",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65950"
-    },
-    {
-      "cve": "CVE-2026-65949",
-      "title": "CVE-2026-65949",
-      "description": "Improper neutralization of special elements used in an OS command in Lenovo XClarity Integrator for Microsoft Windows Admin Center 5.1.1 and 5.2.0 allows an authenticated remote attacker to execute arbitrary PowerShell commands by submitting a crafted hostname.",
-      "published": "2026-11-11T22:17:27.373",
-      "last_modified": "2026-11-11T22:17:27.373",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-65949"
-    },
-    {
-      "cve": "CVE-2026-126332",
-      "title": "CVE-2026-126332",
-      "description": "Improper access control in the autofill vault search in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with only view permission on a shared entry to obtain its password in clear text via a linked credential entry created in their private vault.",
-      "published": "2026-11-11T22:17:27.217",
-      "last_modified": "2026-11-11T22:17:27.313",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126332"
-    },
-    {
-      "cve": "CVE-2026-126331",
-      "title": "CVE-2026-126331",
-      "description": "Insertion of sensitive information into sent data in the user list endpoint in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with delegated user-viewing permissions to obtain users' API key secret hashes via the user list API response.",
-      "published": "2026-11-11T22:17:27.090",
-      "last_modified": "2026-11-11T22:17:27.180",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126331"
-    },
-    {
-      "cve": "CVE-2026-126328",
-      "title": "CVE-2026-126328",
-      "description": "Insertion of sensitive information into sent data in the user endpoints in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with delegated user-viewing permissions to obtain users' MFA shared secrets via the user API responses.",
-      "published": "2026-11-11T22:17:26.950",
-      "last_modified": "2026-11-11T22:17:27.060",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126328"
-    },
-    {
-      "cve": "CVE-2026-126327",
-      "title": "CVE-2026-126327",
-      "description": "Improper access control in the connection history in Devolutions Server 2026.3.13.0 allows an authenticated user without the permission to view passwords to obtain historical entry passwords via the connection history API.",
-      "published": "2026-11-11T22:17:26.797",
-      "last_modified": "2026-11-11T22:17:26.900",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126327"
-    },
-    {
-      "cve": "CVE-2026-126326",
-      "title": "CVE-2026-126326",
-      "description": "Improper access control in the administrative role assignment endpoint in Devolutions Server 2026.3.13.0 and earlier allows an authenticated user with only vault assignment management rights to escalate privileges and read vault entry passwords via a crafted role assignment request.",
-      "published": "2026-11-11T22:17:26.663",
-      "last_modified": "2026-11-11T22:17:26.763",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126326"
-    },
-    {
-      "cve": "CVE-2026-126263",
-      "title": "CVE-2026-126263",
-      "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiMail 8.0.0 through 8.0.1, FortiMail 7.6.0 through 7.6.4, FortiMail 7.4.0 through 7.4.6 may allow an authenticated attacker to execute unauthorized code or commands via specifically crafted requests.",
-      "published": "2026-11-11T22:17:26.520",
-      "last_modified": "2026-11-11T22:17:26.520",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126263"
-    },
-    {
-      "cve": "CVE-2026-126262",
-      "title": "CVE-2026-126262",
-      "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 8.0.0 through 8.0.1, FortiAnalyzer 7.6.0 through 7.6.7, FortiAnalyzer 7.4.0 through 7.4.11, FortiAnalyzer 7.2.0 through 7.2.12, FortiManager 8.0.0, FortiManager 7.6.0 through 7.6.7, FortiManager 7.4.0 through 7.4.11, FortiManager 7.2.0 through 7.2.12 may allow an unauthenticated attacker who has access to the oftp port to execute code or command on the system via crafted OFTP packets.",
-      "published": "2026-11-11T22:17:26.343",
-      "last_modified": "2026-11-11T22:17:26.343",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126262"
-    },
-    {
-      "cve": "CVE-2026-126259",
-      "title": "CVE-2026-126259",
-      "description": "A missing authentication for critical function vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker with HA FGSP + standalone-config-sync, or autoscale to execute command as super admin via crafted HA packets.",
-      "published": "2026-11-11T22:17:26.200",
-      "last_modified": "2026-11-11T22:17:26.200",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126259"
-    },
-    {
-      "cve": "CVE-2026-126258",
-      "title": "CVE-2026-126258",
-      "description": "A stack-based buffer overflow vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.7 may allow an unauthenticated attacker with wad port access to crash proxy or ZTNA sessions via crafted HTTP or HTTPS requests.",
-      "published": "2026-11-11T22:17:26.073",
-      "last_modified": "2026-11-11T22:17:26.073",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126258"
-    },
-    {
-      "cve": "CVE-2026-126257",
-      "title": "CVE-2026-126257",
-      "description": "A use of hard-coded password vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to bypass credential validation in certain circumstances outside of the attacker's control and gain unauthorized access.",
-      "published": "2026-11-11T22:17:25.930",
-      "last_modified": "2026-11-11T22:17:25.930",
-      "cvss": 9.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126257"
-    },
-    {
-      "cve": "CVE-2026-126256",
-      "title": "CVE-2026-126256",
-      "description": "A out-of-bounds read vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4 all versions, FortiOS 7.2 all versions, FortiOS 7.0 all versions may allow a remote privileged attacker to execute arbitrary code or command via crafted paquets.",
-      "published": "2026-11-11T22:17:25.783",
-      "last_modified": "2026-11-11T22:17:25.783",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126256"
-    },
-    {
-      "cve": "CVE-2026-126255",
-      "title": "CVE-2026-126255",
-      "description": "A path traversal: '../filedir' vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13, FortiPAM 1.6 all versions, FortiPAM 1.5 all versions, FortiPAM 1.4 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions may allow an unauthenticated attacker to bypass authentication via specially crafted credentials.",
-      "published": "2026-11-11T22:17:25.623",
-      "last_modified": "2026-11-11T22:17:25.623",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126255"
-    },
-    {
-      "cve": "CVE-2026-126254",
-      "title": "CVE-2026-126254",
-      "description": "A numeric truncation error vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow a configured ibgp neighbor to send malicious/malformed attributes to all connected routers via a specially crafted request",
-      "published": "2026-11-11T22:17:25.490",
-      "last_modified": "2026-11-11T22:17:25.490",
-      "cvss": 9.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126254"
-    },
-    {
-      "cve": "CVE-2026-126253",
-      "title": "CVE-2026-126253",
-      "description": "A authentication bypass by primary weakness vulnerability in Fortinet FortiOS 8.0.0 through 8.0.1, FortiOS 7.6.0 through 7.6.7, FortiOS 7.4.0 through 7.4.12, FortiOS 7.2.0 through 7.2.13 may allow an unauthenticated attacker to broadcast LSA via specially crafted request",
-      "published": "2026-11-11T22:17:25.347",
-      "last_modified": "2026-11-11T22:17:25.347",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126253"
-    },
-    {
-      "cve": "CVE-2026-126252",
-      "title": "CVE-2026-126252",
-      "description": "A improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to execute unauthorized code or commands via http requests",
-      "published": "2026-11-11T22:17:25.220",
-      "last_modified": "2026-11-11T22:17:25.220",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126252"
-    },
-    {
-      "cve": "CVE-2026-126251",
-      "title": "CVE-2026-126251",
-      "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an attacker to bypass authentication and gain unauthorized access.",
-      "published": "2026-11-11T22:17:25.087",
-      "last_modified": "2026-11-11T22:17:25.087",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126251"
-    },
-    {
-      "cve": "CVE-2026-126250",
-      "title": "CVE-2026-126250",
-      "description": "A incorrect authorization vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to cause a denial of service via HTTP requests.",
-      "published": "2026-11-11T22:17:24.960",
-      "last_modified": "2026-11-11T22:17:24.960",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126250"
-    },
-    {
-      "cve": "CVE-2026-126249",
-      "title": "CVE-2026-126249",
-      "description": "A improper privilege management vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated attacker to escalate privileges.",
-      "published": "2026-11-11T22:17:24.823",
-      "last_modified": "2026-11-11T22:17:24.823",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126249"
-    },
-    {
-      "cve": "CVE-2026-126248",
-      "title": "CVE-2026-126248",
-      "description": "A insufficiently protected credentials vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to obtain sensitive information via HTTPS requests.",
-      "published": "2026-11-11T22:17:24.693",
-      "last_modified": "2026-11-11T22:17:24.693",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126248"
-    },
-    {
-      "cve": "CVE-2026-126247",
-      "title": "CVE-2026-126247",
-      "description": "A use of externally-controlled format string vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an authenticated privileged attacker to execute unauthorized code or commands via http requests.",
-      "published": "2026-11-11T22:17:24.560",
-      "last_modified": "2026-11-11T22:17:24.560",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126247"
-    },
-    {
-      "cve": "CVE-2026-126246",
-      "title": "CVE-2026-126246",
-      "description": "A null pointer dereference vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to perform a denial of service attack via http requests.",
-      "published": "2026-11-11T22:17:24.423",
-      "last_modified": "2026-11-11T22:17:24.423",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126246"
-    },
-    {
-      "cve": "CVE-2026-126245",
-      "title": "CVE-2026-126245",
-      "description": "A out-of-bounds write vulnerability in Fortinet FortiAuthenticator 8.0.0 through 8.0.3, FortiAuthenticator 6.6.0 through 6.6.10 may allow an unauthenticated attacker to execute unauthorized code or commands via http requests, should the attacker be able to defeat ASLR protections.",
-      "published": "2026-11-11T22:17:24.280",
-      "last_modified": "2026-11-11T22:17:24.280",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126245"
     }
   ],
-  "total_results": 2872,
+  "total_results": 2912,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 2672
+  "start_index": 2712
 }
