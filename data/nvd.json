@@ -1,12 +1,561 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-14T23%3A00%3A00.000&pubEndDate=2026-11-17T05%3A17%3A36.000&resultsPerPage=200&startIndex=324",
-  "fetched_at": "2026-11-17T05:17:36+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-14T23%3A00%3A00.000&pubEndDate=2026-11-17T10%3A48%3A43.000&resultsPerPage=200&startIndex=385",
+  "fetched_at": "2026-11-17T10:48:43+00:00",
   "window_days": 3,
   "window_start": "2026-11-15",
   "window_end": "2026-11-17",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-21609",
+      "title": "CVE-2026-21609",
+      "description": "This High severity Improper Authorization vulnerability was introduced in versions 5.12.0, 10.3.0, and 11.3.0 of Jira Service Management Data Center.  \t \tThis Improper Authorization vulnerability, with a CVSS Score of 7.1, allows an authenticated attacker to gain unintended access and can lead to the exposure of resources or functionality, possibly providing attackers with sensitive information or even execute arbitrary code.  \t \tAtlassian recommends that Jira Service Management Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: \t\t \t\t Jira Service Management Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 \t\t \t\t Jira Service Management Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 \t\t \t\t \t \tSee the release notes (https://confluence.atlassian.co",
+      "published": "2026-11-17T10:17:21.710",
+      "last_modified": "2026-11-17T10:17:21.710",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-21609"
+    },
+    {
+      "cve": "CVE-2026-118498",
+      "title": "CVE-2026-118498",
+      "description": "The CODESYS Automation Server Connector uses server-supplied file names without sufficient path traversal checks. An unauthenticated remote attacker controlling a malicious Automation Server and tricking a user to trust it, or performing a man-in-the-middle attack on a trusted communication channel, can exploit this vulnerability to write attacker-controlled files to arbitrary locations on the engineering workstation and subsequently achieve arbitrary code execution with user privileges.",
+      "published": "2026-11-17T10:17:21.540",
+      "last_modified": "2026-11-17T10:17:21.540",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118498"
+    },
+    {
+      "cve": "CVE-2026-118497",
+      "title": "CVE-2026-118497",
+      "description": "The affected products do not sufficiently validate CODESYS Automation Server TLS certificates when a user starts the certificate enrollment. An unauthenticated remote attacker performing a man-in-the-middle attack can exploit this vulnerability by supplying an untrusted certificate that is accepted as trusted. Successful exploitation may allow an attacker to intercept and manipulate communications between the CODESYS Automation Server and the PLC network.",
+      "published": "2026-11-17T10:17:21.357",
+      "last_modified": "2026-11-17T10:17:21.357",
+      "cvss": 7.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118497"
+    },
+    {
+      "cve": "CVE-2026-118496",
+      "title": "CVE-2026-118496",
+      "description": "The affected products process a server-supplied URL without sufficient validation. An unauthenticated remote attacker controlling a malicious Automation Server and tricking a user to trust it or performing a man-in-the-middle attack, can exploit this vulnerability by causing the affected product to process unintended content. Successful exploitation may result in arbitrary code execution with the privileges of the user running the affected product.",
+      "published": "2026-11-17T10:17:21.197",
+      "last_modified": "2026-11-17T10:17:21.197",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118496"
+    },
+    {
+      "cve": "CVE-2026-112209",
+      "title": "CVE-2026-112209",
+      "description": "A Cross-Site Scripting (XSS) vulnerability reflected in the GET parameters `cod_primaria` and `cod_secundaria` of the Novanet Web endpoints `NNws_ShwNewDup` and `NPcd/NFG_VerNoticia`. User-provided data is reflected within a JavaScript block without proper sanitization or context-appropriate output encoding. An unauthenticated remote attacker could craft a manipulated URL that, when visited by a victim, would execute arbitrary JavaScript code in the victim’s browser, within the context of the affected site. The flaw resides in the platform’s shared code, so it could affect organizations using that vulnerable code.",
+      "published": "2026-11-17T10:17:21.030",
+      "last_modified": "2026-11-17T10:17:21.030",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112209"
+    },
+    {
+      "cve": "CVE-2026-35190",
+      "title": "CVE-2026-35190",
+      "description": "Issue summary: A server configured with the Suite B certificate flag through\nSSL_CTX_set_cert_flags() and with TLS 1.3 enabled may read past the end of a\nfixed group list when it processes a ClientHello whose supported_groups and\nkey_share contain no Suite B group.\n\nImpact summary: A remote client can send a ClientHello that makes the server\nread past the end of a static array. The values read are never returned to the\nclient, so no memory is disclosed; on builds with sanitizers or hardened\nallocators the read may crash the process, causing Denial of Service.\n\nCWE: CWE-125: Out-of-bounds Read\n\nDescription: When the Suite B certificate flag is set, OpenSSL restricts the\naccepted groups to P-256 and P-384 by substituting a fixed two-element list\nfor the configured group list. The tuple machinery used for key-share\nselection was not updated for this substitution: tls1_get_group_tuples() sti",
+      "published": "2026-11-17T09:17:27.560",
+      "last_modified": "2026-11-17T09:17:27.560",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-35190"
+    },
+    {
+      "cve": "CVE-2026-124709",
+      "title": "CVE-2026-124709",
+      "description": "Issue summary: A QUIC server that rejects a stream opened by the peer may\nretain that stream's state for the lifetime of the connection if the peer\nresets the stream before the rejection is signalled, even though the peer's\nstream credit is returned.\n\nImpact summary: A remote client that completes a QUIC handshake can repeatedly\nopen and reset streams, causing server memory to grow without bound until the\nprocess runs out of memory and every connection on it is lost. This is a\nDenial of Service.\n\nCWE: CWE-401: Missing Release of Memory after Effective Lifetime\n\nDescription: QUIC servers track each stream the peer opens. When the incoming\nstream policy rejects a stream, OpenSSL schedules a STOP_SENDING frame, marks\nthe stream deleted and returns the peer's stream credit. A deleted stream is\ncollected only once its receive part is fully drained, which for a rejected\nstream means the STOP_S",
+      "published": "2026-11-17T09:17:27.227",
+      "last_modified": "2026-11-17T09:17:27.227",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124709"
+    },
+    {
+      "cve": "CVE-2026-121865",
+      "title": "CVE-2026-121865",
+      "description": "In nanobot, the WebSocket gateway allows a standard client holding a valid client token to select an existing directory outside the operator-configured workspace as the root of a new conversation. The agent can then read and expose files in that directory that are readable by the nanobot service account.\n\nThis issue affects nanobot (nanobot-ai) from 0.3.5 before 0.4.1.",
+      "published": "2026-11-17T09:17:27.057",
+      "last_modified": "2026-11-17T09:17:27.177",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121865"
+    },
+    {
+      "cve": "CVE-2026-121864",
+      "title": "CVE-2026-121864",
+      "description": "In nanobot, when sandboxed exec is enabled, the shell executable used to run commands can be selected by the caller and is launched before the sandbox is applied. An attacker who can induce the agent to create an executable in the workspace and select it as the shell can cause that executable to run outside the sandbox (e.g. Linux bubblewrap), with the operating-system permissions of the nanobot process.\n\nThis issue affects nanobot (nanobot-ai) from 0.2.1 before 0.4.1.",
+      "published": "2026-11-17T09:17:26.857",
+      "last_modified": "2026-11-17T09:17:27.003",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121864"
+    },
+    {
+      "cve": "CVE-2026-119643",
+      "title": "CVE-2026-119643",
+      "description": "The MembershipWorks - Membership, Events & Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 6.17. This is due to insufficient output escaping on member-supplied data retrieved from the MembershipWorks SaaS API in the sf_shortcode(), sf_widget_event_do(), and sf_widget_folder_do() functions, where the 'nam' (member name), 'ttl' (event title), 'url', 'adn' (venue name), 'szp', and 'ezp' fields are output into page HTML without escaping, or, in sf_widget_folder_do(), placed in an image alt attribute that an onerror handler copies into innerHTML. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-11-17T09:17:26.677",
+      "last_modified": "2026-11-17T09:17:26.810",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119643"
+    },
+    {
+      "cve": "CVE-2026-109154",
+      "title": "CVE-2026-109154",
+      "description": "In the Matter door lock applications of\n  the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0\n  through v1.1.1, AccessManager::ValidateCredential() checks only credential\n  occupancy and the secret bytes, and never reads the owning user's UserStatus.\n  It also returns success when no owning user can be resolved. A user suspended\n  by setting their status to OccupiedDisabled can continue to unlock the door\n  with their previously assigned credential, and an orphaned but occupied\n  credential is also accepted. Fixed in v1.2.0.",
+      "published": "2026-11-17T09:17:26.540",
+      "last_modified": "2026-11-17T09:17:26.540",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109154"
+    },
+    {
+      "cve": "CVE-2026-109151",
+      "title": "CVE-2026-109151",
+      "description": "In\nthe Matter and Aliro Door Lock Application of the Nordic Semiconductor nRF Door\nLock and Access Control Add-on v1.0.0 through v1.1.1 with\nCONFIG_DOOR_LOCK_STEP_UP_PHASE enabled, deleting a Credential Issuer passes the\n1-based Matter credential index to ClearValidityIterations(), which expects a\n0-based storage index. The intended issuer's ValidityIteration state is left in\nplace, and the state of the adjacent, still-provisioned issuer is cleared. This\nresets that issuer's rollback protection. An attacker holding an older but correctly\nsigned Access Document from the adjacent issuer, whose validity iteration had\nbeen superseded, can then potentially obtain physical access. Fixed in v1.2.0.",
+      "published": "2026-11-17T09:17:26.407",
+      "last_modified": "2026-11-17T09:17:26.407",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109151"
+    },
+    {
+      "cve": "CVE-2026-109148",
+      "title": "CVE-2026-109148",
+      "description": "In the Aliro access control reference\n  applications of the Nordic Semiconductor nRF Door Lock and Access Control\n  Add-on v1.0.0 through v1.1.1, the stored Access Document record does not\n  retain validFrom and validUntil. The cached public key path (VerifyPublicKey())\n  and the Kpersistent fast path (_VerifyKPersistentKey()) therefore never\n  re-evaluate the Access Document validity period. An attacker who held a\n  time-limited Aliro credential that was valid when first presented can\n  continue to obtain physical access after the Access Document has expired, for\n  as long as the cached record remains available. Fixed in v1.2.0.",
+      "published": "2026-11-17T09:17:26.253",
+      "last_modified": "2026-11-17T09:17:26.253",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109148"
+    },
+    {
+      "cve": "CVE-2026-109138",
+      "title": "CVE-2026-109138",
+      "description": "In the Aliro access control reference\n  applications of the Nordic Semiconductor nRF Door Lock and Access Control\n  Add-on v1.0.0 through v1.1.1, built with Credential Issuer CA\n  certificate-based issuer trust (CONFIG_DOOR_LOCK_CREDENTIAL_ISSUER_CA) and\n  the Aliro Step-up phase (CONFIG_DOOR_LOCK_STEP_UP_PHASE) enabled,\n  AccessManagerImpl::ProcessValidityIteration() treats a failed lookup of the\n  Credential Issuer in the provisioned issuer array as success. For an issuer\n  trusted through a certificate chain but not provisioned, the\n  ValidityIteration (credential-rollback) check is therefore skipped. A former\n  authorized holder with an old but correctly issuer-signed Access Document can\n  be granted physical access after the issuer has advanced its iteration to\n  revoke that credential. The default Matter provisioning configuration is not\n  affected. Fixed in v1.2.0.",
+      "published": "2026-11-17T09:17:26.057",
+      "last_modified": "2026-11-17T09:17:26.057",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109138"
+    },
+    {
+      "cve": "CVE-2026-107493",
+      "title": "CVE-2026-107493",
+      "description": "Issue summary: When an application passes a stack to\nPEM_X509_INFO_read_bio_ex() to add entries to, and reading fails,\nOpenSSL frees every entry in the stack, both the old ones and any new\nones, but leaves them in the stack.\n\nImpact summary: An application that passes an existing stack to\nPEM_X509_INFO_read_bio_ex() and keeps using it after a failed read may\nuse memory that was already freed. This can cause a crash or, in\nprinciple, memory corruption. Malformed PEM data can make the read fail,\nbut only applications that pass an existing stack are affected, and\nOpenSSL itself does not do this.\n\nCWE: CWE-416: Use After Free\n\nDescription: PEM_X509_INFO_read_bio_ex() reads certificates, CRLs and\nprivate keys from PEM data and adds them to a stack of X509_INFO\nstructures. If the application passes a stack that is not NULL, the\nfunction adds the new entries to it and must leave the entries tha",
+      "published": "2026-11-17T09:17:25.870",
+      "last_modified": "2026-11-17T09:17:25.870",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107493"
+    },
+    {
+      "cve": "CVE-2026-129031",
+      "title": "CVE-2026-129031",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Cool Plugins Conditional Fields for Elementor Form – Display Conditions conditional-fields-for-elementor-form allows Stored XSS.This issue affects Conditional Fields for Elementor Form – Display Conditions: from n/a through 1.7.7.",
+      "published": "2026-11-17T08:17:00.007",
+      "last_modified": "2026-11-17T08:17:00.117",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129031"
+    },
+    {
+      "cve": "CVE-2026-129012",
+      "title": "CVE-2026-129012",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in LeapWorx Premium Addons for Elementor premium-addons-for-elementor allows Stored XSS.This issue affects Premium Addons for Elementor: from n/a through 4.11.118.",
+      "published": "2026-11-17T08:16:59.867",
+      "last_modified": "2026-11-17T08:16:59.973",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129012"
+    },
+    {
+      "cve": "CVE-2026-129008",
+      "title": "CVE-2026-129008",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPExperts Gutena Forms – Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder gutena-forms allows Stored XSS.This issue affects Gutena Forms – Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder: from n/a through 2.1.1.",
+      "published": "2026-11-17T08:16:59.700",
+      "last_modified": "2026-11-17T08:16:59.833",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129008"
+    },
+    {
+      "cve": "CVE-2026-128038",
+      "title": "CVE-2026-128038",
+      "description": "The All in One SEO – AI SEO Plugin to Boost SEO Rankings & Traffic (Schema, Local SEO, Sitemap & SEO Insights) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'name' parameter in all versions up to, and including, 5.0.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires that an administrator has placed the AIOSEO breadcrumb on the author template, that the site is running WordPress 6.6 or later with the core Interactivity runtime loaded (e.g., via a block theme or core/navigation block), and that a victim clicks the rendered breadcrumb link on the author archive page.",
+      "published": "2026-11-17T07:17:24.743",
+      "last_modified": "2026-11-17T07:17:24.990",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128038"
+    },
+    {
+      "cve": "CVE-2026-107904",
+      "title": "CVE-2026-107904",
+      "description": "Joomla Extension - valorapps.com - Unauthenticated Remote Code Execution in Easy File Uploader < 2.9.7 - An unauthenticated remote attacker can upload a PHP-executable file to the Joomla web root with a single multipart POST request, requiring no credentials and no CSRF token.",
+      "published": "2026-11-17T07:17:23.257",
+      "last_modified": "2026-11-17T07:17:23.257",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107904"
+    },
+    {
+      "cve": "CVE-2026-111973",
+      "title": "CVE-2026-111973",
+      "description": "The RSS Feed Retriever WordPress plugin through 1.6.10 does not validate a user-supplied URL before fetching it server-side with a bundled HTTP library that lacks WordPress's private-network protections, allowing unauthenticated users to make the site retrieve arbitrary internal or external resources and read the response.",
+      "published": "2026-11-17T06:16:50.550",
+      "last_modified": "2026-11-17T06:16:50.550",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111973"
+    },
+    {
+      "cve": "CVE-2026-97639",
+      "title": "CVE-2026-97639",
+      "description": "The Everest Backup – WordPress Cloud Backup, Migration, Restore & Cloning Plugin plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.3.14 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to activate any already-installed inactive plugin on the site.",
+      "published": "2026-11-17T05:18:39.520",
+      "last_modified": "2026-11-17T05:18:39.660",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97639"
+    },
+    {
+      "cve": "CVE-2026-97187",
+      "title": "CVE-2026-97187",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Kubernetes Secrets from other namespaces in clusters connected through the GitLab agent for Kubernetes due to incorrect authorization in workspaces.",
+      "published": "2026-11-17T05:18:39.370",
+      "last_modified": "2026-11-17T05:18:39.370",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97187"
+    },
+    {
+      "cve": "CVE-2026-85778",
+      "title": "CVE-2026-85778",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to run code in protected pipelines through a scheduled pipeline execution policy after the policy had been unassigned due to incorrect authorization checks.",
+      "published": "2026-11-17T05:18:38.057",
+      "last_modified": "2026-11-17T05:18:38.057",
+      "cvss": 6.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85778"
+    },
+    {
+      "cve": "CVE-2026-18491",
+      "title": "CVE-2026-18491",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user holding a granular personal access token with limited scope to authorize Kubernetes API proxy access beyond the token's intended boundaries due to missing granular scope enforcement in the Kubernetes agent proxy-user authorization flow.",
+      "published": "2026-11-17T05:18:37.000",
+      "last_modified": "2026-11-17T05:18:37.000",
+      "cvss": 4.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18491"
+    },
+    {
+      "cve": "CVE-2026-18241",
+      "title": "CVE-2026-18241",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 9.3 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to access protected CI/CD variables and resources due to a race condition in pipeline job authorization.",
+      "published": "2026-11-17T05:18:36.843",
+      "last_modified": "2026-11-17T05:18:36.843",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18241"
+    },
+    {
+      "cve": "CVE-2026-16609",
+      "title": "CVE-2026-16609",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with owner-role permissions to execute arbitrary JavaScript in another user's browser through the Confluence integration due to improper input validation.",
+      "published": "2026-11-17T05:18:36.683",
+      "last_modified": "2026-11-17T05:18:36.683",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16609"
+    },
+    {
+      "cve": "CVE-2026-16545",
+      "title": "CVE-2026-16545",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 12.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read private project metadata from packages published by other projects due to incorrect authorization checks.",
+      "published": "2026-11-17T05:18:36.527",
+      "last_modified": "2026-11-17T05:18:36.527",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-16545"
+    },
+    {
+      "cve": "CVE-2026-129321",
+      "title": "CVE-2026-129321",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with planner-role permissions to set a future merge scheduling date on merge requests they authored, a capability restricted to developer-role permissions and above, due to insufficient permission enforcement on the merge scheduling field during merge request updates.",
+      "published": "2026-11-17T05:18:36.373",
+      "last_modified": "2026-11-17T05:18:36.373",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129321"
+    },
+    {
+      "cve": "CVE-2026-129253",
+      "title": "CVE-2026-129253",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with developer-role permissions to bypass admin-configured AI tool governance controls in a governed namespace due to improper binding of authorization tokens to their intended workflow execution context.",
+      "published": "2026-11-17T05:18:36.220",
+      "last_modified": "2026-11-17T05:18:36.220",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129253"
+    },
+    {
+      "cve": "CVE-2026-129252",
+      "title": "CVE-2026-129252",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with an unconfirmed email address to be automatically granted Group Owner-level membership during a group import operation, due to insufficient email verification enforcement in the member identity mapping process.",
+      "published": "2026-11-17T05:18:36.063",
+      "last_modified": "2026-11-17T05:18:36.063",
+      "cvss": 3.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129252"
+    },
+    {
+      "cve": "CVE-2026-128849",
+      "title": "CVE-2026-128849",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to start a Duo Workflow session with elevated privileges beyond those declared by the foundational flow due to improper enforcement of privilege boundaries in certain client environments.",
+      "published": "2026-11-17T05:18:35.913",
+      "last_modified": "2026-11-17T05:18:35.913",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128849"
+    },
+    {
+      "cve": "CVE-2026-126141",
+      "title": "CVE-2026-126141",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.11 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to make requests to internal network services through repository import functionality due to insufficient validation of destination addresses.",
+      "published": "2026-11-17T05:18:35.190",
+      "last_modified": "2026-11-17T05:18:35.190",
+      "cvss": 3.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126141"
+    },
+    {
+      "cve": "CVE-2026-125920",
+      "title": "CVE-2026-125920",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to cause a denial of service affecting Duo usage analytics due to improper input validation.",
+      "published": "2026-11-17T05:18:35.043",
+      "last_modified": "2026-11-17T05:18:35.043",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125920"
+    },
+    {
+      "cve": "CVE-2026-123142",
+      "title": "CVE-2026-123142",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user holding an MCP-scoped OAuth token to perform unauthorized issuable state changes on issues and merge requests, including approving and merging, due to incorrect authorization checks.",
+      "published": "2026-11-17T05:18:34.390",
+      "last_modified": "2026-11-17T05:18:34.390",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123142"
+    },
+    {
+      "cve": "CVE-2026-122226",
+      "title": "CVE-2026-122226",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to access GitLab Duo features restricted by group-based access rules due to improper handling of failed updates to those rules.",
+      "published": "2026-11-17T05:18:34.233",
+      "last_modified": "2026-11-17T05:18:34.233",
+      "cvss": 2.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122226"
+    },
+    {
+      "cve": "CVE-2026-122045",
+      "title": "CVE-2026-122045",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 16.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to configure GitLab Duo settings for groups without an eligible license due to missing authorization checks.",
+      "published": "2026-11-17T05:18:34.080",
+      "last_modified": "2026-11-17T05:18:34.080",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122045"
+    },
+    {
+      "cve": "CVE-2026-121948",
+      "title": "CVE-2026-121948",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to change the GitLab Duo Code Review consent setting of a parent group due to incorrect authorization checks.",
+      "published": "2026-11-17T05:18:33.923",
+      "last_modified": "2026-11-17T05:18:33.923",
+      "cvss": 2.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121948"
+    },
+    {
+      "cve": "CVE-2026-121684",
+      "title": "CVE-2026-121684",
+      "description": "The Soledad theme for WordPress is vulnerable to unauthenticated Remote Code Execution in versions up to, and including, 8.7.7 The public penci_more_post_ajax AJAX action feeds infeedads[ads_code] (base64+urldecoded) to penci_safe_shortcode(), whose allowlist regex inspects only the hyphen-truncated outer shortcode name (e.g. 'adinserter') and never the nested [elementor-element k=.. data=..] tag, so do_shortcode() renders an attacker-chosen Elementor element. The rendered penci-featured-sliders widget passes its unsanitized 'style' setting to include dirname(__FILE__).\"/{$style}.php\", a path-traversal local file inclusion.",
+      "published": "2026-11-17T05:18:33.697",
+      "last_modified": "2026-11-17T05:18:33.840",
+      "cvss": 8.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121684"
+    },
+    {
+      "cve": "CVE-2026-121533",
+      "title": "CVE-2026-121533",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read restricted job artifact data due to missing authorization checks.",
+      "published": "2026-11-17T05:18:33.543",
+      "last_modified": "2026-11-17T05:18:33.543",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121533"
+    },
+    {
+      "cve": "CVE-2026-120387",
+      "title": "CVE-2026-120387",
+      "description": "An improper JWT signature verification vulnerability in CIRCUTOR PowerStudio SCADA WAVE desktop version allows an unauthenticated remote attacker to bypass authentication by submitting an unsigned JWT with the algorithm set to “none”. The shared JWT validation component accepts the token without verifying a cryptographic signature, allowing the attacker to impersonate another user and access protected functionality with that user's privileges.",
+      "published": "2026-11-17T05:18:33.067",
+      "last_modified": "2026-11-17T05:18:33.067",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120387"
+    },
+    {
+      "cve": "CVE-2026-11768",
+      "title": "CVE-2026-11768",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 12.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read private CI/CD job artifacts belonging to other projects through GitLab Pages due to improper validation of file paths.",
+      "published": "2026-11-17T05:18:32.903",
+      "last_modified": "2026-11-17T05:18:32.903",
+      "cvss": 5.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-11768"
+    },
+    {
+      "cve": "CVE-2026-118961",
+      "title": "CVE-2026-118961",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.11 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read commit comments from a private source fork through a public project's merge request discussions due to missing authorization checks.",
+      "published": "2026-11-17T05:18:32.753",
+      "last_modified": "2026-11-17T05:18:32.753",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118961"
+    },
+    {
+      "cve": "CVE-2026-115736",
+      "title": "CVE-2026-115736",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to view unredacted secret values from secret detection findings they had access to through GitLab Duo Agent Platform due to improper authorization checks.",
+      "published": "2026-11-17T05:18:32.603",
+      "last_modified": "2026-11-17T05:18:32.603",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115736"
+    },
+    {
+      "cve": "CVE-2026-115428",
+      "title": "CVE-2026-115428",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user with a valid agent token to cause a denial of service in the GitLab agent server (KAS) due to improper input validation.",
+      "published": "2026-11-17T05:18:32.453",
+      "last_modified": "2026-11-17T05:18:32.453",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115428"
+    },
+    {
+      "cve": "CVE-2026-115219",
+      "title": "CVE-2026-115219",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 19.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to enable Amazon Q automatic code reviews on a project despite an administrator lock due to improper enforcement of instance-level settings.",
+      "published": "2026-11-17T05:18:32.283",
+      "last_modified": "2026-11-17T05:18:32.283",
+      "cvss": 3.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115219"
+    },
+    {
+      "cve": "CVE-2026-115218",
+      "title": "CVE-2026-115218",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.8 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read NuGet package metadata that should not have been accessible due to missing authorization checks.",
+      "published": "2026-11-17T05:18:32.123",
+      "last_modified": "2026-11-17T05:18:32.123",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115218"
+    },
+    {
+      "cve": "CVE-2026-112203",
+      "title": "CVE-2026-112203",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 18.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an individual controlling an upstream repository to alter cached Maven packages from other repositories in the same virtual registry due to improper response validation.",
+      "published": "2026-11-17T05:18:31.773",
+      "last_modified": "2026-11-17T05:18:31.773",
+      "cvss": 5.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112203"
+    },
+    {
+      "cve": "CVE-2026-111747",
+      "title": "CVE-2026-111747",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to hide changes from reviewers in merge request diffs due to improper handling of file names.",
+      "published": "2026-11-17T05:18:31.447",
+      "last_modified": "2026-11-17T05:18:31.447",
+      "cvss": 3.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111747"
+    },
+    {
+      "cve": "CVE-2026-110990",
+      "title": "CVE-2026-110990",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.1.7 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed sensitive credential values submitted in GraphQL requests to be written to logs in plaintext due to incomplete filtering of sensitive data.",
+      "published": "2026-11-17T05:18:31.273",
+      "last_modified": "2026-11-17T05:18:31.273",
+      "cvss": 2.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110990"
+    },
+    {
+      "cve": "CVE-2026-110750",
+      "title": "CVE-2026-110750",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Git LFS objects from projects restricted by External Authorization due to missing authorization checks.",
+      "published": "2026-11-17T05:18:31.113",
+      "last_modified": "2026-11-17T05:18:31.113",
+      "cvss": 2.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110750"
+    },
+    {
+      "cve": "CVE-2026-108155",
+      "title": "CVE-2026-108155",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 8.12 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read Git LFS objects from restricted projects due to incorrect authorization checks.",
+      "published": "2026-11-17T05:18:30.810",
+      "last_modified": "2026-11-17T05:18:30.810",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108155"
+    },
+    {
+      "cve": "CVE-2026-108154",
+      "title": "CVE-2026-108154",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 8.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to import Git repositories into projects despite administrator restrictions on import sources due to missing authorization checks.",
+      "published": "2026-11-17T05:18:30.667",
+      "last_modified": "2026-11-17T05:18:30.667",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108154"
+    },
+    {
+      "cve": "CVE-2026-108153",
+      "title": "CVE-2026-108153",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 16.1 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to execute arbitrary JavaScript in the browser of users viewing Error Tracking pages due to improper sanitization of user input.",
+      "published": "2026-11-17T05:18:30.500",
+      "last_modified": "2026-11-17T05:18:30.500",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108153"
+    },
+    {
+      "cve": "CVE-2026-108150",
+      "title": "CVE-2026-108150",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.12 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read private CI/CD template files from projects they did not have access to due to missing authorization checks.",
+      "published": "2026-11-17T05:18:30.347",
+      "last_modified": "2026-11-17T05:18:30.347",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108150"
+    },
+    {
+      "cve": "CVE-2026-105739",
+      "title": "CVE-2026-105739",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.2 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to execute arbitrary JavaScript in the browser of users viewing a wiki page due to improper sanitization of user input.",
+      "published": "2026-11-17T05:18:29.513",
+      "last_modified": "2026-11-17T05:18:29.513",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105739"
+    },
+    {
+      "cve": "CVE-2026-104934",
+      "title": "CVE-2026-104934",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an unauthenticated user to read files from a project's private repository due to missing authorization checks in snippets.",
+      "published": "2026-11-17T05:18:29.350",
+      "last_modified": "2026-11-17T05:18:29.350",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104934"
+    },
+    {
+      "cve": "CVE-2026-104902",
+      "title": "CVE-2026-104902",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.7 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read GitLab Duo seat assignments and usage data from other groups due to improper authorization checks.",
+      "published": "2026-11-17T05:18:29.063",
+      "last_modified": "2026-11-17T05:18:29.063",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104902"
+    },
+    {
+      "cve": "CVE-2026-104717",
+      "title": "CVE-2026-104717",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 13.4 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to view iteration details from private groups they did not have access to due to missing authorization checks.",
+      "published": "2026-11-17T05:18:28.910",
+      "last_modified": "2026-11-17T05:18:28.910",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104717"
+    },
+    {
+      "cve": "CVE-2026-102907",
+      "title": "CVE-2026-102907",
+      "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 14.0 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to create issues with locked discussions despite lacking the required permissions due to improper authorization checks.",
+      "published": "2026-11-17T05:18:28.463",
+      "last_modified": "2026-11-17T05:18:28.463",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-102907"
+    },
+    {
+      "cve": "CVE-2026-101358",
+      "title": "CVE-2026-101358",
+      "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.10 before 19.3.9, 19.4 before 19.4.8, and 19.5 before 19.5.6 that under certain conditions could have allowed an authenticated user to read CI/CD variable metadata from projects they did not have access to due to improper authorization in pipeline execution policies.",
+      "published": "2026-11-17T05:18:27.950",
+      "last_modified": "2026-11-17T05:18:27.950",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101358"
+    },
     {
       "cve": "CVE-2026-107902",
       "title": "CVE-2026-107902",
@@ -1038,7 +1587,7 @@
       "title": "CVE-2026-111760",
       "description": "Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals. Prior to 2.50.2, 2.51.3, 2.52.1, 2.53.1, 2.54.1, 2.55.1, and 2.56.1, an attacker-controlled repository hosted by the attacker rather than on a normal forge site can exploit git clone --recurse-submodules by causing Git to overwrite a submodule gitfile with a symbolic link. The symbolic link can point to a directory containing attacker-controlled Git configuration or hooks, allowing those hooks or configuration to execute code on the cloning user's system. The issue requires the recursive-submodule option, and users should avoid cloning repositories from untrusted sources. This issue is fixed in versions 2.50.2, 2.51.3, 2.52.1, 2.53.1, 2.54.1, 2.55.1, and 2.56.1.",
       "published": "2026-11-16T21:17:18.907",
-      "last_modified": "2026-11-16T22:18:13.643",
+      "last_modified": "2026-11-17T05:18:31.607",
       "cvss": 8.0,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-111760"
     },
@@ -1182,7 +1731,7 @@
       "title": "CVE-2026-126526",
       "description": "Heap-based buffer overflow in Microsoft Office OneNote allows an unauthorized attacker to execute code over a network.",
       "published": "2026-11-16T20:19:00.043",
-      "last_modified": "2026-11-16T21:17:24.883",
+      "last_modified": "2026-11-17T05:18:35.507",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126526"
     },
@@ -1191,7 +1740,7 @@
       "title": "CVE-2026-124223",
       "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
       "published": "2026-11-16T20:18:56.737",
-      "last_modified": "2026-11-16T21:17:21.690",
+      "last_modified": "2026-11-17T05:18:34.727",
       "cvss": 8.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124223"
     },
@@ -1200,7 +1749,7 @@
       "title": "CVE-2026-124222",
       "description": "Improper authorization in Microsoft Office SharePoint allows an authorized attacker to elevate privileges over a network.",
       "published": "2026-11-16T20:18:56.547",
-      "last_modified": "2026-11-16T21:17:21.550",
+      "last_modified": "2026-11-17T05:18:34.537",
       "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124222"
     },
@@ -1257,559 +1806,10 @@
       "last_modified": "2026-11-16T21:17:26.407",
       "cvss": 8.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129266"
-    },
-    {
-      "cve": "CVE-2026-129046",
-      "title": "CVE-2026-129046",
-      "description": "Missing Authorization vulnerability in Crocoblock JetFormBuilder jetformbuilder allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects JetFormBuilder: from n/a through 3.6.8.1.",
-      "published": "2026-11-16T19:17:38.070",
-      "last_modified": "2026-11-16T19:17:38.180",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129046"
-    },
-    {
-      "cve": "CVE-2026-129038",
-      "title": "CVE-2026-129038",
-      "description": "Missing Authorization vulnerability in weDevs WP ERP erp allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP ERP: from n/a through 1.17.11.",
-      "published": "2026-11-16T19:17:37.927",
-      "last_modified": "2026-11-16T19:17:38.033",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129038"
-    },
-    {
-      "cve": "CVE-2026-129035",
-      "title": "CVE-2026-129035",
-      "description": "Missing Authorization vulnerability in weDevs WP User Frontend wp-user-frontend allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP User Frontend: from n/a through 4.3.14.",
-      "published": "2026-11-16T19:17:37.770",
-      "last_modified": "2026-11-16T19:17:37.893",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129035"
-    },
-    {
-      "cve": "CVE-2026-129026",
-      "title": "CVE-2026-129026",
-      "description": "Missing Authorization vulnerability in YITH YITH WooCommerce Product Add-Ons yith-woocommerce-product-add-ons allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects YITH WooCommerce Product Add-Ons: from n/a through 4.35.0.",
-      "published": "2026-11-16T19:17:37.617",
-      "last_modified": "2026-11-16T19:17:37.733",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129026"
-    },
-    {
-      "cve": "CVE-2026-129018",
-      "title": "CVE-2026-129018",
-      "description": "Missing Authorization vulnerability in Gora Tech Cooked cooked allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Cooked: from n/a through 1.17.0.",
-      "published": "2026-11-16T19:17:37.473",
-      "last_modified": "2026-11-16T21:17:26.297",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129018"
-    },
-    {
-      "cve": "CVE-2026-128998",
-      "title": "CVE-2026-128998",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in Automattic WP Job Manager wp-job-manager allows Code Injection.This issue affects WP Job Manager: from n/a through 2.4.10.",
-      "published": "2026-11-16T19:17:37.333",
-      "last_modified": "2026-11-16T19:17:37.440",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128998"
-    },
-    {
-      "cve": "CVE-2026-128995",
-      "title": "CVE-2026-128995",
-      "description": "Missing Authorization vulnerability in Very Good Plugins WP Fusion Lite wp-fusion-lite allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP Fusion Lite: from n/a through 3.48.0.",
-      "published": "2026-11-16T19:17:37.187",
-      "last_modified": "2026-11-16T19:17:37.297",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128995"
-    },
-    {
-      "cve": "CVE-2026-127218",
-      "title": "CVE-2026-127218",
-      "description": "Axigen Mail Server 10.3.3.67 through 10.3.3.x, 10.4.42 through 10.4.x, 10.5.29 through 10.5.x, 10.6.x before 10.6.41, and 10.7.x before 10.7.3 contains an unauthenticated denial of service vulnerability caused by uncontrolled recursion when validating query parameter and cookie values with a recursive regular expression engine before authentication in the WebAdmin and WebMail services. Attackers can send a single HTTP request with a query parameter or cookie value of a few thousand characters to exhaust the worker thread stack and crash the server process, taking down SMTP, IMAP, POP3, and web services repeatedly.",
-      "published": "2026-11-16T19:17:35.103",
-      "last_modified": "2026-11-16T19:17:35.103",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127218"
-    },
-    {
-      "cve": "CVE-2026-125797",
-      "title": "CVE-2026-125797",
-      "description": "Missing Authorization vulnerability in Arraytics Timetics timetics allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Timetics: from n/a through 1.0.66.",
-      "published": "2026-11-16T19:17:30.647",
-      "last_modified": "2026-11-16T19:17:30.767",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125797"
-    },
-    {
-      "cve": "CVE-2026-125773",
-      "title": "CVE-2026-125773",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in VillaTheme Lucky Wheel for WooCommerce – Spin a Sale woo-lucky-wheel allows Code Injection.This issue affects Lucky Wheel for WooCommerce – Spin a Sale: from n/a through 1.2.4.",
-      "published": "2026-11-16T19:17:30.490",
-      "last_modified": "2026-11-16T19:17:30.610",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125773"
-    },
-    {
-      "cve": "CVE-2026-125770",
-      "title": "CVE-2026-125770",
-      "description": "Missing Authorization vulnerability in ThimPress LearnPress learnpress allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects LearnPress: from n/a through 4.4.13.",
-      "published": "2026-11-16T19:17:30.350",
-      "last_modified": "2026-11-16T21:17:22.230",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125770"
-    },
-    {
-      "cve": "CVE-2026-125739",
-      "title": "CVE-2026-125739",
-      "description": "Missing Authorization vulnerability in ThimPress LearnPress learnpress allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects LearnPress: from n/a through 4.4.13.",
-      "published": "2026-11-16T19:17:30.127",
-      "last_modified": "2026-11-16T19:17:30.237",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125739"
-    },
-    {
-      "cve": "CVE-2026-125681",
-      "title": "CVE-2026-125681",
-      "description": "Missing Authorization vulnerability in ThimPress LearnPress learnpress allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects LearnPress: from n/a through 4.4.13.",
-      "published": "2026-11-16T19:17:29.053",
-      "last_modified": "2026-11-16T19:17:30.090",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125681"
-    },
-    {
-      "cve": "CVE-2026-125453",
-      "title": "CVE-2026-125453",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in ThimPress LearnPress learnpress allows Code Injection.This issue affects LearnPress: from n/a through 4.4.13.",
-      "published": "2026-11-16T19:17:28.903",
-      "last_modified": "2026-11-16T19:17:29.020",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125453"
-    },
-    {
-      "cve": "CVE-2026-125442",
-      "title": "CVE-2026-125442",
-      "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in PluginUs.Net HUSKY woocommerce-products-filter allows Code Injection.This issue affects HUSKY: from n/a through 1.4.7.",
-      "published": "2026-11-16T19:17:28.710",
-      "last_modified": "2026-11-16T19:17:28.837",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125442"
-    },
-    {
-      "cve": "CVE-2026-119790",
-      "title": "CVE-2026-119790",
-      "description": "Next.js is a React framework for building full-stack web applications. From 16.3.0 until 16.4.5, Next.js applications using the same 'use cache' function directly during rendering and through unstable_cache() can disclose cached data across root params when that function reads a root param. During the first fill after a cold process start, cross-request deduplication allows a concurrent unstable_cache() request to join the direct call's in-flight fill and receive its result before the root param mismatch is rejected. unstable_cache() then persists that result under a key that omits root params, causing later requests for other root param values to receive the same entry until revalidation or eviction. Exploitation requires the unstable_cache() request to arrive while the first fill is in flight. Outside this race, nesting 'use cache' inside unstable_cache() raises an unsupported-operatio",
-      "published": "2026-11-16T19:17:27.627",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119790"
-    },
-    {
-      "cve": "CVE-2026-119351",
-      "title": "CVE-2026-119351",
-      "description": "Next.js is a React framework for building full-stack web applications. From 16.2.0 until 16.4.5, Next.js applications with Cache Components enabled can reuse an outer 'use cache' entry across root param values when a nested 'use cache' call reads a root param through next/root-params and returns a value containing pending promises. React Flight can deliver the ready portion to the outer function before the inner cache finishes publishing its root-param dependencies. The outer entry can then complete and be persisted under a key that omits the root param, causing the first written value to be served for other root param values and allowing the outer entry to ignore nested cache tag invalidation and lifetimes. The leaked value is not attacker controlled and depends on which invocation writes the entry first. This variant does not require an existing inner cache entry or a slow cache handle",
-      "published": "2026-11-16T19:17:27.350",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119351"
-    },
-    {
-      "cve": "CVE-2026-119350",
-      "title": "CVE-2026-119350",
-      "description": "Next.js is a React framework for building full-stack web applications. From 16.4.0 until 16.4.5, self-hosted Next.js applications served with next start can allow an unauthenticated request to poison a shared fallback shell when cacheComponents is true and partialPrefetching is unset or false. The affected dynamic route must have a prerenderable param declared by generateStaticParams whose requested value was not generated at build time, at least two never-prerenderable params below it, a layout that reads the shallower param inside a Suspense boundary, and a blocking fallback shell. A request-supplied placeholder route param whose path segment equals the percent-encoded bracketed name of its own deeper route param is incorrectly treated as unresolved, while the shallower concrete value is rendered into the shared shell and its HTTP status is persisted. Depending on application behavior,",
-      "published": "2026-11-16T19:17:27.183",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119350"
-    },
-    {
-      "cve": "CVE-2026-119349",
-      "title": "CVE-2026-119349",
-      "description": "Next.js is a React framework for building full-stack web applications. From 16.0.0 until 16.4.5, Next.js App Router applications that pass binary arguments, such as Uint8Array or Blob values, to functions using the 'use cache' directive can generate identical cache keys for distinct arguments. Requests with different binary arguments can therefore share a cached result, causing cross-user disclosure of cached data or allowing one request to poison results returned to another user. This issue is fixed in version 16.4.5.",
-      "published": "2026-11-16T19:17:27.007",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119349"
-    },
-    {
-      "cve": "CVE-2026-119348",
-      "title": "CVE-2026-119348",
-      "description": "Next.js is a React framework for building full-stack web applications. Prior to 15.5.29 and 16.4.5, self-hosted Next.js App Router route handlers and the fetch cache that return a fetched upstream response unchanged can emit a response whose declared framing does not match the body actually sent. When the application is behind an HTTP/1.1 reverse proxy that permits pipelined response queueing, a crafted upstream response can desynchronize responses between clients. The resulting desynchronization can inject a response into another client's queue or disclose another client's response. This issue is fixed in versions 16.4.5 and 15.5.29.",
-      "published": "2026-11-16T19:17:26.850",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119348"
-    },
-    {
-      "cve": "CVE-2026-119347",
-      "title": "CVE-2026-119347",
-      "description": "Next.js is a React framework for building full-stack web applications. From 15.0.0 until 15.5.29 and 16.4.5, the /_next/image optimizer in self-hosted Next.js deployments can process attacker-supplied SVG content even when dangerouslyAllowSVG is false, which is the default. The SVG reaches a parser that the application intended to keep disabled, increasing exposure to denial of service and vulnerabilities in SVG decoding. This issue is fixed in versions 16.4.5 and 15.5.29.",
-      "published": "2026-11-16T19:17:26.680",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119347"
-    },
-    {
-      "cve": "CVE-2026-119346",
-      "title": "CVE-2026-119346",
-      "description": "Next.js is a React framework for building full-stack web applications. From 15.0.0 until 15.5.29 and 16.4.5, Next.js applications that use NextResponse to set cookies on Edge runtime routes expose the internal x-middleware-set-cookie header in the public response. This affects App Router route handlers and Pages Router Edge API routes. The header duplicates each cookie value and its attributes, so JavaScript already running on the same origin can read values that the Set-Cookie header marks HttpOnly, including sensitive session tokens set on an affected response. This issue is fixed in versions 16.4.5 and 15.5.29.",
-      "published": "2026-11-16T19:17:26.453",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119346"
-    },
-    {
-      "cve": "CVE-2026-101327",
-      "title": "CVE-2026-101327",
-      "description": "A maliciously crafted DLL placed in a predictable, attacker-writable temporary directory used by the Autodesk Installer can lead to privilege escalation to NT AUTHORITY\\SYSTEM due to insufficient validation of loaded libraries. An attacker with local and low-privilege access could exploit this vulnerability to execute arbitrary code as SYSTEM.",
-      "published": "2026-11-16T19:17:23.323",
-      "last_modified": "2026-11-16T21:17:16.770",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101327"
-    },
-    {
-      "cve": "CVE-2026-129306",
-      "title": "CVE-2026-129306",
-      "description": "libspdm is a sample implementation that follows the DMTF SPDM specifications. Prior to 3.8.3 and 4.0.0-rc2, libspdm_x509_verify_cert_chain() in os_stub/cryptlib_openssl/pk/x509.c and os_stub/cryptlib_mbedtls/pk/x509.c validates certificate signatures one link at a time instead of validating the complete X.509 path. In deployments using a pinned root with a constrained multi-tier PKI, an attacker holding a valid issuer credential below a constrained CA can present a subordinate certificate that exceeds pathLenConstraint or nameConstraints and may be accepted for SPDM identity validation. Exploitation requires the application to use libspdm's backend validation without an additional certificate-chain validation mechanism, the pinned root cannot be substituted, and the deployment's measurement policy must allow identity impersonation alone to satisfy its acceptance requirements. The mbedTLS",
-      "published": "2026-11-16T18:17:31.340",
-      "last_modified": "2026-11-16T19:17:40.737",
-      "cvss": 4.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129306"
-    },
-    {
-      "cve": "CVE-2026-129301",
-      "title": "CVE-2026-129301",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 4.6.0 until 4.6.3, write_attachments() calls _safe_attachment_filename() and write_sample() without isolating failures for individual attacker-controlled MIME parts. An RFC 2231 filename containing a NUL, a basename exceeding NAME_MAX, or an undecodable base64 payload can raise ValueError, OSError, or binascii.Error and abort the entire save loop. Later attachments remain unwritten; when a caller catches only MailParserError, the failure is not surfaced through the expected library-exception path. If a downstream scanner or sandbox reads only the extraction directory, a payload after the crafted part can be missed even though it remains in the delivered message, and the aborted batch also causes availability loss. This issue is fixed in versio",
-      "published": "2026-11-16T18:17:31.190",
-      "last_modified": "2026-11-16T18:17:31.190",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129301"
-    },
-    {
-      "cve": "CVE-2026-129300",
-      "title": "CVE-2026-129300",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 3.7.0 until 4.6.3, receiveds_format() in src/mailparser/utils.py catches only TypeError and ValueError while converting the trailing date of an attacker-controlled Received header. An out-of-range year can cause calendar.timegm() to raise OverflowError, and a sufficiently large timezone offset can cause datetime.fromtimestamp() to raise OSError. These exceptions are outside the MailParserError hierarchy, so one crafted header can abort the entire message parse through every parse_from_* entry point and may drop a queued batch. This issue is fixed in version 4.6.3.",
-      "published": "2026-11-16T18:17:30.987",
-      "last_modified": "2026-11-16T18:17:30.987",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129300"
-    },
-    {
-      "cve": "CVE-2026-129299",
-      "title": "CVE-2026-129299",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. Prior to 4.6.2, multiple message-processing behaviors can raise exceptions or silently lose content. Headers colliding with methods such as Parse, Message, and Write_Attachments can place bound method objects into parsed output and raise TypeError when a caller requests JSON serialization such as mail_json. When byte input is parsed through parse_from_bytes(), an 8-bit header value returned as email.header.Header can likewise raise TypeError when an X_raw accessor passes the value to json.dumps; both exceptions are outside the MailParserError hierarchy. Separately, rewritten names such as Subject_json and X_Spam_Flag can be substituted or disappear from mail, headers, and JSON output while has_defects remains false, and a headerless message can be ",
-      "published": "2026-11-16T18:17:30.787",
-      "last_modified": "2026-11-16T19:17:40.623",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129299"
-    },
-    {
-      "cve": "CVE-2026-129297",
-      "title": "CVE-2026-129297",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. Prior to 4.6.2, get_server_ipaddress() can select an attacker-controlled address from attacker-controlled Received headers. The minimum mechanism needed to distinguish this spoofing issue, derived from the advisory's remediation analysis and verified fix evidence, is appearance-based candidate selection that can treat bracketed IPv4 or IPv6 addresses or HELO markers in sender-written text as MTA-recorded addresses and can continue past a trusted hop that names no address. Applications that rely on the returned value can attribute a message to an attacker-selected sender IP address. This issue is fixed in version 4.6.2.",
-      "published": "2026-11-16T18:17:30.590",
-      "last_modified": "2026-11-16T18:17:30.590",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129297"
-    },
-    {
-      "cve": "CVE-2026-129296",
-      "title": "CVE-2026-129296",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 3.8.0 until 4.6.0, the write_attachments() and write_sample() APIs use attacker-controlled attachment filenames without sufficient sanitization and path containment validation. Directory traversal sequences and absolute filesystem paths can cause an attachment to be written outside the intended output directory. An attacker can overwrite files accessible to the parsing process when an application extracts attachments from a crafted message. This issue is fixed in version 4.6.0.",
-      "published": "2026-11-16T18:17:30.390",
-      "last_modified": "2026-11-16T18:17:30.390",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129296"
-    },
-    {
-      "cve": "CVE-2026-129295",
-      "title": "CVE-2026-129295",
-      "description": "mail-parser is a tool that parses emails by enhancing the Python standard library and extracting message details into a comprehensive object. From 4.2.0 until 4.6.1, attacker-controlled email headers can cause polynomial regular-expression backtracking during ordinary parse_from_string(), parse_from_bytes(), or parse_from_file() calls. In src/mailparser/utils.py, get_addresses() invokes the _ADDR_FALLBACK_RE fallback when strict address parsing yields no usable address, and overlapping quantifiers rescan padded address headers quadratically or cubically. In src/mailparser/const.py, parse_received() applies _CLAUSE_SPLITTER to uncollapsed whitespace in a Received header, causing quadratic backtracking when a whitespace run is not followed by a clause keyword. A small, well-formed message can keep mail gateway, ticketing, quarantine, or archival parsing workers busy for extended periods. T",
-      "published": "2026-11-16T18:17:30.183",
-      "last_modified": "2026-11-16T18:17:30.183",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129295"
-    },
-    {
-      "cve": "CVE-2026-98100",
-      "title": "CVE-2026-98100",
-      "description": "LibreOffice can import documents in the HWP format, including pictures that link to an external file. An out-of-bounds read existed when the link target of a crafted picture was read, so memory past the picture data could end up in the converted document. In fixed versions the link target is taken only from the picture data.",
-      "published": "2026-11-16T17:17:55.453",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-98100"
-    },
-    {
-      "cve": "CVE-2026-97999",
-      "title": "CVE-2026-97999",
-      "description": "LibreOffice Base documents can hold an embedded HSQLDB database. When the experimental features option is enabled, LibreOffice offers to migrate such a database to the embedded Firebird engine when the document is opened. A heap buffer overflow existed when binary values were copied during the migration, because a value could be longer than the space set aside for its column. In fixed versions that space is enlarged whenever a value is longer than its column.",
-      "published": "2026-11-16T17:17:55.303",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97999"
-    },
-    {
-      "cve": "CVE-2026-97894",
-      "title": "CVE-2026-97894",
-      "description": "LibreOffice Calc can open spreadsheets in the DIF format, and text files such as CSV in the UTF-16 encoding. Both are read one line at a time. An out-of-bounds read existed when a line of a crafted file was read, because the length of the line could be miscalculated, so memory beyond the line could be copied into the imported document. In fixed versions each line is read up to its limit and no further.",
-      "published": "2026-11-16T17:17:55.150",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97894"
-    },
-    {
-      "cve": "CVE-2026-97892",
-      "title": "CVE-2026-97892",
-      "description": "LibreOffice checks the digital signatures of a PDF document when the document is opened, and shows whether each signature is valid. An out-of-bounds write existed when a signature was checked, because the parts of the file that a crafted signature claims to cover were not checked against the size of the file. In fixed versions a signature that claims to cover anything outside the file is reported as not valid.",
-      "published": "2026-11-16T17:17:54.993",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-97892"
-    },
-    {
-      "cve": "CVE-2026-91115",
-      "title": "CVE-2026-91115",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. From 6.0.0 until 6.2.13, the writer option of i18nTextCollectorTask is passed to the dependency injector without validating that it names an allowed writer implementation. A crafted dev task URL can therefore instantiate arbitrary objects with attacker-controlled constructor arguments and execute code on the server. An administrator can be induced to run the task by following a link because the nested task did not require confirmation, and a site in dev mode exposes the path without authentication. CMS 5 is not affected. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:37.480",
-      "last_modified": "2026-11-16T22:18:25.827",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91115"
-    },
-    {
-      "cve": "CVE-2026-91114",
-      "title": "CVE-2026-91114",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, PermissionCheckboxSetField accepts permission codes that the field did not offer and stores them without an allowlist, then renders permission codes without escaping them. A user with access to the Security section can save attacker-controlled content as a permission code, causing JavaScript to execute in the browser of another user who views the field. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:37.217",
-      "last_modified": "2026-11-16T18:17:33.827",
-      "cvss": 4.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91114"
-    },
-    {
-      "cve": "CVE-2026-91113",
-      "title": "CVE-2026-91113",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, a CMS user who can edit a record through a GridField detail form can submit a user-controlled ClassName value to change the record into an unrelated class without the create and edit permission checks required for that target class. This permits an unauthorized record type change outside the GridField's intended model hierarchy. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.967",
-      "last_modified": "2026-11-16T18:17:33.527",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91113"
-    },
-    {
-      "cve": "CVE-2026-91112",
-      "title": "CVE-2026-91112",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, a user with CMS_ACCESS_SecurityAdmin but without ADMIN can edit or reparent a group that grants ADMIN-equivalent permissions through an assigned role or a parent group, thereby escalating to full administrative privileges. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.797",
-      "last_modified": "2026-11-16T17:17:36.797",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91112"
-    },
-    {
-      "cve": "CVE-2026-91110",
-      "title": "CVE-2026-91110",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, the HTML sanitiser does not normalize certain control bytes that browsers ignore when parsing URLs. A CMS author can place those bytes before a javascript: URL in stored content so the sanitiser misses the dangerous scheme, and JavaScript executes in the browser of another user who views the content. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.647",
-      "last_modified": "2026-11-16T17:17:36.647",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-91110"
-    },
-    {
-      "cve": "CVE-2026-88989",
-      "title": "CVE-2026-88989",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, a CMS user who can edit records through a GridField detail form can send a direct save request that creates a new record even when the user does not have permission to create that record type. The server-side save path checks edit access but does not enforce the required create permission before persistence. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.503",
-      "last_modified": "2026-11-16T17:17:36.503",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88989"
-    },
-    {
-      "cve": "CVE-2026-88988",
-      "title": "CVE-2026-88988",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, the HTML sanitiser does not remove SVG data URIs from stored CMS content even though SVG documents can execute script. A CMS author can save such content, and JavaScript executes in the browser of another user who views it. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.357",
-      "last_modified": "2026-11-16T19:17:54.110",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88988"
-    },
-    {
-      "cve": "CVE-2026-88987",
-      "title": "CVE-2026-88987",
-      "description": "Silverstripe Framework is a PHP framework which powers the Silverstripe CMS. Prior to 6.2.13, the HTML sanitiser does not remove script-capable XHTML and XML data URIs from stored CMS content. A CMS author can save such content, and JavaScript executes in the browser of another user who views it. This issue is fixed in version 6.2.13.",
-      "published": "2026-11-16T17:17:36.190",
-      "last_modified": "2026-11-16T19:17:54.007",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88987"
-    },
-    {
-      "cve": "CVE-2026-87932",
-      "title": "CVE-2026-87932",
-      "description": "LibreOffice Writer can save documents in DOCX format. A document can contain content controls whose values are bound to custom XML data, and that data is updated with the current values when the document is exported, including in a conversion run from the command line. Values taken from the document were not escaped where they were used, so a crafted document could write a file of its choosing anywhere the user can write when it was exported to DOCX. In fixed versions these values are written into the document directly, and the XSLT transformations LibreOffice runs can no longer write files or use the network.",
-      "published": "2026-11-16T17:17:36.050",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87932"
-    },
-    {
-      "cve": "CVE-2026-86046",
-      "title": "CVE-2026-86046",
-      "description": "termux-sync is an open source tool for backing up and restoring a Termux environment across devices. Prior to 1.2.4, termux-sync restore uses the parent directory of the untrusted manifest.json files.*.source value as an extraction destination, and extract_archive calls tarfile.extract on archive members without enforcing a destination boundary. A victim who restores a malicious or tampered backup from local, shared, GitHub, or Google Drive storage can have files written anywhere the Termux user can write, including shell startup files or executable scripts that can lead to code execution when later used. The restore path also accepts unsafe backup_name values for temporary paths, and archive members are not constrained to the intended destination. This issue is fixed in version 1.2.4.",
-      "published": "2026-11-16T17:17:35.707",
-      "last_modified": "2026-11-16T19:17:53.730",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86046"
-    },
-    {
-      "cve": "CVE-2026-84443",
-      "title": "CVE-2026-84443",
-      "description": "LibreOffice Base documents can bind macros to document events, such as opening or closing the document. The macro security setting decides whether macros that come with a document may run. Macros bound to the events of a Base document were run without the macro security setting being applied, so opening or converting a crafted database document could run a macro and, through it, any command. In fixed versions macros bound to the events of a Base document follow the macro security setting, as macros in other documents do.",
-      "published": "2026-11-16T17:17:35.570",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84443"
-    },
-    {
-      "cve": "CVE-2026-84234",
-      "title": "CVE-2026-84234",
-      "description": "LibreOffice can open PDF files in Draw, where the PDF import converts each page into drawing objects that can be edited. Images in the PDF, including images with a transparency mask, are converted along the way. An out-of-bounds write existed when an image with a transparency mask was converted, because positions taken from a crafted image were not checked against the size of the image buffer. In fixed versions the image size is limited, and the position of each mask pixel is checked before it is written.",
-      "published": "2026-11-16T17:17:35.427",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84234"
-    },
-    {
-      "cve": "CVE-2026-64890",
-      "title": "CVE-2026-64890",
-      "description": ": Cleartext Storage of Sensitive Information vulnerability in Johnson Controls Open Blue Companion Android App on Android allows : Retrieve Embedded Secrets from Software.\n\nThis issue affects Open Blue Companion Android App: before R2.22.0.",
-      "published": "2026-11-16T17:17:34.840",
-      "last_modified": "2026-11-16T17:17:34.840",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-64890"
-    },
-    {
-      "cve": "CVE-2026-18566",
-      "title": "CVE-2026-18566",
-      "description": "LibreOffice can import EMF, EMF+ and WMF images, which may be embedded in documents. Several out-of-bounds reads existed in the readers for these formats, because sizes, counts and offsets taken from a crafted image were not checked against the data the image actually holds. In fixed versions these values are checked against the size of each record and the data that remains, and a record that fails the checks is not used.",
-      "published": "2026-11-16T17:17:33.960",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18566"
-    },
-    {
-      "cve": "CVE-2026-18565",
-      "title": "CVE-2026-18565",
-      "description": "LibreOffice has an option, called stealth mode in earlier advisories, that stops documents from outside the trusted file locations from loading linked images and other content. The option is not on by default. With the option on, a linked background image in an HTML document was still fetched while the document was imported. In fixed versions a linked background image is checked against the option like other linked images, and is not fetched when the option blocks it.",
-      "published": "2026-11-16T17:17:33.803",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 1.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18565"
-    },
-    {
-      "cve": "CVE-2026-18564",
-      "title": "CVE-2026-18564",
-      "description": "LibreOffice can export documents to PDF protected by a password. With the PDF 2.0 option the file is encrypted with 256-bit AES, using a file encryption key and salts that are meant to be random. The key and the salts were drawn from a pseudo-random number generator that is not suitable for cryptography, so the encryption key of an exported PDF could be recovered without knowing the password. In fixed versions the key and the salts are drawn from the random source of the operating system.",
-      "published": "2026-11-16T17:17:33.660",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18564"
-    },
-    {
-      "cve": "CVE-2026-18563",
-      "title": "CVE-2026-18563",
-      "description": "LibreOffice supports fonts embedded in documents. When a document is exported to PDF, the fonts it uses are embedded in the PDF, and a font in CFF (Compact Font Format) is converted to another font format on the way. An out-of-bounds write existed when the charstring program of a crafted font was interpreted, because some indexes and ranges taken from the font were not checked against the size of the data they refer to. In fixed versions these indexes and ranges are checked, and a font that fails the checks is not converted.",
-      "published": "2026-11-16T17:17:33.510",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18563"
-    },
-    {
-      "cve": "CVE-2026-129239",
-      "title": "CVE-2026-129239",
-      "description": "Directus is a real-time API and App dashboard for managing SQL database content. Prior to 12.3.1, Directus allows an authenticated non-admin with update permission on directus_shares to modify user_created, role, item, and collection on an existing owned share because authorization checks the pre-update row and does not revalidate the merged row. The update path does not force user_created to the acting user or rerun share access checks when item or collection changes. Setting user_created and role to administrator identifiers causes guest share authentication to derive administrator accountability from both fields, exposing data reachable from the shared item beyond the owner and share role permissions. The issue requires update permission on directus_shares, an item the account can share, and knowledge of administrator user and role identifiers, and it does not issue an administrator t",
-      "published": "2026-11-16T17:17:31.633",
-      "last_modified": "2026-11-16T18:17:30.063",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129239"
-    },
-    {
-      "cve": "CVE-2026-129237",
-      "title": "CVE-2026-129237",
-      "description": "qbee-agent is the device agent component of the qbee.io IoT device management platform. Prior to 2026.41, the unpackTar extraction logic in app/utils/tar.go validates cleaned archive entry paths with strings.HasPrefix(targetPath, destdirClean) without enforcing a path-separator boundary. When UseContext enables the Docker Compose build context path in app/configuration/bundle_docker_compose.go, a less-privileged archive supplier with delegated configuration and/or file-manager access can provide a sibling-prefix traversal entry that passes the check, causing utils.UnpackTar to create directories and regular files outside the intended context extraction directory with qbee-agent process privileges, despite the supplier lacking authority to write those sibling files. In deployments where only full device or fleet administrators can provide Docker Compose context archives, this behavior is ",
-      "published": "2026-11-16T17:17:31.470",
-      "last_modified": "2026-11-16T17:17:31.470",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129237"
-    },
-    {
-      "cve": "CVE-2026-129236",
-      "title": "CVE-2026-129236",
-      "description": "Kubeshark is an eBPF-powered network observability tool for Kubernetes. From 53.1.0 until 53.4.0, the start_kubeshark MCP tool in cmd/mcpRunner.go uses callStartKubeshark to append caller-controlled pod_regex as a bare positional argument to kubeshark tap without a -- end-of-options separator, allowing a value beginning with --set to be parsed as a Helm value override. An attacker who influences tool arguments against kubeshark mcp --allow-destructive can redirect the privileged worker, Hub, and front images through tap.docker.registry and tap.docker.tag to an attacker-controlled registry. Because the deployed worker DaemonSet runs privileged with host networking and host filesystem access, a malicious image can obtain node and cluster-admin access when the host already has permission to deploy it. This issue is fixed in version 53.4.0.",
-      "published": "2026-11-16T17:17:31.313",
-      "last_modified": "2026-11-16T17:17:31.313",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129236"
-    },
-    {
-      "cve": "CVE-2026-129235",
-      "title": "CVE-2026-129235",
-      "description": "Kubeshark is an eBPF-powered network observability tool for Kubernetes. From 53.1.0 until 53.4.0, the download_file tool in cmd/mcpRunner.go accepts caller-controlled path and dest values, fetches a selected Kubeshark Hub API response, and writes the returned bytes through os.Create(dest) in callDownloadFile without confining the destination. An attacker who influences arguments through an AI agent driving kubeshark mcp can write Hub-supplied bytes to any path writable by the local MCP user and can read captured network traffic from default auth-disabled Hub deployments. The tool is registered without --allow-destructive; reliable code execution is not demonstrated because the bytes are constrained to Hub API responses. Hub-side default authentication remains outside this remediation, so captured traffic can remain readable in default auth-disabled Hub deployments after the local destina",
-      "published": "2026-11-16T17:17:31.153",
-      "last_modified": "2026-11-16T19:17:39.907",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129235"
-    },
-    {
-      "cve": "CVE-2026-113631",
-      "title": "CVE-2026-113631",
-      "description": "Incorrect authorization in the sendForm RPC handler and Session JWT reconnect handling in ONLYOFFICE Docs (Document Server) 9.4.0-129 on the official onlyoffice/documentserver container allows an authenticated view-only user to export a reconstructed copy of a document, including content the viewer never displayed such as custom XML, custom document properties and field instruction text, even when download and form-filling are disabled. The attacker reconnects with a valid Session JWT while substituting an attacker-controlled callback URL, which the Session JWT does not bind, then invokes sendForm over RPC, causing DocumentServer to send the reconstructed DOCX to that URL.",
-      "published": "2026-11-16T17:17:29.230",
-      "last_modified": "2026-11-16T20:37:04.673",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113631"
-    },
-    {
-      "cve": "CVE-2026-113630",
-      "title": "CVE-2026-113630",
-      "description": "Command injection in the documentserver-flush-cache.sh maintenance helper in ONLYOFFICE Docs (Document Server) 9.4.0-129 on the official onlyoffice/documentserver container allows a local attacker with command execution as the ds user to execute arbitrary commands as root via a crafted --hash argument that is interpolated unvalidated into a GNU sed expression, where the sed e flag runs attacker-controlled commands. The packaged sudoers policy permits ds to run the helper as root without a password and with unrestricted arguments.",
-      "published": "2026-11-16T17:17:29.080",
-      "last_modified": "2026-11-16T21:17:20.297",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-113630"
-    },
-    {
-      "cve": "CVE-2026-108169",
-      "title": "CVE-2026-108169",
-      "description": "LibreOffice can open a web query file (.iqy), which names a web page to import into a spreadsheet, when the file is given on its command line, for example when a file manager or another program opens the file with LibreOffice. The address in such a file was used without the checks that apply to an address given on the command line directly, so a crafted file could make LibreOffice do something other than open a web page, up to running code. In fixed versions only an http or https address is taken from a web query file.",
-      "published": "2026-11-16T17:17:28.280",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108169"
-    },
-    {
-      "cve": "CVE-2026-106535",
-      "title": "CVE-2026-106535",
-      "description": "libvisio is a library that reads drawings in the VSD and VSDX formats. LibreOffice and other applications use it to import such drawings. An out-of-bounds write existed when a crafted VSDX file contained a malformed path from one part of the drawing to another. In fixed versions a malformed path is handled without writing outside its data.",
-      "published": "2026-11-16T17:17:27.997",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-106535"
-    },
-    {
-      "cve": "CVE-2026-104933",
-      "title": "CVE-2026-104933",
-      "description": "LibreOffice can embed audio and video in documents. Where it plays media with GStreamer, as on Linux, the media is opened when the document is loaded, and a preview image of a video is shown in the document and in its exports, such as PDF. A crafted media file could make GStreamer read a local file and draw its text into the preview image, so that the content of the file ended up in an exported document. This is a different route to the problem fixed for CVE-2026-63269. In fixed versions GStreamer opens only media in a short list of common, self-contained container formats.",
-      "published": "2026-11-16T17:17:27.863",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 6.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104933"
-    },
-    {
-      "cve": "CVE-2026-104920",
-      "title": "CVE-2026-104920",
-      "description": "LibreOffice Calc can link a cell range to an external data source, and the link is saved in the document. A Java database driver for such a link is loaded from a class path. Opening a crafted document could still load a Java database driver from a location outside the local machine and run its code, by a route that the fix for CVE-2026-63277 did not cover. In fixed versions an entry in a Java class path has to be a file URL that names a file on the local machine.",
-      "published": "2026-11-16T17:17:27.730",
-      "last_modified": "2026-11-16T20:26:32.087",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104920"
     }
   ],
-  "total_results": 524,
+  "total_results": 585,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 324
+  "start_index": 385
 }
