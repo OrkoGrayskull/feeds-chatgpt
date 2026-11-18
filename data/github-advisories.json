@@ -1,12 +1,111 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-17T10:48:43+00:00",
+  "fetched_at": "2026-11-18T04:46:11+00:00",
   "window_days": 3,
-  "window_start": "2026-11-15",
-  "window_end": "2026-11-17",
-  "count": 41,
+  "window_start": "2026-11-16",
+  "window_end": "2026-11-18",
+  "count": 52,
   "items": [
+    {
+      "cve": "CVE-2026-119793",
+      "ghsa": "GHSA-x2vm-cf3p-m2w8",
+      "title": "libp2p: gossipsub creates a permanent topics-map entry per distinct subscription with no cap in the default config",
+      "description": "### Summary\nA single gossipsub peer can grow a node's `topics` map without bound by flooding subscription RPCs, because the default configuration has no global, per-peer, or topic-length cap and peer scoring does not penalise subscription volume. The peer is never greylisted, so the growth continues toward OOM.\n\n### Details\n`handleReceivedSubscription` (`packages/gossipsub/src/gossipsub.ts:1028`, line 1036) runs `this.topics.set(topic, new Set())` for every distinct topic string:\n\n```ts\nprivate handleReceivedSubscription (from, topic, subscribe) {\n  let topicSet = this.topics.get(topic)\n  if (subscribe) {\n    if (topicSet == null) {\n      topicSet = new Set()\n      this.topics.set(topic, topicSet)   // no global cap, no per-peer cap\n    }\n    topicSet.add(from.toString())\n  }\n}\n```\n\nThe only topical gate (`gossipsub.ts:981`, `if (this.allowedTopics != null && !this.allowedTopics.has(topi",
+      "severity": "high",
+      "published": "2026-11-17T21:06:20+00:00",
+      "link": "https://github.com/advisories/GHSA-x2vm-cf3p-m2w8"
+    },
+    {
+      "cve": "CVE-2026-110789",
+      "ghsa": "GHSA-rvfr-cqwq-rc4j",
+      "title": "libp2p: ASN.1 DER decoder drives an unbounded synchronous loop on attacker-controlled length fields, stalling the Node event loop pre-auth",
+      "description": "### Summary\nA remote peer can stall a js-libp2p node's entire event loop for ~4–5 seconds per connection (and transiently allocate ~2 GB) by sending a ~15-byte crafted `publicKey` inside an Identify message. The malformed key reaches the DER decoder before any peer-id/signature check, so the attack is pre-auth and repeatable indefinitely by reconnecting.\n\n### Details\n`packages/crypto/src/keys/rsa/der.ts` `readLength()` parses DER long-form lengths with no comparison to `buf.byteLength`, and `readInteger()` then loops over the attacker-claimed length:\n\n```ts\nfunction readInteger (buf, context) {\n  const length = readLength(buf, context)   // attacker-controlled, claims up to 2^64\n  const end = context.offset + length\n  for (let i = context.offset; i < end; i++) // runs far past buf.byteLength\n    vals.push(buf[i])                         // pushes `undefined` past the end\n}\n```\n\nThe blob ",
+      "severity": "high",
+      "published": "2026-11-17T21:05:08+00:00",
+      "link": "https://github.com/advisories/GHSA-rvfr-cqwq-rc4j"
+    },
+    {
+      "cve": "CVE-2026-110782",
+      "ghsa": "GHSA-r7hw-jx6r-756g",
+      "title": "SAML2: Incomplete fix of CVE-2026-49283: unsigned embedded Response bypasses HTTP-Artifact signature verification (no embedded-Issuer binding)",
+      "description": "## Summary\nCVE-2026-49283 / GHSA-6929-8p9f-26jx (\"HTTP-Artifact TLS validator confusion allows cross-IdP authentication bypass\") was fixed so that `HTTPArtifact::receive()` verifies the embedded SAML `Response` using the IdP metadata signing keys. The current implementation (master `31c72c1d`, released **v6.2.3**) reaches that verification **only when the embedded Response is signed**:\n\n```php\n// src/Binding/HTTPArtifact.php  (receive())\nif (!$samlResponse->isSigned()) {\n    return $samlResponse;                         // ← unsigned embedded Response returned UNVERIFIED\n}\nreturn $this->verifyMessageSignature($samlResponse, $idpMetadata);   // only runs when signed\n```\n\nAn attacker who controls one trusted-federation IdP therefore returns a **validly-signed outer `ArtifactResponse`** (signed with their own real key, which passes the mandatory outer check) that **wraps an *unsigned* `<sam",
+      "severity": "high",
+      "published": "2026-11-17T21:00:58+00:00",
+      "link": "https://github.com/advisories/GHSA-r7hw-jx6r-756g"
+    },
+    {
+      "cve": "CVE-2026-69241",
+      "ghsa": "GHSA-8vm9-f75m-5h2m",
+      "title": "Filament Curator: Stored XSS via unsanitized SVG upload served inline",
+      "description": "## Summary\n\n  SVG files uploaded through the Curator media panel are stored and served inline without any\n  sanitization. An authenticated user with permission to upload media can upload an SVG\n  containing embedded JavaScript. When another panel user opens that file via the **View**\n  action (which opens the media as a top-level browser document), the embedded script executes\n  in the origin of the Filament application.\n\n  `image/svg+xml` is included in the default accepted MIME types, so a default installation is\n  affected unless SVG uploads have been explicitly disabled.\n\n  ## Impact\n\n  Because the SVG is served as a **top-level document** (not embedded in an `<img>` tag), any\n  `<script>`, event-handler attribute (e.g. `onload`), or `javascript:` URI inside it runs with\n  full script privileges in the application's origin. In a Filament admin context this can be\n  leveraged to:\n\n  -",
+      "severity": "medium",
+      "published": "2026-11-17T20:54:26+00:00",
+      "link": "https://github.com/advisories/GHSA-8vm9-f75m-5h2m"
+    },
+    {
+      "cve": "CVE-2026-63389",
+      "ghsa": "GHSA-828w-6qgx-3rcf",
+      "title": "Filament Curator: Cross-tenant media metadata disclosure via Curator picker search",
+      "description": "Summary\n\n  In multitenant Filament panels, an authenticated user could retrieve media metadata belonging to other tenants\n  by typing in the Curator media-picker search box. The search query omitted the tenant ownership scope that the\n  normal file listing applies.\n\n  Details\n\n  CuratorPanel::updatedSearch() built its Eloquent query independently of getFiles() and did not apply the\n  filament()->hasTenancy() && $isTenantAware tenant-ownership where clause. As a result, the search matched media\n  across all tenants. A secondary flaw compounded it: the orWhere('title'…) chain was not wrapped in a nested\n  group, so the OR conditions also broke out of the isLimitedToDirectory constraint.\n\n  The issue was introduced in v3.2.4, when multitenancy support was added to the media picker.\n\n  Impact\n\n  - Who: any authenticated user with access to a panel that uses the Curator picker.\n  - What: disc",
+      "severity": "medium",
+      "published": "2026-11-17T20:49:28+00:00",
+      "link": "https://github.com/advisories/GHSA-828w-6qgx-3rcf"
+    },
+    {
+      "cve": "CVE-2026-62336",
+      "ghsa": "GHSA-xhv5-8fpq-g7hf",
+      "title": "qbee-agent: Local Privilege Escalation and Arbitrary File Tampering via Symlink Following in createFile helper",
+      "description": "This is a Local Privilege Escalation (LPE) vulnerability stemming from improper symlink handling (CWE-59: Link Following) and improper ownership management (CWE-282) inside the qbee-agent file manager logic.\n\n### Impact\n\nAny managed device running qbee-agent up to the affected versions. The impact manifests in three distinct vectors:\n\n1. **Primary Vector (Full Privilege Escalation to Root - Default Configuration)**: If an unprivileged user's account is managed by the SSH Keys bundle, they can replace or remove their own `~/.ssh` directory and create a symlink pointing to `/root/.ssh`. On the next configuration apply, qbee-agent follows the symlink and writes the user's server-provisioned public key directly into `/root/.ssh/authorized_keys`. Since the symlink resides inside the user's own home directory, kernel protections like `fs.protected_symlinks` do not block this execution. The att",
+      "severity": "high",
+      "published": "2026-11-17T20:48:02+00:00",
+      "link": "https://github.com/advisories/GHSA-xhv5-8fpq-g7hf"
+    },
+    {
+      "cve": "CVE-2026-63672",
+      "ghsa": "GHSA-pr4x-6fj4-gm4h",
+      "title": "EGroupware: User-Controlled Identity Provider Selection in SAML Authentication",
+      "description": "### Summary\nThe login() function at line 130 passes the raw user-supplied value `$_REQUEST['idp']` directly to SimpleSAMLphp's `requireAuth()` with only a regex check that the string starts with 'https://'. No validation is performed against a list of configured, trusted IdP entity IDs. An unauthenticated attacker can supply any HTTPS URL pointing to an IdP they control.\n\n### PoC\n```php\n//api/src/Auth/Saml.php\nfunction login()\n\t{\n\t\t// login (redirects to IdP)\n\t\t$as = new SimpleSAML\\Auth\\Simple(self::$auth_source);\n\t\t$as->requireAuth(preg_match('|^https://|', $_REQUEST['idp']) ?\n\t\t\t['saml:idp' => $_REQUEST['idp']] : []);\n\n```\n\n### Impact\nAn attacker can redirect authentication to a malicious IdP to capture credentials via phishing, or, if the SimpleSAMLphp configuration does not strictly validate IdP metadata, issue forged SAML assertions to authenticate as any user, including administrat",
+      "severity": "medium",
+      "published": "2026-11-17T20:47:22+00:00",
+      "link": "https://github.com/advisories/GHSA-pr4x-6fj4-gm4h"
+    },
+    {
+      "cve": "CVE-2026-14265",
+      "ghsa": "GHSA-c5q4-97jw-jggh",
+      "title": "AWS-advanced-jdbc-wrapper: Java Deserialization RCE via Cache Poisoning",
+      "description": "### Impact\nThe AWS Advanced JDBC Wrapper is an open-source JDBC driver wrapper that extends a JDBC driver to enable Amazon Aurora and AWS Cloud features such as failover handling and caching. We identified CVE-2026-14265, an issue in the RemoteQueryCachePlugin of the AWS Advanced JDBC Wrapper. When this plugin is enabled, query results read from the shared Redis/Valkey cache are deserialized without class filtering. An actor with write access to the shared cache infrastructure could insert a crafted serialized Java object that, when read by an application, results in execution of arbitrary code on the application server.\n\n### Workarounds\nThe RemoteQueryCachePlugin is not enabled by default. Customers who cannot immediately upgrade can mitigate this issue by disabling the RemoteQueryCachePlugin, and by restricting write access to the Redis/Valkey cache infrastructure to trusted principals",
+      "severity": "high",
+      "published": "2026-11-17T20:39:21+00:00",
+      "link": "https://github.com/advisories/GHSA-c5q4-97jw-jggh"
+    },
+    {
+      "cve": "CVE-2026-63634",
+      "ghsa": "GHSA-v858-xh7w-8jr5",
+      "title": "pympp allows excessive sponsored transaction fees through padded calldata",
+      "description": "### Details\nWhen the server acts as the fee_payer, `pympp` 0.8.0 validates calldata using `eth_abi` decoding, which is lenient about trailing bytes. The `FeePayerPolicy` caps `gas_limit` (≤ 2 M) and `max_fee_per_gas` (≤ 100 Gwei) but does **not** check calldata length.\n\nTempo uses legacy calldata gas pricing: **16 gas per non-zero byte**. Appending `N` bytes of `0x01` padding inflates actual gas used by `N × 16` while keeping `gas_limit` and `max_fee_per_gas` within policy caps. The server cosigns and broadcasts the padded transaction, draining its fee-payer wallet.\n\n**Vulnerable code path:** `FeePayerPolicy` in `fee_payer_policy.py` (pympp 0.8.0) enforces `maxGas = 2_000_000` and `maxFeePerGas = 100 Gwei` but has no `calldata.length` bound. The policy check passes because the inflated gas comes from intrinsic calldata cost, not the declared `gas_limit`.\n\n**Note:** In our experiment, we ",
+      "severity": "medium",
+      "published": "2026-11-17T20:04:56+00:00",
+      "link": "https://github.com/advisories/GHSA-v858-xh7w-8jr5"
+    },
+    {
+      "cve": "CVE-2026-53998",
+      "ghsa": "GHSA-gfv3-m769-5xm3",
+      "title": "Phoenix: Format String Injection in applyChatTemplate",
+      "description": "- Summary\n\nA format string injection vulnerability in the applyChatTemplate GraphQL endpoint allows an attacker to read server-side environment variables, cryptographic secrets, and internal module attributes directly from the API response. On default Phoenix installations where authentication is disabled the endpoint is reachable with no credentials. On auth-enabled deployments, any account regardless of privilege level is sufficient to exploit it.\n\n- Impact\nServer filesystem paths, loaded Python module names, and internal configuration constants are fully disclosed, an attacker with network access can read the full server `os.environ` including the admin credentials hardcoded in `phoenix.auth`.\n\nSuccessful exploitation allows an attacker to extract PHOENIX_SECRET, the master key used to sign all JWTs and derive the Fernet encryption key protecting stored credentials (LLM API keys, OAut",
+      "severity": "critical",
+      "published": "2026-11-17T20:02:29+00:00",
+      "link": "https://github.com/advisories/GHSA-gfv3-m769-5xm3"
+    },
+    {
+      "cve": "CVE-2026-119351",
+      "ghsa": "GHSA-vc7v-qv4w-wrv8",
+      "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+      "description": "With Cache Components enabled, an outer `'use cache'` function can be keyed incorrectly even when its inner `'use cache'` call generates a fresh entry. If the inner function reads a root param (via `next/root-params`) and returns a value that still contains pending promises — for example an object with data that is ready immediately alongside slower data — React Flight delivers the ready portion to the outer function before the inner entry has finished publishing its root param dependencies. The outer function can then finish, and its cache entry is persisted under a key that omits that root param. The entry is written once and reused for all root param values, so a response for one root param value can serve content produced for a different value. Entries written this way can also ignore tag invalidation and cache lifetimes of the nested caches they consumed.\n\nWhat values are leaked can",
+      "severity": "medium",
+      "published": "2026-11-17T16:13:26+00:00",
+      "link": "https://github.com/advisories/GHSA-vc7v-qv4w-wrv8"
+    },
     {
       "cve": "CVE-2026-129237",
       "ghsa": "GHSA-vx32-xf7g-9ghr",
