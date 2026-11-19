@@ -1,12 +1,354 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-16T23%3A00%3A00.000&pubEndDate=2026-11-19T04%3A36%3A06.000&resultsPerPage=200&startIndex=1810",
-  "fetched_at": "2026-11-19T04:36:06+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-16T23%3A00%3A00.000&pubEndDate=2026-11-19T10%3A27%3A12.000&resultsPerPage=200&startIndex=1848",
+  "fetched_at": "2026-11-19T10:27:12+00:00",
   "window_days": 3,
   "window_start": "2026-11-17",
   "window_end": "2026-11-19",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-92613",
+      "title": "CVE-2026-92613",
+      "description": "In Eclipse iceoryx-rs, versions 0.0.11 to 0.0.13 and 0.1.0 as well as on the latest main branch.\n\n\n\n`SampleReceiver::<T>::take()` and `Sample::<T>::deref()` are safe functions that hand the caller a `&T` pointing at a chunk written by another iceoryx process, but the subscriber path neither requires `T: ShmSend` nor verifies that the received chunk is at least `size_of::<T>()` bytes / `align_of::<T>()`-aligned. A peer process that publishes an undersized chunk, or any chunk at all when the subscriber chose a pointer-bearing `T`, drives a `#![forbid(unsafe_code)]` subscriber into out-of-bounds reads of adjacent shared-memory chunks or dereference of a publisher-controlled pointer.\n\n\n\nResolution:\n\n\n\nIt will not be fixed since this is a known limitation in iceoryx as it is the users responsibility to specify the same data type on sender and receiver side.\n\n\n\n[iceoryx2](https://github.com/ec",
+      "published": "2026-11-19T10:17:29.493",
+      "last_modified": "2026-11-19T10:17:29.493",
+      "cvss": 1.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-92613"
+    },
+    {
+      "cve": "CVE-2026-85776",
+      "title": "CVE-2026-85776",
+      "description": "The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 1.1.11. This is due to a missing capability check and missing nonce check on the start_zip_creation, start_zip_download, local_sync_get_init_root_files, and local_sync_get_files_by_key AJAX actions in the start_zip_creation_dev() and sibling functions. This makes it possible for authenticated attackers, with subscriber-level access and above, to overwrite the plugin's prod_site_url setting so it points at an attacker-controlled host and enumerate arbitrary server directories, which when combined with a subsequent administrator-triggered sync results in an unsigned attacker-supplied ZIP archive being fetched, extracted via a WordPress-independent bridge deployed under the web root, resulting in remote code execution on the affected site.",
+      "published": "2026-11-19T10:17:29.313",
+      "last_modified": "2026-11-19T10:17:29.450",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-85776"
+    },
+    {
+      "cve": "CVE-2026-14492",
+      "title": "CVE-2026-14492",
+      "description": "The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.1.11 via the save_single_batch_file function. This is due to a PHP type-juggling authentication bypass via loose != comparison with no is_string() guard, combined with unsanitized base64-decoded path construction in save_single_batch_file() lacking any directory traversal containment. This makes it possible for authenticated attackers, with custom-level access and above, to execute code on the server. Exploitation requires that the site owner has completed the plugin's initial setup so that the site_type and prod_key_random_id options are non-empty, though any non-empty secret value is bypassable via the type-juggling flaw.",
+      "published": "2026-11-19T10:17:28.927",
+      "last_modified": "2026-11-19T10:17:29.050",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14492"
+    },
+    {
+      "cve": "CVE-2026-14491",
+      "title": "CVE-2026-14491",
+      "description": "The WP Duplicate – WordPress Migration Plugin plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 1.1.11 via the 'file_name' parameter. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information. The authentication bypass requires submitting the JSON boolean `true` as the `prod_key_random_id` value, which coerces against any non-empty stored secret so that the loose `!=` comparison evaluates to false, skipping the rejection branch entirely without knowledge of the secret.",
+      "published": "2026-11-19T10:17:28.757",
+      "last_modified": "2026-11-19T10:17:28.893",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14491"
+    },
+    {
+      "cve": "CVE-2026-126631",
+      "title": "CVE-2026-126631",
+      "description": "A flaw was found in OpenSCAP. This vulnerability allows for information disclosure when performing offline scans of untrusted filesystem images, such as container images or virtual machine (VM) disks. Because the scanner does not properly restrict symbolic link (symlink) resolution to the target image's root directory, an attacker can supply a crafted image containing links pointing to files on the host system. When the scan runs, typically with elevated privileges, OpenSCAP follows these links to read sensitive host files and expose their contents in the scan report or manipulate compliance results.",
+      "published": "2026-11-19T10:17:28.410",
+      "last_modified": "2026-11-19T10:17:28.567",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126631"
+    },
+    {
+      "cve": "CVE-2026-110728",
+      "title": "CVE-2026-110728",
+      "description": "The AIKTP plugin for WordPress is vulnerable to Authorization Bypass via Predictable Token in all versions up to, and including, 5.0.7. The vulnerability exists because the plugin's sync token (`aiktpz_token`) is generated using PHP's non-cryptographic `uniqid()` function — producing a wall-clock-derived value with approximately one million microsecond candidates per uncertain generation second — while the unauthenticated, unthrottled REST endpoint `/wp-json/aiktp/checkToken` (registered with `permission_callback => __return_true`) acts as a public brute-force oracle for the token; simultaneously, the capability checks in `check_valid_token` and its wrappers (`verify_aiktp_token_with_edit_capability`, `verify_aiktp_token_with_upload_capability`) inspect only a server-side stored Administrator account (option `aiktp_author`) rather than the actual REST caller, meaning possession of the to",
+      "published": "2026-11-19T10:17:26.953",
+      "last_modified": "2026-11-19T10:17:28.020",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110728"
+    },
+    {
+      "cve": "CVE-2026-99320",
+      "title": "CVE-2026-99320",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: raw: fix use-after-free in rawv6_send_hdrinc()\n\nrawv6_send_hdrinc() caches the route before handing the skb to\nl3mdev_ip6_out(). The VRF output path may replace skb->dst and release\nthe original route, leaving the cached pointer stale.\n\nThe function later dereferences that pointer for statistics accounting\nand as the output device passed to NF_HOOK(). Its RCU read-side critical\nsection starts after l3mdev_ip6_out(), so it cannot prevent the old route\nfrom being reclaimed in between.\n\nReload the route from the current skb destination after\nl3mdev_ip6_out() returns.\n\nKASAN reports a slab-use-after-free in rawv6_sendmsg(), with the route\nallocated by ip6_dst_alloc(), freed by dst_destroy() from rcu_core(), and\nthe related RCU callback queued from vrf_l3_out().",
+      "published": "2026-11-19T09:18:18.910",
+      "last_modified": "2026-11-19T09:18:18.910",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-99320"
+    },
+    {
+      "cve": "CVE-2026-132043",
+      "title": "CVE-2026-132043",
+      "description": "In Eclipse Yasson versions 3.0 to 3.0.5, a race condition (CWE-362) exists in the handling of @JsonbNumberFormat. Yasson creates one java.text.NumberFormat instance per annotated property and shares it across all threads that use the same Jsonb instance. NumberFormat is not thread-safe, and the deserializer called parse() on it without synchronization. When multiple threads deserialize concurrently, a thread can receive a numeric value that belongs to another thread's input, receive an incorrect value, or fail with an exception. A remote attacker who can send concurrent requests to an application that deserializes untrusted JSON this way may cause incorrect data to be processed or cause another user's value to be returned. Exploitation requires that the application use @JsonbNumberFormat with a shared Jsonb instance and that the attacker win a timing race. This issue is fixed in version ",
+      "published": "2026-11-19T09:17:43.620",
+      "last_modified": "2026-11-19T09:17:43.620",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132043"
+    },
+    {
+      "cve": "CVE-2026-101167",
+      "title": "CVE-2026-101167",
+      "description": "Missing Authorization vulnerability in Dataprom Bilişim Teknolojileri LTD. ŞTİ. DataPer Access Control and Security Systems allows Privilege Escalation.\n\nThis issue affects DataPer Access Control and Security Systems: before v14.15(2026/11).",
+      "published": "2026-11-19T09:17:37.090",
+      "last_modified": "2026-11-19T09:17:37.090",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-101167"
+    },
+    {
+      "cve": "CVE-2026-129048",
+      "title": "CVE-2026-129048",
+      "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in Jacob N. Breetvelt WP Photo Album Plus wp-photo-album-plus allows Remote Code Inclusion.This issue affects WP Photo Album Plus: from n/a through 9.3.06.003.",
+      "published": "2026-11-19T08:17:11.650",
+      "last_modified": "2026-11-19T08:17:11.763",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129048"
+    },
+    {
+      "cve": "CVE-2026-129030",
+      "title": "CVE-2026-129030",
+      "description": "Exposure of Sensitive System Information to an Unauthorized Control Sphere vulnerability in Mamunur Rashid ShopBuilder – Elementor WooCommerce Builder Addons shopbuilder allows Retrieve Embedded Sensitive Data.This issue affects ShopBuilder – Elementor WooCommerce Builder Addons: from n/a through 3.4.3.",
+      "published": "2026-11-19T08:17:11.507",
+      "last_modified": "2026-11-19T08:17:11.620",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129030"
+    },
+    {
+      "cve": "CVE-2026-129014",
+      "title": "CVE-2026-129014",
+      "description": "Missing Authorization vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.2.",
+      "published": "2026-11-19T08:17:11.367",
+      "last_modified": "2026-11-19T08:17:11.473",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129014"
+    },
+    {
+      "cve": "CVE-2026-129013",
+      "title": "CVE-2026-129013",
+      "description": "Missing Authorization vulnerability in Deepen Bajracharya Video Conferencing with Zoom video-conferencing-with-zoom-api allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Video Conferencing with Zoom: from n/a through 4.6.12.",
+      "published": "2026-11-19T08:17:11.223",
+      "last_modified": "2026-11-19T08:17:11.337",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129013"
+    },
+    {
+      "cve": "CVE-2026-129001",
+      "title": "CVE-2026-129001",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Gabe Livan Asset CleanUp: Page Speed Booster wp-asset-clean-up allows Reflected XSS.This issue affects Asset CleanUp: Page Speed Booster: from n/a through 1.4.0.6.",
+      "published": "2026-11-19T08:17:11.080",
+      "last_modified": "2026-11-19T08:17:11.193",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129001"
+    },
+    {
+      "cve": "CVE-2026-128999",
+      "title": "CVE-2026-128999",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Saphali Saphali Woocommerce Lite saphali-woocommerce-lite allows Stored XSS.This issue affects Saphali Woocommerce Lite: from n/a through 2.0.2.",
+      "published": "2026-11-19T08:17:10.913",
+      "last_modified": "2026-11-19T08:17:11.043",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128999"
+    },
+    {
+      "cve": "CVE-2026-112163",
+      "title": "CVE-2026-112163",
+      "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Kayaport Ödeme Kuruluşu A.Ş. BulutTahsilat – Virtual POS Infrastructure allows Cross-Site Scripting (XSS).\n\nThis issue affects BulutTahsilat – Virtual POS Infrastructure: through 2026-11-05.",
+      "published": "2026-11-19T08:17:07.317",
+      "last_modified": "2026-11-19T08:17:07.317",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112163"
+    },
+    {
+      "cve": "CVE-2026-19609",
+      "title": "CVE-2026-19609",
+      "description": "Cross-site scripting in the embedded co-browsing feature in Unblu inc. Unblu Spark 7.0 through 7.57.9 and 8.0 before 8.40.2, on on-premises and cloud deployments, allows an unauthenticated remote attacker in the visitor role to execute arbitrary JavaScript in the browser of an agent taking part in the attacker's co-browsing session, via manipulated synchronized page attributes of the co-browsed page.\n\n\n\nThe JavaScript runs in the context and under the identity of the agent's session in the Agent Desk or the Single Conversation Desk.\n\n\n\nExploitation requires an agent to join an embedded co-browsing session with the attacker. Mobile co-apping isn't affected.",
+      "published": "2026-11-19T07:17:12.243",
+      "last_modified": "2026-11-19T07:17:12.243",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-19609"
+    },
+    {
+      "cve": "CVE-2026-132825",
+      "title": "CVE-2026-132825",
+      "description": "Ruby before 3.3.14, 3.4.13, and 4.0.10 has a heap-based buffer overflow during case conversion. One byte can be written outside a buffer for, for example, ISO-8859-1 or Windows-1252.",
+      "published": "2026-11-19T07:17:11.740",
+      "last_modified": "2026-11-19T07:17:11.740",
+      "cvss": 7.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132825"
+    },
+    {
+      "cve": "CVE-2026-110462",
+      "title": "CVE-2026-110462",
+      "description": "The Comelit 1456B Multi-User Gateway, in firmware versions up to and including 2.10.0, allows a user authenticated to the web interface with the Installer role to export a system configuration backup. The resulting backup file contains the configured passwords for all privileged roles",
+      "published": "2026-11-19T07:17:09.183",
+      "last_modified": "2026-11-19T07:17:09.183",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110462"
+    },
+    {
+      "cve": "CVE-2026-110461",
+      "title": "CVE-2026-110461",
+      "description": "The Comelit 1456B Multi-User Gateway, in firmware versions up to and including 2.10.0, is configured with static default passwords for multiple privileged roles. None of these passwords are required to be changed during initial configuration, and they remain at their default values unless the administrator changes them manually. An attacker with network access to the device can authenticate using these default credentials and gain administrative control.",
+      "published": "2026-11-19T07:17:08.770",
+      "last_modified": "2026-11-19T07:17:08.770",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-110461"
+    },
+    {
+      "cve": "CVE-2026-129446",
+      "title": "CVE-2026-129446",
+      "description": "The WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN) WordPress plugin before 45.4 does not ensure the signature validated on a SAML response covers the element the user identity is read from, allowing unauthenticated attackers to forge a response via signature wrapping and log in as any user, including administrators, when they can supply a single artifact signed by the configured identity provider.",
+      "published": "2026-11-19T06:16:53.870",
+      "last_modified": "2026-11-19T06:16:53.870",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129446"
+    },
+    {
+      "cve": "CVE-2026-121852",
+      "title": "CVE-2026-121852",
+      "description": "The AppPresser  WordPress plugin before 5.0.0 does not properly escape the contents of its debug log when displaying it in the admin dashboard, and decodes escape sequences after sanitising input, allowing unauthenticated users to perform Stored XSS attacks against administrators when debug logging is enabled.",
+      "published": "2026-11-19T06:16:53.413",
+      "last_modified": "2026-11-19T06:16:53.413",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121852"
+    },
+    {
+      "cve": "CVE-2026-117678",
+      "title": "CVE-2026-117678",
+      "description": "Inefficient Algorithmic Complexity vulnerability in benoitc idna allows an attacker who controls a hostname passed to the library to exhaust CPU via an over-long xn-- label. idna:ulabel/1 in src/idna.erl hands every ASCII label that starts with xn-- to punycode:decode/1 without applying check_label_length/1, the 63-octet DNS label limit. punycode:decode/1 in src/punycode.erl builds its output with list appends in insert/4, so its cost grows super-linearly with the label length. A label of a few kilobytes keeps a scheduler busy for seconds to minutes before the label is rejected as invalid punycode.\n\nEvery decode entry point reaches this path: decode/1, decode/2, to_unicode/1 and from_ascii/1. The encode path reaches it as well, because alabel/1 calls ulabel/1 on an ASCII xn-- label before its own length check, so encode/1, encode/2 and to_ascii/1 are affected for such input.\n\nThis issue ",
+      "published": "2026-11-19T06:16:53.153",
+      "last_modified": "2026-11-19T06:16:53.153",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-117678"
+    },
+    {
+      "cve": "CVE-2026-109555",
+      "title": "CVE-2026-109555",
+      "description": "The WP STAGING and WP STAGING Pro plugins for WordPress are vulnerable to PHP Object Injection in all versions up to, and including, 4.17.0 and 6.17.0, respectively, via deserialization of untrusted input during database restore and staging reset. This is due to the database importer treating attacker-controlled text beginning with {WPSTG_BINARY} as trusted internal binary data and decoding its hexadecimal suffix into serialized bytes. This makes it possible for authenticated attackers, with Subscriber-level access and above, to plant a malicious serialized object in their own profile. When an Administrator later performs an ordinary database-including restore or staging reset containing that value, and the restored profile metadata is loaded, either during the restore or in a later request, a built-in POP chain can be used to execute arbitrary code on the server. Additional built-in gad",
+      "published": "2026-11-19T06:16:52.890",
+      "last_modified": "2026-11-19T06:16:53.100",
+      "cvss": 8.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109555"
+    },
+    {
+      "cve": "CVE-2026-108687",
+      "title": "CVE-2026-108687",
+      "description": "The SAML SSO Login  WordPress plugin through 1.5.2 does not verify that the SAML assertion whose signature it validates is the same assertion it reads the user identity from, allowing unauthenticated attackers who hold a validly signed assertion for any identity to authenticate as any existing user, including an administrator, through XML signature wrapping.",
+      "published": "2026-11-19T06:16:51.880",
+      "last_modified": "2026-11-19T06:16:51.880",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-108687"
+    },
+    {
+      "cve": "CVE-2026-84998",
+      "title": "CVE-2026-84998",
+      "description": "The NextScripts: Social Networks Auto-Poster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'comment_author' and 'comment_agent' Comment Fields in all versions up to, and including, 4.4.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload executes in an administrator's browser session when the administrator views the WordPress comment moderation queue, including pending and unapproved comments, meaning no prior approval of the comment is required for exploitation.",
+      "published": "2026-11-19T05:18:40.940",
+      "last_modified": "2026-11-19T05:18:41.083",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-84998"
+    },
+    {
+      "cve": "CVE-2026-132808",
+      "title": "CVE-2026-132808",
+      "description": "A malicious actor with access to the network and low privileges could exploit an Incorrect Authorization vulnerability found in UniFi Access Application to execute arbitrary commands on certain adopted UniFi Access devices.",
+      "published": "2026-11-19T05:18:39.513",
+      "last_modified": "2026-11-19T05:18:39.513",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132808"
+    },
+    {
+      "cve": "CVE-2026-132807",
+      "title": "CVE-2026-132807",
+      "description": "A malicious actor with access to the network and under certain conditions could exploit an Improper Certificate Validation vulnerability found in UniFi Access Application to obtain sensitive information from and make unauthorized changes to an adopted UniFi Access device.",
+      "published": "2026-11-19T05:18:39.360",
+      "last_modified": "2026-11-19T05:18:39.360",
+      "cvss": 9.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132807"
+    },
+    {
+      "cve": "CVE-2026-132806",
+      "title": "CVE-2026-132806",
+      "description": "A malicious actor with access to the network and low privileges could exploit an authenticated SQL Injection vulnerability found in UniFi Access Application to obtain sensitive information and make unauthorized changes within the UniFi Access Application.",
+      "published": "2026-11-19T05:18:39.183",
+      "last_modified": "2026-11-19T05:18:39.183",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132806"
+    },
+    {
+      "cve": "CVE-2026-132805",
+      "title": "CVE-2026-132805",
+      "description": "A malicious actor with access to the network could exploit a Server-Side Request Forgery (SSRF) vulnerability found in UniFi Access Application to obtain information and make unauthorized changes on the host device.",
+      "published": "2026-11-19T05:18:39.000",
+      "last_modified": "2026-11-19T05:18:39.000",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132805"
+    },
+    {
+      "cve": "CVE-2026-132804",
+      "title": "CVE-2026-132804",
+      "description": "A malicious actor with access to the network and low privileges could exploit a Server-Side Request Forgery (SSRF) vulnerability found in UniFi Access Application to escalate privileges within UniFi OS.",
+      "published": "2026-11-19T05:18:38.833",
+      "last_modified": "2026-11-19T05:18:38.833",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132804"
+    },
+    {
+      "cve": "CVE-2026-132803",
+      "title": "CVE-2026-132803",
+      "description": "A malicious actor with access to the network and low privileges could exploit a series of authenticated SQL Injection vulnerabilities found in UniFi Access Application to escalate privileges on the host device.",
+      "published": "2026-11-19T05:18:38.673",
+      "last_modified": "2026-11-19T05:18:38.673",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132803"
+    },
+    {
+      "cve": "CVE-2026-132802",
+      "title": "CVE-2026-132802",
+      "description": "A malicious actor with access to the network and low privileges could exploit an Improper Link Resolution Before File Access vulnerability found in UniFi Access Application to execute arbitrary code with root privileges on the host device.",
+      "published": "2026-11-19T05:18:38.507",
+      "last_modified": "2026-11-19T05:18:38.507",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132802"
+    },
+    {
+      "cve": "CVE-2026-132627",
+      "title": "CVE-2026-132627",
+      "description": "A security flaw has been discovered in SourceCodester E-Commerce Shopping Cart Web Application 1.0. Affected by this issue is some unknown functionality of the file action.php. The manipulation of the argument keyword results in sql injection. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+      "published": "2026-11-19T05:18:38.257",
+      "last_modified": "2026-11-19T05:18:38.450",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132627"
+    },
+    {
+      "cve": "CVE-2026-132626",
+      "title": "CVE-2026-132626",
+      "description": "A vulnerability was identified in SourceCodester Modern Ticket Reservation System 1.0. Affected by this vulnerability is an unknown functionality of the file /booking/validate.php. The manipulation of the argument ticket leads to sql injection. It is possible to initiate the attack remotely. The exploit is publicly available and might be used.",
+      "published": "2026-11-19T05:18:38.007",
+      "last_modified": "2026-11-19T05:18:38.190",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132626"
+    },
+    {
+      "cve": "CVE-2026-132625",
+      "title": "CVE-2026-132625",
+      "description": "A vulnerability was determined in SourceCodester Student Project Allocation and Management System 1.0. Affected is an unknown function of the file /login.php of the component Login Handler. Executing a manipulation of the argument username/password can lead to sql injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized.",
+      "published": "2026-11-19T05:18:37.750",
+      "last_modified": "2026-11-19T05:18:37.943",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132625"
+    },
+    {
+      "cve": "CVE-2026-130888",
+      "title": "CVE-2026-130888",
+      "description": "A flaw was found in nbdkit. The qcow2dec filter's zstd_compressed_cluster() function incorrectly sets the ZSTD input buffer size to the uncompressed cluster size instead of the compressed buffer size. A crafted QCOW2 image with ZSTD-compressed clusters can trigger a heap over-read, leading to a denial of service and potentially exposing heap memory.",
+      "published": "2026-11-19T05:18:33.170",
+      "last_modified": "2026-11-19T05:18:33.357",
+      "cvss": 6.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130888"
+    },
+    {
+      "cve": "CVE-2026-104357",
+      "title": "CVE-2026-104357",
+      "description": "A flaw was found in libtirpc. The SunRPC UDP/datagram server transport reuses a single receive buffer across requests and resets the XDR decode position without rebinding the decode length to the size of the datagram actually received. As a result, when a short UDP RPC request is received after a longer one, the XDR decoder can read stale bytes left in the reused buffer and interpret them as part of the current request, including credential, verifier, or procedure-argument fields. The highest threat from this vulnerability is to data confidentiality and integrity for services that use a UDP-based SunRPC server.",
+      "published": "2026-11-19T05:18:24.360",
+      "last_modified": "2026-11-19T05:18:24.510",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104357"
+    },
     {
       "cve": "CVE-2026-132798",
       "title": "CVE-2026-132798",
@@ -1464,352 +1806,10 @@
       "last_modified": "2026-11-18T20:18:59.280",
       "cvss": null,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128668"
-    },
-    {
-      "cve": "CVE-2026-128667",
-      "title": "CVE-2026-128667",
-      "description": "A Cross-Site Request Forgery (CSRF) vulnerability in the admin panel of PHPGurukul News Portal Project V4.1 allows remote attackers to hijack the authentication of administrators and perform unauthorized state-changing actions, such as adding, editing, or deleting posts and sub-admins, or changing passwords, via crafted HTTP requests. This occurs because the application fails to implement anti-CSRF tokens for admin actions and permits destructive operations via HTTP GET requests.",
-      "published": "2026-11-18T20:18:59.153",
-      "last_modified": "2026-11-18T20:18:59.153",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128667"
-    },
-    {
-      "cve": "CVE-2026-127096",
-      "title": "CVE-2026-127096",
-      "description": "A flaw was found in the Ansible language server shipped with the vscode-ansible extension. The regular expression used to extract documentation fragments from Ansible module files is susceptible to quadratic-time scanning. A module file containing a crafted documentation string causes the language server to consume excessive CPU while indexing it, freezing the language service in the developer's editor. An attacker who can get a developer to open or index a workspace containing an attacker-supplied collection can cause a denial of service of the editor language features. This issue has no confidentiality or integrity impact.",
-      "published": "2026-11-18T20:18:58.817",
-      "last_modified": "2026-11-18T22:17:18.110",
-      "cvss": 3.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127096"
-    },
-    {
-      "cve": "CVE-2026-127095",
-      "title": "CVE-2026-127095",
-      "description": "A flaw was found in ansible-builder. The regular expression used to strip comments from a collection's requirements.txt during introspection is susceptible to super-quadratic backtracking. A requirements file containing a line with a long run of internal whitespace and no comment character causes the comment-stripping routine to consume CPU time proportional to the square of the line length. An attacker who can get a victim to build an execution environment that includes an attacker-supplied collection can cause the ansible-builder build or introspect process to hang, resulting in a denial of service. This issue has no confidentiality or integrity impact.",
-      "published": "2026-11-18T20:18:58.663",
-      "last_modified": "2026-11-18T20:18:58.783",
-      "cvss": 3.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127095"
-    },
-    {
-      "cve": "CVE-2026-75521",
-      "title": "CVE-2026-75521",
-      "description": "Miren Runtime provides the runtime component for the Miren application platform. Prior to 0.11.1, the QUIC/HTTP3 RPC server on the default port 8443 uses tls.RequestClientCert and does not verify that presented certificates chain to the configured cluster certificate authority. The RPC authenticators derive a caller identity from PeerCertificates[0].Subject.CommonName without requiring a non-empty VerifiedChains value, and certificate identities bypass all RBAC checks. A network attacker who can reach the listener can present a self-signed certificate with an issuer distinguished name matching the public cluster CA subject and gain cluster superuser access, allowing disclosure, modification, or disruption of applications, sandboxes, disks, credentials, and other managed resources. This issue is fixed in version 0.11.1.",
-      "published": "2026-11-18T19:18:08.200",
-      "last_modified": "2026-11-18T19:18:08.200",
-      "cvss": 10.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-75521"
-    },
-    {
-      "cve": "CVE-2026-73864",
-      "title": "CVE-2026-73864",
-      "description": "install-artifact-from-github installs prebuilt native artifacts hosted by GitHub without compiling them locally. Prior to 1.7.0, bin/install-from-cache.js downloads a native .node artifact, allows RE2_DOWNLOAD_MIRROR to select a source, follows HTTP redirects including HTTPS-to-HTTP downgrades, and writes the decompressed response to the artifact path without cryptographic integrity verification before writing or loading it. An attacker who controls a configured mirror, replaces a release asset, or can modify plaintext transport can supply native code that executes when the consumer loads the artifact. Version 1.7.0 adds SHA-256 verification for default-GitHub-source downloads when the consuming package publishes an artifactHashes bag; configured mirrors and packages without a bag remain outside that verification.",
-      "published": "2026-11-18T19:18:08.043",
-      "last_modified": "2026-11-18T19:18:08.043",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-73864"
-    },
-    {
-      "cve": "CVE-2026-71499",
-      "title": "CVE-2026-71499",
-      "description": "cf-manager is an all-in-one dashboard for managing multiple Cloudflare accounts and services. Prior to 1.1.2, worker/src/routes/workers.ts uses bare fetch(url) calls to retrieve user-supplied URLs and deploys the returned content as a Worker script using stored Cloudflare credentials. The multipart and JSON branches of POST /api/:accountId/workers and POST /api/batch-deploy accept URLs without protocol, destination, redirect, content-type, or response-size validation. An attacker with deployment API access, or unauthenticated access when API_SECRET is not configured, can make cf-manager access internal resources or fetch attacker-controlled JavaScript and execute it in the victim Cloudflare Workers account. This issue is fixed in version 1.1.2.",
-      "published": "2026-11-18T19:18:07.890",
-      "last_modified": "2026-11-18T21:18:01.590",
-      "cvss": 10.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71499"
-    },
-    {
-      "cve": "CVE-2026-71481",
-      "title": "CVE-2026-71481",
-      "description": "ALTCHA PHP is a lightweight PHP library for creating and verifying ALTCHA challenges. From 2.0.0 until 2.0.3, the verifySolution method skips HMAC signature verification when a challenge payload omits the signature field, even when hmacSignatureSecret is configured. An attacker can remove the signature, supply attacker-selected low-difficulty challenge parameters, solve the resulting proof of work, and submit a payload that verifies successfully, bypassing the CAPTCHA control. This issue is fixed in version 2.0.3.",
-      "published": "2026-11-18T19:18:07.733",
-      "last_modified": "2026-11-18T19:18:07.733",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-71481"
-    },
-    {
-      "cve": "CVE-2026-61584",
-      "title": "CVE-2026-61584",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40, main/inc/ajax/record_audio_rtc.ajax.php concatenates the user-controlled audio_dir parameter with the course document root and passes the result to recursive directory creation without path normalization. An authenticated course user can select directory paths outside the intended course storage tree wherever the web-server account has permission to create directories. The resulting filesystem changes can interfere with application layout or support a separate file-write or code-execution chain, although this endpoint alone is not shown to write attacker-selected file content outside the course tree. This issue is fixed in version 1.11.40.",
-      "published": "2026-11-18T19:18:07.587",
-      "last_modified": "2026-11-18T21:18:00.800",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61584"
-    },
-    {
-      "cve": "CVE-2026-61583",
-      "title": "CVE-2026-61583",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40, main/dropbox/dropbox_functions.inc.php accepts a literal .htaccess filename in the course dropbox and stores it in a directory served by Apache, where the file can alter handler behavior under the required AllowOverride All configuration. Any authenticated course participant can upload .htaccess and then upload a PHP payload disguised as a .gif, resulting in code execution as the web-server user when the dropbox tool is enabled. This can expose or modify the Chamilo installation, course content, and database credentials. This issue is fixed in version 1.11.40.",
-      "published": "2026-11-18T19:18:07.443",
-      "last_modified": "2026-11-18T19:18:07.443",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61583"
-    },
-    {
-      "cve": "CVE-2026-61582",
-      "title": "CVE-2026-61582",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40, main/inc/ajax/user_manager.ajax.php exposes the update_users action without an authorization check and stores attacker-controlled firstname, lastname, and email values without HTML sanitization. An unauthenticated attacker can modify another user's profile fields, and the stored content executes when user_portal.php, the administrative user listing, user information, social profile, course participant list, or message-composer recipient header renders the modified account. Targeting an administrator account can expose administrator-session data or permit actions in that session. This issue is fixed in version 1.11.40.",
-      "published": "2026-11-18T19:18:07.300",
-      "last_modified": "2026-11-18T21:18:00.680",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61582"
-    },
-    {
-      "cve": "CVE-2026-61581",
-      "title": "CVE-2026-61581",
-      "description": "The Datadog Agent collects events and metrics from hosts and sends them to Datadog. Prior to datadog-apm-inject 0.66.0, the Datadog Single Step Instrumentation injector stores helper tooling in a predictable host directory. On Linux or Kubernetes systems with SSI enabled and at least one Java service instrumented through SSI, a local unprivileged attacker with shell access to the same host can influence that tooling and execute code with the privileges of the instrumented Java service. Services that use dd-java-agent without SSI and non-Java language runtimes are not affected. This issue is fixed in datadog-apm-inject 0.66.0.",
-      "published": "2026-11-18T19:18:07.140",
-      "last_modified": "2026-11-18T19:18:07.140",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61581"
-    },
-    {
-      "cve": "CVE-2026-61578",
-      "title": "CVE-2026-61578",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40 on the 1.11 release line and in 2.0.0, plugin/cleandeletedfiles/src/ajax.php and public/plugin/CleanDeletedFiles/src/ajax.php pass the request path parameter and list parameter directly to unlink without canonicalization, filename validation, or confinement to the plugin's scanned directories. An authenticated administrator can delete arbitrary files writable by the web server; a cross-site request forgery against an administrator session can reach the same operation. Deleting application source, uploaded content, cache, or configuration files can cause data loss and denial of service. This issue is fixed in version 1.11.40 on the 1.11 release line. No fixed 2.0 release is established as of this review.",
-      "published": "2026-11-18T19:18:06.993",
-      "last_modified": "2026-11-18T19:18:06.993",
-      "cvss": 7.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61578"
-    },
-    {
-      "cve": "CVE-2026-61532",
-      "title": "CVE-2026-61532",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40 and 2.0.3, src/Chamilo/CourseBundle/Component/CourseCopy/CourseRestorer.php and src/CourseBundle/Component/CourseCopy/CourseRestorer.php use paths supplied by an imported legacy course backup without consistently confining them to the extraction directory. A course teacher can import a crafted backup containing parent-directory path segments, causing file operations to write attacker-controlled content outside the intended destination, including PHP-executable or automatically loaded locations. This can result in code execution as the PHP process and compromise course data, user data, credentials, and the host. This issue is fixed in versions 1.11.40 and 2.0.3.",
-      "published": "2026-11-18T19:18:06.843",
-      "last_modified": "2026-11-18T19:18:06.843",
-      "cvss": 9.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61532"
-    },
-    {
-      "cve": "CVE-2026-61528",
-      "title": "CVE-2026-61528",
-      "description": "Chamilo LMS is an open-source learning management system. From 2.0.0 until 2.0.3, the BigBlueButton plugin is vulnerable to XML External Entity (XXE) injection when an authenticated administrator configures a malicious BigBlueButton server URL. Processing attacker-controlled XML from that server can read arbitrary local files and perform Server-Side Request Forgery (SSRF). Sensitive configuration, credentials, source code, and internal network resources may be exposed. This issue is fixed in version 2.0.3.",
-      "published": "2026-11-18T19:18:06.693",
-      "last_modified": "2026-11-18T19:18:06.693",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61528"
-    },
-    {
-      "cve": "CVE-2026-55504",
-      "title": "CVE-2026-55504",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 2.0.3, POST /api/social_posts accepts attacker-controlled content that SocialPost::setContent stores without cross-site scripting sanitization, and assets/vue/components/social/SocialWallPost.vue renders post.content through v-html without sanitization. Any authenticated user can create a social-wall post that executes active content when another authenticated user views the wall. The script can run in an administrator's browser session and expose session data or perform actions with the victim's privileges. This issue is fixed in version 2.0.3.",
-      "published": "2026-11-18T19:18:06.537",
-      "last_modified": "2026-11-18T19:18:06.537",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55504"
-    },
-    {
-      "cve": "CVE-2026-55503",
-      "title": "CVE-2026-55503",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40 and 2.0.3, main/lp/scormItem.class.php and public/main/lp/scormItem.class.php store an attacker-controlled title element from imsmanifest.xml without cross-site scripting sanitization when a teacher imports a SCORM package. The title reaches c_lp_item.title and is rendered by src/CoreBundle/Resources/views/LearnPath/scorm_list.html.twig through item.title with raw output while Twig auto-escaping is disabled; the default configuration does not apply the optional AI-disclosure sanitization path. Enrolled students or administrators who view the learning-path table of contents can execute the stored content in their browser sessions. This issue is fixed in versions 1.11.40 and 2.0.3.",
-      "published": "2026-11-18T19:18:06.380",
-      "last_modified": "2026-11-18T19:18:06.380",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55503"
-    },
-    {
-      "cve": "CVE-2026-54747",
-      "title": "CVE-2026-54747",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 2.0.3, public/main/course_description/course_description_controller.php assigns contentDescription directly from a teacher's request in the Doctrine-based add and edit paths without cross-site scripting sanitization. The stored value is rendered by src/CoreBundle/Resources/views/Course/about.html.twig through description with raw output, and the /course/{id}/about route is publicly accessible. A teacher can store active content that executes when an authenticated or unauthenticated visitor views the course description, enabling session theft, credential phishing, defacement, or actions in an authenticated victim's session. This issue is fixed in version 2.0.3.",
-      "published": "2026-11-18T19:18:06.217",
-      "last_modified": "2026-11-18T19:18:06.217",
-      "cvss": 6.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54747"
-    },
-    {
-      "cve": "CVE-2026-45142",
-      "title": "CVE-2026-45142",
-      "description": "Chamilo LMS is an open-source learning management system. Prior to 1.11.40 and 2.0.1, main/lp/lp_ajax_save_objectives.php and public/main/lp/lp_ajax_save_objectives.php trust the request uid parameter instead of the authenticated user identity when saving SCORM learning objectives. Any authenticated student can replace uid with another user's identifier and overwrite that user's objectives because the endpoint performs no ownership check. This issue is fixed in versions 1.11.40 and 2.0.1.",
-      "published": "2026-11-18T19:18:06.050",
-      "last_modified": "2026-11-18T19:18:06.050",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-45142"
-    },
-    {
-      "cve": "CVE-2026-130791",
-      "title": "CVE-2026-130791",
-      "description": "Finsys Dockhand before 1.0.55 contains a path traversal vulnerability that allows users with stacks:edit permission to move arbitrary server directories by supplying a crafted oldDir parameter. Attackers can send POST requests to /api/stacks/[name]/relocate with an unvalidated source path to relocate directories into stack paths, disrupting services and exposing their contents.",
-      "published": "2026-11-18T19:17:55.990",
-      "last_modified": "2026-11-18T19:17:55.990",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130791"
-    },
-    {
-      "cve": "CVE-2026-130790",
-      "title": "CVE-2026-130790",
-      "description": "SemanticMediaWiki from 2.5.0 before 7.4.0 contains a stored cross-site scripting vulnerability that allows users with the smw-patternedit right to inject script by seeding markup reference names in MediaWiki:Smw_allows_pattern. Once an editor annotates the matching Allows pattern value, AllowsPatternValue emits it unescaped on Special:Browse, executing JavaScript in every viewer's session.",
-      "published": "2026-11-18T19:17:55.817",
-      "last_modified": "2026-11-18T19:17:55.940",
-      "cvss": 4.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130790"
-    },
-    {
-      "cve": "CVE-2026-130789",
-      "title": "CVE-2026-130789",
-      "description": "SemanticMediaWiki from 7.3.0 before 7.4.0 contains a missing authorization vulnerability in the smwtask API check-query task that allows unauthenticated attackers to bypass object-level authorization by relying on the wiki-wide edit right. Attackers can supply arbitrary subject titles, including protected pages, to run synchronous Semantic MediaWiki queries with caller-controlled conditions, limit, offset, and querymode parameters.",
-      "published": "2026-11-18T19:17:55.657",
-      "last_modified": "2026-11-18T21:17:50.887",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130789"
-    },
-    {
-      "cve": "CVE-2026-130788",
-      "title": "CVE-2026-130788",
-      "description": "SemanticMediaWiki from 3.0.0 before 7.4.0 contains a reflected cross-site scripting vulnerability in CsvFileExportPrinter and DsvResultPrinter via unescaped valuesep and separator parameters. Attackers can craft Special:Ask links using request_type=special_page so export output renders as text/html, executing JavaScript in victims' browsers under the wiki origin.",
-      "published": "2026-11-18T19:17:55.487",
-      "last_modified": "2026-11-18T19:17:55.610",
-      "cvss": 6.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130788"
-    },
-    {
-      "cve": "CVE-2026-130787",
-      "title": "CVE-2026-130787",
-      "description": "Frappe ERPNext before 16.35.0 contains a missing authorization vulnerability in financial reporting endpoints that allows low-privilege authenticated users to generate reports outside their permitted scope. Attackers can send crafted requests to affected reporting endpoints to read other companies' tax and payment data, including personal and corporate identifiers and financial totals.",
-      "published": "2026-11-18T19:17:55.317",
-      "last_modified": "2026-11-18T19:17:55.440",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130787"
-    },
-    {
-      "cve": "CVE-2026-130786",
-      "title": "CVE-2026-130786",
-      "description": "Incus before 7.6.0 contains a configuration injection vulnerability that allows users who can launch instances from controlled images to inject LXC directives by embedding line breaks in OCI config.json values or oci.entrypoint and oci.cwd keys. Attackers can add liblxc hooks or crafted tmpfs lxc.mount.entry fields to run commands as root on the host or bind-mount host paths, even from restricted projects.",
-      "published": "2026-11-18T19:17:55.157",
-      "last_modified": "2026-11-18T19:17:55.273",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130786"
-    },
-    {
-      "cve": "CVE-2026-130785",
-      "title": "CVE-2026-130785",
-      "description": "Incus from 7.3.0 before 7.6.0 contains an authentication bypass vulnerability in the /dev/incus guest API that allows a process in one container to impersonate another by creating a cgroup named with a forged lxc.monitor. component. Attackers can read the target container's user.* and cloud-init.* configuration and devices, subscribe to its events, mark it ready, and export images across projects.",
-      "published": "2026-11-18T19:17:55.000",
-      "last_modified": "2026-11-18T21:17:50.767",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130785"
-    },
-    {
-      "cve": "CVE-2026-130784",
-      "title": "CVE-2026-130784",
-      "description": "Incus before 7.6.0 contains an authorization bypass vulnerability that allows restricted clients to create and access default project resources by exploiting entitlement checks against the requested project. Attackers can create bridge networks with raw.dnsmasq directives to execute code as root on the host, or manipulate inherited resources via the ?project= parameter.",
-      "published": "2026-11-18T19:17:54.837",
-      "last_modified": "2026-11-18T19:17:54.953",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130784"
-    },
-    {
-      "cve": "CVE-2026-130783",
-      "title": "CVE-2026-130783",
-      "description": "Incus before 7.6.0 exposes certificate and cluster join token secrets through the default project event stream and skips authorization when cancelling operations without associated permissions. Restricted clients can subscribe to operation events to capture certificate tokens and enroll unrestricted certificates, gaining full server access, or cancel token operations by UUID.",
-      "published": "2026-11-18T19:17:54.683",
-      "last_modified": "2026-11-18T19:17:54.797",
-      "cvss": 9.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130783"
-    },
-    {
-      "cve": "CVE-2026-130782",
-      "title": "CVE-2026-130782",
-      "description": "Incus before 7.6.0 contains an improper authorization vulnerability that allows restricted and view-only clients to read default project resources by requesting the default project directly. Attackers knowing resource names can read profiles, images, network zone peer keys and stored credentials, and export custom volume or bucket backups to obtain full contents or S3 admin keys.",
-      "published": "2026-11-18T19:17:54.503",
-      "last_modified": "2026-11-18T19:17:54.640",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130782"
-    },
-    {
-      "cve": "CVE-2026-130781",
-      "title": "CVE-2026-130781",
-      "description": "Incus before 7.6.0 contains a resource exhaustion vulnerability in the storage bucket S3 listener, which buffers entire signed request bodies in memory before verifying the signature or credential role. Attackers knowing only a valid access key, or holding a read-only credential, can send many concurrent large requests to exhaust daemon memory.",
-      "published": "2026-11-18T19:17:54.273",
-      "last_modified": "2026-11-18T21:17:50.650",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130781"
-    },
-    {
-      "cve": "CVE-2026-130780",
-      "title": "CVE-2026-130780",
-      "description": "Incus before 7.6.0 contains a path traversal vulnerability that allows malicious migration peers to write outside intended directories by supplying unvalidated dependent volume and snapshot names in the migration offer header. Attackers controlling a migration source can create root-owned volumes with attacker content at arbitrary host paths, compromising hosts using dir storage pools, bypassing restricted.storage-pools.access, or crashing the daemon.",
-      "published": "2026-11-18T19:17:54.067",
-      "last_modified": "2026-11-18T19:17:54.220",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130780"
-    },
-    {
-      "cve": "CVE-2026-130779",
-      "title": "CVE-2026-130779",
-      "description": "Incus before 7.6.0 contains a path traversal vulnerability that allows users permitted to import custom volumes to store unvalidated snapshot names from the backup index configuration section. Attackers can craft a backup with traversal sequences in snapshot names so later deletion removes arbitrary host directories as root, while renaming or mounting operates on arbitrary paths.",
-      "published": "2026-11-18T19:17:53.830",
-      "last_modified": "2026-11-18T19:17:54.017",
-      "cvss": 9.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130779"
-    },
-    {
-      "cve": "CVE-2026-130778",
-      "title": "CVE-2026-130778",
-      "description": "Incus before 7.6.0 contains an authentication bypass vulnerability that allows remote attackers to authenticate as any trusted certificate by appending its public certificate to their presented TLS client chain. Attackers can append the server's or a cluster member's certificate to gain cluster-level access, bypass authorization, modify trust store entries, and influence scriptlet-based authorization decisions.",
-      "published": "2026-11-18T19:17:53.607",
-      "last_modified": "2026-11-18T19:17:53.767",
-      "cvss": 10.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130778"
-    },
-    {
-      "cve": "CVE-2026-130777",
-      "title": "CVE-2026-130777",
-      "description": "Incus before 7.6.0 contains an information disclosure vulnerability that allows project-restricted authenticated clients to receive other projects' OVN ACL logs because these events are broadcast with an empty project. Attackers can subscribe to network-acl events on one accessible project to observe internal IPs, ports, protocols, and allow/drop decisions across all projects.",
-      "published": "2026-11-18T19:17:53.163",
-      "last_modified": "2026-11-18T21:17:50.527",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130777"
-    },
-    {
-      "cve": "CVE-2026-130776",
-      "title": "CVE-2026-130776",
-      "description": "Incus before 7.6.0 contains an information disclosure vulnerability that allows clients with project event-view access to read migration websocket secrets broadcast in operation metadata. Attackers can connect to in-flight migration control and fs websockets before the legitimate peer, hijacking the transfer to obtain instance configuration and filesystem data.",
-      "published": "2026-11-18T19:17:52.677",
-      "last_modified": "2026-11-18T19:17:53.010",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130776"
-    },
-    {
-      "cve": "CVE-2026-130775",
-      "title": "CVE-2026-130775",
-      "description": "Incus before 7.6.0 contains an authorization bypass vulnerability in the /dev/incus guest-API image export handler that fails to pin the project parameter to the guest's own project. Container root users with the guest-API image entitlement can supply another project in the project query parameter to export public or cached images, including non-public images pulled from authenticated remotes.",
-      "published": "2026-11-18T19:17:52.330",
-      "last_modified": "2026-11-18T19:17:52.580",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130775"
-    },
-    {
-      "cve": "CVE-2026-130774",
-      "title": "CVE-2026-130774",
-      "description": "Incus before 7.6.0 contains a privilege escalation vulnerability: rebuilding a never-started unprivileged container makes it boot without a user namespace. Root processes inside the container run as host uid 0, keeping capabilities like sys_module, with no device cgroup restriction, letting them load kernel modules and compromise the host.",
-      "published": "2026-11-18T19:17:52.023",
-      "last_modified": "2026-11-18T19:17:52.237",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130774"
-    },
-    {
-      "cve": "CVE-2026-130773",
-      "title": "CVE-2026-130773",
-      "description": "Incus before 7.6.0 contains an authorization bypass that allows restricted project users to create resources in the unrestricted default project by targeting projects lacking features.* flags. Attackers can create bridge networks with raw.dnsmasq dhcp-script injection to run scripts as root, or custom volumes with block.create_options mkfs arguments to read host files.",
-      "published": "2026-11-18T19:17:51.587",
-      "last_modified": "2026-11-18T21:17:50.403",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130773"
-    },
-    {
-      "cve": "CVE-2026-130772",
-      "title": "CVE-2026-130772",
-      "description": "Incus before 7.6.0 contains an improper authorization vulnerability that allows restricted TLS clients to read other projects' bucket S3 keys and profile configuration through recursive and all-projects responses. Attackers can query bucket listings with recursion=2 or profiles with all-projects=true to obtain S3 secret keys and sensitive environment, cloud-init and user values across projects.",
-      "published": "2026-11-18T19:17:51.263",
-      "last_modified": "2026-11-18T19:17:51.470",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130772"
     }
   ],
-  "total_results": 2010,
+  "total_results": 2048,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1810
+  "start_index": 1848
 }
