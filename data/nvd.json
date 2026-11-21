@@ -1,12 +1,561 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-18T23%3A00%3A00.000&pubEndDate=2026-11-21T09%3A54%3A50.000&resultsPerPage=200&startIndex=1735",
-  "fetched_at": "2026-11-21T09:54:50+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-18T23%3A00%3A00.000&pubEndDate=2026-11-21T13%3A40%3A56.000&resultsPerPage=200&startIndex=1796",
+  "fetched_at": "2026-11-21T13:40:56+00:00",
   "window_days": 3,
   "window_start": "2026-11-19",
   "window_end": "2026-11-21",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-129814",
+      "title": "CVE-2026-129814",
+      "description": "The SDO Information Get Object Description and Get Entry Description responses copy the object or entry name into the mailbox data area and then write a null terminator byte. The copy loops ran up to the last available byte in the buffer, leaving no room for the terminator. When an object or entry name exactly fills the available space the terminator is written one byte past the end of the mailbox data buffer.",
+      "published": "2026-11-21T13:16:41.267",
+      "last_modified": "2026-11-21T13:16:41.267",
+      "cvss": 3.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129814"
+    },
+    {
+      "cve": "CVE-2026-129813",
+      "title": "CVE-2026-129813",
+      "description": "The CoE complete-access download handler iterated over all subindices of an object and wrote the master-supplied payload into each writable entry. Entries that hold a constant have write-access flags set but carry a NULL data pointer. The handler did not check for this and wrote the master payload through the NULL pointer.",
+      "published": "2026-11-21T13:16:41.140",
+      "last_modified": "2026-11-21T13:16:41.140",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129813"
+    },
+    {
+      "cve": "CVE-2026-129812",
+      "title": "CVE-2026-129812",
+      "description": "An object dictionary entry that holds a constant has no process data storage and carries a NULL data pointer. sizeOfPDO did not check for this when resolving a mapped entry to its descriptor. A master that maps such an entry to a PDO causes COE_pdoPack or COE_pdoUnpack to dereference the NULL data pointer on every process data exchange after the mapping is activated.",
+      "published": "2026-11-21T13:16:41.007",
+      "last_modified": "2026-11-21T13:16:41.007",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129812"
+    },
+    {
+      "cve": "CVE-2026-129811",
+      "title": "CVE-2026-129811",
+      "description": "The PDO mapping bit lengths stored in the mapping objects are writable by the master via SDO. sizeOfPDO summed them without checking the total against the size of the rxpdo[] or txpdo[] process data buffers. A master can craft a mapping whose total bit count exceeds those buffers, causing COE_pdoPack and COE_pdoUnpack to write past their ends during each process data cycle after the PREOP to SAFEOP transition.",
+      "published": "2026-11-21T13:16:40.880",
+      "last_modified": "2026-11-21T13:16:40.880",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129811"
+    },
+    {
+      "cve": "CVE-2026-129810",
+      "title": "CVE-2026-129810",
+      "description": "ESC_eoeprocess and ESC_eoeprocess_tx can be reached before the application calls EOE_config to supply the callback table pointer. When eoe_cfg is NULL the receive handler dereferenced it while processing an incoming EoE frame, and the transmit polling function dereferenced it on each cycle, causing NULL pointer dereferences.",
+      "published": "2026-11-21T13:16:40.750",
+      "last_modified": "2026-11-21T13:16:40.750",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129810"
+    },
+    {
+      "cve": "CVE-2026-129809",
+      "title": "CVE-2026-129809",
+      "description": "ESC_foeprocess can be reached by an incoming mailbox frame before the application calls FOE_config to supply the file table and flush buffer pointers. When foe_cfg or its fbuffer field is NULL the handler dereferenced those pointers while processing the frame, causing a NULL pointer dereference.",
+      "published": "2026-11-21T13:16:40.623",
+      "last_modified": "2026-11-21T13:16:40.623",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129809"
+    },
+    {
+      "cve": "CVE-2026-129808",
+      "title": "CVE-2026-129808",
+      "description": "The EoE receive and transmit paths call the handle_recv_buffer and fetch_send_buffer callbacks without first checking whether they are set. Both callbacks are documented as optional; an application that omits either one causes a call through a NULL function pointer when the first EoE frame arrives or when the transmit polling loop runs.",
+      "published": "2026-11-21T13:16:40.500",
+      "last_modified": "2026-11-21T13:16:40.500",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129808"
+    },
+    {
+      "cve": "CVE-2026-129807",
+      "title": "CVE-2026-129807",
+      "description": "The FoE file table allows entries to omit a write handler by setting write_function to NULL, making the file read-only. FOE_fopen did not check whether write_function was present before accepting a write request; a master sending a WRQ for a read-only file caused a call through a NULL function pointer.",
+      "published": "2026-11-21T13:16:40.383",
+      "last_modified": "2026-11-21T13:16:40.383",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129807"
+    },
+    {
+      "cve": "CVE-2026-129806",
+      "title": "CVE-2026-129806",
+      "description": "The CoE SDO upload handler enters its normal-response path (used for objects longer than 4 bytes) and passes (objd + nsub)->data directly to the pre-object handler and to the response copy. Entries that hold a constant in the value field have data set to NULL; a master can request such an entry and cause a NULL pointer dereference in the upload path.",
+      "published": "2026-11-21T13:16:40.260",
+      "last_modified": "2026-11-21T13:16:40.260",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129806"
+    },
+    {
+      "cve": "CVE-2026-129805",
+      "title": "CVE-2026-129805",
+      "description": "An object dictionary entry can carry write-access flags and still have a NULL data pointer, for example when a constant value is held in the value field rather than in addressable storage. The CoE SDO download handler checked write access but not whether storage was present, then wrote the master-supplied payload through the NULL pointer.",
+      "published": "2026-11-21T13:16:40.133",
+      "last_modified": "2026-11-21T13:16:40.133",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129805"
+    },
+    {
+      "cve": "CVE-2026-129804",
+      "title": "CVE-2026-129804",
+      "description": "FOE_read and FOE_write store the filename length as uint8_t, truncating it modulo 256. When (mbxheader.length - ESC_FOEHSIZE) is a multiple of 256, the length becomes 0. Additionally, a request whose mailbox length equals ESC_FOEHSIZE exactly also produces a length of 0 without any truncation. In both cases FOE_fopen calls strncmp with a length of 0, which always returns equal, so the first registered file whose password is 0 is opened regardless of the filename the master sent.",
+      "published": "2026-11-21T13:16:40.010",
+      "last_modified": "2026-11-21T13:16:40.010",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129804"
+    },
+    {
+      "cve": "CVE-2026-129803",
+      "title": "CVE-2026-129803",
+      "description": "The CoE entry gate accepts frames with mbxheader.length as low as COE_MINIMUM_LENGTH (8), but a normal SDO Download requires at least COE_HEADERSIZE (10) bytes of CoE payload to carry its header fields. With mbxheader.length of 8 or 9, the segmented-transfer branch misevaluates due to unsigned wrap, leaving the declared SDO size unclamped. copy2mbx then reads that many bytes starting past the end of the actual payload and writes them into the object buffer.",
+      "published": "2026-11-21T13:16:39.890",
+      "last_modified": "2026-11-21T13:16:39.890",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129803"
+    },
+    {
+      "cve": "CVE-2026-129802",
+      "title": "CVE-2026-129802",
+      "description": "EOE_set_ip reads each network parameter field (MAC, IP, subnet, gateway, DNS IP, DNS name) from the mailbox payload before checking whether the payload is large enough to contain them. The single bounds check at the end of the function does not prevent the reads from happening. A master can send a Set-IP frame with all flags set and mbxheader.length equal to the minimum, causing all reads to access memory past the end of the payload.",
+      "published": "2026-11-21T13:16:39.763",
+      "last_modified": "2026-11-21T13:16:39.763",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129802"
+    },
+    {
+      "cve": "CVE-2026-129801",
+      "title": "CVE-2026-129801",
+      "description": "The FoE DATA frame handler computes the payload length from the master-supplied mailbox length field and passes it directly to FOE_fwrite. The length is checked against the remaining file capacity but not against the physical mailbox buffer size. A master can declare a large length while sending a short frame, causing FOE_fwrite to read past the end of the mailbox buffer.",
+      "published": "2026-11-21T13:16:39.637",
+      "last_modified": "2026-11-21T13:16:39.637",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129801"
+    },
+    {
+      "cve": "CVE-2026-129800",
+      "title": "CVE-2026-129800",
+      "description": "sizeOfPDO, called during state transitions, uses the subindex-0 count of the SM-assign and PDO-mapping objects as loop bounds without checking those counts against the descriptor array sizes. On builds where those subindex-0 values are writable via SDO, a master can write 0xFF and cause sizeOfPDO to read past the end of the descriptor arrays on the next transition to SAFEOP.",
+      "published": "2026-11-21T13:16:39.503",
+      "last_modified": "2026-11-21T13:16:39.503",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129800"
+    },
+    {
+      "cve": "CVE-2026-129799",
+      "title": "CVE-2026-129799",
+      "description": "A CoE SDO request for index 0xFFFF matches the object list terminator entry instead of returning not-found. The terminator has a NULL objdesc pointer. Callers dereference it without checking, crashing the slave.",
+      "published": "2026-11-21T13:16:39.373",
+      "last_modified": "2026-11-21T13:16:39.373",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129799"
+    },
+    {
+      "cve": "CVE-2026-129798",
+      "title": "CVE-2026-129798",
+      "description": "The CoE SDO segmented download handler advances a write pointer by each incoming segment's size but does not track how many bytes have been written in total. A master can keep sending non-last segments until the pointer has walked past the end of the object buffer or the complete-access staging buffer.",
+      "published": "2026-11-21T13:16:39.247",
+      "last_modified": "2026-11-21T13:16:39.247",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129798"
+    },
+    {
+      "cve": "CVE-2026-129797",
+      "title": "CVE-2026-129797",
+      "description": "SDO_downloadsegment is called whenever a mailbox frame carries the DOWNLOADSEGREQ command byte, regardless of whether a segmented download is actually in progress. ESCvar.data, which the handler writes through, is NULL until a segmented transfer is started. A master can send a DOWNLOADSEGREQ at any time and write through a NULL or stale pointer.",
+      "published": "2026-11-21T13:16:39.120",
+      "last_modified": "2026-11-21T13:16:39.120",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129797"
+    },
+    {
+      "cve": "CVE-2026-129796",
+      "title": "CVE-2026-129796",
+      "description": "The CoE SDO download handler for flexible-length objects (VISIBLE_STRING, OCTET_STRING, and similar) does not check that the master-declared transfer size fits within the object before writing. Two distinct writes are affected: the VISIBLE_STRING zero-padding memset and the first-frame copy into the object buffer.",
+      "published": "2026-11-21T13:16:38.987",
+      "last_modified": "2026-11-21T13:16:38.987",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129796"
+    },
+    {
+      "cve": "CVE-2026-129795",
+      "title": "CVE-2026-129795",
+      "description": "When the last EoE fragment has the TIME_APPEND flag set, the handler subtracts 4 from rxframeoffset to strip the timestamp. There is no check that rxframeoffset is at least 4. A fragment carrying fewer than 4 bytes of payload that is also marked LAST causes rxframeoffset to wrap to 0xFFFFFFFC, which is then stored as the buffer length and handed to the TCP/IP stack.",
+      "published": "2026-11-21T13:16:38.860",
+      "last_modified": "2026-11-21T13:16:38.860",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129795"
+    },
+    {
+      "cve": "CVE-2026-129794",
+      "title": "CVE-2026-129794",
+      "description": "The EoE fragment reassembly code uses a frame size from the wire as the bound for memcpy into the application receive buffer, without checking that the declared size fits in the actual buffer. A master can write up to 2016 bytes into a buffer the application may have sized much smaller.",
+      "published": "2026-11-21T13:16:38.033",
+      "last_modified": "2026-11-21T13:16:38.033",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129794"
+    },
+    {
+      "cve": "CVE-2026-130323",
+      "title": "CVE-2026-130323",
+      "description": "The Accept Stripe Payments plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'href of any <a> element containing 'asp_action=show_pp&product_id='' parameter in all versions up to, and including, 2.1.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires that a user clicks the attacker-placed comment link to trigger the sink; however, if the non-default 'Prefetch Payment Popup Scripts' option is enabled, execution occurs on page load with no user interaction required.",
+      "published": "2026-11-21T12:16:41.563",
+      "last_modified": "2026-11-21T12:16:41.683",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130323"
+    },
+    {
+      "cve": "CVE-2026-126705",
+      "title": "CVE-2026-126705",
+      "description": "The WP Job Portal – AI-Powered Recruitment System for Company or Job Board website plugin for WordPress is vulnerable to time-based SQL Injection via the 'columns[<attacker-chosen key>]' parameter in all versions up to, and including, 2.8.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "published": "2026-11-21T12:16:41.407",
+      "last_modified": "2026-11-21T12:16:41.523",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-126705"
+    },
+    {
+      "cve": "CVE-2026-124976",
+      "title": "CVE-2026-124976",
+      "description": "The Swift Performance Lite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the '<attacker-chosen parameter name>' parameter in all versions up to, and including, 2.3.7.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires that an administrator has configured at least one Cacheable AJAX Action via the plugin's AJAX Cache feature, a condition attackers can confirm by probing for a swift-performance: HIT response header.",
+      "published": "2026-11-21T12:16:41.260",
+      "last_modified": "2026-11-21T12:16:41.373",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124976"
+    },
+    {
+      "cve": "CVE-2026-124248",
+      "title": "CVE-2026-124248",
+      "description": "The GPTranslate – Multilingual AI Translation Agent for WordPress: Translate Your Site with AI plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 2.34.17 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the plugin's non-default 'HTML DOM method' to be enabled for server-side translation, and a translation row for the target language-prefixed URL must exist to arm the output buffer that routes page content through the vulnerable Simple HTML DOM parser.",
+      "published": "2026-11-21T12:16:41.103",
+      "last_modified": "2026-11-21T12:16:41.223",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124248"
+    },
+    {
+      "cve": "CVE-2026-124216",
+      "title": "CVE-2026-124216",
+      "description": "The Orphans plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 3.4.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires a two-step comment chain: a benign first comment must be approved under a given name and email so that WordPress's comment_previously_approved mechanism auto-publishes the attacker's payload comment without moderation.",
+      "published": "2026-11-21T12:16:40.953",
+      "last_modified": "2026-11-21T12:16:41.070",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124216"
+    },
+    {
+      "cve": "CVE-2026-123970",
+      "title": "CVE-2026-123970",
+      "description": "The wpForo Forum plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'thread[body]' parameter in all versions up to, and including, 3.2.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful execution of the injected script is limited to viewers whose forum access profile denies attachment viewing (va=0 or caa=0), meaning exploitation depends on an administrator having configured a custom forum access profile that permits reading but denies attachment viewing — this is not the default shipped configuration.",
+      "published": "2026-11-21T12:16:40.810",
+      "last_modified": "2026-11-21T12:16:40.920",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123970"
+    },
+    {
+      "cve": "CVE-2026-123830",
+      "title": "CVE-2026-123830",
+      "description": "The wpForo Forum plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'data[display_name]' parameter in all versions up to, and including, 3.2.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires public user registration to be enabled (users_can_register=1) and a valid _wpfnonce fetched from the public sign-up page, but is otherwise fully unauthenticated.",
+      "published": "2026-11-21T12:16:40.657",
+      "last_modified": "2026-11-21T12:16:40.777",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123830"
+    },
+    {
+      "cve": "CVE-2026-122264",
+      "title": "CVE-2026-122264",
+      "description": "The wpForo Forum plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'member[about]' parameter in all versions up to, and including, 3.2.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the attacking subscriber to have met the default antispam threshold of at least 3 forum posts before the account editing page becomes accessible.",
+      "published": "2026-11-21T12:16:40.503",
+      "last_modified": "2026-11-21T12:16:40.623",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122264"
+    },
+    {
+      "cve": "CVE-2026-122228",
+      "title": "CVE-2026-122228",
+      "description": "The ProfilePress – Paid Membership, Online Courses (LMS), Ecommerce, User Registration & Login Form, User Profile & Restrict Content plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 4.18.0 via the 'sortby<form_id>, filter<form_id>' parameter. This makes it possible for unauthenticated attackers to extract reconstruct any listed member's full e-mail address one character at a time via a boolean LIKE oracle, and enumerate users holding arbitrary usermeta keys such as ppress_billing_phone. The e-mail address oracle is reachable on any default install that used the plugin's 'Create pages' onboarding notice, because pp_email_address is enabled as a search field by default and the resulting directory page is published with no capability or nonce gate.",
+      "published": "2026-11-21T12:16:40.350",
+      "last_modified": "2026-11-21T12:16:40.463",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122228"
+    },
+    {
+      "cve": "CVE-2026-120745",
+      "title": "CVE-2026-120745",
+      "description": "The Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User Profile & Restrict Content – ProfilePress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'reg_bio' parameter in all versions up to, and including, 4.18.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The reg_bio parameter is accepted by the registration handler's allowlist even when the rendered registration form does not include a biography field, meaning an unauthenticated attacker can supply the payload via a raw POST request without needing a visible biography input on the form.",
+      "published": "2026-11-21T12:16:40.203",
+      "last_modified": "2026-11-21T12:16:40.320",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120745"
+    },
+    {
+      "cve": "CVE-2026-120736",
+      "title": "CVE-2026-120736",
+      "description": "The AutomatorWP – No-Code Workflow Automation, Integration & Webhooks Plugin, now with AI plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'your-message (any CF7 form field used in a form_field: tag)' parameter in all versions up to, and including, 6.0.9 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires an administrator to have configured a public 'Guest submits a form' automation whose Send-an-email action embeds a form_field tag, after which the payload fires the next time any user opens the affected automation's email log entry.",
+      "published": "2026-11-21T12:16:40.053",
+      "last_modified": "2026-11-21T12:16:40.170",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120736"
+    },
+    {
+      "cve": "CVE-2026-119177",
+      "title": "CVE-2026-119177",
+      "description": "The Real Cookie Banner: GDPR & ePrivacy Cookie Consent plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 5.4.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that the cookie banner has been activated by the site administrator (the plugin's primary onboarding step) and that at least one prior comment from the same name and email identity has already been approved, after which WordPress core's comment_previously_approved default auto-approves subsequent comments without administrator action.",
+      "published": "2026-11-21T12:16:39.900",
+      "last_modified": "2026-11-21T12:16:40.017",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119177"
+    },
+    {
+      "cve": "CVE-2026-119157",
+      "title": "CVE-2026-119157",
+      "description": "The PublishPress Capabilities: User Role Access Control, Admin Area Permissions plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'page_elements' parameter in all versions up to, and including, 2.53.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires an administrator to open a Profile Features capture window and save at least one of the attacker-supplied rows on the Profile Features screen, which represents the ordinary documented use of the feature and leaves no visible indication to the administrator that malicious data was submitted.",
+      "published": "2026-11-21T12:16:39.750",
+      "last_modified": "2026-11-21T12:16:39.867",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119157"
+    },
+    {
+      "cve": "CVE-2026-116518",
+      "title": "CVE-2026-116518",
+      "description": "The ElasticPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'orderby' parameter in all versions up to, and including, 5.3.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is stored in the ep_query_log transient for up to 24 hours after a single unauthenticated frontend GET request, and only fires when an administrator subsequently opens the Status Report page and expands the Failed Queries panel.",
+      "published": "2026-11-21T12:16:39.593",
+      "last_modified": "2026-11-21T12:16:39.710",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116518"
+    },
+    {
+      "cve": "CVE-2026-109196",
+      "title": "CVE-2026-109196",
+      "description": "The FV Player 8 plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'data.videos[].fv_wp_flowplayer_field_splash' parameter in all versions up to, and including, 8.1.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The wp_ajax_fv_player_db_save handler's ownership and capability check is conditional on the presence of the data.update field; omitting it bypasses authorization entirely, allowing a Subscriber-level attacker to overwrite any existing video record using an enumerable video ID — and the valid nonce required by the endpoint is issued to every logged-in visitor of any page hosting the publicly accessible [fvplayer_editor] shortcode.",
+      "published": "2026-11-21T12:16:39.423",
+      "last_modified": "2026-11-21T12:16:39.550",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-109196"
+    },
+    {
+      "cve": "CVE-2026-107771",
+      "title": "CVE-2026-107771",
+      "description": "The Speed Booster Pack ⚡ PageSpeed Optimization Suite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'author' parameter in all versions up to, and including, 4.5.9.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that the plugin's Lazy load media option is enabled and that the attacker's comment is approved by a site administrator or via auto-approval.",
+      "published": "2026-11-21T12:16:39.270",
+      "last_modified": "2026-11-21T12:16:39.387",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107771"
+    },
+    {
+      "cve": "CVE-2026-107747",
+      "title": "CVE-2026-107747",
+      "description": "The WP Custom Admin Interface plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'first_name' parameter in all versions up to, and including, 7.43 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-11-21T12:16:39.120",
+      "last_modified": "2026-11-21T12:16:39.237",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107747"
+    },
+    {
+      "cve": "CVE-2026-107654",
+      "title": "CVE-2026-107654",
+      "description": "The One to one user Chat by WPGuppy plugin for WordPress is vulnerable to generic SQL Injection via the 'userId' parameter in all versions up to, and including, 1.1.6 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The plugin's permission callback is trivially bypassed because it validates a JWT that the plugin itself signs using an attacker-supplied value from the guppy_guest_account cookie, and the guest code path (userType=0) skips the get_userdata() check that would confirm the userId corresponds to a real WordPress user.",
+      "published": "2026-11-21T12:16:38.173",
+      "last_modified": "2026-11-21T12:16:39.080",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107654"
+    },
+    {
+      "cve": "CVE-2026-129344",
+      "title": "CVE-2026-129344",
+      "description": "Uncaught Exception vulnerability in phoenixframework phoenix allows an unauthenticated attacker to cause a denial of service via a client-selected legacy serializer on binary channel broadcasts.\n\nWhen an application broadcasts {:binary, data} payloads on a channel topic, any client that connects without a vsn parameter, or with vsn=1.0.0, and joins that topic makes those broadcasts fail. Phoenix.Channel.Server.send/4 encodes each broadcast with every subscriber's own serializer inside the PubSub dispatch loop, calling fastlane!/1 with no rescue, and the negotiated Phoenix.Socket.V1.JSONSerializer raises Protocol.UndefinedError on a binary payload. Every binary broadcast on the topic then crashes the broadcasting process and skips every subscriber dispatched after the attacker. For broadcasts arriving from other nodes the loop runs in the PubSub adapter worker, whose repeated crashes rest",
+      "published": "2026-11-21T11:16:39.077",
+      "last_modified": "2026-11-21T11:16:39.077",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129344"
+    },
+    {
+      "cve": "CVE-2026-128361",
+      "title": "CVE-2026-128361",
+      "description": "Improper Input Validation vulnerability in phoenixframework phoenix (Phoenix.Presence) allows an attacker who can join a channel to cause a denial of service via a non-string presence key.\n\ntrack/3,4 accepts any term as the presence key, such as a JSON object taken from a join payload. The key is converted with to_string/1 only later, in Phoenix.Presence.group/1, which raises Protocol.UndefinedError on a map. group/1 runs whenever presences are listed and when each presence diff is broadcast, together with the application's fetch/2, which can likewise raise on an unexpected key. Once such a key is tracked, every process that lists presences on the topic crashes, typically each channel that joins it, and presence diffs for the topic are lost.\n\nFrom 1.7.0 the diff runs in a Task.Supervisor.async task linked to the tracker shard, and Phoenix.Presence.handle_info/2 has no clause for its fail",
+      "published": "2026-11-21T11:16:38.787",
+      "last_modified": "2026-11-21T11:16:38.787",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128361"
+    },
+    {
+      "cve": "CVE-2022-4998",
+      "title": "CVE-2022-4998",
+      "description": "A vulnerability was identified in kanishka-linux reminiscence 0.3 on Windows. This issue affects the function convert_html_pdf_with_chromium of the file pages/dbaccess.py of the component Chromium HTML-to-PDF Conversion Pipeline. Such manipulation of the argument url_name leads to os command injection. The attack can be launched remotely. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-21T11:16:37.420",
+      "last_modified": "2026-11-21T11:16:38.437",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2022-4998"
+    },
+    {
+      "cve": "CVE-2026-87092",
+      "title": "CVE-2026-87092",
+      "description": "The Unlimited Elements For Elementor plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.0.26 via the getFileContentByUrl function. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information. The nonce protecting the get_addon_output_data AJAX endpoint is emitted on the Elementor editor page, which is accessible to Contributors, making the endpoint reachable by any authenticated user at that privilege level or above.",
+      "published": "2026-11-21T10:16:52.870",
+      "last_modified": "2026-11-21T10:16:53.010",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-87092"
+    },
+    {
+      "cve": "CVE-2026-133964",
+      "title": "CVE-2026-133964",
+      "description": "A security vulnerability has been detected in Bytebase DBHub up to 2.0.0. Impacted is the function escapeHatchFunctionKeywords of the file src/utils/allowed-keywords.ts of the component Read Only Mode. The manipulation of the argument tool leads to incomplete blacklist. Remote exploitation of the attack is possible. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-21T10:16:52.633",
+      "last_modified": "2026-11-21T10:16:52.807",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133964"
+    },
+    {
+      "cve": "CVE-2026-133367",
+      "title": "CVE-2026-133367",
+      "description": "The WPC Frequently Bought Together for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'variation' parameter in all versions up to, and including, 8.0.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nonce protecting the woobt_add_all_to_cart AJAX handler is emitted to all unauthenticated visitors via wp_localize_script, effectively nullifying the nonce as an authentication barrier and making the handler reachable without any login.",
+      "published": "2026-11-21T10:16:52.467",
+      "last_modified": "2026-11-21T10:16:52.587",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133367"
+    },
+    {
+      "cve": "CVE-2026-131609",
+      "title": "CVE-2026-131609",
+      "description": "The Germanized for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'billing_address.first_name (Store API checkout) → stored on parent order; withdrawal get_first_name() fallback' parameter in all versions up to, and including, 4.1.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload is planted via an unauthenticated guest checkout order's billing first name through the WooCommerce Store API, with execution triggered by a subsequent unauthenticated withdrawal request submission whose nonce is publicly available on the /withdraw-from-contract/ page.",
+      "published": "2026-11-21T10:16:52.293",
+      "last_modified": "2026-11-21T10:16:52.430",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131609"
+    },
+    {
+      "cve": "CVE-2026-127133",
+      "title": "CVE-2026-127133",
+      "description": "The Stream – Activity Log & Audit Trail plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'group-name' parameter in all versions up to, and including, 4.5.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires BuddyPress to be active with its Groups component enabled and default group-creation permissions in place, allowing any logged-in member to create groups.",
+      "published": "2026-11-21T10:16:52.130",
+      "last_modified": "2026-11-21T10:16:52.253",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127133"
+    },
+    {
+      "cve": "CVE-2026-124214",
+      "title": "CVE-2026-124214",
+      "description": "The WP Data Access – App Builder for Tables, Forms, Dashboards, Charts & Maps plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'HyperlinkObject.label (percent-encoded)' parameter in all versions up to, and including, 5.5.92 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the WordPress site to have a published Anonymous-access Registration Form app configured against a table with a HyperlinkObject column, and a legacy Data Project list using a $$link$$ Dynamic Hyperlink against that same column; given this configuration, any unauthenticated visitor can plant the payload.",
+      "published": "2026-11-21T10:16:51.960",
+      "last_modified": "2026-11-21T10:16:52.087",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-124214"
+    },
+    {
+      "cve": "CVE-2026-122230",
+      "title": "CVE-2026-122230",
+      "description": "The Thim Kit for Elementor – Pre-built Templates & Widgets for Elementor plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'comment' parameter in all versions up to, and including, 1.4.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires that the Post Comment widget is used with the Text Reveal entrance animation (Elementor class 'ekit--fx-word-reveal') on a Single Post template, and the comment widget must be within the initial viewport; once the first comment by an attacker is approved, or if comment moderation is disabled, subsequent payloads fire automatically for every visitor who loads the affected page.",
+      "published": "2026-11-21T10:16:51.800",
+      "last_modified": "2026-11-21T10:16:51.930",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-122230"
+    },
+    {
+      "cve": "CVE-2026-120743",
+      "title": "CVE-2026-120743",
+      "description": "The Simply Schedule Appointments plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'payment_method' parameter in all versions up to, and including, 1.6.13.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The stored payload is only rendered when an administrator navigates to the hidden support page (/wp-admin/admin.php?ssa-support-admin=1) and triggers the 'Fix appointment durations' action, a condition reliably engineered by the attacker by smuggling a '+1 day' suffix in the start_date field to create a persistent duration mismatch that routes the malicious booking through the vulnerable echo path. Successful exploitation additionally requires an action by an administrator — the attacker cannot trig",
+      "published": "2026-11-21T10:16:51.640",
+      "last_modified": "2026-11-21T10:16:51.763",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120743"
+    },
+    {
+      "cve": "CVE-2026-120526",
+      "title": "CVE-2026-120526",
+      "description": "The WCFM Membership – WooCommerce Memberships for Multivendor Marketplace plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wcfm_membership_registration_form[store_name]' parameter in all versions up to, and including, 2.12.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nonce required to reach the registration endpoint is publicly emitted on the /vendor-register/ page, making the endpoint fully reachable by unauthenticated attackers without any prior authentication or privilege escalation.",
+      "published": "2026-11-21T10:16:51.477",
+      "last_modified": "2026-11-21T10:16:51.607",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120526"
+    },
+    {
+      "cve": "CVE-2026-120119",
+      "title": "CVE-2026-120119",
+      "description": "The HUSKY – Products Filter for WooCommerce Professional plugin for WordPress is vulnerable to time-based SQL Injection via the 'link (inner 'woof_text' query parameter)' parameter in all versions up to, and including, 1.4.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The exploit requires a valid product_messenger nonce, which is issued by the woof_redraw_woof AJAX endpoint to any visitor when the shortcode's by_only attribute is set — an attribute that can itself be forced via the attacker-controlled woof_shortcode request parameter, making the nonce trivially obtainable by any logged-in us",
+      "published": "2026-11-21T10:16:51.307",
+      "last_modified": "2026-11-21T10:16:51.440",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120119"
+    },
+    {
+      "cve": "CVE-2026-119608",
+      "title": "CVE-2026-119608",
+      "description": "The Hustle – Email Marketing, Lead Generation, Optins, Popups plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'import_file' parameter in all versions up to, and including, 7.8.14.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires an administrator to have first delegated the hustle_edit_module capability to a lower-privileged role via the plugin's built-in Permissions screen; without that delegation, the import endpoint rejects non-Administrator users at the capability check.",
+      "published": "2026-11-21T10:16:51.140",
+      "last_modified": "2026-11-21T10:16:51.270",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119608"
+    },
+    {
+      "cve": "CVE-2026-119216",
+      "title": "CVE-2026-119216",
+      "description": "The Stream – Activity Log & Audit Trail plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via the 'display_name' parameter in all versions up to, and including, 4.4.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only exploitable on sites with 50 or fewer total users, as above that threshold the user filter uses an AJAX endpoint that returns entity-encoded labels and is not affected.",
+      "published": "2026-11-21T10:16:50.970",
+      "last_modified": "2026-11-21T10:16:51.107",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119216"
+    },
+    {
+      "cve": "CVE-2026-119114",
+      "title": "CVE-2026-119114",
+      "description": "The WP Fastest Cache – WordPress Cache Plugin plugin for WordPress is vulnerable to arbitrary directory deletion due to insufficient file path validation in the singleDeleteCache function in all versions up to, and including, 1.5.4 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). Successful exploitation requires either the Custom Permalinks plugin or the GeoDirectory plugin to be co-installed, as these provide the necessary mechanism to write a traversal-bearing permalink value into the database that WP Fastest Cache then consumes without validation.",
+      "published": "2026-11-21T10:16:50.800",
+      "last_modified": "2026-11-21T10:16:50.930",
+      "cvss": 7.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119114"
+    },
+    {
+      "cve": "CVE-2026-119061",
+      "title": "CVE-2026-119061",
+      "description": "The VikBooking Hotel Booking Engine & PMS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'vbf<field_id>' parameter in all versions up to, and including, 1.8.20 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-11-21T10:16:50.637",
+      "last_modified": "2026-11-21T10:16:50.767",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-119061"
+    },
+    {
+      "cve": "CVE-2026-118061",
+      "title": "CVE-2026-118061",
+      "description": "The VikBooking Hotel Booking Engine & PMS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'inquiry (array keys)' parameter in all versions up to, and including, 1.8.20 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The endpoint's only access gate is a CSRF token that is publicly emitted on the unauthenticated inquiry page, making the injection reachable by any unauthenticated visitor without any precondition beyond loading that public page.",
+      "published": "2026-11-21T10:16:50.470",
+      "last_modified": "2026-11-21T10:16:50.600",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118061"
+    },
+    {
+      "cve": "CVE-2026-118049",
+      "title": "CVE-2026-118049",
+      "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.2.0 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to permanently delete any comment they authored anywhere on the site — including regular post comments and lesson comments — along with all replies to those comments authored by any other user, including Administrators and Instructors.",
+      "published": "2026-11-21T10:16:50.300",
+      "last_modified": "2026-11-21T10:16:50.433",
+      "cvss": 8.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118049"
+    },
+    {
+      "cve": "CVE-2026-116757",
+      "title": "CVE-2026-116757",
+      "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the '_tutor_profile_bio' parameter in all versions up to, and including, 4.2.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected anchor payload uses a full-viewport invisible overlay (position:fixed; width:100vw; height:100vh; opacity:0) so that any click on the public profile page triggers the tutor-copy-text handler, which passes a browser-decoded data-text value to tutor_toast() where it is parsed as live HTML by jQuery.",
+      "published": "2026-11-21T10:16:50.133",
+      "last_modified": "2026-11-21T10:16:50.263",
+      "cvss": 6.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-116757"
+    },
+    {
+      "cve": "CVE-2026-107632",
+      "title": "CVE-2026-107632",
+      "description": "The Unbounce Landing Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 1.1.6. This is due to insufficient input sanitization and output escaping on the proxy error message that is persisted to the 'ub-proxy-error-message' option: unauthenticated attacker-controlled REQUEST_URI data is concatenated into the error string in UBHTTP::stream_request_curl()/stream_request_wp_remote() and stored via update_option(), then later echoed inside a <textarea> on the Unbounce Pages Diagnostics admin page without any escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user (an administrator viewing the Diagnostics screen) accesses an injected page.",
+      "published": "2026-11-21T10:16:49.960",
+      "last_modified": "2026-11-21T10:16:50.090",
+      "cvss": 7.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107632"
+    },
+    {
+      "cve": "CVE-2026-104013",
+      "title": "CVE-2026-104013",
+      "description": "The WP Compress – Instant Performance & Speed Optimization plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 7.26.00 via the 'css' parameter parameter. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information. Exploiting the file read requires a preparatory unauthenticated request that plants a boundary directory by injecting a path traversal sequence into a cookie listed in WPC_CACHE_COOKIES (such as pll_language, present in the default list), meaning the plugin's cookie-cache feature must be enabled with at least one tracked cookie name configured.",
+      "published": "2026-11-21T10:16:49.547",
+      "last_modified": "2026-11-21T10:16:49.917",
+      "cvss": 5.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-104013"
+    },
     {
       "cve": "CVE-2026-133963",
       "title": "CVE-2026-133963",
@@ -1257,559 +1806,10 @@
       "last_modified": "2026-11-20T20:17:39.317",
       "cvss": 6.5,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134048"
-    },
-    {
-      "cve": "CVE-2026-134047",
-      "title": "CVE-2026-134047",
-      "description": "Open Robotics RViz IntensityPCTransformer PointField Out-Of-Bounds Read Denial-of-Service Vulnerability. This vulnerability allows network-adjacent attackers to create a denial-of-service condition on affected installations of Open Robotics RViz. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the IntensityPCTransformer handling of PointCloud2 messages. The issue results from the lack of proper validation of user-supplied data, which can result in a read past the end of an allocated object. An attacker can leverage this vulnerability to create a denial-of-service condition on the system. Was ZDI-CAN-32645.",
-      "published": "2026-11-20T20:17:39.180",
-      "last_modified": "2026-11-20T20:17:39.180",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134047"
-    },
-    {
-      "cve": "CVE-2026-134046",
-      "title": "CVE-2026-134046",
-      "description": "Open Robotics RViz MapDisplay OccupancyGridUpdate Out-Of-Bounds Read Denial-of-Service Vulnerability. This vulnerability allows network-adjacent attackers to create a denial-of-service condition on affected installations of Open Robotics RViz. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of OccupancyGridUpdate messages. The issue results from the lack of proper validation of user-supplied data, which can result in a read past the end of an allocated object. An attacker can leverage this vulnerability to create a denial-of-service condition on the system. Was ZDI-CAN-32122.",
-      "published": "2026-11-20T20:17:39.027",
-      "last_modified": "2026-11-20T20:17:39.027",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134046"
-    },
-    {
-      "cve": "CVE-2026-134045",
-      "title": "CVE-2026-134045",
-      "description": "Open Robotics RViz PointCloud2Display PointField Out-of-Bounds Read Denial-of-Service Vulnerability. This vulnerability allows network-adjacent attackers to create a denial-of-service condition on affected installations of Open Robotics RViz. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of PointCloud2 messages. The issue results from the lack of proper validation of user-supplied data, which can result in a read past the end of an allocated object. An attacker can leverage this vulnerability to create a denial-of-service condition on the system. Was ZDI-CAN-32123.",
-      "published": "2026-11-20T20:17:38.880",
-      "last_modified": "2026-11-20T20:17:38.880",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134045"
-    },
-    {
-      "cve": "CVE-2026-134044",
-      "title": "CVE-2026-134044",
-      "description": "Open Robotics ROS 2 sros2 load_policy XML External Entity Processing Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of Open Robotics ROS 2. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of policy XML files. Due to the improper restriction of XML External Entity (XXE) references, a crafted document specifying a URI causes the XML parser to access the URI and embed the contents back into the XML document for further processing. An attacker can leverage this in conjunction with other vulnerabilities to execute arbitrary code in the context of the current user. Was ZDI-CAN-32121.",
-      "published": "2026-11-20T20:17:38.663",
-      "last_modified": "2026-11-20T20:17:38.663",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134044"
-    },
-    {
-      "cve": "CVE-2026-134043",
-      "title": "CVE-2026-134043",
-      "description": "Krita TIF File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of TIF files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28517.",
-      "published": "2026-11-20T20:17:38.480",
-      "last_modified": "2026-11-20T21:17:36.840",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134043"
-    },
-    {
-      "cve": "CVE-2026-134042",
-      "title": "CVE-2026-134042",
-      "description": "Krita HEIC File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe issue results from the use of a vulnerable version of libheif. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28656.",
-      "published": "2026-11-20T20:17:38.313",
-      "last_modified": "2026-11-20T21:17:36.730",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134042"
-    },
-    {
-      "cve": "CVE-2026-134041",
-      "title": "CVE-2026-134041",
-      "description": "Krita EXR File Parsing Integer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of EXR files. The issue results from the lack of proper validation of user-supplied data, which can result in an integer overflow before writing to memory. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28752.",
-      "published": "2026-11-20T20:17:38.170",
-      "last_modified": "2026-11-20T21:17:36.620",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134041"
-    },
-    {
-      "cve": "CVE-2026-134040",
-      "title": "CVE-2026-134040",
-      "description": "Krita HEIC File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe issue results from the use of a vulnerable version of libde265. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28657.",
-      "published": "2026-11-20T20:17:38.017",
-      "last_modified": "2026-11-20T21:17:36.507",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134040"
-    },
-    {
-      "cve": "CVE-2026-134039",
-      "title": "CVE-2026-134039",
-      "description": "Krita TIFF File Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of TIFF files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28771.",
-      "published": "2026-11-20T20:17:37.857",
-      "last_modified": "2026-11-20T21:17:36.400",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134039"
-    },
-    {
-      "cve": "CVE-2026-134038",
-      "title": "CVE-2026-134038",
-      "description": "Krita PSB File Parsing Integer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of PSB files. The issue results from the lack of proper validation of user-supplied data, which can result in an integer overflow before allocating a buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28905.",
-      "published": "2026-11-20T20:17:37.727",
-      "last_modified": "2026-11-20T21:17:36.290",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134038"
-    },
-    {
-      "cve": "CVE-2026-134037",
-      "title": "CVE-2026-134037",
-      "description": "Krita ASL File Parsing Integer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of ASL files. The issue results from the lack of proper validation of user-supplied data, which can result in an integer overflow before allocating a buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28906.",
-      "published": "2026-11-20T20:17:37.597",
-      "last_modified": "2026-11-20T21:17:36.180",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134037"
-    },
-    {
-      "cve": "CVE-2026-134036",
-      "title": "CVE-2026-134036",
-      "description": "Krita ABR File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the parsing of ABR files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28785.",
-      "published": "2026-11-20T20:17:37.450",
-      "last_modified": "2026-11-20T21:17:36.067",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134036"
-    },
-    {
-      "cve": "CVE-2026-134035",
-      "title": "CVE-2026-134035",
-      "description": "Krita JC2 File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Krita. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe issue results from the use of a vulnerable version of openjpeg. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-28646.",
-      "published": "2026-11-20T20:17:37.310",
-      "last_modified": "2026-11-20T21:17:35.963",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134035"
-    },
-    {
-      "cve": "CVE-2026-133693",
-      "title": "CVE-2026-133693",
-      "description": "A weakness has been identified in continuedev continue 2.0.0/2.1.0. Affected is the function validateSearchAndReplaceFilepath of the file gui/src/util/clientTools/editImpl.ts of the component Edit Tool. Executing a manipulation can lead to path traversal. The attack requires local access. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-20T20:17:36.297",
-      "last_modified": "2026-11-20T20:17:36.497",
-      "cvss": 4.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133693"
-    },
-    {
-      "cve": "CVE-2026-133681",
-      "title": "CVE-2026-133681",
-      "description": "A vulnerability was determined in Soar Cloud System Human Resources up to 7.3.2026.0112. This impacts an unknown function of the file /client.aspx. Executing a manipulation can lead to cross site scripting. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-20T20:17:36.037",
-      "last_modified": "2026-11-20T20:17:36.240",
-      "cvss": 4.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133681"
-    },
-    {
-      "cve": "CVE-2026-133680",
-      "title": "CVE-2026-133680",
-      "description": "A vulnerability was found in D-Link DCS-935L 1.10.01. This affects the function loginRouter of the file web/cgi-bin/localrecording/setconf.cgi of the component Local Recording CGI. Performing a manipulation of the argument account/password results in os command injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
-      "published": "2026-11-20T20:17:35.750",
-      "last_modified": "2026-11-20T20:17:35.970",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133680"
-    },
-    {
-      "cve": "CVE-2026-129998",
-      "title": "CVE-2026-129998",
-      "description": "MaxKB is an open-source AI assistant for enterprise. Prior to 2.10.7-lts, custom Tool Init Param definitions accept attacker-controlled props_info.rules[].validator strings through POST /admin/api/workspace/{workspace_id}/tool and PUT /admin/api/workspace/{workspace_id}/tool/{tool_id}, store them without restriction, and pass them to eval() when the parameter form renders. An authenticated user with the default USER workspace role can store JavaScript and trigger execution by opening the tool's Debug screen before entering or submitting a parameter value. The same Init Param form is exposed to accounts with edit permission on the tool, but execution by a different account was not independently verified. The confirmed script runs in the MaxKB origin; access to another user's bearer token and authenticated account authority is plausible only if that user renders the malicious form. This is",
-      "published": "2026-11-20T20:17:23.157",
-      "last_modified": "2026-11-20T20:17:23.307",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129998"
-    },
-    {
-      "cve": "CVE-2026-129179",
-      "title": "CVE-2026-129179",
-      "description": "U.S Department of the Interior Unstable Slope Management Program allows attackers with valid local application credentials to establish an application session by sending JSON POST requests to the application's login endpoint without a Referrer header or completing the intended Keycloak flow. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:22.727",
-      "last_modified": "2026-11-20T20:17:22.727",
-      "cvss": 8.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129179"
-    },
-    {
-      "cve": "CVE-2026-129178",
-      "title": "CVE-2026-129178",
-      "description": "U.S Department of the Interior Unstable Slope Management Program stores local user passwords as unsalted MD5 hashes. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:22.563",
-      "last_modified": "2026-11-20T20:17:22.563",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129178"
-    },
-    {
-      "cve": "CVE-2026-129177",
-      "title": "CVE-2026-129177",
-      "description": "U.S Department of the Interior Unstable Slope Management Program contains a vulnerable endpoint that allows an unauthenticated attacker, without a cookie header, to send a POST request resulting in the creation of a new user. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:22.390",
-      "last_modified": "2026-11-20T20:17:22.390",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129177"
-    },
-    {
-      "cve": "CVE-2026-129176",
-      "title": "CVE-2026-129176",
-      "description": "U.S Department of the Interior Unstable Slope Management Program accepts a POST request from an unauthenticated user, with no cookie header, to a specific endpoint allowing for the deletion of specified users. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:22.207",
-      "last_modified": "2026-11-20T20:17:22.207",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129176"
-    },
-    {
-      "cve": "CVE-2026-129175",
-      "title": "CVE-2026-129175",
-      "description": "U.S Department of the Interior Unstable Slope Management Program allows an unauthenticated user to inject unauthorized SQL commands that allow the attacker to gain root access and complete control over the database. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:21.980",
-      "last_modified": "2026-11-20T20:17:21.980",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129175"
-    },
-    {
-      "cve": "CVE-2026-129174",
-      "title": "CVE-2026-129174",
-      "description": "U.S Department of the Interior Unstable Slope Management Program allows a remote, unauthenticated attacker to access a vulnerable endpoint that returns a list of application users and their permissions in plaintext. Fixed on or around 2026-10-19.",
-      "published": "2026-11-20T20:17:21.377",
-      "last_modified": "2026-11-20T20:17:21.377",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129174"
-    },
-    {
-      "cve": "CVE-2026-121714",
-      "title": "CVE-2026-121714",
-      "description": "RabbitMQ is a messaging and streaming broker. In the affected revision identified by the advisory, the AMQP 1.0 server_mode parser in deps/amqp10_common/src/amqp10_binary_parser.erl stops at the first body section and preserves the remaining bytes in bare_and_footer without validating message-section order. An authenticated publisher with write permission can place a properties section carrying a forged user-id after the body, causing rabbit_access_control:check_user_id/2 to see no user-id while permissive downstream AMQP 1.0 decoders or AMQP 0-9-1 conversion through classic and quorum queues expose the forged identity. Applications that rely on RabbitMQ-validated user-id metadata can therefore accept attacker-controlled publisher attribution. Strict consumers that reject out-of-order sections are not vulnerable to identity spoofing, and the issue does not bypass broker routing or destin",
-      "published": "2026-11-20T20:17:14.270",
-      "last_modified": "2026-11-20T20:17:14.270",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121714"
-    },
-    {
-      "cve": "CVE-2026-114499",
-      "title": "CVE-2026-114499",
-      "description": "codebase-memory-mcp provides local code intelligence for developers and AI agents through a persistent graph and MCP tools. Prior to 0.10.0, the indexer's .gitignore matcher implemented * and ** through recursive backtracking without a work bound. A repository containing a pattern with repeated wildcard groups and a long path could make matching work grow exponentially, allowing a single ignore rule to stall discovery indefinitely and, before worker isolation, stall the server. The impact is limited to availability, and the bounded matcher does not claim that every expensive input is eliminated. This issue is fixed in version 0.10.0.",
-      "published": "2026-11-20T20:17:12.080",
-      "last_modified": "2026-11-20T20:17:12.080",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114499"
-    },
-    {
-      "cve": "CVE-2026-114497",
-      "title": "CVE-2026-114497",
-      "description": "codebase-memory-mcp provides local code intelligence for developers and AI agents through a persistent graph and MCP tools. Prior to 0.9.1-rc.1, the optional graph UI's POST /api/process-kill route omitted the indexing-job ownership check on Windows while retaining that check on POSIX systems. A requester able to reach the optional UI could supply an arbitrary process identifier, causing TerminateProcess to stop any process that the server user was permitted to terminate. The flaw affects the Windows-specific process termination path and can cause a high availability impact without disclosing or modifying data. This issue is fixed in version 0.9.1-rc.1.",
-      "published": "2026-11-20T20:17:11.627",
-      "last_modified": "2026-11-20T20:17:11.627",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114497"
-    },
-    {
-      "cve": "CVE-2026-114496",
-      "title": "CVE-2026-114496",
-      "description": "codebase-memory-mcp provides local code intelligence for developers and AI agents through a persistent graph and MCP tools. Prior to 0.9.0, the detect_changes tool validated the base_branch argument for shell metacharacters but omitted the leading-dash check before placing the value in the revision position of a git diff command. Git therefore interpreted an option-shaped base_branch value, including --output, as a command option instead of a revision, allowing a caller to create or overwrite a caller-chosen file with Git diff output under the server process's permissions. Arbitrary code execution was not demonstrated. This issue is fixed in version 0.9.0.",
-      "published": "2026-11-20T20:17:11.240",
-      "last_modified": "2026-11-20T21:17:28.000",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114496"
-    },
-    {
-      "cve": "CVE-2026-114495",
-      "title": "CVE-2026-114495",
-      "description": "codebase-memory-mcp provides local code intelligence for developers and AI agents through a persistent graph and MCP tools. Prior to 0.9.0, automatic import of a repository's .codebase-memory/ artifact allocated a decompression buffer using the attacker-controlled 64-bit original_size value from artifact.json but truncated that value to int when passing the destination capacity to the Zstandard decompressor. A value with bit 31 set became negative and was sign-extended to a large size_t, allowing the decompressor to write frame content beyond the actual allocation. Indexing a malicious repository containing the crafted artifact could corrupt heap memory with attacker-controlled bytes, causing a reliable crash and potentially code execution. This issue is fixed in version 0.9.0.",
-      "published": "2026-11-20T20:17:10.850",
-      "last_modified": "2026-11-20T20:17:10.850",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114495"
-    },
-    {
-      "cve": "CVE-2026-114494",
-      "title": "CVE-2026-114494",
-      "description": "codebase-memory-mcp provides local code intelligence for developers and AI agents through a persistent graph and MCP tools. Prior to 0.9.0, the Cypher parser accepted an unbounded number of projection items in RETURN and WITH clauses while projection executors indexed fixed 32-element stack arrays using the parsed count. A query_graph query with more than 32 projection items could therefore write beyond those arrays, and a related result-column path could read uninitialized stack slots even when no node matched. Any caller of query_graph, including an agent whose query is influenced by untrusted content, could cause a reliable server crash and potentially compromise process confidentiality and integrity. This issue is fixed in version 0.9.0.",
-      "published": "2026-11-20T20:17:10.410",
-      "last_modified": "2026-11-20T21:17:27.867",
-      "cvss": 7.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-114494"
-    },
-    {
-      "cve": "CVE-2026-96805",
-      "title": "CVE-2026-96805",
-      "description": "The affected products have an unauthenticated command injection, which may allow an in-range BLE device to gain access to write to the control interface and influence braking with no authentication or pairing.",
-      "published": "2026-11-20T19:18:58.183",
-      "last_modified": "2026-11-20T19:18:58.183",
-      "cvss": 9.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-96805"
-    },
-    {
-      "cve": "CVE-2026-94599",
-      "title": "CVE-2026-94599",
-      "description": "NukeViet CMS is a multi Content Management System. From 4.5.00 until 4.5.13 and 4.6.02, an unauthenticated attacker can place a multiply encoded value in the news module search q parameter. $nv_Request->get_title() decodes and sanitizes the input once, but modules/news/funcs/search.php subsequently applies urldecode() after sanitization. The resulting raw keyword reaches the {KEY} search-input attribute through search_theme() and the no-results element through search_result_theme() in the default and mobile themes, permitting attribute or tag injection and same-origin JavaScript execution when a victim opens the crafted search URL. This issue is fixed in versions 4.5.13 and 4.6.02.",
-      "published": "2026-11-20T19:18:57.243",
-      "last_modified": "2026-11-20T19:18:57.243",
-      "cvss": 6.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94599"
-    },
-    {
-      "cve": "CVE-2026-94598",
-      "title": "CVE-2026-94598",
-      "description": "NukeViet CMS is a multi Content Management System. From 4.5.08 until 4.5.12 and 4.6.02, an attacker can place NukeViet's internal {@[, ]@}, [@{, and }@] sanitizer markers in an iframe srcdoc value by encoding square brackets as HTML entities. Recursive NukeViet\\Core\\Request::filterTags() processing decodes the characters, accepts the forged marker, and later converts it to real markup without normal tag or attribute filtering. Because an unsandboxed srcdoc iframe shares the parent origin and iframe is enabled by default through NV_ALLOWED_HTML_TAGS, stored Contact messages, comments with the editor enabled, or submitted articles can execute JavaScript with the viewer's session. This issue is fixed in versions 4.5.12 and 4.6.02.",
-      "published": "2026-11-20T19:18:57.090",
-      "last_modified": "2026-11-20T19:18:57.090",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94598"
-    },
-    {
-      "cve": "CVE-2026-94597",
-      "title": "CVE-2026-94597",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.12 and 4.6.02, an attacker who can reach an image-upload flow can upload a valid image with appended PHP short-tag code and a double-extension filename. NukeViet\\Files\\Upload::save_file() relied on verify_image(), which missed the <? short-open tag, while filename handling preserved embedded dots, validation inspected only the final extension, and an .htaccess rule blocked PHP extensions only at the end of the URI. On Apache mod_php systems configured with short_open_tag and a PHP extension handler, the stored polyglot can execute as PHP and run operating-system commands as the web-server user; PHP-FPM, nginx, and end-anchored handler configurations are not exposed to the execution step. This issue is fixed in versions 4.5.12 and 4.6.02.",
-      "published": "2026-11-20T19:18:56.947",
-      "last_modified": "2026-11-20T19:18:56.947",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94597"
-    },
-    {
-      "cve": "CVE-2026-94567",
-      "title": "CVE-2026-94567",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.12 and 4.6.02, an attacker with access to an SVG upload flow can hide a script element in an internal DTD entity. NukeViet\\Files\\Upload::check_svg_tmpfile() loads the document without entity expansion, leaving a DOMEntityReference, and sanitize_svg_dom() inspects only element nodes, while browsers expand the entity when the stored file is served as image/svg+xml. The SVG path also returned before verify_image() and preserved the original bytes, so the hidden script reached disk unchanged. Guest comment attachments make the upload unauthenticated only when a module's comment feature is open to the All or Guest group and allowattachcomm is enabled; module administrators can also use the file manager, allowing same-origin script execution in an administrator's session. This issue is fixed in versions 4.5.12 and 4.6.02.",
-      "published": "2026-11-20T19:18:56.790",
-      "last_modified": "2026-11-20T20:17:51.233",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94567"
-    },
-    {
-      "cve": "CVE-2026-94566",
-      "title": "CVE-2026-94566",
-      "description": "NukeViet CMS is a multi Content Management System. In 4.6.00, an unauthenticated attacker can rotate X-Forwarded-For because vendor/vinades/nukeviet/Core/Ips.php accepts forwarded client-IP headers without first confirming that REMOTE_ADDR is a trusted proxy. The resulting NV_CLIENT_IP keys the administrator login blocker in includes/core/admin_login.php; changing only the header value bypasses that lockout and permits effectively unlimited password guesses. The same spoofable address is also consumed by the user login blocker in modules/users/funcs/login.php, IP restrictions, bans, flood controls, and security logs, but those additional code-level effects were not dynamically demonstrated. This issue is fixed in version 4.6.01.",
-      "published": "2026-11-20T19:18:56.647",
-      "last_modified": "2026-11-20T20:17:50.980",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94566"
-    },
-    {
-      "cve": "CVE-2026-94565",
-      "title": "CVE-2026-94565",
-      "description": "NukeViet CMS is a multi Content Management System. From the 3.x release line until 4.6.01, an unauthenticated visitor can submit a Contact module message containing an event-handler attribute prefixed by a slash. NukeViet\\Core\\Request::filterTags() tokenizes attributes using only ASCII spaces, so it sees /onerror and misses the ^on denylist, while the browser treats the slash as a separator and activates onerror. The message is stored and rendered without output encoding in the administration panel, which lacks a Content Security Policy, allowing same-origin JavaScript execution when an administrator opens the message. This issue is fixed in version 4.6.01.",
-      "published": "2026-11-20T19:18:56.500",
-      "last_modified": "2026-11-20T20:17:50.583",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94565"
-    },
-    {
-      "cve": "CVE-2026-94564",
-      "title": "CVE-2026-94564",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.6.01, an unauthenticated visitor can submit Contact module content containing numeric HTML entities with more than eight leading zeros in a URL-bearing attribute. NukeViet\\Core\\Request::unhtmlentities() does not decode that form before filterAttr() checks for a javascript: scheme, but browsers decode it when rendering the stored content. With an allowed tag such as the default iframe, the reconstructed script URL executes in the administration origin when staff view the message, permitting session-riding actions while remaining unable to read the HttpOnly session cookie directly. This issue is fixed in version 4.6.01.",
-      "published": "2026-11-20T19:18:56.357",
-      "last_modified": "2026-11-20T20:17:49.947",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94564"
-    },
-    {
-      "cve": "CVE-2026-94563",
-      "title": "CVE-2026-94563",
-      "description": "NukeViet CMS is a multi Content Management System. From 4.5.00 until 4.6.01, an authenticated settings-module administrator can upload a PKCS#12 S/MIME certificate whose X.509 Subject CN contains path separators and traversal components. The smimeadd handler in admin/settings/smtp.php applies only an at-sign replacement before using the CN in .key, .crt, and .pem paths beneath data/certs. Traversal can select attacker-chosen paths outside data/certs, but writes remain constrained to already-existing writable directories and the permitted extensions. Within that constraint, attacker-controlled PEM data can overwrite certificate assets, including a DKIM private key; when the curl.cainfo PHP directive is empty, the attacker can also replace cacert.pem and undermine outbound TLS verification. This issue is fixed in version 4.6.01.",
-      "published": "2026-11-20T19:18:56.210",
-      "last_modified": "2026-11-20T19:18:56.210",
-      "cvss": 6.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94563"
-    },
-    {
-      "cve": "CVE-2026-94562",
-      "title": "CVE-2026-94562",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.6.01, a super-administrator satisfying the NV_IS_SPADMIN gate can use modules/users/admin/fields.php to store an arbitrary existing PHP function in the func_callback setting for a custom profile field because the callback name is checked only with function_exists() and no allowlist restricts which function may be selected. modules/users/fields.check.php later invokes that function through call_user_func() when the field is validated through registration, profile editing, or administrator editing. Selecting a command-execution function crosses the super-administrator to operating-system boundary and executes commands as the web-server account, while ordinary users can trigger the stored callback after it is configured. Because the remediation validates callbacks only when they are written, upgrading does not remove a malicious ",
-      "published": "2026-11-20T19:18:56.067",
-      "last_modified": "2026-11-20T21:17:39.530",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94562"
-    },
-    {
-      "cve": "CVE-2026-94561",
-      "title": "CVE-2026-94561",
-      "description": "NukeViet CMS is a multi Content Management System. In 4.6.00, an unauthenticated attacker can place the configured domain in X-Forwarded-Host while choosing a different destination in the ordinary Host header. The earlier fix validates only the forwarded value in includes/mainfile.php, while set_ini_file() in includes/ini.php constructs an outbound cURL request from the separately retained NV_SERVER_NAME before the ordinary host is rejected. Redirect following can carry the blind request to an attacker-selected private host, port, and path and invoke internal HTTP endpoints. This issue is fixed in version 4.6.01.",
-      "published": "2026-11-20T19:18:55.910",
-      "last_modified": "2026-11-20T19:18:55.910",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94561"
-    },
-    {
-      "cve": "CVE-2026-86017",
-      "title": "CVE-2026-86017",
-      "description": "isomorphic-git is a pure JavaScript implementation of Git for Node.js and browsers. Prior to 1.38.8, git cherry-pick applies tree changes through applyTreeChanges in src/utils/walkerToTreeEntryMap.js without checking whether a leading path component is a symbolic link. If a victim worktree contains a tracked symlink to a location outside the worktree and a cherry-picked tree places a file beneath that path, the write follows the symlink and materializes attacker-controlled blob content at the external destination. This allows arbitrary file writes and can cause data tampering, code injection into interpreted files, privilege escalation, denial of service, or follow-on code execution depending on the selected target path. This issue is fixed in version 1.38.8.",
-      "published": "2026-11-20T19:18:55.490",
-      "last_modified": "2026-11-20T21:17:39.417",
-      "cvss": 8.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-86017"
-    },
-    {
-      "cve": "CVE-2026-77383",
-      "title": "CVE-2026-77383",
-      "description": "mcp-ssh-manager is an MCP server for managing servers over SSH with human approval, an encrypted vault, and a live audit trail. Prior to 3.6.7, ssh_db_list, ssh_db_dump, ssh_db_import, and ssh_db_restore in src/database-manager.js interpolate caller-controlled database, table, collection, file path, user, host, port, and password values into shell-evaluated command strings without neutralization. Shell metacharacters in these arguments therefore execute arbitrary commands on the configured SSH target as the account used by the MCP server. ssh_db_list is classified as read-only and remains available in readonly and restricted server security modes, so this path bypasses the command-execution boundary those modes are intended to enforce. The dump and import builders are blocked in readonly mode but remain vulnerable in the default unrestricted mode. The earlier version 3.6.5 hardening cove",
-      "published": "2026-11-20T19:18:55.113",
-      "last_modified": "2026-11-20T19:18:55.113",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77383"
-    },
-    {
-      "cve": "CVE-2026-77355",
-      "title": "CVE-2026-77355",
-      "description": "isomorphic-git is a pure JavaScript implementation of Git for Node.js and browsers. Prior to 1.38.7, tree-entry validation in src/models/GitTree.js does not reject the Windows NTFS reserved pathname alias .git::$INDEX_ALLOCATION. When clone() or checkout materializes an attacker-controlled tree containing this alias on Windows using an NTFS filesystem, the alias resolves to the active .git directory and permits writes to trusted repository metadata instead of a normal worktree directory. A malicious repository or object stream can therefore poison repository configuration, hooks, refs, attributes, or other gitdir state. Strict hosting that rejects hasDotgit objects can block the crafted tree, and non-NTFS systems do not interpret the pathname as the active gitdir. isomorphic-git performs the gitdir write but does not itself execute the written hook or configuration; a later native Git or",
-      "published": "2026-11-20T19:18:54.933",
-      "last_modified": "2026-11-20T20:17:48.373",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77355"
-    },
-    {
-      "cve": "CVE-2026-77347",
-      "title": "CVE-2026-77347",
-      "description": "Pozeiden is a MermaidJS renderer written in Zig. Prior to 0.3.0, src/renderers/c4.zig, src/renderers/class.zig, src/renderers/er.zig, and src/renderers/requirement.zig use fixed row-layout arrays while deriving subsequent loop bounds from an untrusted diagram's actual item count, and src/renderers/state.zig indexes a fixed depth array using user-controlled nesting depth. A valid diagram with at least 193 grid items can make the row count exceed the 64-row storage, while a deeply nested state diagram can exceed the col_count depth storage through the public pozeiden.render() path. Safe CLI and ReleaseSafe builds abort the rendering process, enabling reliable denial of service in applications that render untrusted diagrams. ReleaseSmall WASM builds with safety checks disabled instead perform out-of-bounds stack reads or writes, creating a memory-safety violation. This issue is fixed in ver",
-      "published": "2026-11-20T19:18:54.780",
-      "last_modified": "2026-11-20T19:18:54.780",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77347"
-    },
-    {
-      "cve": "CVE-2026-77346",
-      "title": "CVE-2026-77346",
-      "description": "Pozeiden is a MermaidJS renderer written in Zig. Prior to 0.3.0, Pozeiden emits attacker-controlled Mermaid values into SVG attributes or markup without sufficient XML escaping or URL scheme validation, and first-party consumers such as zigmark and policypress embed the generated SVG raw into HTML. The click href syntax can introduce a dangerous URL scheme or break out of an attribute; style, classDef, ::: class assignment, and linkStyle color values can inject fill or stroke markup; color and font-weight values can escape text attributes; %%{init}%% themeVariables can inject global renderer attributes; and quadrant y-axis labels can introduce raw markup. These paths involve src/svg/writer.zig, src/renderers/flowchart.zig, src/renderers/quadrant.zig, and src/root.zig. An attacker who can influence rendered Mermaid source can therefore store script-bearing SVG that executes when another u",
-      "published": "2026-11-20T19:18:54.610",
-      "last_modified": "2026-11-20T19:18:54.610",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77346"
-    },
-    {
-      "cve": "CVE-2026-77328",
-      "title": "CVE-2026-77328",
-      "description": "MapServer is a system for developing web-based GIS applications. Prior to 8.6.5, MapServer's PostgreSQL JOIN implementation in src/mappostgresql.c copies the source layer attribute selected by JOIN FROM into joininfo->from_value and embeds it without parameterization or escaping into a dynamically generated PostgreSQL query executed by PQexec(). When PostgreSQL JOIN support is enabled, an attacker who can control that source feature attribute can inject quote characters and SQL operators that alter the intended WHERE predicate. This second-order injection can cause unintended rows and JOIN attributes to be returned, potentially exposing information from unrelated PostgreSQL records. This issue is fixed in version 8.6.5.",
-      "published": "2026-11-20T19:18:54.453",
-      "last_modified": "2026-11-20T19:18:54.453",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77328"
-    },
-    {
-      "cve": "CVE-2026-77327",
-      "title": "CVE-2026-77327",
-      "description": "MapServer is a system for developing web-based GIS applications. Prior to 8.6.5, MapServer's MySQL JOIN implementation in src/mapjoin.c copies the source layer attribute selected by JOIN ... FROM into joininfo->target and inserts it into the query built by msMySQLJoinNext() without parameterization or SQL escaping. When MySQL JOIN support is enabled, an attacker who can control that source feature attribute, including through imported shapefile or DBF data or another untrusted spatial source, can inject SQL operators or expressions that change the intended JOIN predicate. This can bypass the intended key comparison and expose unrelated records from the MySQL or MariaDB JOIN table through output templates, query responses, or downstream application logic. This issue is fixed in version 8.6.5.",
-      "published": "2026-11-20T19:18:54.270",
-      "last_modified": "2026-11-20T20:17:44.160",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77327"
-    },
-    {
-      "cve": "CVE-2026-77326",
-      "title": "CVE-2026-77326",
-      "description": "MapServer is a system for developing web-based GIS applications. From 8.2.0 until 8.6.5, an unauthenticated attacker can send a WMS GetLegendGraphic request with a nonempty BBOX and repeated LAYER parameters to trigger a heap buffer overflow in msWMSDispatch() in src/mapwms.cpp. The handler appends synthesized entries to cgiRequestObj.ParamNames and cgiRequestObj.ParamValues at NumParams without retaining the arrays' capacity or reallocating them, while incrementing NumParams inside the loop. Once the parser's hidden capacity is exhausted, the writes pass the heap allocation boundary. A single request can corrupt heap memory and crash the process; code execution may be possible but was not demonstrated. This issue is fixed in version 8.6.5.",
-      "published": "2026-11-20T19:18:54.110",
-      "last_modified": "2026-11-20T20:17:43.973",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77326"
-    },
-    {
-      "cve": "CVE-2026-77325",
-      "title": "CVE-2026-77325",
-      "description": "MapServer is a system for developing web-based GIS applications. From 6.0 until 8.6.5, MapServer's WMS OpenLayers output, selected by FORMAT=application/openlayers or template=openlayers, substitutes a request-derived online-resource value into a single-quoted JavaScript string in src/maptemplate.c. The prior remediation for GHSA-xqj6-vjqr-33vv used msEscapeJSonLikeString() to protect the JavaScript string but did not neutralize angle brackets, so attacker-controlled X-Forwarded-Host or X-Forwarded-Proto values can still terminate the script element at the HTML parser layer. Deployments that expose attacker-controlled PATH_INFO or map= values reaching the same string are also affected. An unauthenticated attacker can cause arbitrary JavaScript to execute in a victim's browser under the MapServer origin when the victim loads the crafted output. This issue is fixed in version 8.6.5.",
-      "published": "2026-11-20T19:18:53.963",
-      "last_modified": "2026-11-20T19:18:53.963",
-      "cvss": 6.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77325"
-    },
-    {
-      "cve": "CVE-2026-77324",
-      "title": "CVE-2026-77324",
-      "description": "MapServer is a system for developing web-based GIS applications. From 4.4.0 until 8.6.5, an unauthenticated remote attacker can send a WCS GetCoverage XML POST request whose BoundingBox element omits the crs attribute, causing xmlGetProp() in src/mapwcs.cpp to return null. msWCSParseRequest() then calls string functions on the null value before normal WCS exception handling, crashing the CGI or FastCGI worker. The analogous KVP or GET path is not affected because it obtains a count-validated, non-null token. A single request can terminate one worker, and repeated requests can exhaust a fixed worker pool and deny service. This issue is fixed in version 8.6.5.",
-      "published": "2026-11-20T19:18:53.793",
-      "last_modified": "2026-11-20T21:17:39.170",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77324"
-    },
-    {
-      "cve": "CVE-2026-77323",
-      "title": "CVE-2026-77323",
-      "description": "MapServer is a system for developing web-based GIS applications. Prior to 8.6.5, an unauthenticated reflected cross-site scripting vulnerability in OGC API Features collection-items HTML output allows crafted offset or limit query parameter values from raw CGI request handling in src/mapogcapi.cpp to reach template.params.offset or template.params.limit. share/ogcapi/templates/html-bootstrap/collection-items.html inserts those values without quoting or escaping into a script element. A victim who follows a crafted request can have the script element terminated by attacker-controlled markup, causing arbitrary JavaScript to execute under the MapServer origin and enabling access to browser-session data, actions as the victim, and content manipulation. This issue is fixed in 8.6.5.",
-      "published": "2026-11-20T19:18:53.630",
-      "last_modified": "2026-11-20T19:18:53.630",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77323"
-    },
-    {
-      "cve": "CVE-2026-61832",
-      "title": "CVE-2026-61832",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.6.00, a network attacker who can alter outbound traffic to the extension store can exploit the HTTP client's disabled sslverify setting to substitute a serialized response. Extension-store handlers pass the response to unserialize() without an allowed_classes restriction, allowing an in-tree GuzzleHttp\\Cookie\\FileCookieJar gadget to write attacker-controlled content to a chosen path. When a GODADMIN opens or uses the store list, detail, install, or update functions, the substituted response can write a PHP file under the web root and execute code as the web-server user. This issue is fixed in version 4.6.00.",
-      "published": "2026-11-20T19:18:52.917",
-      "last_modified": "2026-11-20T19:18:52.917",
-      "cvss": 7.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-61832"
-    },
-    {
-      "cve": "CVE-2026-55372",
-      "title": "CVE-2026-55372",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.09, an unauthenticated attacker can submit the __serverInfoUpdate=1 field while controlling X-Forwarded-Host and X-Forwarded-Proto. NukeViet\\Core\\Server::standardizeHost() did not validate the forwarded host against my_domains, and a trailing slash could preserve an attacker-selected port that server_info_update() used to construct a cURL request in includes/ini.php before authentication. The blind, HEAD-only request uses a fixed path, but it permits internal host and port discovery and can poison cached server_headers. This issue is fixed in version 4.5.09.",
-      "published": "2026-11-20T19:18:52.607",
-      "last_modified": "2026-11-20T19:18:52.607",
-      "cvss": 7.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-55372"
-    },
-    {
-      "cve": "CVE-2026-54065",
-      "title": "CVE-2026-54065",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.09, an authenticated administrator can submit a crafted attach value to modules/comment/admin/edit.php. The handler removed a fixed-length upload prefix without validating containment, allowing padding followed by a traversal path to be stored in the database. When the comment is deleted, modules/comment/admin/del.php joins the stored path to NV_UPLOADS_REAL_DIR and passes it to nv_deletefile(), whose realpath() check restricts deletion only to NV_ROOTDIR rather than the upload directory, permitting deletion of application files such as config.php and causing an outage. This issue is fixed in version 4.5.09.",
-      "published": "2026-11-20T19:18:52.453",
-      "last_modified": "2026-11-20T19:18:52.453",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54065"
-    },
-    {
-      "cve": "CVE-2026-54064",
-      "title": "CVE-2026-54064",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.09, a user with news-posting permission can bypass NukeViet\\Core\\Request::filterAttr() by prefixing an event-handler attribute with an ASCII form-feed character, which PHP trimming preserves but browsers treat as whitespace. NukeViet\\Core\\Request::unhtmlentities() omitted a decimal HTML entity tab embedded in a javascript: URI. These parser differences allow persistent event handlers or script URLs to survive filtering in vendor/vinades/nukeviet/Core/Request.php and execute for visitors, including administrators. This issue is fixed in version 4.5.09.",
-      "published": "2026-11-20T19:18:52.283",
-      "last_modified": "2026-11-20T19:18:52.283",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-54064"
-    },
-    {
-      "cve": "CVE-2026-49259",
-      "title": "CVE-2026-49259",
-      "description": "NukeViet CMS is a multi Content Management System. From the 4.x release line until 4.5.09, a low-privileged authenticated user can store script-breaking content in the first_name and last_name profile fields used to form a comment display name. Both reply links in themes/default/modules/comment/comment.tpl interpolate {COMMENT.post_name} into the inline onclick call to nv_commment_feedback(). HTML numeric references produced by Request::_get_title() are decoded by the browser before JavaScript parsing, so clicking Reply can terminate the string and execute attacker-controlled JavaScript in the visitor's origin, including an administrator's session. This issue is fixed in version 4.5.09.",
-      "published": "2026-11-20T19:18:52.127",
-      "last_modified": "2026-11-20T19:18:52.127",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-49259"
-    },
-    {
-      "cve": "CVE-2026-48118",
-      "title": "CVE-2026-48118",
-      "description": "NukeViet CMS is a multi Content Management System. Prior to 4.5.09, the Comment module accepts attacker-controlled base64 content in the status_comment parameter through modules/comment/funcs/main.php; modules/comment/comment.php decodes it with nv_base64_decode() and assigns it to STATUS_COMMENT without output escaping. The required checkss token was derived from the site-wide NV_CACHE_PREFIX rather than NV_CHECK_SESSION, so a token disclosed in public comment markup could be reused across sessions in a crafted URL. An unauthenticated attacker can therefore cause decoded HTML or JavaScript to render in a victim's browser and perform phishing or same-origin actions. This issue is fixed in version 4.5.09.",
-      "published": "2026-11-20T19:18:51.957",
-      "last_modified": "2026-11-20T19:18:51.957",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-48118"
-    },
-    {
-      "cve": "CVE-2026-133968",
-      "title": "CVE-2026-133968",
-      "description": "monailabel (aka MONAI Label) through 0.8.5 allows directory traversal, with resultant remote code execution, via the image parameter to the PUT /datastore/image endpoint, as exploited in the wild starting in September 2026.",
-      "published": "2026-11-20T19:18:51.670",
-      "last_modified": "2026-11-20T22:17:50.750",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133968"
-    },
-    {
-      "cve": "CVE-2026-133949",
-      "title": "CVE-2026-133949",
-      "description": "pip prior to v26.2.2 the certifi bundled with pip contains the compromised eMudhra certificates. \n\n\n\n\nUpgrading to a secure version of pip should be done either by first upgrading Python to a version that rejects the compromised intermediates (CVE-2026-115557) or use hash pinning with a known-secure version of pip. pip is not vulnerable when using a Python version that rejects the compromised certificates. See the references below for more information.",
-      "published": "2026-11-20T19:18:51.517",
-      "last_modified": "2026-11-20T20:17:37.170",
-      "cvss": 9.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133949"
-    },
-    {
-      "cve": "CVE-2026-130901",
-      "title": "CVE-2026-130901",
-      "description": "Improper limitation of a pathname to a restricted directory in the file access checks in Amazon awslabs.document-loader-mcp-server 1.0.10 through 1.0.20 might allow a context-dependent actor, via crafted document content processed by an MCP client, to read files outside the intended base directory and, in 1.0.12 through 1.0.20, to write PNG slide images outside it. This occurs when DOCUMENT_BASE_DIR is not set or is empty and the CI, GITHUB_ACTIONS or PYTEST_CURRENT_TEST environment variable is present. Versions before 1.0.10 do not restrict file access to a base directory.\n\n\n\nTo remediate this issue, users should upgrade to version 1.0.21 or later. Users who cannot upgrade immediately can set DOCUMENT_BASE_DIR to the directory that holds their documents. Do not set it to /, which removes the restriction.",
-      "published": "2026-11-20T19:18:44.910",
-      "last_modified": "2026-11-20T19:18:44.910",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130901"
-    },
-    {
-      "cve": "CVE-2026-130602",
-      "title": "CVE-2026-130602",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in BdThemes Prime Slider – Addons For Elementor bdthemes-prime-slider-lite allows Stored XSS.This issue affects Prime Slider – Addons For Elementor: from n/a through 5.1.2.",
-      "published": "2026-11-20T19:18:44.760",
-      "last_modified": "2026-11-20T20:17:23.463",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-130602"
     }
   ],
-  "total_results": 1935,
+  "total_results": 1996,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1735
+  "start_index": 1796
 }
