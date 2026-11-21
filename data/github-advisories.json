@@ -1,12 +1,345 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-20T14:18:24+00:00",
+  "fetched_at": "2026-11-21T04:20:13+00:00",
   "window_days": 3,
-  "window_start": "2026-11-18",
-  "window_end": "2026-11-20",
+  "window_start": "2026-11-19",
+  "window_end": "2026-11-21",
   "count": 100,
   "items": [
+    {
+      "cve": "CVE-2026-122247",
+      "ghsa": "GHSA-25qc-m4pw-2w8r",
+      "title": "Budibase: Unauthenticated global-admin & database creation via tenant-confusion bypass of the one-time init guard (`POST /api/global/users/init`)",
+      "description": "## Description\n\n### Summary\n\nOn a self-hosted, single-tenant Budibase instance (`multiTenancy:false`), the public bootstrap endpoint `POST /api/global/users/init` remains fully exploitable **after** the instance has been provisioned. Its \"already initialised\" guard (`checkAnyUserExists()`) is evaluated inside a **tenant-scoped** database context derived from an **attacker-controlled `tenantId`** in the request body. Because the tenancy layer never constrains that `tenantId` to the only legitimate tenant (`default`) on a single-tenant deployment, an unauthenticated attacker simply supplies any unused tenant name to make the guard see an empty user list, and the endpoint then creates a brand-new CouchDB database (`<tenantId>_global-db`) and a **global-admin** user document (`admin.global = true`, `builder.global = true`) inside it - with no authentication and no CSRF token.\n\nThis is (a) a ",
+      "severity": "high",
+      "published": "2026-11-20T23:50:01+00:00",
+      "link": "https://github.com/advisories/GHSA-25qc-m4pw-2w8r"
+    },
+    {
+      "cve": "CVE-2026-122244",
+      "ghsa": "GHSA-r2q3-7m4h-63qg",
+      "title": "Budibase: Cross-privilege Stored XSS in the Budibase Builder via broken HTML-escaping in `jsonFormatter.format()` rendered through `{@html}` in the CSP-less Builder origin",
+      "description": "## Description\n\n### Summary\n\nA **low-privileged application end-user** (role `BASIC` - **not** a builder or admin, and on a public data-collection form, an unauthenticated visitor) can store an HTML/JavaScript payload in ordinary row data. When a **builder or admin** later opens that table in the Budibase Builder and evaluates any Handlebars binding whose Preview surfaces the value (the Data-section **Formula** column editor, or any binding drawer), the stored value is rendered as **raw HTML** and the attacker's JavaScript executes in the Builder's origin.\n\nThe Builder SPA is served by nginx with **no Content-Security-Policy** (the CSP middleware only decorates the server-rendered *published-app* document, not `/builder/`). The injected script therefore runs unrestricted in the highest-trust surface of the product - the admin/builder session that can create datasources, run server-side J",
+      "severity": "high",
+      "published": "2026-11-20T23:49:47+00:00",
+      "link": "https://github.com/advisories/GHSA-r2q3-7m4h-63qg"
+    },
+    {
+      "cve": "CVE-2026-132276",
+      "ghsa": "GHSA-53pm-wgxf-c6qf",
+      "title": "wcmatch: Polynomial-time ReDoS when matching untrusted names against multi-star patterns (default flags)",
+      "description": "# Summary\n\nWith default flags, a pattern that contains several `*` wildcards takes polynomial time, O(n^k) for k stars, to reject a crafted file name. The pattern is an ordinary developer constant such as `*_*_*_*_*.csv`; only the string being matched comes from the attacker. A 255-byte file name (the maximum on common filesystems) takes 73 s with `fnmatch.fnmatch()` and 86 s with `glob.globmatch()`. The standard library's `fnmatch` handles the same input in under a millisecond.\n\nThis is different from GHSA-84v8-qmgq-9g88: that advisory covers extglob patterns, while this case needs no flags and no attacker-controlled pattern.\n\n# Details\n\nEvery `*` is translated to a lazy `.*?` (`_STAR`, `wcmatch/_wcparse.py:212`; `_PATH_STAR` `[^/]*?`, `:218`), which is emitted in `_handle_star` (`:1405-1424`):\n\n```text\n*_*_*_*_*.csv  ->  ^(?s:(?=.)(?![.]).*?_.*?_.*?_.*?_.*?\\.csv)$\n```\n\nWhen the subject",
+      "severity": "medium",
+      "published": "2026-11-20T23:49:18+00:00",
+      "link": "https://github.com/advisories/GHSA-53pm-wgxf-c6qf"
+    },
+    {
+      "cve": "CVE-2026-132277",
+      "ghsa": "GHSA-q87h-c5m7-659j",
+      "title": "Inscriptis: Quadratic memory growth from sibling <table> elements in get_text()",
+      "description": "# Summary\n\nEvery sibling `<table>` adds another level of the parent's indentation, so the size of `get_text()` output grows quadratically with the number of tables. In the measurements below, a 240 KB HTML document produces about 1 billion characters and uses about 1 GB of memory.\n\n# Details\n\n`table_end_handler()` (`model/tag/table_tag.py`) writes the rendered table into the parent element with `HtmlElement.write_verbatim_text()` (`model/html_element.py`). For a block-level parent, `write_verbatim_text()` calls `canvas.open_block()`, which pushes the parent's `padding_inline` onto the prefix stack. The following `close_block()` never pops it; only `Canvas.close_tag()` calls `prefix.remove_last_prefix()`. So each table leaves one extra padding entry on the stack.\n\nThis has been present since 2.0 (commit 84ec720).\n\n```python\n>>> get_text('<ul>' + '<table><tr><td>a</td></tr></table>' * 4 + ",
+      "severity": "medium",
+      "published": "2026-11-20T23:48:51+00:00",
+      "link": "https://github.com/advisories/GHSA-q87h-c5m7-659j"
+    },
+    {
+      "cve": "CVE-2026-132275",
+      "ghsa": "GHSA-555j-qj3j-c8jv",
+      "title": "svglib: Exponential resource consumption via nested <use> references in svg2rlg",
+      "description": "# Summary\n\n`svg2rlg()` expands `<use>` references without any limit on the total number of expansions. Only direct cycles are rejected (`CircularRefError`). A group containing N `<use>` elements that point to another such group multiplies the work by N per nesting level, so an SVG of about 1.4 KB makes svglib clone and render over 100,000 nodes, taking tens of seconds of CPU time and hundreds of MiB of memory. Each additional level adds about 245 bytes to the document and multiplies time by ~10.\n\nThis is the SVG `<use>` variant of the XML \"billion laughs\" attack (the same class as librsvg CVE-2019-20446).\n\n# Details\n\n`SvgRenderer.renderUse()` in `src/svglib/svglib.py`:\n\n```python\ntry:\n    item = self.xlink_href_target(node, group=group)\nexcept CircularRefError:\n    node.parent.etree_element.remove(node.etree_element)\n    return group\n...\nif len(node.getchildren()) == 0:\n    # Append a co",
+      "severity": "high",
+      "published": "2026-11-20T23:47:58+00:00",
+      "link": "https://github.com/advisories/GHSA-555j-qj3j-c8jv"
+    },
+    {
+      "cve": "CVE-2026-104884",
+      "ghsa": "GHSA-h57j-5f5m-789v",
+      "title": "contao/core-bundle: Cross-site scripting in the frontend search results",
+      "description": "Commit `23e8cca3136a` hardened the search-result title against insert-tag/XSS by setting `$objTemplate->title = StringUtil::specialchars(StringUtil::stripInsertTags($arrResult[$i]['title']))`. But the legacy HTML5 template does not use that `title` variable - it prints the raw `link` variable, which is assigned without escaping.\n\n## Impact\n\nAffected configuration (important): on 5.7.9 the default search template is the Twig `search_default.html.twig`, which does not use the raw `link` variable and auto-escapes - so a default Twig install is not affected. The vulnerable raw echo is in the legacy `search_default.html5` template (still shipped and selectable in 5.7.9, line 8: `<?= $this->link ?>`); exploitation requires that legacy template to be active for the search module (common on sites migrated from earlier Contao / using custom template selection). Where the legacy template is used, ",
+      "severity": "medium",
+      "published": "2026-11-20T23:46:56+00:00",
+      "link": "https://github.com/advisories/GHSA-h57j-5f5m-789v"
+    },
+    {
+      "cve": "CVE-2026-104883",
+      "ghsa": "GHSA-r9qp-pqx5-8369",
+      "title": "contao/core-bundle: Non-admin users can self-grant permissions that implicitly make them administrators",
+      "description": "Commit `2b83a60f7763` (5.7.3) hardened the template editor: it added `TemplateEditorModuleVoter` + `CheckTemplateEditorSaveListener` so a non-admin cannot self-grant the `tpl_editor` backend module (editable PHP-capable templates permit server-side code execution). That voter supports only the `modules` field and the literal value `tpl_editor`.\n\nThe equally RCE-capable `theme_import` capability lives in a different field - the `themes` checkbox field (tl_user_group.php:98-105 options include `theme_import`; identical on tl_user.php:248-253) - which has no save_callback and no voter. `TemplateEditorModuleVoter` is the only DC voter registered for tl_user_group, and it does not cover the `themes` field. So a delegated user manager can add `theme_import` to their own (or a managed) account.\n\nLive repro (Contao 5.7.9):\n1. As admin, create a non-admin backend group with the `user` (or `group`",
+      "severity": "high",
+      "published": "2026-11-20T23:45:41+00:00",
+      "link": "https://github.com/advisories/GHSA-r9qp-pqx5-8369"
+    },
+    {
+      "cve": "CVE-2026-104882",
+      "ghsa": "GHSA-23w9-4pg3-xwm3",
+      "title": "contao/core-bundle: Improper access control in the CSV import wizard",
+      "description": "Custom backend module \"key\" actions are dispatched in `Backend::getBackendModule()` (Backend.php:322-327) after only the module-level `USER_CAN_ACCESS_MODULE` check - no per-record voter runs.\n\n## Impact\n\nA non-admin editor scoped to certain pages/forms can overwrite the tableitems/listitems/options of arbitrary tl_content / tl_form_field records outside their scope, defeating the per-record access control. Integrity IDOR (blind content overwrite; the value written is `serialize()` of a plain string array from the CSV - not object injection).\n\n## Credits\n\nThis security vulnerability was found by @HDWSec",
+      "severity": "medium",
+      "published": "2026-11-20T23:44:33+00:00",
+      "link": "https://github.com/advisories/GHSA-23w9-4pg3-xwm3"
+    },
+    {
+      "cve": "CVE-2026-104881",
+      "ghsa": "GHSA-3r9g-pfhv-3228",
+      "title": "contao/newsletter-bundle: Contao newsletter custom actions bypass channel-scoped authorization",
+      "description": "Channel access is enforced only by the DataContainer voters (`NewsletterChannelAccessVoter` / `NewsletterRecipientsAccessVoter`, requiring USER_CAN_EDIT_CHANNEL), whose `supportsType()` fires exclusively for Create/Read/Update/DeleteAction subjects dispatched inside DC_Table's create/edit/delete methods. The newsletter custom key-actions are dispatched directly by `Backend::getBackendModule()` (Backend.php:324-327) after only the module-level `USER_CAN_ACCESS_MODULE` check; the DC_Table constructor runs no per-record ReadAction vote for a key-action. `Newsletter.php` contains no `isGranted` / `denyAccess` / `isAdmin` / `hasAccess` calls, and none of the newsletter DCAs have a `checkPermission` onload callback.\n\n## Impact\n\nA channel-scoped newsletter editor can inject recipients into, mass-mail, and in some versions, delete/denylist recipients of channels they are not authorized to edit -",
+      "severity": "medium",
+      "published": "2026-11-20T23:43:26+00:00",
+      "link": "https://github.com/advisories/GHSA-3r9g-pfhv-3228"
+    },
+    {
+      "cve": "CVE-2026-77331",
+      "ghsa": "GHSA-72jh-722p-rqr3",
+      "title": "memtomem-stm: Concurrent LTM recovery can duplicate reconnects or reuse a cancelled transport session",
+      "description": "Concurrent surfacing RPC failures can trigger more than one reconnect for the same dirty session, and cancellation during a post-reconnect retry can leave the replacement session reusable despite an interrupted protocol exchange. The private fix introduces monotonic session generations, one shielded shared reconnect flight per dirty generation, and generation-aware cancellation handling across search, access-count, and scratch RPCs. The duplicate-reconnect subcase was introduced in 0.1.24; cancellation recovery affects the broader listed range.",
+      "severity": "low",
+      "published": "2026-11-20T23:38:15+00:00",
+      "link": "https://github.com/advisories/GHSA-72jh-722p-rqr3"
+    },
+    {
+      "cve": "CVE-2026-77332",
+      "ghsa": "GHSA-43hx-xm7w-3mhj",
+      "title": "memtomem-stm: Surfaced memory data can escape the Markdown compatibility boundary",
+      "description": "Untrusted long-term and working-memory fields can introduce Markdown or HTML-compatible structure into the surfaced-memory envelope. A crafted memory may create misleading structural boundaries or visually conceal content. The private fix serializes every untrusted field as inert single-line data, validates copyable memory identifiers, and pins an explicit untrusted-data preamble. Ordinary natural-language persuasion remains a residual model-level risk.",
+      "severity": "low",
+      "published": "2026-11-20T23:37:39+00:00",
+      "link": "https://github.com/advisories/GHSA-43hx-xm7w-3mhj"
+    },
+    {
+      "cve": "CVE-2026-77309",
+      "ghsa": "GHSA-jrjx-9jjw-747m",
+      "title": "AIT-GUI route chain allows unauthenticated Python execution in server process",
+      "description": "## Summary\nA security issue exists where unauthenticated callers can instruct the AIT-GUI server to execute arbitrary Python scripts. The attack vector involves obtaining a session cookie through GET /, followed by a malicious POST /script/run request containing an absolute file path that bypasses the configured script directory restrictions.\n\n### Patches\n* 2.5.1\n\n### Impact\nThis vulnerability allows unauthenticated remote code execution on the AIT-GUI server. Any attacker with network access can execute arbitrary Python code with daemon privileges.\n\n## Details\n_Chain:_\n1. `POST /tlm/query` writes the user-controlled `fields` value into `fields_in.txt` under the AIT-GUI static directory.\n   *  If the supplied `dataDir` has no `.pcap` files, the route returns the expected `400 Bad Request` before deleting that file.\n2. `POST /script/run` accepts `scriptPath=../static/fields_in.txt`.\n   * ",
+      "severity": "high",
+      "published": "2026-11-20T23:36:41+00:00",
+      "link": "https://github.com/advisories/GHSA-jrjx-9jjw-747m"
+    },
+    {
+      "cve": "CVE-2026-61725",
+      "ghsa": "GHSA-qh76-45cr-8xrc",
+      "title": "sevenz-rust2: decompress builds each output path as dest.join(entry.name()) with no traversal guard, allowing a crafted .7z to write files outside the destination (Zip-Slip)",
+      "description": "### Summary\n\nExtracting an attacker-supplied 7z archive can write files outside the destination directory. The 7z header stores each entry's path as a UTF-16 name with nothing constraining it to a relative, in-tree path. The extractor joins that name onto the destination and writes to the result without normalizing it or checking that it stays under the destination root, so an entry named `../../etc/cron.d/x` or an absolute path escapes the target.\n\n### Details\n\nIn `src/util/decompress.rs`, `decompress_impl` computes the per-entry destination directly (line 140):\n\n```rust\nlet dest_path = dest.join(entry.name());\nextract_fn(entry, reader, &dest_path)\n```\n\n`default_entry_extract_fn` (line 154) then acts on that path:\n\n```rust\nlet file = File::create(path)\n    .map_err(|e| Error::file_open(e, path.to_string_lossy().to_string()))?;\n```\n\nThere is no normalization, no `dest_path.starts_with(de",
+      "severity": "medium",
+      "published": "2026-11-20T23:33:14+00:00",
+      "link": "https://github.com/advisories/GHSA-qh76-45cr-8xrc"
+    },
+    {
+      "cve": "CVE-2026-63341",
+      "ghsa": "GHSA-xxqp-5qx8-gj5q",
+      "title": "Aedes has Uncaught Exception and Uncontrolled Resource Consumption",
+      "description": "### Summary\nA remote Denial of Service (DoS) vulnerability, allows any remote client to cause a complete crash of the Aedes MQTT broker process. This is achieved by sending a specially crafted MQTT message (via PUBLISH or SUBSCRIBE), or by setting a Will message with such a topic, containing a highly recursive topic string (e.g., with thousands of '/' delimiters). The lack of input validation and error handling leads to an uncaught exception in an internal routing library, terminating the entire Node.js application.\n\n### Details\nThe Aedes broker fails to enforce limits on the depth or structural complexity of MQTT topic strings. When a client publishes to or subscribes to a topic with excessive levels of recursion, the internal routing logic cascading into the qlobber library (via mqemitter) reaches an hard-coded limit within the qlobber._split_words function.\n\nThis function throws a har",
+      "severity": "high",
+      "published": "2026-11-20T23:32:35+00:00",
+      "link": "https://github.com/advisories/GHSA-xxqp-5qx8-gj5q"
+    },
+    {
+      "cve": "CVE-2026-58254",
+      "ghsa": "GHSA-p3j5-5hrq-p75h",
+      "title": "nats-server Leaf node connections bypass Nats-Trace-Dest permission check",
+      "description": "### Background\n\nNATS.io is a high performance open source pub-sub distributed communication technology, built for the cloud, on-premise, IoT and edge computing.\n\nThe NATS Server supports leafnode connections between servers and message tracing through NATS headers.\n\n### Problem Description\n\nMessage trace destination checks were applied to ordinary client connections but not consistently to messages arriving through leafnode connections.\n\nA leafnode operator could cause trace events to be sent to subjects that would not otherwise be permitted and could use trace-only behavior to prevent normal delivery or storage of affected messages.\n\nTrace events can include routing, subscription, account, service import and JetStream metadata. The payload of the original application message is not chosen through the trace event itself.\n\n### Affected Versions\n\nVersions v2.14.2, v2.12.7 and below are vul",
+      "severity": "medium",
+      "published": "2026-11-20T23:31:59+00:00",
+      "link": "https://github.com/advisories/GHSA-p3j5-5hrq-p75h"
+    },
+    {
+      "cve": "CVE-2026-35376",
+      "ghsa": "GHSA-9rv8-9hvg-92mq",
+      "title": "chcon: recursive relabel not anchored to traversal dirfd (TOCTOU)",
+      "description": "`chcon` resolved recursive targets from `fts_accpath` with a fresh path lookup, so traversal and the SELinux get/set were not bound to traversal directory state. A privileged recursive relabel can be redirected to unintended objects under rename/symlink races. Fix opens targets with `openat` against the traversal cwd fd before the SELinux operation.\n\n**Fixed in 0.10.0** (PR #12566, commit 7cfc74e47ffab452663be6842d788a5164d9688b): recursive relabel resolution is anchored to the traversal dirfd.\n\n---\n_Zellic private finding (zellic-ext/coreutils-private PR #120). Reported in the Zellic *uutils coreutils Program Security Assessment* (for Canonical, Jan 2026), audited commit `3a07ffc5a9bd4c283e75afa548ba1f1957bad242`._",
+      "severity": "medium",
+      "published": "2026-11-20T16:39:34+00:00",
+      "link": "https://github.com/advisories/GHSA-9rv8-9hvg-92mq"
+    },
+    {
+      "cve": "CVE-2026-35377",
+      "ghsa": "GHSA-xhrc-7f76-vh96",
+      "title": " uu_env incorrectly rejects backslashes within single-quoted strings accepted by GNU env",
+      "description": "In `env -S`, GNU keeps backslashes literal inside single quotes (except `\\\\` and `\\'`); uutils errors on sequences like `\\a`. This is the backslash-handling issue of the broader `-S`/`--split-string` parsing divergence.\n```\nenv -S\"printf %s '\\''\\\\x'\\''\"   # GNU prints \\x ; uutils: invalid sequence '\\x' in -S (125)\n```\n\n---\n_Zellic private finding (zellic-ext/coreutils-private PR #117). Reported in the Zellic *uutils coreutils Program Security Assessment* (for Canonical, Jan 2026), audited commit `3a07ffc5a9bd4c283e75afa548ba1f1957bad242`._",
+      "severity": "low",
+      "published": "2026-11-20T16:36:31+00:00",
+      "link": "https://github.com/advisories/GHSA-xhrc-7f76-vh96"
+    },
+    {
+      "cve": "CVE-2026-35374",
+      "ghsa": "GHSA-fjjq-8hw5-cf9f",
+      "title": "split: TOCTOU output-open allows truncating a swapped file",
+      "description": "`split` checks input/output identity by path before opening the output, then opens with truncation, leaving a race window on mutable path components. GNU opens first and compares the opened output inode against the input before truncating. The race can cause `split` to truncate/write a file different from the one validated — including the input file or another file the process can access.\n\n**Fixed in 0.10.0** (PR #12565, commit 58040feb5c66fce588a7ffac299b3a23bd55cd81): the output open path is hardened against TOCTOU target swaps.\n\n---\n_Zellic private finding (zellic-ext/coreutils-private PR #119). Reported in the Zellic *uutils coreutils Program Security Assessment* (for Canonical, Jan 2026), audited commit `3a07ffc5a9bd4c283e75afa548ba1f1957bad242`._",
+      "severity": "medium",
+      "published": "2026-11-20T16:33:27+00:00",
+      "link": "https://github.com/advisories/GHSA-fjjq-8hw5-cf9f"
+    },
+    {
+      "cve": "CVE-2026-104773",
+      "ghsa": "GHSA-6499-jgj4-2wpf",
+      "title": "CKAN: Session Fixation in Registration View",
+      "description": "## Description\n\nWeb user registration form is vulnerable to session fixation if the site is configured with server-side session storage (CKAN uses cookie-based session storage by default). The attacker would need to either set a cookie on the victim's browser or steal the victim's currently valid session. Session identifiers are now regenerated after registration.\n\n## Patches\n\nThis vulnerability has been fixed in CKAN 2.10.11, 2.11.6 and 2.12.0\n\n## Workarounds\n\nswitch to cookie-based session storage (the default) or disable web user registration by setting `ckan.auth.create_user_via_web` to false (the default)",
+      "severity": "medium",
+      "published": "2026-11-20T16:25:26+00:00",
+      "link": "https://github.com/advisories/GHSA-6499-jgj4-2wpf"
+    },
+    {
+      "cve": "CVE-2026-69133",
+      "ghsa": "GHSA-cg26-4c6j-2x8h",
+      "title": "netty-incubator-codec-ohttp: OHTTP codecs retain consumed outer cumulation buffers after completed exchanges",
+      "description": "## Summary:\n\nOHttpClientCodec and OHttpServerCodec retain the encrypted outer HttpContent in a handler-level cumulationBuffer. After a valid OHTTP exchange completes, the OHTTP request/response context is destroyed, but the outer cumulationBuffer is not released or reset. It remains referenced by the codec until a later inbound content frame replaces it or the handler is removed/channel is closed.\n\nThis can pin attacker-influenced pooled/direct buffer capacity on idle keep-alive channels. Across many long-lived idle connections, this can create availability pressure.\n\nAffected components:\n\n* codec-ohttp/src/main/java/io/netty/incubator/codec/ohttp/OHttpClientCodec.java\n* codec-ohttp/src/main/java/io/netty/incubator/codec/ohttp/OHttpServerCodec.java\n* codec-ohttp/src/main/java/io/netty/incubator/codec/ohttp/OHttpRequestResponseContext.java\n\n## Root cause:\n\nOHttpClientCodec retains inbound",
+      "severity": "medium",
+      "published": "2026-11-20T16:22:09+00:00",
+      "link": "https://github.com/advisories/GHSA-cg26-4c6j-2x8h"
+    },
+    {
+      "cve": "CVE-2026-105803",
+      "ghsa": "GHSA-x72p-hmqp-46hw",
+      "title": "Git LFS may execute arbitrary commands via crafted Git LFS configurations",
+      "description": "### Impact\n\nWhen fetching objects from a malicious repository, Git LFS may execute an arbitrary command or binary after failing to sufficiently restrict the set of configuration options defined in an `.lfsconfig` file in the repository.\n\nGit LFS permits a limited set of configuration options to be defined in an `.lfsconfig` file at the root of a Git repository, but does not filter these options correctly if their keys contain certain additional components, which allows an attacker to mimic options that configure Git LFS to use a custom command to transfer objects.  An attacker can then provide an arbitrary command which Git LFS will invoke when fetching objects.\n\nGit LFS has resolved this issue by correctly restricting the configuration of custom object transfer commands to local Git configuration files.\n\n### Patches\n\nThis problem exists in all versions since 1.3.0 and is patched in v3.8",
+      "severity": "high",
+      "published": "2026-11-20T14:59:40+00:00",
+      "link": "https://github.com/advisories/GHSA-x72p-hmqp-46hw"
+    },
+    {
+      "cve": "CVE-2026-105802",
+      "ghsa": "GHSA-xrgv-7vx6-5vx6",
+      "title": "Git LFS may execute arbitrary commands via crafted Git configurations",
+      "description": "### Impact\n\nWhen fetching objects from a malicious repository, Git LFS may execute an arbitrary command or binary after incorrectly parsing the Git configuration options defined for a submodule.\n\nGit LFS reads Git configuration options without checking for embedded line-ending control characters.  By inserting control characters such as line feed (LF) into certain values, an attacker may be able to mimic options that cause Git LFS to execute an arbitrary command when fetching or adding objects.\n\nGit LFS has resolved this issue by always using an unambiguous format to read and parse Git configuration options.\n\n### Patches\n\nThis problem exists in all versions since 0.6.0 and is patched in v3.8.1. All users should upgrade to v3.8.1.\n\n### Workarounds\n\nTo work around the problem, users should prevent Git from initializing any submodules by disabling the `fetch.recurseSubmodules` and `submodul",
+      "severity": "high",
+      "published": "2026-11-20T14:58:53+00:00",
+      "link": "https://github.com/advisories/GHSA-xrgv-7vx6-5vx6"
+    },
+    {
+      "cve": "CVE-2026-104885",
+      "ghsa": "GHSA-3h6w-xcw3-9xjj",
+      "title": "OpenRemote: Cross-realm MQTT session disconnect without authorization",
+      "description": "### Summary\n\nCross-realm MQTT session disconnect without authorization\n\n## Vulnerability\n\nThe `disconnectUserSession` endpoint in `UserResourceImpl.java` (line 443) accepts a `realm` path parameter but ignores it entirely, performing no authorization or realm-boundary check before force-disconnecting an MQTT session. Any authenticated user from any realm can disconnect MQTT broker sessions belonging to users in other realms by supplying the target session ID.\n\nFile: `manager/src/main/java/org/openremote/manager/security/UserResourceImpl.java`, lines 443-447\n\n```java\n@Override\npublic void disconnectUserSession(RequestParams requestParams, String realm, String sessionID) {\n    if (!mqttBrokerService.disconnectSession(sessionID)) {\n        throw new NotFoundException(\"User session not found\");\n    }\n}\n```\n\nThe REST interface at `model/src/main/java/org/openremote/model/security/UserResource",
+      "severity": "medium",
+      "published": "2026-11-20T14:56:58+00:00",
+      "link": "https://github.com/advisories/GHSA-3h6w-xcw3-9xjj"
+    },
+    {
+      "cve": "CVE-2026-103026",
+      "ghsa": "GHSA-prhx-9q2h-ph2x",
+      "title": "Paymenter: Unauthenticated arbitrary method invocation in Livewire components",
+      "description": "### Summary\n\nA Livewire function allowed attackers to call any public function, allowing attackers to call any public method on the component. Because an attacker can call any function, they can also overwrite locked data.\n\n### Technical Details\n\n`app/Livewire/Traits/HasConfirmation.php` exposed a public Livewire action that dispatches to any method that exists on the component:\n\n```php\npublic function executeConfirmedAction($action, $parameters = [])\n{\n    if (method_exists($this, $action)) {\n        return $this->{$action}(...$parameters);\n    }\n    throw new \\Exception(\"Method {$action} does not exist\");\n}\n```\n\nThe trait is applied on the base component, `app/Livewire/Component.php` (`use Disabled, HasConfirmation, HasNotifications;`), so it is present on all 36 client-facing components. \n`executeConfirmedAction` is itself invocable, and because it only checks `method_exists` it re-ad",
+      "severity": "high",
+      "published": "2026-11-20T14:56:03+00:00",
+      "link": "https://github.com/advisories/GHSA-prhx-9q2h-ph2x"
+    },
+    {
+      "cve": "CVE-2026-115565",
+      "ghsa": "GHSA-vcx7-pfrh-mcfg",
+      "title": "storyblok-backup: Stored path traversal via unsanitized Storyblok component names in backup output",
+      "description": "### Summary\nstoryblok-backup writes files using unsanitized names for Storyblok components, which are content type or schema definitions. This allows a component name containing path traversal sequences to cause backup files to be written outside the intended backup directory. Anyone with component management access in the source Storyblok space, not server access, can plant a malicious component name that causes arbitrary file writes on the machine of anyone who later runs a backup against that space.\n\n### Details\nThe writeJson function, which takes a folder, a file name, and content, builds the output file path by directly concatenating the backup directory, the folder, and the file name as strings, with no path sanitization or containment check.\n\nFor the components resource type specifically, the file name used is the component's own name field, which is free text and editable by anyo",
+      "severity": "medium",
+      "published": "2026-11-20T14:55:18+00:00",
+      "link": "https://github.com/advisories/GHSA-vcx7-pfrh-mcfg"
+    },
+    {
+      "cve": "CVE-2026-130176",
+      "ghsa": "GHSA-wcqj-wx85-c75p",
+      "title": "aMQTT: Denial of Service (DoS) via Memory Leak in Unmanaged QoS 2 Session Handshakes",
+      "description": "### Impact\n\n`amqtt` is vulnerable to a remote denial of service caused by incomplete MQTT QoS 2 transactions remaining allocated after the associated client disconnects.\n\nMQTT QoS 2 uses a four-step handshake to provide exactly-once delivery. If a client begins a QoS 2 transaction but disconnects before the handshake completes, `amqtt` retains the associated transaction state and packet identifier without an expiration mechanism to remove it.\n\nQoS 1 transactions are protected by a timeout mechanism, which defaults to 5 seconds, allowing abandoned state to be released. Equivalent timeout handling was not applied to incomplete QoS 2 transactions.\n\nAn attacker can repeatedly connect to the broker, initiate QoS 2 transactions, and disconnect before completing the handshake. Each incomplete transaction leaves state allocated in memory. Repeating this process causes broker memory consumption t",
+      "severity": "high",
+      "published": "2026-11-20T14:54:50+00:00",
+      "link": "https://github.com/advisories/GHSA-wcqj-wx85-c75p"
+    },
+    {
+      "cve": "CVE-2026-115463",
+      "ghsa": "GHSA-9657-8vc2-7g2p",
+      "title": "Poweradmin: The email second factor is an mt_rand() six-digit code verified with no attempt limit or lockout, so an attacker holding the password can brute-force it within the validity window",
+      "description": "### Summary\n\nThe email second factor is an mt_rand() six-digit code verified with no attempt limit or lockout\n\nThe email second factor is a six-digit code drawn from `mt_rand()` and verified with no attempt limit, so an attacker who already has the password can brute-force it inside its validity window.\n\n`lib/Domain/Service/MfaService.php`, in `generateEmailVerificationCode()`:\n\n```php\n$numericCode = mt_rand(100000, 999999);\n```\n\nThat is a 900,000-value space, and `mt_rand()` is a Mersenne Twister rather than a CSPRNG, so it is not appropriate for a security token in the first place. PHP provides `random_int()` for exactly this.\n\nThe bigger problem is that nothing limits guesses. `lib/Application/Controller/MfaVerifyController.php` calls:\n\n```php\n$isValid = $this->mfaService->verifyCode($userId, $code);\n```\n\nand on failure the only action taken is:\n\n```php\n$this->logger->warning('[MfaVer",
+      "severity": "high",
+      "published": "2026-11-20T14:52:33+00:00",
+      "link": "https://github.com/advisories/GHSA-9657-8vc2-7g2p"
+    },
+    {
+      "cve": "CVE-2026-104099",
+      "ghsa": "GHSA-4hrh-34w3-5ww8",
+      "title": "Fabio: Access-control bypass through unnormalized request paths",
+      "description": "## Summary\n\nRoute selection uses the raw un-normalized request path, and the per-route ACL and basic-auth gates hang off that selection, so a dot-segment, encoded-dot, or double-slash variant of a protected path selects a different route, skips both gates, and is forwarded to the backend which normalizes and serves the protected resource. Unauthenticated; complete bypass of the access control the operator configured. Confirmed at HEAD b841544. Direct peers: Traefik CVE-2023-47106, Envoy CVE-2019-9901.\n\n## The defect\n\nfabio never normalizes the request path. A repository-wide search for path.Clean returns zero results. Route selection uses the raw path (route/table.go line 487: `if target = t.lookup(h, req.URL.Path, pick, match); target != nil {`). Both access-control gates are properties of the target that lookup returned:\n\n```go\n// proxy/http_proxy.go\nif t.AccessDeniedHTTP(r) {         ",
+      "severity": "critical",
+      "published": "2026-11-20T14:51:25+00:00",
+      "link": "https://github.com/advisories/GHSA-4hrh-34w3-5ww8"
+    },
+    {
+      "cve": "CVE-2026-69261",
+      "ghsa": "GHSA-x7xj-4j4f-88xr",
+      "title": "Git LFS may leak HTTP headers after redirections",
+      "description": "### Impact\n\nAfter receiving an HTTP redirection, Git LFS may forward certain HTTP headers to a host other than the one for which they were intended.  While `Authorization` headers are never forwarded to inappropriate hosts, `Cookie` headers may be forwarded incorrectly.\n\nGit LFS has resolved this issue by never forwarding `Cookie` headers to hosts other than the ones for which they were intended.  In particular, after an HTTP redirection is received to a URL with a different scheme, host, or port than found in the URL of the current request, any `Authorization` and `Cookie` headers from the current request will not be sent in the redirected request.\n\n### Patches\n\nThis problem exists in all versions since 0.5.0 and is patched in v3.8.1. All users should upgrade to v3.8.1.\n\n### Workarounds\n\nNo single workaround exists.  As far as possible, users and administrators should review their syste",
+      "severity": "high",
+      "published": "2026-11-20T14:49:47+00:00",
+      "link": "https://github.com/advisories/GHSA-x7xj-4j4f-88xr"
+    },
+    {
+      "cve": "CVE-2026-69260",
+      "ghsa": "GHSA-w3f2-pr6x-wwjc",
+      "title": "Git LFS may attempt arbitrary remote commands via crafted SSH URLs",
+      "description": "### Impact\n\nWhen Git LFS makes object transfer or authentication requests to a remote host via SSH, it passes the path component of the remote's SSH URL as part of a command to be executed, but does not properly format the URL's path component as a single argument.  By inserting shell meta-characters into the SSH URL, an attacker may be able to execute arbitrary commands on the remote host, if the host passes the commands to a shell without sanitizing them first.\n\nGit LFS has resolved this problem by fully quoting the arguments of the remote commands it sends via SSH.\n\nAs well, Git LFS has resolved a problem with the default HTTPS URLs used when an SSH URL is configured for a remote host and the host either does not support Git LFS remote commands sent via SSH or supports HTTP authentication via SSH for Git LFS but does not return an explicit HTTP URL in response to a `git-lfs-authentica",
+      "severity": "high",
+      "published": "2026-11-20T14:47:01+00:00",
+      "link": "https://github.com/advisories/GHSA-w3f2-pr6x-wwjc"
+    },
+    {
+      "cve": "CVE-2026-103035",
+      "ghsa": "GHSA-66q9-mxf2-xqw6",
+      "title": "TeamPass folder re-parenting authorization bypass",
+      "description": "## Summary\n\nMissing authorization in the update_folder action: any authenticated non-read-only user can rename, re-parent and convert to personal any folder in the instance, moving another team's credential subtree into their own personal space and removing it from the organization. Confirmed at HEAD 2f271cdd (3.2.1.1), and present at 3.1.3.1 and 3.1.7.6.\n\n## The defect\n\nThe folder-management endpoint dispatches an update_folder action that renames and re-parents a folder. Unlike its sibling actions in the same file, it never checks the edited folder id or the submitted parent id against the caller's accessible-folder set, and the file itself performs no session/authorization gate at all. By pointing the new parent at their own personal folder, an authenticated low-privilege user takes ownership of any folder in the instance.\n\napp/sources/folders.queries.php:\n- The file never calls the s",
+      "severity": "high",
+      "published": "2026-11-20T14:45:04+00:00",
+      "link": "https://github.com/advisories/GHSA-66q9-mxf2-xqw6"
+    },
+    {
+      "cve": "CVE-2026-104199",
+      "ghsa": "GHSA-2hjf-7455-w946",
+      "title": "aMQTT: Inefficient Regular Expression Complexity and Uncontrolled Resource Consumption and Improper Input Validation",
+      "description": "### Impact\n\n`amqtt` is vulnerable to a remote denial of service caused by improper MQTT topic-filter validation combined with catastrophic regular-expression backtracking.\n\nA single client can freeze the entire broker by sending one specially crafted `SUBSCRIBE` packet followed by one `PUBLISH` packet.\n\nThe vulnerability is caused by two defects:\n\n1. `add_subscription()` validates the placement of the single-level wildcard `+` using substring checks for `/+` and `+/`, rather than verifying that each `/`-delimited level containing `+` is exactly `+`. This allows malformed filters such as `\"+/\" + \"+\" * 60` to be accepted instead of rejected with return code `0x80`, as required by MQTT-4.7.1-3.\n2. `_matches()` converts every `+` character into the greedy regular-expression fragment `[^/]*` and evaluates the resulting expression with `re.fullmatch()`. A filter containing many adjacent `+` ch",
+      "severity": "high",
+      "published": "2026-11-20T14:43:41+00:00",
+      "link": "https://github.com/advisories/GHSA-2hjf-7455-w946"
+    },
+    {
+      "cve": "CVE-2026-115578",
+      "ghsa": "GHSA-hghq-53p7-c582",
+      "title": "go-guerrilla crashes on a bare XCLIENT command (7-byte slice off-by-one panic)",
+      "description": "The defect\n----------\nConfirmed at HEAD. server.go: cmdXCLIENT = []byte(\"XCLIENT\") is 7 bytes (line 78), so the dispatch match cmdXCLIENT.match(cmd) only guarantees len(input) >= 7. The handler then slices input[8:] (line 586):\n\n    case sc.XClientOn && cmdXCLIENT.match(cmd):\n        if toks := bytes.Split(input[8:], []byte{' '}); len(toks) > 0 {   // line 586\n\nA client sending the bare command XCLIENT (exactly 7 bytes) hits input[8:7] and panics runtime error: slice bounds out of range [8:7]. handleClient runs in the per-connection goroutine (server.go:391) which has no recover(); the only recover() calls are in the backend mail-processing workers (a different goroutine never reached during command parsing), so the unrecovered panic crashes the whole SMTP daemon.\n\nInput and attacker\n-------------------\nConnect to the SMTP port, then send XCLIENT\\r\\n (a bare LF also works; no HELO needed",
+      "severity": "high",
+      "published": "2026-11-20T14:42:18+00:00",
+      "link": "https://github.com/advisories/GHSA-hghq-53p7-c582"
+    },
+    {
+      "cve": "CVE-2026-104129",
+      "ghsa": "GHSA-v9v2-98xq-627c",
+      "title": "pREST _groupby function-expression SQL injection (incomplete fix of CVE-2025-58450)",
+      "description": "What the fix did and the gap\n----------------------------\nThe v2.3.0 fix (commit e88dabb) routed the _select field through a strict new gate, sanitizeSelectField (postgres.go:947/1003/2097). The sibling _groupby path was left on the far weaker isSafeSQLExpression. adapters/postgres/postgres.go, GroupByClause (line 1946): a _groupby field that contains balanced parens takes the raw-SQL-expression branch (around lines 1999-2006), gated only by isSafeSQLExpression (line 2001, defined at 2043). That gate validates only the OUTERMOST function name against a 13-entry allowlist and uses a character allowlist that permits spaces, single quotes and parens. It blocks ;, --, /* , unbalanced parens and an outer pg_ prefix, but NOT a trailing UNION SELECT ..., a nested (SELECT ...) subquery, or an inner pg_ function. sanitizeSelectField (the CVE fix) rejects exactly those.\n\nInput and attacker\n-------",
+      "severity": "high",
+      "published": "2026-11-20T14:41:42+00:00",
+      "link": "https://github.com/advisories/GHSA-v9v2-98xq-627c"
+    },
+    {
+      "cve": "CVE-2026-63386",
+      "ghsa": "GHSA-3g82-77xr-68x5",
+      "title": "js-toml allows uncontrolled recursion in `load()` leading `RangeError` (stack exhaustion) on deeply nested input",
+      "description": "## Summary\n\n`load()` parses untrusted TOML using a recursive-descent parser (Chevrotain) and a\nrecursive tree-walking interpreter. Neither the parser nor the interpreter enforces a\nmaximum nesting / key depth. A small, attacker-controlled document with deep nesting\n(arrays, inline tables) or a long dotted key drives recursion past the V8 call-stack\nlimit, and `load()` throws an **uncaught `RangeError: Maximum call stack size exceeded`**.\n\nThis is a problem for two reasons:\n\n1. **Denial of Service.** A tiny payload (≈2 KB) reliably aborts parsing. In any\n   service that parses user-supplied TOML, an unhandled `RangeError` can crash the\n   worker/process (500 / restart loop).\n2. **Error-contract violation.** The library signals invalid input via\n   `SyntaxParseError` (see `src/load/exception.ts`; the entire test suite asserts\n   `SyntaxParseError`). Consumers that follow this contract —\n\n ",
+      "severity": "medium",
+      "published": "2026-11-20T14:40:45+00:00",
+      "link": "https://github.com/advisories/GHSA-3g82-77xr-68x5"
+    },
+    {
+      "cve": "CVE-2026-63184",
+      "ghsa": "GHSA-x6w4-f264-3vvr",
+      "title": "Refitter: Unrestricted OpenAPI references permit build-host SSRF and file inclusion",
+      "description": "### Summary\n\nRefitter (the `refitter` dotnet tool, built on NJsonSchema for `$ref` resolution) fetches remote\n`http(s)` URLs and reads local files (including absolute paths and `../` traversal outside the input\ndirectory), inlining the referenced schema into the generated Refit interface/contracts. Running\n`refitter <spec> --output Out.cs` on a spec whose `$ref` points at an attacker/internal URL or an\narbitrary local file yields SSRF, remote file inclusion, and local file inclusion. Verified on\nRefitter 2.0.0.\n\n### Details\n\n- `$ref: http://attacker-or-internal/evil.json#/...` -> build host fetches (SSRF) and inlines the\n  remote schema (RFI); confirmed property `REMOTE_REFIT_PROP`.\n- `$ref: /abs/path.json#/...` or `../../secret.json#/...` -> out-of-tree local file read + inlined\n  (LFI); confirmed property `REFIT_LFI_MARKER`. Both absolute and relative traversal work.\n\nNo RCE: Refitter ",
+      "severity": "high",
+      "published": "2026-11-20T14:35:29+00:00",
+      "link": "https://github.com/advisories/GHSA-x6w4-f264-3vvr"
+    },
+    {
+      "cve": "CVE-2026-58192",
+      "ghsa": "GHSA-jwgx-mp9m-jwcr",
+      "title": "appium allows unauthenticated arbitrary file/directory deletion in @appium/storage-plugin",
+      "description": "## Summary\n\nThe Appium storage plugin exposes an HTTP endpoint `POST /storage/delete` that takes a user-supplied `name` and deletes it from the server storage folder. The handler passes `name` straight into `path.join(storageRoot, name)` and then `fs.rimraf()` **without any path sanitization**. By sending a `name` containing `../` sequences, an unauthenticated remote client can escape the storage root and **recursively delete arbitrary files and directories** that the Appium process user can write, anywhere on the host filesystem.\n\nThe same plugin's *upload* path validates the name via `fs.sanitizeName` (`requireValidItemOptions`), but the *delete* path does not an asymmetry that makes the missing validation unambiguous.\n\n\n### Details\n\nPublished build (`node_modules/@appium/storage-plugin/build/lib/storage.js`), and source (`packages/storage-plugin/lib/`):\n\n- `packages/storage-plugin/lib",
+      "severity": "high",
+      "published": "2026-11-20T14:34:30+00:00",
+      "link": "https://github.com/advisories/GHSA-jwgx-mp9m-jwcr"
+    },
     {
       "cve": "CVE-2026-114516",
       "ghsa": "GHSA-mc8w-wjhw-45x5",
@@ -573,339 +906,6 @@
       "severity": "high",
       "published": "2026-11-19T22:41:46+00:00",
       "link": "https://github.com/advisories/GHSA-w6x2-f5m4-xw82"
-    },
-    {
-      "cve": "CVE-2026-130008",
-      "ghsa": "GHSA-q433-mp6c-8v4f",
-      "title": "sqlite-mcp: Read-only mode bypass via statement chaining and SQL injection in describe_table",
-      "description": "### Summary\n\nIn read-only mode (the default), a client that can call the MCP tools can write to the database the server is meant to expose read-only, read other SQLite files, and create new SQLite files anywhere the server process can write. There are two ways in: statement chaining through `execute_query`, and SQL injection through `describe_table`.\n\n### Details\n\n- **Statement chaining in `execute_query`.** The only check was that the query starts with `SELECT`. The `modernc.org/sqlite` driver runs every `;`-separated statement in one call, so anything after `SELECT 1;` ran unchecked.\n- **SQL injection in `describe_table`.** The `table_name` argument was interpolated into `PRAGMA table_info(%s)` with no guard.\n- **Escaping read-only mode.** Through either path, `ATTACH DATABASE` opens a file read-write regardless of the main connection's `mode=ro`. Attaching the protected database itsel",
-      "severity": "high",
-      "published": "2026-11-19T22:25:53+00:00",
-      "link": "https://github.com/advisories/GHSA-q433-mp6c-8v4f"
-    },
-    {
-      "cve": "CVE-2026-119346",
-      "ghsa": "GHSA-f3mh-rxg3-f5g2",
-      "title": "Next.js: HttpOnly cookie exposure through internal response header on Next.js Edge runtime routes",
-      "description": "Next.js applications that set cookies through `NextResponse` on Edge runtime routes — App Router route handlers and Pages Router Edge API routes — send an internal `x-middleware-set-cookie` header in the public response, duplicating the cookie value and its attributes. This makes HttpOnly cookies, such as session tokens, readable by JavaScript running on the same origin when an application sets a sensitive cookie on an affected response.",
-      "severity": "medium",
-      "published": "2026-11-19T22:23:21+00:00",
-      "link": "https://github.com/advisories/GHSA-f3mh-rxg3-f5g2"
-    },
-    {
-      "cve": "CVE-2026-119347",
-      "ghsa": "GHSA-7qx7-33qx-rqx2",
-      "title": "Next.js: SVG rejection bypass in the image optimization",
-      "description": "On self-hosted deployments, the Next.js image optimizer (`/_next/image`) can be made to process an attacker-supplied SVG even when SVG support is disabled with `dangerouslyAllowSVG: false` (the default). This reaches an SVG parser the application intended to keep disabled, increasing exposure to denial of service and SVG decoder vulnerabilities.",
-      "severity": "medium",
-      "published": "2026-11-19T22:23:06+00:00",
-      "link": "https://github.com/advisories/GHSA-7qx7-33qx-rqx2"
-    },
-    {
-      "cve": "CVE-2026-119348",
-      "ghsa": "GHSA-pc58-hwjq-p385",
-      "title": "Next.js: Cross-client response injection and disclosure in self-hosted Next.js applications forwarding fetched responses",
-      "description": "Self-hosted Next.js applications (App Router route handlers and the fetch cache) that return a fetched upstream response unchanged can emit a response whose declared framing does not match the body actually sent. When such an application sits behind an HTTP/1.1 reverse proxy that permits pipelined response queueing, a crafted upstream response can desynchronize responses between clients, enabling response injection and disclosure of other clients' responses.",
-      "severity": "medium",
-      "published": "2026-11-19T22:20:34+00:00",
-      "link": "https://github.com/advisories/GHSA-pc58-hwjq-p385"
-    },
-    {
-      "cve": "CVE-2026-119349",
-      "ghsa": "GHSA-rhh4-g77r-r9qj",
-      "title": "Next.js: Cross-user cache disclosure and poisoning in Next.js use cache with binary arguments",
-      "description": "Next.js App Router applications that pass binary arguments (such as Uint8Array or Blob values) to functions using the `use cache` directive can produce identical cache keys for distinct arguments, allowing cached results to be shared across users — cross-user disclosure of cached data or cache poisoning. This affects applications using `use cache` with binary arguments.",
-      "severity": "medium",
-      "published": "2026-11-19T22:20:11+00:00",
-      "link": "https://github.com/advisories/GHSA-rhh4-g77r-r9qj"
-    },
-    {
-      "cve": "CVE-2026-119350",
-      "ghsa": "GHSA-vvgp-ww4w-46vf",
-      "title": "Next.js: Cache poisoning of shared fallback shells in Cache Components via request-supplied placeholder route params",
-      "description": "Self-hosted Next.js applications served with `next start` and built with `cacheComponents: true` but without Partial Prefetching accept a request-supplied route param value as a prerender placeholder. One unauthenticated GET request can poison the fallback shell cache entry that a family of routes shares.\n\nSuch a route is served from a shell that keeps its never-prerenderable params as placeholders, so every value of those params shares one cache entry. A path segment equal to the percent-encoded, bracketed name of its own route param is treated as an unresolved placeholder, and only that param is deferred. A layout above it then renders its concrete value into the shell during the blocking render, and the result, including its HTTP status, is stored under the shared key.\n\nDepending on the application, the stored entry is one of the following:\n\n- A persistent 404, when the layout rejects",
-      "severity": "medium",
-      "published": "2026-11-19T22:18:08+00:00",
-      "link": "https://github.com/advisories/GHSA-vvgp-ww4w-46vf"
-    },
-    {
-      "cve": null,
-      "ghsa": "GHSA-4rj4-rcrq-gr92",
-      "title": "Safari MCP: JavaScript injection through single-quoted tool arguments (backslash not escaped)",
-      "description": "### Impact\n\nSixteen places in `safari.js` placed a tool argument inside a single-quoted JavaScript string literal and escaped the single quote without first escaping backslashes. An argument containing a backslash followed by a quote therefore closed the literal, and the rest of the argument ran as JavaScript in the page.\n\nSeven of the affected arguments belong to read-only tools that are exempt from the tab-ownership check: `filter` in `safari_network_details` and `safari_extract_links`, `level` in `safari_console_filter`, `selector` in `safari_snapshot`, `safari_accessibility_snapshot` and `safari_extract_tables`, and `dbName` / `storeName` in `safari_get_indexed_db`. An MCP client limited to read-only tools (with `safari_evaluate` and `safari_run_script` excluded from its allowlist) could still run arbitrary page JavaScript through them, including in a tab the session does not own. Th",
-      "severity": "medium",
-      "published": "2026-11-19T22:17:05+00:00",
-      "link": "https://github.com/advisories/GHSA-4rj4-rcrq-gr92"
-    },
-    {
-      "cve": "CVE-2026-121707",
-      "ghsa": "GHSA-7589-6fvf-x4pw",
-      "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
-      "description": "### Impact\n\n`Schema.TemplateLiteral` compiles each `Schema.String` span to the lazy wildcard `[\\s\\S]*?` and decodes input by running the resulting regular expression against it. When a template has two or more `Schema.String` spans, for example:\n\n```ts\nSchema.TemplateLiteral(Schema.String, \":\", Schema.String, \":\", Schema.String, \"X\")\n```\n\nthe regex contains several ambiguous wildcards. A non-matching input makes the backtracking engine try combinations across all of them, so matching time grows cubically with input length. A 5,000-character string of `:` characters blocks the event loop for about 15 seconds.\n\nApplications that decode untrusted input with such a schema are affected. That includes `Schema.decodeUnknown`, `Schema.decodeUnknownSync` and `Schema.is`, and anything built on them, such as `HttpApi` request payloads and `@effect/rpc` payloads.\n\n### Patches\n\nFixed in `effect@3.22.",
-      "severity": "high",
-      "published": "2026-11-19T20:51:01+00:00",
-      "link": "https://github.com/advisories/GHSA-7589-6fvf-x4pw"
-    },
-    {
-      "cve": "CVE-2026-77597",
-      "ghsa": "GHSA-56v3-jrq2-4q9m",
-      "title": "iSponsorBlockTV: SSRF via Malicious SSDP Response Spoofing in Local Device Discovery",
-      "description": "### Summary\niSponsorBlockTV discovers local smart TV devices via SSDP (Simple Service Discovery Protocol). The `LOCATION` URL from SSDP responses is used to fetch device capabilities without URL validation. A local network attacker can craft a malicious SSDP response with a `LOCATION` pointing to any internal HTTP service, causing SSRF when the application fetches device information.\n\n### Details\nIn `src/iSponsorBlockTV/dial_client.py:92-96`, upon receiving an SSDP M-SEARCH response, the code extracts the `LOCATION` header and makes an HTTP GET request to that URL to retrieve DIAL device description XML. The URL is not validated against expected device IP ranges, expected schemes, or private/internal IP blocklists. Any device on the LAN (or a rogue WiFi access point) can respond to SSDP M-SEARCH queries with a `LOCATION` pointing to internal services.\n\n### Impact\nBlind SSRF against inter",
-      "severity": "low",
-      "published": "2026-11-19T20:50:12+00:00",
-      "link": "https://github.com/advisories/GHSA-56v3-jrq2-4q9m"
-    },
-    {
-      "cve": "CVE-2026-128073",
-      "ghsa": "GHSA-5hj8-q7fv-qrj6",
-      "title": "gosaml2: Unauthenticated panic decrypting an EncryptedAssertion with a short or empty CipherValue",
-      "description": "### Summary\n\nAn attacker who can supply a crafted SAML Response for parsing can crash a `gosaml2` service provider by sending an `EncryptedAssertion` with AES-GCM encryption metadata and a `CipherValue` shorter than the GCM nonce size (12 bytes). The library panics with `slice bounds out of range` before any validation completes.\n\nThis is a **distinct issue from [GHSA-hwqm-qvj9-4jr2](https://github.com/russellhaering/gosaml2/security/advisories/GHSA-hwqm-qvj9-4jr2)**, which addressed panics in the AES-CBC decryption path (commit [`3418f9ae09063ff8df0ce1bd93f24e538e614def`](https://github.com/russellhaering/gosaml2/commit/3418f9ae09063ff8df0ce1bd93f24e538e614def), included in `v0.10.0`). That fix added a block-size check for CBC but left the AES-GCM path completely unprotected.\n\n### Details\n\n`ValidateEncodedResponse()` decrypts `EncryptedAssertion` nodes before signature or content valida",
-      "severity": "high",
-      "published": "2026-11-19T20:49:36+00:00",
-      "link": "https://github.com/advisories/GHSA-5hj8-q7fv-qrj6"
-    },
-    {
-      "cve": "CVE-2026-102529",
-      "ghsa": "GHSA-464h-4j8h-q5mf",
-      "title": "HtmlSanitizer: CSS Removal DoS",
-      "description": "### Impact\n\nAn unauthenticated request can occupy one synchronous application worker for seconds. Concurrent requests add CPU cost and can keep all workers busy, sustaining denial of service without user interaction.\n\n### Patches\n\nThe issue has been patched in versions  9.0.967 and 9.1.968-beta.\n\n### Workarounds\n\nDisallow the style attribute.",
-      "severity": "high",
-      "published": "2026-11-19T20:49:01+00:00",
-      "link": "https://github.com/advisories/GHSA-464h-4j8h-q5mf"
-    },
-    {
-      "cve": "CVE-2026-115472",
-      "ghsa": "GHSA-h5m9-42h9-vcq6",
-      "title": "Doorkeeper: When using public clients, any client can revoke any access token",
-      "description": "### Summary\n\nAn improper authorization issue affects Doorkeeper's OAuth token revocation flow when public (non-confidential) clients are in use. This vulnerability can lead to tokens being revoked without correct authorization. The issue is fixed in Doorkeeper 5.9.1.",
-      "severity": "medium",
-      "published": "2026-11-19T20:47:25+00:00",
-      "link": "https://github.com/advisories/GHSA-h5m9-42h9-vcq6"
-    },
-    {
-      "cve": "CVE-2026-109549",
-      "ghsa": "GHSA-w3w6-9m25-g88p",
-      "title": "OmniFaces: SSE push channels are not bound to their owning HTTP session ",
-      "description": "## Summary\n\n[GHSA-fp43-vj7g-pg92](https://github.com/omnifaces/omnifaces/security/advisories/GHSA-fp43-vj7g-pg92) (fixed 5.4.2) bound session- and view-scoped **WebSocket** (`o:socket`) push channels to the HTTP session that registered them, so a leaked channel ID can no longer be connected to from a foreign or absent HTTP session. The fix ([`d5cae243c4`](https://github.com/omnifaces/omnifaces/commit/d5cae243c4692555efaa4ba774e0f8f60e3f4db5)) touched only the `Socket*` classes.\n\nThe parallel **SSE** (`o:sse`, added in 5.2) push transport was left unchanged. `SseEndpoint.doGet` accepts a connection whenever the presented channel ID is in the application-wide registry, without ever checking that the caller's HTTP session owns it. A leaked session/view-scoped SSE channel ID can therefore be replayed from any (or no) HTTP session to receive the messages pushed to it — exactly the behaviour t",
-      "severity": "medium",
-      "published": "2026-11-19T20:47:02+00:00",
-      "link": "https://github.com/advisories/GHSA-w3w6-9m25-g88p"
-    },
-    {
-      "cve": "CVE-2026-63193",
-      "ghsa": "GHSA-mqwx-84vv-mp26",
-      "title": "October: Media Library Crop Handler Bypasses Upload Extension Allowlist",
-      "description": "The Media Library upload handler validates the destination filename against an extension allowlist (`default_extensions`), rejecting types such as `php`, `phtml`, `html`, and `htm`. The image crop handler (`MediaManager::onCropImage` / `cropImage`) did not perform this check. The destination filename was taken from user input, the extension was extracted from it, and the staged bytes were written to the public media folder under that attacker-chosen extension. Combined with the fact that upload accepts any file contents under an allowlisted extension (a PHP payload disguised as `.jpg`), and that the zero-dimension crop branch performs a byte-for-byte `File::copy` rather than re-encoding the pixels, an authenticated backend user with the `media.library.create` permission could write a file with arbitrary extension and arbitrary contents into the public media folder.\n\n**Scope of impact dep",
-      "severity": "medium",
-      "published": "2026-11-19T20:46:36+00:00",
-      "link": "https://github.com/advisories/GHSA-mqwx-84vv-mp26"
-    },
-    {
-      "cve": "CVE-2026-61713",
-      "ghsa": "GHSA-pxh3-4qqv-58mg",
-      "title": "Servo Sandbox bypass: declarative refresh can auto-navigate a sandboxed iframe",
-      "description": "A sandboxed iframe can auto-navigate itself via declarative refresh even when automatic features should be blocked. This allows attacker-controlled embedded content to redirect itself without user action.\n\n### Summary\nServo allows a sandboxed iframe to auto-navigate itself via declarative refresh in configurations that should block automatic features.\n\nThe issue reproduces in the must-block rows of the matrix:\n\n- `sandbox=\"\"`\n- `sandbox=\"allow-same-origin\"`\n- `sandbox=\"allow-forms\"`\n- `sandbox=\"allow-same-origin allow-forms\"`\n\nThis is a client-side sandbox-policy bypass. It does not by itself prove script execution or parent DOM access, but it does let attacker-controlled sandboxed content redirect itself without user action.\n\n### Details\nThe declarative refresh path is missing sandbox enforcement:\n\n- [components/script/dom/document/document.rs:239] `RefreshRedirectDue::invoke()` contain",
-      "severity": "high",
-      "published": "2026-11-19T20:45:22+00:00",
-      "link": "https://github.com/advisories/GHSA-pxh3-4qqv-58mg"
-    },
-    {
-      "cve": "CVE-2026-61689",
-      "ghsa": "GHSA-jmmc-wjpc-pg34",
-      "title": "XWiki Platform: HQL injection in search allows unauthenticated database extraction including password hashes",
-      "description": "### Impact\nThe query REST API allows executing HQL queries to filter the listed pages. While this properly checks access rights for the current user, the query can be used to combine when clauses and blind queries, to recover values, through FROM clause injection to join BaseObject and StringProperty tables, bypassing the HQL validator's SELECT column whitelist. This allows recovering any data that is stored in the database, including data from inaccessible pages, password hashes and passwords stored in configuration properties. For a typical password hash, this requires about 800 requests to the REST API (about one per bit). It should be assumed that when using more complex techniques, this even works when the attacker cannot read any wiki page. Password hashes use salted SHA1 in XWiki which can be cracked offline for weak passwords. Further, the executed database queries could be slow,",
-      "severity": "high",
-      "published": "2026-11-19T20:44:32+00:00",
-      "link": "https://github.com/advisories/GHSA-jmmc-wjpc-pg34"
-    },
-    {
-      "cve": "CVE-2026-59975",
-      "ghsa": "GHSA-3h63-w8jq-rrf2",
-      "title": "SharpIppNext: Unbounded IPP Document Stream Buffering Leads to Denial of Service",
-      "description": "### Summary\n\nSharpIppNext's `IppProtocol.ReadIppRequestAsync()` unconditionally copies the entire attacker-supplied IPP document payload into an unbounded `MemoryStream` with no size limit. Because this behavior is enabled by default (`ReadDocumentStream = true`) and the official server documentation shows `HttpContext.Request.Body` being passed directly to `ReceiveRequestAsync()` without authentication, an unauthenticated remote attacker can exhaust the server process's memory by sending an arbitrarily large IPP request body, causing an Out-Of-Memory (OOM) condition and denial of service.\n\n> [!NOTE]\n> This vulnerability only affects server-side implementations (using `SharpIppServer` to parse incoming IPP requests). It does not affect client-side implementations using `SharpIppClient` or client-side request construction.\n\n### Details\n\nThe vulnerable sink is in `SharpIpp/Protocol/IppProt",
-      "severity": "high",
-      "published": "2026-11-19T20:43:01+00:00",
-      "link": "https://github.com/advisories/GHSA-3h63-w8jq-rrf2"
-    },
-    {
-      "cve": "CVE-2026-77283",
-      "ghsa": "GHSA-mx6p-3fg7-v6pj",
-      "title": "obsidian-sync-mcp: Missing Host/Origin validation lets a public website drive a victim's Obsidian vault via DNS rebinding (no-auth mode)",
-      "description": "When obsidian-sync-mcp runs without MCP_AUTH_TOKEN (the documented no-auth mode for local use), the HTTP MCP endpoint does not validate the Host or Origin header before dispatching MCP methods (CWE-350). The no-auth mode's \"local network only\" assumption therefore does not hold: a malicious web page the operator visits can use DNS rebinding to resolve an attacker-controlled hostname to 127.0.0.1 (or the operator's LAN/VPN/Docker-published address) and issue requests the server accepts as trusted local calls, reaching the full tool surface (read_note, write_note, edit_note, delete_note, move_note, list_notes, list_folders, list_tags, get_note_metadata).\n\nAffected versions: <= 0.5.6\nPatched version: 0.5.7\n\n## Impact\n\nAny deployment running without MCP_AUTH_TOKEN — including the README \"Filesystem mode (simplest)\" quickstart and the self-hosted docker-compose setup (where MCP_AUTH_TOKEN def",
-      "severity": "high",
-      "published": "2026-11-19T20:41:18+00:00",
-      "link": "https://github.com/advisories/GHSA-mx6p-3fg7-v6pj"
-    },
-    {
-      "cve": "CVE-2026-76090",
-      "ghsa": "GHSA-gpcc-36pq-8qxr",
-      "title": "Tapir: Construction/decode RCE via property name -> raw case-class field (tapir-openapi-codegen)",
-      "description": "The OpenAPI code generator (tapir-openapi-codegen-core) builds Scala source by string templating and emitted several names/values from the (untrusted) OpenAPI document without escaping or validation, allowing injection of arbitrary Scala that runs at generated-code compile time and/or endpoint-assembly time (build/codegen-time RCE from an attacker-controlled spec).\n\nThis advisory covers the full class of sinks, all sharing one root cause and one fix (PR #5395, commit e015939b7): object property names (-> case-class fields), query/header/path parameter names (-> endpoint input DSL), and operation tags (-> .tags(List(...))). The fix routes identifier-position names through validation/quoting and string-literal values through JavaEscape.escapeString.\n\nConsolidates the separately-reported query-param (GHSA-h3vr-jggp-jw5v), header-param (GHSA-3pjr-m3pf-r66v) and tag (GHSA-jc99-w66r-pcx5) sink",
-      "severity": "high",
-      "published": "2026-11-19T20:39:27+00:00",
-      "link": "https://github.com/advisories/GHSA-gpcc-36pq-8qxr"
-    },
-    {
-      "cve": "CVE-2026-76807",
-      "ghsa": "GHSA-833v-v58w-294h",
-      "title": "Todoist MCP Server: Browser DNS rebinding lets websites write and delete Todoist data through local MCP server",
-      "description": "The self-hosted `todoist-mcp-http` server accepts browser-origin MCP requests with attacker-controlled `Host` and `Origin` headers. A malicious website can use DNS rebinding to route its own origin to a victim's local `127.0.0.1` MCP server, then invoke Todoist MCP tools without a caller credential.\n\nThis affects `github.com/Doist/todoist-mcp` at commit `d2903e0d945d2a559d71c091337ad6380511e62f`, package version `10.3.1`, when the optional Streamable HTTP server is running. The stdio entrypoint is not browser-reachable. The vulnerable browser-reachable component is `todoist-mcp-http`.\n\nThe documented HTTP server mode runs all MCP tools with the operator's `TODOIST_API_KEY` and binds to loopback by default:\n\n```bash\nTODOIST_API_KEY=your-key npx -p @doist/todoist-mcp todoist-mcp-http\n```\n\n`src/main-http.ts:28-30` sets the HTTP bind host and port:\n\n```ts\nconst PORT = Number.parseInt(process",
-      "severity": "critical",
-      "published": "2026-11-19T20:38:35+00:00",
-      "link": "https://github.com/advisories/GHSA-833v-v58w-294h"
-    },
-    {
-      "cve": "CVE-2026-62964",
-      "ghsa": "GHSA-w42c-h7hr-f67p",
-      "title": "Gortex: Arbitrary file write / repo-confinement escape in `write_file` / `edit_file` / `move_inline` MCP tools → code execution",
-      "description": "### Summary\nGortex is an MCP server exposing `write_file`, `edit_file`, and `move_inline` tools. `resolveFilePath` **exempts absolute paths** from confinement, and the write handlers — unlike `read_file` / `get_symbol_source` — **never call `guardSymlinkWithinRepo`**. A single MCP `write_file` call with an absolute path writes any file the daemon user can, **outside every indexed repo root** (`AtomicWriteFile`'s `MkdirAll` auto-creates missing parents). Writing `~/.zshrc`, `~/.bashrc`, `.git/hooks/pre-commit`, or a cron/systemd unit yields code execution on the next shell/commit. This directly violates the project's own `SECURITY.md` invariant *\"File-path resolution is **confined to indexed repository roots**\"*\n\n### Affected\n`internal/mcp/tools_fileops.go` (+ `tools_move_inline.go`), HEAD `28fa017` (v0.53.0).\n**CWE-22** (Path Traversal) / **CWE-73** (External Control of File Name/Path) →",
-      "severity": "high",
-      "published": "2026-11-19T20:36:31+00:00",
-      "link": "https://github.com/advisories/GHSA-w42c-h7hr-f67p"
-    },
-    {
-      "cve": "CVE-2026-75522",
-      "ghsa": "GHSA-4c2f-96cf-f5fc",
-      "title": "OpenID4VP: X.509 chain validation accepts a forged certificate that reuses a trusted anchor's Subject DN without verifying its signature",
-      "description": "## Summary\n\n`ChainBuilder` (the private RFC 5280 validator behind `TrustEvaluator` and the public credential-parsing API) terminated chain building on **Subject Distinguished Name string equality** rather than on cryptographic closure to a trust anchor. A certificate whose Subject DN string matched a trusted anchor's Subject DN was accepted as the chain terminus **with no signature verification** against the anchor's public key.\n\nAn attacker who mints a self-signed certificate and copies a trusted anchor's Subject DN string onto it can therefore have that certificate — and any credential signed with its private key — accepted as issued under a trusted authority.\n\n## Impact\n\nA relying party using `@openeudi/openid4vp` to verify OpenID4VP presentations (mdoc / SD-JWT VC) could be induced to accept a **forged credential as genuine**, defeating the trust-anchor model. In an eIDAS / EUDI age-",
-      "severity": "high",
-      "published": "2026-11-19T20:35:57+00:00",
-      "link": "https://github.com/advisories/GHSA-4c2f-96cf-f5fc"
-    },
-    {
-      "cve": "CVE-2026-76101",
-      "ghsa": "GHSA-j282-pjg5-j643",
-      "title": "keystore-go: Keystore integrity and password verification bypass via stripped trailing digest in Decode()",
-      "description": "### Summary\n`keystore.Decode()` fails to check the error returned when reading the trailing SHA-1 integrity digest of a JKS keystore. If an attacker removes the final 20 bytes from a `.jks` file, the digest read returns an empty slice and the byte-comparison loop never executes, so `Decode()` returns the parsed keystore with `err == nil`. This defeats both tamper detection and — for certificate-only truststores — the password check itself, allowing an attacker with write access to a keystore file (but without knowledge of the keystore password) to silently inject or replace trusted CA certificates.\n\n### Details\n**Affected versions:** `github.com/pavel-v-chernykh/keystore-go` ≤ `v2.1.0+incompatible` (the final release on this module path).  v3 and v4 releases are not impacted.\n\nIn `decoder.go`, function `Decode`, lines 264-272:\n\n```go\ncomputedDigest := ksd.md.Sum(nil)\nactualDigest, err :=",
-      "severity": "high",
-      "published": "2026-11-19T20:35:35+00:00",
-      "link": "https://github.com/advisories/GHSA-j282-pjg5-j643"
-    },
-    {
-      "cve": "CVE-2026-76818",
-      "ghsa": "GHSA-r7wg-f7r2-8wf7",
-      "title": "Axon: Download of Code Without Integrity Check in axon-mcp",
-      "description": "### Summary\naxon rtk-install downloads a pre-built rtkx binary from GitHub releases and executes it via subprocess.run() on every text-compression call, without verifying its integrity — no checksum, signature, or attestation check anywhere in the download/install path. If the release pipeline or a maintainer token for sammyjdev/rtkx were ever compromised, every axon user who installs or auto-bootstraps rtkx would silently download and execute an unverified binary with the same privileges as the axon process.\n\n### Details\nThe download path lives in src/axon/context/rtk_bootstrap.py:\n\n- _http_download() fetches the release archive over HTTPS via urllib.request.urlopen() and writes the raw response bytes to disk — no hash comparison against any published value.\n- _extract_binary() unpacks the archive (zip/tar.gz) and sets the executable bit (out.chmod(... S_IXUSR | S_IXGRP | S_IXOTH)), aga",
-      "severity": "high",
-      "published": "2026-11-19T20:34:53+00:00",
-      "link": "https://github.com/advisories/GHSA-r7wg-f7r2-8wf7"
-    },
-    {
-      "cve": "CVE-2026-63412",
-      "ghsa": "GHSA-q8v2-3j4h-xg2p",
-      "title": "Jane: Instantiation RCE via query parameter name -> raw PHPDoc */ breakout (jane-php/open-api-3)",
-      "description": "### Summary\njane-php (open-api-3) builds PHP via nikic/php-parser (AST), so string literals are escaped -- but PHPDoc comment text is emitted RAW. The generated Client/Endpoint method docblocks embed the query parameter name verbatim in a `@param array{ \"<name>\"?: ... }` block. A `*/` in the query name closes the `/** ... */` docblock early and lands in class-body position; because the name is a raw string key (not identifier-mangled), the `*/` and following PHP survive. Injecting `*/ public function __construct(){ <code> } /*` adds an attacker-controlled __construct to the generated Client class, which runs when the client is instantiated -> RCE (CWE-94). Verified 7.11.2/PHP8.1.\n\n### Impact\nGenerating a client from an attacker-influenced OpenAPI document and using the generated SDK (instantiating the client, which apps do on every call) runs attacker PHP. CWE-94/95/116.\n\n### PoC\n`reprod",
-      "severity": "critical",
-      "published": "2026-11-19T16:18:45+00:00",
-      "link": "https://github.com/advisories/GHSA-q8v2-3j4h-xg2p"
-    },
-    {
-      "cve": "CVE-2026-63413",
-      "ghsa": "GHSA-x9xr-53qx-9qcf",
-      "title": "Jane: Instantiation RCE via header parameter name -> raw PHPDoc */ breakout (jane-php/open-api-3)",
-      "description": "### Summary\njane-php (open-api-3) builds PHP via nikic/php-parser (AST), so string literals are escaped -- but PHPDoc comment text is emitted RAW. The generated Client/Endpoint method docblocks embed the header parameter name verbatim in a `@param array{ \"<name>\"?: ... }` block. A `*/` in the header name closes the `/** ... */` docblock early and lands in class-body position; because the name is a raw string key (not identifier-mangled), the `*/` and following PHP survive. Injecting `*/ public function __construct(){ <code> } /*` adds an attacker-controlled __construct to the generated Client class, which runs when the client is instantiated -> RCE (CWE-94). Verified 7.11.2/PHP8.1.\n\n### Impact\nGenerating a client from an attacker-influenced OpenAPI document and using the generated SDK (instantiating the client, which apps do on every call) runs attacker PHP. CWE-94/95/116.\n\n### PoC\n`repr",
-      "severity": "critical",
-      "published": "2026-11-19T16:12:22+00:00",
-      "link": "https://github.com/advisories/GHSA-x9xr-53qx-9qcf"
-    },
-    {
-      "cve": "CVE-2026-63411",
-      "ghsa": "GHSA-xwcw-j52r-34x4",
-      "title": "Jane: Instantiation RCE via parameter description -> raw PHPDoc */ breakout (jane-php/open-api-3)",
-      "description": "### Summary\njane-php (open-api-3) builds PHP via nikic/php-parser (AST), so string literals are escaped -- but PHPDoc comment text is emitted RAW. The generated Client/Endpoint method docblocks embed the parameter description verbatim in a `@param array{ \"<name>\"?: ... }` block. A `*/` in the parameter description closes the `/** ... */` docblock early and lands in class-body position; because the name is a raw string key (not identifier-mangled), the `*/` and following PHP survive. Injecting `*/ public function __construct(){ <code> } /*` adds an attacker-controlled __construct to the generated Client class, which runs when the client is instantiated -> RCE (CWE-94). Verified 7.11.2/PHP8.1.\n\n### Impact\nGenerating a client from an attacker-influenced OpenAPI document and using the generated SDK (instantiating the client, which apps do on every call) runs attacker PHP. CWE-94/95/116.\n\n###",
-      "severity": "critical",
-      "published": "2026-11-19T16:12:11+00:00",
-      "link": "https://github.com/advisories/GHSA-xwcw-j52r-34x4"
-    },
-    {
-      "cve": "CVE-2026-75518",
-      "ghsa": "GHSA-vg83-hcp4-5qcc",
-      "title": "DOMShell: domshell_eval classified as read-tier can execute side-effecting JavaScript without --allow-write",
-      "description": "### Summary\n\nThe `domshell_eval` MCP tool (and the `eval` command inside `domshell_execute`) was classified as **read-tier**, allowing it to run without the `--allow-write` server flag. However, `eval` and the write-tier `js` command dispatch to the same handler in the extension and call CDP `Runtime.evaluate` with the raw expression string and no side-effect gate. Any JavaScript expression could therefore mutate DOM, window, or global state through `domshell_eval` without the operator's `--allow-write` authorization.\n\nThe tool description explicitly promised \"(read-only) ... always available in read-only mode\" — the misclassification contradicted the documented contract, not just an implicit one.\n\n### Impact\n\nNo new capability was exposed — the same write access was already available via `domshell_js` with `--allow-write` — but the tier misclassification meant:\n\n- MCP hosts (Claude Desk",
-      "severity": "medium",
-      "published": "2026-11-19T16:10:53+00:00",
-      "link": "https://github.com/advisories/GHSA-vg83-hcp4-5qcc"
-    },
-    {
-      "cve": "CVE-2026-69139",
-      "ghsa": "GHSA-pj7p-238h-76pv",
-      "title": "djangocms-moderation: Moderation comments disclosed to non-participant staff via the admin changelist",
-      "description": "## Summary\n\nThe Django admin views for moderation comments (`CollectionCommentAdmin` and `RequestCommentAdmin`) render the full comment body but scope access only by an attacker-controlled `id` in the URL and Django's model-level `view_*comment` permission. They perform no per-object participant check. As a result, any authenticated staff user who holds the comment *view* permission can read the comments of **any** collection or moderation request — including ones they are not a participant of — simply by supplying the target object's id.\n\nComments are documented and intended to be private to the participants of a collection (its author and the moderators assigned to its workflow). This advisory concerns a read/write authorization asymmetry: the write paths already enforced `request.user == obj.author`, but the read paths did not enforce any participant check.\n\n## Details\n\n`ModerationReq",
-      "severity": "medium",
-      "published": "2026-11-19T16:09:30+00:00",
-      "link": "https://github.com/advisories/GHSA-pj7p-238h-76pv"
-    },
-    {
-      "cve": "CVE-2026-71535",
-      "ghsa": "GHSA-8776-qf3h-26r3",
-      "title": "Mareforma: Unsigned Claims Can Be Promoted to REPLICATED via Missing Signature Enforcement in Convergence Path",
-      "description": "### Summary\n\n`mareforma` 0.3.3 contains a critical integrity flaw in the REPLICATED convergence logic (`_maybe_update_replicated_unlocked()` in `mareforma/db/core.py:1300-1319`). The peer-selection SQL query that determines whether two independent claims \"agree\" on the same anchor does not verify that either claim carries a valid cryptographic signature from an enrolled validator key. Because `rekor_enabled=False` is the default and automatically sets `transparency_logged=1` at insert time, every claim — signed or not — immediately satisfies the convergence precondition. An attacker with no Mareforma key can write an unsigned claim to a shared graph, cause it to converge with a legitimate signed peer claim, and have it promoted to `REPLICATED` status. The forged `REPLICATED` row is then returned by the default trust query (`graph.query(min_support=\"REPLICATED\")`), allowing the attacker t",
-      "severity": "high",
-      "published": "2026-11-19T16:07:36+00:00",
-      "link": "https://github.com/advisories/GHSA-8776-qf3h-26r3"
-    },
-    {
-      "cve": "CVE-2026-71534",
-      "ghsa": "GHSA-xfq4-8hf9-5h43",
-      "title": "Mareforma: transparency_logged trusts the unsigned rekor block",
-      "description": "## What's wrong\n\nDuring restore, `transparency_logged` is recomputed as `1 if (toml_logged is not False and bundle_has_rekor) else 0`, where `bundle_has_rekor` comes only from a `rekor.uuid` field inside `signature_bundle`. That derivation is wrong in both directions.\n\nFirst, the rekor block is metadata attached after signing (`attach_rekor_entry` in `mareforma/signing/rekor.py` leaves the payload and signatures untouched), so it is not covered by the Ed25519 signature. A hand-edited `claims.toml` can add `\"rekor\": {\"uuid\": \"x\"}` to any claim's bundle and forge the \"publicly witnessed by Rekor\" state. The claim signature still verifies, and restore never cross-checks the block against `[rekor_inclusions]` or the log. Tampering with `claims.toml` is the exact threat model restore defends against; `_verify_claim_signatures_on_restore` checks only payload and signatures.\n\nSecond, a signed c",
-      "severity": "medium",
-      "published": "2026-11-19T16:05:07+00:00",
-      "link": "https://github.com/advisories/GHSA-xfq4-8hf9-5h43"
-    },
-    {
-      "cve": "CVE-2026-71500",
-      "ghsa": "GHSA-rgg9-956j-3378",
-      "title": "Mareforma: invalidated claims still promote to REPLICATED",
-      "description": "## What's wrong\n\n`_maybe_update_replicated_unlocked` never checks `t_invalid`, so a claim that a signed contradiction verdict has marked invalid can still climb to REPLICATED through convergence detection, and it pulls an honest peer up with it.\n\nThree gaps line up:\n\n- The new-claim short-circuit reads only `status` and `asserter_keyid` (`core.py:1339-1352`); an invalidated but still-`open` new claim passes.\n- The candidate-peer SELECT filters `status = 'open'`, `unresolved = 0`, and `transparency_logged = 1` but has no `t_invalid` predicate (`core.py:1390-1410`), so an invalidated existing claim qualifies as a convergence partner.\n- The promotion UPDATE gates only on `status = 'open'` (`core.py:1422-1426`), leaving a TOCTOU window even after the SELECT is fixed.\n\nA signed contradiction verdict is meant to be terminal for the trust ladder: `validate_claim` refuses to promote a `t_invalid",
-      "severity": "medium",
-      "published": "2026-11-19T16:04:43+00:00",
-      "link": "https://github.com/advisories/GHSA-rgg9-956j-3378"
-    },
-    {
-      "cve": "CVE-2026-71536",
-      "ghsa": "GHSA-hxh5-gp44-rc6p",
-      "title": "Mareforma: verify_bundle never checks a per-claim signature",
-      "description": "## What's wrong\n\n`verify_bundle` documents that it verifies \"a bundle's DSSE envelope AND each per-claim signature\", lists \"per-claim signature failure\" among its raised errors, and promises that partial verification never surfaces \"an authenticated bundle that contains some invalid claims\" as success. The code does not do this. The JSON-LD predicate built by `JSONLDExporter._claim_node` carries no signature material (there is no `signatureBundle` field on the node), so the verify loop has nothing cryptographic to check per claim. It only re-derives each claim's canonical-statement digest from the node fields and compares it to the signed subject list:\n\n```python\nchain_input = _signing.canonical_statement({...node fields...}, node.get(\"evidence\") or {})\nexpected = hashlib.sha256(chain_input).hexdigest()\nif subjects[subject_name] != expected:\n    raise BundleVerificationError(...)\n```\n\nTh",
-      "severity": "high",
-      "published": "2026-11-19T16:03:39+00:00",
-      "link": "https://github.com/advisories/GHSA-hxh5-gp44-rc6p"
-    },
-    {
-      "cve": "CVE-2026-71533",
-      "ghsa": "GHSA-m29v-3g7g-9c63",
-      "title": "Mareforma: search_claims skips verify-on-read, serving forged rows",
-      "description": "## What's wrong\n\n`search_claims` never calls `_row_verified_on_read`. Its row loop applies only the PRELIMINARY-unenrolled filter, then appends the row. `query_claims` runs the same projection but additionally re-verifies REPLICATED/ESTABLISHED signatures on read (line 4023) and drops any row that fails, per the documented tamper guarantee in the comment block above it: a high-trust row whose signature does not verify is excluded from query results entirely.\n\nSo a tampered or forged high-trust row splits the two read paths. Any process with DB write access, or an attacker copying a genuine validation envelope onto a fresh row, can flip a row to ESTABLISHED. `query()` drops it; `search()` serves it at its persisted trust level. Verified in a runtime check against a forged ESTABLISHED row:\n\n```\nquery() returns forged row: False\nsearch() returns forged row: True   # support_level ESTABLISHE",
-      "severity": "medium",
-      "published": "2026-11-19T16:00:52+00:00",
-      "link": "https://github.com/advisories/GHSA-m29v-3g7g-9c63"
-    },
-    {
-      "cve": "CVE-2026-58214",
-      "ghsa": "GHSA-4g68-3pwx-5vfj",
-      "title": "NATS Server MQTT subscribe permission bypass exposes internal QoS 2 metadata",
-      "description": "### Background\n\nNATS.io is a high performance open source pub-sub distributed communication technology, built for the cloud, on-premise, IoT and edge computing.\n\nThe NATS Server MQTT support uses internal `$MQTT.*` subjects to implement MQTT protocol features such as QoS handling.\n\n### Problem Description\n\nAn authenticated MQTT client could subscribe to an internal MQTT delivery subject that was not intended to be available to clients.\n\nThis bypassed configured subscribe permissions for that internal subject family and exposed MQTT QoS2 protocol metadata for sessions in the account. Message payloads were not exposed through this path.\n\nThis issue was related to an incomplete restriction on internal MQTT subjects. It affected MQTT users whose ordinary subscribe permissions would not otherwise allow access to those internal subjects.\n\n### Affected Versions\n\nVersions v2.14.2, v2.12.7 and be",
-      "severity": "medium",
-      "published": "2026-11-19T16:00:12+00:00",
-      "link": "https://github.com/advisories/GHSA-4g68-3pwx-5vfj"
-    },
-    {
-      "cve": "CVE-2026-58213",
-      "ghsa": "GHSA-qrcv-3558-gj4f",
-      "title": "NATS Server: MQTT SUBSCRIBE Protocol Injection via Leaf Node/Route Forwarding allows arbitrary NATS command injection",
-      "description": "### Background\n\nNATS.io is a high performance open source pub-sub distributed communication technology, built for the cloud, on-premise, IoT and edge computing.\n\nThe NATS Server supports MQTT clients and can bridge MQTT activity into NATS subjects across routes and leafnode connections.\n\n### Problem Description\n\nAn MQTT client could include protocol control characters in subscription filters that were later forwarded as NATS protocol data to route or leafnode connections.\n\nThis could corrupt the forwarded protocol stream and allow injection of unintended NATS protocol operations, potentially across cluster nodes or accounts where route or gateway connections are present.\n\nAnonymous MQTT deployments are higher risk because no credentials are required to reach the affected parser. Authenticated deployments are still affected for clients allowed to create MQTT subscriptions.\n\n### Affected V",
-      "severity": "high",
-      "published": "2026-11-19T15:56:55+00:00",
-      "link": "https://github.com/advisories/GHSA-qrcv-3558-gj4f"
-    },
-    {
-      "cve": "CVE-2026-76088",
-      "ghsa": "GHSA-cvx8-9ff6-54xq",
-      "title": "PGPainless: Unbounded Compressed Packet Descent in inline-detach and MessageInspector leads to Denial of Service (DoS)",
-      "description": "### Summary\nAn architectural security boundary bypass in inline-detach and MessageInspector allows remote, unauthenticated attackers to force unbounded recursive decompression routines. By supplying a specially crafted OpenPGP message containing deeply nested compressed packet structures, an attacker can completely bypass the library's built-in DoS protections (MAX_LAYER_DEPTH = 16), leading to resource exhaustion, thread blocking, and potential Out-of-Memory (OOM) application crashes.\n\n### Details\nThe pg-painless core processing pipeline implements a defensive threshold constraint to prevent decompression bomb sequences (Zip Bombs) and arbitrary resource consumption:\n\n    Enforcement Location: pgpainless-main/pgpainless-core/src/main/kotlin/org/pgpainless/decryption_verification/MessageMetadata.kt\n\n    Threshold Constant: MAX_LAYER_DEPTH = 16\n\nHowever, a code architecture review reveale",
-      "severity": "high",
-      "published": "2026-11-19T00:53:49+00:00",
-      "link": "https://github.com/advisories/GHSA-cvx8-9ff6-54xq"
     }
   ]
 }
