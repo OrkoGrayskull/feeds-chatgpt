@@ -1,12 +1,138 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-19T23%3A00%3A00.000&pubEndDate=2026-11-22T03%3A33%3A52.000&resultsPerPage=200&startIndex=984",
-  "fetched_at": "2026-11-22T03:33:52+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-19T23%3A00%3A00.000&pubEndDate=2026-11-22T09%3A52%3A04.000&resultsPerPage=200&startIndex=998",
+  "fetched_at": "2026-11-22T09:52:04+00:00",
   "window_days": 3,
   "window_start": "2026-11-20",
   "window_end": "2026-11-22",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-94259",
+      "title": "CVE-2026-94259",
+      "description": "The SMS Alert  WordPress plugin before 4.0.4 does not sanitise and escape a parameter before using it in a SQL statement, leading to SQL injection exploitable by administrators.",
+      "published": "2026-11-22T06:17:12.090",
+      "last_modified": "2026-11-22T06:17:12.090",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94259"
+    },
+    {
+      "cve": "CVE-2026-14233",
+      "title": "CVE-2026-14233",
+      "description": "The LifterLMS  WordPress plugin before 10.0.5 does not perform a capability or nonce check in one of its quiz-question query AJAX handlers, allowing any authenticated user with subscriber-level access to enumerate the titles of all published quiz questions, including those for courses they are not enrolled in.",
+      "published": "2026-11-22T06:17:11.583",
+      "last_modified": "2026-11-22T06:17:11.583",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-14233"
+    },
+    {
+      "cve": "CVE-2026-133362",
+      "title": "CVE-2026-133362",
+      "description": "The ThinkRank SEO  WordPress plugin before 2.21.4 does not ensure that the settings section a request acts on is the section it was authorized for, allowing users granted access to only one ThinkRank SEO  WordPress plugin before 2.21.4 section by an administrator to read and update settings of other, more privileged sections, such as integration API keys and robots.txt content.",
+      "published": "2026-11-22T06:17:11.467",
+      "last_modified": "2026-11-22T06:17:11.467",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133362"
+    },
+    {
+      "cve": "CVE-2026-132814",
+      "title": "CVE-2026-132814",
+      "description": "The WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN) WordPress plugin before 45.0 does not verify that a Microsoft ID token was issued for the site's own application and tenant when multi-tenant sign-in is enabled with an empty list of allowed tenants, allowing unauthenticated attackers to log in as an existing user, including an administrator, with a token Microsoft issued to an application they control.",
+      "published": "2026-11-22T06:17:11.353",
+      "last_modified": "2026-11-22T06:17:11.353",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132814"
+    },
+    {
+      "cve": "CVE-2026-127024",
+      "title": "CVE-2026-127024",
+      "description": "The WordForm  WordPress plugin before 4.1.6 does not properly validate uploaded files, allowing unauthenticated users to upload arbitrary files, including PHP, which leads to remote code execution.",
+      "published": "2026-11-22T06:17:11.240",
+      "last_modified": "2026-11-22T06:17:11.240",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-127024"
+    },
+    {
+      "cve": "CVE-2026-123136",
+      "title": "CVE-2026-123136",
+      "description": "The Event Tickets Manager for WooCommerce WordPress plugin before 1.6.2 does not check that the ticket type and price chosen through one of its unauthenticated AJAX actions belong to the event ticket later added to the cart, and stores them site-wide, allowing unauthenticated visitors to buy an event ticket at the lower ticket-type price configured on a different event.",
+      "published": "2026-11-22T06:17:11.120",
+      "last_modified": "2026-11-22T06:17:11.120",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123136"
+    },
+    {
+      "cve": "CVE-2026-123068",
+      "title": "CVE-2026-123068",
+      "description": "The Front User Submit  WordPress plugin before 5.1.0 does not validate the content of files uploaded through one of its unauthenticated endpoints and later serves them back with a Content-Type derived from the file's bytes and an inline disposition, allowing unauthenticated attackers to store an HTML or SVG payload and obtain a same-origin URL that executes arbitrary JavaScript in the browser of any user who opens it, including an administrator.",
+      "published": "2026-11-22T06:17:10.997",
+      "last_modified": "2026-11-22T06:17:10.997",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123068"
+    },
+    {
+      "cve": "CVE-2026-120413",
+      "title": "CVE-2026-120413",
+      "description": "The Yoast SEO  WordPress plugin before 28.9 does not check that content is publicly viewable before returning its SEO metadata through a public REST endpoint, allowing unauthenticated users who know or can guess the URL of a private post, page or custom post type item to read its title, author, publication date and an excerpt of its content.",
+      "published": "2026-11-22T06:17:10.883",
+      "last_modified": "2026-11-22T06:17:10.883",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120413"
+    },
+    {
+      "cve": "CVE-2026-107593",
+      "title": "CVE-2026-107593",
+      "description": "The Mooberry Book Manager WordPress plugin through 4.16.2 does not perform a capability check on one of its AJAX actions and protects it only with a nonce that it outputs to every authenticated user on all admin pages, allowing any logged-in user, including Subscribers, to trigger a site-wide rewrite of stored book purchase links and change a related Mooberry Book Manager WordPress plugin through 4.16.2 option.",
+      "published": "2026-11-22T06:17:10.770",
+      "last_modified": "2026-11-22T06:17:10.770",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107593"
+    },
+    {
+      "cve": "CVE-2026-107592",
+      "title": "CVE-2026-107592",
+      "description": "The Mooberry Book Manager WordPress plugin through 4.16.2 does not perform any capability or nonce check in one of its AJAX actions, allowing any authenticated user with a minimal role such as Subscriber to change the publisher assigned to any book, including books created by other users, and to create new book records. The missing nonce check also makes the action exploitable via CSRF against any logged-in user.",
+      "published": "2026-11-22T06:17:10.650",
+      "last_modified": "2026-11-22T06:17:10.650",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-107592"
+    },
+    {
+      "cve": "CVE-2026-105394",
+      "title": "CVE-2026-105394",
+      "description": "The Asset CleanUp: Page Speed Booster WordPress plugin before 1.4.0.7 does not restrict which origins it reflects into its cross-origin resource sharing response headers and pairs the reflected origin with credentialed access, allowing a page on a related origin to read a logged-in user's authenticated content across origins.",
+      "published": "2026-11-22T06:17:09.627",
+      "last_modified": "2026-11-22T06:17:09.627",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-105394"
+    },
+    {
+      "cve": "CVE-2026-134651",
+      "title": "CVE-2026-134651",
+      "description": "A flaw was found in Quay. This vulnerability allows an authenticated remote attacker holding a restricted, short-lived JSON Web Token (JWT) to achieve privilege escalation. Because Quay improperly accepts scoped registry bearer tokens as valid robot account passwords, an attacker can authenticate directly as the robot account and obtain broader permissions. Consequently, unauthorized access persists and enables the attacker to generate fresh tokens even after the robot account's password has been reset.",
+      "published": "2026-11-22T05:18:43.660",
+      "last_modified": "2026-11-22T05:18:43.820",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134651"
+    },
+    {
+      "cve": "CVE-2026-134623",
+      "title": "CVE-2026-134623",
+      "description": "A flaw has been found in Microweber up to 2.0.20. This impacts the function UserManager::make_logged of the file src/MicroweberPackages/App/Http/Controllers/ApiController.php of the component Generic API Dispatcher. This manipulation causes improper access controls. Remote exploitation of the attack is possible. The exploit has been published and may be used. Upgrading to version 2.0.21 will fix this issue. Patch name: e639d26e61b989b100f8b6f6bb78c0cecca79b99. You should upgrade the affected component.",
+      "published": "2026-11-22T05:18:43.323",
+      "last_modified": "2026-11-22T05:18:43.570",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134623"
+    },
+    {
+      "cve": "CVE-2026-134616",
+      "title": "CVE-2026-134616",
+      "description": "A security vulnerability has been detected in itsourcecode Insurance Management System 1.0. The affected element is an unknown function of the file /deleteClient.php. Such manipulation of the argument client_id leads to sql injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.",
+      "published": "2026-11-22T04:17:11.907",
+      "last_modified": "2026-11-22T04:17:12.070",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134616"
+    },
     {
       "cve": "CVE-2026-134572",
       "title": "CVE-2026-134572",
@@ -1680,136 +1806,10 @@
       "last_modified": "2026-11-21T17:16:52.990",
       "cvss": 6.9,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134318"
-    },
-    {
-      "cve": "CVE-2026-134317",
-      "title": "CVE-2026-134317",
-      "description": "@better-auth/stripe 1.2.0-beta.18 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains an authorization bypass vulnerability because the stripeCustomerId user field accepts values from sign-up and update-user requests, letting a user replace their own Stripe customer ID with another customer's. Attackers who know another customer's Stripe ID can open that customer's billing portal to view invoices and billing details, change payment methods, and cancel or modify subscriptions.",
-      "published": "2026-11-21T17:16:52.710",
-      "last_modified": "2026-11-21T17:16:52.710",
-      "cvss": 6.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134317"
-    },
-    {
-      "cve": "CVE-2026-134316",
-      "title": "CVE-2026-134316",
-      "description": "@better-auth/electron 1.5.0-beta.12 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 accepts any validly signed value as its transfer cookie and returns the full endpoint context, including the auth secret and social provider client secrets, in sign-in responses. Authenticated users can obtain these secrets to forge sessions as other users. Attackers knowing a password can exchange desktop authorization codes issued before two-factor verification to bypass the second factor.",
-      "published": "2026-11-21T17:16:52.550",
-      "last_modified": "2026-11-21T17:16:52.550",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134316"
-    },
-    {
-      "cve": "CVE-2026-134315",
-      "title": "CVE-2026-134315",
-      "description": "better-auth 1.4.0 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains an improper authentication vulnerability because email-change links record the old and new addresses but not the requesting user. Attackers can open a still-valid link issued for their own account after a victim registers the attacker's released old address, gaining a session and changing the victim's email to one they control.",
-      "published": "2026-11-21T17:16:52.377",
-      "last_modified": "2026-11-21T17:16:52.503",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134315"
-    },
-    {
-      "cve": "CVE-2026-134314",
-      "title": "CVE-2026-134314",
-      "description": "better-auth 1.3.7 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains a race condition in the emailOTP plugin attempt counter, collision-prone email change code keys, and accent-insensitive email lookups. Unauthenticated attackers can send concurrent guesses exceeding allowedAttempts to brute-force OTPs and sign in or reset passwords, signed-in users can verify addresses they do not own, and attackers receiving mail at accent-variant addresses can reset victims' passwords.",
-      "published": "2026-11-21T17:16:52.190",
-      "last_modified": "2026-11-21T17:16:52.330",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134314"
-    },
-    {
-      "cve": "CVE-2026-134313",
-      "title": "CVE-2026-134313",
-      "description": "Better Auth (better-auth, @better-auth/kysely-adapter, and @better-auth/drizzle-adapter) before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains a race condition with MySQL or MariaDB serial IDs because the inserted row's ID is read via a separate LAST_INSERT_ID() query that may run on a different pooled connection. Under concurrent load, a user signing in can receive another user's session and act as that user.",
-      "published": "2026-11-21T17:16:52.017",
-      "last_modified": "2026-11-21T17:16:52.017",
-      "cvss": 7.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134313"
-    },
-    {
-      "cve": "CVE-2026-134312",
-      "title": "CVE-2026-134312",
-      "description": "Better Auth 0.4.9 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains an OAuth sign-in authentication flaw that treats unverified provider emails as verified, including string \"false\" email_verified claims, unchecked generic OAuth profile/ID-token subject mismatches, and ignored Zoom provider options. Attackers holding a victim's address unverified at an affected provider can sign in, link to the victim's local account, and obtain its session.",
-      "published": "2026-11-21T17:16:51.567",
-      "last_modified": "2026-11-21T17:16:51.713",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134312"
-    },
-    {
-      "cve": "CVE-2026-134311",
-      "title": "CVE-2026-134311",
-      "description": "better-auth 1.3.0 before 1.7.16 and 1.8.0-beta.0 before 1.8.0-beta.5 contains an incorrect authorization vulnerability in the admin plugin's /admin/update-user endpoint that lets roles holding user:update change another user's phoneNumber and phoneNumberVerified fields. Attackers can set their own verified phone number on a higher-privileged account and sign in via phone OTP to take it over.",
-      "published": "2026-11-21T17:16:51.387",
-      "last_modified": "2026-11-21T17:16:51.510",
-      "cvss": 7.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134311"
-    },
-    {
-      "cve": "CVE-2026-134310",
-      "title": "CVE-2026-134310",
-      "description": "SurrealDB from 3.2.0 before 3.3.4 contains an authorization bypass vulnerability that allows record users to update protected rows by exploiting table-level PERMISSIONS FOR update predicates referencing COMPUTED fields. Because check_update_permissions evaluates the predicate before computed fields are populated, the field reads as NONE and deny-intended predicates like blocked != true pass, letting attackers modify records.",
-      "published": "2026-11-21T17:16:51.180",
-      "last_modified": "2026-11-21T17:16:51.340",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134310"
-    },
-    {
-      "cve": "CVE-2026-134309",
-      "title": "CVE-2026-134309",
-      "description": "SurrealDB 1.0.0 before 4.0.0 contains an authorization bypass vulnerability that allows authenticated users to shadow protected $access, $auth, and $token variables by binding them as FOR loop variables. Attackers can wrap queries in nested FOR loops with forged values to satisfy table permission predicates, enabling unauthorized reads, modifications, or deletions as a VIEWER.",
-      "published": "2026-11-21T17:16:50.990",
-      "last_modified": "2026-11-21T17:16:51.127",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134309"
-    },
-    {
-      "cve": "CVE-2026-134307",
-      "title": "CVE-2026-134307",
-      "description": "SurrealDB 3.0.0 before 4.0.0 contains a permission bypass vulnerability that allows authenticated low-privilege database users to read restricted records by calling the GET /export endpoint. Attackers can export raw records that skip table SELECT predicates and field-level SELECT permissions, exposing other users' rows and hidden fields.",
-      "published": "2026-11-21T17:16:50.820",
-      "last_modified": "2026-11-21T17:16:50.947",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134307"
-    },
-    {
-      "cve": "CVE-2026-134306",
-      "title": "CVE-2026-134306",
-      "description": "SurrealDB before 4.0.0 contains an incorrect authorization vulnerability in filter_fields_by_permission that allows authenticated record users to read denied child field values. Attackers can query rows where overlapping items[*] and items[*].secret permissions compact arrays, causing shifted elements to retain field values denied by SELECT permissions.",
-      "published": "2026-11-21T17:16:50.650",
-      "last_modified": "2026-11-21T17:16:50.777",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134306"
-    },
-    {
-      "cve": "CVE-2026-134303",
-      "title": "CVE-2026-134303",
-      "description": "SurrealKV before 1.1.0 contains an out-of-bounds read vulnerability in the safe InternalKeyRef::from_encoded constructor, which only checks key length with a debug-only assertion. Callers passing keys shorter than 16 bytes, or crafted or corrupted SSTable blocks, trigger unchecked length underflow in timestamp(), seq_num() and trailer(), reading heap bytes before the allocation or panicking.",
-      "published": "2026-11-21T17:16:50.480",
-      "last_modified": "2026-11-21T17:16:50.480",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134303"
-    },
-    {
-      "cve": "CVE-2026-134302",
-      "title": "CVE-2026-134302",
-      "description": "SurrealDB 1.0.0 before 4.0.0 contains a denial of service vulnerability that allows any user able to run queries to crash the server by triggering unchecked decimal overflow in math::sum or math::product. Attackers can submit a query summing or multiplying large decimal literals or aggregate stored decimals with GROUP ALL, causing a rust_decimal panic that terminates the entire server process.",
-      "published": "2026-11-21T17:16:50.267",
-      "last_modified": "2026-11-21T17:16:50.437",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134302"
-    },
-    {
-      "cve": "CVE-2026-134301",
-      "title": "CVE-2026-134301",
-      "description": "SurrealDB before 4.0.0 contains a guard bypass vulnerability that allows authenticated users to execute write subqueries by embedding them in LIVE query WHERE clauses or field projections. Attackers can inject CREATE, UPDATE, DELETE, or RELATE statements that run atomically inside other users' triggering transactions, amplifying writes and exfiltrating document data after permission revocation.",
-      "published": "2026-11-21T17:16:50.087",
-      "last_modified": "2026-11-21T17:16:50.213",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134301"
     }
   ],
-  "total_results": 1184,
+  "total_results": 1198,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 984
+  "start_index": 998
 }
