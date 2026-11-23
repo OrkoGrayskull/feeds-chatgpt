@@ -1,12 +1,1056 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-19T23%3A00%3A00.000&pubEndDate=2026-11-22T13%3A33%3A44.000&resultsPerPage=200&startIndex=1017",
-  "fetched_at": "2026-11-22T13:33:44+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-20T23%3A00%3A00.000&pubEndDate=2026-11-23T04%3A06%3A25.000&resultsPerPage=200&startIndex=383",
+  "fetched_at": "2026-11-23T04:06:25+00:00",
   "window_days": 3,
-  "window_start": "2026-11-20",
-  "window_end": "2026-11-22",
+  "window_start": "2026-11-21",
+  "window_end": "2026-11-23",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-134789",
+      "title": "CVE-2026-134789",
+      "description": "A weakness has been identified in DumbWareio DumbAssets up to 1.0.11. Affected by this vulnerability is an unknown functionality of the file server.js of the component Settings API. Executing a manipulation of the argument appriseUrl can lead to dynamically-determined object attributes. The attack can be executed remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T03:17:08.373",
+      "last_modified": "2026-11-23T03:17:08.530",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134789"
+    },
+    {
+      "cve": "CVE-2026-134788",
+      "title": "CVE-2026-134788",
+      "description": "A security flaw has been discovered in warpdesign pcx-js up to 1.1.1. Affected is the function decode8bpp/decode4bpp of the file js/pcx.js of the component PCX Pixel Buffer Decoder. Performing a manipulation results in uncontrolled memory allocation. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T03:17:08.163",
+      "last_modified": "2026-11-23T03:17:08.323",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134788"
+    },
+    {
+      "cve": "CVE-2026-134787",
+      "title": "CVE-2026-134787",
+      "description": "A vulnerability was identified in code-projects Intern Record System 1.0. This impacts an unknown function of the file /department.sql. Such manipulation leads to file and directory information exposure. The attack may be launched remotely. The exploit is publicly available and might be used.",
+      "published": "2026-11-23T03:17:07.937",
+      "last_modified": "2026-11-23T03:17:08.113",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134787"
+    },
+    {
+      "cve": "CVE-2026-134786",
+      "title": "CVE-2026-134786",
+      "description": "A vulnerability has been found in Xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. The affected element is an unknown function of the file JobLogController.java of the component Job Termination Endpoint. The manipulation leads to incorrect authorization. The attack can be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T03:17:07.713",
+      "last_modified": "2026-11-23T03:17:07.880",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134786"
+    },
+    {
+      "cve": "CVE-2026-134785",
+      "title": "CVE-2026-134785",
+      "description": "A vulnerability was identified in Bagisto MangoPay Payment Gateway up to c061edcc7973cb37a77a9f9ae523db170c3e28ed. Affected by this vulnerability is the function MangoPayStandardController::success of the file src/Http/Controllers/Shop/MangoPayStandardController.php of the component Success Callback. The manipulation leads to insufficient verification of data authenticity. Remote exploitation of the attack is possible. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided.",
+      "published": "2026-11-23T02:16:38.007",
+      "last_modified": "2026-11-23T02:16:38.153",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134785"
+    },
+    {
+      "cve": "CVE-2026-134784",
+      "title": "CVE-2026-134784",
+      "description": "A vulnerability was found in DumbWareio DumbDrop up to ff8f813f493e89c7da056e7a3101ce2ef48e3960. Affected by this vulnerability is the function isPathWithinUploadDir of the file src/routes/files.js of the component Files API. The manipulation results in improper access controls. The attack may be launched remotely. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T02:16:37.800",
+      "last_modified": "2026-11-23T02:16:37.963",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134784"
+    },
+    {
+      "cve": "CVE-2026-134783",
+      "title": "CVE-2026-134783",
+      "description": "A vulnerability has been found in xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. Affected is the function difyWorkflowJobHandler of the file xxl-job-executor-sample-springboot-ai/src/main/java/com/xxl/job/executor/jobhandler/AIXxlJob.java of the component AI Executor. The manipulation of the argument baseUrl leads to server-side request forgery. The attack may be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T02:16:37.607",
+      "last_modified": "2026-11-23T02:16:37.750",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134783"
+    },
+    {
+      "cve": "CVE-2026-134782",
+      "title": "CVE-2026-134782",
+      "description": "A flaw has been found in Open Asset Import Library Assimp up to 6.0.6. This impacts the function Assimp::ColladaLoader::CreateMesh of the file code/AssetLib/Collada/ColladaLoader.cpp. Executing a manipulation can lead to out-of-bounds read. The attack can be launched remotely. The exploit has been published and may be used. The pull request to fix this issue awaits acceptance.",
+      "published": "2026-11-23T02:16:37.397",
+      "last_modified": "2026-11-23T02:16:37.553",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134782"
+    },
+    {
+      "cve": "CVE-2026-134781",
+      "title": "CVE-2026-134781",
+      "description": "A vulnerability was detected in Open Asset Import Library Assimp up to 6.0.5. This affects the function Assimp::PretransformVertices::BuildMeshRefCountArray of the file PretransformVertices.cpp. Performing a manipulation results in out-of-bounds write. The attack can be initiated remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T01:17:10.750",
+      "last_modified": "2026-11-23T01:17:10.900",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134781"
+    },
+    {
+      "cve": "CVE-2026-134780",
+      "title": "CVE-2026-134780",
+      "description": "A security vulnerability has been detected in Open Asset Import Library Assimp up to 6.0.6. The impacted element is the function Assimp::JoinVerticesProcess::ProcessMesh of the file code/PostProcessing/JoinVerticesProcess.cpp of the component PostProcessing JoinVerticesProcess. Such manipulation leads to out-of-bounds write. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T01:17:10.550",
+      "last_modified": "2026-11-23T01:17:10.700",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134780"
+    },
+    {
+      "cve": "CVE-2026-134779",
+      "title": "CVE-2026-134779",
+      "description": "A weakness has been identified in Open Asset Import Library Assimp up to 6.0.6. The affected element is the function Assimp::ColladaLoader::CreateAnimation of the file code/AssetLib/Collada/ColladaLoader.cpp of the component Collada Loader. This manipulation of the argument mSize causes out-of-bounds write. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks. The pull request to fix this issue awaits acceptance.",
+      "published": "2026-11-23T01:17:10.337",
+      "last_modified": "2026-11-23T01:17:10.493",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134779"
+    },
+    {
+      "cve": "CVE-2026-134735",
+      "title": "CVE-2026-134735",
+      "description": "A vulnerability was determined in Webkul Bagisto up to 2.4.12. Affected by this vulnerability is the function Success of the file packages/Webkul/PayU/src/Http/Controllers/PayUController.php of the component Payu Payment Gateway. Executing a manipulation of the argument Status can lead to insufficient verification of data authenticity. It is possible to launch the attack remotely. Upgrading to version 2.4.13 addresses this issue. Upgrading the affected component is recommended.",
+      "published": "2026-11-23T01:17:09.210",
+      "last_modified": "2026-11-23T01:17:10.290",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134735"
+    },
+    {
+      "cve": "CVE-2026-134734",
+      "title": "CVE-2026-134734",
+      "description": "A vulnerability was found in Webkul Bagisto up to 2.4.13. Affected is the function RazorpayController::paymentSuccess of the file packages/Webkul/Razorpay/src/Http/Controllers/RazorpayController.php of the component Payment Gateway Success/Callback Controllers. Performing a manipulation results in insufficient verification of data authenticity. It is possible to initiate the attack remotely. Upgrading to version 2.4.14 is able to address this issue. It is suggested to upgrade the affected component.",
+      "published": "2026-11-23T00:17:03.620",
+      "last_modified": "2026-11-23T00:17:03.757",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134734"
+    },
+    {
+      "cve": "CVE-2026-134733",
+      "title": "CVE-2026-134733",
+      "description": "A vulnerability has been found in itsourcecode Event Management System 1.0. This impacts an unknown function of the file booking.php. Such manipulation of the argument venue_id leads to cross site scripting. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.",
+      "published": "2026-11-23T00:17:03.437",
+      "last_modified": "2026-11-23T00:17:03.577",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134733"
+    },
+    {
+      "cve": "CVE-2026-134732",
+      "title": "CVE-2026-134732",
+      "description": "A flaw has been found in Open Asset Import Library Assimp up to 6.0.5. This affects the function ASEImporter::InternReadFile of the file code/AssetLib/ASE/ASELoader.cpp of the component ASE File Importer. This manipulation causes out-of-bounds write. The attack is possible to be carried out remotely. The exploit has been published and may be used. Upgrading to version 6.0.6 mitigates this issue. Patch name: 7ccc44a338dcdcc81023484388126ab1a8250e94. You should upgrade the affected component.",
+      "published": "2026-11-23T00:17:03.253",
+      "last_modified": "2026-11-23T00:17:03.390",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134732"
+    },
+    {
+      "cve": "CVE-2026-134731",
+      "title": "CVE-2026-134731",
+      "description": "A vulnerability was detected in itsourcecode Insurance Management System 1.0. The impacted element is an unknown function of the file /insertClient.php. The manipulation of the argument client_id results in sql injection. The attack can be executed remotely. The exploit is now public and may be used.",
+      "published": "2026-11-23T00:17:02.567",
+      "last_modified": "2026-11-23T00:17:03.210",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134731"
+    },
+    {
+      "cve": "CVE-2026-134730",
+      "title": "CVE-2026-134730",
+      "description": "A security vulnerability has been detected in xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. The affected element is the function insert/update of the file admin/src/main/java/com/xxl/job/admin/business/controller/JobGroupController.java of the component Group Management. The manipulation of the argument addressList leads to cross-site request forgery. Remote exploitation of the attack is possible. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-22T23:16:50.240",
+      "last_modified": "2026-11-22T23:16:50.403",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134730"
+    },
+    {
+      "cve": "CVE-2026-134868",
+      "title": "CVE-2026-134868",
+      "description": "Assimp through 6.0.6 contains an infinite loop vulnerability in ColladaParser::ReadPrimitives that allows attackers to exhaust memory via non-numeric index values. Attackers can supply a crafted Collada file whose <p> index list contains a non-digit character, causing endless zero-index appends until the importing process crashes.",
+      "published": "2026-11-22T22:17:42.067",
+      "last_modified": "2026-11-22T22:17:42.067",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134868"
+    },
+    {
+      "cve": "CVE-2026-134867",
+      "title": "CVE-2026-134867",
+      "description": "Assimp through 6.0.6 contains an uncontrolled memory allocation vulnerability in FBXConverter::GetRotationKeyframeList that allows attackers to exhaust memory via unbounded rotation angle differences. Attackers can supply a crafted FBX file of about 111 KB whose keyframe interpolation loop never advances, consuming gigabytes of memory until the importing process is killed.",
+      "published": "2026-11-22T22:17:41.907",
+      "last_modified": "2026-11-22T22:17:41.907",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134867"
+    },
+    {
+      "cve": "CVE-2026-134866",
+      "title": "CVE-2026-134866",
+      "description": "Assimp 6.0.0 through 6.0.6 contains an infinite loop vulnerability in SkipLine that allows attackers to hang parsing by supplying files with '#' comment lines. Attackers can provide crafted OFF, LWS, or MD3 shader files so ReadFile never returns, consuming a CPU core and denying service.",
+      "published": "2026-11-22T22:17:41.750",
+      "last_modified": "2026-11-22T22:17:41.750",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134866"
+    },
+    {
+      "cve": "CVE-2026-134865",
+      "title": "CVE-2026-134865",
+      "description": "Assimp through 6.0.6 contains an out-of-bounds read vulnerability in ColladaParser::CopyVertex that allows attackers to read heap memory by supplying primitives lacking a VERTEX input. Attackers can provide a crafted Collada file whose SIZE_MAX per-vertex offset bypasses the release-removed ai_assert check, crashing the importing application.",
+      "published": "2026-11-22T22:17:41.597",
+      "last_modified": "2026-11-22T22:17:41.597",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134865"
+    },
+    {
+      "cve": "CVE-2026-134864",
+      "title": "CVE-2026-134864",
+      "description": "Assimp through 6.0.6 contains a use of uninitialized resource vulnerability in glTFImporter::ImportMeshes that builds TRIANGLE_STRIP and TRIANGLE_FAN faces from unfilled faces. Attackers can supply a crafted glTF 1.0 file whose strip or fan primitives trigger out-of-bounds reads or null pointer dereferences, crashing the importing application.",
+      "published": "2026-11-22T22:17:41.440",
+      "last_modified": "2026-11-22T22:17:41.440",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134864"
+    },
+    {
+      "cve": "CVE-2026-134863",
+      "title": "CVE-2026-134863",
+      "description": "Assimp through 6.0.6 contains an invalid pointer dereference vulnerability in glTFImporter::ImportEmbeddedTextures that derives the texture format hint without checking the strchr result. Attackers can supply a crafted glTF 1.0 file with an embedded image mime type lacking a slash to crash the importing application.",
+      "published": "2026-11-22T22:17:41.290",
+      "last_modified": "2026-11-22T22:17:41.290",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134863"
+    },
+    {
+      "cve": "CVE-2026-134862",
+      "title": "CVE-2026-134862",
+      "description": "Assimp through 6.0.6 contains an out-of-bounds read vulnerability in glTFImporter::ImportMeshes that uses NORMAL and TEXCOORD accessors without comparing their counts to the POSITION vertex count. Attackers can supply a crafted glTF 1.0 file with shorter normal or texture coordinate arrays to trigger heap out-of-bounds reads and writes that crash the importing application.",
+      "published": "2026-11-22T22:17:41.140",
+      "last_modified": "2026-11-22T22:17:41.140",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134862"
+    },
+    {
+      "cve": "CVE-2026-134861",
+      "title": "CVE-2026-134861",
+      "description": "Assimp through 6.0.6 contains an out-of-bounds write vulnerability in glTFAsset.inl that allows attackers to corrupt memory via oversized glTF 1.0 accessor elements. Attackers can supply a crafted glTF 1.0 file with VEC4 position or VEC3 index accessors to overflow heap or stack buffers during import, crashing applications.",
+      "published": "2026-11-22T22:17:40.990",
+      "last_modified": "2026-11-22T22:17:40.990",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134861"
+    },
+    {
+      "cve": "CVE-2026-134860",
+      "title": "CVE-2026-134860",
+      "description": "Assimp through 6.0.6 contains an out-of-bounds read vulnerability in ReadFloat in ColladaLoader.cpp because accessor stride and offset bounds are checked only by ai_assert. Attackers can supply a crafted Collada file whose animation accessor describes more values than its float_array holds to read past the array or dereference null, crashing the importing application.",
+      "published": "2026-11-22T22:17:40.810",
+      "last_modified": "2026-11-22T22:17:40.810",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134860"
+    },
+    {
+      "cve": "CVE-2026-134859",
+      "title": "CVE-2026-134859",
+      "description": "Assimp through 6.0.6 contains an out-of-bounds read vulnerability in PLYImporter::LoadFace and createFromeTriStrip that fails to validate face vertex indices against the vertex count. Attackers can supply a crafted PLY file processed with normal generation but without aiProcess_ValidateDataStructure to crash the application or leak adjacent heap memory into generated normals.",
+      "published": "2026-11-22T22:17:40.610",
+      "last_modified": "2026-11-22T22:17:40.610",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134859"
+    },
+    {
+      "cve": "CVE-2026-134840",
+      "title": "CVE-2026-134840",
+      "description": "HumHub before 1.19.4 contains a missing authorization vulnerability in GroupController actionNewMemberSearch and actionAdminUserSearch, which skip the checkGroupAccess check. A manager of any single group can query admin-user-search and new-member-search with another group's id parameter to enumerate members, including administrators.",
+      "published": "2026-11-22T22:17:40.397",
+      "last_modified": "2026-11-22T22:17:40.530",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134840"
+    },
+    {
+      "cve": "CVE-2026-134839",
+      "title": "CVE-2026-134839",
+      "description": "Linkwarden before 2.17.0 contains an incorrect authorization vulnerability in the archive upload handler that allows collection members with only add permission to modify other users' links. Attackers can send POST requests to /api/v1/archives/<linkId> to replace another user's stored screenshot, PDF, readable, or HTML archive with attacker-supplied content.",
+      "published": "2026-11-22T22:17:39.783",
+      "last_modified": "2026-11-22T22:17:39.783",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134839"
+    },
+    {
+      "cve": "CVE-2026-134838",
+      "title": "CVE-2026-134838",
+      "description": "Weblate before 2026.11 contains an account takeover vulnerability in the reset_password view that allows unauthenticated attackers to reset victim passwords by abusing case-insensitive Unicode e-mail matching. Attackers controlling a lookalike mailbox using a dotless i or other case-folding variant receive the victim's reset link, since it is sent to the typed address, and set a new password.",
+      "published": "2026-11-22T22:17:39.607",
+      "last_modified": "2026-11-22T22:17:39.607",
+      "cvss": 9.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134838"
+    },
+    {
+      "cve": "CVE-2026-134837",
+      "title": "CVE-2026-134837",
+      "description": "Frappe before 15.126.0 and 16.x before 16.55.0 contains a prototype pollution vulnerability that allows Dashboard Manager users to pollute Object.prototype by storing __proto__ keys in Dashboard Chart custom_options. When any user, including administrators, views a dashboard rendering the chart, Object.assign merges attacker properties into Object.prototype, altering Frappe desk client behavior for that session.",
+      "published": "2026-11-22T22:17:39.407",
+      "last_modified": "2026-11-22T22:17:39.553",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134837"
+    },
+    {
+      "cve": "CVE-2026-134836",
+      "title": "CVE-2026-134836",
+      "description": "Dashy 4.0.0 before 4.9.12 contains a credential disclosure vulnerability in isLocalRequest that attaches user credentials to lookalike hosts due to prefix-only origin checks. Attackers can lure logged-in users to a crafted ?config= link pointing to a lookalike host, capturing bearer tokens or HTTP auth headers to read configuration and stored API keys, or modify them when the victim is an admin.",
+      "published": "2026-11-22T22:17:39.237",
+      "last_modified": "2026-11-22T22:17:39.357",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134836"
+    },
+    {
+      "cve": "CVE-2026-134835",
+      "title": "CVE-2026-134835",
+      "description": "Langfuse before 4.82.0 contains a server-side request forgery vulnerability that allows organization admins to target internal hosts by setting the GitHub Enterprise SSO baseUrl, which skips outbound-URL validation. Attackers can point baseUrl to loopback, RFC1918, or cloud metadata addresses so user sign-ins trigger server requests carrying stored OAuth client credentials.",
+      "published": "2026-11-22T22:17:39.080",
+      "last_modified": "2026-11-22T22:17:39.080",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134835"
+    },
+    {
+      "cve": "CVE-2026-134834",
+      "title": "CVE-2026-134834",
+      "description": "Tandoor Recipes before 2.7.4 contains a path traversal vulnerability in Nextcloud.get_file that allows authenticated recipe editors to write and delete files by using unsanitized recipe names in temporary paths. Attackers can set a recipe name containing ../ segments via PATCH /api/recipe/<pk>/ and request /api/get_recipe_file/<pk>/ to overwrite and remove .pdf files outside the temporary directory.",
+      "published": "2026-11-22T22:17:38.907",
+      "last_modified": "2026-11-22T22:17:39.033",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134834"
+    },
+    {
+      "cve": "CVE-2026-134833",
+      "title": "CVE-2026-134833",
+      "description": "RSSHub before 2026.11.01-8521.e529e9b contains a domain validation bypass in the javdb routes that allows unauthenticated attackers to capture the operator's JAVDB_SESSION cookie. Attackers can pass an absolute javdb.com URL in the category parameter and set the domain query to a host they control, causing processItems to send the _jdb_session cookie there.",
+      "published": "2026-11-22T22:17:38.753",
+      "last_modified": "2026-11-22T22:17:38.753",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134833"
+    },
+    {
+      "cve": "CVE-2026-134832",
+      "title": "CVE-2026-134832",
+      "description": "Vim 9.2.0405 before 9.2.1352 contains a security bypass vulnerability in expand_tag_fname() that allows attackers to evade 'tagsecure' URL checks by escaping URLs in tags file entries. Attackers can supply a crafted tags file in a cloned repository so that jumping to a tag makes netrw fetch an attacker-controlled URL leaking environment variable values.",
+      "published": "2026-11-22T22:17:38.593",
+      "last_modified": "2026-11-22T22:17:38.593",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134832"
+    },
+    {
+      "cve": "CVE-2026-134831",
+      "title": "CVE-2026-134831",
+      "description": "Chatwoot before 4.20.0 contains an information disclosure vulnerability that allows unauthenticated attackers to read unpublished help center articles through the public portal API. Attackers can request archived articles by slug via the ArticlesController show actions or read draft translations exposed through associated_articles in article JSON responses.",
+      "published": "2026-11-22T22:17:38.407",
+      "last_modified": "2026-11-22T22:17:38.543",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134831"
+    },
+    {
+      "cve": "CVE-2026-134830",
+      "title": "CVE-2026-134830",
+      "description": "Casdoor before 4.27.1 contains an uncontrolled resource consumption vulnerability in decodeSamlMessage that allows unauthenticated attackers to exhaust memory by sending unbounded DEFLATE-compressed SAML messages. Attackers can send a small, highly compressed SAMLRequest or SAMLResponse to the /api/saml/logout/:owner/:application endpoint, which inflates to gigabytes and crashes or stalls the server.",
+      "published": "2026-11-22T22:17:38.227",
+      "last_modified": "2026-11-22T22:17:38.357",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134830"
+    },
+    {
+      "cve": "CVE-2026-134829",
+      "title": "CVE-2026-134829",
+      "description": "Umami 3.3.0 before 3.5.0 contains a race condition in two-factor authentication attempt limiting that allows attackers holding a user's password to bypass lockout. Attackers can send many concurrent POST requests to /api/2fa/verify that pass checkRateLimit before recordFailedAttempt runs, brute-forcing TOTP or backup codes beyond the five-attempt limit.",
+      "published": "2026-11-22T22:17:38.060",
+      "last_modified": "2026-11-22T22:17:38.060",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134829"
+    },
+    {
+      "cve": "CVE-2026-134828",
+      "title": "CVE-2026-134828",
+      "description": "Penpot 2.18.0 before 2.19.1 contains a stored cross-site scripting vulnerability in the sanitize-svg function that allows authenticated users to bypass filtering through unescaped re-serialization. Attackers with file edit permission can upload SVGs using entity-encoded or CDATA-wrapped markup or attribute quote breakouts to execute JavaScript in the Penpot origin when victims open them.",
+      "published": "2026-11-22T22:17:37.877",
+      "last_modified": "2026-11-22T22:17:38.003",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134828"
+    },
+    {
+      "cve": "CVE-2026-134827",
+      "title": "CVE-2026-134827",
+      "description": "Lightdash before 3.212.0 contains an insufficiently protected credentials vulnerability in getGitlabInstallationRepoReadAccess that sends the organization GitLab app token to unverified hosts. Project developers can set the dbt connection host_domain to an attacker-controlled server and capture the token when the AI agent reads the repository, gaining access to every reachable repository.",
+      "published": "2026-11-22T22:17:37.707",
+      "last_modified": "2026-11-22T22:17:37.833",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134827"
+    },
+    {
+      "cve": "CVE-2026-134826",
+      "title": "CVE-2026-134826",
+      "description": "erxes before 3.4.14 contains a missing authentication vulnerability in the insurance_api plugin that allows unauthenticated attackers to create, overwrite or delete contract templates via GraphQL mutations. Attackers can inject HTML into templates rendered by headless Chromium during generateContractPDF to pull internal network content into PDFs and exfiltrate customer fields.",
+      "published": "2026-11-22T22:17:37.550",
+      "last_modified": "2026-11-22T22:17:37.550",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134826"
+    },
+    {
+      "cve": "CVE-2026-134825",
+      "title": "CVE-2026-134825",
+      "description": "Gradio 6.27.0 before 6.32.0 contains an authentication bypass vulnerability in gradio/history.py that allows remote unauthenticated attackers to use the operator's locally saved Hugging Face token by sending a forged Host: localhost header. When ssr_mode is enabled, requests proxied through the local Node SSR server pass the loopback check, letting attackers call run history endpoints to list buckets, read records and assets, and write buckets under the operator's account.",
+      "published": "2026-11-22T22:17:37.390",
+      "last_modified": "2026-11-22T22:17:37.390",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134825"
+    },
+    {
+      "cve": "CVE-2026-134824",
+      "title": "CVE-2026-134824",
+      "description": "Nektos act 0.2.92 before 0.2.98 contains a link following vulnerability that allows malicious repositories to read host files by setting --eventpath in an untrusted project .actrc to a symlink. Attackers can commit an event.json symlink pointing to files like ~/.ssh/id_rsa, which act copies into the job container as GITHUB_EVENT_PATH for workflow steps to exfiltrate.",
+      "published": "2026-11-22T22:17:37.230",
+      "last_modified": "2026-11-22T22:17:37.230",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134824"
+    },
+    {
+      "cve": "CVE-2026-134823",
+      "title": "CVE-2026-134823",
+      "description": "Kitty 0.43.0 before 0.51.0 contains a terminal escape sequence injection vulnerability that allows attackers to emit escape sequences by crafting malicious file or archive member names. When a victim highlights such an entry in the choose-files kitten preview panel, unsanitized names are written raw, enabling OSC 52 clipboard overwrites, OSC 8 links, window title changes, or screen spoofing.",
+      "published": "2026-11-22T22:17:37.070",
+      "last_modified": "2026-11-22T22:17:37.070",
+      "cvss": 4.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134823"
+    },
+    {
+      "cve": "CVE-2026-134822",
+      "title": "CVE-2026-134822",
+      "description": "Sustainsys.Saml2 before 1.0.4 and 2.x before 2.11.1 contains an improper signature verification vulnerability that allows attackers to tamper with signed parameters by exploiting mis-parsing in CheckSignature() of Saml2RedirectBinding.cs. Attackers can append data after an extra '=' in RelayState of an intercepted or replayed Redirect-binding message, causing applications to trust the tampered value.",
+      "published": "2026-11-22T22:17:36.913",
+      "last_modified": "2026-11-22T22:17:36.913",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134822"
+    },
+    {
+      "cve": "CVE-2026-134821",
+      "title": "CVE-2026-134821",
+      "description": "Gunicorn 25.2.0 before 27.0.0 contains a memory exhaustion vulnerability in the pure-Python ASGI HTTP/1 parser that buffers protocol lines without size limits. Unauthenticated remote attackers can send request lines, headers, chunk-size lines or trailers lacking CRLF to grow worker memory and consume CPU, causing denial of service.",
+      "published": "2026-11-22T22:17:36.770",
+      "last_modified": "2026-11-22T22:17:36.770",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134821"
+    },
+    {
+      "cve": "CVE-2026-134820",
+      "title": "CVE-2026-134820",
+      "description": "Gunicorn 25.2.0 before 27.0.0 contains an HTTP request smuggling vulnerability in the pure-Python ASGI parser that allows unauthenticated remote attackers to desynchronize request framing by sending malformed framing headers. Attackers can send whitespace-padded Transfer-Encoding or Content-Length headers, signed Content-Length values, or invalid chunk terminators to smuggle requests past front-end proxies to the ASGI application.",
+      "published": "2026-11-22T22:17:36.620",
+      "last_modified": "2026-11-22T22:17:36.620",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134820"
+    },
+    {
+      "cve": "CVE-2026-134819",
+      "title": "CVE-2026-134819",
+      "description": "Delta Sharing reference server 1.4.0 before 1.5.0 contains an incorrect permission assignment vulnerability that allows share recipients to read unshared data via container-scoped Azure SAS tokens. Recipients with a valid bearer token can request credentials from the temporary-table-credentials endpoint to read every blob in the storage container, including unshared tables.",
+      "published": "2026-11-22T22:17:36.467",
+      "last_modified": "2026-11-22T22:17:36.467",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134819"
+    },
+    {
+      "cve": "CVE-2026-134818",
+      "title": "CVE-2026-134818",
+      "description": "oasdiff 1.24.0 before 1.34.1 fails to enforce --allow-external-refs=false when --open is used, because the recordingReader() capture reader in load/capture.go never applies the external-reference policy. Attackers supplying an untrusted OpenAPI spec can use external $ref values to read local files or trigger HTTP requests, with contents uploaded in the review bundle.",
+      "published": "2026-11-22T22:17:36.307",
+      "last_modified": "2026-11-22T22:17:36.307",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134818"
+    },
+    {
+      "cve": "CVE-2026-134817",
+      "title": "CVE-2026-134817",
+      "description": "mcp-server-kubernetes before 4.2.0 contains an argument injection vulnerability that allows remote MCP clients to inject kubectl flags by supplying dash-prefixed values as positional operands in tools such as exec_in_pod, kubectl_patch, and kubectl_logs. Attackers connected over SSE or Streamable HTTP transport can supply values like --filename to make kubectl read files from the server host, bypassing file-read restrictions.",
+      "published": "2026-11-22T22:17:36.147",
+      "last_modified": "2026-11-22T22:17:36.147",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134817"
+    },
+    {
+      "cve": "CVE-2026-134816",
+      "title": "CVE-2026-134816",
+      "description": "sigstore-js @sigstore/oci before 0.8.0 contains a credential exposure vulnerability that leaks registry credentials by replaying OAuth2 password-grant request bodies on cross-origin 307 or 308 redirects. Attackers who can make a trusted token service redirect to their host via open redirect or compromise receive the username and password POSTed by RegistryClient.",
+      "published": "2026-11-22T22:17:35.973",
+      "last_modified": "2026-11-22T22:17:36.097",
+      "cvss": 8.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134816"
+    },
+    {
+      "cve": "CVE-2026-134815",
+      "title": "CVE-2026-134815",
+      "description": "simple-git before 4.1.0 contains an argument injection vulnerability that allows attackers to bypass the allowUnsafePack guard by supplying the --exec option to non-push git operations. Attackers who influence arguments passed to listRemote() or raw() can inject --exec for ls-remote, archive, fetch-pack or send-pack to execute commands on the host.",
+      "published": "2026-11-22T22:17:35.807",
+      "last_modified": "2026-11-22T22:17:35.807",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134815"
+    },
+    {
+      "cve": "CVE-2026-134814",
+      "title": "CVE-2026-134814",
+      "description": "binary-parser before 2.3.1 contains a code injection vulnerability that allows attackers controlling parser definitions to inject JavaScript through string-typed options passed unvalidated by Context.generateOption(). Attackers can supply crafted length, lengthInBytes, key, tag, offset, or namely() alias values to execute arbitrary JavaScript in the Node.js process when the parser is compiled.",
+      "published": "2026-11-22T22:17:35.660",
+      "last_modified": "2026-11-22T22:17:35.660",
+      "cvss": 9.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134814"
+    },
+    {
+      "cve": "CVE-2026-134813",
+      "title": "CVE-2026-134813",
+      "description": "Faye websocket-driver 0.5.0 before 0.8.0, permessage-deflate before 0.2.0, and websocket-extensions before 0.2.0 contain a decompression bomb vulnerability because messages are fully inflated before maxLength is enforced. Unauthenticated remote clients negotiating permessage-deflate can send highly compressible messages, forcing processIncomingMessage() to allocate excessive memory and crash the server process.",
+      "published": "2026-11-22T22:17:35.497",
+      "last_modified": "2026-11-22T22:17:35.497",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134813"
+    },
+    {
+      "cve": "CVE-2026-134812",
+      "title": "CVE-2026-134812",
+      "description": "msgpackr before 2.1.4 contains an inefficient algorithmic complexity vulnerability that allows remote attackers to cause denial of service by repeatedly re-decoding buffered incomplete values. Attackers can stream a large container of small elements in small chunks to UnpackrStream or decodeIter, triggering quadratic decoding cost that blocks the Node.js event loop.",
+      "published": "2026-11-22T22:17:35.343",
+      "last_modified": "2026-11-22T22:17:35.343",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134812"
+    },
+    {
+      "cve": "CVE-2026-134811",
+      "title": "CVE-2026-134811",
+      "description": "diaspora* before 0.10.0 contains an HTML injection vulnerability in Notifier#invite that allows authenticated users to inject HTML or markdown into invitation emails through unescaped profile names. Attackers can set profile first or last names containing raw HTML, links, or images so invitation emails sent from the pod render spoofed content in recipients' mail clients.",
+      "published": "2026-11-22T22:17:35.183",
+      "last_modified": "2026-11-22T22:17:35.183",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134811"
+    },
+    {
+      "cve": "CVE-2026-134810",
+      "title": "CVE-2026-134810",
+      "description": "diaspora* before 0.10.0 contains a path traversal (zip slip) vulnerability in ImportService#unzip_photos_file that allows authenticated users to write files outside the extraction folder. Attackers can upload a crafted photos zip archive during account import with ../ entry names to create new files at arbitrary locations writable by the diaspora* process.",
+      "published": "2026-11-22T22:17:35.030",
+      "last_modified": "2026-11-22T22:17:35.030",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134810"
+    },
+    {
+      "cve": "CVE-2026-134809",
+      "title": "CVE-2026-134809",
+      "description": "OpenOLAT 20.2.2 before 20.3.12, 21.0.0 before 21.0.7, and 21.1.0 before 21.1.2 contains a missing authentication vulnerability in the TranscodingDeliveryDispatcher notifyResult callback endpoint. Unauthenticated attackers can POST crafted TranscoderJobResult JSON with attacker-supplied URLs to overwrite transcoded video and audio files and force server-side requests.",
+      "published": "2026-11-22T22:17:34.873",
+      "last_modified": "2026-11-22T22:17:34.873",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134809"
+    },
+    {
+      "cve": "CVE-2026-134808",
+      "title": "CVE-2026-134808",
+      "description": "Gogs before 0.14.4 on Windows contains a path equivalence vulnerability in isRepositoryGitPath that allows authenticated users with write access to bypass .git directory protection using NTFS aliases. Attackers can create, rename or upload files via aliases like git~1 or .git::$INDEX_ALLOCATION to overwrite .git/config or hooks and execute commands as the Gogs process.",
+      "published": "2026-11-22T22:17:34.697",
+      "last_modified": "2026-11-22T22:17:34.830",
+      "cvss": 7.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134808"
+    },
+    {
+      "cve": "CVE-2026-134807",
+      "title": "CVE-2026-134807",
+      "description": "Reposilite 3.5.27 before 3.6.7 contains a brute-force protection bypass vulnerability that allows unauthenticated remote attackers to evade login bans by spoofing the X-Forwarded-For header. Attackers can rotate the header value to make unlimited password or token guesses, or forge failed attempts to lock out legitimate clients.",
+      "published": "2026-11-22T22:17:34.537",
+      "last_modified": "2026-11-22T22:17:34.537",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134807"
+    },
+    {
+      "cve": "CVE-2026-134806",
+      "title": "CVE-2026-134806",
+      "description": "Opencast before 20.6 contains a path traversal vulnerability in WorkspaceImpl.toWorkspaceFile that allows authenticated ingest users to write files outside the workspace root via unvalidated element paths. Attackers can submit media packages whose element URIs or identifiers contain ../ sequences, causing Workspace.get to create directories and write fetched content with Opencast process privileges.",
+      "published": "2026-11-22T22:17:34.380",
+      "last_modified": "2026-11-22T22:17:34.380",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134806"
+    },
+    {
+      "cve": "CVE-2026-134805",
+      "title": "CVE-2026-134805",
+      "description": "Zipline before 4.8.3 contains a server-side request forgery vulnerability that allows authenticated OIDC users to make the server fetch arbitrary URLs via the userinfo picture claim. Attackers who control their picture claim at the identity provider can force fetchToDataURL() to request internal or cloud-metadata URLs and read responses from their stored avatar.",
+      "published": "2026-11-22T22:17:34.203",
+      "last_modified": "2026-11-22T22:17:34.327",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134805"
+    },
+    {
+      "cve": "CVE-2026-134804",
+      "title": "CVE-2026-134804",
+      "description": "Portainer 2.39.0 before 2.39.9, 2.40.0 before 2.45.4, and 3.0.0 before 3.1.0 contains an authorization bypass vulnerability that allows Standard users to access other users' containers via the WebSocket attach and exec endpoints. Attackers with shared environment access can use leaked container or exec IDs to hijack sessions over /api/websocket/attach or /api/websocket/exec, gaining interactive root shells.",
+      "published": "2026-11-22T22:17:34.037",
+      "last_modified": "2026-11-22T22:17:34.037",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134804"
+    },
+    {
+      "cve": "CVE-2026-134803",
+      "title": "CVE-2026-134803",
+      "description": "DBHub before 1.7.0 contains a read-only mode bypass vulnerability that allows MCP clients restricted to readonly execute_sql to run write and DDL statements via backslash-escaped quotes. Attackers can hide stacked statements that clear transaction_read_only or COMMIT inside strings misparsed by scanSingleQuotedString, letting them modify or drop MySQL, MariaDB, or PostgreSQL data.",
+      "published": "2026-11-22T22:17:33.857",
+      "last_modified": "2026-11-22T22:17:33.990",
+      "cvss": 8.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134803"
+    },
+    {
+      "cve": "CVE-2026-134802",
+      "title": "CVE-2026-134802",
+      "description": "VoidAuth before 1.19.2 contains an access control bypass vulnerability that allows authenticated users to evade stricter ProxyAuth domain rules by sending percent-encoded path separators. Attackers can request paths with encoded slashes, backslashes, semicolons, or dot segments that match a broader rule, reaching restricted paths once the reverse proxy or backend decodes them.",
+      "published": "2026-11-22T22:17:33.703",
+      "last_modified": "2026-11-22T22:17:33.703",
+      "cvss": 7.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134802"
+    },
+    {
+      "cve": "CVE-2026-134801",
+      "title": "CVE-2026-134801",
+      "description": "VoidAuth before 1.19.2 contains an improper verification vulnerability that allows authenticated users to retain the emailVerified flag by changing their email address while EMAIL_VERIFICATION is disabled. Attackers with a previously verified account can set another person's address via the PATCH /email handler, receiving OIDC email_verified=true claims to impersonate that owner in relying applications.",
+      "published": "2026-11-22T22:17:33.527",
+      "last_modified": "2026-11-22T22:17:33.527",
+      "cvss": 4.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134801"
+    },
+    {
+      "cve": "CVE-2026-134800",
+      "title": "CVE-2026-134800",
+      "description": "VoidAuth before 1.19.2 contains an insufficient session expiration vulnerability that allows attackers to retain account access because the POST /reset_password/passkey/end handler never calls endUserSessions(). Attackers holding a stolen session cookie keep authenticated access to the victim's account even after the victim recovers it by registering a new passkey.",
+      "published": "2026-11-22T22:17:33.367",
+      "last_modified": "2026-11-22T22:17:33.367",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134800"
+    },
+    {
+      "cve": "CVE-2026-134799",
+      "title": "CVE-2026-134799",
+      "description": "ByteStash 1.5.0 before 1.6.1 contains a login cross-site request forgery vulnerability in the /api/auth/oidc/callback handler because OIDC state is not bound to the initiating browser. Attackers can start an OIDC login with their own account and lure victims into opening the withheld callback URL, logging them into the attacker's account to read saved snippets.",
+      "published": "2026-11-22T22:17:33.190",
+      "last_modified": "2026-11-22T22:17:33.313",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134799"
+    },
+    {
+      "cve": "CVE-2026-134798",
+      "title": "CVE-2026-134798",
+      "description": "Donetick through 0.1.86 contains a blind server-side request forgery vulnerability that allows self-registered users to make the server send requests by setting unvalidated circle webhook or Discord notification URLs. Attackers can point these URLs at loopback or internal services, causing EventsProducer and the Discord notifier to POST partly attacker-influenced bodies to internal network hosts.",
+      "published": "2026-11-22T22:17:33.040",
+      "last_modified": "2026-11-22T22:17:33.040",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134798"
+    },
+    {
+      "cve": "CVE-2026-134797",
+      "title": "CVE-2026-134797",
+      "description": "Donetick before 0.1.86 contains a path traversal vulnerability that allows authenticated users to delete other users' files by storing a crafted image value via PUT /api/v1/users. Attackers can set their image to a traversal key and upload a new profile photo, causing storage.Delete to remove other users' attachments or photos under the storage root.",
+      "published": "2026-11-22T22:17:32.873",
+      "last_modified": "2026-11-22T22:17:32.873",
+      "cvss": 4.2,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134797"
+    },
+    {
+      "cve": "CVE-2026-134796",
+      "title": "CVE-2026-134796",
+      "description": "Donetick before 0.1.86 contains a path traversal vulnerability in the GET /api/v1/assets/*filepath route that allows unauthenticated attackers to bypass URL signature checks by prefixing paths with profiles/. Attackers who know a private upload's storage key can request profiles/../users/<id>/<uuid>.<ext> to retrieve private attachments without a signature or login.",
+      "published": "2026-11-22T22:17:32.727",
+      "last_modified": "2026-11-22T22:17:32.727",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134796"
+    },
+    {
+      "cve": "CVE-2026-134795",
+      "title": "CVE-2026-134795",
+      "description": "graphql-core 3.2.12 before 3.2.14 and 3.3.0rc1 before 3.3.2 contains a denial of service vulnerability that allows unauthenticated attackers to bypass the parser max_tokens limit using long runs of comments. Attackers can submit GraphQL documents of consecutive comments that Lexer.lookahead fully tokenizes before limit checks, consuming CPU and memory proportional to document size.",
+      "published": "2026-11-22T22:17:32.570",
+      "last_modified": "2026-11-22T22:17:32.570",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134795"
+    },
+    {
+      "cve": "CVE-2026-134794",
+      "title": "CVE-2026-134794",
+      "description": "HedgeDoc before 1.12.1 contains a prototype pollution vulnerability in the POST /history/:noteId endpoint that allows authenticated users to modify Object.prototype by supplying __proto__ as the noteId. Attackers can send a pinned value to /history/__proto__, which historyPost() in lib/history.js assigns onto the prototype, crashing the Node.js process and causing denial of service for all users.",
+      "published": "2026-11-22T22:17:32.390",
+      "last_modified": "2026-11-22T22:17:32.527",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134794"
+    },
+    {
+      "cve": "CVE-2026-134793",
+      "title": "CVE-2026-134793",
+      "description": "Electerm before 5.9.0 on Windows contains an OS command injection vulnerability that allows attackers to execute PowerShell code via crafted file or folder names containing Unicode quote characters. Attackers can deliver names containing U+2019 through archives, WSL distributions, or SMB shares, which break out of getFolderSizeWin() and calcLocal() quoting when victims request folder sizes, executing code as the electerm user.",
+      "published": "2026-11-22T22:17:32.177",
+      "last_modified": "2026-11-22T22:17:32.330",
+      "cvss": 8.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134793"
+    },
+    {
+      "cve": "CVE-2026-134765",
+      "title": "CVE-2026-134765",
+      "description": "Kirby 5.0.0 before 5.6.4 contains a race condition in Kirby\\Api\\Upload::processChunk() that allows authenticated users with upload permission to bypass SVG sanitization. Attackers can race concurrent chunked uploads sharing a filename to swap a benign SVG with a script-bearing SVG, executing stored cross-site scripting in the site origin.",
+      "published": "2026-11-22T22:17:31.983",
+      "last_modified": "2026-11-22T22:17:32.117",
+      "cvss": 8.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134765"
+    },
+    {
+      "cve": "CVE-2026-134764",
+      "title": "CVE-2026-134764",
+      "description": "Ground Station before 0.8.25 contains a path traversal vulnerability that allows authenticated non-administrator operators to write files outside data/decoded via the post_process_pipeline value. Attackers can insert ../ sequences into a scheduled observation's IQ task configuration so SatDump creates directories, overwrites same-named files, and recursively deletes created trees on failure.",
+      "published": "2026-11-22T22:17:31.823",
+      "last_modified": "2026-11-22T22:17:31.823",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134764"
+    },
+    {
+      "cve": "CVE-2026-134763",
+      "title": "CVE-2026-134763",
+      "description": "FreeRDP before 3.33.1 contains a heap use-after-free vulnerability in the WinPR wLinkedList collection because LinkedList_FreeNode() frees nodes without updating the cached list->current enumerator pointer. When calling code removes the node the enumerator references, LinkedList_Enumerator_MoveNext() or LinkedList_Enumerator_Current() reads freed heap memory, which can crash the process.",
+      "published": "2026-11-22T22:17:31.630",
+      "last_modified": "2026-11-22T22:17:31.760",
+      "cvss": 4.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134763"
+    },
+    {
+      "cve": "CVE-2026-134762",
+      "title": "CVE-2026-134762",
+      "description": "ntop nDPI through 6.0 contains a heap out-of-bounds read and unsigned length underflow in ndpi_serializer_get_buffer() in src/lib/ndpi_serializer.c when stripping leading NUL and space bytes. Buffers holding only spaces or NULs, or a used length of 0 set through ndpi_serializer_set_buffer_len(), cause reads past the heap buffer or a wrapped 4294967295 length, crashing the embedding application.",
+      "published": "2026-11-22T22:17:31.450",
+      "last_modified": "2026-11-22T22:17:31.580",
+      "cvss": 4.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134762"
+    },
+    {
+      "cve": "CVE-2026-134761",
+      "title": "CVE-2026-134761",
+      "description": "libical before 4.0.7 contains a use-after-free and double free vulnerability in icalparser_clean() that allows attackers to corrupt heap memory by supplying truncated iCalendar input. Attackers can provide an iCalendar file or stream missing a matching END line, causing the returned component to be freed twice and crashing applications.",
+      "published": "2026-11-22T22:17:31.267",
+      "last_modified": "2026-11-22T22:17:31.397",
+      "cvss": 5.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134761"
+    },
+    {
+      "cve": "CVE-2026-134624",
+      "title": "CVE-2026-134624",
+      "description": "N-able MailAssure (SpamExperts) before 20261121.1943 does not restrict the destination of the LDAP synchronisation connection check performed when a relay is configured. An authenticated API user can cause the server to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services.",
+      "published": "2026-11-22T19:16:32.163",
+      "last_modified": "2026-11-22T19:16:32.163",
+      "cvss": 9.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134624"
+    },
+    {
+      "cve": "CVE-2026-132147",
+      "title": "CVE-2026-132147",
+      "description": "An arbitrary file read vulnerability was discovered in debbugs, a bug tracking system based on the active Debian BTS. versions.cgi failed to correctly sanitize package name inputs in found\n\nand fixed query parameters. Crafted query parameters could cause version.cgi to output any lines of the target file which contained spaces.",
+      "published": "2026-11-22T16:16:45.117",
+      "last_modified": "2026-11-22T16:16:45.117",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132147"
+    },
+    {
+      "cve": "CVE-2026-131794",
+      "title": "CVE-2026-131794",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in YellowPencil YellowPencil Visual CSS Style Editor yellow-pencil-visual-theme-customizer allows Reflected XSS.This issue affects YellowPencil Visual CSS Style Editor: from n/a through 7.6.7.",
+      "published": "2026-11-22T16:16:44.980",
+      "last_modified": "2026-11-22T16:16:45.080",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131794"
+    },
+    {
+      "cve": "CVE-2026-131793",
+      "title": "CVE-2026-131793",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in IT Path Solutions Contact Form to Any API contact-form-to-any-api allows Stored XSS.This issue affects Contact Form to Any API: from n/a through 3.0.7.",
+      "published": "2026-11-22T16:16:44.850",
+      "last_modified": "2026-11-22T16:16:44.950",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131793"
+    },
+    {
+      "cve": "CVE-2026-131792",
+      "title": "CVE-2026-131792",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in weDevs Dokan dokan-lite allows Stored XSS.This issue affects Dokan: from n/a through 5.3.4.",
+      "published": "2026-11-22T16:16:44.710",
+      "last_modified": "2026-11-22T16:16:44.820",
+      "cvss": 6.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131792"
+    },
+    {
+      "cve": "CVE-2026-131791",
+      "title": "CVE-2026-131791",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in seowriting SEOWriting seowriting allows Stored XSS.This issue affects SEOWriting: from n/a through 1.15.0.",
+      "published": "2026-11-22T16:16:44.557",
+      "last_modified": "2026-11-22T16:16:44.677",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131791"
+    },
+    {
+      "cve": "CVE-2026-131790",
+      "title": "CVE-2026-131790",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Liquid Web / StellarWP Gutenberg Blocks by Kadence Blocks kadence-blocks allows Stored XSS.This issue affects Gutenberg Blocks by Kadence Blocks: from n/a through 3.9.1.1.",
+      "published": "2026-11-22T16:16:44.157",
+      "last_modified": "2026-11-22T16:16:44.313",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131790"
+    },
+    {
+      "cve": "CVE-2026-131788",
+      "title": "CVE-2026-131788",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Liquid Web / StellarWP Kadence kadence allows Stored XSS.This issue affects Kadence: from n/a through 1.6.0.",
+      "published": "2026-11-22T16:16:43.930",
+      "last_modified": "2026-11-22T16:16:44.103",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131788"
+    },
+    {
+      "cve": "CVE-2026-131786",
+      "title": "CVE-2026-131786",
+      "description": "Insertion of Sensitive Information Into Sent Data vulnerability in myCred myCred mycred allows Retrieve Embedded Sensitive Data.This issue affects myCred: from n/a through 4.0.3.",
+      "published": "2026-11-22T16:16:43.683",
+      "last_modified": "2026-11-22T16:16:43.870",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131786"
+    },
+    {
+      "cve": "CVE-2026-131777",
+      "title": "CVE-2026-131777",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in mra13 / Team Tips and Tricks HQ Stripe Payments stripe-payments allows Stored XSS.This issue affects Stripe Payments: from n/a through 2.1.4.",
+      "published": "2026-11-22T16:16:41.520",
+      "last_modified": "2026-11-22T16:16:43.633",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131777"
+    },
+    {
+      "cve": "CVE-2026-131772",
+      "title": "CVE-2026-131772",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in PluginUs.Net HUSKY woocommerce-products-filter allows Stored XSS.This issue affects HUSKY: from n/a through 1.4.8.",
+      "published": "2026-11-22T16:16:41.293",
+      "last_modified": "2026-11-22T16:16:41.470",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131772"
+    },
+    {
+      "cve": "CVE-2026-131755",
+      "title": "CVE-2026-131755",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Jayasree TU Successful Redirection for Contact Form cf7-redirection allows Reflected XSS.This issue affects Successful Redirection for Contact Form: from n/a through 2.0.",
+      "published": "2026-11-22T16:16:41.073",
+      "last_modified": "2026-11-22T16:16:41.243",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131755"
+    },
+    {
+      "cve": "CVE-2026-131750",
+      "title": "CVE-2026-131750",
+      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Everest Forms Everest Forms everest-forms allows Path Traversal.This issue affects Everest Forms: from n/a through 3.6.4.",
+      "published": "2026-11-22T16:16:40.857",
+      "last_modified": "2026-11-22T16:16:41.027",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131750"
+    },
+    {
+      "cve": "CVE-2026-131741",
+      "title": "CVE-2026-131741",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Brainstorm Force CartFlows cartflows allows Reflected XSS.This issue affects CartFlows: from n/a through 3.3.2.",
+      "published": "2026-11-22T16:16:40.617",
+      "last_modified": "2026-11-22T16:16:40.803",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131741"
+    },
+    {
+      "cve": "CVE-2026-131726",
+      "title": "CVE-2026-131726",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Awesomemotive Coming Soon Page, Under Construction & Maintenance Mode by SeedProd coming-soon allows DOM-Based XSS.This issue affects Coming Soon Page, Under Construction & Maintenance Mode by SeedProd: from n/a through 6.20.12.",
+      "published": "2026-11-22T16:16:40.407",
+      "last_modified": "2026-11-22T16:16:40.570",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131726"
+    },
+    {
+      "cve": "CVE-2026-131698",
+      "title": "CVE-2026-131698",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Bootstrapped Ventures WP Recipe Maker wp-recipe-maker allows Stored XSS.This issue affects WP Recipe Maker: from n/a through 10.9.2.",
+      "published": "2026-11-22T16:16:40.100",
+      "last_modified": "2026-11-22T16:16:40.360",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131698"
+    },
+    {
+      "cve": "CVE-2026-129081",
+      "title": "CVE-2026-129081",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Aguila Technologies WP Customer Area customer-area allows Stored XSS.This issue affects WP Customer Area: from n/a through 8.4.5.",
+      "published": "2026-11-22T16:16:39.817",
+      "last_modified": "2026-11-22T16:16:39.980",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129081"
+    },
+    {
+      "cve": "CVE-2026-129066",
+      "title": "CVE-2026-129066",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Everest Forms Everest Forms everest-forms allows Stored XSS.This issue affects Everest Forms: from n/a through 3.6.4.",
+      "published": "2026-11-22T16:16:39.663",
+      "last_modified": "2026-11-22T16:16:39.783",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129066"
+    },
+    {
+      "cve": "CVE-2026-129024",
+      "title": "CVE-2026-129024",
+      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Everest Forms Everest Forms everest-forms allows Path Traversal.This issue affects Everest Forms: from n/a through 3.6.4.",
+      "published": "2026-11-22T16:16:39.513",
+      "last_modified": "2026-11-22T16:16:39.630",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129024"
+    },
+    {
+      "cve": "CVE-2026-134758",
+      "title": "CVE-2026-134758",
+      "description": "Wfuzz through 3.1.1 contains a stored cross-site scripting vulnerability that allows malicious target servers to inject script by returning crafted links written unescaped into HTML reports. When the links script and html printer are used, attacker-supplied href values close the unquoted anchor tag and execute JavaScript when the operator opens the report.",
+      "published": "2026-11-22T15:17:14.270",
+      "last_modified": "2026-11-22T15:17:14.270",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134758"
+    },
+    {
+      "cve": "CVE-2026-134757",
+      "title": "CVE-2026-134757",
+      "description": "Anacrolix torrent before 1.63.0 contains an improper certificate validation vulnerability in NewClient within tracker/http/client.go, which unconditionally sets InsecureSkipVerify to true for HTTPS trackers. Attackers able to intercept tracker traffic can impersonate trackers with any certificate, observe info_hash and peer_id values, and return forged peer lists.",
+      "published": "2026-11-22T15:17:14.117",
+      "last_modified": "2026-11-22T15:17:14.117",
+      "cvss": 6.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134757"
+    },
+    {
+      "cve": "CVE-2026-134756",
+      "title": "CVE-2026-134756",
+      "description": "Portainer Community Edition and Business Edition 2.39.0 before 2.45.1 contain a server-side request forgery vulnerability because user-supplied URLs are only syntax-checked by validate.IsURL without resolved address validation. Authenticated users can abuse Git cloning, Helm retrieval, registry ping, or the GitLab proxy to reach loopback, internal, and cloud metadata addresses, probing ports and reading responses.",
+      "published": "2026-11-22T15:17:13.953",
+      "last_modified": "2026-11-22T15:17:13.953",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134756"
+    },
+    {
+      "cve": "CVE-2026-134755",
+      "title": "CVE-2026-134755",
+      "description": "better-chatbot before 2.0.0 contains a missing authorization vulnerability that lets built-in tools run without user confirmation in Manual tool mode, because src/app/api/chat/route.ts keeps their execute handlers. Attackers can plant prompt-injected documents or web pages that make the HTTP request tool send conversation data to attacker-controlled URLs.",
+      "published": "2026-11-22T15:17:13.797",
+      "last_modified": "2026-11-22T15:17:13.797",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134755"
+    },
+    {
+      "cve": "CVE-2026-134754",
+      "title": "CVE-2026-134754",
+      "description": "anacrolix/torrent before 1.62.0 contains an uncontrolled recursion vulnerability in Decoder.readOneValue in bencode/decode.go that allows attackers to crash the process by supplying deeply nested bencode data. Attackers can deliver crafted .torrent files or magnet link metadata with millions of nested lists to cause a fatal stack overflow, or deeply nested v2 file trees to exhaust CPU.",
+      "published": "2026-11-22T15:17:13.640",
+      "last_modified": "2026-11-22T15:17:13.640",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134754"
+    },
+    {
+      "cve": "CVE-2026-134753",
+      "title": "CVE-2026-134753",
+      "description": "dsniff through 2.5a2 contains an integer underflow in decode_sniffer() in decode_sniffer.c that allows unauthenticated remote attackers to write past the global obuf buffer. Attackers can send a UDP datagram to port 2001 on a monitored segment with a 4096-byte string, disabling base64_pton bounds checks to corrupt memory and crash dsniff.",
+      "published": "2026-11-22T15:17:13.483",
+      "last_modified": "2026-11-22T15:17:13.483",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134753"
+    },
+    {
+      "cve": "CVE-2026-134752",
+      "title": "CVE-2026-134752",
+      "description": "WPGSI: Spreadsheet Integration before 3.8.5 contains a cross-site request forgery vulnerability that allows unauthenticated attackers to delete posts by abusing the delete action in wpgsi_show_view() without nonce verification. Attackers can trick a logged-in administrator into following a crafted wpgsi-show link with action=delete and an id parameter to delete arbitrary posts or pages.",
+      "published": "2026-11-22T15:17:13.323",
+      "last_modified": "2026-11-22T15:17:13.323",
+      "cvss": 5.4,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134752"
+    },
+    {
+      "cve": "CVE-2026-134751",
+      "title": "CVE-2026-134751",
+      "description": "Members WordPress plugin before 3.3.1 contains a missing authorization vulnerability that allows unauthenticated visitors to read role-restricted posts by viewing Latest Posts blocks in full-content mode. The block renders raw post_content without firing the_content filter, bypassing members_content_permissions_protect() and exposing complete bodies of restricted posts.",
+      "published": "2026-11-22T15:17:13.177",
+      "last_modified": "2026-11-22T15:17:13.177",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134751"
+    },
+    {
+      "cve": "CVE-2026-134750",
+      "title": "CVE-2026-134750",
+      "description": "Members WordPress plugin before 3.3.1 contains a missing authorization vulnerability that allows unauthenticated visitors to read comments on role-restricted posts via the Latest Comments block. Attackers can view pages hosting the block, where get_the_ID() checks the host page and get_comment_excerpt() bypasses filtering, exposing restricted comments, post titles, and links.",
+      "published": "2026-11-22T15:17:13.030",
+      "last_modified": "2026-11-22T15:17:13.030",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134750"
+    },
+    {
+      "cve": "CVE-2026-134749",
+      "title": "CVE-2026-134749",
+      "description": "MemberPress Members before 3.3.1, with the Block Permissions add-on enabled, contains a denial of service vulnerability that allows authenticated Author-level users to crash pages by saving a non-string blockPermissionsMessage block attribute. Attackers can store a JSON array in the attribute so wpautop() in get_block_replacement_content() throws a PHP 8 TypeError, causing fatal errors on post, home, search, and REST pages for unauthorized viewers.",
+      "published": "2026-11-22T15:17:12.877",
+      "last_modified": "2026-11-22T15:17:12.877",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134749"
+    },
+    {
+      "cve": "CVE-2026-134748",
+      "title": "CVE-2026-134748",
+      "description": "Members WordPress plugin by MemberPress 3.2.28 before 3.3.2 contains an authentication bypass vulnerability that allows unauthenticated visitors to evade Private Site mode via login page exemption. Attackers can request the front-end login path with a pagename query variable to make WordPress render hidden published pages or the full blog index.",
+      "published": "2026-11-22T15:17:12.700",
+      "last_modified": "2026-11-22T15:17:12.700",
+      "cvss": 6.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134748"
+    },
+    {
+      "cve": "CVE-2026-131782",
+      "title": "CVE-2026-131782",
+      "description": "Deserialization of Untrusted Data vulnerability in mra13 / Team Tips and Tricks HQ Simple Shopping Cart wordpress-simple-paypal-shopping-cart allows Object Injection.This issue affects Simple Shopping Cart: from n/a through 5.3.3.",
+      "published": "2026-11-22T15:17:12.543",
+      "last_modified": "2026-11-22T15:17:12.653",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131782"
+    },
+    {
+      "cve": "CVE-2026-131775",
+      "title": "CVE-2026-131775",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in nK Ghost Kit ghostkit allows Stored XSS.This issue affects Ghost Kit: from n/a through 3.8.1.",
+      "published": "2026-11-22T15:17:12.403",
+      "last_modified": "2026-11-22T15:17:12.513",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131775"
+    },
+    {
+      "cve": "CVE-2026-131754",
+      "title": "CVE-2026-131754",
+      "description": "Deserialization of Untrusted Data vulnerability in Pierre Lannoy APCu Manager apcu-manager allows Object Injection.This issue affects APCu Manager: from n/a through 4.6.1.",
+      "published": "2026-11-22T15:17:12.247",
+      "last_modified": "2026-11-22T15:17:12.363",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131754"
+    },
+    {
+      "cve": "CVE-2026-129085",
+      "title": "CVE-2026-129085",
+      "description": "Missing Authorization vulnerability in Aguila Technologies WP Customer Area customer-area allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects WP Customer Area: from n/a through 8.4.5.",
+      "published": "2026-11-22T15:17:12.093",
+      "last_modified": "2026-11-22T15:17:12.207",
+      "cvss": 7.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129085"
+    },
+    {
+      "cve": "CVE-2026-129083",
+      "title": "CVE-2026-129083",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPKoi WordPress Themes WPKoi Templates for Elementor wpkoi-templates-for-elementor allows Stored XSS.This issue affects WPKoi Templates for Elementor: from n/a through 3.7.5.",
+      "published": "2026-11-22T15:17:11.937",
+      "last_modified": "2026-11-22T15:17:12.057",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129083"
+    },
+    {
+      "cve": "CVE-2026-131780",
+      "title": "CVE-2026-131780",
+      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Themify Themify Builder themify-builder allows Reflected XSS.This issue affects Themify Builder: from n/a through 7.8.5.",
+      "published": "2026-11-22T14:17:28.593",
+      "last_modified": "2026-11-22T14:17:29.180",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-131780"
+    },
     {
       "cve": "CVE-2026-131774",
       "title": "CVE-2026-131774",
@@ -762,1054 +1806,10 @@
       "last_modified": "2026-11-22T02:17:01.090",
       "cvss": 3.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134655"
-    },
-    {
-      "cve": "CVE-2026-134654",
-      "title": "CVE-2026-134654",
-      "description": "Mailflare before 48957fb contains a host header injection vulnerability in the password-reset request handler that allows unauthenticated attackers to poison reset links when APP_URL is unset. Attackers can submit a reset request for a victim's email with a malicious Host header, capturing the single-use token when the victim clicks the link to take over the account.",
-      "published": "2026-11-22T02:17:00.790",
-      "last_modified": "2026-11-22T02:17:00.790",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134654"
-    },
-    {
-      "cve": "CVE-2026-134571",
-      "title": "CVE-2026-134571",
-      "description": "A vulnerability was determined in itsourcecode Insurance Management System 1.0. Affected by this vulnerability is an unknown functionality of the file addPayment.php. Executing a manipulation of the argument client_id can lead to cross site scripting. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
-      "published": "2026-11-22T02:17:00.573",
-      "last_modified": "2026-11-22T02:17:00.740",
-      "cvss": 3.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134571"
-    },
-    {
-      "cve": "CVE-2026-134570",
-      "title": "CVE-2026-134570",
-      "description": "A vulnerability was found in itsourcecode Banking Management System 1.0. Affected is an unknown function of the file manage_user.php. Performing a manipulation of the argument ID results in sql injection. The attack may be initiated remotely. The exploit has been made public and could be used.",
-      "published": "2026-11-22T02:17:00.363",
-      "last_modified": "2026-11-22T02:17:00.520",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134570"
-    },
-    {
-      "cve": "CVE-2026-134569",
-      "title": "CVE-2026-134569",
-      "description": "A vulnerability has been found in itsourcecode Banking Management System 1.0. This impacts an unknown function of the file /manage_request.php. Such manipulation of the argument ID leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.",
-      "published": "2026-11-22T02:17:00.163",
-      "last_modified": "2026-11-22T02:17:00.317",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134569"
-    },
-    {
-      "cve": "CVE-2026-134568",
-      "title": "CVE-2026-134568",
-      "description": "A flaw has been found in itsourcecode E-Logbook with Health Monitoring System 1.0. This affects an unknown function of the file log_keeper.php. This manipulation of the argument pid causes sql injection. The attack can be initiated remotely. The exploit has been published and may be used.",
-      "published": "2026-11-22T02:16:58.963",
-      "last_modified": "2026-11-22T02:17:00.120",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134568"
-    },
-    {
-      "cve": "CVE-2026-134567",
-      "title": "CVE-2026-134567",
-      "description": "A vulnerability was detected in itsourcecode Document Management System 1.0. The impacted element is an unknown function of the file /showlist.php. The manipulation of the argument condition results in sql injection. It is possible to launch the attack remotely. The exploit is now public and may be used.",
-      "published": "2026-11-22T01:16:53.477",
-      "last_modified": "2026-11-22T01:16:53.633",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134567"
-    },
-    {
-      "cve": "CVE-2026-134566",
-      "title": "CVE-2026-134566",
-      "description": "A security vulnerability has been detected in itsourcecode Document Management System 1.0. The affected element is an unknown function of the file /edit.php. The manipulation of the argument ID leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.",
-      "published": "2026-11-22T01:16:53.230",
-      "last_modified": "2026-11-22T01:16:53.417",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134566"
-    },
-    {
-      "cve": "CVE-2026-134560",
-      "title": "CVE-2026-134560",
-      "description": "A weakness has been identified in twogood unshield up to 1.6.2. Impacted is the function unshield_get_cab_descriptor of the file lib/libunshield.c of the component Cabinet Descriptor Parser. Executing a manipulation can lead to out-of-bounds read. The attack requires local access. The pull request to fix this issue awaits acceptance.",
-      "published": "2026-11-22T01:16:53.010",
-      "last_modified": "2026-11-22T01:16:53.167",
-      "cvss": 4.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134560"
-    },
-    {
-      "cve": "CVE-2026-134553",
-      "title": "CVE-2026-134553",
-      "description": "A vulnerability was determined in wiroai Wiro-MCP up to 1.3.0. This affects the function upload_file of the file src/tools/upload-file.ts of the component File Upload. This manipulation of the argument url causes server-side request forgery. Remote exploitation of the attack is possible. Upgrading to version 1.3.1 is able to mitigate this issue. Patch name: ac61f79888fd36fae8e282995847e542c4ef1cbd. It is recommended to upgrade the affected component.",
-      "published": "2026-11-22T01:16:52.780",
-      "last_modified": "2026-11-22T01:16:52.967",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134553"
-    },
-    {
-      "cve": "CVE-2026-134545",
-      "title": "CVE-2026-134545",
-      "description": "A vulnerability was found in Xinchen Technology Huangjintong Second-level System Third-generation Management Terminal System up to 3.2. Affected by this issue is some unknown functionality of the file /paraframework/storSelect.htm. The manipulation of the argument warehouseID results in sql injection. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-22T00:17:00.550",
-      "last_modified": "2026-11-22T00:17:00.693",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134545"
-    },
-    {
-      "cve": "CVE-2026-134544",
-      "title": "CVE-2026-134544",
-      "description": "A vulnerability has been found in jprocms up to 1.7.7. Affected by this vulnerability is the function validateParam of the component Expression Language Handler. The manipulation leads to os command injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
-      "published": "2026-11-22T00:17:00.360",
-      "last_modified": "2026-11-22T00:17:00.503",
-      "cvss": 4.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134544"
-    },
-    {
-      "cve": "CVE-2026-134543",
-      "title": "CVE-2026-134543",
-      "description": "A flaw has been found in jprocms up to 1.7.7. Affected is the function StrUtil.format of the component Database Backup Module. Executing a manipulation of the argument host/port/username/password/dbName can lead to os command injection. The attack can be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-22T00:17:00.150",
-      "last_modified": "2026-11-22T00:17:00.307",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134543"
-    },
-    {
-      "cve": "CVE-2026-134541",
-      "title": "CVE-2026-134541",
-      "description": "A vulnerability was detected in Surya2Developer Online Shopping System 1.0. This impacts an unknown function of the file product.php of the component GET Parameter Handler. Performing a manipulation of the argument p results in sql injection. The attack can be initiated remotely. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
-      "published": "2026-11-22T00:16:59.950",
-      "last_modified": "2026-11-22T00:17:00.097",
-      "cvss": 7.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134541"
-    },
-    {
-      "cve": "CVE-2026-134540",
-      "title": "CVE-2026-134540",
-      "description": "A security vulnerability has been detected in ggml-org llama.cpp 0.7.0-dev. This affects the function common_sampler_init of the file common/sampling.cpp of the component llama-server. Such manipulation of the argument grammar_triggers[].type leads to improper input validation. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used. Upgrading to version b12405 mitigates this issue. The name of the patch is 9f26fe11c73c7e74a5e99e7f1b6370ad8e1cb22d. It is advisable to upgrade the affected component.",
-      "published": "2026-11-21T23:16:55.030",
-      "last_modified": "2026-11-21T23:16:55.180",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134540"
-    },
-    {
-      "cve": "CVE-2026-134536",
-      "title": "CVE-2026-134536",
-      "description": "A weakness has been identified in Drakeling Labs Operation Harsh Doorstop up to 0.14.2.1 Build 19523588. The impacted element is the function LaunchURL of the component Workshop Configuration. This manipulation causes unrestricted upload. It is possible to initiate the attack remotely. Upgrading to version 0.14.2.2 Build 26092794 is sufficient to resolve this issue. Upgrading the affected component is advised.",
-      "published": "2026-11-21T23:16:54.830",
-      "last_modified": "2026-11-21T23:16:54.983",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134536"
-    },
-    {
-      "cve": "CVE-2026-134534",
-      "title": "CVE-2026-134534",
-      "description": "A security flaw has been discovered in Skyvern-AI Skyvern 1.0.56. The affected element is the function classify_url of the file skyvern/forge/sdk/browser_egress_policy.py. The manipulation results in server-side request forgery. The attack may be performed from remote. Upgrading to version 1.0.57 is sufficient to fix this issue. The patch is identified as 10b8d829c2750ebf62f2b70dec0e288297e752dd. It is recommended to upgrade the affected component.",
-      "published": "2026-11-21T23:16:54.593",
-      "last_modified": "2026-11-21T23:16:54.780",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134534"
-    },
-    {
-      "cve": "CVE-2026-115589",
-      "title": "CVE-2026-115589",
-      "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-      "published": "2026-11-21T23:16:54.263",
-      "last_modified": "2026-11-21T23:16:54.263",
-      "cvss": null,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115589"
-    },
-    {
-      "cve": "CVE-2026-134533",
-      "title": "CVE-2026-134533",
-      "description": "A vulnerability was identified in Skyvern-AI Skyvern 1.0.56. Impacted is the function classify_url of the file skyvern/forge/sdk/browser_egress_policy.py. The manipulation leads to server-side request forgery. The attack is possible to be carried out remotely. Upgrading to version 1.0.57 is recommended to address this issue. The identifier of the patch is 10b8d829c2750ebf62f2b70dec0e288297e752dd. Upgrading the affected component is recommended.",
-      "published": "2026-11-21T20:16:35.870",
-      "last_modified": "2026-11-21T20:16:36.027",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134533"
-    },
-    {
-      "cve": "CVE-2026-134009",
-      "title": "CVE-2026-134009",
-      "description": "A vulnerability was detected in liukuo362573 YiShaAdmin up to ba04d5072885447553e372bb87e372b55a90780c. Impacted is the function SqlServerPageSql/OraclePageSql/MySqlPageSql/ of the file YiSha.Data/YiSha.Data/Extension/DatabasePageExtension.cs of the component Pagination Sorting. The manipulation of the argument sort results in sql injection. It is possible to launch the attack remotely. The exploit is now public and may be used. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available. The patch is identified as 19b0bdffc9587bff291bac81586953277abe5b84. Applying a patch is advised to resolve this issue.",
-      "published": "2026-11-21T20:16:34.790",
-      "last_modified": "2026-11-21T20:16:35.820",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134009"
-    },
-    {
-      "cve": "CVE-2026-134007",
-      "title": "CVE-2026-134007",
-      "description": "A security vulnerability has been detected in itsourcecode Banking Management System 1.0. This issue affects some unknown processing of the file manage_handover.php. The manipulation of the argument ID leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.",
-      "published": "2026-11-21T19:16:32.577",
-      "last_modified": "2026-11-21T19:16:32.737",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134007"
-    },
-    {
-      "cve": "CVE-2026-134006",
-      "title": "CVE-2026-134006",
-      "description": "A weakness has been identified in Moonshot AI Kimi Code up to 2.7.2. This vulnerability affects the function guardToolExecution of the file packages/agent-core-v2/src/features/plan/planService.ts of the component Plan Mode Permission Guard. Executing a manipulation can lead to improper authorization. The attack requires local access. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-21T19:16:32.353",
-      "last_modified": "2026-11-21T19:16:32.520",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134006"
-    },
-    {
-      "cve": "CVE-2026-125294",
-      "title": "CVE-2026-125294",
-      "description": "The Nexter Blocks Pro plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 5.0.10 via the `tpgb_ajax_register_user()` function. This is due to a byte-level denylist on the `tpgb_acf_key[]` and `tpgb_acf[]` parameters that fails to block Unicode look-alike characters — such as U+1E87 and U+00E7 in a key like `ẇp_çapabilities` — whose UTF-8 byte sequences do not match any ASCII-based pattern check, while the database's default accent-insensitive collation (`utf8mb4_unicode_ci` / `utf8mb4_0900_ai_ci`) treats the decorated key as equivalent to the canonical `wp_capabilities` row, causing `update_user_meta()` to overwrite the newly registered user's role with `administrator`. This makes it possible for unauthenticated attackers to register a new account bearing the full Administrator role, gaining complete control over the WordPress site including t",
-      "published": "2026-11-21T19:16:31.403",
-      "last_modified": "2026-11-21T19:16:32.307",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-125294"
-    },
-    {
-      "cve": "CVE-2026-133993",
-      "title": "CVE-2026-133993",
-      "description": "A security flaw has been discovered in D-Link DIR-600L 2.17b02. This affects the function FUN_0040efb0 of the file gena.cgi of the component GENA Subscription Handler. Performing a manipulation of the argument service results in stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks.",
-      "published": "2026-11-21T18:16:54.277",
-      "last_modified": "2026-11-21T18:16:54.423",
-      "cvss": 10.0,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133993"
-    },
-    {
-      "cve": "CVE-2026-133990",
-      "title": "CVE-2026-133990",
-      "description": "A vulnerability was identified in Cockpit-HQ Cockpit up to 2.14.1. Affected by this issue is some unknown functionality of the file cron.php of the component Web Worker. Such manipulation of the argument token leads to missing authentication. The attack can be executed remotely. The attack requires a high level of complexity. The exploitation is known to be difficult. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-11-21T18:16:53.430",
-      "last_modified": "2026-11-21T18:16:54.223",
-      "cvss": 4.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-133990"
-    },
-    {
-      "cve": "CVE-2026-134461",
-      "title": "CVE-2026-134461",
-      "description": "Web-Token jwt-framework and jwt-library before 3.4.10, 4.0.0 before 4.0.7, and 4.1.0 before 4.1.7 contain an uncontrolled resource consumption vulnerability in PBES2AESKW::unwrapKey(), which passes the attacker-controlled p2c JWE header value to hash_pbkdf2() without an upper bound. Unauthenticated attackers can send a JWE using a PBES2-HS*+A*KW algorithm with a huge p2c iteration count to force lengthy PBKDF2 computations and exhaust server CPU.",
-      "published": "2026-11-21T17:17:11.627",
-      "last_modified": "2026-11-21T17:17:11.627",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134461"
-    },
-    {
-      "cve": "CVE-2026-134460",
-      "title": "CVE-2026-134460",
-      "description": "web-token jwt-framework 1.2.0 before 3.4.10, jwt-experimental before 3.4.10, 4.0.x before 4.0.7, and 4.1.x before 4.1.7 contain a missing integrity check in the experimental Chacha20Poly1305 key-encryption algorithm, which discards the Poly1305 tag in encryptKey() and calls openssl_decrypt() without it in decryptKey(). Attackers on the token path can modify the encrypted content encryption key undetected.",
-      "published": "2026-11-21T17:17:11.473",
-      "last_modified": "2026-11-21T17:17:11.473",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134460"
-    },
-    {
-      "cve": "CVE-2026-134459",
-      "title": "CVE-2026-134459",
-      "description": "web-token jwt-framework and jwt-library before 3.4.10, 4.0.x before 4.0.7, and 4.1.x before 4.1.7 contain a padding oracle in RSACrypt::decryptWithRSA15() because RSA1_5 decryption lacks implicit rejection, so invalid padding, wrong CEK length, and valid padding take measurably different time. Remote attackers can submit adaptively crafted JWE encrypted_key values and measure these timing differences to recover the wrapped content encryption key.",
-      "published": "2026-11-21T17:17:11.317",
-      "last_modified": "2026-11-21T17:17:11.317",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134459"
-    },
-    {
-      "cve": "CVE-2026-134458",
-      "title": "CVE-2026-134458",
-      "description": "web-token jwt-framework and jwt-library before 3.4.12, 4.0.x before 4.0.8, 4.1.x before 4.1.10, and 4.2.x before 4.2.4, and jwt-encryption-algorithm-ecdh-es through 3.2.10, have a ConcatKDF::generate() that performs a single SHA-256 round, deriving at most 32 bytes for ECDH-ES and ECDH-SS direct key agreement. Anyone holding a JWE using A256CBC-HS512 can decrypt it under an all-zero AES key, while A192CBC-HS384 content keys have only 64-bit strength.",
-      "published": "2026-11-21T17:17:11.147",
-      "last_modified": "2026-11-21T17:17:11.147",
-      "cvss": 8.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134458"
-    },
-    {
-      "cve": "CVE-2026-134457",
-      "title": "CVE-2026-134457",
-      "description": "Hysteria 2.5.0 before 2.8.2 contains a memory allocation vulnerability when sniffing is enabled, allowing authenticated users to trigger out-of-memory conditions. Attackers with a valid password can forward a crafted QUIC packet with a huge crypto length, causing the server to exhaust memory and crash.",
-      "published": "2026-11-21T17:17:10.997",
-      "last_modified": "2026-11-21T17:17:10.997",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134457"
-    },
-    {
-      "cve": "CVE-2026-134456",
-      "title": "CVE-2026-134456",
-      "description": "Hysteria 2.5.0 before 2.9.2 contains a denial of service vulnerability in the HTTP sniff implementation that fails to limit header size. Attackers can continuously send excessively large HTTP headers without terminating them, exhausting server memory and causing out-of-memory crashes.",
-      "published": "2026-11-21T17:17:10.850",
-      "last_modified": "2026-11-21T17:17:10.850",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134456"
-    },
-    {
-      "cve": "CVE-2026-134455",
-      "title": "CVE-2026-134455",
-      "description": "Hysteria 1.0.0 before 2.9.2 contains a denial of service vulnerability in FragUDPMessage where UDP fragmentation fails to handle headers larger than the maximum datagram payload size. Authenticated clients can advertise a small max_datagram_frame_size and trigger a UDP response, causing a slice bounds panic that crashes the server.",
-      "published": "2026-11-21T17:17:10.700",
-      "last_modified": "2026-11-21T17:17:10.700",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134455"
-    },
-    {
-      "cve": "CVE-2026-134454",
-      "title": "CVE-2026-134454",
-      "description": "Hysteria from 2.0.0 before 2.9.2 contains an ACL bypass vulnerability that allows authenticated clients to reach blocked UDP destinations by reusing an established UDP session. Attackers can open a session to an allowed destination, then send later packets to localhost or private-network addresses to access internal-only UDP services.",
-      "published": "2026-11-21T17:17:10.550",
-      "last_modified": "2026-11-21T17:17:10.550",
-      "cvss": 7.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134454"
-    },
-    {
-      "cve": "CVE-2026-134453",
-      "title": "CVE-2026-134453",
-      "description": "Dockhand before 1.0.50 contains an improper access control vulnerability that allows authenticated unprivileged users to read restricted data by querying API endpoints lacking RBAC checks. Attackers can access /api/users, /api/license, and /api/hawser/connect to obtain user emails and roles, the full license key, and environment details, while an invalid license grants all users admin rights.",
-      "published": "2026-11-21T17:17:10.400",
-      "last_modified": "2026-11-21T17:17:10.400",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134453"
-    },
-    {
-      "cve": "CVE-2026-134452",
-      "title": "CVE-2026-134452",
-      "description": "Dockhand before 1.0.57 merges stack secret environment variables into the environment used to spawn docker compose during stack deploys without filtering reserved keys such as PATH. An authenticated attacker with stacks:edit permission can set PATH to a directory containing a malicious binary and trigger a deploy, executing arbitrary commands as the Dockhand server process user.",
-      "published": "2026-11-21T17:17:10.250",
-      "last_modified": "2026-11-21T17:17:10.250",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134452"
-    },
-    {
-      "cve": "CVE-2026-134451",
-      "title": "CVE-2026-134451",
-      "description": "Dockhand before 1.0.57 contains a privilege escalation vulnerability that allows non-admin users with settings:edit permission to modify OIDC provider configuration due to an improper permission check. Attackers can send a PUT request to /api/auth/oidc/<provider-id> setting adminClaim to their own OIDC group, gaining full admin access on their next OIDC login.",
-      "published": "2026-11-21T17:17:10.100",
-      "last_modified": "2026-11-21T17:17:10.100",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134451"
-    },
-    {
-      "cve": "CVE-2026-134450",
-      "title": "CVE-2026-134450",
-      "description": "Dockhand before 1.0.57 contains a clickjacking vulnerability because src/hooks.server.ts never sets X-Frame-Options or CSP frame-ancestors headers on responses. Attackers on a same-site origin can embed the UI in an invisible iframe to trick authenticated users into stopping stacks, deleting resources, or changing settings.",
-      "published": "2026-11-21T17:17:09.953",
-      "last_modified": "2026-11-21T17:17:09.953",
-      "cvss": 3.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134450"
-    },
-    {
-      "cve": "CVE-2026-134449",
-      "title": "CVE-2026-134449",
-      "description": "Dockhand before 1.0.57 contains a cross-site request forgery vulnerability that allows attackers to perform state-changing actions by exploiting missing Origin header validation and absent CSRF tokens. Attackers can lure authenticated users to a same-site attacker page that submits forged POST requests to stop, start, or delete stacks, modify settings, and change credentials.",
-      "published": "2026-11-21T17:17:09.787",
-      "last_modified": "2026-11-21T17:17:09.787",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134449"
-    },
-    {
-      "cve": "CVE-2026-134448",
-      "title": "CVE-2026-134448",
-      "description": "Finsys Dockhand 1.0.7 before 1.0.57 contains a path traversal vulnerability that allows low-privileged users to read and write arbitrary files by setting an unvalidated envPath on a stack source. Attackers with stacks:edit permission can point envPath to files like /etc/shadow or SSH keys, then use GET or PUT on /api/stacks/[name]/env/raw to read or overwrite them.",
-      "published": "2026-11-21T17:17:09.627",
-      "last_modified": "2026-11-21T17:17:09.627",
-      "cvss": 8.6,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134448"
-    },
-    {
-      "cve": "CVE-2026-134436",
-      "title": "CVE-2026-134436",
-      "description": "Frappe ERPNext 15.8.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an endpoint shared across modules that returns transaction child table rows without checking permissions on the child table or parent document. Authenticated attackers, including portal users or users without roles, can supply document types and filter conditions to read business document line details and probe record values.",
-      "published": "2026-11-21T17:17:09.460",
-      "last_modified": "2026-11-21T17:17:09.583",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134436"
-    },
-    {
-      "cve": "CVE-2026-134435",
-      "title": "CVE-2026-134435",
-      "description": "Frappe ERPNext before 15.124.2 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that records bank clearance dates, which checks only a broad role permission before writing to caller-named payment documents. Authenticated Accounts Users can send crafted requests naming payment documents of other companies, outside their User Permissions, or already submitted, to alter clearance dates and compromise bank reconciliation integrity.",
-      "published": "2026-11-21T17:17:09.290",
-      "last_modified": "2026-11-21T17:17:09.420",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134435"
-    },
-    {
-      "cve": "CVE-2026-134434",
-      "title": "CVE-2026-134434",
-      "description": "Frappe ERPNext 16.0.0 before 16.36.0 contains a missing authorization vulnerability in a Manufacturing module endpoint that allows authenticated users to cancel Stock Reservation Entries without record-level write permission. Low-privilege attackers can send crafted requests naming manufacturing documents of other companies or outside their User Permissions to release reserved stock and disrupt stock allocation.",
-      "published": "2026-11-21T17:17:09.120",
-      "last_modified": "2026-11-21T17:17:09.247",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134434"
-    },
-    {
-      "cve": "CVE-2026-134433",
-      "title": "CVE-2026-134433",
-      "description": "Frappe ERPNext before 15.124.2 and 16.x before 16.53.0 fails to enforce record-level authorization in several endpoints, reports and forms, allowing authenticated low-privilege users to access data beyond their role. Attackers can send crafted requests naming out-of-scope records to read other companies' financial, stock, pricing and contact data or make constrained changes to those records.",
-      "published": "2026-11-21T17:17:08.950",
-      "last_modified": "2026-11-21T17:17:09.077",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134433"
-    },
-    {
-      "cve": "CVE-2026-134432",
-      "title": "CVE-2026-134432",
-      "description": "Frappe ERPNext 15.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Stock module import endpoint that does not check whether the caller may create inserted records or download a named file. Authenticated attackers, including portal users or users with no roles, can send crafted import requests to read file contents and create Serial No and Batch records.",
-      "published": "2026-11-21T17:17:08.770",
-      "last_modified": "2026-11-21T17:17:08.903",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134432"
-    },
-    {
-      "cve": "CVE-2026-134431",
-      "title": "CVE-2026-134431",
-      "description": "Frappe ERPNext 7.0.0 before 15.122.0 and 16.x before 16.50.0 contains an SQL injection vulnerability in endpoints that build part of a query from caller-supplied sort parameters without validation. Authenticated low-privilege users can send crafted requests whose sort parameter holds SQL that the database executes as part of the query, extracting sensitive information.",
-      "published": "2026-11-21T17:17:08.600",
-      "last_modified": "2026-11-21T17:17:08.727",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134431"
-    },
-    {
-      "cve": "CVE-2026-134430",
-      "title": "CVE-2026-134430",
-      "description": "Frappe ERPNext 12.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns the parsed content of private import-format files without checking permission on the requested records. Authenticated attackers, including portal users or users without roles, can send crafted requests naming records outside their permitted scope to read those private files.",
-      "published": "2026-11-21T17:17:08.427",
-      "last_modified": "2026-11-21T17:17:08.553",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134430"
-    },
-    {
-      "cve": "CVE-2026-134429",
-      "title": "CVE-2026-134429",
-      "description": "Frappe ERPNext before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a CRM and Support module endpoint that returns Communications of documents without checking whether the caller may read them. Authenticated attackers with a common operational role can send crafted requests naming out-of-scope records to read their email communications and relink them away from their original documents.",
-      "published": "2026-11-21T17:17:08.257",
-      "last_modified": "2026-11-21T17:17:08.383",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134429"
-    },
-    {
-      "cve": "CVE-2026-134428",
-      "title": "CVE-2026-134428",
-      "description": "Frappe ERPNext 13.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Stock module endpoint that returns Item master records without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to retrieve complete item data including costing and purchase rates.",
-      "published": "2026-11-21T17:17:08.083",
-      "last_modified": "2026-11-21T17:17:08.207",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134428"
-    },
-    {
-      "cve": "CVE-2026-134427",
-      "title": "CVE-2026-134427",
-      "description": "Frappe ERPNext 15.53.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Assets module endpoint that returns cost and quantity fields of purchase and stock transactions without record-level permission checks. Authenticated users, including portal users or users with no roles, can send crafted requests naming out-of-scope records to read these fields.",
-      "published": "2026-11-21T17:17:07.910",
-      "last_modified": "2026-11-21T17:17:08.040",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134427"
-    },
-    {
-      "cve": "CVE-2026-134426",
-      "title": "CVE-2026-134426",
-      "description": "Frappe ERPNext 15.x 11.0.0-beta before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns Sales Order and Purchase Order values and counterparties without checking permissions on the requested records. Authenticated users, including portal users or users with no roles, can send crafted requests naming out-of-scope records to read their order values and counterparties.",
-      "published": "2026-11-21T17:17:07.733",
-      "last_modified": "2026-11-21T17:17:07.863",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134426"
-    },
-    {
-      "cve": "CVE-2026-134425",
-      "title": "CVE-2026-134425",
-      "description": "Frappe ERPNext 13.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Stock module endpoint that returns item valuation rates without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no roles, can send crafted requests naming out-of-scope records to retrieve their valuation rates.",
-      "published": "2026-11-21T17:17:07.563",
-      "last_modified": "2026-11-21T17:17:07.687",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134425"
-    },
-    {
-      "cve": "CVE-2026-134424",
-      "title": "CVE-2026-134424",
-      "description": "Frappe ERPNext 8.2.5 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Stock module endpoint that returns on-hand stock quantities without checking record-level permissions. Authenticated attackers, including portal users or users without roles, can send crafted requests naming restricted records to disclose stock quantities and confirm item existence.",
-      "published": "2026-11-21T17:17:07.373",
-      "last_modified": "2026-11-21T17:17:07.513",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134424"
-    },
-    {
-      "cve": "CVE-2026-134423",
-      "title": "CVE-2026-134423",
-      "description": "Frappe ERPNext 6.26.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Stock module endpoint that returns stock data without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read per-warehouse and company-wide stock quantities and confirm item existence.",
-      "published": "2026-11-21T17:17:07.207",
-      "last_modified": "2026-11-21T17:17:07.330",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134423"
-    },
-    {
-      "cve": "CVE-2026-134422",
-      "title": "CVE-2026-134422",
-      "description": "Frappe ERPNext 13.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a POS endpoint that returns POS Opening Entries without verifying record-level read permissions. Authenticated users, including portal users or users with no assigned roles, can send crafted requests naming other records to read open POS sessions of other users.",
-      "published": "2026-11-21T17:17:07.037",
-      "last_modified": "2026-11-21T17:17:07.163",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134422"
-    },
-    {
-      "cve": "CVE-2026-134421",
-      "title": "CVE-2026-134421",
-      "description": "Frappe ERPNext 11.0.0-beta before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Selling module endpoint that returns Loyalty Program terms without checking permission on the requested records. Authenticated users, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read other customers' Loyalty Program terms.",
-      "published": "2026-11-21T17:17:06.870",
-      "last_modified": "2026-11-21T17:17:06.993",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134421"
-    },
-    {
-      "cve": "CVE-2026-134420",
-      "title": "CVE-2026-134420",
-      "description": "Frappe ERPNext 10.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns Payment Term settings without checking whether the caller may read the specific records requested. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming records outside their permitted scope to read Payment Term settings.",
-      "published": "2026-11-21T17:17:06.697",
-      "last_modified": "2026-11-21T17:17:06.827",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134420"
-    },
-    {
-      "cve": "CVE-2026-134419",
-      "title": "CVE-2026-134419",
-      "description": "Frappe ERPNext 10.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns Payment Terms Template rows without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read Payment Terms Template data.",
-      "published": "2026-11-21T17:17:06.523",
-      "last_modified": "2026-11-21T17:17:06.650",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134419"
-    },
-    {
-      "cve": "CVE-2026-134418",
-      "title": "CVE-2026-134418",
-      "description": "Frappe ERPNext 4.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns the taxes and charges of documents without checking record permissions. Authenticated users, including portal users or users with no roles, can request arbitrary document types and records to read tax rows beyond their permitted scope.",
-      "published": "2026-11-21T17:17:06.360",
-      "last_modified": "2026-11-21T17:17:06.483",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134418"
-    },
-    {
-      "cve": "CVE-2026-134417",
-      "title": "CVE-2026-134417",
-      "description": "Frappe ERPNext 13.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns uploaded bank statement file content without checking record-level permissions. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming records outside their scope to read full statement file contents.",
-      "published": "2026-11-21T17:17:06.197",
-      "last_modified": "2026-11-21T17:17:06.320",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134417"
-    },
-    {
-      "cve": "CVE-2026-134416",
-      "title": "CVE-2026-134416",
-      "description": "Frappe ERPNext 15.55.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns a company's Chart of Accounts without checking whether the caller may read the requested records. Authenticated users, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read any company's Chart of Accounts.",
-      "published": "2026-11-21T17:17:06.027",
-      "last_modified": "2026-11-21T17:17:06.150",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134416"
-    },
-    {
-      "cve": "CVE-2026-134415",
-      "title": "CVE-2026-134415",
-      "description": "Frappe ERPNext 11.0.0-beta before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Selling module endpoint that returns customer loyalty point balances without checking the caller's permission on the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming records outside their permitted scope to read other customers' loyalty point balances.",
-      "published": "2026-11-21T17:17:05.860",
-      "last_modified": "2026-11-21T17:17:05.980",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134415"
-    },
-    {
-      "cve": "CVE-2026-134414",
-      "title": "CVE-2026-134414",
-      "description": "Frappe ERPNext 5.0.0 before 15.122.0 contains a missing authorization vulnerability in an Accounts module endpoint that allows authenticated users to read Taxes and Charges Template rows without permission checks. Attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read account heads and tax rates.",
-      "published": "2026-11-21T17:17:05.687",
-      "last_modified": "2026-11-21T17:17:05.817",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134414"
-    },
-    {
-      "cve": "CVE-2026-134413",
-      "title": "CVE-2026-134413",
-      "description": "Frappe ERPNext 11.0.0-beta before 15.121.4 contains a missing authorization vulnerability that allows authenticated users to read POS Profile cashier lists by calling a POS endpoint lacking record permission checks. Attackers, including portal users or users with no roles, can send crafted requests naming out-of-scope POS Profiles to retrieve their cashier data.",
-      "published": "2026-11-21T17:17:05.517",
-      "last_modified": "2026-11-21T17:17:05.643",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134413"
-    },
-    {
-      "cve": "CVE-2026-134412",
-      "title": "CVE-2026-134412",
-      "description": "Frappe ERPNext 8.0.0 before 15.123.0 contains a missing authorization vulnerability in a Stock module endpoint that allows authenticated users to read restricted warehouse data. Attackers with a common operational role can send crafted requests naming warehouses excluded by their User Permissions to obtain stock quantities and stock values.",
-      "published": "2026-11-21T17:17:05.357",
-      "last_modified": "2026-11-21T17:17:05.477",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134412"
-    },
-    {
-      "cve": "CVE-2026-134411",
-      "title": "CVE-2026-134411",
-      "description": "Frappe ERPNext 11.1.7 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in a Regional module endpoint that returns private e-invoice files after checking only document-type permissions, not per-record User Permissions. Authenticated attackers with a common operational role can send crafted requests naming out-of-scope records to read other companies' private e-invoice files.",
-      "published": "2026-11-21T17:17:05.203",
-      "last_modified": "2026-11-21T17:17:05.310",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134411"
-    },
-    {
-      "cve": "CVE-2026-134410",
-      "title": "CVE-2026-134410",
-      "description": "Frappe ERPNext 15.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in a Stock module endpoint that returns Serial No and Batch ledger entries without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users without roles, can send crafted requests naming out-of-scope records to obtain item codes, quantities, warehouses, batch and serial numbers.",
-      "published": "2026-11-21T17:17:04.997",
-      "last_modified": "2026-11-21T17:17:05.160",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134410"
-    },
-    {
-      "cve": "CVE-2026-134409",
-      "title": "CVE-2026-134409",
-      "description": "Frappe ERPNext 5.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in a Projects module endpoint that returns employee costing and billing rates without record-level permission checks. Authenticated users, including portal users or users without roles, can send crafted requests naming out-of-scope records to read other employees' activity cost rates.",
-      "published": "2026-11-21T17:17:04.830",
-      "last_modified": "2026-11-21T17:17:04.957",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134409"
-    },
-    {
-      "cve": "CVE-2026-134408",
-      "title": "CVE-2026-134408",
-      "description": "Frappe ERPNext 16.0.1 before 16.50.0 contains a missing authorization vulnerability in a Stock dashboard chart endpoint that returns site-wide stock value when the caller has no permitted warehouse. Authenticated users with common operational roles can send crafted requests naming records outside their scope to read stock value data beyond their permissions.",
-      "published": "2026-11-21T17:17:04.657",
-      "last_modified": "2026-11-21T17:17:04.787",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134408"
-    },
-    {
-      "cve": "CVE-2026-134407",
-      "title": "CVE-2026-134407",
-      "description": "Frappe ERPNext 11.0.0-beta before 15.124.0 and 16.x before 16.52.0 contains an authorization flaw in the customer portal Issue list, which scopes records differently from the detail view and skips permission checks on requested records. Authenticated users, including portal users without roles, can send crafted requests naming out-of-scope records to read other customers' Issues.",
-      "published": "2026-11-21T17:17:04.487",
-      "last_modified": "2026-11-21T17:17:04.610",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134407"
-    },
-    {
-      "cve": "CVE-2026-134406",
-      "title": "CVE-2026-134406",
-      "description": "Frappe ERPNext 15.94.2 before 15.122.0 and 16.x before 16.50.0 contains an incorrect authorization vulnerability in a supplier portal endpoint whose party identity check ignores party type, failing to distinguish a Customer and a Supplier that share a name. Authenticated users, including portal users or users with no assigned roles, can send crafted requests naming records outside their permitted scope to read buying-portal records.",
-      "published": "2026-11-21T17:17:04.320",
-      "last_modified": "2026-11-21T17:17:04.447",
-      "cvss": 4.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134406"
-    },
-    {
-      "cve": "CVE-2026-134405",
-      "title": "CVE-2026-134405",
-      "description": "Frappe ERPNext 13.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns Bank Transaction metadata of other companies without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to retrieve that metadata.",
-      "published": "2026-11-21T17:17:04.150",
-      "last_modified": "2026-11-21T17:17:04.273",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134405"
-    },
-    {
-      "cve": "CVE-2026-134404",
-      "title": "CVE-2026-134404",
-      "description": "Frappe ERPNext 6.3.0 before 15.124.0 and 16.x before 16.52.0 contains a missing authorization vulnerability in the customer and supplier portal list endpoint, which returns complete selling documents and RFQs without checking permission on the requested records. Authenticated attackers, including portal users or users without roles, can request out-of-scope records to read valuation, margin, and other bidder details.",
-      "published": "2026-11-21T17:17:03.983",
-      "last_modified": "2026-11-21T17:17:04.107",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134404"
-    },
-    {
-      "cve": "CVE-2026-134403",
-      "title": "CVE-2026-134403",
-      "description": "Frappe ERPNext 7.0.0 before 15.124.0 and 16.x before 16.52.0 contains a missing authorization vulnerability in the customer portal Projects list, which returns every field without checking permission on the requested records. Authenticated users, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope records to read project costing and margin data.",
-      "published": "2026-11-21T17:17:03.810",
-      "last_modified": "2026-11-21T17:17:03.937",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134403"
-    },
-    {
-      "cve": "CVE-2026-134400",
-      "title": "CVE-2026-134400",
-      "description": "Frappe ERPNext 13.49.0 before 14.0.0, 14.17.2 before 15.124.0, and 16.x before 16.52.0 contains a missing authorization vulnerability in a Selling module endpoint that returns Sales Order line items without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming out-of-scope Sales Orders to read their line item data.",
-      "published": "2026-11-21T17:17:03.630",
-      "last_modified": "2026-11-21T17:17:03.760",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134400"
-    },
-    {
-      "cve": "CVE-2026-134399",
-      "title": "CVE-2026-134399",
-      "description": "Frappe ERPNext 8.11.1 before 15.124.0 and 16.x before 16.52.0 is missing an authorization check in print and portal views, which fail to apply desk users' User Permissions to customer documents. Authenticated desk users with an ordinary job role can send crafted requests naming records outside their permitted scope to read documents of customers their User Permissions exclude.",
-      "published": "2026-11-21T17:17:03.463",
-      "last_modified": "2026-11-21T17:17:03.587",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134399"
-    },
-    {
-      "cve": "CVE-2026-134398",
-      "title": "CVE-2026-134398",
-      "description": "Frappe ERPNext 15.87.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that changes Period Closing Voucher job status without permission checks and accepts a request method triggerable cross-site. Authenticated users without an Accounts role, or cross-site pages opened by authenticated users, can send requests naming a scheduled job to stop accounting jobs from completing.",
-      "published": "2026-11-21T17:17:03.270",
-      "last_modified": "2026-11-21T17:17:03.407",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134398"
-    },
-    {
-      "cve": "CVE-2026-134397",
-      "title": "CVE-2026-134397",
-      "description": "Frappe ERPNext 15.10.4 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in a Stock module endpoint that checks whether an inventory number exists and creates missing Serial No and Batch master records without verifying create permission. Authenticated users can send a crafted request with a new number to create these records outside their role, affecting inventory data integrity.",
-      "published": "2026-11-21T17:17:03.090",
-      "last_modified": "2026-11-21T17:17:03.220",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134397"
-    },
-    {
-      "cve": "CVE-2026-134396",
-      "title": "CVE-2026-134396",
-      "description": "Frappe ERPNext 13.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that reconciles Bank Transactions against caller-named vouchers, checking permission only on the Bank Transaction and not on each voucher. Authenticated users with the Accounts User role who can edit a Bank Transaction can send crafted requests naming vouchers outside their permitted scope to change the reconciliation state of vouchers belonging to other companies or outside their User Permissions.",
-      "published": "2026-11-21T17:17:02.910",
-      "last_modified": "2026-11-21T17:17:03.040",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134396"
-    },
-    {
-      "cve": "CVE-2026-134395",
-      "title": "CVE-2026-134395",
-      "description": "Frappe ERPNext 13.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns Bank Transaction amounts and bank accounts without checking whether the caller may read the requested records. Authenticated users with a common operational role can send crafted requests naming out-of-scope records to read Bank Transaction data of other companies.",
-      "published": "2026-11-21T17:17:02.743",
-      "last_modified": "2026-11-21T17:17:02.870",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134395"
-    },
-    {
-      "cve": "CVE-2026-134394",
-      "title": "CVE-2026-134394",
-      "description": "Frappe ERPNext 14.44.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in the Accounts module's payment unreconciliation endpoint, which does not check the caller's permission on the vouchers it unreconciles. Authenticated users with the Accounts User role can send crafted Unreconcile Payment requests naming vouchers from other companies or outside their User Permissions to remove their reconciliation.",
-      "published": "2026-11-21T17:17:02.560",
-      "last_modified": "2026-11-21T17:17:02.693",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134394"
-    },
-    {
-      "cve": "CVE-2026-134393",
-      "title": "CVE-2026-134393",
-      "description": "Frappe ERPNext 10.1.41 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in a Manufacturing module endpoint that replaces BOMs without checking whether the caller may modify either BOM or the affected assemblies. Authenticated users who can create a BOM Update Log can send a crafted request naming two BOMs to replace the first with the second in every assembly site-wide.",
-      "published": "2026-11-21T17:17:02.360",
-      "last_modified": "2026-11-21T17:17:02.510",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134393"
-    },
-    {
-      "cve": "CVE-2026-134392",
-      "title": "CVE-2026-134392",
-      "description": "Frappe ERPNext 15.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing validation vulnerability in a Stock module endpoint that fails to verify reserved item rows belong to the target Sales Order. Authenticated users with the Stock User role can send crafted reservation requests naming another order's item row to reserve stock beyond that order's limits, creating mismatched Stock Reservation Entries.",
-      "published": "2026-11-21T17:17:02.183",
-      "last_modified": "2026-11-21T17:17:02.313",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134392"
-    },
-    {
-      "cve": "CVE-2026-134391",
-      "title": "CVE-2026-134391",
-      "description": "Frappe ERPNext 12.2.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Assets module endpoint that returns Asset details without checking whether the caller may read the requested records. Authenticated attackers, including portal users or users with no assigned roles, can send crafted requests naming records outside their permitted scope to read restricted asset details.",
-      "published": "2026-11-21T17:17:01.987",
-      "last_modified": "2026-11-21T17:17:02.130",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134391"
-    },
-    {
-      "cve": "CVE-2026-134390",
-      "title": "CVE-2026-134390",
-      "description": "Frappe ERPNext 13.0.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in the make_merge_log endpoint that allows authenticated users to read POS Invoice data. Attackers can supply POS Invoice names outside their permitted scope to retrieve each invoice's customer, posting date, and grand total.",
-      "published": "2026-11-21T17:17:01.810",
-      "last_modified": "2026-11-21T17:17:01.940",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134390"
-    },
-    {
-      "cve": "CVE-2026-134389",
-      "title": "CVE-2026-134389",
-      "description": "Frappe ERPNext 6.18.0 before 15.124.0 and 16.x before 16.52.0 contains a missing authorization vulnerability in Payment Requests that lets authenticated Accounts User role holders read source documents they lack permission to access. Attackers can create a Payment Request through the generic record interface that references another company's document, then email its loaded content to an address they choose.",
-      "published": "2026-11-21T17:17:01.620",
-      "last_modified": "2026-11-21T17:17:01.760",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134389"
-    },
-    {
-      "cve": "CVE-2026-134388",
-      "title": "CVE-2026-134388",
-      "description": "Frappe ERPNext 14.0.0 before 15.124.0 and 16.x before 16.52.0 contains a stored cross-site scripting vulnerability in the CRM module because notes on Leads and Opportunities are saved without passing through the HTML sanitiser. Authenticated users with the Sales User role can save a note containing a crafted payload that executes in another user's session when they open the record, acting with that user's permissions.",
-      "published": "2026-11-21T17:17:01.400",
-      "last_modified": "2026-11-21T17:17:01.560",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134388"
-    },
-    {
-      "cve": "CVE-2026-134387",
-      "title": "CVE-2026-134387",
-      "description": "Frappe ERPNext 12.0.0 before 15.121.4 and 16.x before 16.36.0 contains a missing authorization vulnerability in an Accounts module dashboard chart source that returns account balance history without checking chart or account permissions. Authenticated attackers, including portal users or users with no roles, can send crafted requests naming any account to read general ledger balance history of any company.",
-      "published": "2026-11-21T17:17:01.207",
-      "last_modified": "2026-11-21T17:17:01.340",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134387"
-    },
-    {
-      "cve": "CVE-2026-134386",
-      "title": "CVE-2026-134386",
-      "description": "Frappe ERPNext 15.111.0 before 15.121.4 and 16.22.0 before 16.36.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns item rows of a caller-named inter-company invoice or order and accepts a caller-supplied document type without checking read permission. Authenticated attackers, including portal users or users with no roles, can send crafted requests naming another company's document to read Sales Invoice, Purchase Invoice and order items.",
-      "published": "2026-11-21T17:17:01.030",
-      "last_modified": "2026-11-21T17:17:01.160",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134386"
-    },
-    {
-      "cve": "CVE-2026-134385",
-      "title": "CVE-2026-134385",
-      "description": "Frappe ERPNext 6.3.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in an Accounts module endpoint used to choose a Tax Rule, which returns party address details without permission checks. Authenticated attackers, including portal users or users with no roles, can send crafted requests naming arbitrary customers, suppliers, or Addresses to obtain their city, state, postal code, and country.",
-      "published": "2026-11-21T17:17:00.860",
-      "last_modified": "2026-11-21T17:17:00.990",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134385"
-    },
-    {
-      "cve": "CVE-2026-134384",
-      "title": "CVE-2026-134384",
-      "description": "Frappe ERPNext 13.0.0 before 15.124.2 and 16.x before 16.53.0 contains a missing authorization vulnerability in a Stock module endpoint that returns item cost data without checking the caller's permissions on the item, company, or warehouse. Authenticated attackers, including portal users or users restricted to other warehouses, can send crafted requests naming out-of-scope items, companies, or warehouses to obtain valuation rates and average purchase costs.",
-      "published": "2026-11-21T17:17:00.687",
-      "last_modified": "2026-11-21T17:17:00.820",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134384"
-    },
-    {
-      "cve": "CVE-2026-134383",
-      "title": "CVE-2026-134383",
-      "description": "Frappe ERPNext 14.47.0 before 15.122.0 and 16.x before 16.50.0 contains a missing authorization vulnerability in the Accounts module where a method on accounting vouchers creates and submits Repost Accounting Ledger documents with permission checks skipped. Authenticated users with read access to a Sales Invoice, Purchase Invoice, Payment Entry, Journal Entry, or Purchase Receipt can call it to delete and repost that voucher's General Ledger entries, an action restricted to System Managers.",
-      "published": "2026-11-21T17:17:00.520",
-      "last_modified": "2026-11-21T17:17:00.643",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134383"
-    },
-    {
-      "cve": "CVE-2026-134382",
-      "title": "CVE-2026-134382",
-      "description": "Frappe ERPNext 5.0.0 before 15.121.4 and 16.x before 16.36.0 contains an incorrect authorization vulnerability in a Selling module endpoint that checks only document-type write permission, not permission on each Sales Order, when closing or reopening Sales Orders. Authenticated users restricted by User Permissions can send crafted requests naming another company's Sales Order to close or reopen it outside their restriction.",
-      "published": "2026-11-21T17:17:00.350",
-      "last_modified": "2026-11-21T17:17:00.473",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134382"
-    },
-    {
-      "cve": "CVE-2026-134381",
-      "title": "CVE-2026-134381",
-      "description": "Frappe ERPNext 5.0.0 before 15.121.4 and 16.x before 16.36.0 contains an incorrect authorization vulnerability in the Buying module: the endpoint that closes and reopens Purchase Orders checks only document-type write permission, not per-document User Permissions. Authenticated users with Purchase Order write access can send crafted requests naming another company's Purchase Order to change its status.",
-      "published": "2026-11-21T17:17:00.177",
-      "last_modified": "2026-11-21T17:17:00.303",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134381"
-    },
-    {
-      "cve": "CVE-2026-134379",
-      "title": "CVE-2026-134379",
-      "description": "Frappe ERPNext 8.2.5 before 15.121.4 and 16.x before 16.36.0 contains an incorrect authorization vulnerability in Manufacturing module endpoints that check only document-type write access, not permission on each Work Order. Authenticated users restricted by User Permissions can send crafted requests naming another company's Work Order to stop, resume or close it.",
-      "published": "2026-11-21T17:17:00.003",
-      "last_modified": "2026-11-21T17:17:00.137",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134379"
-    },
-    {
-      "cve": "CVE-2026-134378",
-      "title": "CVE-2026-134378",
-      "description": "Frappe ERPNext 12.7.0 before 15.124.0 and 16.x before 16.52.0 stores imported Italian supplier e-invoices as public files in the Regional module, which the server returns without authentication. Unauthenticated attackers can request predictable file URLs built from the supplier's VAT number and invoice sequence to read supplier names, VAT numbers, bank account details and line items.",
-      "published": "2026-11-21T17:16:59.837",
-      "last_modified": "2026-11-21T17:16:59.963",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134378"
-    },
-    {
-      "cve": "CVE-2026-134377",
-      "title": "CVE-2026-134377",
-      "description": "Frappe ERPNext 7.1.0 before 15.121.0 and 16.x before 16.34.0 contains a missing authorization vulnerability in Projects module endpoints that return Timesheet data without restricting results to records the caller may read. Any authenticated user, including one with no assigned roles, can send crafted requests to read organisation-wide Timesheet work and billing details.",
-      "published": "2026-11-21T17:16:59.660",
-      "last_modified": "2026-11-21T17:16:59.793",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134377"
-    },
-    {
-      "cve": "CVE-2026-134376",
-      "title": "CVE-2026-134376",
-      "description": "Frappe ERPNext 11.0.0-beta before 15.122.0 and 16.x before 16.34.0 contains a missing authorization vulnerability in an Accounts module endpoint that returns the subscription plans linked to a caller-named invoice without checking read permission on that invoice. Authenticated attackers can send crafted requests naming invoices outside their permitted scope to learn whether they belong to subscriptions and read the billed plans.",
-      "published": "2026-11-21T17:16:59.493",
-      "last_modified": "2026-11-21T17:16:59.617",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134376"
-    },
-    {
-      "cve": "CVE-2026-134375",
-      "title": "CVE-2026-134375",
-      "description": "Frappe ERPNext 13.0.0 before 15.124.0 and 16.x before 16.52.0 contains an incorrect authorization vulnerability in an Accounts module endpoint that returns Payment Entries for a readable bank record without checking read permission on each Payment Entry. Authenticated users with an Accounts role can request a readable record to obtain metadata of Payment Entries excluded by their user permissions, such as Cost Center restrictions.",
-      "published": "2026-11-21T17:16:59.327",
-      "last_modified": "2026-11-21T17:16:59.450",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134375"
-    },
-    {
-      "cve": "CVE-2026-134374",
-      "title": "CVE-2026-134374",
-      "description": "Frappe ERPNext 15.0.0 before 15.124.0 and 16.x before 16.52.0 contains a missing authorization vulnerability in Assets module endpoints that return a depreciation schedule for a caller-supplied asset without checking read permission on that asset. Authenticated users can name another company's asset to disclose its purchase value, value after depreciation, and depreciation entries.",
-      "published": "2026-11-21T17:16:59.143",
-      "last_modified": "2026-11-21T17:16:59.277",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134374"
-    },
-    {
-      "cve": "CVE-2026-134373",
-      "title": "CVE-2026-134373",
-      "description": "Frappe ERPNext 14.0.0 before 15.121.0 and 16.x before 16.34.0 contains a missing authorization vulnerability in a Utilities module endpoint that lets any authenticated user retry failed bulk transactions without a role check. Attackers, including portal users with no roles, can send crafted requests for a chosen date to mark site-wide failed bulk transactions as retried, removing them from the normal recovery path, and add background job load.",
-      "published": "2026-11-21T17:16:58.970",
-      "last_modified": "2026-11-21T17:16:59.100",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134373"
-    },
-    {
-      "cve": "CVE-2026-134372",
-      "title": "CVE-2026-134372",
-      "description": "Frappe ERPNext 4.3.0 before 15.121.6 and 16.x before 16.37.0 contains an SQL injection vulnerability in an endpoint of the Selling and Buying modules, where a request value validated early can be overridden by caller-supplied data that reaches a database query unvalidated. Any authenticated user, including a portal user with no roles, can send crafted requests to extract sensitive data, including active session data, and take over other accounts such as administrators.",
-      "published": "2026-11-21T17:16:58.797",
-      "last_modified": "2026-11-21T17:16:58.923",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134372"
-    },
-    {
-      "cve": "CVE-2026-134371",
-      "title": "CVE-2026-134371",
-      "description": "Frappe 8.8.0 before 16.30.0 contains an insecure direct object reference vulnerability in the SMS Settings get_contact_number API that lets attackers read any Contact's phone numbers without permission checks. Attackers can call the endpoint, which uses an uncorrelated EXISTS subquery, to retrieve mobile_no and phone values of arbitrary Contact records, exposing PII.",
-      "published": "2026-11-21T17:16:58.623",
-      "last_modified": "2026-11-21T17:16:58.750",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134371"
-    },
-    {
-      "cve": "CVE-2026-134370",
-      "title": "CVE-2026-134370",
-      "description": "Frappe Framework before 15.120.1 and 16.x before 16.33.1 contains a path traversal vulnerability in file attachment handling that permits arbitrary file read. Authenticated attackers holding a single ordinary role without write permissions can abuse attachment handling to read server files outside the application boundary.",
-      "published": "2026-11-21T17:16:58.457",
-      "last_modified": "2026-11-21T17:16:58.583",
-      "cvss": 8.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134370"
-    },
-    {
-      "cve": "CVE-2026-134367",
-      "title": "CVE-2026-134367",
-      "description": "pypdf 2.4.2 before 7.0.0 contains a resource exhaustion vulnerability in its handling of XFA forms that allows attackers to cause excessive memory consumption. Attackers can supply a crafted PDF containing XFA forms with many small fields so that loading the forms consumes large amounts of memory, causing a denial of service.",
-      "published": "2026-11-21T17:16:58.310",
-      "last_modified": "2026-11-21T17:16:58.310",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134367"
-    },
-    {
-      "cve": "CVE-2026-134366",
-      "title": "CVE-2026-134366",
-      "description": "pypdf before 7.0.0 contains a resource exhaustion vulnerability that allows attackers to cause large memory usage by supplying crafted PDF cross-reference streams. Attackers can craft a PDF whose cross-reference stream offsets all point to one large object, exhausting memory in applications parsing the file.",
-      "published": "2026-11-21T17:16:58.160",
-      "last_modified": "2026-11-21T17:16:58.160",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134366"
-    },
-    {
-      "cve": "CVE-2026-134364",
-      "title": "CVE-2026-134364",
-      "description": "pypdf 3.7.1 before 7.0.0 contains an information disclosure vulnerability that allows attackers to guess placeholders in encrypted templated documents by analyzing file identifiers. Attackers with a document sharing the same template and access to other documents' file identifiers can recover placeholder contents from encrypted PDFs.",
-      "published": "2026-11-21T17:16:58.003",
-      "last_modified": "2026-11-21T17:16:58.003",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134364"
-    },
-    {
-      "cve": "CVE-2026-134363",
-      "title": "CVE-2026-134363",
-      "description": "Coder 2.32.0 before 2.34.17, 2.35.0 before 2.36.12, 2.37.0 before 2.37.9, and 2.38.0 before 2.38.5 contain a symlink-following flaw in the Coder Agents read_skill_file tool, which validates skill file paths lexically but follows symlinks outside the skill directory. Attackers who place a malicious skill containing a symlinked supporting file in a victim's workspace can leak other workspace files into the model context and chat history when the victim runs a chat using that skill.",
-      "published": "2026-11-21T17:16:57.817",
-      "last_modified": "2026-11-21T17:16:57.947",
-      "cvss": 3.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134363"
-    },
-    {
-      "cve": "CVE-2026-134362",
-      "title": "CVE-2026-134362",
-      "description": "Coder 2.6.0 before 2.29.26, 2.30.0 before 2.34.18, 2.35.0 before 2.37.10, and 2.38.0 before 2.38.6 contains a cross-site request forgery vulnerability because CSRF exemption patterns in coderd/httpmw/csrf.go are matched as unanchored regular expressions, letting affected API routes skip CSRF token and same-origin checks. Attackers controlling a page same-site with the deployment can make signed-in users' browsers send forged POST requests that recreate dev containers or add users whose names contain derp to organizations.",
-      "published": "2026-11-21T17:16:57.620",
-      "last_modified": "2026-11-21T17:16:57.760",
-      "cvss": 4.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134362"
-    },
-    {
-      "cve": "CVE-2026-134361",
-      "title": "CVE-2026-134361",
-      "description": "Coder 2.6.0 before 2.29.21, 2.30.0 before 2.34.10, 2.35.0 before 2.35.8, 2.36.0 before 2.36.5, and 2.37.0 before 2.37.1 contains a denial of service vulnerability in the workspace agent dRPC API, whose handlers dereference unset request sub-messages and unconfigured Tailnet providers without recovering from panics. Attackers holding a workspace agent token can send UpdateLifecycle, UpdateStartup, or BatchUpdateMetadata messages lacking sub-messages, or call RefreshResumeToken or WorkspaceUpdates, to repeatedly crash coderd.",
-      "published": "2026-11-21T17:16:57.430",
-      "last_modified": "2026-11-21T17:16:57.560",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134361"
-    },
-    {
-      "cve": "CVE-2026-134360",
-      "title": "CVE-2026-134360",
-      "description": "Heym before 0.0.148 passes Playwright navigate-step URLs to page.goto() without validating the scheme and runs step-based scripts inside the backend container. A signed-in user who can run workflows can navigate to file:// URLs and use getText to read known-path files such as the Kubernetes ServiceAccount token or Docker secrets.",
-      "published": "2026-11-21T17:16:57.237",
-      "last_modified": "2026-11-21T17:16:57.387",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134360"
-    },
-    {
-      "cve": "CVE-2026-134359",
-      "title": "CVE-2026-134359",
-      "description": "AzuraCast before 0.24.1 fails to escape backslashes in Liquidsoap annotation values, allowing media managers to break out of quoted annotation strings. Attackers can set a crafted ID3 title ending in a backslash to inject a process: protocol URI, achieving OS command execution in the Liquidsoap container during playback.",
-      "published": "2026-11-21T17:16:57.063",
-      "last_modified": "2026-11-21T17:16:57.187",
-      "cvss": 8.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134359"
-    },
-    {
-      "cve": "CVE-2026-134356",
-      "title": "CVE-2026-134356",
-      "description": "AzuraCast 0.19.0 before 0.24.1 contains an improper authorization vulnerability that allows users with station media rights to add tracks to other stations' playlists by supplying foreign playlist ids to the single-file edit endpoint. Attackers can send sequential playlist ids in the playlists array to inject entries into other stations' AutoDJ rotations and public now-playing metadata, causing failed playback slots.",
-      "published": "2026-11-21T17:16:56.883",
-      "last_modified": "2026-11-21T17:16:57.017",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134356"
-    },
-    {
-      "cve": "CVE-2026-134355",
-      "title": "CVE-2026-134355",
-      "description": "AzuraCast before 0.24.1 contains an improper authorization vulnerability in the /api/station/{station_id}/profile/edit endpoint that exposes and accepts Icecast/Shoutcast passwords for users holding Manage Station Profile without Manage Station Broadcasting. Authenticated station users can read the admin, source, relay and streamer passwords via GET to administer Icecast or broadcast to listeners, or overwrite them via PUT to lock out operators.",
-      "published": "2026-11-21T17:16:56.710",
-      "last_modified": "2026-11-21T17:16:56.840",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134355"
-    },
-    {
-      "cve": "CVE-2026-134354",
-      "title": "CVE-2026-134354",
-      "description": "rclone from 1.59.0 before 1.76.0 contains a confinement escape in the local backend's setXattr function that lets attackers write user.* extended attributes outside the destination root via a planted symlink. Attackers who plant a symlink to an outside directory with a pre-existing child can use --links --metadata operations to set attacker-chosen user.* xattrs on files outside the destination.",
-      "published": "2026-11-21T17:16:56.533",
-      "last_modified": "2026-11-21T17:16:56.660",
-      "cvss": 5.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134354"
-    },
-    {
-      "cve": "CVE-2026-134353",
-      "title": "CVE-2026-134353",
-      "description": "rclone before 1.76.0 leaks credentials in its swift, netstorage and seafile backends, which follow HTTP redirects using Go's default policy: swift and netstorage send auth headers or passwords on cross-host or HTTPS-to-HTTP redirects, and seafile sends API tokens or passwords on same-host HTTPS-to-HTTP redirects. Attackers receiving or observing a redirect issued by the configured endpoint can capture these credentials to access storage or replay signed requests.",
-      "published": "2026-11-21T17:16:56.367",
-      "last_modified": "2026-11-21T17:16:56.493",
-      "cvss": 6.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134353"
-    },
-    {
-      "cve": "CVE-2026-134352",
-      "title": "CVE-2026-134352",
-      "description": "Rclone from 1.51.0 before 1.76.0 contains an authentication bypass vulnerability in serve sftp --auth-proxy because the generateCacheKey cache key omits the authentication method. Attackers knowing a victim's base64 public key can submit it as a password from the same client IP to reuse the cached entry and gain read-write VFS access.",
-      "published": "2026-11-21T17:16:56.200",
-      "last_modified": "2026-11-21T17:16:56.323",
-      "cvss": 9.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134352"
-    },
-    {
-      "cve": "CVE-2026-134351",
-      "title": "CVE-2026-134351",
-      "description": "Rclone 1.49.0 before 1.76.0 contains an improper authentication vulnerability in Proxy.Call that lets revoked users keep access because cached auth-proxy answers are never revalidated. Revoked users of serve sftp, ftp, http, or webdav can reconnect within five minutes using their original credentials to retain access indefinitely.",
-      "published": "2026-11-21T17:16:56.033",
-      "last_modified": "2026-11-21T17:16:56.157",
-      "cvss": 4.2,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134351"
     }
   ],
-  "total_results": 1217,
+  "total_results": 583,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 1017
+  "start_index": 383
 }
