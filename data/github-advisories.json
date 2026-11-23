@@ -1,12 +1,30 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-23T10:52:14+00:00",
+  "fetched_at": "2026-11-23T16:24:17+00:00",
   "window_days": 3,
   "window_start": "2026-11-21",
   "window_end": "2026-11-23",
-  "count": 15,
+  "count": 17,
   "items": [
+    {
+      "cve": "CVE-2026-22865",
+      "ghsa": "GHSA-mqwm-5m85-gmcv",
+      "title": "Gradle causes failure to disable repositories exposing builds to malicious artifacts",
+      "description": "### Impact\n\nWhen resolving dependencies, Gradle searches repositories in declaration order. If it encounters connection errors, Gradle will disable the repository and fail dependency resolution. This is necessary for both reproducibility and security reasons to prevent dependencies from being resolved from other repositories without warning. \n\nIn previous versions of Gradle, some exceptions were not treated as fatal errors and would not cause a repository to be disabled. If a build encountered one of these exceptions, Gradle would continue to the next repository in the list and potentially resolve dependencies from a different repository. \n\n#### Vulnerability caused by continuing after max retries on transient errors\n\nAn exception like [`NoHttpResponseException`](https://hc.apache.org/httpclient-legacy/exception-handling.html#org_apache_commons_httpclient_NoHttpResponseException) can ind",
+      "severity": "high",
+      "published": "2026-11-23T15:41:57+00:00",
+      "link": "https://github.com/advisories/GHSA-mqwm-5m85-gmcv"
+    },
+    {
+      "cve": "CVE-2026-22816",
+      "ghsa": "GHSA-w78c-w6vf-rw82",
+      "title": "Gradle causes Failure to disable repositories can expose builds to malicious artifacts",
+      "description": "### Impact\n\nWhen resolving dependencies, Gradle searches repositories in declaration order. If it encounters connection errors, Gradle will disable the repository and fail dependency resolution. This is necessary for both reproducibility and security reasons to prevent dependencies from being resolved from other repositories without warning. \n\nIn previous versions of Gradle, some exceptions were not treated as fatal errors and would not cause a repository to be disabled. If a build encountered one of these exceptions, Gradle would continue to the next repository in the list and potentially resolve dependencies from a different repository. \n\n#### Vulnerability caused by unresolvable host names\n\n[`UnknownHostException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/UnknownHostException.html) are caused when a host name cannot be resolved to an IP address. This can b",
+      "severity": "high",
+      "published": "2026-11-23T15:33:34+00:00",
+      "link": "https://github.com/advisories/GHSA-w78c-w6vf-rw82"
+    },
     {
       "cve": "CVE-2026-122247",
       "ghsa": "GHSA-25qc-m4pw-2w8r",
