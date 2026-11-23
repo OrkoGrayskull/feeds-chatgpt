@@ -1,12 +1,291 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-20T23%3A00%3A00.000&pubEndDate=2026-11-23T04%3A06%3A25.000&resultsPerPage=200&startIndex=383",
-  "fetched_at": "2026-11-23T04:06:25+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-20T23%3A00%3A00.000&pubEndDate=2026-11-23T10%3A52%3A14.000&resultsPerPage=200&startIndex=414",
+  "fetched_at": "2026-11-23T10:52:14+00:00",
   "window_days": 3,
   "window_start": "2026-11-21",
   "window_end": "2026-11-23",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-94252",
+      "title": "CVE-2026-94252",
+      "description": "An unauthenticated stored and reflected cross-site scripting (XSS) vulnerability in the embedded web interface of Frontier Smart Technologies Venice X FS2340 running IR4.9 allows a network attacker with access to the interface to inject attacker-controlled JavaScript that may execute in the browser of a user accessing affected content.\n\n\n\nSuccessful exploitation may allow the attacker to access information available within the browser's security context or perform actions through the affected web interface with the privileges of the affected user.\n\n\n\nDuring authorized security testing, certain crafted JavaScript and code-injection payloads were also observed to cause the embedded web interface to crash and become temporarily unavailable on some tested software versions. This behavior represents a denial-of-service condition affecting the embedded web management interface; no device-level",
+      "published": "2026-11-23T10:17:16.860",
+      "last_modified": "2026-11-23T10:17:16.860",
+      "cvss": 4.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-94252"
+    },
+    {
+      "cve": "CVE-2026-88850",
+      "title": "CVE-2026-88850",
+      "description": "The Web-Based Management (WBM) authorization model does not properly enforce permissions for all PROFIBUS configuration operations. A low-privileged remote attacker can abuse an exposed configuration function to modify root-owned PROFIBUS parameters, including device addressing and SSA settings. This allows unauthorized changes to fieldbus-related configuration and violates the intended privilege boundaries within the management interface.",
+      "published": "2026-11-23T10:17:16.633",
+      "last_modified": "2026-11-23T10:17:16.633",
+      "cvss": 8.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-88850"
+    },
+    {
+      "cve": "CVE-2026-80466",
+      "title": "CVE-2026-80466",
+      "description": "A vulnerability in the Web-Based Management (WBM) routing configuration allows a low-privileged remote attacker to inject shell commands into routing parameters. Due to insufficient input validation, these values are stored in a configuration file and later processed by a privileged root helper script.",
+      "published": "2026-11-23T10:17:16.393",
+      "last_modified": "2026-11-23T10:17:16.393",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-80466"
+    },
+    {
+      "cve": "CVE-2026-134885",
+      "title": "CVE-2026-134885",
+      "description": "A flaw has been found in osCommerce up to 4.14.63493. The impacted element is the function actionSuccess of the file lib/frontend/controllers/MultisafeController.php of the component MultiSafepay Payment Success Callback. Executing a manipulation of the argument customer_id can lead to improper authentication. It is possible to launch the attack remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T10:17:16.170",
+      "last_modified": "2026-11-23T10:17:16.330",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134885"
+    },
+    {
+      "cve": "CVE-2026-134884",
+      "title": "CVE-2026-134884",
+      "description": "A vulnerability was detected in osCommerce 4.14.63493. The affected element is an unknown function of the component Backend Administration List Controller. Performing a manipulation of the argument order[0][dir] results in sql injection. It is possible to initiate the attack remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T10:17:15.970",
+      "last_modified": "2026-11-23T10:17:16.123",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134884"
+    },
+    {
+      "cve": "CVE-2026-134883",
+      "title": "CVE-2026-134883",
+      "description": "A security vulnerability has been detected in osCommerce 4.14.63493. Impacted is the function actionOrdersbatch of the file lib/backend/controllers/OrdersController.php of the component Orders Batch Processing. Such manipulation of the argument orders leads to sql injection. The attack may be performed from remote. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T10:17:15.770",
+      "last_modified": "2026-11-23T10:17:15.927",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134883"
+    },
+    {
+      "cve": "CVE-2026-128979",
+      "title": "CVE-2026-128979",
+      "description": "Improper certificate validation vulnerability in Estonian Information System Authority (RIA) libdigidocpp, Estonian Information System Authority (RIA) DigiDoc4, Estonian Information System Authority (RIA) DigiDoc on Android, and Estonian Information System Authority (RIA) DigiDoc on iOS.\n\n\nThe vulnerability occurs because libdigidocpp does not properly validate\n the Extended Key Usage (EKU) extension of certificates used to sign \nOCSP responses. Specifically, it fails to verify that the certificate \ncontains the id-kp-OCSPSigning EKU, which identifies certificates \nauthorised to sign OCSP responses. \n\n\n\n\n\nThis issue affects libdigidocpp: from 3.10.0 before 4.5.2; DigiDoc4: from 4.0.0 before 4.11.2; DigiDoc: from 3.0.0 before 3.2.0; DigiDoc: from 3.0.1 before 3.2.0.",
+      "published": "2026-11-23T10:17:15.610",
+      "last_modified": "2026-11-23T10:17:15.610",
+      "cvss": 6.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-128979"
+    },
+    {
+      "cve": "CVE-2026-121613",
+      "title": "CVE-2026-121613",
+      "description": "Missing authentication and authorization on an exposed interface allows an unauthenticated remote attacker to send arbitrary commands to the affected component, which can force a device reboot or let the attacker upload malicious firmware.",
+      "published": "2026-11-23T10:17:15.397",
+      "last_modified": "2026-11-23T10:17:15.397",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121613"
+    },
+    {
+      "cve": "CVE-2026-118888",
+      "title": "CVE-2026-118888",
+      "description": "ZTE Z80 Ultra product has an improper access control vulnerability. Successful exploitation of this vulnerability may affect confidentiality.",
+      "published": "2026-11-23T10:17:15.263",
+      "last_modified": "2026-11-23T10:17:15.263",
+      "cvss": 3.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118888"
+    },
+    {
+      "cve": "CVE-2026-93584",
+      "title": "CVE-2026-93584",
+      "description": "An SQL injection vulnerability in OTRS versions 2024.3.1 through 2026.8.1 allows unauthenticated remote attackers to inject arbitrary SQL expressions through the Survey endpoint.\n\nThe vulnerability exists in the Kernel::System::Survey::Request::RequestGet() method, which directly incorporates an attacker-controlled survey key into a SQL query without using parameterized statements. Successful exploitation allows attackers to retrieve ticket information and perform boolean-based or time-based blind SQL injection to extract potentially sensitive data accessible to the OTRS database account. Exploitation does not require authentication, a valid survey key, or an existing survey request. The external frontend must be accessible.",
+      "published": "2026-11-23T09:17:08.873",
+      "last_modified": "2026-11-23T09:17:08.873",
+      "cvss": 8.6,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-93584"
+    },
+    {
+      "cve": "CVE-2026-134882",
+      "title": "CVE-2026-134882",
+      "description": "A weakness has been identified in TOTOLINK A7100RU 7.4cu.2313_B20191024. This issue affects the function exportOvpn of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. This manipulation of the argument Username causes os command injection. The attack is possible to be carried out remotely.",
+      "published": "2026-11-23T09:17:05.653",
+      "last_modified": "2026-11-23T09:17:05.840",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134882"
+    },
+    {
+      "cve": "CVE-2026-115903",
+      "title": "CVE-2026-115903",
+      "description": "An authenticated attacker must reach the Edge file APIs through the Leader or directly on an Edge node. On affected managed Edge deployments with RBAC, Read Only access permits these calls. Disclosure is limited to files readable by the Edge process under its operating-system permissions and capabilities.",
+      "published": "2026-11-23T09:17:05.437",
+      "last_modified": "2026-11-23T09:17:05.437",
+      "cvss": 7.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115903"
+    },
+    {
+      "cve": "CVE-2026-115901",
+      "title": "CVE-2026-115901",
+      "description": "Exploitation requires an identity admitted to a configured trusted IdP application, control of claims selected as the OIDC user identifier, acceptance by configured SSO filters, and a victim with an active Cribl session following a crafted authentication link. Script executes in the Cribl origin, disclosing the victim's session token and permitting access with the victim's privileges; administrator access requires an administrator victim.",
+      "published": "2026-11-23T09:17:05.293",
+      "last_modified": "2026-11-23T09:17:05.293",
+      "cvss": 9.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115901"
+    },
+    {
+      "cve": "CVE-2026-115900",
+      "title": "CVE-2026-115900",
+      "description": "An attacker must possess a valid Worker distribution credential, reach the Leader distribution listener, and send crafted authenticated Worker heartbeats. Where mTLS client authentication is enforced, an accepted client certificate and its private key are also required. Successful exploitation bypasses Leader REST authentication and permits administrative API access.",
+      "published": "2026-11-23T09:17:05.157",
+      "last_modified": "2026-11-23T09:17:05.157",
+      "cvss": 8.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115900"
+    },
+    {
+      "cve": "CVE-2026-115899",
+      "title": "CVE-2026-115899",
+      "description": "An attacker must control pagination data returned by an upstream API or service queried by an existing REST Collector. The Collector must use affected response-based pagination and process the crafted data during a job run. Successful exploitation executes code with the Worker service account's permissions.",
+      "published": "2026-11-23T09:17:05.010",
+      "last_modified": "2026-11-23T09:17:05.010",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115899"
+    },
+    {
+      "cve": "CVE-2026-115873",
+      "title": "CVE-2026-115873",
+      "description": "A remote attacker must authenticate with Read Only (GroupRead) access to at least one Worker Group and reach the Leader API. A crafted expression can exploit the nested compiler to bypass expression restrictions and execute code with the Leader service account's permissions.",
+      "published": "2026-11-23T09:17:04.820",
+      "last_modified": "2026-11-23T09:17:04.820",
+      "cvss": 9.9,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115873"
+    },
+    {
+      "cve": "CVE-2026-134935",
+      "title": "CVE-2026-134935",
+      "description": "The dell-xps-touchpad-haptics package before 1.0.0-4 for Omarchy allows local users to change ownership of a root-owned file by making their own .config/omarchy/dell-haptic.conf file a symlink to that target file.",
+      "published": "2026-11-23T08:17:14.790",
+      "last_modified": "2026-11-23T08:17:14.790",
+      "cvss": 7.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134935"
+    },
+    {
+      "cve": "CVE-2026-134881",
+      "title": "CVE-2026-134881",
+      "description": "A security flaw has been discovered in HuLaSpark HuLa up to 3.0.9. This vulnerability affects the function showMsg of the file luohuo-cloud/luohuo-im/luohuo-im-biz/src/main/java/com/luohuo/flex/im/core/chat/service/strategy/msg/RecallMsgHandler.java of the component Recall Message Notification. The manipulation of the argument nickName results in cross site scripting. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T08:17:14.530",
+      "last_modified": "2026-11-23T08:17:14.747",
+      "cvss": 3.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134881"
+    },
+    {
+      "cve": "CVE-2026-121456",
+      "title": "CVE-2026-121456",
+      "description": "A privilege escalation vulnerability in the Axivion Suite ApiToken permission restriction for OIDC and SAML users of the Axivion Dashboard. \nWhen a user creates an ApiToken with a restricted token type (for example, IDE plugin or Continuous Integration), some of that user’s permissions should be removed from the token. For users who sign in to the Dashboard through OIDC, or through the SAML preview feature, this restriction has no effect. Exploitability is low: an attacker needs an ApiToken that has been leaked, or one that was shared on the assumption that its permissions were restricted.",
+      "published": "2026-11-23T08:17:14.357",
+      "last_modified": "2026-11-23T08:17:14.357",
+      "cvss": 5.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121456"
+    },
+    {
+      "cve": "CVE-2026-120382",
+      "title": "CVE-2026-120382",
+      "description": "An improper neutralization of argument delimiters in a command vulnerability in the OAuth API in Synology DiskStation Manager (DSM) before 7.1.1-42962-10, 7.2.1-69057-14, 7.2.2-72806-11, 7.3.2-86009-6, and 7.4.1-90080-2 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks.",
+      "published": "2026-11-23T08:17:14.183",
+      "last_modified": "2026-11-23T08:17:14.317",
+      "cvss": 9.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-120382"
+    },
+    {
+      "cve": "CVE-2026-118887",
+      "title": "CVE-2026-118887",
+      "description": "ZTE Z80 Ultra is affected by an unauthorized access vulnerability. Successful exploitation of this vulnerability could result in an impact on integrity.",
+      "published": "2026-11-23T08:17:14.033",
+      "last_modified": "2026-11-23T08:17:14.033",
+      "cvss": 6.8,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-118887"
+    },
+    {
+      "cve": "CVE-2026-115232",
+      "title": "CVE-2026-115232",
+      "description": "In iceoryx2 versions from 0.6.0 to 0.10.0, The C API getters that copy a service's hash into a caller-provided buffer (e.g. iox2_port_factory_pub_sub_service_hash and its other messaging protocol counterparts) write one byte past the end of the caller's buffer when `buffer_len` is less or equal to 40. The out-of-bounds byte is the string's NUL terminator, written at `buffer[buffer_len]`.\n\n\n\nResolution:\n\n\n\nResolution\n\n\n\nThe bugfix is released with iceoryx2 version 0.10.1 and on main branch (commit 7ca14dd).\n\n\n\nPlease note that the language bindings for C/C++ and Python (including the iceoryx2-ffi-c crate) are not published to crates.io since they are a local development dependency.",
+      "published": "2026-11-23T08:17:13.753",
+      "last_modified": "2026-11-23T08:17:13.753",
+      "cvss": 2.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-115232"
+    },
+    {
+      "cve": "CVE-2026-121480",
+      "title": "CVE-2026-121480",
+      "description": "Insufficient authorization in personal notification rules in Checkmk <2.5.0p20, <2.4.0p41 and 2.3.0 (EOL) allows authenticated users to receive notifications for hosts and services they are not a contact of by defining broad personal notification rules.",
+      "published": "2026-11-23T06:18:47.657",
+      "last_modified": "2026-11-23T06:18:47.793",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-121480"
+    },
+    {
+      "cve": "CVE-2026-134856",
+      "title": "CVE-2026-134856",
+      "description": "A vulnerability was identified in Snes9x up to 1.63. The impacted element is the function S9xUnfreezeFromStream of the file snapshot.cpp of the component Save-State Screenshot Restoration. The manipulation leads to out-of-bounds read. The attack must be carried out locally. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-23T05:17:49.720",
+      "last_modified": "2026-11-23T05:17:51.103",
+      "cvss": 5.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134856"
+    },
+    {
+      "cve": "CVE-2026-134855",
+      "title": "CVE-2026-134855",
+      "description": "A vulnerability was determined in kchapelier qoijs 1.0.0. The affected element is the function decode of the file src/decode.js of the component QOI Decoder. Executing a manipulation of the argument arrayBuffer can lead to uncontrolled memory allocation. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-23T05:17:45.357",
+      "last_modified": "2026-11-23T05:17:49.667",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134855"
+    },
+    {
+      "cve": "CVE-2026-134854",
+      "title": "CVE-2026-134854",
+      "description": "A vulnerability was found in andreasgal node-wav up to 0.0.2. Impacted is the function decode of the file index.js of the component WAV Decoder. Performing a manipulation results in uncontrolled memory allocation. The attack can be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T05:17:44.770",
+      "last_modified": "2026-11-23T05:17:45.297",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134854"
+    },
+    {
+      "cve": "CVE-2026-134853",
+      "title": "CVE-2026-134853",
+      "description": "A vulnerability has been found in vthibault tga-js up to 1.1.1. This issue affects the function _decodeRLE of the file src/tga.js of the component TgaLoader. Such manipulation leads to uncontrolled memory allocation. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-23T04:17:59.553",
+      "last_modified": "2026-11-23T04:17:59.707",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134853"
+    },
+    {
+      "cve": "CVE-2026-134852",
+      "title": "CVE-2026-134852",
+      "description": "A flaw has been found in shaozilee bmp-js up to 0.1.0. This vulnerability affects the function BmpDecoder.parseRGBA of the file lib/decoder.js. This manipulation causes uncontrolled memory allocation. It is possible to initiate the attack remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "published": "2026-11-23T04:17:59.340",
+      "last_modified": "2026-11-23T04:17:59.500",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134852"
+    },
+    {
+      "cve": "CVE-2026-134851",
+      "title": "CVE-2026-134851",
+      "description": "A vulnerability was detected in leonkhoo123 self-hosting-file-uploader up to 473e38ff8fba494f33a485730c6d95c5d8c536ea. This affects an unknown part of the file routes/generator.js of the component Admin Generator API. The manipulation results in missing authentication. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed.",
+      "published": "2026-11-23T04:17:59.133",
+      "last_modified": "2026-11-23T04:17:59.290",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134851"
+    },
+    {
+      "cve": "CVE-2026-134850",
+      "title": "CVE-2026-134850",
+      "description": "A security vulnerability has been detected in aceberg WatchYourLAN up to 2.1.4. Affected by this issue is the function getPortState of the file backend/internal/api/api-network.go of the component Web API. The manipulation of the argument addr leads to server-side request forgery. The attack is possible to be carried out remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-11-23T04:17:58.940",
+      "last_modified": "2026-11-23T04:17:59.087",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134850"
+    },
+    {
+      "cve": "CVE-2026-129830",
+      "title": "CVE-2026-129830",
+      "description": "When the rsyslog's `imuxsock` is parsing the TAG field from a message with a accepted shorter timestamp, the cursor used to read the message fields and the remaining message length to be read are left in a inconsistent state in relation to the content in the raw message, leading the module to read one byte past the end of the buffer holding the message.",
+      "published": "2026-11-23T04:17:58.760",
+      "last_modified": "2026-11-23T05:17:43.853",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-129830"
+    },
     {
       "cve": "CVE-2026-134789",
       "title": "CVE-2026-134789",
@@ -1527,289 +1806,10 @@
       "last_modified": "2026-11-22T02:17:06.500",
       "cvss": 6.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134686"
-    },
-    {
-      "cve": "CVE-2026-134685",
-      "title": "CVE-2026-134685",
-      "description": "GPAC MP4Box through 26.07.0 contains a heap use-after-free vulnerability in load_xmt_done() in src/scene_manager/loader_xmt.c that reads freed nodes during XMT parser teardown. Attackers can craft an XMT scene with a scene replace command that destroys PROTO sub-graphs, crashing MP4Box and potentially corrupting heap memory when opened.",
-      "published": "2026-11-22T02:17:06.153",
-      "last_modified": "2026-11-22T02:17:06.320",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134685"
-    },
-    {
-      "cve": "CVE-2026-134684",
-      "title": "CVE-2026-134684",
-      "description": "GPAC MP4Box through 26.07.0 contains a heap use-after-free vulnerability in the XMT loader that leaves freed node URL fields in the pending object descriptor link list after SFNode replacement. Attackers can supply a crafted XMT scene that reassigns a single-node field, causing xmt_resolve_od_links() to read freed memory, crashing the process and potentially corrupting the heap.",
-      "published": "2026-11-22T02:17:05.973",
-      "last_modified": "2026-11-22T02:17:06.100",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134684"
-    },
-    {
-      "cve": "CVE-2026-134683",
-      "title": "CVE-2026-134683",
-      "description": "GPAC MP4Box through 26.07.0 contains an uncontrolled recursion vulnerability in xmt_remove_od_links_recursive() in loader_xmt.c that lacks any depth limit when walking node children. Attackers can supply a crafted XMT file with deeply nested or cyclic node and SFCommandBuffer references to exhaust the stack and crash MP4Box on import.",
-      "published": "2026-11-22T02:17:05.797",
-      "last_modified": "2026-11-22T02:17:05.927",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134683"
-    },
-    {
-      "cve": "CVE-2026-134682",
-      "title": "CVE-2026-134682",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in scene graph teardown that allows attackers to trigger access to freed memory via crafted scene files. A node shared across multiple PROTO node_code lists is freed by gf_sg_reset(), and gf_sg_proto_del() then calls gf_node_unregister() on the dangling pointer, crashing MP4Box.",
-      "published": "2026-11-22T02:17:05.620",
-      "last_modified": "2026-11-22T02:17:05.757",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134682"
-    },
-    {
-      "cve": "CVE-2026-134681",
-      "title": "CVE-2026-134681",
-      "description": "GPAC MP4Box through 26.07.0 contains an uncontrolled recursion vulnerability in gf_sg_proto_instantiate() in src/scenegraph/vrml_proto.c that lacks cycle detection or depth limits. Attackers can craft an XMT scene whose PROTO body instantiates itself directly or indirectly, exhausting the stack and crashing MP4Box when imported.",
-      "published": "2026-11-22T02:17:05.447",
-      "last_modified": "2026-11-22T02:17:05.573",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134681"
-    },
-    {
-      "cve": "CVE-2026-134680",
-      "title": "CVE-2026-134680",
-      "description": "GPAC MP4Box through 26.07.0 contains a NULL pointer dereference vulnerability in TraverseForm() in src/compositor/mpeg4_form.c due to an off-by-one groupsIndex bounds check. Attackers can supply a crafted XMT scene with a Form node having constraints but an empty groupsIndex field to crash MP4Box, causing denial of service.",
-      "published": "2026-11-22T02:17:05.273",
-      "last_modified": "2026-11-22T02:17:05.403",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134680"
-    },
-    {
-      "cve": "CVE-2026-134679",
-      "title": "CVE-2026-134679",
-      "description": "WeddingShare through 1.8.2 contains a missing authorization vulnerability in the anonymous MediaViewerController.GalleryItem action that allows unauthenticated attackers to retrieve item upload paths without the gallery secret key. Attackers can enumerate sequential integer item ids to learn paths and uploader names, then download photos and videos from key-protected galleries served as static files.",
-      "published": "2026-11-22T02:17:05.103",
-      "last_modified": "2026-11-22T02:17:05.103",
-      "cvss": 8.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134679"
-    },
-    {
-      "cve": "CVE-2026-134678",
-      "title": "CVE-2026-134678",
-      "description": "Freedit before 0.9.9 contains an authorization bypass vulnerability in the edit_post_post handler for POST /post/edit/:pid that skips ownership and status checks when a Private inn is submitted. Members of a Private inn can overwrite any post by sequential id, including moderator-locked posts, re-attributing it to themselves and destroying original content.",
-      "published": "2026-11-22T02:17:04.950",
-      "last_modified": "2026-11-22T02:17:04.950",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134678"
-    },
-    {
-      "cve": "CVE-2026-134677",
-      "title": "CVE-2026-134677",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that allows attackers to access freed heap memory via stale object descriptor links. Attackers can supply a crafted XMT scene where xmt_node_end() frees a subtree containing InputSensor MFURL fields, causing xmt_resolve_od_links() to read freed memory and crash MP4Box.",
-      "published": "2026-11-22T02:17:04.777",
-      "last_modified": "2026-11-22T02:17:04.900",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134677"
-    },
-    {
-      "cve": "CVE-2026-134676",
-      "title": "CVE-2026-134676",
-      "description": "GPAC MP4Box through 26.07.0 contains a heap use-after-free vulnerability in gf_odm_disconnect() in src/compositor/object_manager.c caused by a deferred scene_ns_remove_object task holding a raw object manager pointer. Attackers can supply a crafted XMT scene whose commands delete a Background2D node, freeing the object manager early to crash the process and corrupt heap memory.",
-      "published": "2026-11-22T02:17:04.593",
-      "last_modified": "2026-11-22T02:17:04.730",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134676"
-    },
-    {
-      "cve": "CVE-2026-134675",
-      "title": "CVE-2026-134675",
-      "description": "Servas before 1.2.0 contains a missing authorization vulnerability that allows authenticated users to modify and delete other users' data by supplying target resource ids. Attackers can abuse TagController update and destroy, LinkController destroy, and GroupController destroy actions to rename or delete tags and delete links and groups.",
-      "published": "2026-11-22T02:17:04.440",
-      "last_modified": "2026-11-22T02:17:04.440",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134675"
-    },
-    {
-      "cve": "CVE-2026-134674",
-      "title": "CVE-2026-134674",
-      "description": "Freedit before 0.9.9 contains an authorization bypass vulnerability in the post_lock, post_hide, post_pin and comment_hide handlers that allows inn moderators to act on content from other inns. Attackers can supply their own inn id with a foreign post or comment id to lock or hide content instance-wide, or pin private posts to expose titles.",
-      "published": "2026-11-22T02:17:04.287",
-      "last_modified": "2026-11-22T02:17:04.287",
-      "cvss": 5.4,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134674"
-    },
-    {
-      "cve": "CVE-2026-134673",
-      "title": "CVE-2026-134673",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in xmt_resolve_od_links() in loader_xmt.c that allows attackers to read freed heap memory via stale strstr() pointers. Attackers can persuade users to process a crafted XMT file whose MFURL field contains an entry without a URL string, causing sprintf() to read freed memory and crash the process.",
-      "published": "2026-11-22T02:17:04.120",
-      "last_modified": "2026-11-22T02:17:04.243",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134673"
-    },
-    {
-      "cve": "CVE-2026-134672",
-      "title": "CVE-2026-134672",
-      "description": "GPAC MP4Box through 26.07.0 contains an uncontrolled recursion vulnerability in xmt_discard_subtree() in src/scene_manager/loader_xmt.c that allows attackers to exhaust the call stack. Attackers can persuade a user to process a crafted XMT file with deeply nested discarded SFNode and MFNode fields to crash MP4Box.",
-      "published": "2026-11-22T02:17:03.933",
-      "last_modified": "2026-11-22T02:17:04.070",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134672"
-    },
-    {
-      "cve": "CVE-2026-134671",
-      "title": "CVE-2026-134671",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT-A scene loader that allows attackers to corrupt heap memory via crafted XMT files. Attackers can persuade a user to process an XMT file whose discarded out-of-scope nodes cause gf_node_unregister() to dereference a freed child, crashing the process.",
-      "published": "2026-11-22T02:17:03.760",
-      "last_modified": "2026-11-22T02:17:03.890",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134671"
-    },
-    {
-      "cve": "CVE-2026-134670",
-      "title": "CVE-2026-134670",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in xmt_node_end() in src/scene_manager/loader_xmt.c that writes to freed heap memory when replacing single-node field commands. Attackers can persuade users to process a crafted XMT file where a Conditional node owning the command is unregistered, corrupting heap memory and crashing MP4Box.",
-      "published": "2026-11-22T02:17:03.583",
-      "last_modified": "2026-11-22T02:17:03.717",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134670"
-    },
-    {
-      "cve": "CVE-2026-134669",
-      "title": "CVE-2026-134669",
-      "description": "GPAC MP4Box through 26.07.0 contains a heap-based buffer over-read vulnerability in gf_xml_sax_peek_node() in src/utils/xml_parser.c that lets attackers read past the heap line buffer. Attackers can craft an XMT file whose ROUTE or command references a later-defined node, crashing MP4Box when a user imports it.",
-      "published": "2026-11-22T02:17:03.410",
-      "last_modified": "2026-11-22T02:17:03.537",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134669"
-    },
-    {
-      "cve": "CVE-2026-134668",
-      "title": "CVE-2026-134668",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that allows attackers to corrupt heap memory when xmt_node_end() discards an out-of-scope node without resetting command-buffer state. Attackers can supply a crafted XMT file that leaves parser->command_buffer and parser->command dangling, causing later parsing to access freed memory and crash MP4Box.",
-      "published": "2026-11-22T02:17:03.223",
-      "last_modified": "2026-11-22T02:17:03.363",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134668"
-    },
-    {
-      "cve": "CVE-2026-134667",
-      "title": "CVE-2026-134667",
-      "description": "GPAC MP4Box through 26.07.0 contains a stack-based buffer overflow vulnerability in xmt_resolve_od_links() that allows attackers to corrupt stack memory via over-long object descriptor URL fragments. Attackers can craft an XMT scene file whose URL fragment overflows the fixed 5000-byte szURL buffer via sprintf, crashing MP4Box when a user loads it.",
-      "published": "2026-11-22T02:17:03.047",
-      "last_modified": "2026-11-22T02:17:03.180",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134667"
-    },
-    {
-      "cve": "CVE-2026-134666",
-      "title": "CVE-2026-134666",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT-A scene loader because xmt_node_end() frees unattached nodes but leaves them on the parser node stack. Attackers can persuade users to process a crafted XMT file whose text content makes xmt_text_content() pass the freed node to gf_node_get_tag(), reading freed heap memory and crashing MP4Box.",
-      "published": "2026-11-22T02:17:02.877",
-      "last_modified": "2026-11-22T02:17:03.003",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134666"
-    },
-    {
-      "cve": "CVE-2026-134665",
-      "title": "CVE-2026-134665",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that allows attackers to access freed heap memory by supplying a crafted XMT file. When xmt_parse_element() replaces an SFNode field child, the freed node stays cached in parser->peeked_nodes and a later DEF lookup passes it to gf_node_get_name(), crashing MP4Box.",
-      "published": "2026-11-22T02:17:02.710",
-      "last_modified": "2026-11-22T02:17:02.833",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134665"
-    },
-    {
-      "cve": "CVE-2026-134664",
-      "title": "CVE-2026-134664",
-      "description": "GPAC MP4Box through 26.07.0 contains a NULL pointer dereference vulnerability in src/compositor/mpeg4_sensors.c that allows attackers to crash the process via uninitialized sensor nodes. Attackers can supply a crafted XMT scene that makes compositor_mpeg4_get_sensor_handler_ex() call hs->IsEnabled through a near-NULL pointer, causing denial of service.",
-      "published": "2026-11-22T02:17:02.523",
-      "last_modified": "2026-11-22T02:17:02.660",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134664"
-    },
-    {
-      "cve": "CVE-2026-134663",
-      "title": "CVE-2026-134663",
-      "description": "GPAC MP4Box through 26.07.0 contains a use-after-free vulnerability in the XMT scene loader that retains a pointer to a PROTO sub-graph freed by gf_sg_proto_del(). Attackers can supply a crafted XMT file imported with MP4Box, causing xmt_parse_command() to update the freed graph's referencing_commands list and crash the process.",
-      "published": "2026-11-22T02:17:02.347",
-      "last_modified": "2026-11-22T02:17:02.473",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134663"
-    },
-    {
-      "cve": "CVE-2026-134662",
-      "title": "CVE-2026-134662",
-      "description": "GPAC MP4Box through 26.07.0 contains a double free vulnerability in the XMT-A scene loader that leaves a stale GF_Command pointer in a Conditional node's SFCommandBuffer when the buffer element is not properly closed. Attackers can persuade users to process a crafted XMT file with malformed nesting, causing gf_sg_sfcommand_del() to free the live command, corrupting heap memory and crashing the process.",
-      "published": "2026-11-22T02:17:02.150",
-      "last_modified": "2026-11-22T02:17:02.297",
-      "cvss": 6.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134662"
-    },
-    {
-      "cve": "CVE-2026-134661",
-      "title": "CVE-2026-134661",
-      "description": "GPAC MP4Box through 26.07.0 contains a NULL pointer dereference vulnerability in gf_odf_encode_ui_config() in src/odf/descriptors.c that allows attackers to crash the process. Attackers can persuade users to process a crafted XMT file declaring an interaction stream without a UIConfig descriptor, causing a denial of service.",
-      "published": "2026-11-22T02:17:01.977",
-      "last_modified": "2026-11-22T02:17:02.103",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134661"
-    },
-    {
-      "cve": "CVE-2026-134660",
-      "title": "CVE-2026-134660",
-      "description": "GPAC MP4Box through 26.07.0 contains a type confusion vulnerability in xmt_parse_command() in src/scene_manager/loader_xmt.c that casts target nodes to GF_ParentNode without validation. Attackers can persuade users to process a crafted XMT-A file whose command targets a non-grouping node, causing gf_node_list_get_child() to perform an invalid memory read and crash MP4Box.",
-      "published": "2026-11-22T02:17:01.790",
-      "last_modified": "2026-11-22T02:17:01.930",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134660"
-    },
-    {
-      "cve": "CVE-2026-134659",
-      "title": "CVE-2026-134659",
-      "description": "OpenAirInterface CN5G AMF before 2.2.2 contains a missing resource release vulnerability in amf_sbi::handle_itti_message() that leaves stale PDU session contexts when NRF lookup or SMF selection fails. Authenticated UEs can request PDU sessions while no SMF is selectable, causing deregistration to wait on SMF release timeouts and stall shared NAS processing for other UEs.",
-      "published": "2026-11-22T02:17:01.633",
-      "last_modified": "2026-11-22T02:17:01.633",
-      "cvss": 3.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134659"
-    },
-    {
-      "cve": "CVE-2026-134658",
-      "title": "CVE-2026-134658",
-      "description": "free5GC SMF through 1.4.6 contains a missing resource release vulnerability in HandlePDUSessionSMContextCreate that leaves CHF charging sessions open when PCF session rule application fails. Attackers can repeatedly trigger failed PDU session establishments to accumulate orphaned charging sessions on the CHF and degrade its availability.",
-      "published": "2026-11-22T02:17:01.463",
-      "last_modified": "2026-11-22T02:17:01.463",
-      "cvss": 3.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134658"
-    },
-    {
-      "cve": "CVE-2026-134657",
-      "title": "CVE-2026-134657",
-      "description": "OpenAirInterface CN5G PCF through 2.2.2 contains a memory leak vulnerability in pcf_smpc::delete_sm_policy_handler() that leaves stale UE IPv4, SUPI and DNN index entries after association deletion. Attackers can trigger repeated SM policy create and delete cycles over N7 via PDU session establishment and release to grow PCF memory without bound and break association lookups.",
-      "published": "2026-11-22T02:17:01.307",
-      "last_modified": "2026-11-22T02:17:01.307",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134657"
-    },
-    {
-      "cve": "CVE-2026-134656",
-      "title": "CVE-2026-134656",
-      "description": "OpenAirInterface CN5G SMF through 2.2.2 contains a missing resource release vulnerability in handle_pdu_session_release_sm_context_request() that fails to delete N7 SM policy associations at the PCF. Authenticated UEs can repeatedly establish and release PDU sessions through the AMF-initiated Release SM Context path to accumulate stale associations and exhaust PCF memory.",
-      "published": "2026-11-22T02:17:01.147",
-      "last_modified": "2026-11-22T02:17:01.147",
-      "cvss": 5.3,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134656"
-    },
-    {
-      "cve": "CVE-2026-134655",
-      "title": "CVE-2026-134655",
-      "description": "Open5GS AMF through 2.8.0 contains a missing resource release vulnerability that allows authenticated UEs to orphan SMF sessions by triggering Create SM Context response processing failures. Attackers can repeatedly release the RAN UE context while responses are pending, causing AMF_SESS_CLEAR() without Release SM Context requests and degrading SMF availability.",
-      "published": "2026-11-22T02:17:00.957",
-      "last_modified": "2026-11-22T02:17:01.090",
-      "cvss": 3.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134655"
     }
   ],
-  "total_results": 583,
+  "total_results": 614,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 383
+  "start_index": 414
 }
