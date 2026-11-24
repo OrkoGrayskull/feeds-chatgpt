@@ -1,12 +1,75 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-23T16:24:17+00:00",
+  "fetched_at": "2026-11-24T07:08:21+00:00",
   "window_days": 3,
-  "window_start": "2026-11-21",
-  "window_end": "2026-11-23",
-  "count": 17,
+  "window_start": "2026-11-22",
+  "window_end": "2026-11-24",
+  "count": 9,
   "items": [
+    {
+      "cve": "CVE-2026-63492",
+      "ghsa": "GHSA-j44m-77cc-p3cc",
+      "title": "AVideo API vulnerable to OS command injection through an unescaped FFmpeg process keyword",
+      "description": "### Summary\n\nThe helper `listFFmpegProcesses($keyword)` in `plugin/API/standAlone/functions.php` builds a shell pipeline by interpolating `$keyword` inside single quotes and running it with `exec()`:\n\n```php\n$command .= \" | grep '$keyword'\";\nexec($command, $output, $status);\n```\n\nThe two callers in `plugin/API/standAlone/ffmpeg.json.php` (the `list` mode and the `isKeywordRunning` mode) pass the RAW decrypted `codeToExec` field, not the sanitized `$keyword` variable that the endpoint allowlists elsewhere. Because the value is placed inside a single-quoted shell context with no escaping, a payload that closes the quote (for example `x'; touch /tmp/marker #`) breaks out and injects an arbitrary command that runs via `exec()`'s `/bin/sh -c`. An attacker who can craft a valid encrypted payload achieves OS command execution as the web-server user.\n\n### Vulnerable code\n\nSink — `plugin/API/stan",
+      "severity": "high",
+      "published": "2026-11-23T22:06:28+00:00",
+      "link": "https://github.com/advisories/GHSA-j44m-77cc-p3cc"
+    },
+    {
+      "cve": "CVE-2026-63476",
+      "ghsa": "GHSA-9x82-4j54-863h",
+      "title": "isomorphic-git allows unbounded memory allocation from attacker-controlled delta target size (DoS)",
+      "description": "### Summary\nWhen applying a delta object from a packfile, isomorphic-git reads a **server-controlled** `targetSize` and calls `Buffer.alloc(targetSize)` with no upper bound. A single malicious HTTP response to `git.clone()`/`git.fetch()` can force a ~2 GB allocation → memory exhaustion / DoS (process killed on memory-constrained hosts).\n\n### Details\n`src/utils/applyDelta.js`:\n\n```js\nconst sourceSize = readVarIntLE(reader)\nconst targetSize = readVarIntLE(reader)   // attacker-controlled\n…\ntarget = Buffer.alloc(targetSize)\n```\n\nA pack with one `OBJ_REF_DELTA` whose header declares `targetSize = 0x7FFFFFFF` (~2 GB) and a 1-byte op causes the full allocation up front. The subsequent size-mismatch error is swallowed in `GitPackIndex.fromPack`, so on a host with spare RAM it silently wastes ~2 GB; on a small host the OS `SIGKILL`s the process.\n\n#### Canonical git behavior (divergence)\ngit reje",
+      "severity": "medium",
+      "published": "2026-11-23T21:07:02+00:00",
+      "link": "https://github.com/advisories/GHSA-9x82-4j54-863h"
+    },
+    {
+      "cve": "CVE-2026-77423",
+      "ghsa": "GHSA-2v9w-34q6-wpqx",
+      "title": "jline3 leads to ReDoS in Built-in Less Viewer Search",
+      "description": "### Summary\n\nThe JLine3 built-in `less` pager compiles user-supplied search patterns directly as\nJava regular expressions with no sanitization, timeout, or backtracking bound. A\nmalicious pattern such as `(a+)+b` can trigger catastrophic backtracking and hang the\nsession thread at 100% CPU. In deployments that expose `less` over Telnet or SSH,\nthis becomes a denial-of-service issue for the affected session and can be used to\nexhaust a bounded session pool.\n\n### Details\n\n`Less.getPattern()` in `builtins/src/main/java/org/jline/builtins/Less.java` compiles\nthe user-controlled search string directly with `Pattern.compile()`:\n\n```java\nprivate Pattern getPattern(boolean doDisplayPattern) {\n    Pattern compiled = null;\n    String _pattern = doDisplayPattern ? displayPattern : pattern;\n    if (_pattern != null) {\n        boolean insensitive =\n                ignoreCaseAlways || ignoreCaseCond &",
+      "severity": "high",
+      "published": "2026-11-23T21:02:03+00:00",
+      "link": "https://github.com/advisories/GHSA-2v9w-34q6-wpqx"
+    },
+    {
+      "cve": "CVE-2026-63410",
+      "ghsa": "GHSA-vp2j-gqfm-r3cf",
+      "title": "secp256k1-native has a compiler-induced timing side channel in scalar multiplication",
+      "description": "## Summary\n\n`Point#mul` — the default, constant-time scalar multiplication and the library's headline secret-scalar operation — could leak timing information about the secret scalar (a private key or ECDSA-style nonce in a downstream consumer) **not because of a source-level bug, but because the compiler reconstructed a branch from branchless source.**\n\nThe Montgomery ladder selects between point candidates with `uint256_select`, written deliberately branchlessly as `r = (a & ~mask) | (b & mask)` with a mask that is all-ones or all-zeros. GCC 15.2 at `-O2` recognises this select idiom, reconstructs the original boolean condition, and emits a secret-dependent conditional jump (`je`/`jne`). The branch's taken/not-taken timing correlates with the secret scalar bits flowing through the ladder.\n\nThis silently undid the 0.17.0 fix for the historical |t|=875 infinity-branch leak, which had reli",
+      "severity": "medium",
+      "published": "2026-11-23T20:59:48+00:00",
+      "link": "https://github.com/advisories/GHSA-vp2j-gqfm-r3cf"
+    },
+    {
+      "cve": "CVE-2026-58262",
+      "ghsa": "GHSA-f9h7-4mmq-vgcq",
+      "title": "Klever Go counts bitmap padding bits toward BLS quorum, allowing blocks with insufficient signatures",
+      "description": "## Summary\n\nWhen validating an incoming block header, `HeaderSigVerifier.verifyConsensusSize` counts *every* set bit in `PubKeysBitmap` — including bits that correspond to no validator (the padding bits of the final byte, which exist whenever the consensus group size is not a multiple of 8). The subsequent BLS aggregate-signature verification (`blsMultiSigner.Verify`) only checks signature validity for real validator indices and silently ignores those padding bits. As a result, a malicious or compromised block producer can set the padding bits to make the on-bits reach the PBFT quorum while only gathering a smaller number of real validator signature shares, causing a block to be accepted as correctly signed without a genuine two-thirds validator quorum.\n\n## Details\n\nQuorum counter counts padding bits — `core/process/headerCheck/headerSignatureVerify.go:145-183`:\n\n```go\nfunc (hsv *HeaderS",
+      "severity": "high",
+      "published": "2026-11-23T20:55:35+00:00",
+      "link": "https://github.com/advisories/GHSA-f9h7-4mmq-vgcq"
+    },
+    {
+      "cve": "CVE-2026-63402",
+      "ghsa": "GHSA-6jcc-5g8w-32mx",
+      "title": "i18next deepExtend recurses into inherited built-ins, allowing corruption of shared built-in objects (DoS)",
+      "description": "### Summary\n\n`deepExtend` in `src/utils.js` (reached via the public `addResourceBundle(lng, ns, data, deep, overwrite)` API) checked key existence with the `in` operator, which walks the prototype chain. A source key matching an inherited built-in (e.g. `hasOwnProperty`, `toString`, `valueOf`) therefore caused the function to recurse into the shared object on `Object.prototype`. With `overwrite: true`, a nested value could overwrite a property of that shared built-in — for example setting `Object.prototype.hasOwnProperty.call` to a non-callable value — corrupting it process-wide and causing an unrecoverable denial of service.\n\nThis is distinct from CVE-2026-48713 (i18next-fs-backend) and CVE-2026-48714 (i18next-http-middleware), which are prototype pollution via `setPath`/key-walking in different packages. This issue is in i18next core, via a different mechanism (the `in` operator in `de",
+      "severity": "medium",
+      "published": "2026-11-23T20:53:00+00:00",
+      "link": "https://github.com/advisories/GHSA-6jcc-5g8w-32mx"
+    },
+    {
+      "cve": "CVE-2026-133469",
+      "ghsa": "GHSA-2r3w-c2vx-fv5g",
+      "title": "Xen Orchestra: Empty-object login token",
+      "description": "### Summary\n\nREST cookie parsing turns `authenticationToken=j:%7B%7D` into `{}`. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats `{}` as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated `/rest/v0/users/me/authentication_tokens` route then returns reusable login token IDs.\n\n\n### Details\n\n1. In `packages/xo-server/src/api/session.mjs`, function  `signIn(credentials)` has **no `params` schema** (unlike the deprecated `signInWithToken`, which declares `token: { type: 'string' }`), so `credentials.token` can be any JSON value.\n2. `packages/xo-server/src/xo-mixins/authentication.mjs`, token provider:\n   ```js\n   this.registerAuthenticationProvider(async ({ token: tokenId }, { ip } = {}) => {\n     if (!tokenId) return          // {} is t",
+      "severity": "critical",
+      "published": "2026-11-23T17:29:29+00:00",
+      "link": "https://github.com/advisories/GHSA-2r3w-c2vx-fv5g"
+    },
     {
       "cve": "CVE-2026-22865",
       "ghsa": "GHSA-mqwm-5m85-gmcv",
@@ -24,141 +87,6 @@
       "severity": "high",
       "published": "2026-11-23T15:33:34+00:00",
       "link": "https://github.com/advisories/GHSA-w78c-w6vf-rw82"
-    },
-    {
-      "cve": "CVE-2026-122247",
-      "ghsa": "GHSA-25qc-m4pw-2w8r",
-      "title": "Budibase: Unauthenticated global-admin & database creation via tenant-confusion bypass of the one-time init guard (`POST /api/global/users/init`)",
-      "description": "## Description\n\n### Summary\n\nOn a self-hosted, single-tenant Budibase instance (`multiTenancy:false`), the public bootstrap endpoint `POST /api/global/users/init` remains fully exploitable **after** the instance has been provisioned. Its \"already initialised\" guard (`checkAnyUserExists()`) is evaluated inside a **tenant-scoped** database context derived from an **attacker-controlled `tenantId`** in the request body. Because the tenancy layer never constrains that `tenantId` to the only legitimate tenant (`default`) on a single-tenant deployment, an unauthenticated attacker simply supplies any unused tenant name to make the guard see an empty user list, and the endpoint then creates a brand-new CouchDB database (`<tenantId>_global-db`) and a **global-admin** user document (`admin.global = true`, `builder.global = true`) inside it - with no authentication and no CSRF token.\n\nThis is (a) a ",
-      "severity": "high",
-      "published": "2026-11-20T23:50:01+00:00",
-      "link": "https://github.com/advisories/GHSA-25qc-m4pw-2w8r"
-    },
-    {
-      "cve": "CVE-2026-122244",
-      "ghsa": "GHSA-r2q3-7m4h-63qg",
-      "title": "Budibase: Cross-privilege Stored XSS in the Budibase Builder via broken HTML-escaping in `jsonFormatter.format()` rendered through `{@html}` in the CSP-less Builder origin",
-      "description": "## Description\n\n### Summary\n\nA **low-privileged application end-user** (role `BASIC` - **not** a builder or admin, and on a public data-collection form, an unauthenticated visitor) can store an HTML/JavaScript payload in ordinary row data. When a **builder or admin** later opens that table in the Budibase Builder and evaluates any Handlebars binding whose Preview surfaces the value (the Data-section **Formula** column editor, or any binding drawer), the stored value is rendered as **raw HTML** and the attacker's JavaScript executes in the Builder's origin.\n\nThe Builder SPA is served by nginx with **no Content-Security-Policy** (the CSP middleware only decorates the server-rendered *published-app* document, not `/builder/`). The injected script therefore runs unrestricted in the highest-trust surface of the product - the admin/builder session that can create datasources, run server-side J",
-      "severity": "high",
-      "published": "2026-11-20T23:49:47+00:00",
-      "link": "https://github.com/advisories/GHSA-r2q3-7m4h-63qg"
-    },
-    {
-      "cve": "CVE-2026-132276",
-      "ghsa": "GHSA-53pm-wgxf-c6qf",
-      "title": "wcmatch: Polynomial-time ReDoS when matching untrusted names against multi-star patterns (default flags)",
-      "description": "# Summary\n\nWith default flags, a pattern that contains several `*` wildcards takes polynomial time, O(n^k) for k stars, to reject a crafted file name. The pattern is an ordinary developer constant such as `*_*_*_*_*.csv`; only the string being matched comes from the attacker. A 255-byte file name (the maximum on common filesystems) takes 73 s with `fnmatch.fnmatch()` and 86 s with `glob.globmatch()`. The standard library's `fnmatch` handles the same input in under a millisecond.\n\nThis is different from GHSA-84v8-qmgq-9g88: that advisory covers extglob patterns, while this case needs no flags and no attacker-controlled pattern.\n\n# Details\n\nEvery `*` is translated to a lazy `.*?` (`_STAR`, `wcmatch/_wcparse.py:212`; `_PATH_STAR` `[^/]*?`, `:218`), which is emitted in `_handle_star` (`:1405-1424`):\n\n```text\n*_*_*_*_*.csv  ->  ^(?s:(?=.)(?![.]).*?_.*?_.*?_.*?_.*?\\.csv)$\n```\n\nWhen the subject",
-      "severity": "medium",
-      "published": "2026-11-20T23:49:18+00:00",
-      "link": "https://github.com/advisories/GHSA-53pm-wgxf-c6qf"
-    },
-    {
-      "cve": "CVE-2026-132277",
-      "ghsa": "GHSA-q87h-c5m7-659j",
-      "title": "Inscriptis: Quadratic memory growth from sibling <table> elements in get_text()",
-      "description": "# Summary\n\nEvery sibling `<table>` adds another level of the parent's indentation, so the size of `get_text()` output grows quadratically with the number of tables. In the measurements below, a 240 KB HTML document produces about 1 billion characters and uses about 1 GB of memory.\n\n# Details\n\n`table_end_handler()` (`model/tag/table_tag.py`) writes the rendered table into the parent element with `HtmlElement.write_verbatim_text()` (`model/html_element.py`). For a block-level parent, `write_verbatim_text()` calls `canvas.open_block()`, which pushes the parent's `padding_inline` onto the prefix stack. The following `close_block()` never pops it; only `Canvas.close_tag()` calls `prefix.remove_last_prefix()`. So each table leaves one extra padding entry on the stack.\n\nThis has been present since 2.0 (commit 84ec720).\n\n```python\n>>> get_text('<ul>' + '<table><tr><td>a</td></tr></table>' * 4 + ",
-      "severity": "medium",
-      "published": "2026-11-20T23:48:51+00:00",
-      "link": "https://github.com/advisories/GHSA-q87h-c5m7-659j"
-    },
-    {
-      "cve": "CVE-2026-132275",
-      "ghsa": "GHSA-555j-qj3j-c8jv",
-      "title": "svglib: Exponential resource consumption via nested <use> references in svg2rlg",
-      "description": "# Summary\n\n`svg2rlg()` expands `<use>` references without any limit on the total number of expansions. Only direct cycles are rejected (`CircularRefError`). A group containing N `<use>` elements that point to another such group multiplies the work by N per nesting level, so an SVG of about 1.4 KB makes svglib clone and render over 100,000 nodes, taking tens of seconds of CPU time and hundreds of MiB of memory. Each additional level adds about 245 bytes to the document and multiplies time by ~10.\n\nThis is the SVG `<use>` variant of the XML \"billion laughs\" attack (the same class as librsvg CVE-2019-20446).\n\n# Details\n\n`SvgRenderer.renderUse()` in `src/svglib/svglib.py`:\n\n```python\ntry:\n    item = self.xlink_href_target(node, group=group)\nexcept CircularRefError:\n    node.parent.etree_element.remove(node.etree_element)\n    return group\n...\nif len(node.getchildren()) == 0:\n    # Append a co",
-      "severity": "high",
-      "published": "2026-11-20T23:47:58+00:00",
-      "link": "https://github.com/advisories/GHSA-555j-qj3j-c8jv"
-    },
-    {
-      "cve": "CVE-2026-104884",
-      "ghsa": "GHSA-h57j-5f5m-789v",
-      "title": "contao/core-bundle: Cross-site scripting in the frontend search results",
-      "description": "Commit `23e8cca3136a` hardened the search-result title against insert-tag/XSS by setting `$objTemplate->title = StringUtil::specialchars(StringUtil::stripInsertTags($arrResult[$i]['title']))`. But the legacy HTML5 template does not use that `title` variable - it prints the raw `link` variable, which is assigned without escaping.\n\n## Impact\n\nAffected configuration (important): on 5.7.9 the default search template is the Twig `search_default.html.twig`, which does not use the raw `link` variable and auto-escapes - so a default Twig install is not affected. The vulnerable raw echo is in the legacy `search_default.html5` template (still shipped and selectable in 5.7.9, line 8: `<?= $this->link ?>`); exploitation requires that legacy template to be active for the search module (common on sites migrated from earlier Contao / using custom template selection). Where the legacy template is used, ",
-      "severity": "medium",
-      "published": "2026-11-20T23:46:56+00:00",
-      "link": "https://github.com/advisories/GHSA-h57j-5f5m-789v"
-    },
-    {
-      "cve": "CVE-2026-104883",
-      "ghsa": "GHSA-r9qp-pqx5-8369",
-      "title": "contao/core-bundle: Non-admin users can self-grant permissions that implicitly make them administrators",
-      "description": "Commit `2b83a60f7763` (5.7.3) hardened the template editor: it added `TemplateEditorModuleVoter` + `CheckTemplateEditorSaveListener` so a non-admin cannot self-grant the `tpl_editor` backend module (editable PHP-capable templates permit server-side code execution). That voter supports only the `modules` field and the literal value `tpl_editor`.\n\nThe equally RCE-capable `theme_import` capability lives in a different field - the `themes` checkbox field (tl_user_group.php:98-105 options include `theme_import`; identical on tl_user.php:248-253) - which has no save_callback and no voter. `TemplateEditorModuleVoter` is the only DC voter registered for tl_user_group, and it does not cover the `themes` field. So a delegated user manager can add `theme_import` to their own (or a managed) account.\n\nLive repro (Contao 5.7.9):\n1. As admin, create a non-admin backend group with the `user` (or `group`",
-      "severity": "high",
-      "published": "2026-11-20T23:45:41+00:00",
-      "link": "https://github.com/advisories/GHSA-r9qp-pqx5-8369"
-    },
-    {
-      "cve": "CVE-2026-104882",
-      "ghsa": "GHSA-23w9-4pg3-xwm3",
-      "title": "contao/core-bundle: Improper access control in the CSV import wizard",
-      "description": "Custom backend module \"key\" actions are dispatched in `Backend::getBackendModule()` (Backend.php:322-327) after only the module-level `USER_CAN_ACCESS_MODULE` check - no per-record voter runs.\n\n## Impact\n\nA non-admin editor scoped to certain pages/forms can overwrite the tableitems/listitems/options of arbitrary tl_content / tl_form_field records outside their scope, defeating the per-record access control. Integrity IDOR (blind content overwrite; the value written is `serialize()` of a plain string array from the CSV - not object injection).\n\n## Credits\n\nThis security vulnerability was found by @HDWSec",
-      "severity": "medium",
-      "published": "2026-11-20T23:44:33+00:00",
-      "link": "https://github.com/advisories/GHSA-23w9-4pg3-xwm3"
-    },
-    {
-      "cve": "CVE-2026-104881",
-      "ghsa": "GHSA-3r9g-pfhv-3228",
-      "title": "contao/newsletter-bundle: Contao newsletter custom actions bypass channel-scoped authorization",
-      "description": "Channel access is enforced only by the DataContainer voters (`NewsletterChannelAccessVoter` / `NewsletterRecipientsAccessVoter`, requiring USER_CAN_EDIT_CHANNEL), whose `supportsType()` fires exclusively for Create/Read/Update/DeleteAction subjects dispatched inside DC_Table's create/edit/delete methods. The newsletter custom key-actions are dispatched directly by `Backend::getBackendModule()` (Backend.php:324-327) after only the module-level `USER_CAN_ACCESS_MODULE` check; the DC_Table constructor runs no per-record ReadAction vote for a key-action. `Newsletter.php` contains no `isGranted` / `denyAccess` / `isAdmin` / `hasAccess` calls, and none of the newsletter DCAs have a `checkPermission` onload callback.\n\n## Impact\n\nA channel-scoped newsletter editor can inject recipients into, mass-mail, and in some versions, delete/denylist recipients of channels they are not authorized to edit -",
-      "severity": "medium",
-      "published": "2026-11-20T23:43:26+00:00",
-      "link": "https://github.com/advisories/GHSA-3r9g-pfhv-3228"
-    },
-    {
-      "cve": "CVE-2026-77331",
-      "ghsa": "GHSA-72jh-722p-rqr3",
-      "title": "memtomem-stm: Concurrent LTM recovery can duplicate reconnects or reuse a cancelled transport session",
-      "description": "Concurrent surfacing RPC failures can trigger more than one reconnect for the same dirty session, and cancellation during a post-reconnect retry can leave the replacement session reusable despite an interrupted protocol exchange. The private fix introduces monotonic session generations, one shielded shared reconnect flight per dirty generation, and generation-aware cancellation handling across search, access-count, and scratch RPCs. The duplicate-reconnect subcase was introduced in 0.1.24; cancellation recovery affects the broader listed range.",
-      "severity": "low",
-      "published": "2026-11-20T23:38:15+00:00",
-      "link": "https://github.com/advisories/GHSA-72jh-722p-rqr3"
-    },
-    {
-      "cve": "CVE-2026-77332",
-      "ghsa": "GHSA-43hx-xm7w-3mhj",
-      "title": "memtomem-stm: Surfaced memory data can escape the Markdown compatibility boundary",
-      "description": "Untrusted long-term and working-memory fields can introduce Markdown or HTML-compatible structure into the surfaced-memory envelope. A crafted memory may create misleading structural boundaries or visually conceal content. The private fix serializes every untrusted field as inert single-line data, validates copyable memory identifiers, and pins an explicit untrusted-data preamble. Ordinary natural-language persuasion remains a residual model-level risk.",
-      "severity": "low",
-      "published": "2026-11-20T23:37:39+00:00",
-      "link": "https://github.com/advisories/GHSA-43hx-xm7w-3mhj"
-    },
-    {
-      "cve": "CVE-2026-77309",
-      "ghsa": "GHSA-jrjx-9jjw-747m",
-      "title": "AIT-GUI route chain allows unauthenticated Python execution in server process",
-      "description": "## Summary\nA security issue exists where unauthenticated callers can instruct the AIT-GUI server to execute arbitrary Python scripts. The attack vector involves obtaining a session cookie through GET /, followed by a malicious POST /script/run request containing an absolute file path that bypasses the configured script directory restrictions.\n\n### Patches\n* 2.5.1\n\n### Impact\nThis vulnerability allows unauthenticated remote code execution on the AIT-GUI server. Any attacker with network access can execute arbitrary Python code with daemon privileges.\n\n## Details\n_Chain:_\n1. `POST /tlm/query` writes the user-controlled `fields` value into `fields_in.txt` under the AIT-GUI static directory.\n   *  If the supplied `dataDir` has no `.pcap` files, the route returns the expected `400 Bad Request` before deleting that file.\n2. `POST /script/run` accepts `scriptPath=../static/fields_in.txt`.\n   * ",
-      "severity": "high",
-      "published": "2026-11-20T23:36:41+00:00",
-      "link": "https://github.com/advisories/GHSA-jrjx-9jjw-747m"
-    },
-    {
-      "cve": "CVE-2026-61725",
-      "ghsa": "GHSA-qh76-45cr-8xrc",
-      "title": "sevenz-rust2: decompress builds each output path as dest.join(entry.name()) with no traversal guard, allowing a crafted .7z to write files outside the destination (Zip-Slip)",
-      "description": "### Summary\n\nExtracting an attacker-supplied 7z archive can write files outside the destination directory. The 7z header stores each entry's path as a UTF-16 name with nothing constraining it to a relative, in-tree path. The extractor joins that name onto the destination and writes to the result without normalizing it or checking that it stays under the destination root, so an entry named `../../etc/cron.d/x` or an absolute path escapes the target.\n\n### Details\n\nIn `src/util/decompress.rs`, `decompress_impl` computes the per-entry destination directly (line 140):\n\n```rust\nlet dest_path = dest.join(entry.name());\nextract_fn(entry, reader, &dest_path)\n```\n\n`default_entry_extract_fn` (line 154) then acts on that path:\n\n```rust\nlet file = File::create(path)\n    .map_err(|e| Error::file_open(e, path.to_string_lossy().to_string()))?;\n```\n\nThere is no normalization, no `dest_path.starts_with(de",
-      "severity": "medium",
-      "published": "2026-11-20T23:33:14+00:00",
-      "link": "https://github.com/advisories/GHSA-qh76-45cr-8xrc"
-    },
-    {
-      "cve": "CVE-2026-63341",
-      "ghsa": "GHSA-xxqp-5qx8-gj5q",
-      "title": "Aedes has Uncaught Exception and Uncontrolled Resource Consumption",
-      "description": "### Summary\nA remote Denial of Service (DoS) vulnerability, allows any remote client to cause a complete crash of the Aedes MQTT broker process. This is achieved by sending a specially crafted MQTT message (via PUBLISH or SUBSCRIBE), or by setting a Will message with such a topic, containing a highly recursive topic string (e.g., with thousands of '/' delimiters). The lack of input validation and error handling leads to an uncaught exception in an internal routing library, terminating the entire Node.js application.\n\n### Details\nThe Aedes broker fails to enforce limits on the depth or structural complexity of MQTT topic strings. When a client publishes to or subscribes to a topic with excessive levels of recursion, the internal routing logic cascading into the qlobber library (via mqemitter) reaches an hard-coded limit within the qlobber._split_words function.\n\nThis function throws a har",
-      "severity": "high",
-      "published": "2026-11-20T23:32:35+00:00",
-      "link": "https://github.com/advisories/GHSA-xxqp-5qx8-gj5q"
-    },
-    {
-      "cve": "CVE-2026-58254",
-      "ghsa": "GHSA-p3j5-5hrq-p75h",
-      "title": "nats-server Leaf node connections bypass Nats-Trace-Dest permission check",
-      "description": "### Background\n\nNATS.io is a high performance open source pub-sub distributed communication technology, built for the cloud, on-premise, IoT and edge computing.\n\nThe NATS Server supports leafnode connections between servers and message tracing through NATS headers.\n\n### Problem Description\n\nMessage trace destination checks were applied to ordinary client connections but not consistently to messages arriving through leafnode connections.\n\nA leafnode operator could cause trace events to be sent to subjects that would not otherwise be permitted and could use trace-only behavior to prevent normal delivery or storage of affected messages.\n\nTrace events can include routing, subscription, account, service import and JetStream metadata. The payload of the original application message is not chosen through the trace event itself.\n\n### Affected Versions\n\nVersions v2.14.2, v2.12.7 and below are vul",
-      "severity": "medium",
-      "published": "2026-11-20T23:31:59+00:00",
-      "link": "https://github.com/advisories/GHSA-p3j5-5hrq-p75h"
     }
   ]
 }
