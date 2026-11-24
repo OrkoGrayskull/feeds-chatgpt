@@ -3,6 +3,8 @@
 import json
 import re
 import sys
+import errno
+import time
 from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
@@ -136,14 +138,23 @@ def download_bfdi(url):
     """One bounded retry for transient failures of this central upstream source."""
     try:
         return common.download(url)
-    except (TimeoutError, URLError) as exc:
+    except (OSError, URLError) as exc:
         if isinstance(exc, HTTPError):
             transient = exc.code in (429, 500, 502, 503, 504)
         else:
-            transient = isinstance(exc, TimeoutError) or "timed out" in str(exc).lower()
+            reason = exc.reason if isinstance(exc, URLError) else exc
+            transient = (
+                isinstance(reason, (TimeoutError, ConnectionError))
+                or getattr(reason, "errno", None) in (
+                    errno.ECONNRESET, errno.ECONNABORTED, errno.ECONNREFUSED,
+                    errno.EPIPE, errno.ETIMEDOUT,
+                )
+                or "timed out" in str(reason).lower()
+            )
         if not transient:
             raise
         print("WARN: temporary BfDI download failure, retrying once", file=sys.stderr)
+        time.sleep(2)
         return common.download(url)
 
 
