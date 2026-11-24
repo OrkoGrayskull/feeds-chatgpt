@@ -159,6 +159,26 @@ class SpecializedSourceTests(unittest.TestCase):
             self.assertEqual(extra.download_bfdi(url), b"new HTML")
             self.assertEqual(download.call_count, 2)
 
+    def test_bfdi_retries_connection_reset_once(self):
+        import errno
+        from urllib.error import URLError
+        url = "https://www.bfdi.bund.de/example"
+        for error in (
+            ConnectionResetError(errno.ECONNRESET, "Connection reset by peer"),
+            URLError(ConnectionResetError(errno.ECONNRESET, "Connection reset by peer")),
+        ):
+            with self.subTest(error=error), patch.object(extra.time, "sleep") as sleep:
+                with patch.object(extra.common, "download",
+                                  side_effect=[error, b"new HTML"]) as download:
+                    self.assertEqual(extra.download_bfdi(url), b"new HTML")
+                    self.assertEqual(download.call_count, 2)
+                    sleep.assert_called_once_with(2)
+                with patch.object(extra.common, "download",
+                                  side_effect=[error, error]) as download:
+                    with self.assertRaises(type(error)):
+                        extra.download_bfdi(url)
+                    self.assertEqual(download.call_count, 2)
+
     def test_bfdi_does_not_retry_permanent_or_repeated_errors(self):
         from urllib.error import HTTPError
         url = "https://www.bfdi.bund.de/example"
