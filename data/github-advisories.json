@@ -1,12 +1,21 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-25T11:24:30+00:00",
+  "fetched_at": "2026-11-25T15:58:56+00:00",
   "window_days": 3,
   "window_start": "2026-11-23",
   "window_end": "2026-11-25",
-  "count": 17,
+  "count": 18,
   "items": [
+    {
+      "cve": "CVE-2026-64670",
+      "ghsa": "GHSA-crj3-q72p-ggqm",
+      "title": "@waline/client vulnerable to stored XSS through unsanitized comment edit previews",
+      "description": "### Summary\n\n`@waline/client` renders the comment editor's live preview with `marked` and no sanitizer (`utils/markdown.ts`), and the preview is injected with `v-html`.\n\nWhen a comment is edited, the editor is seeded with the comment's raw, un-sanitized body (`orig`).\n\nOnly administrators and the comment owner can edit. So an administrator who clicks Edit on an attacker's comment renders that attacker's raw HTML in their own session: an unauthenticated commenter achieves privilege-escalation stored XSS against a moderator with a single Edit click.\n\n### Details\n\n`packages/client/src/utils/markdown.ts:18-37` renders markdown with `marked` and returns the raw HTML with no sanitization (the client bundles no DOMPurify):\n\n```ts\nreturn marked.parse(parseEmoji(content, emojiMap)) as string;\n```\n\n`packages/client/src/components/CommentBox.vue`:\n\n```ts\nonMounted(() => {\n  if (props.edit?.objectId",
+      "severity": "critical",
+      "published": "2026-11-25T15:26:23+00:00",
+      "link": "https://github.com/advisories/GHSA-crj3-q72p-ggqm"
+    },
     {
       "cve": "CVE-2026-64855",
       "ghsa": "GHSA-859w-52fx-hcm6",
