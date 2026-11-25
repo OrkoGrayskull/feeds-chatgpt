@@ -1,14 +1,86 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-24T12:49:18+00:00",
+  "fetched_at": "2026-11-25T05:43:29+00:00",
   "window_days": 3,
-  "window_start": "2026-11-22",
-  "window_end": "2026-11-24",
-  "count": 9,
+  "window_start": "2026-11-23",
+  "window_end": "2026-11-25",
+  "count": 17,
   "items": [
     {
-      "cve": "CVE-2026-63492",
+      "cve": "CVE-2026-64855",
+      "ghsa": "GHSA-859w-52fx-hcm6",
+      "title": "soapbar: verify_envelope_bsp accepts an unauthenticated embedded certificate (signature forgery / authentication bypass)",
+      "description": "### Impact\n\n`verify_envelope_bsp()` derived its trust anchor from the message it was\nverifying. It read the X.509 certificate out of the caller-untrusted\n`wsse:BinarySecurityToken`, validated **only** that certificate's not-before /\nnot-after dates, and then verified the signature against that same certificate.\nThere was no CA-chain validation, no issuer/subject allowlist, and no pinning.\n\nA successful `verify_envelope_bsp()` therefore proved only that the envelope was\nsigned by *whoever supplied the embedded certificate* — never that it was signed\nby a *trusted* party. An attacker who mints their own certificate, signs a\nforged envelope, and embeds that certificate in the token passes verification.\nAny consumer that treats a successful BSP verification as authentication can be\nimpersonated (signature forgery / authentication bypass).\n\n`verify_envelope()` (which pins a caller-supplied `x",
+      "severity": "high",
+      "published": "2026-11-24T22:41:44+00:00",
+      "link": "https://github.com/advisories/GHSA-859w-52fx-hcm6"
+    },
+    {
+      "cve": "CVE-2026-59191",
+      "ghsa": "GHSA-hq9r-72jq-2pxp",
+      "title": "TwigView FileLoader may allow arbitrary file reads through user-controlled template paths",
+      "description": "### Impact\nIf `FileLoader::findTemplate()` is supplied un-validated user controlled data, arbitrary files can be read.\n\n### Patches\n1.3.3 and 2.1.2 contain a fix for this issue.\n\n### Workarounds\nDon't supply user controlled data to `include` and `extends` tags.",
+      "severity": "medium",
+      "published": "2026-11-24T22:39:23+00:00",
+      "link": "https://github.com/advisories/GHSA-hq9r-72jq-2pxp"
+    },
+    {
+      "cve": "CVE-2026-59831",
+      "ghsa": "GHSA-8cg3-r6g9-fpg2",
+      "title": "GitHub CLI gh codespace jupyter may allow code execution via unvalidated URLs from malicious Codespaces",
+      "description": "### Summary\n\nA security vulnerability has been identified in GitHub CLI that could allow remote code execution when users connect to a malicious Codespace using the `gh codespace jupyter` command. The command opens JupyterLab by launching a URL in the user's browser, but that URL is supplied by a process running inside the Codespace and the CLI opens it without validating it.\n\nThe browser launcher accepts `vscode://` and `vscode-insiders://` links, so a malicious Codespace can return a crafted `vscode://` URL. The CLI opens the link, the operating system hands it to VS Code, and VS Code acts on it, which can lead to code execution on the user's workstation.\n\nThis is a variant of [CVE-2024-52308](https://github.com/advisories/GHSA-p2h2-3vg9-4p87). That remediation validated the SSH connection details for `gh codespace ssh` and `gh codespace logs`, but did not cover the equivalent Jupyter ",
+      "severity": "medium",
+      "published": "2026-11-24T22:26:25+00:00",
+      "link": "https://github.com/advisories/GHSA-8cg3-r6g9-fpg2"
+    },
+    {
+      "cve": null,
+      "ghsa": "GHSA-jp3c-6v3g-mpxv",
+      "title": "github.com/insomniacslk/dhcp permits denial of service through a malformed IPv4 payload length",
+      "description": "In github.com/insomniacslk/dhcp/dhcpv4/nclient4, BroadcastRawUDPConn.ReadFrom does not validate that the IPv4 payload length is sufficient to hold a UDP header before calculating the DHCP payload length. A frame with an IPv4 total-length field specifying fewer than eight payload bytes results in a negative DHCP length, causing a panic in buf.Consume due to a negative slice bound.",
+      "severity": "high",
+      "published": "2026-11-24T21:13:37+00:00",
+      "link": "https://github.com/advisories/GHSA-jp3c-6v3g-mpxv"
+    },
+    {
+      "cve": "CVE-2026-59818",
+      "ghsa": "GHSA-3wh4-j44w-pg92",
+      "title": "etcd: CRL enforcement bypass on gRPC listener when `--listen-client-http-urls` is configured",
+      "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nWhen etcd is configured with `--listen-client-http-urls` to split the HTTP and gRPC client endpoints onto separate listeners, the `--client-crl-file` Certificate Revocation List is not enforced on the gRPC listener. A client presenting a revoked certificate is correctly rejected by the HTTP endpoint but continues to authenticate successfully over gRPC.\n\n### Patches\n_Has the problem been patched? What versions should users upgrade to?_\n\nThis vulnerability is patched in the following versions:\n\n- etcd 3.6.13\n- etcd 3.5.32\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\n\nIf upgrading is not immediately possible, reduce exposure by restricting network access to etcd client ports using firewall rules or network policy so that only trusted components can reach the server. This ",
+      "severity": "medium",
+      "published": "2026-11-24T21:09:38+00:00",
+      "link": "https://github.com/advisories/GHSA-3wh4-j44w-pg92"
+    },
+    {
+      "cve": "CVE-2026-59726",
+      "ghsa": "GHSA-c4hm-4h84-2cf3",
+      "title": "ruflo MCP bridge allows unauthenticated remote code execution in default Docker Compose deployments",
+      "description": "The MCP bridge shipping in ruflo/docker-compose.yml exposed POST /mcp with no authentication. The docker-compose defaults bound the bridge and MongoDB to all interfaces. Combined, an unauthenticated network attacker could invoke tools/call → terminal_execute inside the bridge container, obtain a shell as node (uid 1000), read every provider API key from the container env, spawn attacker-controlled swarms on the victim's keys, and persist a poisoned pattern into the AgentDB learning store that steers future AI outputs for all users of the instance.\n\nThe tool blocklist that mentions terminal_execute was enforced only in the autopilot flow. POST /mcp and POST /mcp/:group bypassed it.\n\nFixed in ADR-166 Phase 1-3 (branch security/adr-166-mcp-bridge-rce, PR #2521):\n- Bind loopback by default; fail-closed on public-bind opt-in without MCP_AUTH_TOKEN\n- Bearer auth middleware (timingSafeEqual con",
+      "severity": "critical",
+      "published": "2026-11-24T21:01:10+00:00",
+      "link": "https://github.com/advisories/GHSA-c4hm-4h84-2cf3"
+    },
+    {
+      "cve": "CVE-2026-63305",
+      "ghsa": "GHSA-g9x9-q7qj-6mv5",
+      "title": "AVideo API FFmpeg process permits OS command injection via notifyCode/callback",
+      "description": "### Summary\n\nThe standalone FFmpeg execution endpoint `plugin/API/standAlone/ffmpeg.json.php` builds a shell command string that is passed to `execAsync()` and run via `nohup sh -c \"<command>\"`. When the decrypted `codeToExec` payload produces a non-empty `avideoPath`, the endpoint appends a completion hook of the form:\n\n```\n && php <script> notify=<escaped-json> notifyCode=<codeToExec->notifyCode> callback=<codeToExec->callback>\n```\n\nThe `notify` value on this line is wrapped with `escapeshellarg()`, but the two adjacent fields `notifyCode` and `callback` are concatenated raw. Both fields originate from the same decrypted, attacker-controlled `codeToExec` object as `ffmpegCommand`, but neither passes through the `sanitizeFFmpegCommand()` denylist (only `ffmpegCommand` does) and neither is shell-escaped. An attacker who can craft a valid encrypted payload can therefore inject arbitrary s",
+      "severity": "high",
+      "published": "2026-11-24T20:53:28+00:00",
+      "link": "https://github.com/advisories/GHSA-g9x9-q7qj-6mv5"
+    },
+    {
+      "cve": "CVE-2026-59192",
+      "ghsa": "GHSA-48qj-5wxh-m8hc",
+      "title": "Cakephp twig-view unserialize Twig filter allows arbitrary object deserialization",
+      "description": "### Impact\nThe `unserialize` filter has no restriction on which classes are allowed. This can be used as a deserialization remote-code-execution gadget.\n\n### Patches\n1.3.3 and 2.1.2 contain a fix for this issue. The fix may impact backwards compatibility if you are relying on deserializing PHP objects in your templates.\n\n### Workarounds\nDon't use the `unserialize` filter.",
+      "severity": "medium",
+      "published": "2026-11-24T17:42:51+00:00",
+      "link": "https://github.com/advisories/GHSA-48qj-5wxh-m8hc"
+    },
+    {
+      "cve": "CVE-2026-63304",
       "ghsa": "GHSA-j44m-77cc-p3cc",
       "title": "AVideo API vulnerable to OS command injection through an unescaped FFmpeg process keyword",
       "description": "### Summary\n\nThe helper `listFFmpegProcesses($keyword)` in `plugin/API/standAlone/functions.php` builds a shell pipeline by interpolating `$keyword` inside single quotes and running it with `exec()`:\n\n```php\n$command .= \" | grep '$keyword'\";\nexec($command, $output, $status);\n```\n\nThe two callers in `plugin/API/standAlone/ffmpeg.json.php` (the `list` mode and the `isKeywordRunning` mode) pass the RAW decrypted `codeToExec` field, not the sanitized `$keyword` variable that the endpoint allowlists elsewhere. Because the value is placed inside a single-quoted shell context with no escaping, a payload that closes the quote (for example `x'; touch /tmp/marker #`) breaks out and injects an arbitrary command that runs via `exec()`'s `/bin/sh -c`. An attacker who can craft a valid encrypted payload achieves OS command execution as the web-server user.\n\n### Vulnerable code\n\nSink — `plugin/API/stan",
