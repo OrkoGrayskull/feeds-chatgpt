@@ -1,12 +1,84 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-25T23%3A00%3A00.000&pubEndDate=2026-11-28T05%3A02%3A20.000&resultsPerPage=200&startIndex=746",
-  "fetched_at": "2026-11-28T05:02:20+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-25T23%3A00%3A00.000&pubEndDate=2026-11-28T10%3A32%3A55.000&resultsPerPage=200&startIndex=754",
+  "fetched_at": "2026-11-28T10:32:55+00:00",
   "window_days": 3,
   "window_start": "2026-11-26",
   "window_end": "2026-11-28",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-138036",
+      "title": "CVE-2026-138036",
+      "description": "A vulnerability was detected in Free5GC up to 4.3.0. The impacted element is the function PostPoliciesProcedure of the file internal/sbi/processor/ampolicy.go of the component PCF. Performing a manipulation of the argument supi results in incomplete cleanup. The attack is possible to be carried out remotely. The exploit is now public and may be used. The patch is named eba1c481300df4e7ac8000c99d0cc36dd73b941e. Applying a patch is the recommended action to fix this issue.",
+      "published": "2026-11-28T10:17:00.503",
+      "last_modified": "2026-11-28T10:17:00.697",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138036"
+    },
+    {
+      "cve": "CVE-2026-138005",
+      "title": "CVE-2026-138005",
+      "description": "A vulnerability was detected in TRENDnet TEW-751DR 1.03B01. Affected by this vulnerability is the function gena.php::GENA_notify_init of the file htdocs/upnpinc/gena.php of the component UPnP Event Handler. Performing a manipulation of the argument uri results in os command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used.",
+      "published": "2026-11-28T10:17:00.010",
+      "last_modified": "2026-11-28T10:17:00.417",
+      "cvss": 10.0,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138005"
+    },
+    {
+      "cve": "CVE-2026-123654",
+      "title": "CVE-2026-123654",
+      "description": "Themify Base WordPress theme through 1.2.4 does not perform capability checks on its option save and read AJAX actions, which are protected only by a generic nonce that other  commonly expose on the front end, allowing users with a role as low as Subscriber to update arbitrary blog options such as the default role and open registration, and gain administrator access when such a  is active.",
+      "published": "2026-11-28T06:16:42.433",
+      "last_modified": "2026-11-28T06:16:42.433",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-123654"
+    },
+    {
+      "cve": "CVE-2026-112235",
+      "title": "CVE-2026-112235",
+      "description": "The Popup Builder  WordPress plugin through 4.4.6 does not properly check authorization before allowing a user to store popup preview data against arbitrary posts, nor restrict who can read that content back on public requests, allowing users granted access to the Popup Builder  WordPress plugin through 4.4.6 to disclose the private and draft content of posts they do not own to unauthenticated visitors.",
+      "published": "2026-11-28T06:16:42.327",
+      "last_modified": "2026-11-28T06:16:42.327",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112235"
+    },
+    {
+      "cve": "CVE-2026-112234",
+      "title": "CVE-2026-112234",
+      "description": "The Popup Builder  WordPress plugin through 4.4.6 does not validate a user-supplied URL before requesting it server-side and storing the fetched response so that it can be read back, allowing users with Administrator privileges to perform Server-Side Request Forgery (SSRF) attacks and read the responses of internal services.",
+      "published": "2026-11-28T06:16:42.223",
+      "last_modified": "2026-11-28T06:16:42.223",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112234"
+    },
+    {
+      "cve": "CVE-2026-112233",
+      "title": "CVE-2026-112233",
+      "description": "The Popup Builder  WordPress plugin through 4.4.6 does not check the publish status or the visitor's capabilities before rendering a popup requested by its ID in the URL, allowing unauthenticated users to read the content and configuration of popups that are still drafts or are marked private.",
+      "published": "2026-11-28T06:16:42.110",
+      "last_modified": "2026-11-28T06:16:42.110",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112233"
+    },
+    {
+      "cve": "CVE-2026-112232",
+      "title": "CVE-2026-112232",
+      "description": "The Popup Builder  WordPress plugin through 4.4.6 does not properly sanitize and escape a popup shortcode attribute before it is reflected into a page and evaluated client-side, allowing users with the Contributor role and above to inject arbitrary JavaScript that executes in the session of any higher-privileged user, such as an administrator, who views the affected content.",
+      "published": "2026-11-28T06:16:42.010",
+      "last_modified": "2026-11-28T06:16:42.010",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112232"
+    },
+    {
+      "cve": "CVE-2026-112231",
+      "title": "CVE-2026-112231",
+      "description": "The Popup Builder  WordPress plugin through 4.4.6 does not sanitise or escape a custom styling value before storing it and printing it back into the pages a popup loads on, allowing users who are allowed to manage popups (an ability that can be delegated to lower-privileged roles) to inject JavaScript that executes in the browser of every visitor, including logged-in administrators.",
+      "published": "2026-11-28T06:16:40.583",
+      "last_modified": "2026-11-28T06:16:40.583",
+      "cvss": null,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-112231"
+    },
     {
       "cve": "CVE-2026-138164",
       "title": "CVE-2026-138164",
@@ -1734,82 +1806,10 @@
       "last_modified": "2026-11-27T15:17:39.637",
       "cvss": 7.1,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135948"
-    },
-    {
-      "cve": "CVE-2026-135933",
-      "title": "CVE-2026-135933",
-      "description": "Incorrect Privilege Assignment vulnerability in Tobias WebinarIgnition webinar-ignition allows Privilege Escalation.This issue affects WebinarIgnition: from n/a through 4.28.1.",
-      "published": "2026-11-27T13:17:23.983",
-      "last_modified": "2026-11-27T13:17:24.107",
-      "cvss": 9.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135933"
-    },
-    {
-      "cve": "CVE-2026-135930",
-      "title": "CVE-2026-135930",
-      "description": "Authentication Bypass by Spoofing vulnerability in TMS Amelia ameliabooking allows Identity Spoofing.This issue affects Amelia: from n/a through 2.4.14.",
-      "published": "2026-11-27T13:17:23.827",
-      "last_modified": "2026-11-27T13:17:23.950",
-      "cvss": 9.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135930"
-    },
-    {
-      "cve": "CVE-2026-135911",
-      "title": "CVE-2026-135911",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in PI Web Solution Product Enquiry for WooCommerce enquiry-quotation-for-woocommerce allows Stored XSS.This issue affects Product Enquiry for WooCommerce: from n/a through 2.2.34.64.",
-      "published": "2026-11-27T13:17:23.670",
-      "last_modified": "2026-11-27T13:17:23.790",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135911"
-    },
-    {
-      "cve": "CVE-2026-135016",
-      "title": "CVE-2026-135016",
-      "description": "Missing Authorization vulnerability in Ricardo Martins PagBank / PagSeguro Connect pagbank-connect allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects PagBank / PagSeguro Connect: from n/a through 5.1.9.",
-      "published": "2026-11-27T13:17:23.507",
-      "last_modified": "2026-11-27T17:17:41.220",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135016"
-    },
-    {
-      "cve": "CVE-2026-134963",
-      "title": "CVE-2026-134963",
-      "description": "Improper Control of Generation of Code ('Code Injection') vulnerability in Webdeclic WPMasterToolKit wpmastertoolkit allows Code Injection.This issue affects WPMasterToolKit: from n/a through 2.26.1.",
-      "published": "2026-11-27T13:17:23.347",
-      "last_modified": "2026-11-27T15:17:37.503",
-      "cvss": 9.9,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134963"
-    },
-    {
-      "cve": "CVE-2026-134961",
-      "title": "CVE-2026-134961",
-      "description": "Missing Authorization vulnerability in Cozy Vision Technologies Pvt. Ltd. SMS Alert Order Notifications sms-alert allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects SMS Alert Order Notifications: from n/a through 4.0.3.",
-      "published": "2026-11-27T13:17:23.190",
-      "last_modified": "2026-11-27T13:17:23.313",
-      "cvss": 6.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134961"
-    },
-    {
-      "cve": "CVE-2026-134957",
-      "title": "CVE-2026-134957",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WP Chill Image Photo Gallery Final Tiles Grid final-tiles-grid-gallery-lite allows DOM-Based XSS.This issue affects Image Photo Gallery Final Tiles Grid: from n/a through 3.6.18.",
-      "published": "2026-11-27T13:17:23.030",
-      "last_modified": "2026-11-27T13:17:23.153",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134957"
-    },
-    {
-      "cve": "CVE-2026-134939",
-      "title": "CVE-2026-134939",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in David Lingren Media LIbrary Assistant media-library-assistant allows Reflected XSS.This issue affects Media LIbrary Assistant: from n/a through 3.43.",
-      "published": "2026-11-27T13:17:22.877",
-      "last_modified": "2026-11-27T13:17:22.997",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-134939"
     }
   ],
-  "total_results": 946,
+  "total_results": 954,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 746
+  "start_index": 754
 }
