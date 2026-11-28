@@ -1,12 +1,111 @@
 {
   "feed": "nvd",
-  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-25T23%3A00%3A00.000&pubEndDate=2026-11-28T10%3A32%3A55.000&resultsPerPage=200&startIndex=754",
-  "fetched_at": "2026-11-28T10:32:55+00:00",
+  "source": "https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=2026-11-25T23%3A00%3A00.000&pubEndDate=2026-11-28T14%3A28%3A44.000&resultsPerPage=200&startIndex=765",
+  "fetched_at": "2026-11-28T14:28:44+00:00",
   "window_days": 3,
   "window_start": "2026-11-26",
   "window_end": "2026-11-28",
   "count": 200,
   "items": [
+    {
+      "cve": "CVE-2026-138256",
+      "title": "CVE-2026-138256",
+      "description": "Apprise before 1.12.0 contains an improper certificate validation vulnerability in NotifyEmail.send that ignores verify_certificate for SMTPS and STARTTLS connections. Network-positioned attackers can present self-signed or mismatched certificates to intercept SMTP AUTH credentials and notification contents, or modify and suppress notifications.",
+      "published": "2026-11-28T14:17:51.017",
+      "last_modified": "2026-11-28T14:17:51.017",
+      "cvss": 8.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138256"
+    },
+    {
+      "cve": "CVE-2026-138255",
+      "title": "CVE-2026-138255",
+      "description": "ELADMIN through 2.7 contains an authorization bypass vulnerability in the user export endpoint that allows department-scoped users to export user records from other departments. Authenticated attackers holding user:list permission can request GET /api/users/download to obtain an XLSX containing usernames, roles, emails, and phone numbers across all departments.",
+      "published": "2026-11-28T14:17:50.843",
+      "last_modified": "2026-11-28T14:17:50.963",
+      "cvss": 5.1,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138255"
+    },
+    {
+      "cve": "CVE-2026-138052",
+      "title": "CVE-2026-138052",
+      "description": "A vulnerability was detected in OpenAirInterface oai-cn5g-amf up to 2.2.2. Impacted is the function amf_sbi::discover_smf of the file src/amf-app/amf_sbi.cpp of the component AMF. The manipulation results in denial of service. The attack can be executed remotely. The exploit is now public and may be used. The patch is identified as 1eabe18bf0cb5a248e0429f4daac91dee51c8a43. It is best practice to apply a patch to resolve this issue.",
+      "published": "2026-11-28T14:17:50.653",
+      "last_modified": "2026-11-28T14:17:50.800",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138052"
+    },
+    {
+      "cve": "CVE-2026-138051",
+      "title": "CVE-2026-138051",
+      "description": "A security vulnerability has been detected in OpenAirInterface oai-cn5g-upf up to 2.2.2. This issue affects the function pfcp_user_id_ie::load_from of the file pfcp/3gpp_29.244.hpp of the component PFCP N4 User ID IE Type 141 Parser. The manipulation leads to heap-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure.",
+      "published": "2026-11-28T14:17:50.460",
+      "last_modified": "2026-11-28T14:17:50.603",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138051"
+    },
+    {
+      "cve": "CVE-2026-138050",
+      "title": "CVE-2026-138050",
+      "description": "A weakness has been identified in OpenAirInterface oai-cn5g-udr up to 2.2.2. This vulnerability affects unknown code of the file src/udr_app/database/mysql_db.cpp of the component Nudr_DR. Executing a manipulation of the argument ueId can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure.",
+      "published": "2026-11-28T14:17:49.773",
+      "last_modified": "2026-11-28T14:17:50.407",
+      "cvss": 7.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138050"
+    },
+    {
+      "cve": "CVE-2026-138049",
+      "title": "CVE-2026-138049",
+      "description": "A security flaw has been discovered in OpenAirInterface oai-cn5g-nrf up to 2.2.1. This affects the function notify_subscribed_event of the file src/nrf_app/nrf_client.cpp of the component NRF. Performing a manipulation results in null pointer dereference. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 2.2.2 is able to mitigate this issue. The patch is named 2065c6f80ca9ffdacc0064e768db90d04d9d6ca8. It is advisable to upgrade the affected component.",
+      "published": "2026-11-28T13:17:03.717",
+      "last_modified": "2026-11-28T13:17:04.057",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138049"
+    },
+    {
+      "cve": "CVE-2026-138047",
+      "title": "CVE-2026-138047",
+      "description": "A vulnerability was identified in dcatadmin Dcat-Admin 2.2.2-beta. Affected by this issue is the function getDatabaseColumns of the file src/Http/Controllers/ScaffoldController.php. Such manipulation of the argument tb leads to sql injection. The attack can be launched remotely. The exploit is publicly available and might be used.",
+      "published": "2026-11-28T13:17:03.517",
+      "last_modified": "2026-11-28T13:17:03.657",
+      "cvss": 4.7,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138047"
+    },
+    {
+      "cve": "CVE-2026-138039",
+      "title": "CVE-2026-138039",
+      "description": "A vulnerability was found in Open5GS up to 2.8.0. Affected is the function smf_ue_find_by_imsi of the file src/smf/context.c of the component SMF. The manipulation results in denial of service. It is possible to launch the attack remotely. The exploit has been made public and could be used. The patch is identified as df92296dbf60c21a2dd09e74f4903cee995cd2c2. Applying a patch is advised to resolve this issue.",
+      "published": "2026-11-28T13:17:02.300",
+      "last_modified": "2026-11-28T13:17:03.463",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138039"
+    },
+    {
+      "cve": "CVE-2026-5771",
+      "title": "CVE-2026-5771",
+      "description": "The Loco Translate plugin for WordPress is vulnerable to Arbitrary File Write/Overwrite via Path Traversal in all versions up to, and including, 2.8.4. This is due to the normalize() function processing '..' segments in user-supplied paths without verifying that the resolved absolute path remains within the base directory. This makes it possible for authenticated attackers, with Custom+ level access and above, to write translation files to arbitrary locations on the filesystem.",
+      "published": "2026-11-28T12:17:42.027",
+      "last_modified": "2026-11-28T12:17:42.177",
+      "cvss": 4.3,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-5771"
+    },
+    {
+      "cve": "CVE-2026-138038",
+      "title": "CVE-2026-138038",
+      "description": "A vulnerability has been found in Open5GS 2.8.0. This impacts the function nrf_nnrf_handle_nf_discover of the file src/nrf/nnrf-handler.c of the component NRF. The manipulation leads to reachable assertion. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of the patch is dbc35e6aadeb3f6ef3e028a8b52ee3cf5920082e. It is recommended to apply a patch to fix this issue.",
+      "published": "2026-11-28T12:17:41.817",
+      "last_modified": "2026-11-28T12:17:41.963",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138038"
+    },
+    {
+      "cve": "CVE-2026-138037",
+      "title": "CVE-2026-138037",
+      "description": "A flaw has been found in Open5GS up to 2.8.0. This affects the function ogs_pfcp_handle_create_urr of the file lib/pfcp/handler.c of the component UPF PFCP N4. Executing a manipulation of the argument URR ID can lead to reachable assertion. The attack may be performed from remote. The exploit has been published and may be used. This patch is called 08e0940e14ec41284e4270084694549de43dc219. It is best practice to apply a patch to resolve this issue.",
+      "published": "2026-11-28T12:17:41.370",
+      "last_modified": "2026-11-28T12:17:41.733",
+      "cvss": 5.5,
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-138037"
+    },
     {
       "cve": "CVE-2026-138036",
       "title": "CVE-2026-138036",
@@ -489,7 +588,7 @@
       "title": "CVE-2026-132876",
       "description": "Dreamweaver Desktop is affected by a Dependency on Vulnerable Third-Party Component vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation depends on conditions beyond the attacker's control and requires user interaction in that a victim must open a malicious file. Scope is changed.",
       "published": "2026-11-27T18:16:46.217",
-      "last_modified": "2026-11-27T18:16:46.217",
+      "last_modified": "2026-11-28T12:17:39.830",
       "cvss": 7.7,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-132876"
     },
@@ -1707,109 +1806,10 @@
       "last_modified": "2026-11-27T17:20:44.937",
       "cvss": 5.8,
       "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137911"
-    },
-    {
-      "cve": "CVE-2026-137910",
-      "title": "CVE-2026-137910",
-      "description": "FFmpeg before 9.1 contains an out-of-bounds read vulnerability in pcx_encode_frame() in libavcodec/pcxenc.c that rounds each row up to an even number of bytes and run-length encodes that many bytes from the input frame. Attackers who control the width of images encoded to PCX by an application that supplies tightly packed frames can make the encoder read past the end of the frame buffer, crashing the application or leaking heap contents into the output image.",
-      "published": "2026-11-27T13:17:26.047",
-      "last_modified": "2026-11-27T17:20:51.500",
-      "cvss": 5.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137910"
-    },
-    {
-      "cve": "CVE-2026-137909",
-      "title": "CVE-2026-137909",
-      "description": "FFmpeg before 9.1 contains a NULL pointer dereference vulnerability in xsub_encode() in libavcodec/xsubenc.c that only warns when a subtitle has no rectangles and then dereferences rects[0]. Attackers can supply crafted PGS or DVB subtitles that decode to empty subtitle events, crashing applications that pass decoded subtitles directly to the XSUB encoder.",
-      "published": "2026-11-27T13:17:25.843",
-      "last_modified": "2026-11-27T15:17:18.417",
-      "cvss": 5.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137909"
-    },
-    {
-      "cve": "CVE-2026-137908",
-      "title": "CVE-2026-137908",
-      "description": "FFmpeg 7.1 before 9.1 contains a memory leak vulnerability in eb_receive_packet() in libavcodec/libsvtav1.c that returns without unreferencing the queued input frame when eb_send_frame() fails. Attackers can supply crafted video in which some frames lack Dolby Vision metadata to an SVT-AV1 encode with Dolby Vision RPU coding enabled, leaking each rejected frame's buffers or aborting in av_frame_move_ref() in builds with assertions enabled.",
-      "published": "2026-11-27T13:17:25.660",
-      "last_modified": "2026-11-27T17:21:21.980",
-      "cvss": 5.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137908"
-    },
-    {
-      "cve": "CVE-2026-137907",
-      "title": "CVE-2026-137907",
-      "description": "FFmpeg 3.0 before 8.1.3 contains a heap buffer overflow vulnerability in libavfilter/vf_boxblur.c because query_formats() accepts pixel formats deeper than 16 bits while the blur temporary buffers hold only 2 bytes per pixel. Attackers can supply crafted 32-bit float media, such as PFM or OpenEXR images, that when processed by the boxblur filter overflow the temporary buffers, crashing applications or possibly executing code.",
-      "published": "2026-11-27T13:17:25.483",
-      "last_modified": "2026-11-27T17:21:30.633",
-      "cvss": 8.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137907"
-    },
-    {
-      "cve": "CVE-2026-137906",
-      "title": "CVE-2026-137906",
-      "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in the IMF demuxer in libavformat/imfdec.c because open_virtual_track() accepts a virtual track with no resources. Attackers can supply a crafted IMF Composition Playlist whose virtual track lists no resources, causing set_context_streams_from_tracks() to dereference a NULL resource array and crash the process.",
-      "published": "2026-11-27T13:17:25.303",
-      "last_modified": "2026-11-27T16:29:22.383",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137906"
-    },
-    {
-      "cve": "CVE-2026-137905",
-      "title": "CVE-2026-137905",
-      "description": "FFmpeg 5.0 before 8.1.3 contains a NULL pointer dereference vulnerability in parse_imf_asset_map_from_xml_dom() in libavformat/imfdec.c that does not check for a missing or empty Path element in an asset map Chunk. Attackers can supply a crafted IMF ASSETMAP.xml whose Chunk lacks a Path, passing a NULL URI to the path handling functions and crashing the process.",
-      "published": "2026-11-27T13:17:25.120",
-      "last_modified": "2026-11-27T16:22:53.413",
-      "cvss": 6.8,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137905"
-    },
-    {
-      "cve": "CVE-2026-137746",
-      "title": "CVE-2026-137746",
-      "description": "A flaw has been found in Free5GC 4.3.0. This vulnerability affects unknown code of the component SMF. This manipulation causes resource consumption. The attack may be initiated remotely. The exploit has been published and may be used. The pull request to fix this issue awaits acceptance.",
-      "published": "2026-11-27T13:17:24.907",
-      "last_modified": "2026-11-27T17:17:57.343",
-      "cvss": 7.7,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137746"
-    },
-    {
-      "cve": "CVE-2026-137745",
-      "title": "CVE-2026-137745",
-      "description": "A vulnerability was detected in Free5GC 4.3.0. This affects the function handleAssociationSetupRequest of the file internal/pfcp/association.go of the component SMF. The manipulation results in authentication bypass by spoofing. The attack can be launched remotely. The exploit is now public and may be used. The patch is identified as aab44f6f90f89d8b60c34ee5d1e8af887fd5ddab. It is advisable to implement a patch to correct this issue.",
-      "published": "2026-11-27T13:17:24.687",
-      "last_modified": "2026-11-27T13:17:24.850",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137745"
-    },
-    {
-      "cve": "CVE-2026-137744",
-      "title": "CVE-2026-137744",
-      "description": "A security vulnerability has been detected in Free5GC up to 4.2.3. Affected by this issue is the function SecurityAssociation.Unmarshal of the file message/payload_securityassociation.go of the component N3IWF IKEv2 Parser. The manipulation leads to denial of service. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. The identifier of the patch is 41a452a74ef320393d738acd3a0491dcebe2c008. To fix this issue, it is recommended to deploy a patch.",
-      "published": "2026-11-27T13:17:24.473",
-      "last_modified": "2026-11-27T13:17:24.630",
-      "cvss": 5.5,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-137744"
-    },
-    {
-      "cve": "CVE-2026-135950",
-      "title": "CVE-2026-135950",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in fifu.app Featured Image from URL featured-image-from-url allows Stored XSS.This issue affects Featured Image from URL: from n/a through 6.1.8.",
-      "published": "2026-11-27T13:17:24.307",
-      "last_modified": "2026-11-27T17:17:43.110",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135950"
-    },
-    {
-      "cve": "CVE-2026-135948",
-      "title": "CVE-2026-135948",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Themeisle MPG multiple-pages-generator-by-porthas allows Stored XSS.This issue affects MPG: from n/a through 4.2.6.",
-      "published": "2026-11-27T13:17:24.147",
-      "last_modified": "2026-11-27T15:17:39.637",
-      "cvss": 7.1,
-      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-135948"
     }
   ],
-  "total_results": 954,
+  "total_results": 965,
   "truncated": true,
   "selection": "latest_published",
-  "start_index": 754
+  "start_index": 765
 }
